@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: "Pretendard";
   src: url("../font/Pretendard-Regular.woff2") format("woff2");
@@ -64,9 +66,8 @@ ol {
   padding: 0;
 }
 
-
-
 #category-header {
+  max-width: 1080px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -76,7 +77,9 @@ ol {
   background-color: #56321c;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  z-index: 9;
+  transform: translateX(-50%);
 }
 
 #category-header #header-title {
@@ -137,6 +140,10 @@ ol {
 .category-main {
   padding-top: 144px;
   /* 헤더 높이 제외  */
+  max-width: 1080px;
+  min-height: 1920px;
+  margin: 0 auto;
+  /* 고정형 디자인 반영 */
 }
 
 .menu-tab {
