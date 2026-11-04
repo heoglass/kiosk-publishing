@@ -223,7 +223,7 @@ ol {
   overflow-y: auto;
   overscroll-behavior-y: contain;
   scrollbar-gutter: stable;
-  padding: 50px 60px 0;
+  padding: 50px 60px 40px;
 }
 
 /* 상품명 / 수량 / 금액 / 삭제 */
@@ -231,12 +231,11 @@ ol {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) auto minmax(200px, auto) auto;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 
   flex-shrink: 0;
   min-height: 64px;
   font-size: 36px;
-  line-height: 1.3;
 }
 
 .cart-item-name {
@@ -267,25 +266,25 @@ ol {
   width: 52px;
   height: 52px;
   padding: 0;
-  border: 1px solid #999;
+  border: none;
+  background-color: transparent;
   border-radius: 6px;
-  background: #fff;
-
-  color: #222;
   font: inherit;
-  line-height: 1;
-  cursor: pointer;
+}
+.cart-minus-image,
+.cart-plue-image {
+  width: 60px;
+  height: 60px;
 }
 
 .cart-quantity > button:disabled {
-  opacity: 0.35;
   cursor: default;
 }
 
 .cart-quantity-value {
   min-width: 48px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
@@ -298,18 +297,15 @@ ol {
 
 /* 개별 삭제 */
 .cart-remove {
-  padding: 6px 10px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  background: #fff;
-
-  color: #222;
-  font: inherit;
-  font-size: 30px;
+  padding: 6.5px 0;
+  border: 2px solid #000;
+  border-radius: 12px;
+  background: #eee;
+  font-weight: 500;
+  color: #000;
+  font-size: 36px;
   white-space: nowrap;
-  cursor: pointer;
 }
-
 /* 선택한 메뉴가 없을 때 */
 .cart-empty {
   display: flex;
@@ -370,7 +366,6 @@ ol {
   border-radius: 999px;
 
   font-size: 34px;
-  line-height: 1;
 }
 
 .order-bar .order-total {
@@ -378,7 +373,6 @@ ol {
 }
 
 .order-bar > button:disabled {
-  opacity: 0.45;
   cursor: default;
 }
 /* ---------------------------------------------------------------------- */
@@ -390,7 +384,7 @@ ol {
 /* ---------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------- */
-/* ------------------------------- 공통 팝업 ------------------------------ */
+/* ------------------------------- 공통 모달 팝업 ------------------------------ */
 /* ---------------------------------------------------------------------- */
 .modal {
   box-sizing: border-box;
@@ -438,7 +432,6 @@ ol {
   background: transparent;
   color: inherit;
   font-size: 36px;
-  line-height: 1;
   cursor: pointer;
 }
 
@@ -464,22 +457,97 @@ body.modal-open {
 }
 
 /* 결제수단 선택 팝업 */
-.payment-main,
-.payment-sub {
-  display: grid;
-  gap: 16px;
+/* 결제수단 선택 팝업 */
+#modal-payment {
+  box-sizing: border-box;
+  width: 840px;
+  max-width: calc(100% - 120px);
+  max-height: calc(100dvh - 120px);
+  margin: auto;
+  padding: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border: 0;
+  border-radius: 24px;
+  background: #fff;
+  color: #000;
 }
 
-.payment-main {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+#modal-payment::backdrop {
+  background: rgb(0 0 0 / 60%);
 }
 
-.payment-sub {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 20px;
+/* 상단 제목 및 닫기 */
+#modal-payment .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  box-sizing: border-box;
+  min-height: 140px;
+  padding: 30px 48px;
+
+  background: #583019;
+  color: #fff;
 }
 
-.payment-method {
+#modal-payment .modal-title {
+  margin: 0;
+
+  color: inherit;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -1.5px;
+}
+
+#modal-payment .modal-close {
+  position: static;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 12px;
+
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 8px 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #fff;
+  font: inherit;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+#modal-payment .modal-close span {
+  font-size: 64px;
+  font-weight: 300;
+}
+
+#modal-payment .modal-close::after {
+  content: "닫기";
+
+  font-size: 44px;
+  font-weight: 500;
+}
+
+/* 팝업 본문 */
+#modal-payment .modal-body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 결제 버튼 공통 */
+#modal-payment .payment-method {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -487,154 +555,375 @@ body.modal-open {
 
   box-sizing: border-box;
   min-width: 0;
-  min-height: 112px;
-  padding: 16px 8px;
+  margin: 0;
+  padding: 0;
 
-  border: 1px solid #d5d5d5;
-  border-radius: 12px;
-  background: #f2f2f2;
-  color: #111;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
+  color: #000;
+  font: inherit;
+  text-align: center;
+
   cursor: pointer;
 }
 
-.payment-main .payment-method {
-  min-height: 184px;
-  border-radius: 18px;
+#modal-payment .payment-method:focus-visible,
+#modal-payment .modal-close:focus-visible {
+  outline: 4px solid #ff9500;
+  outline-offset: 6px;
 }
 
-.payment-icon,
-.payment-logo {
-  display: grid;
-  place-items: center;
-  min-height: 36px;
-  margin-bottom: 14px;
-  font-size: 24px;
-  font-weight: 800;
-}
-
-.payment-main .payment-icon {
-  min-height: 48px;
-  font-size: 36px;
-}
-
-.payment-name {
-  font-size: 18px;
+#modal-payment .payment-name {
+  font-size: 40px;
   font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
 }
 
-.payment-description {
-  margin-top: 4px;
-  font-size: 14px;
+/* 주요 결제수단: 카드 / 앱카드 */
+#modal-payment .payment-main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  box-sizing: border-box;
+  min-height: 356px;
+  padding: 40px 32px;
+
+  background: #f5f5f5;
 }
 
-.payment-logo--kakao {
-  color: #111;
-  background: #fee500;
+#modal-payment .payment-main .payment-method {
+  gap: 12px;
+  padding: 16px;
+}
+
+#modal-payment .payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 110px;
+  height: 110px;
+  margin-bottom: 12px;
+
+  font-size: 88px;
+  line-height: 1;
+}
+
+#modal-payment .payment-main .payment-name {
+  font-size: 48px;
+}
+
+#modal-payment .payment-description {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+/* 간편결제: 3열 */
+#modal-payment .payment-sub {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px 20px;
+
+  box-sizing: border-box;
+  padding: 60px;
+
+  background: #fff;
+}
+
+#modal-payment .payment-sub .payment-method {
+  gap: 20px;
+}
+
+/* 원형 결제 로고 */
+#modal-payment .payment-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+#modal-payment .payment-logo--kakao {
+  background: #ffe500;
+  color: #000;
+}
+
+#modal-payment .payment-logo--naver {
+  background: #03d563;
+  color: #000;
+}
+
+#modal-payment .payment-logo--payco {
+  background: #ff2038;
+  color: #fff;
+  font-size: 26px;
+}
+
+#modal-payment .payment-logo--zero {
+  background: #e3e6ff;
+  color: #2b3793;
+  font-size: 27px;
+}
+
+#modal-payment .payment-logo--wechat {
+  background: #daf5d9;
+  color: #12b918;
+  font-size: 26px;
+}
+
+#modal-payment .payment-logo--danggeun {
+  background: #ffebdf;
+  color: #ff6f0f;
+}
+
+/* 쿠폰 사용: 마지막 행 전체 너비 */
+#modal-payment .payment-sub [data-payment-method="coupon"] {
+  grid-column: 1 / -1;
+
+  min-height: 130px;
+  margin-top: 12px;
+  padding: 24px;
+
+  border: 2px solid #111;
   border-radius: 20px;
-  padding: 0 12px;
+  background: #fff;
+
+  color: #555;
 }
 
-.payment-logo--naver,
-.payment-logo--wechat {
-  color: #00b94b;
+#modal-payment [data-payment-method="coupon"] .payment-logo {
+  display: none;
 }
 
-.payment-logo--payco {
-  color: #ff263c;
-}
-
-.payment-logo--zero {
-  color: #343b9c;
-}
-
-.payment-logo--danggeun {
-  color: #ff7918;
+#modal-payment [data-payment-method="coupon"] .payment-name {
+  font-size: 44px;
 }
 
 /* 카드 결제 안내 */
-.modal--card .modal-body {
-  padding: 56px 36px 64px;
-  text-align: center;
-}
+/* 카드 결제 안내 팝업 */
+#modal-card-payment {
+  box-sizing: border-box;
+  width: 840px;
+  max-width: calc(100% - 120px);
+  max-height: calc(100dvh - 120px);
+  margin: auto;
+  padding: 0;
 
-.card-payment-guide {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.5;
-}
+  overflow-x: hidden;
+  overflow-y: auto;
 
-.card-payment-description {
-  margin: 32px 0 40px;
-  font-size: 16px;
-  line-height: 1.9;
-  word-break: keep-all;
-}
-
-.card-payment-description strong {
-  color: #305597;
-}
-
-/* 수량 / 금액 */
-.card-payment-summary {
-  display: grid;
-  gap: 28px;
-  margin: 0;
-  padding: 24px 20px;
-
-  border: 1px solid #bfbfbf;
+  border: 0;
   border-radius: 24px;
-  background: #f2f2f2;
+  background: #fff;
+  color: #000;
 }
 
-.card-payment-summary-row {
+#modal-card-payment::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+/* 상단 제목 및 닫기 */
+#modal-card-payment .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
+
+  box-sizing: border-box;
+  min-height: 140px;
+  padding: 30px 48px;
+
+  background: #583019;
+  color: #fff;
 }
 
-.card-payment-summary dt,
-.card-payment-summary dd {
+#modal-card-payment .modal-title {
   margin: 0;
-  font-size: 20px;
+
+  color: inherit;
+  font-size: 48px;
   font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -1px;
 }
 
-.card-payment-total {
-  color: #e00000;
-}
+#modal-card-payment .modal-close {
+  position: static;
 
-/* 카드 삽입 안내 이미지 */
-.card-payment-image {
-  display: block;
-  width: min(180px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 12px;
+
+  width: auto;
   height: auto;
-  margin: 64px auto 0;
-}
+  margin: 0;
+  padding: 8px 0;
 
-.payment-image-button {
-  display: block;
-  width: min(180px, 100%);
-  margin: 64px auto 0;
-  padding: 0;
   border: 0;
   background: transparent;
+
+  color: #fff;
+  font: inherit;
+  line-height: 1;
+
   cursor: pointer;
 }
 
-.payment-image-button[data-card-removed] {
-  width: min(174px, 100%);
-  margin-top: 28px;
+#modal-card-payment .modal-close span {
+  font-size: 64px;
+  font-weight: 300;
 }
 
-.payment-image-button img {
+#modal-card-payment .modal-close::after {
+  content: "닫기";
+
+  font-size: 44px;
+  font-weight: 500;
+}
+
+/* 본문 */
+#modal-card-payment .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+
+  box-sizing: border-box;
+  padding: 80px;
+  text-align: center;
+}
+
+#modal-card-payment .payment-image-button {
   display: block;
+  flex-shrink: 0;
+
+  width: 180px;
+  margin: 0 auto 52px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
+  cursor: pointer;
+}
+
+#modal-card-payment .payment-image-button .card-payment-image {
+  display: block;
+
   width: 100%;
   height: auto;
+  max-height: 260px;
   margin: 0;
+
+  object-fit: contain;
 }
 
+/* 안내 문구 */
+#modal-card-payment .card-payment-guide {
+  margin: 0;
+
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -1.5px;
+  word-break: keep-all;
+}
+
+#modal-card-payment .card-payment-description {
+  margin: 20px 0 0;
+
+  color: #444;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -1.5px;
+  word-break: keep-all;
+}
+
+#modal-card-payment .card-payment-description strong {
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* 수량 및 결제금액 */
+#modal-card-payment .card-payment-summary {
+  display: block;
+
+  box-sizing: border-box;
+  margin: 60px 0 0;
+  padding: 16px 80px;
+
+  border: 0;
+  border-radius: 24px;
+  background: #f2f2f2;
+
+  text-align: left;
+}
+
+#modal-card-payment .card-payment-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  box-sizing: border-box;
+  min-height: 128px;
+  padding: 24px 0;
+}
+
+#modal-card-payment .card-payment-summary-row + .card-payment-summary-row {
+  border-top: 1px solid #e5e5e5;
+}
+
+#modal-card-payment .card-payment-summary dt,
+#modal-card-payment .card-payment-summary dd {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -1px;
+}
+
+#modal-card-payment .card-payment-summary dd {
+  text-align: right;
+  white-space: nowrap;
+}
+
+#modal-card-payment .card-payment-total {
+  color: #e93300;
+}
+
+/* 키보드 포커스 */
+#modal-card-payment .modal-close:focus-visible,
+#modal-card-payment .payment-image-button:focus-visible {
+  outline: 4px solid #ff9500;
+  outline-offset: 6px;
+}
+/*  */
 .modal--points-phone .modal-body {
   padding: 32px clamp(20px, 8vw, 46px) 16px;
   text-align: center;
