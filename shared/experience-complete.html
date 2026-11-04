@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>체험 완료</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="header-left">
+        <button
+          type="button"
+          id="header-back"
+          class="header-back"
+          aria-label="이전 화면으로"
+        >
+          <!-- <img src="" alt="" /> -->
+          뒤로가기
+        </button>
+
+        <span id="header-title"></span>
+      </div>
+      <div class="header-right">
+        <img src="" alt="소리 켜기" />
+        <img src="" alt="소리 끄기" />
+      </div>
+    </header>
+
+    <main class="complete-main">
+      <h1 class="complete-title">체험 완료</h1>
+
+      <p class="complete-message">
+        키오스크 체험이 완료되었습니다.<br />
+        수고하셨습니다.
+      </p>
+
+      <div class="complete-actions" aria-label="체험 완료 후 이동">
+        <button
+          type="button"
+          id="experience-retry"
+          class="complete-button complete-button-secondary"
+        >
+          다시하기
+        </button>
+        <button
+          type="button"
+          class="complete-button"
+          href="../pages/main/index.html"
+        >
+          첫 화면으로 가기
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

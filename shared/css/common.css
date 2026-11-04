@@ -1,0 +1,377 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+header span {
+  font-size: 50px;
+}
+.header-left {
+  border: 1px solid blue;
+}
+.header-right {
+  border: 1px solid green;
+}
+
+/* ---------------------------------------------------------------------- */
+/* --------------------------- 주문 / 체험 완료 화면 ------------------------------ */
+/* ---------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------- */
+/* --------------------------- 체험 완료 화면 ------------------------------ */
+/* ---------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------- */
+/* ------------------------------- 공통 팝업 ------------------------------ */
+/* ---------------------------------------------------------------------- */
+.modal {
+  box-sizing: border-box;
+  width: min(500px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 25%);
+}
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 32px;
+  background: #305597;
+  color: #fff;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.modal-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 36px 20px 48px;
+}
+
+.modal button {
+  font-family: inherit;
+}
+
+.modal button:focus-visible {
+  outline: 3px solid #305597;
+  outline-offset: 3px;
+}
+
+.modal-header button:focus-visible {
+  outline-color: #fff;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* 결제수단 선택 팝업 */
+.payment-main,
+.payment-sub {
+  display: grid;
+  gap: 16px;
+}
+
+.payment-main {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.payment-sub {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.payment-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 112px;
+  padding: 16px 8px;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 12px;
+  background: #f2f2f2;
+  color: #111;
+  cursor: pointer;
+}
+
+.payment-main .payment-method {
+  min-height: 184px;
+  border-radius: 18px;
+}
+
+.payment-icon,
+.payment-logo {
+  display: grid;
+  place-items: center;
+  min-height: 36px;
+  margin-bottom: 14px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.payment-main .payment-icon {
+  min-height: 48px;
+  font-size: 36px;
+}
+
+.payment-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.payment-description {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.payment-logo--kakao {
+  color: #111;
+  background: #fee500;
+  border-radius: 20px;
+  padding: 0 12px;
+}
+
+.payment-logo--naver,
+.payment-logo--wechat {
+  color: #00b94b;
+}
+
+.payment-logo--payco {
+  color: #ff263c;
+}
+
+.payment-logo--zero {
+  color: #343b9c;
+}
+
+.payment-logo--danggeun {
+  color: #ff7918;
+}
+
+/* 카드 결제 안내 */
+.modal--card .modal-body {
+  padding: 56px 36px 64px;
+  text-align: center;
+}
+
+.card-payment-guide {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.card-payment-description {
+  margin: 32px 0 40px;
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.card-payment-description strong {
+  color: #305597;
+}
+
+/* 수량 / 금액 */
+.card-payment-summary {
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding: 24px 20px;
+
+  border: 1px solid #bfbfbf;
+  border-radius: 24px;
+  background: #f2f2f2;
+}
+
+.card-payment-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-payment-summary dt,
+.card-payment-summary dd {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card-payment-total {
+  color: #e00000;
+}
+
+/* 카드 삽입 안내 이미지 */
+.card-payment-image {
+  display: block;
+  width: min(180px, 100%);
+  height: auto;
+  margin: 64px auto 0;
+}
+.payment-image-button {
+  display: block;
+  width: min(180px, 100%);
+  margin: 64px auto 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.payment-image-button[data-card-removed] {
+  width: min(174px, 100%);
+  margin-top: 28px;
+}
+
+.payment-image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.modal--points-phone .modal-body {
+  padding: 32px clamp(20px, 8vw, 46px) 16px;
+  text-align: center;
+}
+
+.points-phone-label {
+  display: block;
+  margin-bottom: 28px;
+  font-size: 18px;
+  word-break: keep-all;
+}
+
+.points-phone-number {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 60px;
+  padding: 8px 12px;
+  border: 1px solid #888;
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+  font-size: 24px;
+  text-align: center;
+}
+
+.points-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 10px;
+  margin: 28px 0 22px;
+}
+
+.points-keypad button {
+  min-height: 76px;
+  padding: 8px 4px;
+  border: 1px solid #999;
+  border-radius: 12px;
+  background: #f2f2f2;
+  color: #111;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.points-keypad button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.points-skip,
+.points-confirm {
+  width: 100%;
+  min-height: 60px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.points-skip {
+  background: #bfbfbf;
+  color: #111;
+}
+
+.modal--points-complete .modal-body,
+.modal--receipt .modal-body {
+  padding: 40px 24px 24px;
+  text-align: center;
+}
+
+.points-complete-check {
+  display: block;
+  margin: 24px 0 44px;
+  color: #305597;
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.points-confirm {
+  background: #305597;
+  color: #fff;
+}
+
+.receipt-description {
+  margin: 48px 0 56px;
+  font-size: 18px;
+}
+
+.receipt-choice {
+  display: grid;
+  place-items: center;
+  min-height: 62px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.receipt-choice:focus-visible {
+  outline: 3px solid #305597;
+  outline-offset: 3px;
+}

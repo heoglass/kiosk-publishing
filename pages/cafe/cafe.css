@@ -1,0 +1,146 @@
+.menu-viewport {
+  overflow: hidden;
+}
+
+.menu-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.menu-page {
+  flex: 0 0 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.menu-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-dot {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #aaa;
+  cursor: pointer;
+}
+
+.menu-dot.is-active {
+  background: #000;
+}
+
+.menu-prev:disabled,
+.menu-next:disabled {
+  background: #ddd;
+  color: #fff;
+  cursor: default;
+}
+
+.category-nav button.is-active {
+  background: #000;
+  color: #fff;
+}
+
+/* 옵션 화면 */
+/* 옵션 그룹 간격 */
+#screen-options .option-groups {
+  display: grid;
+  gap: 24px;
+}
+
+/* fieldset 기본 스타일 제거 */
+#screen-options .option-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#screen-options .option-group-title {
+  margin-bottom: 10px;
+  padding: 0;
+  font-weight: 700;
+}
+
+/* 기본 2열 */
+#screen-options .option-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* 휘핑크림은 3열 */
+#screen-options .option-group[data-group="cream"] .option-choices {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* 옵션 선택 박스 */
+#screen-options .option-choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  box-sizing: border-box;
+  min-height: 76px;
+  padding: 16px;
+
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 추가금액이 있는 박스는 이름과 금액을 양쪽으로 배치 */
+#screen-options .option-choice:has(.option-choice-price) {
+  justify-content: space-between;
+}
+
+/* 동그라미만 숨기고 키보드 선택 기능은 유지 */
+#screen-options .option-choice input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 선택된 옵션 */
+#screen-options .option-choice:has(input:checked) {
+  border-color: #245789;
+  box-shadow: inset 0 0 0 1px #245789;
+}
+
+/* 추가금액 */
+#screen-options .option-choice-price {
+  flex-shrink: 0;
+  color: #e00000;
+}
+
+/* 선택 해제 버튼 */
+#screen-options .option-reset {
+  margin-top: 8px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: #666;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
