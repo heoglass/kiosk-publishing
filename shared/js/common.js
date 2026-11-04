@@ -24,7 +24,7 @@ const pageRoutes = {
 
 document.addEventListener("DOMContentLoaded", function () {
   // ----------------------------------------------------//
-  // ------------------- header -------------------------//
+  // ------------------ category-header -----------------//
   // ----------------------------------------------------//
 
   const headerTitle = document.getElementById("header-title");
