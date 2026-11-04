@@ -33,12 +33,16 @@
         <span id="header-title"></span>
       </div>
       <div class="header-right">
-        <img src="" alt="소리 켜기" />
-        <img src="" alt="소리 끄기" />
+        <img
+          src="../../shared/images/sound.png"
+          class="header-sound"
+          alt="소리 켜기 이미지"
+        />
+        <span class="header-sound-text">소리끄기</span>
       </div>
     </header>
 
-    <main class="cafe-main">
+    <main class="cafe-main category-main">
       <section
         id="screen-welcome"
         class="cafe-screen welcome-screen"
@@ -61,19 +65,19 @@
       <section id="screen-menu" class="cafe-screen" hidden>
         <nav class="menu-tab" aria-label="메뉴 탭">
           <button type="button" data-category="all" aria-pressed="true">
-            전체
+            <span>전체</span>
           </button>
           <button type="button" data-category="coffee" aria-pressed="false">
-            커피
+            <span>커피</span>
           </button>
           <button type="button" data-category="ade" aria-pressed="false">
-            에이드 · 주스
+            <span>에이드 · 주스</span>
           </button>
           <button type="button" data-category="tea" aria-pressed="false">
-            티
+            <span>티</span>
           </button>
           <button type="button" data-category="desert" aria-pressed="false">
-            디저트
+            <span>디저트</span>
           </button>
         </nav>
 
