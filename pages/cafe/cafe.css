@@ -1,3 +1,26 @@
+.menu-tab > button {
+  background-color: #f4efeb;
+}
+
+/* 활성화된 메뉴 */
+.menu-tab > button[aria-pressed="true"] {
+  background-color: #ff9900;
+  box-shadow: 0 0 14px rgba(224, 141, 0, 1);
+}
+
+.menu-tab > button[aria-pressed="true"] > span {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 비활성 메뉴 */
+.menu-tab > button[aria-pressed="false"] {
+  background-color: #f4efeb;
+}
+
+.menu-tab > button[aria-pressed="false"] > span {
+  color: #111;
+}
 .menu-viewport {
   overflow: hidden;
 }
