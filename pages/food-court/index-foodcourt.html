@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>푸드코트 시작화면</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../../shared/css/common.css" />
+  <link rel="stylesheet" href="./food-court.css" />
+  <script type="text/javascript" src="../../shared/js/common.js"></script>
+  <script type="text/javascript" src="./food-court.js"></script>
+  <!-- CDN링크 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+  <div class="foodcourt-container">
+    <header id="category-header" class="foodcourt__header">
+      <div class="header-left">
+        <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
+          <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
+        </button>
+
+        <span id="header-title"></span>
+      </div>
+      <div class="header-right">
+        <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        <p class="header-sound-text main-sound-text">소리끄기</p>
+      </div>
+    </header>
+
+    <main class="category-main foodcourt">
+      <section class="foodcourt__section foodcourt__visual">
+        <button type="button" id="visual__btn">화면을 터치하면 주문이 시작됩니다</button>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

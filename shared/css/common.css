@@ -22,6 +22,15 @@
 /* reset 스타일 */
 button {
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
 }
 
 a {
@@ -126,6 +135,7 @@ ol {
   color: #fff;
   font-weight: 600;
 }
+
 .category-start-screen {
   position: relative;
 }
@@ -137,12 +147,14 @@ ol {
   height: calc(100vh - 144px);
   padding-top: 144px;
 }
+
 .category-main-image {
   position: absolute;
   /* bottom: 100px;
   left: 0; */
   inset: 0;
 }
+
 .category-main-message {
   width: 100%;
   font-size: 56px;
@@ -173,7 +185,7 @@ ol {
   padding: 40px 60px 0;
 }
 
-.menu-tab > button {
+.menu-tab>button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -189,7 +201,7 @@ ol {
   cursor: pointer;
 }
 
-.menu-tab > button > span {
+.menu-tab>button>span {
   font-size: 44px;
 
   font-weight: 500;
@@ -207,6 +219,7 @@ ol {
   /* height: 488px; */
   height: 408px;
 }
+
 /* 주문 목록: 높이를 초과하면 내부 스크롤 */
 .cart-list {
   display: flex;
@@ -217,7 +230,8 @@ ol {
   height: 100%;
   min-height: 0;
   margin: 0;
-  padding: 0; /* 기존 padding-bottom: 170px 제거 */
+  padding: 0;
+  /* 기존 padding-bottom: 170px 제거 */
   list-style: none;
 
   overflow-y: auto;
@@ -257,7 +271,7 @@ ol {
   gap: 12px;
 }
 
-.cart-quantity > button {
+.cart-quantity>button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -271,13 +285,14 @@ ol {
   border-radius: 6px;
   font: inherit;
 }
+
 .cart-minus-image,
 .cart-plue-image {
   width: 60px;
   height: 60px;
 }
 
-.cart-quantity > button:disabled {
+.cart-quantity>button:disabled {
   cursor: default;
 }
 
@@ -306,6 +321,7 @@ ol {
   font-size: 36px;
   white-space: nowrap;
 }
+
 /* 선택한 메뉴가 없을 때 */
 .cart-empty {
   display: flex;
@@ -331,7 +347,8 @@ ol {
   width: 100%;
   padding: 24px 60px;
 }
-.order-bar > button {
+
+.order-bar>button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -349,11 +366,11 @@ ol {
   cursor: pointer;
 }
 
-.order-bar > .cart-clear {
+.order-bar>.cart-clear {
   flex: 0 0 230px;
 }
 
-.order-bar > .order-submit {
+.order-bar>.order-submit {
   flex: 1;
   min-width: 0;
   gap: 12px;
@@ -372,9 +389,10 @@ ol {
   font-variant-numeric: tabular-nums;
 }
 
-.order-bar > button:disabled {
+.order-bar>button:disabled {
   cursor: default;
 }
+
 /* ---------------------------------------------------------------------- */
 /* --------------------------- 주문 / 체험 완료 화면 ------------------------ */
 /* ---------------------------------------------------------------------- */
@@ -894,7 +912,7 @@ body.modal-open {
   padding: 24px 0;
 }
 
-#modal-card-payment .card-payment-summary-row + .card-payment-summary-row {
+#modal-card-payment .card-payment-summary-row+.card-payment-summary-row {
   border-top: 1px solid #e5e5e5;
 }
 
@@ -923,6 +941,7 @@ body.modal-open {
   outline: 4px solid #ff9500;
   outline-offset: 6px;
 }
+
 /*  */
 .modal--points-phone .modal-body {
   padding: 32px clamp(20px, 8vw, 46px) 16px;
