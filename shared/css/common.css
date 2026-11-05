@@ -1103,6 +1103,10 @@ body.modal-open {
   font-weight: 600;
   text-align: center;
 }
+#modal-points-phone .points-phone-number:not(:placeholder-shown) {
+  border: 3px solid #f09308;
+  color: #f09308;
+}
 
 /* 숫자 키패드 */
 #modal-points-phone .points-keypad {
@@ -1133,12 +1137,6 @@ body.modal-open {
 
   touch-action: manipulation;
 }
-
-/* #modal-points-phone .points-keypad button:active {
-  border-color: #ff9500;
-  background: #fff3df;
-  color: #d97700;
-} */
 
 /* 건너뛰기 */
 #modal-points-phone .points-skip {
@@ -1181,7 +1179,17 @@ body.modal-open {
   height: 240px;
   object-fit: contain;
 }
-
+.points-confirm {
+  width: 100%;
+  border-radius: 20px;
+  background: #f09308;
+  margin: 80px 0 0;
+  padding: 38.5px 0;
+  color: #fff;
+  font: inherit;
+  font-size: 44px;
+  font-weight: 700;
+}
 #modal-points-complete .modal-title {
   width: 100%;
   color: #000;
