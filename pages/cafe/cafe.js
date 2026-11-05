@@ -5,13 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!currentScreen) return;
 
     switch (currentScreen.id) {
-      case "screen-welcome":
-        // 실제 메인 HTML 경로로 변경
+      case "category-start-screen":
         window.location.href = "../main/index.html";
         break;
 
       case "screen-menu":
-        showScreen("screen-welcome");
+        showScreen("category-start-screen");
         break;
 
       case "screen-options":
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  const welcomeStartButton = document.querySelector(".welcome-start");
+  const welcomeStartButton = document.querySelector(".category-start");
 
   function showScreen(screenId) {
     const targetScreen = document.getElementById(screenId);
@@ -42,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // 최초 화면
-  showScreen("screen-welcome");
+  showScreen("category-start-screen");
 
   const categoryNav = document.querySelector(".menu-tab");
   const menuTrack = document.querySelector(".menu-track");
@@ -52,7 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const PAGE_SIZE = 6;
 
-  const allMenuCards = Array.from(menuTrack.querySelectorAll(".menu-card"));
+  const allMenuCards = Array.from(
+    menuTrack.querySelectorAll(".cafe-menu-card")
+  );
 
   let currentCategory = "all";
   let currentPage = 0;
@@ -267,7 +268,11 @@ document.addEventListener("DOMContentLoaded", function () {
           class="cart-decrease"
           aria-label="수량 줄이기"
         >
-          −
+          <img
+            src="../../shared/images/icon/minus-disabled.png"
+            class="cart-minus-image"
+            alt=""
+          />
         </button>
   
         <output
@@ -278,34 +283,26 @@ document.addEventListener("DOMContentLoaded", function () {
         <button
           type="button"
           class="cart-increase"
-          aria-label="수량 늘리기"
+          aria-label="수량 늘리기"€
         >
-          +
+          <img
+            src="../../shared/images/icon/plus.png"
+            class="cart-plus-image"
+            alt=""
+          />
         </button>
       </div>
   
-      <span class="cart-item-price"></span>
+      <span class="cart-item-price"><span>원</span></span>
   
       <button type="button" class="cart-remove">
-        <span aria-hidden="true">×</span>
+        <span aria-hidden="true">삭제</span>
       </button>
     `;
 
     // 2. 상품명 입력
     const nameElement = row.querySelector(".cart-item-name");
     nameElement.textContent = item.name;
-
-    // 3. 상품명 아래 선택한 옵션 추가
-    if (item.options?.length) {
-      const optionText = document.createElement("small");
-      optionText.className = "cart-item-options";
-
-      optionText.textContent = item.options
-        .map((option) => `${option.groupName}: ${option.label}`)
-        .join(" / ");
-
-      nameElement.append(document.createElement("br"), optionText);
-    }
 
     // 4. 수량과 금액 입력
     row.querySelector(".cart-quantity-value").textContent = item.quantity;
@@ -314,7 +311,15 @@ document.addEventListener("DOMContentLoaded", function () {
       item.price * item.quantity
     );
 
-    row.querySelector(".cart-decrease").disabled = item.quantity <= 1;
+    const decreaseButton = row.querySelector(".cart-decrease");
+    const minusImage = row.querySelector(".cart-minus-image");
+    const isDisabled = item.quantity <= 1;
+
+    decreaseButton.disabled = isDisabled;
+
+    minusImage.src = isDisabled
+      ? "../../shared/images/icon/minus-disabled.png"
+      : "../../shared/images/icon/minus.png";
 
     // 5. 접근성 설명
     row
@@ -338,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const emptyMessage = document.createElement("li");
 
       emptyMessage.className = "cart-empty";
-      emptyMessage.textContent = "메뉴를 선택해주세요.";
+      emptyMessage.textContent = "";
 
       fragment.appendChild(emptyMessage);
     } else {
@@ -442,15 +447,6 @@ document.addEventListener("DOMContentLoaded", function () {
       row.querySelector(".review-item-price").textContent = formatPrice(
         item.subtotal
       );
-
-      const optionText = row.querySelector(".review-item-options");
-      const options = item.options ?? [];
-
-      optionText.textContent = options
-        .map((option) => `${option.groupName}: ${option.label}`)
-        .join(" / ");
-
-      optionText.hidden = options.length === 0;
 
       return row;
     });
@@ -615,17 +611,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fieldset.append(legend, choices);
 
-    // 선택 사항은 다시 미선택 상태로 되돌릴 수 있도록 제공
-    if (!definition.required) {
-      const resetButton = document.createElement("button");
-
-      resetButton.type = "button";
-      resetButton.className = "option-reset";
-      resetButton.textContent = "선택 해제";
-
-      fieldset.appendChild(resetButton);
-    }
-
     return fieldset;
   }
 
@@ -748,7 +733,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   menuTrack.addEventListener("click", (event) => {
-    const card = event.target.closest(".menu-card");
+    const card = event.target.closest(".cafe-menu-card");
     if (!card || card.disabled) return;
 
     const menu = menuDataById.get(card.dataset.menuId);
@@ -945,14 +930,33 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!button || button.disabled || !pointsPhoneModal.open) return;
 
     const key = button.dataset.phoneKey;
-    const currentNumber = pointsPhoneNumber.value;
+
+    // 하이픈을 제외한 숫자만 가져오기
+    const currentNumber = pointsPhoneNumber.value.replace(/\D/g, "");
+
     const nextNumber =
       key === "delete" ? currentNumber.slice(0, -1) : currentNumber + key;
 
     if (nextNumber.length > 11) return;
 
+    // 기존 번호 업데이트 로직 유지
     updatePointsPhoneNumber(nextNumber);
 
+    // 화면에는 하이픈을 포함해서 표시
+    if (nextNumber.length > 7) {
+      pointsPhoneNumber.value = `${nextNumber.slice(0, 3)}-${nextNumber.slice(
+        3,
+        7
+      )}-${nextNumber.slice(7)}`;
+    } else if (nextNumber.length > 3) {
+      pointsPhoneNumber.value = `${nextNumber.slice(0, 3)}-${nextNumber.slice(
+        3
+      )}`;
+    } else {
+      pointsPhoneNumber.value = nextNumber;
+    }
+
+    // 하이픈을 제외한 숫자 11자리 기준
     if (nextNumber.length === 11) {
       window.openModal("modal-points-complete");
     }

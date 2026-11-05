@@ -427,34 +427,41 @@ ol {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 24px 32px;
-  background: #305597;
+  gap: 24px;
+
+  box-sizing: border-box;
+  min-height: 140px;
+  padding: 30px 48px;
+
+  background: #583019;
   color: #fff;
 }
 
 .modal-title {
-  margin: 0;
-  font-size: 22px;
+  color: inherit;
+  font-size: 48px;
+  font-weight: 700;
 }
 
 .modal-close {
-  display: grid;
+  display: flex;
+  align-items: center;
   place-items: center;
+  column-gap: 4px;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-
   border: 0;
   background: transparent;
-  color: inherit;
-  font-size: 36px;
-  cursor: pointer;
 }
 
-.modal-body {
-  padding: 36px 20px 48px;
+.modal-close span {
+  font-size: 44px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modal-close-image {
+  width: 60px;
+  height: 60px;
 }
 
 .modal button {
@@ -497,29 +504,12 @@ body.modal-open {
   background: rgb(0 0 0 / 60%);
 }
 
-/* 상단 제목 및 닫기 */
-#modal-payment .modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-
-  box-sizing: border-box;
-  min-height: 140px;
-  padding: 30px 48px;
-
-  background: #583019;
-  color: #fff;
-}
-
 #modal-payment .modal-title {
   margin: 0;
 
   color: inherit;
   font-size: 48px;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -1.5px;
 }
 
 #modal-payment .modal-close {
@@ -541,27 +531,6 @@ body.modal-open {
 
   color: #fff;
   font: inherit;
-  line-height: 1;
-
-  cursor: pointer;
-}
-
-#modal-payment .modal-close span {
-  font-size: 64px;
-  font-weight: 300;
-}
-
-#modal-payment .modal-close::after {
-  content: "닫기";
-
-  font-size: 44px;
-  font-weight: 500;
-}
-
-/* 팝업 본문 */
-#modal-payment .modal-body {
-  margin: 0;
-  padding: 0;
 }
 
 /* 결제 버튼 공통 */
@@ -584,8 +553,6 @@ body.modal-open {
   color: #000;
   font: inherit;
   text-align: center;
-
-  cursor: pointer;
 }
 
 #modal-payment .payment-method:focus-visible,
@@ -759,31 +726,6 @@ body.modal-open {
   background: rgb(0 0 0 / 60%);
 }
 
-/* 상단 제목 및 닫기 */
-#modal-card-payment .modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-
-  box-sizing: border-box;
-  min-height: 140px;
-  padding: 30px 48px;
-
-  background: #583019;
-  color: #fff;
-}
-
-#modal-card-payment .modal-title {
-  margin: 0;
-
-  color: inherit;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -1px;
-}
-
 #modal-card-payment .modal-close {
   position: static;
 
@@ -803,21 +745,6 @@ body.modal-open {
 
   color: #fff;
   font: inherit;
-  line-height: 1;
-
-  cursor: pointer;
-}
-
-#modal-card-payment .modal-close span {
-  font-size: 64px;
-  font-weight: 300;
-}
-
-#modal-card-payment .modal-close::after {
-  content: "닫기";
-
-  font-size: 44px;
-  font-weight: 500;
 }
 
 /* 본문 */
@@ -825,60 +752,43 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: 0 80px 80px;
   gap: 0;
 
   box-sizing: border-box;
-  padding: 80px;
   text-align: center;
 }
 
 #modal-card-payment .payment-image-button {
   display: block;
   flex-shrink: 0;
-
-  width: 180px;
-  margin: 0 auto 52px;
+  margin: 80px auto 40px;
   padding: 0;
 
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-
-  cursor: pointer;
 }
 
 #modal-card-payment .payment-image-button .card-payment-image {
   display: block;
-
-  width: 100%;
-  height: auto;
-  max-height: 260px;
-  margin: 0;
-
+  width: 280px;
+  height: 280px;
   object-fit: contain;
 }
 
 /* 안내 문구 */
 #modal-card-payment .card-payment-guide {
-  margin: 0;
-
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: -1.5px;
-  word-break: keep-all;
 }
 
 #modal-card-payment .card-payment-description {
-  margin: 20px 0 0;
-
+  margin: 24px 0 0;
   color: #444;
-  font-size: 34px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: -1.5px;
-  word-break: keep-all;
+  font-size: 38px;
+  font-weight: 500;
 }
 
 #modal-card-payment .card-payment-description strong {
@@ -892,7 +802,7 @@ body.modal-open {
 
   box-sizing: border-box;
   margin: 60px 0 0;
-  padding: 16px 80px;
+  padding: 24px 80px;
 
   border: 0;
   border-radius: 24px;
@@ -906,24 +816,20 @@ body.modal-open {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-
-  box-sizing: border-box;
   min-height: 128px;
   padding: 24px 0;
 }
 
 #modal-card-payment .card-payment-summary-row+.card-payment-summary-row {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #d9d9d9;
 }
 
 #modal-card-payment .card-payment-summary dt,
 #modal-card-payment .card-payment-summary dd {
   margin: 0;
 
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -1px;
 }
 
 #modal-card-payment .card-payment-summary dd {
@@ -935,99 +841,328 @@ body.modal-open {
   color: #e93300;
 }
 
-/* 키보드 포커스 */
-#modal-card-payment .modal-close:focus-visible,
-#modal-card-payment .payment-image-button:focus-visible {
-  outline: 4px solid #ff9500;
-  outline-offset: 6px;
+/* 결제 진행 완료, 포인트 적립 완료*/
+.payment-complete-image,
+.coin-saving-image {
+  width: 240px;
+  height: 240px;
 }
 
-/*  */
-.modal--points-phone .modal-body {
-  padding: 32px clamp(20px, 8vw, 46px) 16px;
+/* 결제 진행 / 완료 공통 */
+.modal.modal--payment-status {
+  box-sizing: border-box;
+  width: 840px;
+  max-width: calc(100% - 120px);
+  max-height: calc(100dvh - 120px);
+  margin: auto;
+  padding: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border: 0;
+  border-radius: 32px;
+  background: #fff;
+  color: #000;
+}
+
+.modal.modal--payment-status::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+.modal--payment-status .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  box-sizing: border-box;
+  padding: 100px 54px 100px;
   text-align: center;
 }
 
-.points-phone-label {
-  display: block;
-  margin-bottom: 28px;
-  font-size: 18px;
-  word-break: keep-all;
+/* 안내 제목 */
+.modal--payment-status .modal-title {
+  width: 100%;
+  color: #000;
+  font-size: 60px;
+  font-weight: 700;
 }
 
-.points-phone-number {
+/* 설명 */
+.modal--payment-status .payment-status-description {
+  width: 100%;
+  margin: 16px 0 0;
+
+  color: #444;
+  font-size: 44px;
+  font-weight: 500;
+}
+
+/* 결제 진행 중 로딩 표시 */
+#modal-payment-progress .payment-spinner {
+  display: block;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  margin: 0 0 72px;
+
+  border: 12px solid #eee;
+  border-top-color: #ff9500;
+  border-radius: 50%;
+
+  animation: payment-loading 1s linear infinite;
+}
+
+@keyframes payment-loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 결제 완료 이미지 버튼 */
+#modal-payment-complete .payment-image-button[data-card-removed] {
+  order: 0;
+
+  display: block;
+  flex-shrink: 0;
+
+  width: 220px;
+  margin: 0 0 40px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#modal-payment-complete .payment-complete-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+  margin: 0;
+
+  object-fit: contain;
+}
+
+#modal-payment-complete .payment-image-button:focus-visible {
+  outline: 4px solid #ff9500;
+  outline-offset: 8px;
+}
+
+/* 적립 안내 / 번호 입력 / 적립 완료 / 영수증 공통 */
+:is(#modal-points-prompt,
+  #modal-points-phone,
+  #modal-points-complete,
+  #modal-receipt) {
+  box-sizing: border-box;
+  width: 840px;
+  max-width: calc(100% - 120px);
+  max-height: calc(100dvh - 120px);
+  margin: auto;
+  padding: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+
+  border: 0;
+  border-radius: 32px;
+  background: #fff;
+  color: #000;
+}
+
+:is(#modal-points-prompt,
+  #modal-points-phone,
+  #modal-points-complete,
+  #modal-receipt)::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+/* 적립 안내 / 영수증 본문 */
+:is(#modal-points-prompt, #modal-receipt) .modal-body {
+  display: block;
+  padding: 80px 60px 60px;
+  text-align: center;
+}
+
+#modal-points-prompt .points-prompt-description,
+#modal-receipt .receipt-description {
+  margin: 0 0 80px;
+
+  font-size: 60px;
+  font-weight: 700;
+}
+
+/* 아니오 / 예 버튼 */
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions> :is(button, a) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 130px;
+  margin: 0;
+  padding: 36.5px;
+
+  border-radius: 20px;
+  font-weight: 700;
+  font: inherit;
+  font-size: 44px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* 아니오 */
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-no {
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+}
+
+/* 예 */
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-yes {
+  border: none;
+  background: #ff9500;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 휴대폰 번호 입력 팝업 */
+#modal-points-phone .modal-body {
+  display: block;
+  box-sizing: border-box;
+  padding: 48px 60px 60px;
+  text-align: center;
+}
+
+#modal-points-phone .points-phone-label {
+  display: block;
+  margin: 0 0 40px;
+
+  font-size: 60px;
+  font-weight: 700;
+}
+
+/* 입력한 번호 */
+#modal-points-phone .points-phone-number {
+  display: block;
+
   box-sizing: border-box;
   width: 100%;
-  min-height: 60px;
-  padding: 8px 12px;
-  border: 1px solid #888;
-  border-radius: 12px;
-  background: #fff;
+  height: 130px;
+  margin: 0 0 40px;
+  padding: 16px 20px;
+
+  border: 2px solid #000;
+  border-radius: 20px;
+
+  color: #000;
   font: inherit;
-  font-size: 24px;
+  font-size: 52px;
+  font-weight: 600;
   text-align: center;
 }
 
-.points-keypad {
+/* 숫자 키패드 */
+#modal-points-phone .points-keypad {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px 10px;
-  margin: 28px 0 22px;
+  gap: 16px;
 }
 
-.points-keypad button {
-  min-height: 76px;
-  padding: 8px 4px;
-  border: 1px solid #999;
-  border-radius: 12px;
-  background: #f2f2f2;
-  color: #111;
-  font-size: 18px;
-  cursor: pointer;
+#modal-points-phone .points-keypad button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 112px;
+  margin: 0;
+  padding: 16px;
+
+  border: 1px solid #4d5259;
+  border-radius: 20px;
+  background: #f8f8f8;
+
+  color: #000;
+  font: inherit;
+  font-size: 52px;
+  font-weight: 600;
+
+  touch-action: manipulation;
 }
 
-.points-keypad button:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
+/* #modal-points-phone .points-keypad button:active {
+  border-color: #ff9500;
+  background: #fff3df;
+  color: #d97700;
+} */
 
-.points-skip,
-.points-confirm {
+/* 건너뛰기 */
+#modal-points-phone .points-skip {
   width: 100%;
-  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 130px;
+  margin: 40px 0 0;
+  padding: 38.5px;
+
   border: 0;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
+  border-radius: 20px;
+  background: #f09308;
+
+  color: #fff;
+  font: inherit;
+  font-size: 44px;
+  font-weight: 700;
 }
 
-.points-skip {
-  background: #bfbfbf;
-  color: #111;
-}
+/* 적립 완료 */
+#modal-points-complete .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 
-.modal--points-complete .modal-body,
-.modal--receipt .modal-body {
-  padding: 40px 24px 24px;
+  box-sizing: border-box;
+  padding: 80px 60px 60px;
   text-align: center;
 }
 
-.points-complete-check {
+#modal-points-complete .coin-saving-image {
   display: block;
-  margin: 24px 0 44px;
-  color: #305597;
+  flex-shrink: 0;
+
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+#modal-points-complete .modal-title {
+  width: 100%;
+  color: #000;
   font-size: 60px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.points-confirm {
-  background: #305597;
-  color: #fff;
-}
-
-.receipt-description {
-  margin: 48px 0 56px;
-  font-size: 18px;
+/* 완료 이미지가 있으므로 별도 체크 문자는 숨김 */
+#modal-points-complete .points-complete-check {
+  display: none;
 }
 
 .receipt-choice {
