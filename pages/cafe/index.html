@@ -36,7 +36,7 @@
         <img
           src="../../shared/images/icon/sound_w.png"
           class="header-sound"
-          alt="소리 켜기 이미지"
+          alt="소리 이미지"
         />
         <span class="header-sound-text">소리끄기</span>
       </div>
@@ -44,19 +44,17 @@
 
     <main class="cafe-main category-main">
       <section
-        id="screen-welcome"
-        class="cafe-screen welcome-screen"
+        id="category-start-screen"
+        class="cafe-screen category-start-screen"
         aria-label="카페 주문 시작"
       >
-        <!-- 시작 화면 전체를 클릭할 수 있도록 버튼으로 구성 -->
-        <button type="button" class="welcome-start">
-          <!-- <img
-            class="welcome-image"
-            src=""
+        <button type="button" class="category-start">
+          <img
+            class="category-main-image"
+            src="../../shared/images/cafe/cafe-main.png"
             alt=""
-          /> -->
-
-          <span class="welcome-message">
+          />
+          <span class="category-main-message">
             화면을 터치하시면 주문이 시작됩니다.
           </span>
         </button>
@@ -88,7 +86,7 @@
               <div class="menu-page">
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-01"
                 >
@@ -102,51 +100,71 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-02"
                 >
-                  <!-- <img src="" alt="" /> -->
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
                   <span class="menu-card-name">아메리카노(HOT)</span>
                   <span class="menu-card-price">2,000원</span>
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-03"
                 >
-                  <!-- <img src="" alt="" /> -->
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
                   <span class="menu-card-name">에스프레소</span>
                   <span class="menu-card-price">0원</span>
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-04"
                 >
-                  <!-- <img src="" alt="" /> -->
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
                   <span class="menu-card-name">카페라떼</span>
                   <span class="menu-card-price">0원</span>
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-05"
                 >
-                  <!-- <img src="" alt="" /> -->
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
                   <span class="menu-card-name">카푸치노</span>
                   <span class="menu-card-price">0원</span>
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-06"
                 >
-                  <!-- <img src="" alt="" /> -->
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
                   <span class="menu-card-name">돌체라떼</span>
                   <span class="menu-card-price">0원</span>
                 </button>
@@ -154,7 +172,7 @@
               <div class="menu-page">
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="coffee"
                   data-menu-id="coffee-07"
                 >
@@ -164,7 +182,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="ade"
                   data-menu-id="ade-01"
                 >
@@ -174,7 +192,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="ade"
                   data-menu-id="ade-02"
                 >
@@ -184,7 +202,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="ade"
                   data-menu-id="ade-03"
                 >
@@ -194,7 +212,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="ade"
                   data-menu-id="ade-04"
                 >
@@ -204,7 +222,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="ade"
                   data-menu-id="ade-05"
                 >
@@ -216,7 +234,7 @@
               <div class="menu-page">
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="tea"
                   data-menu-id="tea-01"
                 >
@@ -226,7 +244,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="tea"
                   data-menu-id="tea-02"
                 >
@@ -236,7 +254,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="tea"
                   data-menu-id="tea-03"
                 >
@@ -246,7 +264,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="desert"
                   data-menu-id="desert-01"
                 >
@@ -256,7 +274,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="desert"
                   data-menu-id="desert-02"
                 >
@@ -266,7 +284,7 @@
                 </button>
                 <button
                   type="button"
-                  class="menu-card"
+                  class="cafe-menu-card"
                   data-category="desert"
                   data-menu-id="desert-03"
                 >
@@ -287,10 +305,9 @@
           </div>
         </section>
 
+        <div class="dividing-line"></div>
         <!-- 주문 내역 -->
         <section class="cart-section" aria-labelledby="cart-title">
-          <h2 id="cart-title" class="cart-title">주문내역</h2>
-
           <ul class="cart-list">
             <!-- JS에서 선택한 메뉴를 추가 -->
           </ul>
@@ -298,7 +315,7 @@
 
         <!-- 하단 버튼 -->
         <section class="order-bar" aria-label="주문 관리">
-          <button type="button" class="cart-clear" disabled>전체취소</button>
+          <button type="button" class="cart-clear" disabled>전체삭제</button>
 
           <button type="button" class="order-submit" disabled>
             <span class="order-count">0개</span>
@@ -308,23 +325,27 @@
         </section>
       </section>
 
-      <!--  옵션 선택 화면 -->
+      <!-- 옵션 선택 화면 -->
       <section
         id="screen-options"
         class="cafe-screen"
         aria-labelledby="option-title"
         hidden
       >
-        <h2 id="option-title" class="option-title">
-          선택하신 상품의 옵션을 선택해주세요.
-        </h2>
-
+        <!-- 상단 상품 안내 -->
         <div class="option-product">
-          <h3 class="option-product-name"></h3>
-
           <img class="option-product-image" alt="" hidden />
 
-          <p class="option-product-description" hidden></p>
+          <div class="option-product-text">
+            <p class="option-product-name"></p>
+
+            <h2 id="option-title" class="option-title">
+              선택하신 상품의 옵션을<br />
+              선택해주세요.
+            </h2>
+
+            <p class="option-product-description" hidden></p>
+          </div>
         </div>
 
         <form id="option-form">
@@ -332,15 +353,15 @@
             <!-- JS에서 상품별 옵션 생성 -->
           </div>
 
+          <!-- 하단 금액 및 버튼 -->
           <div class="option-bottom">
             <p class="option-price">
-              금액 :
+              <span>금액</span>
               <output class="option-total" aria-live="polite">0원</output>
             </p>
 
             <div class="option-actions">
               <button type="button" class="option-cancel">취소</button>
-
               <button type="submit" class="option-submit">주문담기</button>
             </div>
           </div>
@@ -354,53 +375,85 @@
         aria-labelledby="review-title"
         hidden
       >
-        <h2 id="review-title">주문 내역을 확인해주세요.</h2>
+        <!-- 본문 전체 스크롤 -->
+        <div class="review-scroll">
+          <h2 id="review-title">주문 내역을 확인해주세요.</h2>
 
-        <!-- JS에서 주문 항목을 복사해 넣는 영역 -->
-        <ul class="review-list"></ul>
+          <ul class="review-list"></ul>
 
-        <!-- 주문 항목의 공통 구조 -->
-        <template id="review-item-template">
-          <li class="review-item">
-            <div class="review-item-info">
-              <span class="review-item-name"></span>
-              <small class="review-item-options" hidden></small>
-            </div>
+          <template id="review-item-template">
+            <li class="review-item">
+              <div class="review-item-info">
+                <span class="review-item-name"></span>
+              </div>
 
-            <span class="review-item-quantity"></span>
-            <span class="review-item-price"></span>
-          </li>
-        </template>
+              <span class="review-item-quantity"></span>
+              <span class="review-item-price"></span>
+            </li>
+          </template>
 
-        <!-- 합계: 구조는 HTML에 고정 -->
-        <div class="review-summary">
-          <dl class="review-totals">
-            <div class="review-total-row">
-              <dt>총 수량</dt>
-              <dd class="review-total-count">0개</dd>
-            </div>
+          <div class="dividing-line"></div>
 
-            <div class="review-total-row">
-              <dt>총 결제금액</dt>
-              <dd class="review-total-price">0원</dd>
-            </div>
-          </dl>
+          <!-- 합계 -->
+          <div class="review-summary">
+            <dl class="review-totals">
+              <div class="review-total-row">
+                <dt>총 수량</dt>
+                <dd class="review-total-count">0개</dd>
+              </div>
+
+              <div class="review-total-row">
+                <dt>총 결제금액</dt>
+                <dd class="review-total-price">0원</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="dividing-line"></div>
+
+          <!-- 추천 메뉴 -->
+          <section class="recommend-section" aria-labelledby="recommend-title">
+            <h3 id="recommend-title">함께 드시면 좋아요</h3>
+
+            <ul class="recommend-list">
+              <li class="recommend-item">
+                <button type="button" class="recommend-button">
+                  <img src="../../shared/images/cafe/bagle.png" alt="" />
+                  <span class="recommend-name">어니언 베이글</span>
+                  <span class="recommend-price">2,000원</span>
+                </button>
+              </li>
+              <li class="recommend-item">
+                <button type="button" class="recommend-button">
+                  <img src="../../shared/images/cafe/muffin.png" alt="" />
+                  <span class="recommend-name">햄치즈 머핀</span>
+                  <span class="recommend-price">3,200원</span>
+                </button>
+              </li>
+              <li class="recommend-item">
+                <button type="button" class="recommend-button">
+                  <img src="../../shared/images/cafe/toast.png" alt="" />
+                  <span class="recommend-name">프렌치 토스트</span>
+                  <span class="recommend-price">2,000원</span>
+                </button>
+              </li>
+            </ul>
+          </section>
         </div>
 
-        <!-- 추천 메뉴 -->
-        <section class="recommend-section" aria-labelledby="recommend-title">
-          <h3 id="recommend-title">함께 드시면 좋아요</h3>
-
-          <ul class="recommend-list">
-            <!-- 추천 메뉴 -->
-          </ul>
-        </section>
-
-        <!-- 하단 버튼 -->
+        <!-- 스크롤 영역 밖에 배치 -->
         <div class="review-bottom">
           <button type="button" class="review-back">돌아가기</button>
-          <button type="button" class="review-dine-in">먹고가기</button>
-          <button type="button" class="review-takeout">포장하기</button>
+
+          <button type="button" class="review-dine-in">
+            <span>먹고가기</span>
+            <small>(다회용컵)</small>
+          </button>
+
+          <button type="button" class="review-takeout">
+            <span>포장하기</span>
+            <small>(일회용컵)</small>
+          </button>
         </div>
       </section>
     </main>
@@ -420,7 +473,13 @@
           data-modal-close
           aria-label="닫기"
         >
-          <span aria-hidden="true">×</span>
+          <img
+            src="../../shared/images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
         </button>
       </div>
 
@@ -432,7 +491,12 @@
             class="payment-method"
             data-payment-method="card"
           >
-            <span class="payment-icon" aria-hidden="true">💳</span>
+            <img
+              src="../../shared/images/icon/icon-card.png"
+              class="payment-icon"
+              aria-hidden="true"
+              alt=""
+            />
             <span class="payment-name">카드결제</span>
             <span class="payment-description">(삼성/애플페이)</span>
           </button>
@@ -442,7 +506,12 @@
             class="payment-method"
             data-payment-method="app-card"
           >
-            <span class="payment-icon" aria-hidden="true">📱</span>
+            <img
+              src="../../shared/images/icon/icon-app-card.png"
+              class="payment-icon"
+              aria-hidden="true"
+              alt=""
+            />
             <span class="payment-name">앱카드</span>
             <span class="payment-description">(QR/바코드)</span>
           </button>
@@ -455,9 +524,11 @@
             class="payment-method"
             data-payment-method="kakao-pay"
           >
-            <span class="payment-logo payment-logo--kakao" aria-hidden="true">
-              pay
-            </span>
+            <img
+              src="../../shared/images/icon/icon-kakao-pay.png"
+              class="payment-logo payment-logo--kakao"
+              aria-hidden="true"
+            />
             <span class="payment-name">카카오페이</span>
           </button>
 
@@ -466,9 +537,11 @@
             class="payment-method"
             data-payment-method="naver-pay"
           >
-            <span class="payment-logo payment-logo--naver" aria-hidden="true">
-              N pay
-            </span>
+            <img
+              src="../../shared/images/icon/icon-n-pay.png"
+              class="payment-logo payment-logo--naver"
+              aria-hidden="true"
+            />
             <span class="payment-name">네이버페이</span>
           </button>
 
@@ -477,9 +550,11 @@
             class="payment-method"
             data-payment-method="payco"
           >
-            <span class="payment-logo payment-logo--payco" aria-hidden="true">
-              PAYCO
-            </span>
+            <img
+              src="../../shared/images/icon/icon-payco.png"
+              class="payment-logo payment-logo--payco"
+              aria-hidden="true"
+            />
             <span class="payment-name">페이코</span>
           </button>
 
@@ -488,9 +563,11 @@
             class="payment-method"
             data-payment-method="zero-pay"
           >
-            <span class="payment-logo payment-logo--zero" aria-hidden="true">
-              zero pay
-            </span>
+            <img
+              src="../../shared/images/icon/icon-zero-pay.png"
+              class="payment-logo payment-logo--zero"
+              aria-hidden="true"
+            />
             <span class="payment-name">제로페이</span>
           </button>
 
@@ -499,9 +576,11 @@
             class="payment-method"
             data-payment-method="wechat-pay"
           >
-            <span class="payment-logo payment-logo--wechat" aria-hidden="true">
-              WeChat
-            </span>
+            <img
+              src="../../shared/images/icon/icon-wechat-pay.png"
+              class="payment-logo payment-logo--wechat"
+              aria-hidden="true"
+            />
             <span class="payment-name">위챗페이</span>
           </button>
 
@@ -510,12 +589,11 @@
             class="payment-method"
             data-payment-method="danggeun-pay"
           >
-            <span
+            <img
+              src="../../shared/images/icon/icon-d-pay.png"
               class="payment-logo payment-logo--danggeun"
               aria-hidden="true"
-            >
-              pay
-            </span>
+            />
             <span class="payment-name">당근페이</span>
           </button>
 
@@ -524,7 +602,6 @@
             class="payment-method"
             data-payment-method="coupon"
           >
-            <span class="payment-logo" aria-hidden="true">🎟️</span>
             <span class="payment-name">쿠폰 사용</span>
           </button>
         </div>
@@ -546,9 +623,27 @@
           data-modal-close
           aria-label="닫기"
         >
-          <span aria-hidden="true">×</span>
+          <img
+            src="../../shared/images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
         </button>
       </div>
+      <button
+        type="button"
+        class="payment-image-button"
+        data-card-inserted
+        aria-label="카드 삽입"
+      >
+        <img
+          class="card-payment-image card-insert"
+          src="../../shared/images/icon/icon-insert-card.png"
+          alt=""
+        />
+      </button>
 
       <div class="modal-body">
         <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>
@@ -569,25 +664,10 @@
             <dd class="card-payment-total">0원</dd>
           </div>
         </dl>
-
-        <!-- 실제 카드 삽입 이미지 경로로 변경 -->
-        <button
-          type="button"
-          class="payment-image-button"
-          data-card-inserted
-          aria-label="카드 삽입"
-        >
-          ㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-          <!-- <img
-            class="card-payment-image"
-            src=""
-            alt=""
-          /> -->
-        </button>
       </div>
     </dialog>
 
-    <!-- 결제 진행 -->
+    <!-- 결제 진행 중 -->
     <dialog
       id="modal-payment-progress"
       class="modal modal--payment-status"
@@ -595,15 +675,14 @@
       aria-describedby="payment-progress-description"
     >
       <div class="modal-body">
+        <span class="payment-spinner" aria-hidden="true"></span>
+
         <h2 id="payment-progress-title" class="modal-title">
           결제 진행중입니다
         </h2>
 
-        <span class="payment-spinner" aria-hidden="true">💳</span>
-
         <p id="payment-progress-description" class="payment-status-description">
-          카드결제를 진행중입니다.<br />
-          카드를 제거하지 말고 잠시만 기다려주세요.
+          카드를 제거하지 말고 잠시만 기다려주세요
         </p>
       </div>
     </dialog>
@@ -613,23 +692,29 @@
       id="modal-payment-complete"
       class="modal modal--payment-status"
       aria-labelledby="payment-complete-title"
+      aria-describedby="payment-complete-description"
     >
       <div class="modal-body">
-        <h2 id="payment-complete-title" class="modal-title">
-          결제가 완료되었습니다.
-        </h2>
-
         <button
           type="button"
           class="payment-image-button"
           data-card-removed
           aria-label="카드 제거 완료"
         >
-          <!-- <img class="payment-complete-image" src="" alt="" /> -->
-          ㅇㅇㅇㅇㅇㅇㅇ
+          <img
+            class="payment-complete-image"
+            src="../../shared/images/icon/icon-card-complete.png"
+            alt=""
+          />
         </button>
 
-        <p class="payment-status-description">카드를 제거해주세요.</p>
+        <h2 id="payment-complete-title" class="modal-title">
+          결제가 완료되었습니다
+        </h2>
+
+        <p id="payment-complete-description" class="payment-status-description">
+          카드를 제거해주세요
+        </p>
       </div>
     </dialog>
 
@@ -648,12 +733,21 @@
           data-modal-close
           aria-label="닫기"
         >
-          <span aria-hidden="true">×</span>
+          <img
+            src="../../shared/images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
         </button>
       </div>
 
       <div class="modal-body">
-        <p class="points-prompt-description">포인트를 적립하시겠습니까?</p>
+        <p class="points-prompt-description">
+          포인트를<br />
+          적립하시겠습니까?
+        </p>
 
         <form method="dialog" class="points-prompt-actions">
           <button type="submit" class="points-no" value="no">아니오</button>
@@ -676,13 +770,19 @@
           data-modal-close
           aria-label="닫기"
         >
-          <span aria-hidden="true">×</span>
+          <img
+            src="../../shared/images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
         </button>
       </div>
 
       <div class="modal-body">
         <label for="points-phone-number" class="points-phone-label">
-          적립할 휴대폰 번호를 눌러주세요.
+          적립할 휴대폰 번호를 <br />눌러주세요.
         </label>
 
         <input
@@ -706,11 +806,11 @@
           <button type="button" data-phone-key="9">9</button>
           <button type="button" data-phone-key="010">010</button>
           <button type="button" data-phone-key="0">0</button>
-          <button type="button" data-phone-key="delete">← 지우기</button>
+          <button type="button" data-phone-key="delete">지우기</button>
         </div>
 
         <button type="button" class="points-skip" data-open-receipt>
-          건너뛰기 <span aria-hidden="true">›</span>
+          건너뛰기
         </button>
       </div>
     </dialog>
@@ -722,8 +822,13 @@
       aria-labelledby="points-complete-title"
     >
       <div class="modal-body">
+        <img
+          src="../../shared/images/icon/icon-coin-saving.png"
+          alt=""
+          class="coin-saving-image"
+        />
         <h2 id="points-complete-title" class="modal-title">
-          포인트 적립이 완료되었습니다.
+          적립이 완료되었습니다.
         </h2>
 
         <span class="points-complete-check" aria-hidden="true">✓</span>
@@ -741,11 +846,27 @@
       aria-labelledby="receipt-title"
       aria-describedby="receipt-description"
     >
-      <div class="modal-body">
+      <div class="modal-header">
         <h2 id="receipt-title" class="modal-title">영수증</h2>
 
+        <button
+          type="button"
+          class="modal-close"
+          data-modal-close
+          aria-label="닫기"
+        >
+          <img
+            src="../../shared/images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
+        </button>
+      </div>
+      <div class="modal-body">
         <p id="receipt-description" class="receipt-description">
-          영수증을 출력하시겠습니까?
+          영수증을 받으시겠습니까?
         </p>
 
         <div class="points-prompt-actions">
