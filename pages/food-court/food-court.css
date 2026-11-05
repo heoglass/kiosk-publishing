@@ -94,11 +94,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 30px 28px;
+  gap: 28px 30px;
   width: 100%;
 }
 
 .product-card {
+  width: 300px;
   padding: 36px 13px;
   background: #fff;
   border: 2px solid rgba(204, 204, 204, 1);
@@ -117,7 +118,6 @@
 
 .product-card .product-card__info .product-card__title {
   display: block;
-  white-space: nowrap;
   font-weight: 600;
 }
 
@@ -132,12 +132,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .slider-controls__btn {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 44px;
+  font-weight: 600;
   white-space: nowrap;
   color: #000;
   background: none;
@@ -152,13 +152,48 @@
 }
 
 .slider-controls .swiper-pagination-bullet {
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
   background: #ccc;
   opacity: 1;
-  margin: 0 6px !important;
+  margin: 0 20px !important;
 }
 
 .slider-controls .swiper-pagination-bullet-active {
   background: #000;
+}
+
+.slider-controls__btn {
+  font-size: 40px;
+  font-weight: 600;
+  color: #000;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.slider-controls__btn.swiper-button-disabled {
+  color: #AAAAAA;
+  opacity: 1;
+}
+
+.order-bar>.cart-clear {
+  background-color: #555;
+  color: #fff;
+}
+
+.order-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  left: auto;
+  background: #F5F5F5;
+}
+
+.order-bar .order-submit.oder__food {
+  background: #DF3C3C;
+  color: #fff;
+}
+
+.order-bar .order-count {
+  background: #6C2828;
 }
