@@ -12,7 +12,7 @@
     ></script>
   </head>
   <body>
-    <header id="header">
+    <header id="category-header">
       <div class="header-left">
         <button
           type="button"
@@ -20,39 +20,49 @@
           class="header-back"
           aria-label="이전 화면으로"
         >
-          <!-- <img src="" alt="" /> -->
-          뒤로가기
+          <img
+            src="../../shared/images/icon/arrow-back.png"
+            class="arrow-back"
+            alt="뒤로가기 화살표"
+          />
         </button>
 
         <span id="header-title"></span>
       </div>
       <div class="header-right">
-        <img src="" alt="소리 켜기" />
-        <img src="" alt="소리 끄기" />
+        <img
+          src="../../shared/images/icon/sound_w.png"
+          class="header-sound"
+          alt="소리 이미지"
+        />
+        <span class="header-sound-text">소리끄기</span>
       </div>
     </header>
     <main class="complete-main">
-      <h1 class="complete-title">주문이 완료되었습니다.</h1>
+      <div class="complte-main-contents">
+        <div class="complete-text-area">
+          <h1 class="complete-title">주문이 완료되었습니다.</h1>
 
-      <dl class="complete-order-info">
-        <dt>주문번호</dt>
-        <dd class="complete-number">77</dd>
-      </dl>
-
-      <p class="complete-message">
-        주문번호를 확인해주세요.<br />
-        주문 번호 확인 후 카운터에서 픽업해주세요.
-      </p>
+          <p class="complete-message">
+            주문번호를 확인해주세요.<br />
+            주문 번호 확인 후 카운터에서 픽업해주세요.
+          </p>
+        </div>
+        <img
+          src="../shared/images/order-number.png"
+          class="complete-order-image"
+          alt="주문완료 이미지"
+        />
+      </div>
+      <footer class="complete-footer">
+        <a
+          id="complete-confirm"
+          class="complete-button"
+          href="./experience-complete.html"
+          data-keep-category
+          >확인</a
+        >
+      </footer>
     </main>
-
-    <footer class="complete-footer">
-      <a
-        id="complete-confirm"
-        class="complete-button"
-        href="./experience-complete.html"
-        data-keep-category
-        >확인</a
-      >
-    </footer>
   </body>
 </html>
