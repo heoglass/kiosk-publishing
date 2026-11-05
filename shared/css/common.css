@@ -152,6 +152,7 @@ ol {
   position: absolute;
   inset: 0;
 }
+
 .category-title-area {
   position: absolute;
   top: 240px;
@@ -159,17 +160,20 @@ ol {
   transform: translateX(-50%);
   color: #7b5d40;
 }
+
 .category-title-area .category-title1 {
   font-size: 120px;
   font-weight: 600;
   margin-bottom: 13px;
 }
+
 .category-title-area .category-title2 {
   font-weight: 500;
   font-size: 44px;
   letter-spacing: 5%;
   text-align: center;
 }
+
 .category-main-message {
   /* width: 100%; */
   width: auto;
@@ -183,6 +187,7 @@ ol {
   border-radius: 20px;
   box-shadow: 0px 0px 42.1px 0px #653c00;
 }
+
 .category-main-message span {
   font-size: 48px;
   color: #fff;
@@ -209,7 +214,7 @@ ol {
   padding: 40px 60px 0;
 }
 
-.menu-tab > button {
+.menu-tab>button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -224,7 +229,7 @@ ol {
   font: inherit;
 }
 
-.menu-tab > button > span {
+.menu-tab>button>span {
   font-size: 44px;
 
   font-weight: 500;
@@ -294,7 +299,7 @@ ol {
   gap: 12px;
 }
 
-.cart-quantity > button {
+.cart-quantity>button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -315,7 +320,7 @@ ol {
   height: 60px;
 }
 
-.cart-quantity > button:disabled {
+.cart-quantity>button:disabled {
   cursor: default;
 }
 
@@ -371,7 +376,7 @@ ol {
   padding: 24px 60px;
 }
 
-.order-bar > button {
+.order-bar>button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -389,11 +394,11 @@ ol {
   cursor: pointer;
 }
 
-.order-bar > .cart-clear {
+.order-bar>.cart-clear {
   flex: 0 0 230px;
 }
 
-.order-bar > .order-submit {
+.order-bar>.order-submit {
   flex: 1;
   min-width: 0;
   gap: 12px;
@@ -412,7 +417,7 @@ ol {
   font-variant-numeric: tabular-nums;
 }
 
-.order-bar > button:disabled {
+.order-bar>button:disabled {
   cursor: default;
 }
 
@@ -843,7 +848,7 @@ body.modal-open {
   padding: 24px 0;
 }
 
-#modal-card-payment .card-payment-summary-row + .card-payment-summary-row {
+#modal-card-payment .card-payment-summary-row+.card-payment-summary-row {
   border-top: 1px solid #d9d9d9;
 }
 
@@ -977,12 +982,10 @@ body.modal-open {
 }
 
 /* 적립 안내 / 번호 입력 / 적립 완료 / 영수증 공통 */
-:is(
-    #modal-points-prompt,
-    #modal-points-phone,
-    #modal-points-complete,
-    #modal-receipt
-  ) {
+:is(#modal-points-prompt,
+  #modal-points-phone,
+  #modal-points-complete,
+  #modal-receipt) {
   box-sizing: border-box;
   width: 840px;
   max-width: calc(100% - 120px);
@@ -1000,12 +1003,10 @@ body.modal-open {
   color: #000;
 }
 
-:is(
-    #modal-points-prompt,
-    #modal-points-phone,
-    #modal-points-complete,
-    #modal-receipt
-  )::backdrop {
+:is(#modal-points-prompt,
+  #modal-points-phone,
+  #modal-points-complete,
+  #modal-receipt)::backdrop {
   background: rgb(0 0 0 / 60%);
 }
 
@@ -1031,9 +1032,7 @@ body.modal-open {
   gap: 24px;
 }
 
-:is(#modal-points-prompt, #modal-receipt)
-  .points-prompt-actions
-  > :is(button, a) {
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions> :is(button, a) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1103,6 +1102,7 @@ body.modal-open {
   font-weight: 600;
   text-align: center;
 }
+
 #modal-points-phone .points-phone-number:not(:placeholder-shown) {
   border: 3px solid #f09308;
   color: #f09308;
@@ -1179,6 +1179,7 @@ body.modal-open {
   height: 240px;
   object-fit: contain;
 }
+
 .points-confirm {
   width: 100%;
   border-radius: 20px;
@@ -1190,6 +1191,7 @@ body.modal-open {
   font-size: 44px;
   font-weight: 700;
 }
+
 #modal-points-complete .modal-title {
   width: 100%;
   color: #000;
@@ -1229,14 +1231,17 @@ body.modal-open {
   text-align: center;
   color: #000;
 }
+
 .complte-main-contents {
   width: 100%;
 }
+
 .complete-text-area {
   background-color: #f5f5f5;
   padding: 120px 0;
   border-radius: 32px;
 }
+
 .complete-title {
   position: relative;
   font-size: 60px;
@@ -1274,6 +1279,7 @@ body.modal-open {
   line-height: 1;
   text-decoration: none;
 }
+
 /* 헤더 높이 144px, 일반 배치 기준 */
 .complete-main.experience-complete {
   display: flex;

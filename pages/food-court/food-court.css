@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+.food__btn--color {
+  background: #DF3C3C;
+  box-shadow: none;
+  white-space: nowrap;
+  padding: 60px 0;
+}
+
+.category-title-area {
+  color: #845D3B;
+}
+
+.category-title1 {
+  white-space: nowrap;
+}
+
 /* index-foodcourt.html */
 #category-header.foodcourt__header {
   background: rgba(199, 71, 56, 1);
@@ -196,4 +211,193 @@
 
 .order-bar .order-count {
   background: #6C2828;
+}
+
+/* 푸트코트 모달 */
+
+/* 옵션선택 모달창 - 푸드코트 */
+/* 모달 배경 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 모달 박스 */
+.modal-content {
+  background: #fff;
+  width: 840px;
+  height: 866px;
+  padding: 100px 60px;
+  border-radius: 32px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 80px;
+  color: #000;
+}
+
+/* 옵션 아이템 스타일 */
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 80px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  border: 2px solid #ddd;
+  border-radius: 16px;
+  font-size: 44px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff;
+  line-height: 78px;
+}
+
+.option-item input[type="radio"] {
+  display: none;
+}
+
+.option-item.option-item--selected {
+  border-color: rgba(223, 60, 60, 1);
+  color: rgba(223, 60, 60, 1);
+  font-weight: 700;
+  font-size: 44px;
+  box-shadow: 0px 0px 18.3px 0px rgba(228, 34, 0, 1);
+}
+
+.option-price {
+  color: rgba(223, 60, 60, 1);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 44px 90px;
+  font-size: 44px;
+  font-weight: 700;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.modal-btn--cancel {
+  background: #666;
+  color: #fff;
+}
+
+.modal-btn--confirm {
+  background: rgba(223, 60, 60, 1);
+  color: #fff;
+}
+
+/* index-orderlist.html */
+/* 주문 내역 영역 컨테이너 */
+.foodcourt__section {
+  padding: 20px 16px;
+  background-color: #f8f9fa;
+}
+
+.orderlist__view .order__list-title {
+  background: #F5F5F5;
+  height: 192px;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.orderlist__view .order-list-wrap .order-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #D9D9D9;
+  padding-bottom: 40px;
+}
+
+.orderlist__view .order-list-wrap .order-item:last-child {
+  border-bottom: none;
+}
+
+.orderlist__view .order-list-wrap .order-item .order-item__name,
+.order-item__count .orderlist__view .order-list-wrap .order-item .order-item__price {
+  display: flex;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.orderlist__view .order-list-wrap .order-item__option {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 130%;
+  background: #EEEEEE;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+
+/* 하단 주문 제어 버튼 바 */
+.order-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-action {
+  flex: 1;
+  height: 56px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 돌아가기 버튼 (회색) */
+.order__btn--back {
+  background-color: #555555;
+  color: #fff;
+}
+
+/* 먹고가기 / 포장하기 버튼 (붉은색 계열) */
+.btn-dine-in,
+.btn-takeout {
+  background-color: #DF3C3C;
+  color: #fff;
+}
+
+.btn-action .sub-text {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 2px;
 }

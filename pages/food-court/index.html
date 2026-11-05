@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>푸드코트</title>
+  <title>푸드코트 시작화면</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../../shared/css/common.css" />
   <link rel="stylesheet" href="./food-court.css" />
@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body id="index">
   <div class="foodcourt-container">
     <header id="category-header" class="foodcourt__header">
       <div class="header-left">
@@ -30,273 +30,24 @@
         <p class="header-sound-text main-sound-text">소리끄기</p>
       </div>
     </header>
-    <main class="foodcourt category-main">
-      <section class="foodcourt__section">
-        <!-- 상단 카테고리 NAV 탭 -->
-        <nav class="foodcourt__nav">
-          <ul class="menu-list">
-            <li class="menu-item">
-              <button type="button" class="nav__tab nav__tab--active">
-                <span>한식</span>
-              </button>
-            </li>
-            <li class="menu-item">
-              <button type="button" class="nav__tab">
-                <span>양식</span>
-              </button>
-            </li>
-            <li class="menu-item">
-              <button type="button" class="nav__tab">
-                <span>중식</span>
-              </button>
-            </li>
-            <li class="menu-item">
-              <button type="button" class="nav__tab">
-                <span>일식</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
 
-        <!-- 탭 컨텐츠 영역 -->
-        <div class="foodcourt__contents">
+    <main class="category-main foodcourt">
+      <!-- <section class="foodcourt__section foodcourt__visual">
+        <button type="button" id="visual__btn">화면을 터치하면 주문이 시작됩니다</button>
+      </section> -->
 
-          <!-- 1. 한식 탭 컨텐츠 -->
-          <div class="foodcourt__content foodcourt__content--active">
-            <div class="swiper product-swiper">
-              <div class="swiper-wrapper">
-                <!-- 페이지 1 (메뉴 6개) -->
-                <div class="swiper-slide">
-                  <ul class="product-grid">
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_1.png" alt="능동 미나리 곰탕" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">능동 미나리 곰탕</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
 
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_2.png" alt="회냉면" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">회냉면</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
 
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_3.png" alt="전주비빔밥" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">전주비빔밥</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_4.png" alt="육회비빔밥" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">육회비빔밥</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="짜장면+탕수육" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <!-- 페이지 2 (6개 초과 시 다음 슬라이드로) -->
-                <div class="swiper-slide">
-                  <ul class="product-grid">
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- 하단 슬라이드 이전/다음 버튼 (해당 탭 전용) -->
-              <div class="slider-controls">
-                <button type="button" class="slider-controls__btn slider-controls__btn--prev">이전</button>
-                <div class="swiper-pagination"></div>
-                <button type="button" class="slider-controls__btn slider-controls__btn--next">다음</button>
-              </div>
-            </div>
+      <section id="category-start-screen" class="cafe-screen category-start-screen" aria-label="푸드코트 주문 시작">
+        <button id="foodcourt-start" type="button" class="category-start">
+          <img class="category-main-image" src="../../shared/images/foodcourt/foodcourt-visual.png" alt="푸드코트 주문 시작" />
+          <div class="category-title-area">
+            <p class="category-title1">Food court kiosk</p>
+            <p class="category-title2">Educational kiosk</p>
           </div>
-
-          <!-- 2. 양식 탭 컨텐츠 -->
-          <div class="foodcourt__content">
-            <div class="swiper product-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <ul class="product-grid">
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="slider-controls">
-                <button type="button" class="slider-controls__btn slider-controls__btn--prev">이전</button>
-                <div class="swiper-pagination"></div>
-                <button type="button" class="slider-controls__btn slider-controls__btn--next">다음</button>
-              </div>
-            </div>
+          <div class="category-main-message food__btn--color">
+            <span>화면을 터치하시면 주문이 시작됩니다. </span>
           </div>
-
-          <!-- 3. 중식 탭 컨텐츠 -->
-          <div class="foodcourt__content">
-            <div class="swiper product-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <ul class="product-grid">
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="slider-controls">
-                <button type="button" class="slider-controls__btn slider-controls__btn--prev">이전</button>
-                <div class="swiper-pagination"></div>
-                <button type="button" class="slider-controls__btn slider-controls__btn--next">다음</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. 일식 탭 컨텐츠 -->
-          <div class="foodcourt__content">
-            <div class="swiper product-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <ul class="product-grid">
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="slider-controls">
-                <button type="button" class="slider-controls__btn slider-controls__btn--prev">이전</button>
-                <div class="swiper-pagination"></div>
-                <button type="button" class="slider-controls__btn slider-controls__btn--next">다음</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-      <!-- 하단 버튼 -->
-      <section id="foodcourt__oderbar" class="order-bar" aria-label="주문 관리">
-        <button type="button" class="cart-clear" disabled>전체삭제</button>
-
-        <button type="button" class="order-submit oder__food" disabled>
-          <span class="order-count">0개</span>
-          <span class="order-total">0원</span>
-          <span class="order-label">주문하기</span>
         </button>
       </section>
     </main>

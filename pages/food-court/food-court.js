@@ -3,6 +3,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const contents = document.querySelectorAll(".foodcourt__content");
     const swiperInstances = [];
 
+    const currentPageId = document.body.id; // 파일명과 일치하는 body id (예: index-order, index 등)
+
+    // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
+    const backUrlMap = {
+        "index-order": "index.html",
+        "index": "index.html",
+        "index-orderlist": "index-order.html",
+    };
+
+    // 상단 뒤로가기 버튼 동작 제어
+    const headerBackBtn = document.getElementById("header-back");
+    if (headerBackBtn) {
+        headerBackBtn.addEventListener("click", () => {
+            if (backUrlMap[currentPageId]) {
+                window.location.href = backUrlMap[currentPageId];
+            } else {
+                window.history.back();
+            }
+        });
+    }
+
+    // 첫화면 이동 버튼 처리 (#foodcourt-start)
+    const foodcourtStartBtn = document.getElementById('foodcourt-start');
+    if (foodcourtStartBtn) {
+        foodcourtStartBtn.addEventListener('click', () => {
+            window.location.href = 'index-order.html'; // 주문 화면 파일명으로 이동
+        });
+    }
+
     // 1. 각 카테고리 탭 내부 Swiper 독립 초기화
     contents.forEach((content, index) => {
         const swiperEl = content.querySelector(".product-swiper");
@@ -62,6 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const orderSubmitBtn = document.querySelector(".order-submit.oder__food");
     const cartClearBtn = document.querySelector(".cart-clear");
 
+    // 모달 제어용
+    const modal = document.getElementById("option-modal");
+    const modalCancelBtn = document.getElementById("modal-cancel");
+    const modalConfirmBtn = document.getElementById("modal-confirm");
+
     // 화면 갱신 함수
     function updateOrderUI() {
         let totalCount = 0;
@@ -94,29 +128,126 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 상품 카드(product-card) 클릭 시 주문 목록에 추가
     const productCards = document.querySelectorAll(".product-card");
+    // optionLabels: 옵션 상품 체크를 위한 상수
+    const optionLabels = document.querySelectorAll(".option-item");
+    const optionRadios = document.querySelectorAll("input[name='food-option']");
+
     productCards.forEach((card) => {
-        card.style.cursor = "pointer"; // 클릭 가능하도록 커서 지정
+        card.style.cursor = "pointer";
         card.addEventListener("click", () => {
+            // dataset 속성이 없을 경우를 대비해 내부 텍스트 요소를 자동 파싱
             const titleEl = card.querySelector(".product-card__title");
             const priceEl = card.querySelector(".product-card__price");
 
-            if (!titleEl || !priceEl) return;
+            const name = card.dataset.name || (titleEl ? titleEl.textContent.trim() : "");
+            const priceStr = card.dataset.price || (priceEl ? priceEl.textContent.replace(/[^0-9]/g, "") : "0");
+            const price = parseInt(priceStr, 10) || 0;
 
-            const name = titleEl.textContent.trim();
-            // "10,000원" -> 숫자 10000으로 파싱
-            const price = parseInt(priceEl.textContent.replace(/[^0-9]/g, ""), 10) || 0;
-
-            if (orderData[name]) {
-                orderData[name].count += 1;
-            } else {
-                orderData[name] = {
-                    name: name,
-                    price: price,
-                    count: 1
-                };
+            // hasOption 속성이 없으면 텍스트에 "옵션" 글자가 포함되어 있는지 자동 판별
+            let hasOption = card.dataset.hasOption === "true";
+            if (!card.dataset.hasOption && titleEl) {
+                hasOption = titleEl.textContent.includes("옵션");
             }
 
-            updateOrderUI();
+            if (!name) return;
+
+            selectedProduct = { name, price };
+
+            // 1) 옵션이 있는 상품: 모달 노출 및 첫 번째 옵션 기본 세팅
+            if (hasOption) {
+                optionRadios.forEach((radio) => {
+                    radio.addEventListener("change", (e) => {
+                        // 모든 label에서 선택 클래스 제거
+                        optionLabels.forEach((label) => label.classList.remove("option-item--selected"));
+
+                        // 현재 체크된 라디오의 부모 label 찾아서 클래스 부여
+                        const parentLabel = e.target.closest(".option-item");
+                        if (parentLabel) {
+                            parentLabel.classList.add("option-item--selected");
+                        }
+                    });
+                });
+
+                // 라벨 자체를 클릭했을 때도 확실하게 체크되도록 보조 이벤트 추가 (선택사항이지만 확실함)
+                optionLabels.forEach((label) => {
+                    label.addEventListener("click", () => {
+                        const radio = label.querySelector("input[name='food-option']");
+                        if (radio && !radio.checked) {
+                            radio.checked = true;
+                            // change 이벤트를 강제로 발생시켜 위쪽 change 리스너가 실행되도록 유도
+                            radio.dispatchEvent(new Event('change'));
+                        }
+                    });
+                });
+
+                if (modal) modal.style.display = "flex";
+
+                if (modalCancelBtn) {
+                    modalCancelBtn.addEventListener("click", () => {
+                        if (selectedProduct) {
+                            for (const key in orderData) {
+                                if (orderData[key].name === selectedProduct.name) {
+                                    delete orderData[key];
+                                }
+                            }
+                            updateOrderUI();
+                        }
+
+                        if (modal) modal.style.display = "none";
+                        selectedProduct = null;
+                    });
+                }
+
+                // [선택 완료 버튼] 선택한 옵션 정보와 함께 장바구니 및 스토리지 저장
+                if (modalConfirmBtn) {
+                    modalConfirmBtn.addEventListener("click", () => {
+                        if (!selectedProduct) return;
+
+                        const checkedRadio = document.querySelector("input[name='food-option']:checked");
+                        const optionValue = checkedRadio ? checkedRadio.value : "옵션 선택 안함";
+
+                        let cartKey = selectedProduct.name;
+                        if (optionValue && optionValue !== "옵션 선택 안함") {
+                            cartKey = `${selectedProduct.name} (${optionValue})`;
+                        }
+
+                        if (orderData[cartKey]) {
+                            orderData[cartKey].count += 1;
+                        } else {
+                            orderData[cartKey] = {
+                                name: selectedProduct.name,
+                                option: optionValue,
+                                price: selectedProduct.price,
+                                count: 1
+                            };
+                        }
+
+                        updateOrderUI();
+
+                        if (modal) modal.style.display = "none";
+                        selectedProduct = null;
+                    });
+                }
+
+            }
+            // 2) 일반 상품: 곧바로 장바구니에 담기
+            else {
+                const cartKey = name;
+
+                if (orderData[cartKey]) {
+                    orderData[cartKey].count += 1;
+                } else {
+                    orderData[cartKey] = {
+                        name: name,
+                        option: "일반",
+                        price: price,
+                        count: 1
+                    };
+                }
+
+                updateOrderUI();
+                selectedProduct = null;
+            }
         });
     });
 
@@ -140,6 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // updateOrderUI();
         });
     }
+
+
+
 });
 
 
