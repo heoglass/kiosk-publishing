@@ -24,6 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    document.querySelectorAll(".btn-dine-in, .btn-takeout").forEach((button) => {
+        button.addEventListener("click", () => {
+            window.location.href = "index-orderlist-payment-step1.html";
+        });
+    });
+
+    document.querySelectorAll(".order__btn--back").forEach((button) => {
+        button.addEventListener("click", () => {
+            window.location.href = "index-order.html";
+        });
+    });
+
     // 첫화면 이동 버튼 처리 (#foodcourt-start)
     const foodcourtStartBtn = document.getElementById('foodcourt-start');
     if (foodcourtStartBtn) {
@@ -83,8 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     const STORAGE_KEY = "kiosk_order_data";
 
-    // 페이지 이동 시에도 유지되도록 sessionStorage 활용 (객체 형태로 보관)
-    let orderData = JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || {};
+    // 페이지 이동 후에도 주문 데이터를 유지
+    let orderData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
     const orderCountEl = document.querySelector(".order-count");
     const orderTotalEl = document.querySelector(".order-total");
@@ -120,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 스토리지 저장
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(orderData));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(orderData));
     }
 
     // 초기 로드 시 UI 동기화
@@ -227,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         if (modal) modal.style.display = "none";
                         selectedProduct = null;
-                        window.location.href = "index-orderlist.html";
                     });
                 }
 
@@ -267,23 +278,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cartClearBtn) {
         cartClearBtn.addEventListener("click", () => {
             orderData = {};
-            sessionStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STORAGE_KEY);
             updateOrderUI();
         });
     }
 
-    // 주문하기 버튼 클릭 시 이벤트 (필요 시 연동)
-    // [주문하기 버튼] 클릭 시 모달 열기 요청 반영
+    // 주문하기 버튼 클릭 시 주문 목록으로 이동
     if (orderSubmitBtn) {
         orderSubmitBtn.addEventListener("click", () => {
             if (orderSubmitBtn.hasAttribute("disabled")) return;
-
-            // 주문하기 버튼 클릭 시 모달 띄우기 (만약 주문 관련 모달 창이 동일한 ID를 쓴다면 아래와 같이 연동)
-            if (modal) {
-                modal.style.display = "flex";
-            } else {
-                alert("주문이 완료되었습니다!");
-            }
+            window.location.href = "index-orderlist.html";
         });
     }
 
