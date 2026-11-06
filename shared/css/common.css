@@ -214,7 +214,7 @@ ol {
   padding: 40px 60px 0;
 }
 
-.menu-tab>button {
+.menu-tab > button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -229,7 +229,7 @@ ol {
   font: inherit;
 }
 
-.menu-tab>button>span {
+.menu-tab > button > span {
   font-size: 44px;
 
   font-weight: 500;
@@ -299,7 +299,7 @@ ol {
   gap: 12px;
 }
 
-.cart-quantity>button {
+.cart-quantity > button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -320,7 +320,7 @@ ol {
   height: 60px;
 }
 
-.cart-quantity>button:disabled {
+.cart-quantity > button:disabled {
   cursor: default;
 }
 
@@ -376,7 +376,7 @@ ol {
   padding: 24px 60px;
 }
 
-.order-bar>button {
+.order-bar > button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -394,11 +394,11 @@ ol {
   cursor: pointer;
 }
 
-.order-bar>.cart-clear {
+.order-bar > .cart-clear {
   flex: 0 0 230px;
 }
 
-.order-bar>.order-submit {
+.order-bar > .order-submit {
   flex: 1;
   min-width: 0;
   gap: 12px;
@@ -417,7 +417,7 @@ ol {
   font-variant-numeric: tabular-nums;
 }
 
-.order-bar>button:disabled {
+.order-bar > button:disabled {
   cursor: default;
 }
 
@@ -848,7 +848,7 @@ body.modal-open {
   padding: 24px 0;
 }
 
-#modal-card-payment .card-payment-summary-row+.card-payment-summary-row {
+#modal-card-payment .card-payment-summary-row + .card-payment-summary-row {
   border-top: 1px solid #d9d9d9;
 }
 
@@ -969,10 +969,12 @@ body.modal-open {
 }
 
 /* 적립 안내 / 번호 입력 / 적립 완료 / 영수증 공통 */
-:is(#modal-points-prompt,
-  #modal-points-phone,
-  #modal-points-complete,
-  #modal-receipt) {
+:is(
+    #modal-points-prompt,
+    #modal-points-phone,
+    #modal-points-complete,
+    #modal-receipt
+  ) {
   box-sizing: border-box;
   width: 840px;
   max-width: calc(100% - 120px);
@@ -990,10 +992,12 @@ body.modal-open {
   color: #000;
 }
 
-:is(#modal-points-prompt,
-  #modal-points-phone,
-  #modal-points-complete,
-  #modal-receipt)::backdrop {
+:is(
+    #modal-points-prompt,
+    #modal-points-phone,
+    #modal-points-complete,
+    #modal-receipt
+  )::backdrop {
   background: rgb(0 0 0 / 60%);
 }
 
@@ -1019,7 +1023,9 @@ body.modal-open {
   gap: 24px;
 }
 
-:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions> :is(button, a) {
+:is(#modal-points-prompt, #modal-receipt)
+  .points-prompt-actions
+  > :is(button, a) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1113,9 +1119,9 @@ body.modal-open {
   margin: 0;
   padding: 16px;
 
-  border: 1px solid #4d5259;
+  border: 2px solid #4d5259;
   border-radius: 20px;
-  background: #f8f8f8;
+  background: #fff;
 
   color: #000;
   font: inherit;
@@ -1123,6 +1129,9 @@ body.modal-open {
   font-weight: 600;
 
   touch-action: manipulation;
+}
+.points-keypad button:active {
+  background-color: #f2f2f2;
 }
 
 /* 건너뛰기 */

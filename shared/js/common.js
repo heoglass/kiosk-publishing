@@ -26,6 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // ----------------------------------------------------//
   // ------------------ category-header -----------------//
   // ----------------------------------------------------//
+  const headerBack = document.getElementById("header-back");
+
+  if (!headerBack) return;
+
+  headerBack.addEventListener("click", () => {
+    const startScreen = document.getElementById("category-start-screen");
+
+    if (!startScreen || startScreen.hidden) return;
+
+    window.location.href = "../main/index.html";
+  });
 
   const headerTitle = document.getElementById("header-title");
 

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카페 메뉴 화면</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./cafe.css" />
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+    <script type="text/javascript" src="./cafe.js" defer=""></script>
+  </head>
+  <body>
+    <header id="category-header">
+      <div class="header-left">
+        <button
+          type="button"
+          id="header-back"
+          class="header-back"
+          aria-label="이전 화면으로"
+        >
+          <img
+            src="../../shared/images/icon/arrow-back.png"
+            class="arrow-back"
+            alt="뒤로가기 화살표"
+          />
+        </button>
+
+        <span id="header-title"></span>
+      </div>
+      <div class="header-right">
+        <img
+          src="../../shared/images/icon/sound_w.png"
+          class="header-sound"
+          alt="소리 이미지"
+        />
+        <span class="header-sound-text">소리끄기</span>
+      </div>
+    </header>
+    <main class="cafe-main category-main">
+      <section id="screen-menu" class="cafe-screen">
+        <nav class="menu-tab" aria-label="메뉴 탭">
+          <button type="button" data-category="all" aria-pressed="true">
+            <span>전체</span>
+          </button>
+          <button type="button" data-category="coffee" aria-pressed="false">
+            <span>커피</span>
+          </button>
+          <button type="button" data-category="ade" aria-pressed="false">
+            <span>에이드 · 주스</span>
+          </button>
+          <button type="button" data-category="tea" aria-pressed="false">
+            <span>티</span>
+          </button>
+          <button type="button" data-category="desert" aria-pressed="false">
+            <span>디저트</span>
+          </button>
+        </nav>
+
+        <!-- 메뉴 선택 및 메뉴 리스트 변경 화면 -->
+        <section class="menu-section" aria-label="메뉴 선택">
+          <div class="menu-viewport">
+            <div class="menu-track">
+              <div class="menu-page">
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-01"
+                >
+                  <p class="cafe-menu-type type-ice">ICE</p>
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
+                  <span class="menu-card-name">아이스 아메리카노</span>
+                  <span class="menu-card-price">2,000원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-02"
+                >
+                  <p class="cafe-menu-type type-hot">HOT</p>
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
+                  <span class="menu-card-name">아메리카노(HOT)</span>
+                  <span class="menu-card-price">2,000원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-03"
+                >
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
+                  <span class="menu-card-name">에스프레소</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-04"
+                >
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
+                  <span class="menu-card-name">카페라떼</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-05"
+                >
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
+                  <span class="menu-card-name">카푸치노</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-06"
+                >
+                  <img
+                    src="../../shared/images/cafe/coffe-01.png"
+                    class="cafe-menu-img"
+                    alt="아메리카노"
+                  />
+                  <span class="menu-card-name">돌체라떼</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+              </div>
+              <div class="menu-page">
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="coffee"
+                  data-menu-id="coffee-07"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">카페모카</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="ade"
+                  data-menu-id="ade-01"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">망고에이드</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="ade"
+                  data-menu-id="ade-02"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">자몽에이드</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="ade"
+                  data-menu-id="ade-03"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">레몬에이드</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="ade"
+                  data-menu-id="ade-04"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">딸기주스</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="ade"
+                  data-menu-id="ade-05"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">키위주스</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+              </div>
+              <div class="menu-page">
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="tea"
+                  data-menu-id="tea-01"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">캐모마일</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="tea"
+                  data-menu-id="tea-02"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">얼그레이</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="tea"
+                  data-menu-id="tea-03"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">페퍼민트</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="desert"
+                  data-menu-id="desert-01"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">어니언 베이글</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="desert"
+                  data-menu-id="desert-02"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">햄치즈 머핀</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+                <button
+                  type="button"
+                  class="cafe-menu-card"
+                  data-category="desert"
+                  data-menu-id="desert-03"
+                >
+                  <!-- <img src="" alt="" /> -->
+                  <span class="menu-card-name">프렌치 토스트</span>
+                  <span class="menu-card-price">0원</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- 페이지네이션 -->
+          <div class="menu-controls">
+            <button type="button" class="menu-prev" disabled="">이전</button>
+
+            <div class="menu-pagination" aria-label="메뉴 페이지"></div>
+
+            <button type="button" class="menu-next">다음</button>
+          </div>
+        </section>
+
+        <div class="dividing-line"></div>
+        <!-- 주문 내역 -->
+        <section class="cart-section" aria-label="주문 내역">
+          <!-- 퍼블리싱용 고정 예시: 상품명, data-price, 수량을 이 HTML에서 수정하세요. -->
+          <ul class="cart-list">
+            <li class="cart-item" data-price="2000">
+              <span class="cart-item-name">아이스 아메리카노</span>
+
+              <div class="cart-quantity" role="group">
+                <button
+                  type="button"
+                  class="cart-decrease"
+                  aria-label="수량 줄이기"
+                  disabled=""
+                >
+                  <img
+                    src="../../shared/images/icon/minus-disabled.png"
+                    class="cart-minus-image"
+                    alt=""
+                  />
+                </button>
+
+                <output class="cart-quantity-value" aria-label="수량">1</output>
+
+                <button
+                  type="button"
+                  class="cart-increase"
+                  aria-label="수량 늘리기"
+                >
+                  <img
+                    src="../../shared/images/icon/plus.png"
+                    class="cart-plus-image"
+                    alt=""
+                  />
+                </button>
+              </div>
+
+              <span class="cart-item-price">2,000원</span>
+
+              <button
+                type="button"
+                class="cart-remove"
+                aria-label="아이스 아메리카노 삭제"
+              >
+                <span aria-hidden="true">삭제</span>
+              </button>
+            </li>
+            <li class="cart-item" data-price="3200">
+              <span class="cart-item-name">카페라떼</span>
+
+              <div class="cart-quantity" role="group">
+                <button
+                  type="button"
+                  class="cart-decrease"
+                  aria-label="수량 줄이기"
+                  disabled=""
+                >
+                  <img
+                    src="../../shared/images/icon/minus-disabled.png"
+                    class="cart-minus-image"
+                    alt=""
+                  />
+                </button>
+
+                <output class="cart-quantity-value" aria-label="수량">1</output>
+
+                <button
+                  type="button"
+                  class="cart-increase"
+                  aria-label="수량 늘리기"
+                >
+                  <img
+                    src="../../shared/images/icon/plus.png"
+                    class="cart-plus-image"
+                    alt=""
+                  />
+                </button>
+              </div>
+
+              <span class="cart-item-price">3,200원</span>
+
+              <button
+                type="button"
+                class="cart-remove"
+                aria-label="카페라떼 삭제"
+              >
+                <span aria-hidden="true">삭제</span>
+              </button>
+            </li>
+          </ul>
+          <template id="cart-demo-template"
+            ><li class="cart-item" data-price="2000">
+              <span class="cart-item-name">예시 상품</span>
+
+              <div class="cart-quantity" role="group">
+                <button
+                  type="button"
+                  class="cart-decrease"
+                  aria-label="수량 줄이기"
+                  disabled=""
+                >
+                  <img
+                    src="../../shared/images/icon/minus-disabled.png"
+                    class="cart-minus-image"
+                    alt=""
+                  />
+                </button>
+
+                <output class="cart-quantity-value" aria-label="수량">1</output>
+
+                <button
+                  type="button"
+                  class="cart-increase"
+                  aria-label="수량 늘리기"
+                >
+                  <img
+                    src="../../shared/images/icon/plus.png"
+                    class="cart-plus-image"
+                    alt=""
+                  />
+                </button>
+              </div>
+
+              <span class="cart-item-price">2,000원</span>
+
+              <button
+                type="button"
+                class="cart-remove"
+                aria-label="예시 상품 삭제"
+              >
+                <span aria-hidden="true">삭제</span>
+              </button>
+            </li></template
+          >
+        </section>
+
+        <!-- 하단 버튼 -->
+        <section class="order-bar" aria-label="주문 관리">
+          <button type="button" class="cart-clear">전체삭제</button>
+
+          <button type="button" class="order-submit">
+            <span class="order-count">2개</span>
+            <span class="order-total">5,200원</span>
+            <span class="order-label">주문하기</span>
+          </button>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

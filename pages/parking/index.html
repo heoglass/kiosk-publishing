@@ -10,5 +10,55 @@
     <script type="text/javascript" src="../../shared/js/common.js"></script>
     <script type="text/javascript" src="./parking.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header id="category-header">
+      <div class="header-left">
+        <button
+          type="button"
+          id="header-back"
+          class="header-back"
+          aria-label="이전 화면으로"
+        >
+          <img
+            src="../../shared/images/icon/arrow-back.png"
+            class="arrow-back"
+            alt="뒤로가기 화살표"
+          />
+        </button>
+
+        <span id="header-title"></span>
+      </div>
+      <div class="header-right">
+        <img
+          src="../../shared/images/icon/sound_w.png"
+          class="header-sound"
+          alt="소리 이미지"
+        />
+        <span class="header-sound-text">소리끄기</span>
+      </div>
+    </header>
+
+    <main class="parking-main category-main">
+      <section
+        id="category-start-screen"
+        class="cafe-screen category-start-screen"
+        aria-label="카페 주문 시작"
+      >
+        <button type="button" class="category-start">
+          <img
+            class="category-main-image"
+            src="../../shared/images/cafe/cafe-main.png"
+            alt=""
+          />
+          <div class="category-title-area">
+            <p class="category-title1">Parking Payment Kiosk</p>
+            <p class="category-title2">Educational kiosk</p>
+          </div>
+          <div class="category-main-message">
+            <span> 화면을 터치하시면 주문이 시작됩니다. </span>
+          </div>
+        </button>
+      </section>
+    </main>
+  </body>
 </html>
