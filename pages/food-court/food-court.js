@@ -182,21 +182,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (modal) modal.style.display = "flex";
 
-                if (modalCancelBtn) {
-                    modalCancelBtn.addEventListener("click", () => {
-                        if (selectedProduct) {
-                            for (const key in orderData) {
-                                if (orderData[key].name === selectedProduct.name) {
-                                    delete orderData[key];
-                                }
-                            }
-                            updateOrderUI();
-                        }
 
-                        if (modal) modal.style.display = "none";
-                        selectedProduct = null;
-                    });
-                }
+                modalCancelBtn.addEventListener("click", () => {
+                    console.log("취소.,");
+                    if (selectedProduct) {
+                        for (const key in orderData) {
+                            if (orderData[key].name === selectedProduct.name) {
+                                delete orderData[key];
+                            }
+                        }
+                        updateOrderUI();
+                    }
+
+                    if (modal) modal.style.display = "none";
+                    selectedProduct = null;
+                });
+
 
                 // [선택 완료 버튼] 선택한 옵션 정보와 함께 장바구니 및 스토리지 저장
                 if (modalConfirmBtn) {
@@ -226,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         if (modal) modal.style.display = "none";
                         selectedProduct = null;
+                        window.location.href = "index-orderlist.html";
                     });
                 }
 
@@ -251,6 +253,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // [취소 버튼] 모달 닫기
+    if (modalCancelBtn) {
+        modalCancelBtn.addEventListener("click", () => {
+            if (modal) {
+                modal.style.display = "none";
+            }
+            selectedProduct = null;
+        });
+    }
+
     // 전체 취소(전체삭제) 버튼 클릭 시 객체 삭제 및 초기화
     if (cartClearBtn) {
         cartClearBtn.addEventListener("click", () => {
@@ -261,9 +273,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 주문하기 버튼 클릭 시 이벤트 (필요 시 연동)
+    // [주문하기 버튼] 클릭 시 모달 열기 요청 반영
     if (orderSubmitBtn) {
         orderSubmitBtn.addEventListener("click", () => {
             if (orderSubmitBtn.hasAttribute("disabled")) return;
+
+            // 주문하기 버튼 클릭 시 모달 띄우기 (만약 주문 관련 모달 창이 동일한 ID를 쓴다면 아래와 같이 연동)
+            if (modal) {
+                modal.style.display = "flex";
+            } else {
+                alert("주문이 완료되었습니다!");
+            }
         });
     }
 

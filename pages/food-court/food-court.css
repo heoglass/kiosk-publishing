@@ -11,6 +11,12 @@
 
 }
 
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+
 .divider {
   display: block;
   width: 100%;
@@ -46,6 +52,7 @@
   position: relative;
   top: 144px;
   padding-top: 0;
+  padding-bottom: 200px;
 }
 
 .foodcourt-container .foodcourt .foodcourt__visual {
@@ -500,3 +507,66 @@
   font-weight: 700;
   color: #fff;
 }
+
+.court--span {
+  display: block;
+  font-size: 38px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+#modal-points-phone .modal-body-court {
+  padding: 100px 60px;
+}
+
+.modal-buttons-court {
+
+  gap: 30px;
+}
+
+.modal-buttons-court>button {
+  display: inline-block;
+  width: calc(100% / 2);
+}
+
+.modal-buttons-court .modal-btn--cancel {
+  background: #fff;
+  color: #000;
+  border: 3px solid rgba(204, 204, 204, 1);
+}
+
+#modal-card-loading {
+  box-sizing: border-box;
+  width: 840px;
+  max-width: calc(100% - 120px);
+  max-height: calc(100dvh - 120px);
+  margin: auto;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 24px;
+  background: #fff;
+  color: #000;
+}
+
+.modal--payment {
+  box-sizing: border-box;
+  width: min(500px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  text-align: center;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 25%);
+}
+
+.modal--payment .modal-body {
+  padding: 100px 56px;
+}
+
+.payment-status-description {}

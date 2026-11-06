@@ -18,6 +18,7 @@
   box-sizing: border-box;
   font-family: "Pretendard";
 }
+
 :root {
   --font-80-size: 80px;
   --font-60-size: 60px;
@@ -28,6 +29,7 @@
   --font-500-weight: 600;
   --font-400-weight: 400;
 }
+
 /* reset 스타일 */
 button {
   cursor: pointer;
@@ -224,7 +226,7 @@ ol {
   padding: 40px 60px 0;
 }
 
-.menu-tab > button {
+.menu-tab>button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -239,7 +241,7 @@ ol {
   font: inherit;
 }
 
-.menu-tab > button > span {
+.menu-tab>button>span {
   font-size: 44px;
 
   font-weight: 500;
@@ -309,7 +311,7 @@ ol {
   gap: 12px;
 }
 
-.cart-quantity > button {
+.cart-quantity>button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -330,7 +332,7 @@ ol {
   height: 60px;
 }
 
-.cart-quantity > button:disabled {
+.cart-quantity>button:disabled {
   cursor: default;
 }
 
@@ -386,7 +388,7 @@ ol {
   padding: 24px 60px;
 }
 
-.order-bar > button {
+.order-bar>button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -404,11 +406,11 @@ ol {
   cursor: pointer;
 }
 
-.order-bar > .cart-clear {
+.order-bar>.cart-clear {
   flex: 0 0 230px;
 }
 
-.order-bar > .order-submit {
+.order-bar>.order-submit {
   flex: 1;
   min-width: 0;
   gap: 12px;
@@ -427,7 +429,7 @@ ol {
   font-variant-numeric: tabular-nums;
 }
 
-.order-bar > button:disabled {
+.order-bar>button:disabled {
   cursor: default;
 }
 
@@ -858,7 +860,7 @@ body.modal-open {
   padding: 24px 0;
 }
 
-#modal-card-payment .card-payment-summary-row + .card-payment-summary-row {
+#modal-card-payment .card-payment-summary-row+.card-payment-summary-row {
   border-top: 1px solid #d9d9d9;
 }
 
@@ -927,11 +929,12 @@ body.modal-open {
 }
 
 /* 설명 */
-.modal--payment-status .payment-status-description {
+.modal--payment-status .payment-status-description,
+.modal--payment .payment-status-description {
   width: 100%;
   margin: 16px 0 0;
 
-  color: #444;
+  color: #000;
   font-size: 44px;
   font-weight: 500;
 }
@@ -979,12 +982,10 @@ body.modal-open {
 }
 
 /* 적립 안내 / 번호 입력 / 적립 완료 / 영수증 공통 */
-:is(
-    #modal-points-prompt,
-    #modal-points-phone,
-    #modal-points-complete,
-    #modal-receipt
-  ) {
+:is(#modal-points-prompt,
+  #modal-points-phone,
+  #modal-points-complete,
+  #modal-receipt) {
   box-sizing: border-box;
   width: 840px;
   max-width: calc(100% - 120px);
@@ -1002,12 +1003,10 @@ body.modal-open {
   color: #000;
 }
 
-:is(
-    #modal-points-prompt,
-    #modal-points-phone,
-    #modal-points-complete,
-    #modal-receipt
-  )::backdrop {
+:is(#modal-points-prompt,
+  #modal-points-phone,
+  #modal-points-complete,
+  #modal-receipt)::backdrop {
   background: rgb(0 0 0 / 60%);
 }
 
@@ -1033,9 +1032,7 @@ body.modal-open {
   gap: 24px;
 }
 
-:is(#modal-points-prompt, #modal-receipt)
-  .points-prompt-actions
-  > :is(button, a) {
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions> :is(button, a) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1140,6 +1137,7 @@ body.modal-open {
 
   touch-action: manipulation;
 }
+
 .points-keypad button:active {
   background-color: #f2f2f2;
 }
@@ -1372,4 +1370,25 @@ body.modal-open {
 
 .experience-complete .complete-button-secondary {
   background: #555;
+}
+
+/* 스피너 회전 애니메이션 */
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 6px solid #e0e0e0;
+  border-top: 6px solid #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 74px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
