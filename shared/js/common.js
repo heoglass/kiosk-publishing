@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!startScreen || startScreen.hidden) return;
 
-    window.location.href = "../main/index.html";
+    window.location.href = "../../index.html";
   });
 
   // 메인 화면에서 카테고리 클릭시 헤더에 해당 카테고리명 노출

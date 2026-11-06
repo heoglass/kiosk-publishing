@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menu: "./menu.html",
     options: "./options.html",
     review: "./review.html",
-    main: "../main/index.html",
+    main: "../../index.html",
   };
   const formatPrice = (price) => `${price.toLocaleString("ko-KR")}원`;
   const moveTo = (path) => {
