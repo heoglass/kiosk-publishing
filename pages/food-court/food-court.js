@@ -264,11 +264,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (orderSubmitBtn) {
         orderSubmitBtn.addEventListener("click", () => {
             if (orderSubmitBtn.hasAttribute("disabled")) return;
-            alert("주문이 완료되었습니다!");
-            // 주문 완료 후 초기화가 필요하다면 아래 주석 해제
-            // orderData = {};
-            // sessionStorage.removeItem(STORAGE_KEY);
-            // updateOrderUI();
         });
     }
 

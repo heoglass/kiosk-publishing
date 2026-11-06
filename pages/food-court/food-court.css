@@ -23,6 +23,7 @@
   box-shadow: none;
   white-space: nowrap;
   padding: 60px 0;
+  box-shadow: 0px 0px 42.1px 0px rgba(101, 0, 0, 1);
 }
 
 .category-title-area {
@@ -71,17 +72,15 @@
 }
 
 .foodcourt .foodcourt__section .foodcourt__nav {
-  margin: 32px 60px 0;
+  /* margin: 40px 60px 0; */
 }
 
 .foodcourt .foodcourt__section .foodcourt__nav .menu-list {
   display: flex;
   gap: 18px;
   justify-content: flex-start;
-  overflow-x: auto;
-  overflow-y: hidden;
+  padding: 40px 60px 0;
   scrollbar-width: none;
-  padding: 9px 0;
 }
 
 .foodcourt .foodcourt__section .foodcourt__nav .menu-list::-webkit-scrollbar {
@@ -333,7 +332,6 @@
 /* index-orderlist.html */
 /* 주문 내역 영역 컨테이너 */
 .foodcourt__section {
-  padding: 20px 16px;
   background-color: #f8f9fa;
 }
 
@@ -473,4 +471,32 @@
   padding-top: 8px;
   font-size: var(--font-44-size);
   font-weight: 400;
+}
+
+/* payment-step1.html */
+.foodcourt-dimed {
+  position: relative;
+}
+
+.foodcourt-dimed::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.modal--payment {
+  z-index: 999;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.modal-title-step {
+  font-size: var(--font-60-size);
+  font-weight: 700;
+  color: #fff;
 }
