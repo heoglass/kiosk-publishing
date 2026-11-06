@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const PAGES = {
     start: "./index.html",
-    menu: "./menu.html",
-    options: "./options.html",
-    review: "./review.html",
+    menu: "./cafe_01.html",
+    options: "./cafe_02.html",
+    review: "./cafe_03.html",
     main: "../../index.html",
   };
   const formatPrice = (price) => `${price.toLocaleString("ko-KR")}원`;
