@@ -1,9 +1,258 @@
-<!-- 
- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인 화면</title>
+    <link rel="stylesheet" href="./shared/css/common.css" />
+    <script type="text/javascript" src="./shared/js/common.js"></script>
+    <script type="text/javascript" src="./shared/js/main.js"></script>
+    <link rel="stylesheet" href="./shared/css/main.css" />
+  </head>
+  <body>
+    <div class="kiosk-main">
+      <header id="main-header">
+        <p class="kiosk-title">키오스크 체험학습</p>
 
+        <div class="header-right">
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+          <p class="header-sound-text main-sound-text">소리끄기</p>
+        </div>
+      </header>
 
+      <main class="main-content">
+        <!-- 메인 이미지 -->
+        <div class="main-visual-image">
+          <img
+            src="../../shared/images/main/main-visual.png"
+            alt="키오스크를 이용하는 모습"
+          />
+        </div>
 
+        <section class="main-category-area" aria-label="체험 카테고리">
+          <nav class="main-tab" aria-label="메인 탭">
+            <button type="button" data-category="food" aria-pressed="true">
+              <span>음료/음식</span>
+            </button>
+            <button type="button" data-category="public" aria-pressed="false">
+              <span>공공/병원/은행</span>
+            </button>
+            <button type="button" data-category="travel" aria-pressed="false">
+              <span>교통/여행</span>
+            </button>
+            <button type="button" data-category="life" aria-pressed="false">
+              <span>문화</span>
+            </button>
+          </nav>
 
+          <div class="main-category-content">
+            <!-- 음료 / 음식 -->
+            <div class="main-category-panel" data-category="food">
+              <div class="main-category-grid">
+                <button type="button" id="cafe" class="main-category-button">
+                  <img
+                    src="../../shared/images/main/icon-cafe.png"
+                    alt="카페 아이콘"
+                  />
+                  <span>카페</span>
+                </button>
 
+                <button
+                  type="button"
+                  id="fast-food"
+                  class="main-category-button"
+                >
+                  <img
+                    src="../../shared/images/main/icon-fast-food.png"
+                    alt="패스트 푸드 아이콘"
+                  />
+                  <span>패스트 푸드</span>
+                </button>
 
--->
+                <button
+                  type="button"
+                  id="food-court"
+                  class="main-category-button"
+                >
+                  <img
+                    src="../../shared/images/main/icon-food-court.png"
+                    alt="푸드 코트 아이콘"
+                  />
+                  <span>푸드 코트</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="table-order"
+                  class="main-category-button"
+                >
+                  <img
+                    src="../../shared/images/main/icon-table-order.png"
+                    alt="테이블 오더 아이콘"
+                  />
+                  <span>테이블 오더</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="table-pay"
+                  class="main-category-button"
+                >
+                  <img
+                    src="../../shared/images/main/icon-table-pay.png"
+                    alt="테이블 결제 아이콘"
+                  />
+                  <span>테이블 결제</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="catch-table"
+                  class="main-category-button"
+                >
+                  <img
+                    src="../../shared/images/main/icon-catch-table.png"
+                    alt="캐치테이블 아이콘"
+                  />
+                  <span>캐치테이블</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 공공 / 병원 / 은행 -->
+            <div class="main-category-panel" data-category="public" hidden>
+              <div class="main-category-grid">
+                <button
+                  type="button"
+                  id="civil-service"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-civil-service.png"
+                    alt="민원서류발급 아이콘"
+                  /> -->
+                  <span>민원서류발급</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="hospital"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-hospital.png"
+                    alt="진료발급기 아이콘"
+                  /> -->
+                  <span>진료발급기</span>
+                </button>
+
+                <button type="button" id="atm" class="main-category-button">
+                  <!-- <img src="../../shared/images/main/icon-atm.png" alt="atm 아이콘" /> -->
+                  <span>은행 ATM</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 교통 / 여행 -->
+            <div class="main-category-panel" data-category="travel" hidden>
+              <div class="main-category-grid">
+                <button
+                  type="button"
+                  id="express-bus"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-express-bus.png"
+                    alt="고속버스 아이콘"
+                  /> -->
+                  <span>고속/시외버스</span>
+                </button>
+
+                <button type="button" id="ktx" class="main-category-button">
+                  <!-- <img src="../../shared/images/main/icon-ktx.png" alt="기차 아이콘" /> -->
+                  <span>기차/KTX</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="airport-checkin"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-airport-checkin.png"
+                    alt="공항 체크인 아이콘"
+                  /> -->
+                  <span>공항 체크인</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 문화 / 생활 -->
+            <div class="main-category-panel" data-category="life" hidden>
+              <div class="main-category-grid">
+                <button type="button" id="cinema" class="main-category-button">
+                  <!-- <img src="../../shared/images/main/icon-cinema.png" alt="영화관 아이콘" /> -->
+                  <span>영화관</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="self-checkout"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-self-checkout.png"
+                    alt="마트 셀프계산 아이콘"
+                  /> -->
+                  <span>마트 셀프계산</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="self-gas"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-self-gas.png"
+                    alt="셀프 주유 아이콘"
+                  /> -->
+                  <span>셀프 주유</span>
+                </button>
+
+                <button type="button" id="parking" class="main-category-button">
+                  <!-- <img src="../../shared/images/main/icon-parking.png" alt="주차 정산 아이콘" /> -->
+                  <span>주차정산</span>
+                </button>
+
+                <button type="button" id="parcel" class="main-category-button">
+                  <!-- <img src="../../shared/images/main/icon-parcel.png" alt="택배 아이콘" /> -->
+                  <span>편의점 택배</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="unmanned-store"
+                  class="main-category-button"
+                >
+                  <!-- <img
+                    src="../../shared/images/main/icon-unmanned-store.png"
+                    alt="무인 매장 아이콘"
+                  /> -->
+                  <span>무인 매장</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <p>체험 학습 프로그램은 실제와 다소 차이가 있을 수 있습니다</p>
+      </footer>
+    </div>
+  </body>
+</html>

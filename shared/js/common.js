@@ -23,9 +23,9 @@ const pageRoutes = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  // ----------------------------------------------------//
   // ------------------ category-header -----------------//
-  // ----------------------------------------------------//
+
+  // 카테고리 내 화면 메인인 경우 뒤로가기 눌렀을 때 키오스크 메인 화면으로 이동
   const headerBack = document.getElementById("header-back");
 
   if (!headerBack) return;
@@ -35,9 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!startScreen || startScreen.hidden) return;
 
-    window.location.href = "../main/index.html";
+    window.location.href = "../../index.html";
   });
 
+  // 메인 화면에서 카테고리 클릭시 헤더에 해당 카테고리명 노출
   const headerTitle = document.getElementById("header-title");
 
   if (headerTitle) {
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     headerTitle.textContent = currentRoute?.[0] ?? sharedRoute?.[0] ?? "";
   }
 
+  // 주문 완료 화면, 체험 완료 화면 이동시 이전 체험 했던 카테고리명 헤더에 노출
   function goToCompletePage(path) {
     const currentUrl = new URL(window.location.href);
     const currentFolder = currentUrl.pathname.split("/").at(-2);

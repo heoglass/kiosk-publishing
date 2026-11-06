@@ -46,10 +46,15 @@
       <section
         id="screen-options"
         class="cafe-screen"
-        aria-labelledby="option-title"
+        aria-labelledby="option-title-coffee-01"
       >
         <!-- 상단 상품 안내 -->
-        <div class="option-product">
+        <div
+          class="option-product"
+          data-menu-id="coffee-01"
+          data-price="2000"
+          data-option-type="1"
+        >
           <img
             class="option-product-image"
             alt="아이스 아메리카노"
@@ -59,7 +64,78 @@
           <div class="option-product-text">
             <p class="option-product-name">아이스 아메리카노</p>
 
-            <h2 id="option-title" class="option-title">
+            <h2 id="option-title-coffee-01" class="option-title">
+              선택하신 상품의 옵션을<br />
+              선택해주세요.
+            </h2>
+
+            <p class="option-product-description" hidden=""></p>
+          </div>
+        </div>
+        <div
+          class="option-product"
+          data-menu-id="coffee-02"
+          data-price="2000"
+          data-option-type="1"
+          hidden=""
+          style="display: none"
+        >
+          <img
+            class="option-product-image"
+            alt="아메리카노(HOT)"
+            src="../../shared/images/cafe/coffe-01.png"
+          />
+
+          <div class="option-product-text">
+            <p class="option-product-name">아메리카노(HOT)</p>
+
+            <h2 id="option-title-coffee-02" class="option-title">
+              선택하신 상품의 옵션을<br />
+              선택해주세요.
+            </h2>
+
+            <p class="option-product-description" hidden=""></p>
+          </div>
+        </div>
+        <div
+          class="option-product"
+          data-menu-id="coffee-04"
+          data-price="3200"
+          data-option-type="2"
+          hidden=""
+          style="display: none"
+        >
+          <img
+            class="option-product-image"
+            alt="카페라떼"
+            src="../../shared/images/cafe/coffe-01.png"
+          />
+
+          <div class="option-product-text">
+            <p class="option-product-name">카페라떼</p>
+
+            <h2 id="option-title-coffee-04" class="option-title">
+              선택하신 상품의 옵션을<br />
+              선택해주세요.
+            </h2>
+
+            <p class="option-product-description" hidden=""></p>
+          </div>
+        </div>
+        <div
+          class="option-product"
+          data-menu-id="coffee-07"
+          data-price="4000"
+          data-option-type="2"
+          hidden=""
+          style="display: none"
+        >
+          <img class="option-product-image" alt="카페모카" hidden="" />
+
+          <div class="option-product-text">
+            <p class="option-product-name">카페모카</p>
+
+            <h2 id="option-title-coffee-07" class="option-title">
               선택하신 상품의 옵션을<br />
               선택해주세요.
             </h2>
@@ -69,7 +145,7 @@
         </div>
 
         <form id="option-form" data-price="2000">
-          <div class="option-groups">
+          <div class="option-groups" data-option-type="1">
             <!-- 퍼블리싱용 고정 옵션 예시 -->
             <fieldset class="option-group" data-group="size">
               <legend class="option-group-title">사이즈</legend>
@@ -130,6 +206,97 @@
                     data-price="0"
                   />
                   <span class="option-choice-label">물양 적게</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div
+            class="option-groups"
+            data-option-type="2"
+            hidden=""
+            style="display: none"
+          >
+            <!-- 옵션 2: 카페라떼 / 카페모카 -->
+            <fieldset class="option-group" data-group="temperature" disabled="">
+              <legend class="option-group-title">종류</legend>
+              <div class="option-choices">
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="temperature"
+                    value="hot"
+                    data-price="0"
+                    checked=""
+                  />
+                  <span class="option-choice-label">HOT</span>
+                  <span class="option-choice-price">+0원</span>
+                </label>
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="temperature"
+                    value="ice"
+                    data-price="0"
+                  />
+                  <span class="option-choice-label">ICE</span>
+                  <span class="option-choice-price">+0원</span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="option-group" data-group="shot" disabled="">
+              <legend class="option-group-title">샷 추가</legend>
+              <div class="option-choices">
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="shot"
+                    value="one"
+                    data-price="500"
+                  />
+                  <span class="option-choice-label">1샷 추가</span>
+                  <span class="option-choice-price">+500원</span>
+                </label>
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="shot"
+                    value="two"
+                    data-price="1000"
+                  />
+                  <span class="option-choice-label">2샷 추가</span>
+                  <span class="option-choice-price">+1,000원</span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="option-group" data-group="cream" disabled="">
+              <legend class="option-group-title">휘핑크림</legend>
+              <div class="option-choices">
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="cream"
+                    value="none"
+                    data-price="0"
+                  />
+                  <span class="option-choice-label">빼기</span>
+                </label>
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="cream"
+                    value="less"
+                    data-price="0"
+                  />
+                  <span class="option-choice-label">적게</span>
+                </label>
+                <label class="option-choice">
+                  <input
+                    type="radio"
+                    name="cream"
+                    value="more"
+                    data-price="0"
+                  />
+                  <span class="option-choice-label">많이</span>
                 </label>
               </div>
             </fieldset>
