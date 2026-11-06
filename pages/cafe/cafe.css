@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+.category-title-area.cafe {
+  color: #7b5d40;
+}
 .menu-tab > button {
   background-color: #f4efeb;
 }

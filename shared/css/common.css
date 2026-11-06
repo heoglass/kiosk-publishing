@@ -19,11 +19,14 @@
   font-family: "Pretendard";
 }
 :root {
+  --font-80-size: 80px;
   --font-60-size: 60px;
   --font-44-size: 44px;
 
   --font-700-weight: 700;
   --font-600-weight: 600;
+  --font-500-weight: 600;
+  --font-400-weight: 400;
 }
 /* reset 스타일 */
 button {
@@ -160,11 +163,12 @@ ol {
 }
 
 .category-title-area {
+  width: 100%;
   position: absolute;
   top: 240px;
   left: 50%;
   transform: translateX(-50%);
-  color: #7b5d40;
+  color: #fff;
 }
 
 .category-title-area .category-title1 {
