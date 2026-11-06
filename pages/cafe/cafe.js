@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.setTimeout(() => {
           if (document.getElementById("modal-payment-progress")?.open)
             open("modal-payment-complete");
-        }, 1500);
+        }, 2000);
       });
     document
       .getElementById("modal-payment-progress")
