@@ -1,25 +1,25 @@
 const pageRoutes = {
-  카페: "../cafe/index.html",
-  "패스트 푸드": "../fast-food/index.html",
-  "푸드 코트": "../food-court/index.html",
-  "테이블 오더": "../table-order/index.html",
-  "테이블 결제": "../table-pay/index.html",
-  캐치테이블: "../catch-table/index.html",
+  카페: "./pages/cafe/index.html",
+  "패스트 푸드": "./pages/fast-food/index.html",
+  "푸드 코트": "./pages/food-court/index.html",
+  "테이블 오더": "./pages/table-order/index.html",
+  "테이블 결제": "./pages/table-pay/index.html",
+  캐치테이블: "./pages/catch-table/index.html",
 
-  민원서류발급: "../civil-service/index.html",
-  진료발급기: "../hospital/index.html",
-  "은행 ATM": "../atm/index.html",
+  민원서류발급: "./pages/civil-service/index.html",
+  진료발급기: "./pages/hospital/index.html",
+  "은행 ATM": "./pages/atm/index.html",
 
-  "고속/시외버스": "../express-bus/index.html",
-  "기차/KTX": "../ktx/index.html",
-  "공항 체크인": "../airport-checkin/index.html",
+  "고속/시외버스": "./pages/express-bus/index.html",
+  "기차/KTX": "./pages/ktx/index.html",
+  "공항 체크인": "./pages/airport-checkin/index.html",
 
-  영화관: "../cinema/index.html",
-  "마트 셀프계산": "../self-checkout/index.html",
-  "셀프 주유": "../self-gas/index.html",
-  주차정산: "../parking/index.html",
-  "편의점 택배": "../parcel/index.html",
-  "무인 매장": "../unmanned-store/index.html",
+  영화관: "./pages/cinema/index.html",
+  "마트 셀프계산": "./pages/self-checkout/index.html",
+  "셀프 주유": "./pages/self-gas/index.html",
+  주차정산: "./pages/parking/index.html",
+  "편의점 택배": "./pages/parcel/index.html",
+  "무인 매장": "./pages/unmanned-store/index.html",
 };
 
 document.addEventListener("DOMContentLoaded", function () {
