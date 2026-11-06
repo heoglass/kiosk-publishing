@@ -18,7 +18,13 @@
   box-sizing: border-box;
   font-family: "Pretendard";
 }
+:root {
+  --font-60-size: 60px;
+  --font-44-size: 44px;
 
+  --font-700-weight: 700;
+  --font-600-weight: 600;
+}
 /* reset 스타일 */
 button {
   cursor: pointer;
