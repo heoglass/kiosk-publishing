@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+:root {
+
+  --font-60-size: 60px;
+  --font-44-size: 44px;
+
+  --font-700-weight: 700;
+  --font-600-weight: 600;
+
+
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 24px;
+  background-color: #EEEEEE;
+}
+
 .food__btn--color {
   background: #DF3C3C;
   box-shadow: none;
@@ -319,23 +337,32 @@
   background-color: #f8f9fa;
 }
 
+.foodcourt__section.orderlist__view {
+  padding: 0;
+  background-color: #fff;
+}
+
 .orderlist__view .order__list-title {
   background: #F5F5F5;
-  height: 192px;
+  padding: 60px 0;
   font-size: 60px;
   font-weight: 700;
   text-align: center;
+}
+
+.orderlist__view .order-list-wrap {
+  padding: 60px;
 }
 
 .orderlist__view .order-list-wrap .order-item {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #D9D9D9;
-  padding-bottom: 40px;
+  padding: 40px 0;
 }
 
-.orderlist__view .order-list-wrap .order-item:last-child {
-  border-bottom: none;
+.orderlist__view .order-list-wrap .order-item:not(:has(~ .order-item)) {
+  border-bottom: unset;
 }
 
 .orderlist__view .order-list-wrap .order-item .order-item__name,
@@ -343,6 +370,15 @@
   display: flex;
   font-size: 44px;
   font-weight: 700;
+}
+
+.orderlist__view .order-list-wrap .order-item .order-count__wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 594px;
+  padding-left: 60px;
+  font-size: 44px;
+  font-weight: 600;
 }
 
 .orderlist__view .order-list-wrap .order-item__option {
@@ -354,13 +390,46 @@
   padding: 12px 16px;
 }
 
+.order-summary-wrap {
+  padding: 60px;
+}
+
+.order-summary-wrap .order-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
+
+}
+
+.order-summary-wrap .order-summary-item--total {
+  padding-bottom: 0;
+  padding-top: 40px;
+}
+
+.order-summary-wrap .order-summary-item+.order-summary-item {
+  border-top: 1px solid #f0f0f0;
+}
+
+.order-summary-wrap .order-summary-item__name,
+.order-summary-wrap .order-summary-item__value {
+  font-weight: var(--font-700-weight);
+}
+
+.order-summary-wrap .order-summary-item__value--price {
+  color: #e8420c;
+  /* 주황빛 빨강 */
+}
+
 
 /* 하단 주문 제어 버튼 바 */
-.order-bar {
+.order-bar.foodcourt__oderbar {
   display: flex;
-  gap: 8px;
-  padding: 12px 16px;
-  background-color: #fff;
+  gap: 24px;
+  padding: 40px 60px;
+  background-color: #F5F5F5;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -368,13 +437,18 @@
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
 }
 
+.foodcourt .foodcourt__oderbar>button {
+  height: 200px;
+  font-size: var(--font-60-size);
+  font-weight: var(--font-600-weight);
+  border-radius: 20px;
+}
+
 .btn-action {
   flex: 1;
   height: 56px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -395,9 +469,8 @@
   color: #fff;
 }
 
-.btn-action .sub-text {
-  font-size: 12px;
+.foodcourt .foodcourt__oderbar button>span.sub-text {
+  padding-top: 8px;
+  font-size: var(--font-44-size);
   font-weight: 400;
-  opacity: 0.85;
-  margin-top: 2px;
 }
