@@ -1,73 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>체험 완료</title>
-    <link rel="stylesheet" href="../../shared/css/common.css" />
-    <script
-      type="text/javascript"
-      src="../../shared/js/common.js"
-      defer
-    ></script>
-  </head>
-  <body>
-    <header id="category-header">
-      <div class="header-left">
-        <button
-          type="button"
-          id="header-back"
-          class="header-back"
-          aria-label="이전 화면으로"
-        >
-          <img
-            src="../../shared/images/icon/arrow-back.png"
-            class="arrow-back"
-            alt="뒤로가기 화살표"
-          />
-        </button>
 
-        <span id="header-title"></span>
-      </div>
-      <div class="header-right">
-        <img
-          src="../../shared/images/icon/sound_w.png"
-          class="header-sound"
-          alt="소리 이미지"
-        />
-        <span class="header-sound-text">소리끄기</span>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>체험 완료</title>
+  <link rel="stylesheet" href="../../shared/css/common.css" />
+  <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+</head>
 
-    <main class="complete-main experience-complete">
-      <div class="complete-main-contents">
-        <div class="complete-text-area">
-          <h1 class="complete-title">체험 완료</h1>
+<body>
+  <header id="category-header">
+    <div class="header-left">
+      <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
+        <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
+      </button>
 
-          <p class="complete-message">
-            키오스크 체험이 완료되었습니다.<br />
-            수고하셨습니다.
-          </p>
-        </div>
+      <span id="header-title"></span>
+    </div>
+    <div class="header-right">
+      <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 이미지" />
+      <span class="header-sound-text">소리끄기</span>
+    </div>
+  </header>
 
-        <img
-          src="../shared/images/experience-complete.png"
-          class="complete-experience-image"
-          alt="키오스크 체험 완료"
-        />
+  <main class="complete-main experience-complete">
+    <div class="complete-main-contents">
+      <div class="complete-text-area">
+        <h1 class="complete-title">체험 완료</h1>
+
+        <p class="complete-message">
+          키오스크 체험이 완료되었습니다.<br />
+          수고하셨습니다.
+        </p>
       </div>
 
-      <div class="complete-actions" aria-label="체험 완료 후 이동">
-        <button
-          type="button"
-          id="experience-retry"
-          class="complete-button complete-button-secondary"
-        >
-          다시하기
-        </button>
+      <img src="../shared/images/experience-complete.png" class="complete-experience-image" alt="키오스크 체험 완료" />
+    </div>
 
-        <a class="complete-button" href="../index.html"> 첫 화면으로 가기 </a>
-      </div>
-    </main>
-  </body>
+    <div class="complete-actions" aria-label="체험 완료 후 이동">
+      <button type="button" id="experience-retry" class="complete-button complete-button-secondary">
+        다시하기
+      </button>
+
+      <a class="complete-button" href="../index.html"> 첫 화면으로 가기 </a>
+    </div>
+  </main>
+  <script>
+    if (new URLSearchParams(window.location.search).get("orderImage") === "red") {
+      document.querySelector(".complete-experience-image")?.setAttribute(
+        "src",
+        "../shared/images/experience-complete-red.png"
+      );
+      document
+        .querySelector(".experience-complete .complete-button:not(.complete-button-secondary)")
+        ?.style.setProperty("background-color", "#DF3C3C");
+    }
+  </script>
+</body>
+
 </html>

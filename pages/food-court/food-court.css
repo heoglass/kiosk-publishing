@@ -7,7 +7,7 @@
 
   --font-700-weight: 700;
   --font-600-weight: 600;
-
+  --btncolor-red: #DF3C3C;
 
 }
 
@@ -568,4 +568,57 @@
   padding: 100px 56px;
 }
 
-.payment-status-description {}
+#modal-points-prompt .modal-header .modal-title {
+  margin: 0;
+  color: #fff;
+  font-size: 48px;
+}
+
+.payment-image-button {
+  margin-bottom: 36px;
+}
+
+.modal__title--complete {
+  margin-bottom: 16px;
+}
+
+#modal-points-prompt .court__btn--active,
+#modal-points-phone .court__btn--active {
+  background-color: var(--btncolor-red) !important;
+}
+
+#modal-points-phone .court__btn--active {
+  margin-top: 0px;
+}
+
+#modal-points-phone .points-skip {
+  background-color: var(--btncolor-red);
+}
+
+#modal-points-phone .points-phone-number,
+#modal-points-phone .points-phone-number:not(:placeholder-shown) {
+  border-color: #E42200;
+}
+
+#modal-points-phone .points-phone-number[value] {
+  color: #000;
+}
+
+#modal-points-phone {
+  position: fixed;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
+
+.modal-header>h2 {
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+#modal-points-phone button.points-delete {
+  background-color: #F8F8F8;
+}

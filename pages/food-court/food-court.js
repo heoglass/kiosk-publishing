@@ -105,8 +105,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 모달 제어용
     const modal = document.getElementById("option-modal");
+    const phoneModal = document.getElementById("modal-points-phone");
+    const pointsPrompt = document.getElementById("modal-points-prompt");
     const modalCancelBtn = document.getElementById("modal-cancel");
     const modalConfirmBtn = document.getElementById("modal-confirm");
+
+    if (phoneModal instanceof HTMLDialogElement) {
+        phoneModal.addEventListener("close", () => {
+            document.querySelector(".foodcourt-dimed")?.classList.remove("foodcourt-dimed");
+        });
+    }
 
     // 화면 갱신 함수
     function updateOrderUI() {
@@ -270,9 +278,53 @@ document.addEventListener("DOMContentLoaded", () => {
             if (modal) {
                 modal.style.display = "none";
             }
+            if (phoneModal) {
+                phoneModal.style.display = "none";
+                document.querySelector(".foodcourt-dimed")?.classList.remove("foodcourt-dimed");
+            }
             selectedProduct = null;
         });
     }
+
+    if (modalConfirmBtn && phoneModal) {
+        modalConfirmBtn.addEventListener("click", () => {
+            window.location.href = "index-orderlist-payment-step2.html";
+        });
+    }
+
+    const pointsNoBtn = pointsPrompt?.querySelector(".points-no");
+    const pointsYesBtn = pointsPrompt?.querySelector(".points-yes");
+
+    if (pointsNoBtn) {
+        pointsNoBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            pointsPrompt.style.display = "none";
+            document.querySelector(".foodcourt-dimed")?.classList.remove("foodcourt-dimed");
+        });
+    }
+
+    if (pointsYesBtn) {
+        pointsYesBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            const nextPage = pointsYesBtn.dataset.nextPage || "index-orderlist-payment-step6.html";
+            const nextUrl = new URL(nextPage, window.location.href);
+
+            if (
+                window.location.pathname.endsWith("/index-orderlist-payment-step9.html") &&
+                nextUrl.pathname === "/shared/order-complete.html"
+            ) {
+                nextUrl.searchParams.set("orderImage", "red");
+            }
+
+            window.location.href = nextUrl.href;
+        });
+    }
+
+    document.querySelectorAll(".points-confirm").forEach((button) => {
+        button.addEventListener("click", () => {
+            window.location.href = "index-orderlist-payment-step9.html";
+        });
+    });
 
     // 전체 취소(전체삭제) 버튼 클릭 시 객체 삭제 및 초기화
     if (cartClearBtn) {
