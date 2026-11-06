@@ -1,5 +1,3 @@
-// 퍼블리싱 확인용: 각 HTML의 고정 예시와 간단한 화면 동작만 제어합니다.
-// 새로고침하거나 다른 페이지로 이동하면 변경된 내용은 유지하지 않습니다.
 document.addEventListener("DOMContentLoaded", () => {
   const PAGES = {
     start: "./index.html",
