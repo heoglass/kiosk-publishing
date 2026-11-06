@@ -1,3 +1,5 @@
+// 퍼블리싱 확인용: 각 HTML의 고정 예시와 간단한 화면 동작만 제어합니다.
+// 새로고침하거나 다른 페이지로 이동하면 변경된 내용은 유지하지 않습니다.
 document.addEventListener("DOMContentLoaded", () => {
   const PAGES = {
     start: "./index.html",
@@ -174,13 +176,15 @@ document.addEventListener("DOMContentLoaded", () => {
     screen.querySelector(".menu-track")?.addEventListener("click", (event) => {
       const card = event.target.closest(".cafe-menu-card");
       if (!card || card.disabled) return;
-      // 옵션 상품은 고정된 옵션 예시 화면으로 이동합니다.
+      // URL로 표시할 하드코딩 상품과 옵션 종류만 구분합니다.
       if (
         ["coffee-01", "coffee-02", "coffee-04", "coffee-07"].includes(
           card.dataset.menuId
         )
       ) {
-        moveTo(PAGES.options);
+        moveTo(
+          `${PAGES.options}?menu=${encodeURIComponent(card.dataset.menuId)}`
+        );
         return;
       }
       // 나머지 상품은 현재 페이지에 예시 행을 추가하는 동작만 보여줍니다.
@@ -206,13 +210,42 @@ document.addEventListener("DOMContentLoaded", () => {
   function initOptionsDemo(screen) {
     const form = screen.querySelector("#option-form");
     if (!form) return;
+    const products = Array.from(
+      screen.querySelectorAll(".option-product[data-menu-id]")
+    );
+    const requestedId =
+      new URLSearchParams(window.location.search).get("menu") || "coffee-01";
+    const selected =
+      products.find((product) => product.dataset.menuId === requestedId) ||
+      products[0];
+    if (selected) {
+      products.forEach((product) => {
+        product.hidden = product !== selected;
+        product.style.display = product === selected ? "" : "none";
+      });
+      form.dataset.price = selected.dataset.price;
+      screen.setAttribute(
+        "aria-labelledby",
+        selected.querySelector(".option-title").id
+      );
+      screen
+        .querySelectorAll(".option-groups[data-option-type]")
+        .forEach((group) => {
+          const active =
+            group.dataset.optionType === selected.dataset.optionType;
+          group.hidden = !active;
+          group.style.display = active ? "" : "none";
+          group.querySelectorAll("fieldset").forEach((fieldset) => {
+            fieldset.disabled = !active;
+          });
+        });
+    }
     function updatePrice() {
       // 기본 금액과 추가 금액은 options.html의 data-price에서 수정합니다.
       const basePrice = Number(form.dataset.price || 0);
-      const extra = Array.from(form.querySelectorAll("input:checked")).reduce(
-        (sum, input) => sum + Number(input.dataset.price || 0),
-        0
-      );
+      const extra = Array.from(
+        form.querySelectorAll("input:checked:not(:disabled)")
+      ).reduce((sum, input) => sum + Number(input.dataset.price || 0), 0);
       screen.querySelector(".option-total").textContent = formatPrice(
         basePrice + extra
       );
