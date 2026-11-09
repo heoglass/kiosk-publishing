@@ -399,6 +399,15 @@
   background: #ff9500;
 }
 
+.order-item-options:not([hidden]) {
+  display: none;
+  margin-top: 4px;
+  color: #555;
+  font-size: 0.65em;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
 /* 주문 확인 화면 */
 #screen-review {
   display: grid;
