@@ -123,7 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (window.location.pathname.endsWith('/index-orderlist-payment-step5.html')) {
+  if (
+    window.location.pathname.endsWith('/index-orderlist-payment-step5.html') ||
+    window.location.pathname.endsWith('/index-orderlist-payment-step9.html')
+  ) {
     pointsPrompt?.querySelector('[data-modal-close]')?.addEventListener('click', () => {
       pointsPrompt.style.display = 'none';
       document.querySelector('.foodcourt-container')?.classList.remove('foodcourt-dimed');
