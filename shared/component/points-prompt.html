@@ -45,5 +45,20 @@
         </form>
       </div>
     </dialog>
+    <script>
+      document
+        .querySelector(".points-yes")
+        ?.addEventListener("click", (event) => {
+          event.preventDefault();
+          window.location.href = "./points-phone.html";
+        });
+
+      document
+        .querySelector(".points-no")
+        ?.addEventListener("click", (event) => {
+          event.preventDefault();
+          window.location.href = "./receipt.html";
+        });
+    </script>
   </body>
 </html>

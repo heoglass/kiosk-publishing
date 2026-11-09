@@ -67,5 +67,39 @@
         </button>
       </div>
     </dialog>
+    <script>
+      const phoneInput = document.querySelector("#points-phone-number");
+      const keypad = document.querySelector(".points-keypad");
+      const prefixButton = keypad?.querySelector('[data-phone-key="010"]');
+      let digits = "";
+
+      keypad?.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-phone-key]");
+        if (!button || button.disabled || !phoneInput) return;
+
+        const key = button.dataset.phoneKey;
+        const next = key === "delete" ? digits.slice(0, -1) : digits + key;
+        if (next.length > 11) return;
+
+        digits = next;
+        phoneInput.value = [
+          digits.slice(0, 3),
+          digits.slice(3, 7),
+          digits.slice(7),
+        ]
+          .filter(Boolean)
+          .join("-");
+
+        if (prefixButton) prefixButton.disabled = digits.length > 0;
+
+        if (digits.length === 11) {
+          window.location.href = "./points-complete.html";
+        }
+      });
+
+      document.querySelector(".points-skip")?.addEventListener("click", () => {
+        window.location.href = "./receipt.html";
+      });
+    </script>
   </body>
 </html>

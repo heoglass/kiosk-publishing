@@ -157,5 +157,12 @@
         </div>
       </div>
     </dialog>
+    <script>
+      document
+        .querySelector('[data-payment-method="card"]')
+        ?.addEventListener("click", () => {
+          window.location.href = "./card-payment.html";
+        });
+    </script>
   </body>
 </html>
