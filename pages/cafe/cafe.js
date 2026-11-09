@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     review: "./cafe_03.html",
     main: "../../index.html",
   };
+  const CART_KEY = "kiosk-cafe-cart";
   const formatPrice = (price) => `${price.toLocaleString("ko-KR")}원`;
+  const readPrice = (element) =>
+    Number(element.textContent.replace(/[^\d]/g, ""));
   const moveTo = (path) => {
     window.location.href = path;
   };
@@ -32,15 +35,59 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
   start?.querySelector(".category-start")?.addEventListener("click", () => {
+    saveCart([]);
     moveTo(PAGES.menu);
   });
 
   if (menu) {
     initMenuTabs(menu);
-    initCartDemo(menu);
+    initCart(menu);
   }
-  if (options) initOptionsDemo(options);
-  if (review) initReviewDemo(review);
+  if (options) initOptions(options);
+  if (review) initReview(review);
+
+  function loadCart() {
+    const saved = sessionStorage.getItem(CART_KEY);
+    if (!saved) return [];
+
+    try {
+      const cart = JSON.parse(saved);
+      return Array.isArray(cart) ? cart : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCart(cart) {
+    sessionStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  function addCartItem({ id, name, price, options = "" }) {
+    const cart = loadCart();
+    const item = cart.find(
+      (entry) =>
+        entry.id === id && entry.price === price && entry.options === options
+    );
+    if (item) item.quantity += 1;
+    else cart.push({ id, name, price, options, quantity: 1 });
+    saveCart(cart);
+  }
+
+  function updateTotals(cart, countLabel, priceLabel) {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const total = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    countLabel.textContent = `${count}개`;
+    priceLabel.textContent = formatPrice(total);
+  }
+
+  function showItemOptions(row, options) {
+    const label = row.querySelector(".order-item-options");
+    label.textContent = options;
+    label.hidden = !options;
+  }
 
   function initMenuTabs(screen) {
     const track = screen.querySelector(".menu-track");
@@ -119,62 +166,75 @@ document.addEventListener("DOMContentLoaded", () => {
     showCategory("all");
   }
 
-  function initCartDemo(screen) {
+  function initCart(screen) {
     const list = screen.querySelector(".cart-list");
     const template = screen.querySelector("#cart-demo-template");
     const clear = screen.querySelector(".cart-clear");
     const submit = screen.querySelector(".order-submit");
-    if (!list || !clear || !submit) return;
+    const countLabel = screen.querySelector(".order-count");
+    const priceLabel = screen.querySelector(".order-total");
+    let cart = [];
 
-    // HTML에 작성한 예시 행의 수량·금액 표시만 갱신합니다.
-    function updateCart() {
-      let count = 0;
-      let total = 0;
-      list.querySelectorAll(".cart-item").forEach((row) => {
-        const quantity = Number(
-          row.querySelector(".cart-quantity-value").textContent
-        );
-        const price = Number(row.dataset.price);
-        row.querySelector(".cart-item-price").textContent = formatPrice(
-          price * quantity
-        );
-        row.querySelector(".cart-decrease").disabled = quantity <= 1;
-        const image = row.querySelector(".cart-minus-image");
-        if (image)
-          image.src = `../../shared/images/icon/minus${
-            quantity <= 1 ? "-disabled" : ""
-          }.png`;
-        count += quantity;
-        total += price * quantity;
+    function updateCartSummary() {
+      updateTotals(cart, countLabel, priceLabel);
+      clear.disabled = submit.disabled = cart.length === 0;
+    }
+
+    function updateCartRow(row, item) {
+      row.querySelector(".cart-quantity-value").textContent = item.quantity;
+      row.querySelector(".cart-item-price").textContent = formatPrice(
+        item.price * item.quantity
+      );
+      const decrease = row.querySelector(".cart-decrease");
+      decrease.disabled = item.quantity <= 1;
+      decrease.querySelector(
+        ".cart-minus-image"
+      ).src = `../../shared/images/icon/minus${
+        decrease.disabled ? "-disabled" : ""
+      }.png`;
+    }
+
+    function renderCart() {
+      cart = loadCart();
+      const rows = cart.map((item) => {
+        const row = template.content.firstElementChild.cloneNode(true);
+        row.querySelector(".cart-item-label").textContent = item.name;
+        row
+          .querySelector(".cart-remove")
+          .setAttribute("aria-label", `${item.name} 삭제`);
+        showItemOptions(row, item.options);
+        updateCartRow(row, item);
+        return row;
       });
-      screen.querySelector(".order-count").textContent = `${count}개`;
-      screen.querySelector(".order-total").textContent = formatPrice(total);
-      clear.disabled = count === 0;
-      submit.disabled = count === 0;
+      list.replaceChildren(...rows);
+      updateCartSummary();
     }
 
     list.addEventListener("click", (event) => {
       const button = event.target.closest("button");
       const row = button?.closest(".cart-item");
       if (!row || button.disabled) return;
-      const output = row.querySelector(".cart-quantity-value");
-      const quantity = Number(output.textContent);
-      if (button.matches(".cart-increase")) output.textContent = quantity + 1;
-      else if (button.matches(".cart-decrease"))
-        output.textContent = Math.max(1, quantity - 1);
-      else if (button.matches(".cart-remove")) row.remove();
-      updateCart();
+      const index = Array.from(list.children).indexOf(row);
+      const item = cart[index];
+      if (button.matches(".cart-remove")) {
+        cart.splice(index, 1);
+        row.remove();
+      } else {
+        item.quantity += button.matches(".cart-increase") ? 1 : -1;
+        updateCartRow(row, item);
+      }
+      saveCart(cart);
+      updateCartSummary();
     });
     clear.addEventListener("click", () => {
-      list.replaceChildren();
-      updateCart();
+      saveCart([]);
+      renderCart();
     });
     submit.addEventListener("click", () => moveTo(PAGES.review));
 
     screen.querySelector(".menu-track")?.addEventListener("click", (event) => {
       const card = event.target.closest(".cafe-menu-card");
       if (!card || card.disabled) return;
-      // URL로 표시할 하드코딩 상품과 옵션 종류만 구분합니다.
       if (
         ["coffee-01", "coffee-02", "coffee-04", "coffee-07"].includes(
           card.dataset.menuId
@@ -185,27 +245,20 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         return;
       }
-      // 나머지 상품은 현재 페이지에 예시 행을 추가하는 동작만 보여줍니다.
-      if (!template?.content.firstElementChild) return;
-      const row = template.content.firstElementChild.cloneNode(true);
-      row.querySelector(".cart-item-name").textContent =
-        card.querySelector(".menu-card-name").textContent;
-      row
-        .querySelector(".cart-remove")
-        .setAttribute(
-          "aria-label",
-          `${row.querySelector(".cart-item-name").textContent} 삭제`
-        );
-      row.dataset.price = card
-        .querySelector(".menu-card-price")
-        .textContent.replace(/[^\d]/g, "");
-      list.append(row);
-      updateCart();
+      addCartItem({
+        id: card.dataset.menuId,
+        name: card.querySelector(".menu-card-name").textContent.trim(),
+        price: readPrice(card.querySelector(".menu-card-price")),
+      });
+      renderCart();
     });
-    updateCart();
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) renderCart();
+    });
+    renderCart();
   }
 
-  function initOptionsDemo(screen) {
+  function initOptions(screen) {
     const form = screen.querySelector("#option-form");
     if (!form) return;
     const products = Array.from(
@@ -238,14 +291,20 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         });
     }
+    const optionTotal = screen.querySelector(".option-total");
+    const submit = form.querySelector(".option-submit");
+    function selectedOptions() {
+      return Array.from(form.querySelectorAll("input:checked:not(:disabled)"));
+    }
+    function priceWithOptions(inputs) {
+      return inputs.reduce(
+        (total, input) => total + Number(input.dataset.price || 0),
+        Number(form.dataset.price)
+      );
+    }
     function updatePrice() {
-      // 기본 금액과 추가 금액은 cafe_02.html의 data-price에서 수정합니다.
-      const basePrice = Number(form.dataset.price || 0);
-      const extra = Array.from(
-        form.querySelectorAll("input:checked:not(:disabled)")
-      ).reduce((sum, input) => sum + Number(input.dataset.price || 0), 0);
-      screen.querySelector(".option-total").textContent = formatPrice(
-        basePrice + extra
+      optionTotal.textContent = formatPrice(
+        priceWithOptions(selectedOptions())
       );
     }
     form.addEventListener("change", updatePrice);
@@ -254,47 +313,77 @@ document.addEventListener("DOMContentLoaded", () => {
       ?.addEventListener("click", () => moveTo(PAGES.menu));
     form.addEventListener("submit", (event) => {
       event.preventDefault();
+      if (!selected || submit.disabled) return;
+
+      const inputs = selectedOptions();
+      addCartItem({
+        id: selected.dataset.menuId,
+        name: selected.querySelector(".option-product-name").textContent.trim(),
+        price: priceWithOptions(inputs),
+        options: inputs
+          .map((input) =>
+            input
+              .closest(".option-choice")
+              .querySelector(".option-choice-label")
+              .textContent.trim()
+          )
+          .join(" · "),
+      });
+      submit.disabled = true;
       moveTo(PAGES.menu);
+    });
+    window.addEventListener("pageshow", (event) => {
+      if (!event.persisted) return;
+      submit.disabled = false;
+      updatePrice();
     });
     updatePrice();
   }
 
-  function initReviewDemo(screen) {
-    // 고정 예시의 수량과 금액을 기준으로 합계를 계산합니다.
-    const rows = screen.querySelectorAll(".review-item");
-    const readNumber = (element) =>
-      Number(element?.textContent.replace(/[^\d]/g, "") || 0);
+  function initReview(screen) {
+    const list = screen.querySelector(".review-list");
+    const template = screen.querySelector("#review-item-template");
+    const countLabel = screen.querySelector(".review-total-count");
+    const priceLabel = screen.querySelector(".review-total-price");
 
-    rows.forEach((row) => {
-      const quantity =
-        readNumber(row.querySelector(".review-item-quantity")) || 1;
-      row.dataset.unitPrice =
-        readNumber(row.querySelector(".review-item-price")) / quantity;
-    });
-
-    function updateReviewTotal() {
-      if (!rows.length) return;
-      let quantity = 0;
-      let total = 0;
-      rows.forEach((row) => {
-        const count = readNumber(row.querySelector(".review-item-quantity"));
-        const price = Number(row.dataset.unitPrice) * count;
-        row.querySelector(".review-item-price").textContent =
-          formatPrice(price);
-        quantity += count;
-        total += price;
+    function renderReview() {
+      const cart = loadCart();
+      const rows = cart.map((item) => {
+        const row = template.content.firstElementChild.cloneNode(true);
+        row.querySelector(".review-item-name").textContent = item.name;
+        row.querySelector(
+          ".review-item-quantity"
+        ).textContent = `${item.quantity}개`;
+        row.querySelector(".review-item-price").textContent = formatPrice(
+          item.price * item.quantity
+        );
+        showItemOptions(row, item.options);
+        return row;
       });
-      // 주문 확인 화면의 합계를 갱신합니다.
-      const countLabel = screen.querySelector(".review-total-count");
-      const priceLabel = screen.querySelector(".review-total-price");
-      if (countLabel) countLabel.textContent = `${quantity}개`;
-      if (priceLabel) priceLabel.textContent = formatPrice(total);
+      list.replaceChildren(...rows);
+      updateTotals(cart, countLabel, priceLabel);
     }
 
-    updateReviewTotal();
+    screen
+      .querySelector(".recommend-list")
+      .addEventListener("click", (event) => {
+        const button = event.target.closest(".recommend-button");
+        if (!button || button.disabled) return;
+
+        addCartItem({
+          id: button.dataset.menuId,
+          name: button.querySelector(".recommend-name").textContent.trim(),
+          price: readPrice(button.querySelector(".recommend-price")),
+        });
+        renderReview();
+      });
     screen.querySelector(".review-back")?.addEventListener("click", () => {
       moveTo(PAGES.menu);
     });
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) renderReview();
+    });
+    renderReview();
     initPaymentFlow(screen);
   }
 
@@ -332,13 +421,20 @@ document.addEventListener("DOMContentLoaded", () => {
     screen
       .querySelector(".review-bottom")
       .addEventListener("click", (event) => {
-        if (!event.target.closest(".review-dine-in, .review-takeout")) return;
+        const button = event.target.closest(".review-dine-in, .review-takeout");
+        if (!button || button.disabled) return;
 
         dialogs.querySelector(".card-payment-count").textContent =
           screen.querySelector(".review-total-count").textContent;
         dialogs.querySelector(".card-payment-total").textContent =
           screen.querySelector(".review-total-price").textContent;
         showDialog("modal-payment");
+      });
+
+    dialogs
+      .querySelector("#modal-receipt")
+      .addEventListener("click", (event) => {
+        if (event.target.closest(".receipt-choice")) saveCart([]);
       });
 
     progress.addEventListener("cancel", (event) => event.preventDefault());

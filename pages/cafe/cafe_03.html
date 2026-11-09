@@ -53,6 +53,16 @@
           <h2 id="review-title">주문 내역을 확인해주세요.</h2>
 
           <ul class="review-list"></ul>
+          <template id="review-item-template">
+            <li class="review-item">
+              <div class="review-item-info">
+                <span class="review-item-name"></span>
+                <small class="order-item-options" hidden></small>
+              </div>
+              <span class="review-item-quantity"></span>
+              <span class="review-item-price"></span>
+            </li>
+          </template>
 
           <div class="dividing-line"></div>
 
@@ -61,12 +71,12 @@
             <dl class="review-totals">
               <div class="review-total-row">
                 <dt>총 수량</dt>
-                <dd class="review-total-count">2개</dd>
+                <dd class="review-total-count">0개</dd>
               </div>
 
               <div class="review-total-row">
                 <dt>총 결제금액</dt>
-                <dd class="review-total-price">5,200원</dd>
+                <dd class="review-total-price">0원</dd>
               </div>
             </dl>
           </div>
@@ -79,21 +89,33 @@
 
             <ul class="recommend-list">
               <li class="recommend-item">
-                <button type="button" class="recommend-button">
+                <button
+                  type="button"
+                  class="recommend-button"
+                  data-menu-id="desert-01"
+                >
                   <img src="../../shared/images/cafe/bagle.png" alt="" />
                   <span class="recommend-name">어니언 베이글</span>
                   <span class="recommend-price">2,000원</span>
                 </button>
               </li>
               <li class="recommend-item">
-                <button type="button" class="recommend-button">
+                <button
+                  type="button"
+                  class="recommend-button"
+                  data-menu-id="desert-02"
+                >
                   <img src="../../shared/images/cafe/muffin.png" alt="" />
                   <span class="recommend-name">햄치즈 머핀</span>
                   <span class="recommend-price">3,200원</span>
                 </button>
               </li>
               <li class="recommend-item">
-                <button type="button" class="recommend-button">
+                <button
+                  type="button"
+                  class="recommend-button"
+                  data-menu-id="desert-03"
+                >
                   <img src="../../shared/images/cafe/toast.png" alt="" />
                   <span class="recommend-name">프렌치 토스트</span>
                   <span class="recommend-price">2,000원</span>
@@ -339,12 +361,7 @@
         aria-describedby="payment-progress-description"
       >
         <div class="modal-body">
-          <img
-            src="../../shared/images/icon/icon-loading.png"
-            class="payment-spinner"
-            aria-hidden="true"
-            alt=""
-          />
+          <span class="payment-spinner" aria-hidden="true"></span>
 
           <h2 id="payment-progress-title" class="modal-title">
             결제 진행중입니다
