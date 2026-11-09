@@ -566,13 +566,17 @@
 }
 
 .modal--payment .modal-body {
-  padding: 100px 56px;
+  padding: 100px 0;
 }
 
 #modal-points-prompt .modal-header .modal-title {
   margin: 0;
   color: #fff;
   font-size: 48px;
+}
+
+#modal-points-phone .points-phone-number-b:not(:placeholder-shown) {
+  color: #000;
 }
 
 .payment-image-button {

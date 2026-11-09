@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
   const backUrlMap = {
     'index-order': 'index.html',
-    index: 'index.html',
+    'index': '/index.html',
     'index-orderlist': 'index-order.html',
   };
 
@@ -114,6 +114,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const pointsPrompt = document.getElementById('modal-points-prompt');
   const modalCancelBtn = document.getElementById('modal-cancel');
   const modalConfirmBtn = document.getElementById('modal-confirm');
+
+  if (window.location.pathname.endsWith('/index-orderlist-payment-step2.html')) {
+    const cardPaymentModal = document.getElementById('modal-card-payment');
+    cardPaymentModal?.querySelector('[data-modal-close]')?.addEventListener('click', () => {
+      cardPaymentModal.style.display = 'none';
+      document.querySelector('.foodcourt-container')?.classList.remove('foodcourt-dimed');
+    });
+  }
+
+  if (window.location.pathname.endsWith('/index-orderlist-payment-step5.html')) {
+    pointsPrompt?.querySelector('[data-modal-close]')?.addEventListener('click', () => {
+      pointsPrompt.style.display = 'none';
+      document.querySelector('.foodcourt-container')?.classList.remove('foodcourt-dimed');
+    });
+  }
+
+  const isPhoneEntryStep = window.location.pathname.endsWith('/index-orderlist-payment-step1.html');
+  if (isPhoneEntryStep) {
+    const phoneInput = document.getElementById('points-phone-number');
+
+    if (phoneInput instanceof HTMLInputElement && modalConfirmBtn instanceof HTMLButtonElement) {
+      let phoneDigits = '';
+
+      const updatePhoneInput = () => {
+        phoneInput.value = phoneDigits;
+        modalConfirmBtn.disabled = phoneDigits.length !== 11;
+      };
+
+      phoneInput.addEventListener('input', () => {
+        phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+        updatePhoneInput();
+      });
+
+      document.querySelectorAll('[data-phone-key]').forEach((keyButton) => {
+        keyButton.addEventListener('click', () => {
+          const key = keyButton.dataset.phoneKey;
+          if (key === 'delete') {
+            phoneDigits = phoneDigits.slice(0, -1);
+          } else if (key && /^\d+$/.test(key)) {
+            phoneDigits = `${phoneDigits}${key}`.slice(0, 11);
+          }
+          updatePhoneInput();
+        });
+      });
+
+      updatePhoneInput();
+    }
+  }
 
   if (phoneModal instanceof HTMLDialogElement) {
     phoneModal.addEventListener('close', () => {
@@ -290,6 +338,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (modalConfirmBtn && phoneModal) {
     modalConfirmBtn.addEventListener('click', () => {
+      if (isPhoneEntryStep) {
+        const phoneInput = document.getElementById('points-phone-number');
+        if (!(phoneInput instanceof HTMLInputElement) || phoneInput.value.length !== 11) return;
+      }
       window.location.href = 'index-orderlist-payment-step2.html';
     });
   }
