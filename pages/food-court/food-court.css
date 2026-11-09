@@ -123,12 +123,12 @@
 }
 
 .foodcourt__contents {
-  padding: 40px 60px;
   min-height: 200px;
 }
 
 /* 2x3 상품 배치 그리드 */
 .product-grid {
+  padding: 40px 60px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -167,6 +167,7 @@
 
 /* 하단 이전/다음 컨트롤러 */
 .slider-controls {
+      padding: 0 60px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -338,7 +339,7 @@
 /* index-orderlist.html */
 /* 주문 내역 영역 컨테이너 */
 .foodcourt__section {
-  background-color: #f8f9fa;
+  background-color: #fff;
 }
 
 .foodcourt__section.orderlist__view {
