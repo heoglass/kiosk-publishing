@@ -575,7 +575,8 @@
   font-size: 48px;
 }
 
-#modal-points-phone .points-phone-number-b:not(:placeholder-shown) {
+#modal-points-phone .points-phone-number-b:not(:placeholder-shown),
+#modal-points-phone .points-phone-number:not(:placeholder-shown) {
   color: #000;
 }
 
