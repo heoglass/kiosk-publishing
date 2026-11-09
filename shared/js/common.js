@@ -30,13 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!headerBack) return;
 
-  headerBack.addEventListener("click", () => {
-    const startScreen = document.getElementById("category-start-screen");
+  if (headerBack.dataset.backManaged !== "true") {
+    headerBack.addEventListener("click", () => {
+      const startScreen = document.getElementById("category-start-screen");
 
-    if (!startScreen || startScreen.hidden) return;
+      if (!startScreen || startScreen.hidden) return;
 
-    window.location.href = "../../index.html";
-  });
+      window.location.href = "../../index.html";
+    });
+  }
 
   // 메인 화면에서 카테고리 클릭시 헤더에 해당 카테고리명 노출
   const headerTitle = document.getElementById("header-title");

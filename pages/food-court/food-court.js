@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
   const backUrlMap = {
     'index-order': 'index.html',
-    'index': '/index.html',
     'index-orderlist': 'index-order.html',
   };
 
@@ -22,6 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerBackBtn = document.getElementById('header-back');
   if (headerBackBtn) {
     headerBackBtn.addEventListener('click', () => {
+      if (currentPageId === 'index') {
+        const pagePath = window.location.pathname;
+        const mainPagePath = pagePath.replace(
+          /\/pages\/food-court\/index\.html$/,
+          '/index.html',
+        );
+        const mainPageUrl = new URL(window.location.href);
+
+        mainPageUrl.pathname = mainPagePath === pagePath
+          ? new URL('../../index.html', window.location.href).pathname
+          : mainPagePath;
+        mainPageUrl.search = '';
+        mainPageUrl.hash = '';
+        window.location.href = mainPageUrl.href;
+        return;
+      }
+
       if (backUrlMap[currentPageId]) {
         window.location.href = backUrlMap[currentPageId];
       } else {
