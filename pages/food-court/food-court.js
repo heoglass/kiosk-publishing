@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     pointsNoBtn.addEventListener('click', (event) => {
       event.preventDefault();
-      const nextPage = pointsYesBtn.dataset.nextPage || 'index-orderlist-payment-step6.html';
+      const nextPage = pointsNoBtn.dataset.nextPage || pointsYesBtn.dataset.nextPage || 'index-orderlist-payment-step6.html';
       const nextUrl = new URL(nextPage, window.location.href);
 
       if (
