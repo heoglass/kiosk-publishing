@@ -932,7 +932,7 @@ body.modal-open {
   align-items: center;
   gap: 0;
   box-sizing: border-box;
-  padding: 100px 54px 100px;
+  padding: 100px 0;
   text-align: center;
 }
 
