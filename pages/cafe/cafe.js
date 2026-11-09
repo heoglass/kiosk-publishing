@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     options: "./cafe_02.html",
     review: "./cafe_03.html",
     main: "../../index.html",
+    payment: "../../shared/component/payment.html",
   };
   const formatPrice = (price) => `${price.toLocaleString("ko-KR")}원`;
   const moveTo = (path) => {
@@ -239,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     function updatePrice() {
-      // 기본 금액과 추가 금액은 options.html의 data-price에서 수정합니다.
+      // 기본 금액과 추가 금액은 cafe_02.html의 data-price에서 수정합니다.
       const basePrice = Number(form.dataset.price || 0);
       const extra = Array.from(
         form.querySelectorAll("input:checked:not(:disabled)")
@@ -260,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function initReviewDemo(screen) {
-    // 고정 예시에서 시작하고, 추천 메뉴는 현재 화면의 목록에만 추가합니다.
+    // 고정 예시의 수량과 금액을 기준으로 합계를 계산합니다.
     const list = screen.querySelector(".review-list");
     const readNumber = (element) =>
       Number(element?.textContent.replace(/[^\d]/g, "") || 0);
@@ -284,133 +285,212 @@ document.addEventListener("DOMContentLoaded", () => {
         quantity += count;
         total += price;
       });
-      // 주문 확인 합계와 카드 결제 안내 금액을 함께 갱신합니다.
+      // 주문 확인 화면의 합계를 갱신합니다.
       const countLabel = screen.querySelector(".review-total-count");
       const priceLabel = screen.querySelector(".review-total-price");
       if (countLabel) countLabel.textContent = `${quantity}개`;
       if (priceLabel) priceLabel.textContent = formatPrice(total);
-      const cardCount = document.querySelector(
-        "#modal-card-payment .card-payment-count"
-      );
-      const cardTotal = document.querySelector(
-        "#modal-card-payment .card-payment-total"
-      );
-      if (cardCount) cardCount.textContent = `${quantity}개`;
-      if (cardTotal) cardTotal.textContent = formatPrice(total);
     }
 
-    screen
-      .querySelector(".recommend-list")
-      ?.addEventListener("click", (event) => {
-        const button = event.target.closest(".recommend-button");
-        if (!button || button.disabled || !list) return;
-        const name = button
-          .querySelector(".recommend-name")
-          ?.textContent.trim();
-        if (!name) return;
-        const existing = Array.from(list.querySelectorAll(".review-item")).find(
-          (row) =>
-            row.querySelector(".review-item-name")?.textContent.trim() === name
-        );
-
-        if (existing) {
-          const quantity = existing.querySelector(".review-item-quantity");
-          quantity.textContent = `${readNumber(quantity) + 1}개`;
-        } else {
-          const row = document.createElement("li");
-          row.className = "review-item";
-          row.dataset.unitPrice = readNumber(
-            button.querySelector(".recommend-price")
-          );
-          row.innerHTML = `
-          <div class="review-item-info"><span class="review-item-name"></span></div>
-          <span class="review-item-quantity">1개</span>
-          <span class="review-item-price"></span>
-        `;
-          row.querySelector(".review-item-name").textContent = name;
-          list.append(row);
-        }
-        updateReviewTotal();
-      });
     updateReviewTotal();
+    const openPayment = initPaymentFlow();
 
-    const open = (id) => {
-      if (
-        document.getElementById(id) &&
-        typeof window.openModal === "function"
-      ) {
-        window.openModal(id);
-      }
-    };
-    screen
-      .querySelector(".review-back")
-      ?.addEventListener("click", () => moveTo(PAGES.menu));
+    screen.querySelector(".review-back")?.addEventListener("click", () => {
+      moveTo(PAGES.menu);
+    });
     screen
       .querySelector(".review-bottom")
       ?.addEventListener("click", (event) => {
-        if (event.target.closest(".review-dine-in, .review-takeout"))
-          open("modal-payment");
+        const button = event.target.closest(".review-dine-in, .review-takeout");
+        if (button) openPayment(button);
       });
-    document
-      .getElementById("modal-payment")
-      ?.addEventListener("click", (event) => {
-        if (event.target.closest('[data-payment-method="card"]'))
-          open("modal-card-payment");
-      });
-    document
-      .querySelector("[data-card-inserted]")
-      ?.addEventListener("click", () => {
-        open("modal-payment-progress");
-        window.setTimeout(() => {
-          if (document.getElementById("modal-payment-progress")?.open)
-            open("modal-payment-complete");
-        }, 2000);
-      });
-    document
-      .getElementById("modal-payment-progress")
-      ?.addEventListener("cancel", (event) => event.preventDefault());
+  }
 
-    const prompt = document.getElementById("modal-points-prompt");
-    const phone = document.getElementById("modal-points-phone");
-    const number = document.getElementById("points-phone-number");
-    const prefix = phone?.querySelector('[data-phone-key="010"]');
-    function clearPhone() {
-      if (number) number.value = "";
-      if (prefix) prefix.disabled = false;
+  function initPaymentFlow() {
+    // 파일명을 변경했다면 해당 단계의 경로만 바꿉니다.
+    const files = {
+      card: "card-payment.html",
+      progress: "payment-progress.html",
+      complete: "payment-complete.html",
+      prompt: "points-prompt.html",
+      phone: "points-phone.html",
+      pointsComplete: "points-complete.html",
+      receipt: "receipt.html",
+    };
+    const nextSteps = {
+      payment: [['[data-payment-method="card"]', "card"]],
+      card: [["[data-card-inserted]", "progress"]],
+      complete: [["[data-card-removed], .payment-complete-image", "prompt"]],
+      prompt: [
+        [".points-yes", "phone"],
+        [".points-no", "receipt"],
+      ],
+      phone: [[".points-skip, [data-open-receipt]", "receipt"]],
+      pointsComplete: [[".points-confirm, [data-open-receipt]", "receipt"]],
+    };
+    const paymentUrl = new URL(PAGES.payment, document.baseURI);
+    let activeFlow = null;
+
+    const style = document.createElement("style");
+    style.textContent =
+      "dialog.cafe-payment-dialog::backdrop { background: rgba(0, 0, 0, 0.6); }";
+    document.head.append(style);
+
+    function closeFlow(flow) {
+      if (activeFlow !== flow) return;
+      activeFlow = null;
+      window.clearTimeout(flow.timer);
+      if (flow.dialog.open) flow.dialog.close();
+      flow.dialog.remove();
+      flow.trigger.focus();
     }
-    document
-      .querySelector("[data-card-removed]")
-      ?.addEventListener("click", () => {
-        if (prompt) prompt.returnValue = "";
-        open("modal-points-prompt");
+
+    async function showStep(flow, step) {
+      if (activeFlow !== flow || flow.loading) return;
+      flow.loading = true;
+
+      try {
+        const url =
+          step === "payment" ? paymentUrl : new URL(files[step], paymentUrl);
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`${url.pathname} (${response.status})`);
+        }
+
+        const page = new DOMParser().parseFromString(
+          await response.text(),
+          "text/html"
+        );
+        const source = page.querySelector("dialog");
+        if (!source)
+          throw new Error(`${url.pathname}: dialog를 찾을 수 없습니다.`);
+
+        const { dialog } = flow;
+        if (activeFlow !== flow || (dialog.isConnected && !dialog.open)) return;
+
+        // 이미지와 링크는 원래 팝업 파일 위치를 기준으로 해석합니다.
+        const sourceUrl = response.url || url.href;
+        source.querySelectorAll("[src], [href]").forEach((element) => {
+          for (const attribute of ["src", "href"]) {
+            if (!element.hasAttribute(attribute)) continue;
+            const path = element.getAttribute(attribute);
+            // shared/component로 옮기기 전 팝업 파일의 경로도 지원합니다.
+            const relativePath = path.replace(
+              /^\.\.\/\.\.\/\.\.\/shared\//,
+              "../"
+            );
+            element.setAttribute(
+              attribute,
+              new URL(relativePath, sourceUrl).href
+            );
+          }
+        });
+
+        window.clearTimeout(flow.timer);
+        flow.step = step;
+        dialog.id = source.id;
+        dialog.className = source.className;
+        dialog.classList.add("cafe-payment-dialog");
+        for (const attribute of ["aria-labelledby", "aria-describedby"]) {
+          const value = source.getAttribute(attribute);
+          if (value === null) dialog.removeAttribute(attribute);
+          else dialog.setAttribute(attribute, value);
+        }
+        dialog.replaceChildren(...source.childNodes);
+
+        if (!dialog.isConnected) {
+          document.body.append(dialog);
+          dialog.showModal();
+        } else {
+          const nextFocus = dialog.querySelector(
+            "button:not([disabled]), a[href], input"
+          );
+          (nextFocus ?? dialog).focus();
+        }
+
+        if (step === "progress") {
+          flow.timer = window.setTimeout(
+            () => showStep(flow, "complete"),
+            2000
+          );
+        }
+      } catch (error) {
+        if (activeFlow !== flow) return;
+        console.error("결제 팝업을 열 수 없습니다.", error);
+        closeFlow(flow);
+        window.alert(
+          "결제 팝업을 불러오지 못했어요. 파일 경로를 확인해주세요."
+        );
+      } finally {
+        flow.loading = false;
+      }
+    }
+
+    function handlePhoneKey(flow, button) {
+      if (button.disabled) return;
+
+      const key = button.dataset.phoneKey;
+      if (key !== "delete" && !/^\d+$/.test(key)) return;
+
+      const next =
+        key === "delete" ? flow.phone.slice(0, -1) : flow.phone + key;
+      if (next.length > 11) return;
+      flow.phone = next;
+
+      const input = flow.dialog.querySelector("#points-phone-number");
+      const prefix = flow.dialog.querySelector('[data-phone-key="010"]');
+      if (input) {
+        input.value = [next.slice(0, 3), next.slice(3, 7), next.slice(7)]
+          .filter(Boolean)
+          .join("-");
+      }
+      if (prefix) prefix.disabled = next.length > 0;
+
+      if (next.length === 11) showStep(flow, "pointsComplete");
+    }
+
+    return function openPayment(trigger) {
+      if (activeFlow) return;
+
+      const dialog = document.createElement("dialog");
+      const flow = {
+        dialog,
+        trigger,
+        step: "payment",
+        phone: "",
+        loading: false,
+      };
+      activeFlow = flow;
+
+      dialog.addEventListener("close", () => closeFlow(flow));
+      dialog.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target.closest("[data-modal-close], .modal-close")) {
+          event.preventDefault();
+          event.stopPropagation();
+          closeFlow(flow);
+          return;
+        }
+
+        const route = (nextSteps[flow.step] ?? []).find(([selector]) =>
+          target.closest(selector)
+        );
+        if (route) {
+          event.preventDefault();
+          event.stopPropagation();
+          showStep(flow, route[1]);
+          return;
+        }
+
+        const key = target.closest("button[data-phone-key]");
+        if (flow.step === "phone" && key) {
+          event.preventDefault();
+          event.stopPropagation();
+          if (!flow.loading) handlePhoneKey(flow, key);
+        }
       });
-    prompt?.addEventListener("close", () => {
-      if (prompt.returnValue === "yes") {
-        clearPhone();
-        open("modal-points-phone");
-      } else if (prompt.returnValue === "no") open("modal-receipt");
-    });
-    phone
-      ?.querySelector(".points-keypad")
-      ?.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-phone-key]");
-        if (!button || button.disabled || !phone.open || !number) return;
-        const current = number.value.replace(/\D/g, "");
-        const key = button.dataset.phoneKey;
-        const next = key === "delete" ? current.slice(0, -1) : current + key;
-        if (next.length > 11) return;
-        number.value =
-          next.length > 7
-            ? `${next.slice(0, 3)}-${next.slice(3, 7)}-${next.slice(7)}`
-            : next.length > 3
-            ? `${next.slice(0, 3)}-${next.slice(3)}`
-            : next;
-        if (prefix) prefix.disabled = next.length > 0;
-        if (next.length === 11) open("modal-points-complete");
-      });
-    phone?.addEventListener("close", clearPhone);
-    document.querySelectorAll("[data-open-receipt]").forEach((button) => {
-      button.addEventListener("click", () => open("modal-receipt"));
-    });
+
+      showStep(flow, "payment");
+    };
   }
 });
