@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     options: "./cafe_02.html",
     review: "./cafe_03.html",
     main: "../../index.html",
-    payment: "../../shared/component/payment.html",
   };
   const formatPrice = (price) => `${price.toLocaleString("ko-KR")}원`;
   const moveTo = (path) => {
@@ -262,11 +261,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initReviewDemo(screen) {
     // 고정 예시의 수량과 금액을 기준으로 합계를 계산합니다.
-    const list = screen.querySelector(".review-list");
+    const rows = screen.querySelectorAll(".review-item");
     const readNumber = (element) =>
       Number(element?.textContent.replace(/[^\d]/g, "") || 0);
 
-    list?.querySelectorAll(".review-item").forEach((row) => {
+    rows.forEach((row) => {
       const quantity =
         readNumber(row.querySelector(".review-item-quantity")) || 1;
       row.dataset.unitPrice =
@@ -274,10 +273,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateReviewTotal() {
-      if (!list) return;
+      if (!rows.length) return;
       let quantity = 0;
       let total = 0;
-      list.querySelectorAll(".review-item").forEach((row) => {
+      rows.forEach((row) => {
         const count = readNumber(row.querySelector(".review-item-quantity"));
         const price = Number(row.dataset.unitPrice) * count;
         row.querySelector(".review-item-price").textContent =
@@ -293,212 +292,95 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateReviewTotal();
-    screen
-      .querySelector(".review-bottom")
-      ?.addEventListener("click", (event) => {
-        const button = event.target.closest(".review-dine-in, .review-takeout");
-        if (!button) return;
-
-        moveTo(PAGES.payment);
-      });
-
     screen.querySelector(".review-back")?.addEventListener("click", () => {
       moveTo(PAGES.menu);
     });
-    screen
-      .querySelector(".review-bottom")
-      ?.addEventListener("click", (event) => {
-        const button = event.target.closest(".review-dine-in, .review-takeout");
-        // if (button) openPayment(button);
-        if (button) moveTo(PAGES.payment);
-      });
+    initPaymentFlow(screen);
   }
 
-  function initPaymentFlow() {
-    // 파일명을 변경했다면 해당 단계의 경로만 바꿉니다.
-    const files = {
-      card: "card-payment.html",
-      progress: "payment-progress.html",
-      complete: "payment-complete.html",
-      prompt: "points-prompt.html",
-      phone: "points-phone.html",
-      pointsComplete: "points-complete.html",
-      receipt: "receipt.html",
-    };
-    const nextSteps = {
-      payment: [['[data-payment-method="card"]', "card"]],
-      card: [["[data-card-inserted]", "progress"]],
-      complete: [["[data-card-removed], .payment-complete-image", "prompt"]],
-      prompt: [
-        [".points-yes", "phone"],
-        [".points-no", "receipt"],
-      ],
-      phone: [[".points-skip, [data-open-receipt]", "receipt"]],
-      pointsComplete: [[".points-confirm, [data-open-receipt]", "receipt"]],
-    };
-    const paymentUrl = new URL(PAGES.payment, document.baseURI);
-    let activeFlow = null;
+  function initPaymentFlow(screen) {
+    const dialogs = document.getElementById("cafe-payment-dialogs");
+    if (!dialogs) return;
 
-    const style = document.createElement("style");
-    style.textContent =
-      "dialog.cafe-payment-dialog::backdrop { background: rgba(0, 0, 0, 0.6); }";
-    document.head.append(style);
+    const progress = dialogs.querySelector("#modal-payment-progress");
+    const phone = dialogs.querySelector("#modal-points-phone");
+    const phoneNumber = phone.querySelector("#points-phone-number");
+    const phonePrefix = phone.querySelector('[data-phone-key="010"]');
 
-    function closeFlow(flow) {
-      if (activeFlow !== flow) return;
-      activeFlow = null;
-      window.clearTimeout(flow.timer);
-      if (flow.dialog.open) flow.dialog.close();
-      flow.dialog.remove();
-      flow.trigger.focus();
+    function setPhoneNumber(digits) {
+      phoneNumber.value = [
+        digits.slice(0, 3),
+        digits.slice(3, 7),
+        digits.slice(7),
+      ]
+        .filter(Boolean)
+        .join("-");
+      phoneNumber.classList.toggle("has-value", digits.length > 0);
+      phonePrefix.disabled = digits.length > 0;
     }
 
-    async function showStep(flow, step) {
-      if (activeFlow !== flow || flow.loading) return;
-      flow.loading = true;
+    function showDialog(id) {
+      const next = dialogs.querySelector("#" + id);
+      const current = dialogs.querySelector("dialog[open]");
+      if (!next || current === next) return;
 
-      try {
-        const url =
-          step === "payment" ? paymentUrl : new URL(files[step], paymentUrl);
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`${url.pathname} (${response.status})`);
-        }
-
-        const page = new DOMParser().parseFromString(
-          await response.text(),
-          "text/html"
-        );
-        const source = page.querySelector("dialog");
-        if (!source)
-          throw new Error(`${url.pathname}: dialog를 찾을 수 없습니다.`);
-
-        const { dialog } = flow;
-        if (activeFlow !== flow || (dialog.isConnected && !dialog.open)) return;
-
-        // 이미지와 링크는 원래 팝업 파일 위치를 기준으로 해석합니다.
-        const sourceUrl = response.url || url.href;
-        source.querySelectorAll("[src], [href]").forEach((element) => {
-          for (const attribute of ["src", "href"]) {
-            if (!element.hasAttribute(attribute)) continue;
-            const path = element.getAttribute(attribute);
-            // shared/component로 옮기기 전 팝업 파일의 경로도 지원합니다.
-            const relativePath = path.replace(
-              /^\.\.\/\.\.\/\.\.\/shared\//,
-              "../"
-            );
-            element.setAttribute(
-              attribute,
-              new URL(relativePath, sourceUrl).href
-            );
-          }
-        });
-
-        window.clearTimeout(flow.timer);
-        flow.step = step;
-        dialog.id = source.id;
-        dialog.className = source.className;
-        dialog.classList.add("cafe-payment-dialog");
-        for (const attribute of ["aria-labelledby", "aria-describedby"]) {
-          const value = source.getAttribute(attribute);
-          if (value === null) dialog.removeAttribute(attribute);
-          else dialog.setAttribute(attribute, value);
-        }
-        dialog.replaceChildren(...source.childNodes);
-
-        if (!dialog.isConnected) {
-          document.body.append(dialog);
-          dialog.showModal();
-        } else {
-          const nextFocus = dialog.querySelector(
-            "button:not([disabled]), a[href], input"
-          );
-          (nextFocus ?? dialog).focus();
-        }
-
-        if (step === "progress") {
-          flow.timer = window.setTimeout(
-            () => showStep(flow, "complete"),
-            2000
-          );
-        }
-      } catch (error) {
-        if (activeFlow !== flow) return;
-        console.error("결제 팝업을 열 수 없습니다.", error);
-        closeFlow(flow);
-        window.alert(
-          "결제 팝업을 불러오지 못했어요. 파일 경로를 확인해주세요."
-        );
-      } finally {
-        flow.loading = false;
-      }
+      current?.close();
+      if (next === phone) setPhoneNumber("");
+      next.showModal();
     }
 
-    function handlePhoneKey(flow, button) {
-      if (button.disabled) return;
+    screen
+      .querySelector(".review-bottom")
+      .addEventListener("click", (event) => {
+        if (!event.target.closest(".review-dine-in, .review-takeout")) return;
 
-      const key = button.dataset.phoneKey;
-      if (key !== "delete" && !/^\d+$/.test(key)) return;
-
-      const next =
-        key === "delete" ? flow.phone.slice(0, -1) : flow.phone + key;
-      if (next.length > 11) return;
-      flow.phone = next;
-
-      const input = flow.dialog.querySelector("#points-phone-number");
-      const prefix = flow.dialog.querySelector('[data-phone-key="010"]');
-      if (input) {
-        input.value = [next.slice(0, 3), next.slice(3, 7), next.slice(7)]
-          .filter(Boolean)
-          .join("-");
-      }
-      if (prefix) prefix.disabled = next.length > 0;
-
-      if (next.length === 11) showStep(flow, "pointsComplete");
-    }
-
-    return function openPayment(trigger) {
-      if (activeFlow) return;
-
-      const dialog = document.createElement("dialog");
-      const flow = {
-        dialog,
-        trigger,
-        step: "payment",
-        phone: "",
-        loading: false,
-      };
-      activeFlow = flow;
-
-      dialog.addEventListener("close", () => closeFlow(flow));
-      dialog.addEventListener("click", (event) => {
-        const target = event.target;
-        if (target.closest("[data-modal-close], .modal-close")) {
-          event.preventDefault();
-          event.stopPropagation();
-          closeFlow(flow);
-          return;
-        }
-
-        const route = (nextSteps[flow.step] ?? []).find(([selector]) =>
-          target.closest(selector)
-        );
-        if (route) {
-          event.preventDefault();
-          event.stopPropagation();
-          showStep(flow, route[1]);
-          return;
-        }
-
-        const key = target.closest("button[data-phone-key]");
-        if (flow.step === "phone" && key) {
-          event.preventDefault();
-          event.stopPropagation();
-          if (!flow.loading) handlePhoneKey(flow, key);
-        }
+        dialogs.querySelector(".card-payment-count").textContent =
+          screen.querySelector(".review-total-count").textContent;
+        dialogs.querySelector(".card-payment-total").textContent =
+          screen.querySelector(".review-total-price").textContent;
+        showDialog("modal-payment");
       });
 
-      showStep(flow, "payment");
-    };
+    progress.addEventListener("cancel", (event) => event.preventDefault());
+
+    dialogs.addEventListener(
+      "click",
+      (event) => {
+        const button = event.target.closest("button");
+        if (!button || button.disabled || !button.closest("dialog[open]"))
+          return;
+
+        // 카페 팝업의 버튼은 공통 페이지 이동보다 먼저 처리합니다.
+        event.stopPropagation();
+
+        if (button.hasAttribute("data-modal-close")) {
+          button.closest("dialog").close();
+          return;
+        }
+
+        const next = button.dataset.cafeNext;
+        if (next) {
+          showDialog(next);
+          if (progress.open) {
+            window.setTimeout(() => {
+              if (progress.open) showDialog("modal-payment-complete");
+            }, 2000);
+          }
+          return;
+        }
+
+        const key = button.dataset.phoneKey;
+        if (!key) return;
+
+        const digits = phoneNumber.value.replace(/\D/g, "");
+        const nextDigits =
+          key === "delete" ? digits.slice(0, -1) : digits + key;
+        if (nextDigits.length > 11) return;
+
+        setPhoneNumber(nextDigits);
+        if (nextDigits.length === 11) showDialog("modal-points-complete");
+      },
+      { capture: true }
+    );
   }
 });
