@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const updatePhoneInput = () => {
         phoneInput.value = phoneDigits;
-        savePointsButton.disabled = phoneDigits.length !== 11;
+        savePointsButton.disabled = false;
       };
 
       phoneInput.addEventListener('input', () => {
@@ -386,10 +386,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       savePointsButton.addEventListener('click', () => {
-        if (phoneDigits.length === 11) {
+        if (phoneDigits) {
           sessionStorage.setItem('foodCourtPointsPhoneNumber', phoneDigits);
-          window.location.href = 'index-orderlist-payment-step7.html';
+        } else {
+          sessionStorage.removeItem('foodCourtPointsPhoneNumber');
         }
+        window.location.href = 'index-orderlist-payment-step7.html';
       });
 
       updatePhoneInput();
