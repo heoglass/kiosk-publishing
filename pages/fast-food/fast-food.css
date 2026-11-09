@@ -53,18 +53,18 @@
 
 .foodcourt-container {}
 
-.foodcourt-container .category-main.foodcourt {
+.foodcourt-container .category-main.fast__food--menu {
   position: relative;
   top: 144px;
   padding-top: 0;
 }
 
-.foodcourt-container .foodcourt .foodcourt__visual {
+.foodcourt-container .fast__food--menu .foodcourt__visual {
   width: 100%;
   height: 1920px;
 }
 
-.foodcourt-container .foodcourt .foodcourt__visual button#visual__btn {
+.foodcourt-container .fast__food--menu .foodcourt__visual button#visual__btn {
   display: block;
   font-size: 44px;
   font-weight: 700;
@@ -78,15 +78,15 @@
 }
 
 /* index.html */
-.foodcourt {
+.fast__food--menu {
   padding-top: 140px;
 }
 
-.foodcourt .foodcourt__section .foodcourt__nav {
+.fast__food--menu .fastfood__section .foodcourt__nav {
   /* margin: 40px 60px 0; */
 }
 
-.foodcourt .foodcourt__section .foodcourt__nav .menu-list {
+.fast__food--menu .fastfood__section .foodcourt__nav .menu-list {
   display: flex;
   gap: 18px;
   justify-content: flex-start;
@@ -94,12 +94,12 @@
   scrollbar-width: none;
 }
 
-.foodcourt .foodcourt__section .foodcourt__nav .menu-list::-webkit-scrollbar {
+.fast__food--menu .fastfood__section .foodcourt__nav .menu-list::-webkit-scrollbar {
   display: none;
 }
 
 .nav__tab,
-.foodcourt .foodcourt__section .foodcourt__nav .menu-list .menu-item .nav__tab {
+.fast__food--menu .fastfood__section .foodcourt__nav .menu-list .menu-item .nav__tab {
   background: rgba(244, 239, 235, 1);
   border: 600px;
   padding: 34px 38px;
@@ -109,7 +109,7 @@
   text-wrap: nowrap;
 }
 
-.foodcourt .foodcourt__section .foodcourt__nav .menu-list .menu-item .nav__tab--active {
+.fast__food--menu .fastfood__section .foodcourt__nav .menu-list .menu-item .nav__tab--active {
   background: rgba(223, 60, 60, 1);
   border: 600px;
   padding: 34px 38px;
@@ -342,11 +342,11 @@
 
 /* index-orderlist.html */
 /* 주문 내역 영역 컨테이너 */
-.foodcourt__section {
+.fastfood__section {
   background-color: #f8f9fa;
 }
 
-.foodcourt__section.orderlist__view {
+.fastfood__section.orderlist__view {
   padding: 0;
   background-color: #fff;
 }
@@ -446,7 +446,7 @@
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.foodcourt .foodcourt__oderbar>button {
+.fast__food--menu .foodcourt__oderbar>button {
   height: 200px;
   font-size: var(--font-60-size);
   font-weight: var(--font-600-weight);
@@ -478,7 +478,7 @@
   color: #fff;
 }
 
-.foodcourt .foodcourt__oderbar button>span.sub-text {
+.fast__food--menu .foodcourt__oderbar button>span.sub-text {
   padding-top: 8px;
   font-size: var(--font-44-size);
   font-weight: 400;
@@ -629,11 +629,21 @@
 }
 
 /* 패스트 푸드 레이아웃  */
+.fast__food--menu {
+  padding-top: 0;
+  background-color: #fff;
+}
 .fastfood__section {
   padding: 150px 60px;
   background-color: #fff;
   height: 100%;
 }
+/* index-order.html */
+.fastfood__section--menu {
+  padding: 0;
+  height: 100%;
+}
+
 .fastfood__contents--tekeout {
   
 }
@@ -670,4 +680,9 @@
 }
 .fastfood__contents--tekeout .fastfood__btn-wrap .fastfood__btn--takeout {
   background: url("../../shared/images/fast-food/take-off.png") center 20px / 350px 350px no-repeat;
+}
+/* 페스트푸드 - 메뉴선택 */
+.fast__food--menu .fastfood__section .foodcourt__nav .menu-list .menu-item .nav__tab--active {
+  background: #FFBC0D;
+  box-shadow: 0px 0px 18.3px 0px rgba(255, 188, 13, 1);
 }

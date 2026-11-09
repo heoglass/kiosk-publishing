@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>푸드코트 - 01메뉴</title>
+  <title>패스트푸드 - 메뉴선택</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../../shared/css/common.css" />
-  <link rel="stylesheet" href="./food-court.css" />
+  <link rel="stylesheet" href="./fast-food.css" />
   <script type="text/javascript" src="../../shared/js/common.js"></script>
-  <script type="text/javascript" src="./food-court.js"></script>
+
   <!-- CDN링크 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
 </head>
 
-<body id="index-order">
+<body id="index-fast-order">
   <div class="foodcourt-container">
     <header id="category-header" class="foodcourt__header">
       <div class="header-left">
@@ -30,29 +29,29 @@
         <p class="header-sound-text main-sound-text">소리끄기</p>
       </div>
     </header>
-    <main class="foodcourt category-main">
-      <section class="foodcourt__section">
+    <main class="category-main fast__food fast__food--menu">
+      <section class="fastfood__section fastfood__section--menu">
         <!-- 상단 카테고리 NAV 탭 -->
         <nav class="foodcourt__nav">
           <ul class="menu-list">
             <li class="menu-item">
               <button type="button" class="nav__tab nav__tab--active">
-                <span>한식</span>
+                <span>전체</span>
               </button>
             </li>
             <li class="menu-item">
               <button type="button" class="nav__tab">
-                <span>양식</span>
+                <span>버거</span>
               </button>
             </li>
             <li class="menu-item">
               <button type="button" class="nav__tab">
-                <span>중식</span>
+                <span>스낵</span>
               </button>
             </li>
             <li class="menu-item">
               <button type="button" class="nav__tab">
-                <span>일식</span>
+                <span>사이드</span>
               </button>
             </li>
           </ul>
@@ -68,65 +67,63 @@
                 <!-- 페이지 1 (메뉴 6개) -->
                 <div class="swiper-slide">
                   <ul class="product-grid">
-                    <li class="product-card" data-name="능동 미나리 곰탕" data-price="10000" data-has-option="false">
-                      <!-- 옵션 없는경우 다음 화면 퍼블로 이동 -->
+                    <li class="product-card" data-name="불고기버거" data-price="6000">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_1.png" alt="능동 미나리 곰탕" class="product-card__img" />
+                        <img src="../../shared/images/fast-food/bulgogi.png" alt="불고기버거" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">능동 미나리 곰탕(옵션 없음)</span>
-                        <span class="product-card__price">10,000원</span>
+                        <span class="product-card__title">불고기버거</span>
+                        <span class="product-card__price">6,000원</span>
                       </div>
                     </li>
 
-                    <li class="product-card" data-name="회냉면" data-price="10000" data-has-option="true">
-                      <!-- data-has-option="true" 옵션이 있는경우 모달화면 퍼블리싱 띄우기  -->
+                    <li class="product-card" data-name="새우버거" data-price="5000">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_2.png" alt="회냉면" class="product-card__img" />
+                        <img src="../../shared/images/fast-food/shrimp.png" alt="새우버거" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">회냉면(옵션 있음)</span>
-                        <span class="product-card__price">10,000원</span>
+                        <span class="product-card__title">새우버거</span>
+                        <span class="product-card__price">5,000원</span>
                       </div>
                     </li>
 
-                    <li class="product-card">
+                    <li class="product-card" data-name="치즈버거" data-price="5000">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_3.png" alt="전주비빔밥" class="product-card__img" />
+                        <img src="../../shared/images/fast-food/cheeze.png" alt="치즈버거" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">전주비빔밥</span>
-                        <span class="product-card__price">10,000원</span>
+                        <span class="product-card__title">치즈버거</span>
+                        <span class="product-card__price">5,000원</span>
                       </div>
                     </li>
 
-                    <li class="product-card">
+                    <li class="product-card" data-name="치킨버거" data-price="4500">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_4.png" alt="육회비빔밥" class="product-card__img" />
+                        <img src="../../shared/images/fast-food/chiken.png" alt="치킨버거" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">육회비빔밥</span>
-                        <span class="product-card__price">10,000원</span>
+                        <span class="product-card__title">치킨버거</span>
+                        <span class="product-card__price">4,500원</span>
                       </div>
                     </li>
 
-                    <li class="product-card">
+                    <li class="product-card" data-name="애플파이" data-price="3000">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="짜장면+탕수육" class="product-card__img" />
+                        <img src="../../shared/images/fast-food/apple.png" alt="애플파이" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
+                        <span class="product-card__title">애플파이</span>
+                        <span class="product-card__price">3,000원</span>
                       </div>
                     </li>
 
-                    <li class="product-card">
+                    <li class="product-card" data-name="치킨너겟" data-price="3000">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_6.png" alt="까르보나라" class="product-card__img" />
+                        <img src="../../shared/images/fast-food/nurget.png" alt="치킨너겟" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">까르보나라</span>
-                        <span class="product-card__price">10,000원</span>
+                        <span class="product-card__title">치킨너겟</span>
+                        <span class="product-card__price">3,000원</span>
                       </div>
                     </li>
                   </ul>
@@ -136,22 +133,14 @@
                   <ul class="product-grid">
                     <li class="product-card">
                       <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
+                        <img src="/shared/images/fast-food/buger_set.png" alt="까르보나라" class="product-card__img" />
                       </div>
                       <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
+                        <span class="product-card__title">불고기 버거 세트</span>
                         <span class="product-card__price">10,000원</span>
                       </div>
                     </li>
-                    <li class="product-card">
-                      <div class="product-card__thumb">
-                        <img src="/shared/images/foodcourt/menu_5.png" alt="까르보나라" class="product-card__img" />
-                      </div>
-                      <div class="product-card__info">
-                        <span class="product-card__title">짜장면+탕수육</span>
-                        <span class="product-card__price">10,000원</span>
-                      </div>
-                    </li>
+                    
                   </ul>
                 </div>
               </div>
@@ -291,6 +280,80 @@
 
         </div>
       </section>
+      <div class="dividing-line"></div>
+
+      <!-- 선택된 메뉴 -->
+      <section class="cart-section" aria-label="주문 내역">
+          <!-- 퍼블리싱용 고정 예시: 상품명, data-price, 수량을 이 HTML에서 수정하세요. -->
+          <ul class="cart-list">
+            <li class="cart-item" data-price="2000">
+              <span class="cart-item-name">아이스 아메리카노</span>
+
+              <div class="cart-quantity" role="group">
+                <button type="button" class="cart-decrease" aria-label="수량 줄이기" disabled="">
+                  <img src="../../shared/images/icon/minus-disabled.png" class="cart-minus-image" alt="">
+                </button>
+
+                <output class="cart-quantity-value" aria-label="수량">1</output>
+
+                <button type="button" class="cart-increase" aria-label="수량 늘리기">
+                  <img src="../../shared/images/icon/plus.png" class="cart-plus-image" alt="">
+                </button>
+              </div>
+
+              <span class="cart-item-price">2,000원</span>
+
+              <button type="button" class="cart-remove" aria-label="아이스 아메리카노 삭제">
+                <span aria-hidden="true">삭제</span>
+              </button>
+            </li>
+            <li class="cart-item" data-price="3200">
+              <span class="cart-item-name">카페라떼</span>
+
+              <div class="cart-quantity" role="group">
+                <button type="button" class="cart-decrease" aria-label="수량 줄이기" disabled="">
+                  <img src="../../shared/images/icon/minus-disabled.png" class="cart-minus-image" alt="">
+                </button>
+
+                <output class="cart-quantity-value" aria-label="수량">1</output>
+
+                <button type="button" class="cart-increase" aria-label="수량 늘리기">
+                  <img src="../../shared/images/icon/plus.png" class="cart-plus-image" alt="">
+                </button>
+              </div>
+
+              <span class="cart-item-price">3,200원</span>
+
+              <button type="button" class="cart-remove" aria-label="카페라떼 삭제">
+                <span aria-hidden="true">삭제</span>
+              </button>
+            </li>
+          </ul>
+          <template id="cart-demo-template">
+            <li class="cart-item" data-price="2000">
+              <span class="cart-item-name">예시 상품</span>
+
+              <div class="cart-quantity" role="group">
+                <button type="button" class="cart-decrease" aria-label="수량 줄이기" disabled="">
+                  <img src="../../shared/images/icon/minus-disabled.png" class="cart-minus-image" alt="">
+                </button>
+
+                <output class="cart-quantity-value" aria-label="수량">1</output>
+
+                <button type="button" class="cart-increase" aria-label="수량 늘리기">
+                  <img src="../../shared/images/icon/plus.png" class="cart-plus-image" alt="">
+                </button>
+              </div>
+
+              <span class="cart-item-price">2,000원</span>
+
+              <button type="button" class="cart-remove" aria-label="예시 상품 삭제">
+                <span aria-hidden="true">삭제</span>
+              </button>
+            </li>
+          </template>
+      </section>
+
       <!-- 하단 버튼 -->
       <section id="foodcourt__oderbar" class="order-bar" aria-label="주문 관리">
         <button type="button" class="cart-clear" disabled>전체삭제</button>
@@ -330,7 +393,7 @@
       </div>
     </div>
   </div>
-
+    <script type="text/javascript" src="./fast-food-ui.js"></script>
   <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>

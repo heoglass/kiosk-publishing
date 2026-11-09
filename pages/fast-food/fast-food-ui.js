@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  document.querySelectorAll('.fastfood__contents--tekeout .fastfood__btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      localStorage.setItem('fastFoodOrderType', button.value);
+      window.location.href = 'index-order.html';
+    });
+  });
+
   document.querySelectorAll('.btn-dine-in, .btn-takeout').forEach((button) => {
     button.addEventListener('click', () => {
       window.location.href = 'index-orderlist-payment-step1.html';
