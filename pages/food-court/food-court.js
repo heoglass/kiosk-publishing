@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.pathname.endsWith('/index-orderlist-payment-step3.html')) {
+    window.setTimeout(() => {
+      window.location.href = 'index-orderlist-payment-step4.html';
+    }, 3000);
+  }
+
   const tabs = document.querySelectorAll('.foodcourt__nav .nav__tab');
   const contents = document.querySelectorAll('.foodcourt__content');
   const swiperInstances = [];
@@ -285,6 +291,67 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalConfirmBtn && phoneModal) {
     modalConfirmBtn.addEventListener('click', () => {
       window.location.href = 'index-orderlist-payment-step2.html';
+    });
+  }
+
+  document.querySelector('[data-card-inserted]')?.addEventListener('click', () => {
+    window.location.href = 'index-orderlist-payment-step3.html';
+  });
+
+  if (window.location.pathname.endsWith('/index-orderlist-payment-step4.html')) {
+    document.getElementById('modal-card-loading')?.addEventListener('click', () => {
+      window.location.href = 'index-orderlist-payment-step5.html';
+    });
+  }
+
+  if (window.location.pathname.endsWith('/index-orderlist-payment-step6.html')) {
+    const phoneInput = document.getElementById('points-phone-number');
+    const savePointsButton = document.querySelector('.points-skip');
+
+    if (phoneInput instanceof HTMLInputElement && savePointsButton instanceof HTMLButtonElement) {
+      let phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+
+      const updatePhoneInput = () => {
+        phoneInput.value = phoneDigits;
+        savePointsButton.disabled = phoneDigits.length !== 11;
+      };
+
+      phoneInput.addEventListener('input', () => {
+        phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+        updatePhoneInput();
+      });
+
+      document.querySelectorAll('[data-phone-key]').forEach((keyButton) => {
+        keyButton.addEventListener('click', () => {
+          const key = keyButton.dataset.phoneKey;
+          if (key === 'delete') {
+            phoneDigits = phoneDigits.slice(0, -1);
+          } else if (key && /^\d+$/.test(key)) {
+            phoneDigits = `${phoneDigits}${key}`.slice(0, 11);
+          }
+          updatePhoneInput();
+        });
+      });
+
+      savePointsButton.addEventListener('click', () => {
+        if (phoneDigits.length === 11) {
+          sessionStorage.setItem('foodCourtPointsPhoneNumber', phoneDigits);
+          window.location.href = 'index-orderlist-payment-step7.html';
+        }
+      });
+
+      updatePhoneInput();
+    }
+  }
+
+  if (window.location.pathname.endsWith('/index-orderlist-payment-step7.html')) {
+    const phoneInput = document.getElementById('points-phone-number');
+    if (phoneInput instanceof HTMLInputElement) {
+      phoneInput.value = sessionStorage.getItem('foodCourtPointsPhoneNumber') || '';
+    }
+
+    document.querySelector('.points-skip')?.addEventListener('click', () => {
+      window.location.href = 'index-orderlist-payment-step8.html';
     });
   }
 

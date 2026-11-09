@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>패스트푸드 -02 장소선택</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../../shared/css/common.css" />
+  <link rel="stylesheet" href="./fast-food.css" />
+  <script type="text/javascript" src="../../shared/js/common.js"></script>
+  <script type="text/javascript" src="./fast-food-ui.js"></script>
+
+</head>
+
+<body id="index-tekeout-select">
+  <div class="foodcourt-container">
+    <header id="category-header" class="foodcourt__header">
+      <div class="header-left">
+        <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
+          <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
+        </button>
+
+        <span id="header-title"></span>
+      </div>
+      <div class="header-right">
+        <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        <p class="header-sound-text main-sound-text">소리끄기</p>
+      </div>
+    </header>
+    <main class="foodcourt category-main">
+      <section class="fastfood__section">
+
+        <!-- 장소 선택 -->
+        <div class="fastfood__contents fastfood__contents--tekeout">
+          <h2 class="section-title fastfood__title">식사 장소를 선택해주세요</h2>
+          <div class="fastfood__btn-wrap fastfood__btn-wrap--flex">
+            <button type="button" id="takeout-btn" class="fastfood__btn fastfood__btn--eat-in">
+              <span>매장</span>
+            </button>
+            <button type="button" id="eat-in-btn" class="fastfood__btn fastfood__btn--takeout">
+              <span>포장</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 옵션 선택 모달창 -->
+  <div id="option-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <h3 class="modal-title">옵션을 선택해주세요</h3>
+
+      <!-- 옵션 리스트 -->
+      <div class="modal-options">
+        <label class="option-item option-item--selected">
+          <input type="radio" name="food-option" value="소스 따로 주세요" checked />
+          <span class="option-name">소스 따로 주세요</span>
+          <span class="option-price">+0원</span>
+        </label>
+        <label class="option-item">
+          <input type="radio" name="food-option" value="옵션 선택 안함" />
+          <span class="option-name">옵션 선택 안함</span>
+          <span class="option-price">+0원</span>
+        </label>
+      </div>
+
+      <!-- 모달 하단 버튼 -->
+      <div class="modal-buttons">
+        <button type="button" id="modal-cancel" class="modal-btn modal-btn--cancel">취소</button>
+        <button type="button" id="modal-confirm" class="modal-btn modal-btn--confirm">선택 완료</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>
