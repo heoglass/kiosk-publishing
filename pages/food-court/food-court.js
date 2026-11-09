@@ -139,15 +139,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (phoneInput instanceof HTMLInputElement && modalConfirmBtn instanceof HTMLButtonElement) {
       let phoneDigits = '';
+      let isNavigating = false;
 
       const updatePhoneInput = () => {
         phoneInput.value = phoneDigits;
         modalConfirmBtn.disabled = phoneDigits.length !== 11;
       };
 
+      const goToNextStep = () => {
+        if (phoneDigits.length === 11 && !isNavigating) {
+          isNavigating = true;
+          window.location.href = 'index-orderlist-payment-step2.html';
+        }
+      };
+
       phoneInput.addEventListener('input', () => {
         phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
         updatePhoneInput();
+        goToNextStep();
       });
 
       document.querySelectorAll('[data-phone-key]').forEach((keyButton) => {
@@ -159,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             phoneDigits = `${phoneDigits}${key}`.slice(0, 11);
           }
           updatePhoneInput();
+          goToNextStep();
         });
       });
 
@@ -365,15 +375,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (phoneInput instanceof HTMLInputElement && savePointsButton instanceof HTMLButtonElement) {
       let phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+      let isNavigating = false;
 
       const updatePhoneInput = () => {
         phoneInput.value = phoneDigits;
         savePointsButton.disabled = false;
       };
 
+      const goToNextStep = () => {
+        if (phoneDigits.length === 11 && !isNavigating) {
+          isNavigating = true;
+          sessionStorage.setItem('foodCourtPointsPhoneNumber', phoneDigits);
+          window.location.href = 'index-orderlist-payment-step7.html';
+        }
+      };
+
       phoneInput.addEventListener('input', () => {
         phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
         updatePhoneInput();
+        goToNextStep();
       });
 
       document.querySelectorAll('[data-phone-key]').forEach((keyButton) => {
@@ -385,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
             phoneDigits = `${phoneDigits}${key}`.slice(0, 11);
           }
           updatePhoneInput();
+          goToNextStep();
         });
       });
 
@@ -403,8 +424,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (window.location.pathname.endsWith('/index-orderlist-payment-step7.html')) {
     const phoneInput = document.getElementById('points-phone-number');
+    const savedPhoneNumber = sessionStorage.getItem('foodCourtPointsPhoneNumber') || '';
+
     if (phoneInput instanceof HTMLInputElement) {
-      phoneInput.value = sessionStorage.getItem('foodCourtPointsPhoneNumber') || '';
+      let phoneDigits = savedPhoneNumber.replace(/\D/g, '').slice(0, 11);
+      let isNavigating = false;
+
+      const updatePhoneInput = () => {
+        phoneInput.value = phoneDigits;
+      };
+
+      const goToNextStep = () => {
+        if (phoneDigits.length === 11 && !isNavigating) {
+          isNavigating = true;
+          sessionStorage.setItem('foodCourtPointsPhoneNumber', phoneDigits);
+          window.location.href = 'index-orderlist-payment-step8.html';
+        }
+      };
+
+      phoneInput.addEventListener('input', () => {
+        phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+        updatePhoneInput();
+        goToNextStep();
+      });
+
+      document.querySelectorAll('[data-phone-key]').forEach((keyButton) => {
+        keyButton.addEventListener('click', () => {
+          const key = keyButton.dataset.phoneKey;
+          if (key === 'delete') {
+            phoneDigits = phoneDigits.slice(0, -1);
+          } else if (key && /^\d+$/.test(key)) {
+            phoneDigits = `${phoneDigits}${key}`.slice(0, 11);
+          }
+          updatePhoneInput();
+          goToNextStep();
+        });
+      });
+
+      updatePhoneInput();
+      goToNextStep();
     }
 
     document.querySelector('.points-skip')?.addEventListener('click', () => {
