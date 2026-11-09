@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영수증 출력 여부 | 카페</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../../pages/cafe/cafe.css" />
+  </head>
+  <body class="modal-payment">
+    <dialog
+      open
+      id="modal-receipt"
+      class="modal modal--receipt"
+      aria-labelledby="receipt-title"
+      aria-describedby="receipt-description"
+    >
+      <div class="modal-header">
+        <h2 id="receipt-title" class="modal-title">영수증</h2>
+
+        <button
+          type="button"
+          class="modal-close"
+          data-modal-close=""
+          aria-label="닫기"
+        >
+          <img
+            src="../images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="receipt-description" class="receipt-description">
+          영수증을 받으시겠습니까?
+        </p>
+
+        <div class="points-prompt-actions">
+          <a
+            class="receipt-choice points-no"
+            href="../order-complete.html?category=cafe"
+          >
+            아니오
+          </a>
+          <a
+            class="receipt-choice points-yes"
+            href="../order-complete.html?category=cafe"
+            >예</a
+          >
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

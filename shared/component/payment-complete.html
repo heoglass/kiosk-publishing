@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제 완료 | 카페</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../../pages/cafe/cafe.css" />
+  </head>
+  <body class="modal-payment">
+    <dialog
+      open
+      id="modal-payment-complete"
+      class="modal modal--payment-status"
+      aria-labelledby="payment-complete-title"
+      aria-describedby="payment-complete-description"
+    >
+      <div class="modal-body">
+        <button
+          type="button"
+          class="payment-image-button"
+          data-card-removed=""
+          aria-label="카드 제거 완료"
+        >
+          <img
+            class="payment-complete-image"
+            src="../images/icon/icon-card-complete.png"
+            alt=""
+          />
+        </button>
+
+        <h2 id="payment-complete-title" class="modal-title">
+          결제가 완료되었습니다
+        </h2>
+
+        <p id="payment-complete-description" class="payment-status-description">
+          카드를 제거해주세요
+        </p>
+      </div>
+    </dialog>
+  </body>
+</html>

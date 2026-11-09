@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제수단 선택 | 카페</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../../pages/cafe/cafe.css" />
+  </head>
+  <body class="modal-payment">
+    <dialog
+      open
+      id="modal-payment"
+      class="modal modal--payment"
+      aria-labelledby="modal-payment-title"
+    >
+      <div class="modal-header">
+        <h2 id="modal-payment-title" class="modal-title">결제수단 선택</h2>
+
+        <button
+          type="button"
+          class="modal-close"
+          data-modal-close=""
+          aria-label="닫기"
+        >
+          <img
+            src="../images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 주요 결제수단 -->
+        <div class="payment-main">
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="card"
+          >
+            <img
+              src="../images/icon/icon-card.png"
+              class="payment-icon"
+              aria-hidden="true"
+              alt=""
+            />
+            <span class="payment-name">카드결제</span>
+            <span class="payment-description">(삼성/애플페이)</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="app-card"
+          >
+            <img
+              src="../images/icon/icon-app-card.png"
+              class="payment-icon"
+              aria-hidden="true"
+              alt=""
+            />
+            <span class="payment-name">앱카드</span>
+            <span class="payment-description">(QR/바코드)</span>
+          </button>
+        </div>
+
+        <!-- 간편결제 / 쿠폰 -->
+        <div class="payment-sub">
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="kakao-pay"
+          >
+            <img
+              src="../images/icon/icon-kakao-pay.png"
+              class="payment-logo payment-logo--kakao"
+              aria-hidden="true"
+            />
+            <span class="payment-name">카카오페이</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="naver-pay"
+          >
+            <img
+              src="../images/icon/icon-n-pay.png"
+              class="payment-logo payment-logo--naver"
+              aria-hidden="true"
+            />
+            <span class="payment-name">네이버페이</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="payco"
+          >
+            <img
+              src="../images/icon/icon-payco.png"
+              class="payment-logo payment-logo--payco"
+              aria-hidden="true"
+            />
+            <span class="payment-name">페이코</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="zero-pay"
+          >
+            <img
+              src="../images/icon/icon-zero-pay.png"
+              class="payment-logo payment-logo--zero"
+              aria-hidden="true"
+            />
+            <span class="payment-name">제로페이</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="wechat-pay"
+          >
+            <img
+              src="../images/icon/icon-wechat-pay.png"
+              class="payment-logo payment-logo--wechat"
+              aria-hidden="true"
+            />
+            <span class="payment-name">위챗페이</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="danggeun-pay"
+          >
+            <img
+              src="../images/icon/icon-d-pay.png"
+              class="payment-logo payment-logo--danggeun"
+              aria-hidden="true"
+            />
+            <span class="payment-name">당근페이</span>
+          </button>
+
+          <button
+            type="button"
+            class="payment-method"
+            data-payment-method="coupon"
+          >
+            <span class="payment-name">쿠폰 사용</span>
+          </button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

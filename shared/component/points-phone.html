@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>휴대폰 번호 입력 | 카페</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../../pages/cafe/cafe.css" />
+  </head>
+  <body class="modal-payment">
+    <dialog
+      open
+      id="modal-points-phone"
+      class="modal modal--points-phone"
+      aria-labelledby="points-phone-title"
+    >
+      <div class="modal-header">
+        <h2 id="points-phone-title" class="modal-title">포인트 적립</h2>
+        <button
+          type="button"
+          class="modal-close"
+          data-modal-close=""
+          aria-label="닫기"
+        >
+          <img
+            src="../images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>닫기</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <label for="points-phone-number" class="points-phone-label">
+          적립할 휴대폰 번호를 <br />눌러주세요.
+        </label>
+
+        <input
+          id="points-phone-number"
+          class="points-phone-number"
+          type="tel"
+          inputmode="none"
+          autocomplete="off"
+          placeholder=""
+          readonly=""
+        />
+
+        <div class="points-keypad" role="group" aria-label="휴대폰 번호 키패드">
+          <button type="button" data-phone-key="1">1</button>
+          <button type="button" data-phone-key="2">2</button>
+          <button type="button" data-phone-key="3">3</button>
+          <button type="button" data-phone-key="4">4</button>
+          <button type="button" data-phone-key="5">5</button>
+          <button type="button" data-phone-key="6">6</button>
+          <button type="button" data-phone-key="7">7</button>
+          <button type="button" data-phone-key="8">8</button>
+          <button type="button" data-phone-key="9">9</button>
+          <button type="button" data-phone-key="010">010</button>
+          <button type="button" data-phone-key="0">0</button>
+          <button type="button" data-phone-key="delete">지우기</button>
+        </div>
+
+        <button type="button" class="points-skip" data-open-receipt="">
+          건너뛰기
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>
