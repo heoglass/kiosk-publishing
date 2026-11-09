@@ -636,3 +636,12 @@
   font-size: 44px;
   font-weight: 400;
 }
+
+/* 주문 확인 화면 위에 표시하는 카페 결제 팝업 */
+#cafe-payment-dialogs dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#cafe-payment-dialogs .points-phone-number.has-value {
+  border-color: #ff9500;
+}
