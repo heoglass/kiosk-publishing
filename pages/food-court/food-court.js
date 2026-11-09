@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (
         window.location.pathname.endsWith('/index-orderlist-payment-step9.html') &&
-        nextUrl.pathname === '/shared/order-complete.html'
+        nextUrl.pathname.endsWith('/shared/order-complete.html')
       ) {
         nextUrl.searchParams.set('orderImage', 'red');
       }
@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (
         window.location.pathname.endsWith('/index-orderlist-payment-step9.html') &&
-        nextUrl.pathname === '/shared/order-complete.html'
+        nextUrl.pathname.endsWith('/shared/order-complete.html')
       ) {
         nextUrl.searchParams.set('orderImage', 'red');
       }
