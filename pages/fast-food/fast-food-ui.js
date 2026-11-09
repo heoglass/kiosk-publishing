@@ -3,14 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const contents = document.querySelectorAll('.foodcourt__content');
   const swiperInstances = [];
 
-  const currentPageId = document.body.id; // 파일명과 일치하는 body id (예: index-order, index 등)
+  const currentPageId = document.body.id;
 
   // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
   const backUrlMap = {
-    'index-order': 'index-tekeout-select.html',
+    'index-fast-order': 'index-tekeout-select.html',
     'index-tekeout-select': 'index.html',
-    index: 'index.html',
+    'index': '/index.html',
     'index-orderlist': 'index-order.html',
+    'index-option-step1': 'index-order.html',
   };
 
   // 상단 뒤로가기 버튼 동작 제어
@@ -24,6 +25,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  const setSideOptions = document.querySelectorAll('.fastfood-set-side__option');
+  let selectedSetSide =
+    localStorage.getItem('option-set-side') ||
+    '프렌치프라이';
+
+  const updateSetSideSelection = () => {
+    setSideOptions.forEach((option) => {
+      const isSelected = option.getAttribute('option-set-side') === selectedSetSide;
+      option.classList.toggle('fastfood-set-side__option--selected', isSelected);
+      option.setAttribute('aria-checked', String(isSelected));
+    });
+  };
+
+  setSideOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+      selectedSetSide = option.getAttribute('option-set-side') || '프렌치프라이';
+      localStorage.setItem('option-set-side', selectedSetSide);
+      updateSetSideSelection();
+    });
+  });
+
+  updateSetSideSelection();
+
+  document.getElementById('set-side-back')?.addEventListener('click', () => {
+    window.location.href = 'index-order.html';
+  });
+
+  document.getElementById('set-side-next')?.addEventListener('click', () => {
+    const savedOrderData = JSON.parse(localStorage.getItem('kiosk_order_data') || '{}');
+    const setItem = Object.values(savedOrderData).find((item) => item.name.includes('세트'));
+
+    if (setItem) {
+      setItem.option = selectedSetSide;
+      localStorage.setItem('kiosk_order_data', JSON.stringify(savedOrderData));
+    }
+
+    window.location.href = 'index-tekeout-option-step2.html';
+  });
 
   document.querySelectorAll('.fastfood__contents--tekeout .fastfood__btn').forEach((button) => {
     button.addEventListener('click', () => {
@@ -75,27 +115,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 2. 상단 nav 탭 클릭 시 카테고리만 전환
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      // 탭 활성화 상태 변경
-      tabs.forEach((t) => t.classList.remove('nav__tab--active'));
-      tab.classList.add('nav__tab--active');
+  // 2. 탭의 상품 유형에 따라 메뉴 필터링
+  const productCards = document.querySelectorAll('.product-card');
+  const filterProducts = (itemType) => {
+    productCards.forEach((card) => {
+      const cardType = card.getAttribute('item-type');
+      card.hidden = !cardType || (itemType !== 'all' && cardType !== itemType);
+    });
 
-      // 컨텐츠 표시 전환
-      contents.forEach((c) => c.classList.remove('foodcourt__content--active'));
+    contents.forEach((content, index) => {
+      content.querySelectorAll('.swiper-slide').forEach((slide) => {
+        slide.hidden = !slide.querySelector('.product-card:not([hidden])');
+      });
 
-      if (contents[index]) {
-        contents[index].classList.add('foodcourt__content--active');
+      const hasVisibleProducts = Boolean(content.querySelector('.product-card:not([hidden])'));
+      content.classList.toggle('foodcourt__content--active', hasVisibleProducts);
 
-        // 전환된 탭 내부 슬라이더 첫 페이지로 리셋 및 위치 계산 갱신
-        if (swiperInstances[index]) {
-          swiperInstances[index].slideTo(0, 0);
-          swiperInstances[index].update();
-        }
+      if (swiperInstances[index]) {
+        swiperInstances[index].slideTo(0, 0);
+        swiperInstances[index].update();
       }
     });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((item) => item.classList.remove('nav__tab--active'));
+      tab.classList.add('nav__tab--active');
+      filterProducts(tab.dataset.itemType || 'all');
+    });
   });
+
+  filterProducts(tabs[0]?.dataset.itemType || 'all');
 
   // ==========================================
   // 3. 장바구니 / 주문 데이터 동적 추가
@@ -104,11 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 페이지 이동 후에도 주문 데이터를 유지
   let orderData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  const setProduct = Object.values(orderData).find((item) => item.name.includes('세트'));
+  if (setProduct) {
+    const productName = document.querySelector('.fastfood-set-side__product-name');
+    const productPrice = document.querySelector('.fastfood-set-side__product-price');
+    if (productName) productName.textContent = setProduct.name;
+    if (productPrice) productPrice.textContent = `${setProduct.price.toLocaleString()}원`;
+  }
 
   const orderCountEl = document.querySelector('.order-count');
   const orderTotalEl = document.querySelector('.order-total');
-  const orderSubmitBtn = document.querySelector('.order-submit.oder__food');
+  const orderSubmitBtn = document.querySelector('.order-submit.oder__fastfood');
   const cartClearBtn = document.querySelector('.cart-clear');
+  const cartList = document.querySelector('.cart-list');
+  const cartItemTemplate = document.getElementById('cart-item-template');
 
   // 모달 제어용
   const modal = document.getElementById('option-modal');
@@ -116,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pointsPrompt = document.getElementById('modal-points-prompt');
   const modalCancelBtn = document.getElementById('modal-cancel');
   const modalConfirmBtn = document.getElementById('modal-confirm');
+  let selectedProduct = null;
 
   if (phoneModal instanceof HTMLDialogElement) {
     phoneModal.addEventListener('close', () => {
@@ -128,9 +189,41 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalCount = 0;
     let totalPrice = 0;
 
-    for (const key in orderData) {
-      totalCount += orderData[key].count;
-      totalPrice += orderData[key].price * orderData[key].count;
+    if (cartList && cartItemTemplate instanceof HTMLTemplateElement) {
+      cartList.replaceChildren();
+
+      Object.entries(orderData).forEach(([key, item]) => {
+        const row = cartItemTemplate.content.firstElementChild.cloneNode(true);
+        const itemName = item.name;
+        const displayName =
+          item.option && item.option !== '일반' && item.option !== '옵션 선택 안함'
+            ? `${itemName} (${item.option})`
+            : itemName;
+
+        row.dataset.cartKey = key;
+        row.dataset.price = String(item.price);
+        row.querySelector('.cart-item-name').textContent = displayName;
+        row.querySelector('.cart-quantity-value').value = String(item.count);
+        row.querySelector('.cart-item-price').textContent =
+          `${(item.price * item.count).toLocaleString()}원`;
+
+        const decreaseButton = row.querySelector('.cart-decrease');
+        const decreaseImage = row.querySelector('.cart-minus-image');
+        decreaseButton.disabled = item.count <= 1;
+        decreaseImage.src = item.count <= 1
+          ? '../../shared/images/icon/minus-disabled.png'
+          : '../../shared/images/icon/minus.png';
+        row.querySelector('.cart-remove').setAttribute('aria-label', `${displayName} 삭제`);
+        cartList.append(row);
+
+        totalCount += item.count;
+        totalPrice += item.price * item.count;
+      });
+    } else {
+      for (const key in orderData) {
+        totalCount += orderData[key].count;
+        totalPrice += orderData[key].price * orderData[key].count;
+      }
     }
 
     // 총 갯수 및 총 금액 텍스트 반영
@@ -150,142 +243,115 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(orderData));
   }
 
+  if (cartList) {
+    cartList.addEventListener('click', (event) => {
+      const button = event.target instanceof Element ? event.target.closest('button') : null;
+      const row = button?.closest('.cart-item');
+      const cartKey = row?.dataset.cartKey;
+      if (!button || !cartKey || !orderData[cartKey]) return;
+
+      if (button.matches('.cart-increase')) {
+        orderData[cartKey].count += 1;
+      } else if (button.matches('.cart-decrease')) {
+        orderData[cartKey].count = Math.max(1, orderData[cartKey].count - 1);
+      } else if (button.matches('.cart-remove')) {
+        delete orderData[cartKey];
+      } else {
+        return;
+      }
+
+      updateOrderUI();
+    });
+
+    cartList.addEventListener('change', (event) => {
+      if (!(event.target instanceof HTMLInputElement) || !event.target.matches('.cart-quantity-value')) {
+        return;
+      }
+
+      const row = event.target.closest('.cart-item');
+      const cartKey = row?.dataset.cartKey;
+      if (!cartKey || !orderData[cartKey]) return;
+
+      const quantity = Number(event.target.value);
+      orderData[cartKey].count = Number.isInteger(quantity) && quantity > 0 ? quantity : 1;
+      updateOrderUI();
+    });
+  }
+
   // 초기 로드 시 UI 동기화
   updateOrderUI();
 
-  // 상품 카드(product-card) 클릭 시 주문 목록에 추가
-  const productCards = document.querySelectorAll('.product-card');
-  // optionLabels: 옵션 상품 체크를 위한 상수
-  const optionLabels = document.querySelectorAll('.option-item');
+  // 상품 카드 클릭 시 장바구니에 추가하거나 구성 선택 모달을 연다.
+  const optionLabels = document.querySelectorAll('.fastfood-composition-option');
   const optionRadios = document.querySelectorAll("input[name='food-option']");
+  const addOrderItem = (name, price) => {
+    if (orderData[name]) {
+      orderData[name].count += 1;
+    } else {
+      orderData[name] = { name, option: '일반', price, count: 1 };
+    }
+    updateOrderUI();
+  };
+
+  optionRadios.forEach((radio) => {
+    radio.addEventListener('change', () => {
+      optionLabels.forEach((label) => {
+        label.classList.toggle(
+          'fastfood-composition-option--selected',
+          label.querySelector('input[name="food-option"]')?.checked === true,
+        );
+      });
+    });
+  });
 
   productCards.forEach((card) => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
-      // dataset 속성이 없을 경우를 대비해 내부 텍스트 요소를 자동 파싱
       const titleEl = card.querySelector('.product-card__title');
       const priceEl = card.querySelector('.product-card__price');
-
       const name = card.dataset.name || (titleEl ? titleEl.textContent.trim() : '');
       const priceStr = card.dataset.price || (priceEl ? priceEl.textContent.replace(/[^0-9]/g, '') : '0');
       const price = parseInt(priceStr, 10) || 0;
-
-      // hasOption 속성이 없으면 텍스트에 "옵션" 글자가 포함되어 있는지 자동 판별
-      let hasOption = card.dataset.hasOption === 'true';
-      if (!card.dataset.hasOption && titleEl) {
-        hasOption = titleEl.textContent.includes('옵션');
-      }
-
       if (!name) return;
 
-      selectedProduct = { name, price };
-
-      // 1) 옵션이 있는 상품: 모달 노출 및 첫 번째 옵션 기본 세팅
-      if (hasOption) {
-        optionRadios.forEach((radio) => {
-          radio.addEventListener('change', (e) => {
-            // 모든 label에서 선택 클래스 제거
-            optionLabels.forEach((label) => label.classList.remove('option-item--selected'));
-
-            // 현재 체크된 라디오의 부모 label 찾아서 클래스 부여
-            const parentLabel = e.target.closest('.option-item');
-            if (parentLabel) {
-              parentLabel.classList.add('option-item--selected');
-            }
-          });
-        });
-
-        // 라벨 자체를 클릭했을 때도 확실하게 체크되도록 보조 이벤트 추가 (선택사항이지만 확실함)
-        optionLabels.forEach((label) => {
-          label.addEventListener('click', () => {
-            const radio = label.querySelector("input[name='food-option']");
-            if (radio && !radio.checked) {
-              radio.checked = true;
-              // change 이벤트를 강제로 발생시켜 위쪽 change 리스너가 실행되도록 유도
-              radio.dispatchEvent(new Event('change'));
-            }
-          });
-        });
-
-        if (modal) modal.style.display = 'flex';
-
-        modalCancelBtn.addEventListener('click', () => {
-          console.log('취소.,');
-          if (selectedProduct) {
-            for (const key in orderData) {
-              if (orderData[key].name === selectedProduct.name) {
-                delete orderData[key];
-              }
-            }
-            updateOrderUI();
-          }
-
-          if (modal) modal.style.display = 'none';
-          selectedProduct = null;
-        });
-
-        // [선택 완료 버튼] 선택한 옵션 정보와 함께 장바구니 및 스토리지 저장
-        if (modalConfirmBtn) {
-          modalConfirmBtn.addEventListener('click', () => {
-            if (!selectedProduct) return;
-
-            const checkedRadio = document.querySelector("input[name='food-option']:checked");
-            const optionValue = checkedRadio ? checkedRadio.value : '옵션 선택 안함';
-
-            let cartKey = selectedProduct.name;
-            if (optionValue && optionValue !== '옵션 선택 안함') {
-              cartKey = `${selectedProduct.name} (${optionValue})`;
-            }
-
-            if (orderData[cartKey]) {
-              orderData[cartKey].count += 1;
-            } else {
-              orderData[cartKey] = {
-                name: selectedProduct.name,
-                option: optionValue,
-                price: selectedProduct.price,
-                count: 1,
-              };
-            }
-
-            updateOrderUI();
-
-            if (modal) modal.style.display = 'none';
-            selectedProduct = null;
-          });
+      if (card.getAttribute('item-type') === 'burger' && modal) {
+        selectedProduct = { name, price };
+        const defaultOption = modal.querySelector('input[name="food-option"]');
+        if (defaultOption) {
+          defaultOption.checked = true;
+          defaultOption.dispatchEvent(new Event('change', { bubbles: true }));
         }
+        modal.style.display = 'flex';
+        return;
       }
-      // 2) 일반 상품: 곧바로 장바구니에 담기
-      else {
-        const cartKey = name;
 
-        if (orderData[cartKey]) {
-          orderData[cartKey].count += 1;
-        } else {
-          orderData[cartKey] = {
-            name: name,
-            option: '일반',
-            price: price,
-            count: 1,
-          };
-        }
-
-        updateOrderUI();
-        selectedProduct = null;
-      }
+      addOrderItem(name, price);
     });
   });
 
   // [취소 버튼] 모달 닫기
   if (modalCancelBtn) {
     modalCancelBtn.addEventListener('click', () => {
-      if (modal) {
-        modal.style.display = 'none';
-      }
+      if (modal) modal.style.display = 'none';
       if (phoneModal) {
         phoneModal.style.display = 'none';
         document.querySelector('.foodcourt-dimed')?.classList.remove('foodcourt-dimed');
       }
+      selectedProduct = null;
+    });
+  }
+
+  if (modalConfirmBtn && modal) {
+    modalConfirmBtn.addEventListener('click', () => {
+      const selectedOption = modal.querySelector('input[name="food-option"]:checked');
+      if (!selectedProduct || !(selectedOption instanceof HTMLInputElement)) return;
+
+      const name = selectedOption.dataset.productName;
+      const price = Number(selectedOption.dataset.productPrice);
+      if (!name || !Number.isFinite(price) || price <= 0) return;
+
+      addOrderItem(name, price);
+      modal.style.display = 'none';
       selectedProduct = null;
     });
   }
@@ -346,11 +412,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 주문하기 버튼 클릭 시 주문 목록으로 이동
+  // 주문하기 버튼 클릭 시 식사 장소 선택 화면으로 이동
   if (orderSubmitBtn) {
     orderSubmitBtn.addEventListener('click', () => {
       if (orderSubmitBtn.hasAttribute('disabled')) return;
-      window.location.href = 'index-orderlist.html';
+      window.location.href = 'index-tekeout-option-step1.html';
     });
   }
 });

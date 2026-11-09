@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>패스트푸드 -02 세트메뉴 사이드 선택하세요</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../../shared/css/common.css" />
+  <link rel="stylesheet" href="./fast-food.css?v=20261109-set-side" />
+  <script type="text/javascript" src="../../shared/js/common.js"></script>
+  <script type="text/javascript" src="./fast-food-ui.js?v=20261109-set-side"></script>
+
+</head>
+
+<body id="index-option-step1">
+  <div class="foodcourt-container">
+    <header id="category-header" class="foodcourt__header">
+      <div class="header-left">
+        <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
+          <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
+        </button>
+
+        <span id="header-title"></span>
+      </div>
+      <div class="header-right">
+        <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        <p class="header-sound-text main-sound-text">소리끄기</p>
+      </div>
+    </header>
+    <main class="fast-food category-main fastfood-set-side-page">
+      <section class="fastfood__section fastfood__section--tekeout fastfood-set-side">
+        <div class="fastfood-set-side__summary">
+          <img
+            class="fastfood-set-side__summary-image"
+            src="../../shared/images/fast-food/buger_set.png"
+            alt="불고기 버거 세트"
+          />
+          <div class="fastfood-set-side__summary-info">
+            <h1 class="fastfood-set-side__product-name">불고기 버거 세트</h1>
+            <p class="fastfood-set-side__product-price">12,000원</p>
+          </div>
+        </div>
+
+        <div class="fastfood-set-side__content">
+          <h2 class="fastfood-set-side__title">세트메뉴 음료를 선택하세요</h2>
+          <div class="fastfood-set-side__options" role="radiogroup" aria-label="세트 사이드 선택">
+            <button
+              type="button"
+              class="fastfood-set-side__option fastfood-set-side__option--selected"
+              role="radio"
+              aria-checked="true"
+              option-set-side="프렌치프라이"
+            >
+              <img src="../../shared/images/fast-food/bulgogi.png" alt="" class="fastfood-set-side__option-image" />
+              <span class="fastfood-set-side__option-name">프렌치프라이</span>
+            </button>
+            <button
+              type="button"
+              class="fastfood-set-side__option"
+              role="radio"
+              aria-checked="false"
+              option-set-side="코울슬로"
+            >
+              <img src="../../shared/images/fast-food/bulgogi.png" alt="" class="fastfood-set-side__option-image" />
+              <span class="fastfood-set-side__option-name">코울슬로</span>
+            </button>
+            <button
+              type="button"
+              class="fastfood-set-side__option"
+              role="radio"
+              aria-checked="false"
+              option-set-side="코울슬로"
+            >
+              <img src="../../shared/images/fast-food/bulgogi.png" alt="" class="fastfood-set-side__option-image" />
+              <span class="fastfood-set-side__option-name">코울슬로</span>
+            </button>
+            <button
+              type="button"
+              class="fastfood-set-side__option"
+              role="radio"
+              aria-checked="false"
+              option-set-side="코울슬로"
+            >
+              <img src="../../shared/images/fast-food/bulgogi.png" alt="" class="fastfood-set-side__option-image" />
+              <span class="fastfood-set-side__option-name">코울슬로</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <nav class="fastfood-set-side__navigation" aria-label="주문 단계 이동">
+        <button type="button" id="set-side-back" class="fastfood-set-side__navigation-button fastfood-set-side__navigation-button--back">
+          <span class="fastfood-set-side__arrow fastfood-set-side__arrow--left" aria-hidden="true"></span> 이전
+        </button>
+        <button type="button" id="set-side-next" class="fastfood-set-side__navigation-button fastfood-set-side__navigation-button--next">
+          다음 <span class="fastfood-set-side__arrow fastfood-set-side__arrow--right" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </main>
+  </div>
+
+  <!-- CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>
