@@ -293,7 +293,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateReviewTotal();
-    const openPayment = initPaymentFlow();
+    screen
+      .querySelector(".review-bottom")
+      ?.addEventListener("click", (event) => {
+        const button = event.target.closest(".review-dine-in, .review-takeout");
+        if (!button) return;
+
+        moveTo(PAGES.payment);
+      });
 
     screen.querySelector(".review-back")?.addEventListener("click", () => {
       moveTo(PAGES.menu);
@@ -302,7 +309,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelector(".review-bottom")
       ?.addEventListener("click", (event) => {
         const button = event.target.closest(".review-dine-in, .review-takeout");
-        if (button) openPayment(button);
+        // if (button) openPayment(button);
+        if (button) moveTo(PAGES.payment);
       });
   }
 
