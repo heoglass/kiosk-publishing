@@ -1,54 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문 완료</title>
+    <link rel="stylesheet" href="../shared/css/common.css" />
+    <script type="text/javascript" src="../shared/js/common.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>주문 완료</title>
-  <link rel="stylesheet" href="../../shared/css/common.css" />
-  <script type="text/javascript" src="../../shared/js/common.js" defer></script>
-</head>
+  <body>
+    <header id="category-header">
+      <div class="header-left">
+        <button
+          type="button"
+          id="header-back"
+          class="header-back"
+          aria-label="이전 화면으로"
+        >
+          <img
+            src="../shared/images/icon/arrow-back.png"
+            class="arrow-back"
+            alt="뒤로가기 화살표"
+          />
+        </button>
 
-<body>
-  <header id="category-header">
-    <div class="header-left">
-      <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
-        <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
-      </button>
-
-      <span id="header-title"></span>
-    </div>
-    <div class="header-right">
-      <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 이미지" />
-      <span class="header-sound-text">소리끄기</span>
-    </div>
-  </header>
-  <main class="complete-main">
-    <div class="complte-main-contents">
-      <div class="complete-text-area">
-        <h1 class="complete-title">주문이 완료되었습니다.</h1>
-
-        <p class="complete-message">
-          주문번호를 확인해주세요.<br />
-          주문 번호 확인 후 카운터에서 픽업해주세요.
-        </p>
+        <span id="header-title"></span>
       </div>
-      <img src="../shared/images/order-number.png" class="complete-order-image" alt="주문완료 이미지" />
-    </div>
-    <footer class="complete-footer">
-      <a id="complete-confirm" class="complete-button" href="./experience-complete.html" data-keep-category>확인</a>
-    </footer>
-  </main>
-  <script>
-    if (new URLSearchParams(window.location.search).get("orderImage") === "red") {
-      document.querySelector(".complete-order-image")?.setAttribute("src", "../shared/images/order-number-red.png");
-      const completeButton = document.querySelector(".complete-button");
-      completeButton?.style.setProperty("background-color", "#DF3C3C");
-      if (completeButton) {
-        completeButton.href = "./experience-complete.html?orderImage=red";
-      }
-    }
-  </script>
-</body>
+      <div class="header-right">
+        <img
+          src="../shared/images/icon/sound_w.png"
+          class="header-sound"
+          alt="소리 이미지"
+        />
+        <span class="header-sound-text">소리끄기</span>
+      </div>
+    </header>
+    <main class="complete-main">
+      <div class="complte-main-contents">
+        <div class="complete-text-area">
+          <h1 class="complete-title">주문이 완료되었습니다.</h1>
 
+          <p class="complete-message">
+            주문번호를 확인해주세요.<br />
+            주문 번호 확인 후 카운터에서 픽업해주세요.
+          </p>
+        </div>
+        <img
+          src="../shared/images/order-number.png"
+          class="complete-order-image"
+          alt="주문완료 이미지"
+        />
+      </div>
+      <footer class="complete-footer">
+        <a
+          id="complete-confirm"
+          class="complete-button"
+          href="./experience-complete.html"
+          data-keep-category
+          >확인</a
+        >
+      </footer>
+    </main>
+    <script>
+      if (
+        new URLSearchParams(window.location.search).get("orderImage") === "red"
+      ) {
+        document
+          .querySelector(".complete-order-image")
+          ?.setAttribute("src", "../shared/images/order-number-red.png");
+        const completeButton = document.querySelector(".complete-button");
+        completeButton?.style.setProperty("background-color", "#DF3C3C");
+        if (completeButton) {
+          completeButton.href = "./experience-complete.html?orderImage=red";
+        }
+      }
+    </script>
+  </body>
 </html>
