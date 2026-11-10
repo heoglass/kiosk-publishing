@@ -157,6 +157,25 @@ body {
   font-weight: 600;
 }
 
+/* 테이블 결제 헤더 공통 */
+#category-header.tablePay__header {
+  height: 70px;
+  padding: 0 60px;
+  background-color: #227941;
+}
+#category-header.tablePay__header .arrow-back,
+#category-header.tablePay__header .category-header-home,
+#category-header.tablePay__header .category-header-arrow-right,
+#category-header.tablePay__header .header-sound {
+  width: 36px;
+  height: 36px;
+}
+
+#category-header.tablePay__header #header-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
 .category-start-screen {
   position: relative;
 }

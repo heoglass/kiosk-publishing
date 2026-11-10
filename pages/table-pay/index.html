@@ -6,9 +6,52 @@
     <title>테이블 결제</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/common.css" />
-    <link rel="stylesheet" href="./table-pay.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./table-pay.js"></script>
+    <!-- <link rel="stylesheet" href="./table-pay.css" /> -->
+    
   </head>
-  <body></body>
+  <body id="tablePay">
+
+    <div class="kiosk-container">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main kiosk-screen">
+        <!-- 공통헤더 -->
+          <header id="category-header" class="tablePay__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+          </header>
+
+          <section class="tablePay__setion">
+
+          </section>
+
+      </main>
+    </div>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./table-pay.js"></script>
+  </body>
 </html>
