@@ -1285,3 +1285,8 @@
 .fastfood-set-side__navigation-button .fastfood-set-side__arrow--right {
   right: 40px;
 }
+
+/* 영수증 받기 모달 */
+:is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-yes {
+  background: #DF3C3C;
+}

@@ -106,19 +106,35 @@
     </main>
   </div>
 
-  <!-- 결제 진행 팝업 -->
-  <div id="modal-fastfood-card-loading" class="modal modal--payment" aria-labelledby="fastfood-payment-progress-title">
+  <dialog
+    id="modal-payment-complete"
+    class="modal modal--payment-status"
+    aria-labelledby="fastfood-payment-complete-title"
+    aria-describedby="fastfood-payment-complete-description"
+  >
     <div class="modal-body">
-      <div class="spinner"></div>
-      <h2 id="fastfood-payment-progress-title" class="modal-title">
-        결제 진행중입니다
+      <button
+        type="button"
+        class="payment-image-button"
+        data-card-removed=""
+        aria-label="카드 제거 완료"
+      >
+        <img
+          class="payment-complete-image"
+          src="../../shared/images/icon/icon-card-complete.png"
+          alt=""
+        />
+      </button>
+
+      <h2 id="fastfood-payment-complete-title" class="modal-title">
+        결제가 완료되었습니다
       </h2>
 
-      <p id="fastfood-payment-progress-description" class="payment-status-description">
-        카드를 제거하지 말고 잠시만 기다려주세요
+      <p id="fastfood-payment-complete-description" class="payment-status-description">
+        카드를 제거해주세요
       </p>
     </div>
-  </div>
+  </dialog>
 
   <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

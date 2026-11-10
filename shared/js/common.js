@@ -53,6 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
       return path.split("/").at(-2) === currentFolder;
     });
 
+    if (window.location.pathname.endsWith("/index.html") && currentRoute) {
+      localStorage.setItem("cat", currentFolder);
+      localStorage.removeItem("fastFoodOrderType");
+      localStorage.removeItem("kiosk_order_data");
+    }
+
     const sharedRoute = routes.find(([, path]) => {
       return path.split("/").at(-2) === category;
     });
@@ -81,18 +87,18 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const soundIcon = soundButton?.querySelector(".header-sound");
 
-  if (!soundIcon) return;
+  if (soundButton && soundIcon) {
+    const soundOnSrc = soundIcon.getAttribute("src");
+    const soundOffSrc = soundButton.dataset.soundOffSrc;
 
-  const soundOnSrc = soundIcon.getAttribute("src");
-  const soundOffSrc = soundButton.dataset.soundOffSrc;
+    soundButton.addEventListener("click", () => {
+      const isSoundOn = soundButton.getAttribute("aria-pressed") === "true";
+      const nextSoundOn = !isSoundOn;
 
-  soundButton.addEventListener("click", () => {
-    const isSoundOn = soundButton.getAttribute("aria-pressed") === "true";
-    const nextSoundOn = !isSoundOn;
-
-    soundButton.setAttribute("aria-pressed", String(nextSoundOn));
-    soundIcon.src = nextSoundOn ? soundOnSrc : soundOffSrc;
-  });
+      soundButton.setAttribute("aria-pressed", String(nextSoundOn));
+      soundIcon.src = nextSoundOn ? soundOnSrc : soundOffSrc;
+    });
+  }
 
   const completeConfirm = document.getElementById("complete-confirm");
 
@@ -111,7 +117,27 @@ document.addEventListener("DOMContentLoaded", function () {
     .map((path) => path.split("/").at(-2))
     .find((folder) => pathParts.includes(folder));
 
-  const category = currentCategory ?? params.get("category");
+  const queryCategory = params.get("category");
+  const knownCategory = (category) =>
+    Object.values(pageRoutes).some((path) => path.split("/").at(-2) === category);
+
+  if (queryCategory && knownCategory(queryCategory)) {
+    localStorage.setItem("cat", queryCategory);
+  }
+
+  const category = currentCategory ?? queryCategory;
+
+  const experienceRetry = document.getElementById("experience-retry");
+
+  if (experienceRetry) {
+    experienceRetry.addEventListener("click", () => {
+      const retryCategory = queryCategory || localStorage.getItem("cat");
+
+      if (!knownCategory(retryCategory)) return;
+
+      window.location.href = `../pages/${retryCategory}/index.html`;
+    });
+  }
 
   if (!category) return;
 
@@ -133,24 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //
   // 체험 완료 화면에서 다시하기 버튼 누른 경우 카테고리 명 감지해서 해당 카테고리 index.html로 이동
   //
-
-  const experienceRetry = document.getElementById("experience-retry");
-
-  if (experienceRetry) {
-    experienceRetry.addEventListener("click", () => {
-      const category = new URLSearchParams(window.location.search).get(
-        "category"
-      );
-
-      const categoryRoute = Object.values(pageRoutes).find((path) => {
-        return path.split("/").at(-2) === category;
-      });
-
-      if (!categoryRoute) return;
-
-      window.location.href = `../pages/${category}/index.html`;
-    });
-  }
 
   // ----------------------------------------------------//
   // ------------------- modal --------------------------//

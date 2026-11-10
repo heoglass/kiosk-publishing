@@ -35,6 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  if (currentPageId === 'index-payment-step4') {
+    const paymentCompleteModal = document.getElementById('modal-payment-complete');
+    if (paymentCompleteModal instanceof HTMLDialogElement) {
+      paymentCompleteModal.showModal();
+      document.body.classList.add('modal-open');
+    }
+
+    document.querySelector('[data-card-removed]')?.addEventListener('click', () => {
+      window.location.href = 'index-payment-step5.html';
+    });
+  }
+
+  if (currentPageId === 'index-payment-step5') {
+    const receiptModal = document.getElementById('modal-receipt');
+    if (receiptModal instanceof HTMLDialogElement) {
+      receiptModal.showModal();
+      document.body.classList.add('modal-open');
+    }
+  }
+
   // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
   const backUrlMap = {
     'index-fast-order': 'index-tekeout-select.html',
@@ -49,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'index-payment-step2': 'index-payment-step1.html',
     'index-payment-step3': 'index-payment-step2.html',
     'index-payment-step4': 'index-payment-step3.html',
+    'index-payment-step5': 'index-payment-step4.html',
   };
 
   // 상단 뒤로가기 버튼 동작 제어
