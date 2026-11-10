@@ -85,6 +85,15 @@ ol {
   margin: 0;
   padding: 0;
 }
+html,
+body {
+  margin: 0;
+}
+.kiosk-screen {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+}
 
 #category-header {
   max-width: 1080px;
@@ -95,11 +104,10 @@ ol {
   align-items: center;
   padding: 30px 60px;
   background-color: #56321c;
-  position: fixed;
-  top: 0;
+  position: absolute;
   left: 50%;
-  z-index: 99;
-  transform: translateX(-50%);
+  top: 0;
+  transform: translate(-50%, 0);
 }
 
 #category-header #header-title {
@@ -112,6 +120,7 @@ ol {
 #category-header .header-left {
   display: flex;
   align-items: center;
+  gap: var(--font-400-weight);
 }
 
 #category-header .header-back {
@@ -124,7 +133,9 @@ ol {
   font-weight: 700;
 }
 
-#category-header .arrow-back {
+#category-header .arrow-back,
+.category-header-home,
+.category-header-arrow-right {
   width: 80px;
   height: 80px;
 }
@@ -136,9 +147,8 @@ ol {
 }
 
 .header-sound {
-  width: 56px;
-  height: 56px;
-  margin-right: 8px;
+  width: 80px;
+  height: 80px;
 }
 
 .header-sound-text {
@@ -153,12 +163,16 @@ ol {
 
 .category-start {
   border: none;
-  background-color: #eee;
   width: 100%;
   height: calc(100vh - 144px);
   padding: 144px 0 0;
 }
-
+.category-main {
+  padding-top: 144px;
+  max-width: 1080px;
+  min-height: 1920px;
+  margin: 0 auto;
+}
 .category-main-image {
   position: absolute;
   inset: 0;
@@ -187,7 +201,6 @@ ol {
 }
 
 .category-main-message {
-  /* width: 100%; */
   width: auto;
   font-size: 48px;
   position: absolute;
@@ -203,15 +216,6 @@ ol {
 .category-main-message span {
   font-size: 48px;
   color: #fff;
-}
-
-.category-main {
-  padding-top: 144px;
-  /* 헤더 높이 제외  */
-  max-width: 1080px;
-  min-height: 1920px;
-  margin: 0 auto;
-  /* 고정형 디자인 반영 */
 }
 
 .menu-tab {
@@ -374,9 +378,13 @@ ol {
 }
 
 .order-bar {
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0); */
+  position: absolute;
   left: 0;
+  transform: none;
   z-index: 10;
 
   display: flex;
@@ -385,6 +393,7 @@ ol {
 
   box-sizing: border-box;
   width: 100%;
+  max-width: 1080px;
   padding: 24px 60px;
 }
 
@@ -975,10 +984,10 @@ body.modal-open {
 #modal-payment-progress .payment-spinner {
   display: block;
   flex-shrink: 0;
-
-  box-sizing: border-box;
   width: 240px;
   height: 240px;
+  border-radius: 120px;
+  animation: spin 1s linear infinite;
 }
 
 /* 결제 완료 이미지 버튼 */

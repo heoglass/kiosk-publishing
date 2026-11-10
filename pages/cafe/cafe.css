@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.category-start-screen {
+  background-image: url("../../shared/images/cafe/cafe-visual.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.category-start-screen button {
+  background-color: transparent;
+}
 .category-title-area.cafe {
   color: #7b5d40;
 }
