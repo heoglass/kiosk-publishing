@@ -4,18 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>푸드코트 - 03주문내역 확인</title>
+  <title>패스트푸드 결제 진행</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../../shared/css/common.css" />
-  <link rel="stylesheet" href="./food-court.css" />
+  <link rel="stylesheet" href="./fast-food.css?v=20261109-set-side" />
   <script type="text/javascript" src="../../shared/js/common.js"></script>
-  <script type="text/javascript" src="./food-court.js"></script>
-  <!-- CDN링크 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script type="text/javascript" src="./fast-food-ui.js?v=20261109-set-side"></script>
 
 </head>
 
-<body id="index-orderlist">
+<body id="index-payment-step2">
   <div class="foodcourt-container foodcourt-dimed">
     <header id="category-header" class="foodcourt__header">
       <div class="header-left">
@@ -30,77 +28,57 @@
         <p class="header-sound-text main-sound-text">소리끄기</p>
       </div>
     </header>
-    <main class="fast-food category-main">
-      <section class="fastfood__section orderlist__view">
-
-        <h2 class="section-title order__list-title">주문 내역을 확인해주세요</h2>
-
-        <!-- 주문 상품 목록 -->
-        <div class="order-list-wrap">
-          <!-- 상품 1 -->
-          <div class="order-item">
-            <span class="order-item__name">능동 미나리 곰탕</span>
-            <div class="order-count__wrap">
-              <span class="order-item__count">1개</span>
-              <span class="order-item__price">15,000원</span>
-            </div>
-          </div>
-
-          <!-- 상품 2 (옵션 포함) -->
-          <div class="order-item">
-            <span class="order-item__name">전주비빔밥</span>
-            <div class="order-count__wrap">
-              <span class="order-item__count">2개</span>
-              <span class="order-item__price">24,000원</span>
-            </div>
-          </div>
-          <!-- 옵션이 있는 경우 -->
-          <div class="order-item__option">
-            <span>옵션: 소스 따로 주세요</span>
+    <main class="fast-food category-main fastfood-set-side-page">
+      <section class="fastfood__section fastfood__section--tekeout fastfood-set-side orderlist__view">
+        <div class="fastfood-set-side__summary fastfood__summary--order">
+          <div class="fastfood-set-side__summary-info option__list--selected">
+            <h1 class="order__check--confirm">주문 내역을 확인해주세요</h1>
           </div>
         </div>
 
-        <span class="divider"></span>
+        <!-- 주문내역 확인-->
+        <div class="order-list-wrap fastfood-order-confirmation__list" aria-label="선택한 주문 메뉴">
+          <div class="order-item fastfood-order-confirmation__item">
+            <div class="fastfood-order-confirmation__product">
+              <img class="fastfood-set-confirmation__image" src="../../shared/images/fast-food/bulgogi.png" alt="" />
+              <div class="fastfood-order-confirmation__product-info">
+                <span class="order-item__name">불고기 버거 세트</span>
+                <span class="fastfood-order-confirmation__options">옵션: 아이스 아메리카노 / 프렌치프라이</span>
+              </div>
+            </div>
+            <div class="order-count__wrap fastfood-order-confirmation__numbers">
+              <span class="order-item__count">1개</span>
+              <span class="order-item__price">12,000원</span>
+            </div>
+          </div>
+        </div>
 
-        <!-- 주문 총괄 요약 영역 -->
-        <div class="order-summary-wrap">
-          <!-- 총 수량 -->
+        <div class="order-summary-wrap order__summary--border">
           <div class="order-summary-item">
             <span class="order-summary-item__name">총 수량</span>
-            <span class="order-summary-item__value">2개</span>
+            <span class="order-summary-item__value fastfood-order-confirmation__count">1개</span>
           </div>
-
-          <!-- 총 결제금액 -->
           <div class="order-summary-item order-summary-item--total">
             <span class="order-summary-item__name">총 결제금액</span>
-            <span class="order-summary-item__value order-summary-item__value--price">39,000원</span>
+            <span class="order-summary-item__value order-summary-item__value--price fastfood-order-confirmation__price">12,000원</span>
           </div>
         </div>
-
-        <span class="divider"></span>
       </section>
-
-      <!-- 하단 버튼 -->
-      <section class="order-bar foodcourt__oderbar" aria-label="주문 관리">
-        <button type="button" class="btn-action order__btn--back">돌아가기</button>
-        <button type="button" class="btn-action btn-dine-in">
-          먹고가기 <span class="sub-text">(다회용컵)</span>
+      <nav class="fastfood-set-side__navigation fastfood-set-confirmation__actions" aria-label="세트메뉴 구성 내역 취소 및 담기">
+        <button type="button" id="set-side-back" class="fastfood-set-confirmation__button fastfood-set-confirmation__button--cancel">
+          돌아가기
         </button>
-        <button type="button" class="btn-action btn-takeout">
-          포장하기 <span class="sub-text">(일회용컵)</span>
+        <button type="button" id="orderComplete" class="fastfood-set-confirmation__button fastfood-set-confirmation__button--add">
+          주문완료
         </button>
-
-      </section>
-
+      </nav>
     </main>
   </div>
 
-
-  <!-- 결제수단 선택 팝업 -->
-
-  <div id="modal-card-payment" class="modal modal--payment" aria-labelledby="modal-payment-title">
+  <!-- 카드 결제 안내 팝업 -->
+  <div id="modal-fastfood-card-payment" class="modal modal--payment payment__card--insert" aria-labelledby="modal-fastfood-card-payment-title">
     <div class="modal-header">
-      <h2 id="modal-card-payment-title" class="modal-title-step">카드 결제</h2>
+      <h2 id="modal-fastfood-card-payment-title" class="modal-title-step">카드 결제</h2>
 
       <button type="button" class="modal-close" data-modal-close aria-label="닫기">
         <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
@@ -115,7 +93,7 @@
       <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>
 
       <p class="card-payment-description">
-        삼성/애플페이로 결제시 결제화면을 실행 후<br />
+        삼성/애플페이로 결제시 결제화면을<br /> 실행 후
         <strong>휴대폰을 투입구 가까이</strong>에 갖다대세요.
       </p>
 
@@ -131,9 +109,7 @@
         </div>
       </dl>
     </div>
-
   </div>
-
 
   <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

@@ -761,7 +761,8 @@ body.modal-open {
 
 /* 카드 결제 안내 */
 /* 카드 결제 안내 팝업 */
-#modal-card-payment {
+#modal-card-payment,
+#modal-fastfood-card-payment {
   box-sizing: border-box;
   width: 840px;
   max-width: calc(100% - 120px);
@@ -778,11 +779,13 @@ body.modal-open {
   color: #000;
 }
 
-#modal-card-payment::backdrop {
+#modal-card-payment::backdrop,
+#modal-fastfood-card-payment::backdrop {
   background: rgb(0 0 0 / 60%);
 }
 
-#modal-card-payment .modal-close {
+#modal-card-payment .modal-close,
+#modal-fastfood-card-payment .modal-close {
   position: static;
 
   display: flex;
@@ -804,7 +807,8 @@ body.modal-open {
 }
 
 /* 본문 */
-#modal-card-payment .modal-body {
+#modal-card-payment .modal-body,
+#modal-fastfood-card-payment .modal-body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -815,7 +819,8 @@ body.modal-open {
   text-align: center;
 }
 
-#modal-card-payment .payment-image-button {
+#modal-card-payment .payment-image-button,
+#modal-fastfood-card-payment .payment-image-button {
   display: block;
   flex-shrink: 0;
   margin: 80px auto 40px;
@@ -827,7 +832,8 @@ body.modal-open {
   box-shadow: none;
 }
 
-#modal-card-payment .payment-image-button .card-payment-image {
+#modal-card-payment .payment-image-button .card-payment-image,
+#modal-fastfood-card-payment .payment-image-button .card-payment-image {
   display: block;
   width: 280px;
   height: 280px;
@@ -835,25 +841,29 @@ body.modal-open {
 }
 
 /* 안내 문구 */
-#modal-card-payment .card-payment-guide {
+#modal-card-payment .card-payment-guide,
+#modal-fastfood-card-payment .card-payment-guide {
   font-size: 52px;
   font-weight: 700;
 }
 
-#modal-card-payment .card-payment-description {
+#modal-card-payment .card-payment-description,
+#modal-fastfood-card-payment .card-payment-description {
   margin: 24px 0 0;
   color: #444;
   font-size: 38px;
   font-weight: 500;
 }
 
-#modal-card-payment .card-payment-description strong {
+#modal-card-payment .card-payment-description strong,
+#modal-fastfood-card-payment .card-payment-description strong {
   color: inherit;
   font-weight: inherit;
 }
 
 /* 수량 및 결제금액 */
-#modal-card-payment .card-payment-summary {
+#modal-card-payment .card-payment-summary,
+#modal-fastfood-card-payment .card-payment-summary {
   display: block;
 
   box-sizing: border-box;
@@ -867,7 +877,8 @@ body.modal-open {
   text-align: left;
 }
 
-#modal-card-payment .card-payment-summary-row {
+#modal-card-payment .card-payment-summary-row,
+#modal-fastfood-card-payment .card-payment-summary-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -876,24 +887,29 @@ body.modal-open {
   padding: 24px 0;
 }
 
-#modal-card-payment .card-payment-summary-row + .card-payment-summary-row {
+#modal-card-payment .card-payment-summary-row + .card-payment-summary-row,
+#modal-fastfood-card-payment .card-payment-summary-row + .card-payment-summary-row {
   border-top: 1px solid #d9d9d9;
 }
 
 #modal-card-payment .card-payment-summary dt,
-#modal-card-payment .card-payment-summary dd {
+#modal-card-payment .card-payment-summary dd,
+#modal-fastfood-card-payment .card-payment-summary dt,
+#modal-fastfood-card-payment .card-payment-summary dd {
   margin: 0;
 
   font-size: 44px;
   font-weight: 700;
 }
 
-#modal-card-payment .card-payment-summary dd {
+#modal-card-payment .card-payment-summary dd,
+#modal-fastfood-card-payment .card-payment-summary dd {
   text-align: right;
   white-space: nowrap;
 }
 
-#modal-card-payment .card-payment-total {
+#modal-card-payment .card-payment-total,
+#modal-fastfood-card-payment .card-payment-total {
   color: #e93300;
 }
 

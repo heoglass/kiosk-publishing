@@ -5,6 +5,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const currentPageId = document.body.id;
 
+  if (currentPageId === 'index-payment-step1') {
+    const paymentModal = document.getElementById('modal-payment');
+    if (paymentModal instanceof HTMLDialogElement) {
+      paymentModal.showModal();
+      document.body.classList.add('modal-open');
+    }
+
+    document.querySelector('[data-payment-method="card"]')?.addEventListener('click', () => {
+      window.location.href = 'index-payment-step2.html';
+    });
+  }
+
+  if (currentPageId === 'index-payment-step2') {
+    const cardPaymentModal = document.getElementById('modal-fastfood-card-payment');
+    cardPaymentModal?.querySelector('[data-modal-close]')?.addEventListener('click', () => {
+      cardPaymentModal.style.display = 'none';
+      document.querySelector('.foodcourt-container')?.classList.remove('foodcourt-dimed');
+    });
+
+    document.querySelector('[data-card-inserted]')?.addEventListener('click', () => {
+      window.location.href = 'index-payment-step3.html';
+    });
+  }
+
   // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
   const backUrlMap = {
     'index-fast-order': 'index-tekeout-select.html',
@@ -12,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     'index': '/index.html',
     'index-orderlist': 'index-order.html',
     'index-option-step1': 'index-order.html',
+    'index-option-step2': 'index-tekeout-option-step1.html',
+    'index-option-step3': 'index-tekeout-option-step2.html',
+    'index-option-step4': 'index-tekeout-option-step3.html',
+    'index-payment-step1': 'index-tekeout-option-step4.html',
+    'index-payment-step2': 'index-payment-step1.html',
+    'index-payment-step3': 'index-payment-step2.html',
   };
 
   // 상단 뒤로가기 버튼 동작 제어
@@ -27,13 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const setSideOptions = document.querySelectorAll('.fastfood-set-side__option');
-  let selectedSetSide =
-    localStorage.getItem('option-set-side') ||
-    '프렌치프라이';
+  const isSetDrinkStep = currentPageId === 'index-option-step2';
+  const getSetSideOptionValue = (option) => {
+    if (isSetDrinkStep) {
+      return option.querySelector('.fastfood-set-side__option-name')?.textContent.trim() || '';
+    }
+    return option.getAttribute('option-set-side') || '';
+  };
+  let selectedSetSide = localStorage.getItem('option-set-side') || '프렌치프라이';
+
+  if (isSetDrinkStep) {
+    const savedOrderData = JSON.parse(localStorage.getItem('kiosk_order_data') || '{}');
+    const setItem = Object.values(savedOrderData).find((item) => item.name.includes('세트'));
+    selectedSetSide =
+      setItem?.optionSideStep2 ||
+      getSetSideOptionValue(document.querySelector('.fastfood-set-side__option--selected')) ||
+      getSetSideOptionValue(setSideOptions[0]);
+  }
 
   const updateSetSideSelection = () => {
     setSideOptions.forEach((option) => {
-      const isSelected = option.getAttribute('option-set-side') === selectedSetSide;
+      const isSelected = getSetSideOptionValue(option) === selectedSetSide;
       option.classList.toggle('fastfood-set-side__option--selected', isSelected);
       option.setAttribute('aria-checked', String(isSelected));
     });
@@ -41,8 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setSideOptions.forEach((option) => {
     option.addEventListener('click', () => {
-      selectedSetSide = option.getAttribute('option-set-side') || '프렌치프라이';
-      localStorage.setItem('option-set-side', selectedSetSide);
+      selectedSetSide = getSetSideOptionValue(option) || '프렌치프라이';
+      if (!isSetDrinkStep) {
+        localStorage.setItem('option-set-side', selectedSetSide);
+      }
       updateSetSideSelection();
     });
   });
@@ -50,19 +96,50 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSetSideSelection();
 
   document.getElementById('set-side-back')?.addEventListener('click', () => {
-    window.location.href = 'index-order.html';
+    if (currentPageId === 'index-option-step3') {
+      const savedOrderData = JSON.parse(localStorage.getItem('kiosk_order_data') || '{}');
+      const setItem = Object.values(savedOrderData).find((item) => item.name.includes('세트'));
+
+      if (setItem) {
+        setItem.option = '일반';
+        delete setItem.optionSideStep2;
+        localStorage.setItem('kiosk_order_data', JSON.stringify(savedOrderData));
+      }
+      localStorage.removeItem('option-set-side');
+      window.location.href = 'index-order.html';
+      return;
+    }
+
+    window.location.href = currentPageId === 'index-option-step2'
+      ? 'index-tekeout-option-step1.html'
+      : 'index-order.html';
   });
 
   document.getElementById('set-side-next')?.addEventListener('click', () => {
+    if (currentPageId === 'index-option-step3') {
+      window.location.href = 'index-order.html';
+      return;
+    }
+
     const savedOrderData = JSON.parse(localStorage.getItem('kiosk_order_data') || '{}');
     const setItem = Object.values(savedOrderData).find((item) => item.name.includes('세트'));
 
     if (setItem) {
-      setItem.option = selectedSetSide;
+      if (isSetDrinkStep) {
+        setItem.optionSideStep2 = selectedSetSide;
+      } else {
+        setItem.option = selectedSetSide;
+      }
       localStorage.setItem('kiosk_order_data', JSON.stringify(savedOrderData));
     }
 
-    window.location.href = 'index-tekeout-option-step2.html';
+    window.location.href = isSetDrinkStep
+      ? 'index-tekeout-option-step3.html'
+      : 'index-tekeout-option-step2.html';
+  });
+
+  document.getElementById('orderComplete')?.addEventListener('click', () => {
+    window.location.href = 'index-payment-step1.html';
   });
 
   document.querySelectorAll('.fastfood__contents--tekeout .fastfood__btn').forEach((button) => {
@@ -156,11 +233,125 @@ document.addEventListener('DOMContentLoaded', () => {
   // 페이지 이동 후에도 주문 데이터를 유지
   let orderData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
   const setProduct = Object.values(orderData).find((item) => item.name.includes('세트'));
-  if (setProduct) {
+  if (setProduct && currentPageId !== 'index-option-step3') {
     const productName = document.querySelector('.fastfood-set-side__product-name');
     const productPrice = document.querySelector('.fastfood-set-side__product-price');
     if (productName) productName.textContent = setProduct.name;
     if (productPrice) productPrice.textContent = `${setProduct.price.toLocaleString()}원`;
+  }
+
+  if (currentPageId === 'index-option-step3' && setProduct) {
+    const confirmationList = document.querySelector('.fastfood-set-confirmation__list');
+    const confirmationName = document.querySelector('.fastfood-set-confirmation__product-name');
+    const confirmationPrice = document.querySelector('.fastfood-set-confirmation__product-price');
+    const selectedOptions = [setProduct.optionSideStep2, setProduct.option]
+      .filter((option) => option && !['일반', '세트', '옵션 선택 안함'].includes(option));
+
+    if (confirmationList) {
+      confirmationList.replaceChildren();
+      selectedOptions.forEach((optionName) => {
+        const row = document.createElement('div');
+        row.className = 'fastfood-set-confirmation__item';
+
+        const image = document.createElement('img');
+        image.className = 'fastfood-set-confirmation__image';
+        image.src = '../../shared/images/fast-food/bulgogi.png';
+        image.alt = '';
+
+        const name = document.createElement('span');
+        name.className = 'fastfood-set-confirmation__item-name';
+        name.textContent = optionName;
+
+        row.append(image, name);
+        confirmationList.append(row);
+      });
+    }
+
+    if (confirmationName) confirmationName.textContent = setProduct.name;
+    if (confirmationPrice) {
+      confirmationPrice.textContent = `${Number(setProduct.price).toLocaleString()}원`;
+    }
+  }
+
+  if (currentPageId === 'index-option-step4') {
+    const confirmationList = document.querySelector('.fastfood-order-confirmation__list');
+    const confirmationCount = document.querySelector('.fastfood-order-confirmation__count');
+    const confirmationPrice = document.querySelector('.fastfood-order-confirmation__price');
+    let totalCount = 0;
+    let totalPrice = 0;
+
+    if (confirmationList) {
+      confirmationList.replaceChildren();
+
+      Object.values(orderData).forEach((item) => {
+        const count = Number(item.count) || 0;
+        const price = Number(item.price) || 0;
+        if (count <= 0) return;
+
+        totalCount += count;
+        totalPrice += price * count;
+
+        const row = document.createElement('div');
+        row.className = 'order-item fastfood-order-confirmation__item';
+
+        const product = document.createElement('div');
+        product.className = 'fastfood-order-confirmation__product';
+
+        const image = document.createElement('img');
+        image.className = 'fastfood-set-confirmation__image';
+        image.src = '../../shared/images/fast-food/bulgogi.png';
+        image.alt = '';
+
+        const productInfo = document.createElement('div');
+        productInfo.className = 'fastfood-order-confirmation__product-info';
+
+        const name = document.createElement('span');
+        name.className = 'order-item__name';
+        const isSetItem = item.name.includes('세트') || Boolean(item.optionSideStep2);
+        name.textContent = isSetItem
+          ? `${item.name.replace(/\s*\(?세트\)?$/, '').replace(/\s+/g, '')}(세트)`
+          : item.name;
+        productInfo.append(name);
+
+        const options = isSetItem
+          ? []
+          : [item.optionSideStep2, item.option]
+            .filter((option) => option && !['일반', '세트', '옵션 선택 안함'].includes(option));
+        if (options.length > 0) {
+          const optionText = document.createElement('span');
+          optionText.className = 'fastfood-order-confirmation__options';
+          optionText.textContent = `옵션: ${options.join(' / ')}`;
+          productInfo.append(optionText);
+        }
+
+        product.append(image, productInfo);
+
+        const numbers = document.createElement('div');
+        numbers.className = 'order-count__wrap fastfood-order-confirmation__numbers';
+
+        const itemCount = document.createElement('span');
+        itemCount.className = 'order-item__count';
+        itemCount.textContent = `${count}개`;
+
+        const itemPrice = document.createElement('span');
+        itemPrice.className = 'order-item__price';
+        itemPrice.textContent = `${(price * count).toLocaleString()}원`;
+
+        numbers.append(itemCount, itemPrice);
+        row.append(product, numbers);
+        confirmationList.append(row);
+      });
+    } else {
+      Object.values(orderData).forEach((item) => {
+        const count = Number(item.count) || 0;
+        const price = Number(item.price) || 0;
+        totalCount += count;
+        totalPrice += price * count;
+      });
+    }
+
+    if (confirmationCount) confirmationCount.textContent = `${totalCount}개`;
+    if (confirmationPrice) confirmationPrice.textContent = `${totalPrice.toLocaleString()}원`;
   }
 
   const orderCountEl = document.querySelector('.order-count');
@@ -195,10 +386,10 @@ document.addEventListener('DOMContentLoaded', () => {
       Object.entries(orderData).forEach(([key, item]) => {
         const row = cartItemTemplate.content.firstElementChild.cloneNode(true);
         const itemName = item.name;
-        const displayName =
-          item.option && item.option !== '일반' && item.option !== '옵션 선택 안함'
-            ? `${itemName} (${item.option})`
-            : itemName;
+        const isSetItem = itemName.includes('세트') || Boolean(item.optionSideStep2);
+        const displayName = isSetItem
+          ? `${itemName.replace(/\s*\(?세트\)?$/, '').replace(/\s+/g, '')}(세트)`
+          : itemName;
 
         row.dataset.cartKey = key;
         row.dataset.price = String(item.price);
@@ -353,6 +544,10 @@ document.addEventListener('DOMContentLoaded', () => {
       addOrderItem(name, price);
       modal.style.display = 'none';
       selectedProduct = null;
+
+      if (selectedOption.value === '세트') {
+        window.location.href = 'index-tekeout-option-step1.html';
+      }
     });
   }
 
@@ -412,11 +607,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 주문하기 버튼 클릭 시 식사 장소 선택 화면으로 이동
+  // 주문하기 버튼 클릭 시 최종 주문 확인 화면으로 이동
   if (orderSubmitBtn) {
     orderSubmitBtn.addEventListener('click', () => {
       if (orderSubmitBtn.hasAttribute('disabled')) return;
-      window.location.href = 'index-tekeout-option-step1.html';
+      window.location.href = 'index-tekeout-option-step4.html';
     });
   }
 });

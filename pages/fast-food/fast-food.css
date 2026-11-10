@@ -279,7 +279,7 @@
 .modal-title {
   font-size: 60px;
   font-weight: 700;
-  margin-bottom: 80px;
+  margin-bottom: 16px;
   color: #000;
 }
 
@@ -537,6 +537,10 @@
 .orderlist__view .order-list-wrap {
   padding: 60px;
 }
+.orderlist__view .fastfood-order-confirmation__list {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .orderlist__view .order-list-wrap .order-item {
   display: flex;
@@ -576,6 +580,12 @@
 
 .order-summary-wrap {
   padding: 60px;
+}
+
+.order__summary--border {
+  border-top: 24px solid #eee;
+  border-bottom: 24px solid #eee;
+
 }
 
 .order-summary-wrap .order-summary-item {
@@ -714,7 +724,8 @@
   border: 3px solid rgba(204, 204, 204, 1);
 }
 
-#modal-card-loading {
+#modal-card-loading,
+#modal-fastfood-card-loading {
   box-sizing: border-box;
   width: 840px;
   max-width: calc(100% - 120px);
@@ -746,6 +757,10 @@
 
 .modal--payment .modal-body {
   padding: 100px 56px;
+}
+
+#modal-fastfood-card-loading .modal-body {
+  padding: 100px 60;
 }
 
 #modal-points-prompt .modal-header .modal-title {
@@ -891,15 +906,29 @@
   display: flex;
   min-height: 280px;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   padding: 24px 60px;
   background: #f2f2f2;
 }
 
+.fastfood__summary--order {
+  min-height: 192px;
+  padding: 60px;
+}
+
+.fastfood-set-side__summary .option__list--selected {
+  width: 100%;
+  text-align: center;
+}
+.fastfood-set-side__summary .option__list--selected h1 {
+  font-size: var(--font-60-size);
+  font-weight: var(--font-700-weight);
+}
+
+
 .fastfood-set-side__summary-image {
-  flex: 0 0 230px;
-  width: 230px;
-  height: 190px;
+  width: 280px;
+  height: 280px;
   object-fit: contain;
 }
 
@@ -909,16 +938,229 @@
   gap: 8px;
 }
 
-.fastfood-set-side__product-name {
+.fastfood-set-side__product-name,
+.order__check--confirm {
   color: #000;
-  font-size: 48px;
+  font-size: var(--font-60-size);
   font-weight: 700;
 }
 
 .fastfood-set-side__product-price {
   color: #e8390d;
-  font-size: 38px;
+  font-size: var(--font-44-size);
   font-weight: 700;
+}
+
+#index-option-step3 .fastfood-set-side__summary {
+  justify-content: center;
+  min-height: 192px;
+  padding: 60px 40px;
+}
+
+#index-option-step3 .fastfood-set-side__summary-info {
+  width: 100%;
+  align-items: center;
+}
+
+.fastfood-set-confirmation__list {
+  padding: 0 60px;
+  background: #fff;
+}
+
+.fastfood-set-confirmation__item {
+  display: flex;
+  min-height: 210px;
+  align-items: center;
+  gap: 40px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.fastfood-set-confirmation__item:last-child {
+  border-bottom: 0;
+}
+
+.fastfood-set-confirmation__image {
+  flex: 0 0 150px;
+  width: 150px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.fastfood-set-confirmation__item-name {
+  color: #000;
+  font-size: var(--font-44-size);
+  font-weight: 700;
+}
+
+.fastfood-set-confirmation__total {
+  display: flex;
+  min-height: 200px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 30px 60px;
+  border-top: 24px solid #eee;
+  border-bottom: 24px solid #eee;
+  background: #fff;
+  font-size: var(--font-44-size);
+  font-weight: 700;
+}
+
+.fastfood-set-confirmation__product-price {
+  color: #e8390d;
+}
+
+.fastfood-payment-modal {
+  position: fixed;
+  inset: 0;
+  width: 840px;
+  max-width: calc(100% - 120px);
+  max-height: calc(100dvh - 120px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 24px;
+  background: #fff;
+  transform: none;
+}
+
+.fastfood-payment-modal::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+.fastfood-payment-modal .modal-header,
+.payment__card--insert .modal-header {
+  padding: 40px 48px;
+  background: #871F13;
+}
+
+.fastfood-payment-modal .modal-title {
+  font-size: 36px;
+  white-space: nowrap;
+}
+
+.fastfood-payment-modal .modal-close {
+  color: #fff;
+  font-size: 32px;
+}
+
+.fastfood-payment-modal .modal-close-image {
+  width: 40px;
+  height: 40px;
+}
+
+.fastfood-payment-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px 36px;
+}
+
+.fastfood-payment-modal__option {
+  display: flex;
+  min-height: 128px;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 40px;
+  border: 2px solid #111;
+  border-radius: 18px;
+  background: #fff;
+  color: #111;
+  text-align: left;
+}
+
+.fastfood-payment-modal__option > img {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.fastfood-payment-modal__option-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.fastfood-payment-modal__option-label strong {
+  font-size: 34px;
+}
+
+
+#index-payment-step1 .foodcourt-container {
+  min-height: 100vh;
+}
+
+#index-option-step4 .fastfood-order-confirmation__item {
+  align-items: center;
+  gap: 24px;
+}
+
+#index-option-step4 .fastfood-order-confirmation__product {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  gap: 24px;
+}
+
+#index-option-step4 .fastfood-order-confirmation__product-info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#index-option-step4 .fastfood-order-confirmation__product-info .order-item__name {
+  font-size: 40px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+#index-option-step4 .fastfood-order-confirmation__options {
+  color: #555;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+#index-option-step4 .fastfood-order-confirmation__numbers {
+  flex: 0 0 52%;
+  width: auto;
+  gap: 16px;
+  padding-left: 0;
+}
+
+#index-option-step4 .fastfood-order-confirmation__numbers > span {
+  white-space: nowrap;
+}
+
+.fastfood-set-confirmation__actions {
+  gap: 24px;
+}
+
+.fastfood-set-confirmation__button,
+.fastfood-set-confirmation__button {
+  min-height: 140px;
+  border: 0;
+  border-radius: 20px;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
+}
+
+.fastfood-set-confirmation__button--cancel,
+.fastfood-set-confirmation__button--cancel {
+  flex: 0 0 28%;
+  background: #555;
+  color: #fff;
+}
+
+.fastfood-set-confirmation__button--add,
+.fastfood-set-confirmation__button--add {
+  flex: 1;
+  background: #ffbc0d;
+  color: #292929;
 }
 
 .fastfood-set-side__content {
@@ -965,11 +1207,12 @@
 
 .fastfood-set-side__option-name {
   color: #000;
-  font-size: 40px;
+  font-size: var(--font-44-size);
   font-weight: 600;
 }
 
-.fastfood-set-side__navigation {
+.fastfood-set-side__navigation,
+.fastfood-set-confirmation__actions {
   max-width: 1080px;
   margin: 0 auto;
   position: fixed;
@@ -994,8 +1237,8 @@
   border-radius: 16px;
   background: #fff;
   color: #292929;
-  font-size: 36px;
-  font-weight: 700;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
 }
 
 .fastfood-set-side__navigation-button > span {
