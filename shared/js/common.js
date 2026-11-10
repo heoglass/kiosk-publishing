@@ -23,9 +23,7 @@ const pageRoutes = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  // ------------------ category-header -----------------//
-
-  // 카테고리 내 화면 메인인 경우 뒤로가기 눌렀을 때 키오스크 메인 화면으로 이동
+  // 카테고리 시작 화면에서 뒤로가기 버튼을 누르면 키오스크 메인으로 이동
   const headerBack = document.getElementById("header-back");
 
   if (headerBack && headerBack.dataset.backManaged !== "true") {
@@ -38,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 메인 화면에서 카테고리 클릭시 헤더에 해당 카테고리명 노출
+  // 헤더에 카테고리명 표시
   const headerTitle = document.getElementById("header-title");
 
   if (headerTitle) {
@@ -66,13 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
     headerTitle.textContent = currentRoute?.[0] ?? sharedRoute?.[0] ?? "";
   }
 
-  // 주문 완료 화면, 체험 완료 화면 이동시 이전 체험 했던 카테고리명 헤더에 노출
+  // 공통 완료 화면으로 이동할 때 카테고리 전달
   function goToCompletePage(path) {
     const currentUrl = new URL(window.location.href);
     const currentFolder = currentUrl.pathname.split("/").at(-2);
-
-    // 공통 화면에서는 이미 전달받은 값을 사용하고,
-    // 카테고리 화면에서는 현재 폴더명을 사용해요.
     const category = currentUrl.searchParams.get("category") || currentFolder;
 
     const nextUrl = new URL(path, currentUrl);
@@ -81,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = nextUrl.href;
   }
 
-  // 헤더에 sound-icon 토글
+  // 헤더 소리 아이콘 토글
   const soundButton = document.querySelector(
     ":is(#main-header, #category-header) .header-sound-toggle"
   );
@@ -119,7 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const queryCategory = params.get("category");
   const knownCategory = (category) =>
-    Object.values(pageRoutes).some((path) => path.split("/").at(-2) === category);
+    Object.values(pageRoutes).some(
+      (path) => path.split("/").at(-2) === category
+    );
 
   if (queryCategory && knownCategory(queryCategory)) {
     localStorage.setItem("cat", queryCategory);
@@ -127,6 +124,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const category = currentCategory ?? queryCategory;
 
+  // 주차정산 체험 완료 화면에 파란색 테마 적용
+  const experienceComplete = document.querySelector(".experience-complete");
+
+  if (experienceComplete && queryCategory === "parking") {
+    experienceComplete.classList.add("experience-complete-parking");
+
+    const experienceImage = experienceComplete.querySelector(
+      ".complete-experience-image"
+    );
+
+    if (experienceImage) {
+      experienceImage.src = "../shared/images/experience-complete-blue.png";
+    }
+  }
+
+  // 다시하기 버튼을 누르면 해당 카테고리의 시작 화면으로 이동
   const experienceRetry = document.getElementById("experience-retry");
 
   if (experienceRetry) {
@@ -141,14 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!category) return;
 
-  // document
-  //   .querySelectorAll(".receipt-choice, [data-keep-category]")
-  //   .forEach((link) => {
-  //     const nextUrl = new URL(link.href);
-  //     nextUrl.searchParams.set("category", category);
-  //     link.href = nextUrl.href;
-  //   });
-
   document
     .querySelectorAll("a.receipt-choice[href], a[data-keep-category][href]")
     .forEach((link) => {
@@ -156,14 +161,8 @@ document.addEventListener("DOMContentLoaded", function () {
       nextUrl.searchParams.set("category", category);
       link.href = nextUrl.href;
     });
-  //
-  // 체험 완료 화면에서 다시하기 버튼 누른 경우 카테고리 명 감지해서 해당 카테고리 index.html로 이동
-  //
 
-  // ----------------------------------------------------//
-  // ------------------- modal --------------------------//
-  // ----------------------------------------------------//
-
+  // 공통 팝업 열기
   window.openModal = function (modalId) {
     const modal = document.getElementById(modalId);
     if (!(modal instanceof HTMLDialogElement)) return;
@@ -189,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeButton.closest("dialog.modal")?.close();
   });
 
-  // 닫기 버튼 또는 Esc로 닫혔을 때 스크롤 상태 갱신
+  // 팝업이 닫혔을 때 스크롤 상태 갱신
   document.addEventListener(
     "close",
     (event) => {

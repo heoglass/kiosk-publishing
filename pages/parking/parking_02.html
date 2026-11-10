@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주차 정산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./parking.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./parking.js"></script>
+  </head>
+  <body>
+    <main class="parking-main category-main kiosk-screen">
+      <header id="category-header" class="cafe__header parking__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section
+        id="screen-result"
+        class="parking-screen parking-result-screen"
+        aria-labelledby="parking-result-title"
+      >
+        <img
+          class="parking-result-image"
+          src="../../shared/images/parking/parking-car2.png"
+          alt="조회된 차량 안내"
+        />
+
+        <h1 id="parking-result-title" class="parking-result-title">
+          차량번호 확인 후 ‘정산하기’<br />
+          버튼을 눌러주세요
+        </h1>
+
+        <ul class="parking-car-list" aria-label="조회된 차량 목록">
+          <li class="parking-car-item">
+            <div class="parking-license-plate">
+              <span class="parking-plate-number">124가 2239</span>
+            </div>
+
+            <button
+              type="button"
+              class="parking-payment-button"
+              data-parking-page="parking_03.html"
+              aria-label="차량 정산하기"
+            >
+              정산하기
+            </button>
+          </li>
+
+          <li class="parking-car-item">
+            <div class="parking-license-plate">
+              <span class="parking-plate-number">271고 2239</span>
+            </div>
+
+            <button
+              type="button"
+              class="parking-payment-button"
+              data-parking-page="parking_03.html"
+              aria-label="차량 정산하기"
+            >
+              정산하기
+            </button>
+          </li>
+        </ul>
+
+        <button
+          type="button"
+          class="parking-retry-button"
+          data-parking-page="parking_01.html"
+        >
+          다시조회하기
+        </button>
+      </section>
+    </main>
+  </body>
+</html>

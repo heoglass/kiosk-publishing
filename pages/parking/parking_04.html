@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주차 정산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./parking.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./parking.js"></script>
+  </head>
+  <body>
+    <main class="parking-main category-main kiosk-screen">
+      <header id="category-header" class="cafe__header parking__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section
+        id="screen-payment-method"
+        class="parking-screen parking-method-screen"
+        aria-labelledby="parking-method-title"
+      >
+        <div class="payment-select" role="group" aria-label="지불 방법">
+          <label class="parking-method-option">
+            <input
+              class="parking-method-input"
+              type="radio"
+              name="parking-payment-method"
+              value="card"
+              checked
+            />
+
+            <span class="parking-method-card">
+              <img
+                class="parking-method-icon parking-method-icon-default"
+                src="../../shared/images/parking/icon-card-bk.png"
+                alt=""
+              />
+              <img
+                class="parking-method-icon parking-method-icon-active"
+                src="../../shared/images/parking/icon-card-bl.png"
+                alt=""
+              />
+              <strong class="parking-method-name">카드결제</strong>
+              <span class="parking-method-description">(삼성/애플페이)</span>
+            </span>
+          </label>
+
+          <label class="parking-method-option">
+            <input
+              class="parking-method-input"
+              type="radio"
+              name="parking-payment-method"
+              value="coupon"
+            />
+
+            <span class="parking-method-card">
+              <img
+                class="parking-method-icon parking-method-icon-default"
+                src="../../shared/images/parking/icon-coupon-bk.png"
+                alt=""
+              />
+              <img
+                class="parking-method-icon parking-method-icon-active"
+                src="../../shared/images/parking/icon-coupon-bl.png"
+                alt=""
+              />
+              <strong class="parking-method-name">할인권</strong>
+              <span class="parking-method-description">(QR/바코드)</span>
+            </span>
+          </label>
+        </div>
+
+        <h1 id="parking-method-title" class="parking-method-title">
+          지불 방법 선택 후 ‘정산하기’<br />
+          버튼을 눌러주세요
+        </h1>
+
+        <div class="parking-method-actions">
+          <button
+            type="button"
+            class="parking-payment-button"
+            data-parking-payment
+          >
+            정산하기
+          </button>
+
+          <button
+            type="button"
+            class="parking-retry-button"
+            data-parking-page="parking_03.html"
+          >
+            이전
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- 카드 투입 안내 -->
+    <dialog
+      id="parking-dialog-card"
+      class="modal modal--card parking-payment-dialog"
+      aria-labelledby="parking-dialog-card-title"
+    >
+      <form method="dialog">
+        <div class="modal-header">
+          <h2 id="parking-dialog-card-title" class="modal-title">주차 정산</h2>
+
+          <button type="submit" value="cancel" class="modal-close">
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+            />
+            <span>닫기</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <button
+            type="submit"
+            value="inserted"
+            class="payment-image-button"
+            aria-label="카드 삽입"
+          >
+            <img
+              src="../../shared/images/icon/icon-insert-card.png"
+              class="card-payment-image card-insert"
+              alt=""
+            />
+          </button>
+
+          <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>
+
+          <p class="card-payment-description">
+            삼성, LG 페이는 휴대폰 뒷면을<br />
+            카드리더기에 대주세요
+          </p>
+
+          <dl class="card-payment-summary">
+            <div class="card-payment-summary-row">
+              <dt>총 결제금액</dt>
+              <dd class="card-payment-total">3,000원</dd>
+            </div>
+          </dl>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 결제 진행 중 -->
+    <dialog
+      id="parking-dialog-progress"
+      class="modal modal--payment-status parking-payment-dialog"
+      aria-labelledby="parking-dialog-progress-title"
+      aria-describedby="parking-dialog-progress-description"
+    >
+      <div class="modal-body">
+        <img
+          src="../../shared/images/icon/icon-loading.png"
+          class="payment-spinner"
+          aria-hidden="true"
+          alt="로딩 이미지"
+        />
+
+        <h2 id="parking-dialog-progress-title" class="modal-title">
+          결제 진행 중입니다
+        </h2>
+
+        <p
+          id="parking-dialog-progress-description"
+          class="payment-status-description"
+        >
+          카드를 제거하지 말고 잠시만 기다려주세요
+        </p>
+      </div>
+    </dialog>
+
+    <!-- 결제 완료 -->
+    <dialog
+      id="parking-dialog-complete"
+      class="modal modal--payment-status parking-payment-dialog"
+      aria-labelledby="parking-dialog-complete-title"
+      aria-describedby="parking-dialog-complete-description"
+    >
+      <form method="dialog">
+        <div class="modal-body">
+          <button
+            type="submit"
+            value="removed"
+            class="payment-image-button"
+            aria-label="카드 제거 완료"
+          >
+            <img
+              src="../../shared/images/icon/icon-card-complete-blue.png"
+              class="payment-complete-image"
+              alt=""
+            />
+          </button>
+
+          <h2 id="parking-dialog-complete-title" class="modal-title">
+            결제가 완료되었습니다
+          </h2>
+
+          <p
+            id="parking-dialog-complete-description"
+            class="payment-status-description"
+          >
+            카드를 제거해주세요
+          </p>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 영수증 선택 -->
+    <dialog
+      id="parking-dialog-receipt"
+      class="modal modal--receipt parking-payment-dialog"
+      aria-labelledby="parking-dialog-receipt-title"
+      aria-describedby="parking-dialog-receipt-description"
+    >
+      <form method="dialog">
+        <div class="modal-header">
+          <h2 id="parking-dialog-receipt-title" class="modal-title">영수증</h2>
+
+          <button type="submit" value="cancel" class="modal-close">
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+            />
+            <span>닫기</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p
+            id="parking-dialog-receipt-description"
+            class="receipt-description"
+          >
+            영수증을 받으시겠습니까?
+          </p>
+
+          <div class="points-prompt-actions">
+            <button type="submit" value="no" class="receipt-choice points-no">
+              아니오
+            </button>
+            <button type="submit" value="yes" class="receipt-choice points-yes">
+              예
+            </button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

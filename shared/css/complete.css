@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* 주차정산 체험 완료 */
+.experience-complete-parking #category-header {
+  background-color: #0c2d5e;
+}
+
+.experience-complete-parking .complete-actions a.complete-button {
+  background-color: #2f55f5;
+  color: #fff;
+}
