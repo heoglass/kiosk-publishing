@@ -219,3 +219,17 @@
   font-weight: 400;
   text-align: center;
 }
+
+/* 메인 카테고리 버튼 클릭 시 애니메이션 */
+.main-category-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.main-category-button .main-category-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 20%);
+  pointer-events: none;
+}
