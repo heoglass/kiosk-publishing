@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
 .category-start-screen {
+  height: 100%;
   background-image: url("../../shared/images/cafe/cafe-visual.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
+  object-fit: fill;
 }
 .category-start-screen button {
   background-color: transparent;
@@ -34,6 +36,52 @@
     transform: translate(-50%, -50%) scale(1);
     opacity: 0;
   }
+}
+
+.cafe-main .category-start {
+  width: 100% !important;
+  /* height: 100% !important; */
+  height: calc(100vh - 144px);
+  padding: 144px 60px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.cafe-main .category-title-area {
+  color: #7b5d40;
+  /* margin: 240px 0 0; */
+}
+
+.cafe-main .category-title-area .category-title1 {
+  font-size: 120px;
+  font-weight: var(--font-600-weight);
+  margin-bottom: 13px;
+}
+
+.cafe-main .category-title-area .category-title2 {
+  font-weight: 500;
+  font-size: 44px;
+  text-align: center;
+}
+
+.cafe-main .category-main-message {
+  width: auto;
+  font-size: 48px;
+  /* position: absolute;
+  bottom: 100px;
+  left: 80px;
+  right: 80px; */
+  padding: 60px 0;
+  background: #f09308;
+  border-radius: 20px;
+  box-shadow: 0px 0px 42.1px 0px #653c00;
+  /* margin: 0 0 60px; */
+}
+
+.cafe-main .category-main-message span {
+  font-size: 48px;
+  color: #fff;
 }
 .menu-tab > button {
   background-color: #f4efeb;

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주차 정산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./parking.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./parking.js"></script>
+  </head>
+  <body>
+    <main class="parking-main category-main kiosk-screen">
+      <header id="category-header" class="cafe__header parking__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section
+        id="screen-input"
+        class="parking-screen parking-input-screen"
+        aria-labelledby="parking-input-title"
+      >
+        <img
+          class="parking-input-image"
+          src="../../shared/images/parking/parking-car1.png"
+          alt="차량 번호 뒤 4자리 안내"
+        />
+
+        <h1 id="parking-input-title" class="parking-input-title">
+          차량 번호 뒤<br />
+          4자리를 입력해주세요
+        </h1>
+
+        <div class="parking-number-area">
+          <label for="parking-car-number" class="parking-input-label">
+            차량 번호 뒤 4자리
+          </label>
+
+          <input
+            id="parking-car-number"
+            class="parking-car-number"
+            type="text"
+            inputmode="none"
+            maxlength="4"
+            autocomplete="off"
+            readonly
+          />
+
+          <div class="parking-keypad" aria-label="차량 번호 입력 키패드">
+            <button type="button" data-parking-key="1">1</button>
+            <button type="button" data-parking-key="2">2</button>
+            <button type="button" data-parking-key="3">3</button>
+            <button type="button" data-parking-key="4">4</button>
+            <button type="button" data-parking-key="5">5</button>
+            <button type="button" data-parking-key="6">6</button>
+            <button type="button" data-parking-key="7">7</button>
+            <button type="button" data-parking-key="8">8</button>
+            <button type="button" data-parking-key="9">9</button>
+
+            <button type="button" data-parking-key="delete">지우기</button>
+            <button type="button" data-parking-key="0">0</button>
+            <button type="button" data-parking-key="clear">전체지우기</button>
+          </div>
+
+          <button type="button" class="parking-search" disabled>
+            조회하기
+          </button>
+        </div>
+      </section>
+      <dialog
+        id="parking-loading"
+        class="parking-loading"
+        aria-labelledby="parking-loading-title"
+        aria-describedby="parking-loading-message"
+      >
+        <div class="parking-loading-content" role="status">
+          <img
+            src="../../shared/images/icon/icon-loading.png"
+            class="payment-spinner parking-loading-spinner"
+            aria-hidden="true"
+            alt=""
+          />
+
+          <h2 id="parking-loading-title" class="parking-loading-title">
+            차량을 조회중입니다
+          </h2>
+
+          <p id="parking-loading-message" class="parking-loading-message">
+            잠시만 기다려주세요
+          </p>
+        </div>
+      </dialog>
+    </main>
+  </body>
+</html>

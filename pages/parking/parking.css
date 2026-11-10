@@ -1,0 +1,709 @@
+@charset "UTF-8";
+
+#category-header.parking__header {
+  background-color: #0c2d5e;
+}
+.category-title-area.parking .category-title1 {
+  font-size: 80px;
+}
+.category-main-message.parking {
+  background: #2d5df9;
+  box-shadow: 0px 0px 20px 0px #001c77;
+}
+/* 차량 번호 입력 화면 */
+.parking-main .parking-input-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 130px 80px 60px;
+  background: #fff;
+}
+
+.parking-input-image {
+  display: block;
+  flex-shrink: 0;
+  width: 540px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.parking-input-title {
+  margin: 20px 0 60px;
+  color: #000;
+  font-size: var(--font-60-size);
+  font-weight: var(--font-600-weight);
+  text-align: center;
+}
+
+.parking-number-area {
+  width: 100%;
+}
+
+/* 접근성용 입력창 라벨 */
+.parking-input-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 차량 번호 입력창 */
+.parking-car-number {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 130px;
+  margin: 0;
+  padding: 0 24px;
+
+  border: 4px solid #4d5259;
+  border-radius: 20px;
+  outline: none;
+  background: #fff;
+
+  color: #2d5df9;
+  font-family: inherit;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+
+  caret-color: transparent;
+}
+
+/* 숫자가 1개 이상 입력된 상태 */
+.parking-car-number.is-filled {
+  border-color: #2d5df9;
+}
+
+/* 숫자 키패드 */
+.parking-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 23.5px;
+  margin-top: 40px;
+}
+
+.parking-keypad button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 130px;
+  margin: 0;
+  padding: 0 12px;
+
+  border: 2px solid #575b62;
+  border-radius: 20px;
+  background: #fff;
+
+  color: #000;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.parking-keypad button:active {
+  border-color: #315bff;
+  background: #edf1ff;
+}
+
+.parking-keypad button:focus-visible {
+  outline: 4px solid #315bff;
+  outline-offset: 4px;
+}
+
+/* 조회하기 */
+.parking-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 130px;
+  margin-top: 72px;
+  padding: 0 24px;
+
+  border: 0;
+  border-radius: 20px;
+  background: #315bff;
+
+  color: #fff;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.parking-search:disabled {
+  background: #eee;
+  color: #aaa;
+  cursor: default;
+}
+
+.parking-search:not(:disabled):active {
+  background: #2449df;
+}
+/* 차량 조회 로딩 모달 */
+.parking-loading {
+  position: fixed;
+  inset: 0;
+
+  width: 840px;
+  max-width: calc(100% - 80px);
+  margin: auto;
+  padding: 0;
+
+  border: 0;
+  border-radius: 32px;
+  background: #fff;
+  color: #000;
+}
+
+.parking-loading::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.parking-loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-height: 590px;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.parking-loading-spinner {
+  display: block;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  animation: loading-spin 0.8s linear infinite;
+}
+
+.parking-loading-title {
+  margin: 0;
+  font-size: var(--font-60-size);
+  font-weight: var(--font-700-weight);
+}
+
+.parking-loading-message {
+  margin: 16px 0 0;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-500-weight);
+  line-height: 1.3;
+}
+
+/* ------ parking_02 --------- */
+
+/* 차량 조회 결과 화면 */
+.parking-main .parking-result-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 120px 80px 80px;
+  background: #fff;
+}
+
+.parking-result-image {
+  display: block;
+  flex-shrink: 0;
+  width: 540px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.parking-result-title {
+  margin: 10px 0 80px;
+  color: #000;
+  font-size: var(--font-60-size);
+  font-weight: var(--font-700-weight);
+  text-align: center;
+}
+
+/* 조회된 차량 목록 */
+.parking-car-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 60px 70px;
+  border-radius: 32px;
+  background: #f2f2f2;
+  list-style: none;
+}
+
+.parking-car-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 248px;
+  align-items: center;
+  gap: 40px;
+}
+
+/* 번호판 이미지 */
+.parking-license-plate {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 489 / 139;
+
+  background: url("../../shared/images/parking/license-image.png") center /
+    contain no-repeat;
+}
+
+/* 이미지 위 차량 번호 */
+.parking-plate-number {
+  position: absolute;
+  inset: 0 6% 0 15%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #000;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 정산하기 / 다시조회하기 공통 */
+.parking-payment-button,
+.parking-retry-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: 130px;
+  margin: 0;
+  padding: 0 20px;
+
+  border: 0;
+  border-radius: 20px;
+
+  color: #fff;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.parking-payment-button {
+  width: 100%;
+  background: #2d5df9;
+}
+
+.parking-retry-button {
+  width: 100%;
+  margin-top: 60px;
+  background: #555;
+}
+
+.parking-payment-button:active,
+.parking-retry-button:active {
+  filter: brightness(0.9);
+}
+
+/* ------ parking_03 --------- */
+
+.parking-main .parking-fee-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 114px 80px 40px;
+  background: #fff;
+  color: #000;
+}
+.parking-fee-vehicle {
+  position: relative;
+  width: 540px;
+  height: 400px;
+  flex-shrink: 0;
+}
+
+.parking-fee-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.parking-fee-plate-number {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: #000;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.parking-fee-title {
+  margin: 10px 0 0;
+  font-size: var(--font-60-size);
+  font-weight: var(--font-700-weight);
+  text-align: center;
+}
+
+.parking-fee-notice {
+  margin: 20px 0 0;
+  color: #444;
+  font-size: var(--font-44-size);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* 요금 내역 카드 */
+.parking-fee-details {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 60px 0 0;
+  padding: 20px 80px;
+
+  border-radius: 32px;
+  background: #f4f6fd;
+}
+
+.parking-fee-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 138px;
+  font-size: var(--font-44-size);
+  font-weight: 500;
+}
+
+.parking-fee-row + .parking-fee-row {
+  border-top: 1px solid #dddfe6;
+}
+
+.parking-fee-row dd {
+  margin: 0;
+  text-align: right;
+}
+
+.parking-fee-amount {
+  color: #e03400;
+  font-weight: 700;
+}
+
+/* 하단 버튼 */
+.parking-fee-actions {
+  display: grid;
+  gap: 40px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.parking-fee-actions .parking-retry-button {
+  margin-top: 0;
+}
+
+/* ------ parking_04 --------- */
+
+.parking-main .parking-method-screen {
+  --parking-method-blue: #2d5df9;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+  padding: 0 80px 88px;
+  background: #fff;
+  color: #000;
+}
+
+.parking-method-screen .payment-select {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  width: 840px;
+  max-width: 100%;
+}
+
+.parking-method-option {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.parking-method-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  clip-path: inset(50%);
+}
+
+.parking-method-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 416px;
+  padding: 32px 24px;
+  border: 2px solid #000;
+  border-radius: 40px;
+  background: #fff;
+  text-align: center;
+}
+
+.parking-method-icon {
+  display: block;
+  width: 130px;
+  height: 100px;
+  margin-bottom: 38px;
+  object-fit: contain;
+}
+
+.parking-method-icon-active,
+.parking-method-input:checked
+  + .parking-method-card
+  .parking-method-icon-default {
+  display: none;
+}
+
+.parking-method-input:checked
+  + .parking-method-card
+  .parking-method-icon-active {
+  display: block;
+}
+
+.parking-method-input:checked + .parking-method-card {
+  border-color: var(--parking-method-blue);
+  box-shadow: inset 0 0 0 2px var(--parking-method-blue),
+    0 0 18px rgb(45 93 249 / 45%);
+  color: var(--parking-method-blue);
+}
+
+.parking-method-input:focus-visible + .parking-method-card {
+  outline: 4px solid var(--parking-method-blue);
+  outline-offset: 6px;
+}
+
+.parking-method-name {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.parking-method-description {
+  margin-top: 8px;
+  font-size: 36px;
+  line-height: 1.25;
+}
+
+.parking-method-title {
+  margin: 80px 0 0;
+  font-size: var(--font-60-size);
+  font-weight: var(--font-700-weight);
+  text-align: center;
+}
+
+.parking-method-actions {
+  display: grid;
+  gap: 40px;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.parking-method-actions .parking-retry-button {
+  margin-top: 0;
+}
+
+/* --------------- parking_05  ------------- */
+
+.parking-main .parking-complete-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 100px 80px 80px;
+  background: #fff;
+  color: #000;
+}
+
+.parking-complete-title {
+  margin: 10px 0 40px;
+  font-size: 60px;
+  font-weight: var(--font-700-weight);
+}
+
+.parking-complete-notice {
+  margin: 20px 0 60px;
+  color: #444;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-500-weight);
+  text-align: center;
+}
+
+/* --------------- 모달  ------------- */
+
+dialog.parking-payment-dialog {
+  --parking-modal-navy: #0c2d5e;
+  --parking-modal-blue: #2d5df9;
+
+  width: 840px;
+  max-width: calc(100% - 80px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  color: #111;
+}
+
+.parking-payment-dialog::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+.parking-payment-dialog .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 39px 48px;
+  background: var(--parking-modal-navy);
+  color: #fff;
+}
+
+.parking-payment-dialog .modal-header .modal-title {
+  font-size: 52px;
+}
+
+.parking-payment-dialog .modal-close {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  font-size: var(--font-44-size);
+}
+
+.parking-payment-dialog .modal-close-image {
+  width: 60px;
+  height: 60px;
+}
+
+.parking-payment-dialog .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 80px 60px;
+}
+
+/* .parking-payment-dialog .modal-body .modal-title, */
+.parking-payment-dialog .card-payment-guide {
+  font-size: 52px;
+  font-weight: var(--font-700-weight);
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+.parking-payment-dialog .card-payment-description,
+.parking-payment-dialog .payment-status-description {
+  font-size: 38px;
+  line-height: 1.3;
+  font-weight: var(--font-500-weight);
+  margin-bottom: 40px;
+}
+
+.parking-payment-dialog .card-payment-image,
+.parking-payment-dialog .payment-complete-image {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.parking-payment-dialog .card-payment-summary {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 48px 60px;
+  border-radius: 24px;
+  background: #f2f2f2;
+}
+
+.parking-payment-dialog .card-payment-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
+}
+
+.parking-payment-dialog .card-payment-total {
+  color: #e62d00;
+}
+
+.parking-payment-dialog .points-prompt-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 80px;
+}
+.parking-payment-dialog .receipt-description {
+  font-size: 52px;
+  font-weight: var(--font-700-weight);
+  line-height: 1.3;
+}
+
+.parking-payment-dialog .receipt-choice {
+  min-height: 110px;
+  border: 2px solid #555;
+  border-radius: 16px;
+  background: #fff;
+  color: #000;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.parking-payment-dialog .receipt-choice.points-yes {
+  border-color: var(--parking-modal-blue);
+  background: var(--parking-modal-blue);
+  color: #fff;
+}
+
+.parking-payment-dialog .payment-spinner {
+  border-radius: 120px;
+  animation: spin 1s linear infinite;
+}

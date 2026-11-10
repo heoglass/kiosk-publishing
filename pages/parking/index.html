@@ -11,50 +11,69 @@
     <script type="text/javascript" src="./parking.js"></script>
   </head>
   <body>
-    <header id="category-header">
-      <div class="header-left">
+    <main class="parking-main category-main kiosk-screen">
+      <header id="category-header" class="cafe__header parking__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
         <button
           type="button"
-          id="header-back"
-          class="header-back"
-          aria-label="이전 화면으로"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
         >
           <img
-            src="../../shared/images/icon/arrow-back.png"
-            class="arrow-back"
-            alt="뒤로가기 화살표"
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
           />
         </button>
-
-        <span id="header-title"></span>
-      </div>
-      <div class="header-right">
-        <img
-          src="../../shared/images/icon/sound_w.png"
-          class="header-sound"
-          alt="소리 이미지"
-        />
-        <span class="header-sound-text">소리끄기</span>
-      </div>
-    </header>
-
-    <main class="parking-main category-main">
+        <!-- </div> -->
+      </header>
       <section
         id="category-start-screen"
-        class="cafe-screen category-start-screen"
+        class="parking-screen category-start-screen"
         aria-label="카페 주문 시작"
       >
         <button type="button" class="category-start">
           <img
             class="category-main-image"
-            src="../../shared/images/cafe/cafe-main.png"
+            src="../../shared/images/parking/parking-visual.png"
             alt=""
           />
-          <div class="category-title-area">
+          <div class="category-title-area parking">
             <p class="category-title1">Parking Payment Kiosk</p>
             <p class="category-title2">Educational kiosk</p>
           </div>
-          <div class="category-main-message">
+          <div class="category-main-message parking">
             <span> 화면을 터치하시면 주문이 시작됩니다. </span>
           </div>
         </button>
