@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const swiperInstances = [];
 
   const currentPageId = document.body.id; // 파일명과 일치하는 body id (예: index-order, index 등)
+  const STORAGE_KEY = 'kiosk_order_data';
+  let orderData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
   // 페이지별 '뒤로 가기' 목적지 매핑 테이블 (현재 파일명 구조에 맞게 설정)
   const backUrlMap = {
@@ -62,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const foodcourtStartBtn = document.getElementById('foodcourt-start');
   if (foodcourtStartBtn) {
     foodcourtStartBtn.addEventListener('click', () => {
+      orderData = {};
+      localStorage.removeItem(STORAGE_KEY);
       window.location.href = 'index-order.html'; // 주문 화면 파일명으로 이동
     });
   }
@@ -114,15 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 3. 장바구니 / 주문 데이터 동적 추가
   // ==========================================
-  const STORAGE_KEY = 'kiosk_order_data';
-
-  // 페이지 이동 후에도 주문 데이터를 유지
-  let orderData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-
   const orderCountEl = document.querySelector('.order-count');
   const orderTotalEl = document.querySelector('.order-total');
   const orderSubmitBtn = document.querySelector('.order-submit.oder__food');
   const cartClearBtn = document.querySelector('.cart-clear');
+  const orderListWrap = document.querySelector('.order-list-wrap');
+  const orderSummaryCountEl = document.querySelector('.order-summary-item__value');
+  const orderSummaryPriceEl = document.querySelector('.order-summary-item__value--price');
 
   // 모달 제어용
   const modal = document.getElementById('option-modal');
@@ -221,12 +223,65 @@ document.addEventListener('DOMContentLoaded', () => {
       if (cartClearBtn) cartClearBtn.setAttribute('disabled', 'true');
     }
 
-    // 스토리지 저장
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(orderData));
+    if (totalCount > 0) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(orderData));
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }
+
+  function renderOrderList() {
+    if (!orderListWrap) return;
+
+    orderListWrap.replaceChildren();
+    let totalCount = 0;
+    let totalPrice = 0;
+
+    Object.values(orderData).forEach((item) => {
+      const count = Number(item.count) || 0;
+      const price = Number(item.price) || 0;
+      totalCount += count;
+      totalPrice += price * count;
+
+      const orderItem = document.createElement('div');
+      orderItem.className = 'order-item';
+
+      const name = document.createElement('span');
+      name.className = 'order-item__name';
+      name.textContent = item.name;
+
+      const countAndPrice = document.createElement('div');
+      countAndPrice.className = 'order-count__wrap';
+
+      const itemCount = document.createElement('span');
+      itemCount.className = 'order-item__count';
+      itemCount.textContent = `${count}개`;
+
+      const itemPrice = document.createElement('span');
+      itemPrice.className = 'order-item__price';
+      itemPrice.textContent = `${(price * count).toLocaleString()}원`;
+
+      countAndPrice.append(itemCount, itemPrice);
+      orderItem.append(name, countAndPrice);
+      orderListWrap.append(orderItem);
+
+      if (item.option && item.option !== '일반') {
+        const option = document.createElement('div');
+        option.className = 'order-item__option';
+        const optionText = document.createElement('span');
+        optionText.textContent = `옵션: ${item.option}`;
+        option.append(optionText);
+        orderListWrap.append(option);
+      }
+    });
+
+    if (orderSummaryCountEl) orderSummaryCountEl.textContent = `${totalCount}개`;
+    if (orderSummaryPriceEl) orderSummaryPriceEl.textContent = `${totalPrice.toLocaleString()}원`;
   }
 
   // 초기 로드 시 UI 동기화
   updateOrderUI();
+  renderOrderList();
 
   // 상품 카드(product-card) 클릭 시 주문 목록에 추가
   const productCards = document.querySelectorAll('.product-card');
