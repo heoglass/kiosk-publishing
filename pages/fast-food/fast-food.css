@@ -47,18 +47,18 @@
   white-space: nowrap;
 }
 
-/* index-foodcourt.html */
-#category-header.foodcourt__header {
-  background: rgba(199, 71, 56, 1);
-
+/* index-fast-food.html */
+#category-header.fastFood__header {
+  background-color: #871F13;
 }
+
 
 .foodcourt-container {}
 
 .foodcourt-container .category-main.fast__food--menu {
   position: relative;
-  top: 144px;
-  padding-top: 0;
+  top: 0;
+  padding-top: 144px;
 }
 
 .foodcourt-container .fast__food--menu .foodcourt__visual {
@@ -1043,12 +1043,7 @@
 .fastfood-payment-modal .modal-close {
   color: #fff;
   font-size: 32px;
-}
-
-.fastfood-payment-modal .modal-close-image {
-  width: 40px;
-  height: 40px;
-}
+} 
 
 .fastfood-payment-modal__options {
   display: flex;

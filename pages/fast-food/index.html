@@ -16,26 +16,53 @@
 
 <body id="index">
   <div class="foodcourt-container">
-    <header id="category-header" class="foodcourt__header">
-      <div class="header-left">
-        <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
-          <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
+    <main class="category-main foodcourt kiosk-screen">
+      <header id="category-header" class="fastFood__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
         </button>
-
-        <span id="header-title"></span>
-      </div>
-      <div class="header-right">
-        <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
-        <p class="header-sound-text main-sound-text">소리끄기</p>
-      </div>
-    </header>
-
-    <main class="category-main foodcourt">
-      <!-- <section class="fastfood__section foodcourt__visual">
-        <button type="button" id="visual__btn">화면을 터치하면 주문이 시작됩니다</button>
-      </section> -->
-
-
+        <!-- </div> -->
+      </header>
 
       <section id="category-start-screen" class="cafe-screen category-start-screen" aria-label="패스트푸드 주문 시작">
         <button id="fastfood-start" type="button" class="category-start">

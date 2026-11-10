@@ -17,20 +17,53 @@
 
 <body id="index-order">
   <div class="foodcourt-container">
-    <header id="category-header" class="foodcourt__header">
-      <div class="header-left">
-        <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
-          <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
-        </button>
-
-        <span id="header-title"></span>
-      </div>
-      <div class="header-right">
-        <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
-        <p class="header-sound-text main-sound-text">소리끄기</p>
-      </div>
-    </header>
     <main class="foodcourt category-main">
+      <header id="category-header" class="foodcourt__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
       <section class="foodcourt__section">
         <!-- 상단 카테고리 NAV 탭 -->
         <nav class="foodcourt__nav">

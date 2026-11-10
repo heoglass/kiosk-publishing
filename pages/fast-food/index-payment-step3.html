@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>패스트푸드 결제 진행</title>
+  <title>패스트푸드 결제 진행중</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../../shared/css/common.css" />
   <link rel="stylesheet" href="./fast-food.css?v=20261109-set-side" />
@@ -15,20 +15,51 @@
 
 <body id="index-payment-step3">
   <div class="foodcourt-container foodcourt-dimed">
-    <header id="category-header" class="foodcourt__header">
-      <div class="header-left">
-        <button type="button" id="header-back" class="header-back" aria-label="이전 화면으로">
-          <img src="../../shared/images/icon/arrow-back.png" class="arrow-back" alt="뒤로가기 화살표" />
-        </button>
-
-        <span id="header-title"></span>
-      </div>
-      <div class="header-right">
-        <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
-        <p class="header-sound-text main-sound-text">소리끄기</p>
-      </div>
-    </header>
     <main class="fast-food category-main fastfood-set-side-page">
+      <header id="category-header" class="fastFood__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
       <section class="fastfood__section fastfood__section--tekeout fastfood-set-side orderlist__view">
         <div class="fastfood-set-side__summary fastfood__summary--order">
           <div class="fastfood-set-side__summary-info option__list--selected">

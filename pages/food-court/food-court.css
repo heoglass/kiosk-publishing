@@ -42,16 +42,11 @@
 
 /* index-foodcourt.html */
 #category-header.foodcourt__header {
-  background: rgba(199, 71, 56, 1);
-
+  background-color: #692119;
 }
-
-.foodcourt-container {}
 
 .foodcourt-container .category-main.foodcourt {
   position: relative;
-  top: 144px;
-  padding-top: 0;
 }
 
 .foodcourt-container .foodcourt .foodcourt__visual {

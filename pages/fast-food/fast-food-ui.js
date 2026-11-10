@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const currentPageId = document.body.id;
 
+  if (currentPageId === 'index-payment-step3') {
+    window.setTimeout(() => {
+      window.location.href = 'index-payment-step4.html';
+    }, 3000);
+  }
+
   if (currentPageId === 'index-payment-step1') {
     const paymentModal = document.getElementById('modal-payment');
     if (paymentModal instanceof HTMLDialogElement) {
@@ -33,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const backUrlMap = {
     'index-fast-order': 'index-tekeout-select.html',
     'index-tekeout-select': 'index.html',
-    'index': '/index.html',
+    'index': 'index.html',
     'index-orderlist': 'index-order.html',
     'index-option-step1': 'index-order.html',
     'index-option-step2': 'index-tekeout-option-step1.html',
@@ -42,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'index-payment-step1': 'index-tekeout-option-step4.html',
     'index-payment-step2': 'index-payment-step1.html',
     'index-payment-step3': 'index-payment-step2.html',
+    'index-payment-step4': 'index-payment-step3.html',
   };
 
   // 상단 뒤로가기 버튼 동작 제어
