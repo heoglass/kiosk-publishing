@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const moveTo = (path) => {
     window.location.href = path;
   };
+  let pendingNavigation = null;
   const start = document.getElementById("category-start-screen");
   const menu = document.getElementById("screen-menu");
   const options = document.getElementById("screen-options");
@@ -34,9 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
       { capture: true }
     );
   }
-  start?.querySelector(".category-start")?.addEventListener("click", () => {
-    saveCart([]);
-    moveTo(PAGES.menu);
+  start
+    ?.querySelector(".category-start")
+    ?.addEventListener("click", (event) => {
+      moveAfterRipple(event, event.currentTarget, PAGES.menu, 350, () => {
+        saveCart([]);
+      });
+    });
+  window.addEventListener("pagehide", () => {
+    pendingNavigation?.cancel();
+    pendingNavigation = null;
   });
 
   if (menu) {
@@ -45,6 +53,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (options) initOptions(options);
   if (review) initReview(review);
+
+  function playRipple(event, button, duration = 700) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return null;
+    }
+
+    if (getComputedStyle(button).position === "static") {
+      button.style.position = "relative";
+    }
+    const rect = button.getBoundingClientRect();
+    const size = Math.hypot(button.clientWidth, button.clientHeight) * 2;
+    const x = event.detail
+      ? ((event.clientX - rect.left) / rect.width) * 100
+      : 50;
+    const y = event.detail
+      ? ((event.clientY - rect.top) / rect.height) * 100
+      : 50;
+    const ripple = document.createElement("span");
+    ripple.className = "cafe-button-ripple";
+    ripple.setAttribute("aria-hidden", "true");
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}%`;
+    ripple.style.top = `${y}%`;
+    button.append(ripple);
+
+    const animation = ripple.animate(
+      [
+        { transform: "translate(-50%, -50%) scale(0)", opacity: 1 },
+        { transform: "translate(-50%, -50%) scale(1)", opacity: 0 },
+      ],
+      { duration, easing: "ease-out" }
+    );
+    animation.addEventListener("finish", () => ripple.remove());
+    animation.addEventListener("cancel", () => ripple.remove());
+    return animation;
+  }
+
+  function moveAfterRipple(event, button, path, duration, beforeMove) {
+    if (pendingNavigation) return;
+
+    const navigate = () => {
+      beforeMove?.();
+      moveTo(path);
+    };
+    const animation = playRipple(event, button, duration);
+    if (!animation) {
+      navigate();
+      return;
+    }
+
+    pendingNavigation = animation;
+    animation.addEventListener("finish", () => {
+      if (pendingNavigation === animation) navigate();
+    });
+  }
 
   function loadCart() {
     const saved = sessionStorage.getItem(CART_KEY);
@@ -211,6 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     list.addEventListener("click", (event) => {
+      if (pendingNavigation) return;
       const button = event.target.closest("button");
       const row = button?.closest(".cart-item");
       if (!row || button.disabled) return;
@@ -227,24 +292,31 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCartSummary();
     });
     clear.addEventListener("click", () => {
+      if (pendingNavigation) return;
       saveCart([]);
       renderCart();
     });
-    submit.addEventListener("click", () => moveTo(PAGES.review));
+    submit.addEventListener("click", (event) => {
+      if (submit.disabled) return;
+      moveAfterRipple(event, submit, PAGES.review);
+    });
 
     screen.querySelector(".menu-track")?.addEventListener("click", (event) => {
       const card = event.target.closest(".cafe-menu-card");
-      if (!card || card.disabled) return;
+      if (!card || card.disabled || pendingNavigation) return;
       if (
         ["coffee-01", "coffee-02", "coffee-04", "coffee-07"].includes(
           card.dataset.menuId
         )
       ) {
-        moveTo(
+        moveAfterRipple(
+          event,
+          card,
           `${PAGES.options}?menu=${encodeURIComponent(card.dataset.menuId)}`
         );
         return;
       }
+      playRipple(event, card);
       addCartItem({
         id: card.dataset.menuId,
         name: card.querySelector(".menu-card-name").textContent.trim(),
@@ -293,6 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const optionTotal = screen.querySelector(".option-total");
     const submit = form.querySelector(".option-submit");
+    let submitClickEvent = null;
+
     function selectedOptions() {
       return Array.from(form.querySelectorAll("input:checked:not(:disabled)"));
     }
@@ -308,15 +382,41 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
     form.addEventListener("change", updatePrice);
-    screen
-      .querySelector(".option-cancel")
-      ?.addEventListener("click", () => moveTo(PAGES.menu));
+
+    form.addEventListener("click", (event) => {
+      const choice = event.target.closest(".option-choice");
+      const radio = choice?.querySelector('input[type="radio"]');
+      if (!radio || radio.matches(":disabled") || pendingNavigation) return;
+
+      // 라벨에서 라디오로 전달된 클릭은 건너뛰어 리플 중복을 막습니다.
+      if (event.target === radio) return;
+      playRipple(event, choice);
+    });
+
+    form.querySelector(".option-cancel")?.addEventListener("click", () => {
+      if (pendingNavigation) return;
+      moveTo(PAGES.menu);
+    });
+
+    submit.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (pendingNavigation) return;
+
+      // 터치 좌표를 보존하면서 폼 검증과 submit 이벤트를 실행합니다.
+      submitClickEvent = event;
+      try {
+        form.requestSubmit(submit);
+      } finally {
+        submitClickEvent = null;
+      }
+    });
+
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (!selected || submit.disabled) return;
+      if (!selected || submit.disabled || pendingNavigation) return;
 
       const inputs = selectedOptions();
-      addCartItem({
+      const item = {
         id: selected.dataset.menuId,
         name: selected.querySelector(".option-product-name").textContent.trim(),
         price: priceWithOptions(inputs),
@@ -328,9 +428,18 @@ document.addEventListener("DOMContentLoaded", () => {
               .textContent.trim()
           )
           .join(" · "),
-      });
-      submit.disabled = true;
-      moveTo(PAGES.menu);
+      };
+
+      moveAfterRipple(
+        submitClickEvent ?? { detail: 0 },
+        submit,
+        PAGES.menu,
+        250,
+        () => {
+          addCartItem(item);
+          submit.disabled = true;
+        }
+      );
     });
     window.addEventListener("pageshow", (event) => {
       if (!event.persisted) return;
@@ -370,6 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const button = event.target.closest(".recommend-button");
         if (!button || button.disabled) return;
 
+        playRipple(event, button);
         addCartItem({
           id: button.dataset.menuId,
           name: button.querySelector(".recommend-name").textContent.trim(),
@@ -395,6 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const phone = dialogs.querySelector("#modal-points-phone");
     const phoneNumber = phone.querySelector("#points-phone-number");
     const phonePrefix = phone.querySelector('[data-phone-key="010"]');
+    let paymentRipple = null;
 
     function setPhoneNumber(digits) {
       phoneNumber.value = [
@@ -418,18 +529,37 @@ document.addEventListener("DOMContentLoaded", () => {
       next.showModal();
     }
 
+    function openPayment() {
+      dialogs.querySelector(".card-payment-count").textContent =
+        screen.querySelector(".review-total-count").textContent;
+      dialogs.querySelector(".card-payment-total").textContent =
+        screen.querySelector(".review-total-price").textContent;
+      showDialog("modal-payment");
+    }
+
     screen
       .querySelector(".review-bottom")
       .addEventListener("click", (event) => {
         const button = event.target.closest(".review-dine-in, .review-takeout");
-        if (!button || button.disabled) return;
+        if (!button || button.disabled || paymentRipple) return;
 
-        dialogs.querySelector(".card-payment-count").textContent =
-          screen.querySelector(".review-total-count").textContent;
-        dialogs.querySelector(".card-payment-total").textContent =
-          screen.querySelector(".review-total-price").textContent;
-        showDialog("modal-payment");
+        const animation = playRipple(event, button, 250);
+        if (!animation) {
+          openPayment();
+          return;
+        }
+
+        paymentRipple = animation;
+        animation.addEventListener("finish", () => {
+          if (paymentRipple !== animation) return;
+          paymentRipple = null;
+          openPayment();
+        });
       });
+    window.addEventListener("pagehide", () => {
+      paymentRipple?.cancel();
+      paymentRipple = null;
+    });
 
     dialogs
       .querySelector("#modal-receipt")

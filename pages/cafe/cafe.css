@@ -11,6 +11,30 @@
 .category-title-area.cafe {
   color: #7b5d40;
 }
+
+#category-start-screen .category-start {
+  position: relative;
+  overflow: hidden;
+}
+
+#category-start-screen .category-start .cafe-button-ripple {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 65%);
+  pointer-events: none;
+}
+@keyframes category-start-ripple {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
 .menu-tab > button {
   background-color: #f4efeb;
 }
@@ -33,6 +57,23 @@
 
 .menu-tab > button[aria-pressed="false"] > span {
   color: #111;
+}
+
+#screen-menu :is(.cafe-menu-card, .order-submit) {
+  position: relative;
+  overflow: hidden;
+}
+
+#screen-menu .cafe-button-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 18%);
+  pointer-events: none;
+}
+
+#screen-menu .order-submit .cafe-button-ripple {
+  background: rgb(255 255 255 / 40%);
 }
 .menu-viewport {
   --card-height: 444px;
@@ -415,7 +456,21 @@
   font-weight: 500;
   overflow-wrap: anywhere;
 }
+#screen-options :is(.option-choice, .option-submit) {
+  overflow: hidden;
+}
 
+#screen-options .cafe-button-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgb(255 149 0 / 30%);
+  pointer-events: none;
+}
+
+#screen-options .option-submit .cafe-button-ripple {
+  background: rgb(255 255 255 / 45%);
+}
 /* 주문 확인 화면 */
 #screen-review {
   display: grid;
@@ -653,7 +708,21 @@
   font-size: 44px;
   font-weight: 400;
 }
+#screen-review :is(.recommend-button, .review-dine-in, .review-takeout) {
+  overflow: hidden;
+}
 
+#screen-review .cafe-button-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 45%);
+  pointer-events: none;
+}
+
+#screen-review .recommend-button .cafe-button-ripple {
+  background: rgb(0 0 0 / 18%);
+}
 /* 주문 확인 화면 위에 표시하는 카페 결제 팝업 */
 #cafe-payment-dialogs dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
