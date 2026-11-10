@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 헤더에 sound-icon 토글
   const soundButton = document.querySelector(
-    ":is(#main-header, #category-header) .header-sound-toggle"
+    ":is(#main-header, #category-header, #category-header-horizontal) .header-sound-toggle"
   );
   const soundIcon = soundButton?.querySelector(".header-sound");
 

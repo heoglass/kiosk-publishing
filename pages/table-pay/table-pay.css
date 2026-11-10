@@ -1,0 +1,250 @@
+@charset "UTF-8";
+
+/* 초기화 및 레이아웃 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Malgun Gothic', sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.kiosk-container {
+    width: 1080px;
+    height: 676px;
+    background-color: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 공통 헤더 */
+.common-header {
+    height: 60px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-back {
+    padding: 6px 14px;
+    background-color: #f1f3f5;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.table-info {
+    font-size: 16px;
+    color: #333;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+}
+
+.current-time {
+    font-size: 15px;
+    color: #666;
+}
+
+/* 메인 레이아웃 */
+.kiosk-main {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+    height: 676px;
+}
+
+.section-left {
+    flex: 6.5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-right {
+    flex: 3.5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 공통 카드 박스 */
+.box-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.section-heading {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+/* 주문 내역 테이블 영역 */
+.order-list-wrap {
+    height: 270px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #f8f9fa;
+    padding: 10px;
+    font-size: 13px;
+    color: #555;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #f1f1f1;
+    vertical-align: middle;
+}
+
+/* 제품 이미지 영역 (추후 이미지 대체용 박스) */
+.product-thumb {
+    width: 40px;
+    height: 40px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #888;
+}
+
+/* 결제 수단 선택 */
+.payment-method-card {
+    flex: 1;
+}
+
+.method-grid {
+    display: flex;
+    gap: 10px;
+    height: calc(100% - 30px);
+}
+
+.btn-method {
+    flex: 1;
+    background-color: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-method.active {
+    background-color: #e7f5ff;
+    border-color: #228be6;
+    color: #1c7ed6;
+}
+
+/* 우측 요약 카드 */
+.summary-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #555;
+}
+
+.summary-row.total {
+    border-top: 1px dashed #ddd;
+    padding-top: 14px;
+    font-size: 18px;
+    color: #111;
+}
+
+.summary-row.total strong {
+    color: #f03e3e;
+}
+
+/* 하단 액션 버튼 */
+.action-wrap {
+    height: 60px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-cancel {
+    flex: 1;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #495057;
+    cursor: pointer;
+}
+
+.btn-submit-pay {
+    flex: 2;
+    background-color: #228be6;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn-submit-pay:active {
+    background-color: #1c7ed6;
+}
+
+#category-header-horizontal.tablePay__header {
+  height: 70px;
+  padding: 0 60px;
+  background-color: #227941;
+}
+#category-header-horizontal.tablePay__header > * {
+  color: #fff;
+}

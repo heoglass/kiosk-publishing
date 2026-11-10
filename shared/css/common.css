@@ -95,7 +95,8 @@ body {
   height: 1920px;
 }
 
-#category-header {
+#category-header, 
+#category-header-horizontal {
   max-width: 1080px;
   width: 100%;
   display: flex;
@@ -158,20 +159,19 @@ body {
 }
 
 /* 테이블 결제 헤더 공통 */
-#category-header.tablePay__header {
+#category-header-horizontal {
   height: 70px;
   padding: 0 60px;
-  background-color: #227941;
 }
-#category-header.tablePay__header .arrow-back,
-#category-header.tablePay__header .category-header-home,
-#category-header.tablePay__header .category-header-arrow-right,
-#category-header.tablePay__header .header-sound {
+#category-header-horizontal .arrow-back,
+#category-header-horizontal .category-header-home,
+#category-header-horizontal .category-header-arrow-right,
+#category-header-horizontal .header-sound {
   width: 36px;
   height: 36px;
 }
 
-#category-header.tablePay__header #header-title {
+#category-header-horizontal #header-title {
   font-size: 30px;
   font-weight: 700;
 }

@@ -6,7 +6,7 @@
     <title>테이블 결제</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/common.css" />
-    <!-- <link rel="stylesheet" href="./table-pay.css" /> -->
+    <link rel="stylesheet" href="./table-pay.css" />
     
   </head>
   <body id="tablePay">
@@ -15,7 +15,7 @@
       <!-- 메인 콘텐츠 영역 -->
       <main class="kiosk-main kiosk-screen">
         <!-- 공통헤더 -->
-          <header id="category-header" class="tablePay__header">
+          <header id="category-header-horizontal" class="tablePay__header">
             <div class="header-left">
               <a href="../../index.html" aria-label="처음으로">
                 <img
@@ -32,7 +32,7 @@
 
               <span id="header-title"></span>
             </div>
-            <!-- <div class="header-right"> -->
+            <!-- <div class="header-right"> --> 
             <button
               type="button"
               class="header-sound-toggle"
@@ -46,7 +46,38 @@
           </header>
 
           <section class="tablePay__setion">
+            <!-- 좌측 카테고리 메뉴 -->
+            <aside class="foodcourt-category">
+            <nav class="foodcourt-category__nav">
+                <ul>
+                    <li class="is-active">전체</li>
+                    <li>세트메뉴</li>
+                    <li>단품메뉴</li>
+                    <li>안주류</li>
+                    <li>주류</li>
+                    <li>음료</li>
+                </ul>
+            </nav>
 
+            <div class="foodcourt-category__bottom">
+                <button type="button">직원호출</button>
+            </div>
+            </aside>
+
+            <!-- 우측 상품 콘텐츠 -->
+            <section class="foodcourt-products">
+
+            <div class="foodcourt-products__list">
+                <!-- 상품 카드 영역 -->
+            </div>
+
+            <!-- 하단 주문 버튼 -->
+            <div class="foodcourt-products__bottom">
+                <button type="button">주문내역</button>
+                <button type="button">장바구니</button>
+            </div>
+
+            </section>
           </section>
 
       </main>
