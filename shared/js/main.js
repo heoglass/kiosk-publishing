@@ -1,4 +1,10 @@
+// 로컬저장소 기존 데이타 초기화 후 진입
+localStorage.removeItem("cat"); // 카테코리정보
+localStorage.removeItem("fastFoodOrderType"); // 패스트푸드 주문타입정보
+localStorage.removeItem("kiosk_order_data");  // 패스트푸드 주문정보
+
 document.addEventListener("DOMContentLoaded", () => {
+
   let mainCategoryMoving = false;
 
   initMainTabs();
