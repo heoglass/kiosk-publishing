@@ -15,34 +15,53 @@
     <script type="text/javascript" src="./cafe.js" defer=""></script>
   </head>
   <body>
-    <header id="category-header">
-      <div class="header-left">
+    <main class="cafe-main category-main kiosk-screen">
+      <header id="category-header" class="cafe__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
         <button
           type="button"
-          id="header-back"
-          class="header-back"
-          aria-label="이전 화면으로"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
         >
           <img
-            src="../../shared/images/icon/arrow-back.png"
-            class="arrow-back"
-            alt="뒤로가기 화살표"
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
           />
         </button>
-
-        <span id="header-title"></span>
-      </div>
-      <div class="header-right">
-        <img
-          src="../../shared/images/icon/sound_w.png"
-          class="header-sound"
-          alt="소리 이미지"
-        />
-        <span class="header-sound-text">소리끄기</span>
-      </div>
-    </header>
-
-    <main class="cafe-main category-main">
+        <!-- </div> -->
+      </header>
       <section
         id="screen-options"
         class="cafe-screen"

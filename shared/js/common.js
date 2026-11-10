@@ -28,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 카테고리 내 화면 메인인 경우 뒤로가기 눌렀을 때 키오스크 메인 화면으로 이동
   const headerBack = document.getElementById("header-back");
 
-  if (!headerBack) return;
-
-  if (headerBack.dataset.backManaged !== "true") {
+  if (headerBack && headerBack.dataset.backManaged !== "true") {
     headerBack.addEventListener("click", () => {
       const startScreen = document.getElementById("category-start-screen");
 
@@ -77,6 +75,25 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = nextUrl.href;
   }
 
+  // 헤더에 sound-icon 토글
+  const soundButton = document.querySelector(
+    ":is(#main-header, #category-header) .header-sound-toggle"
+  );
+  const soundIcon = soundButton?.querySelector(".header-sound");
+
+  if (!soundIcon) return;
+
+  const soundOnSrc = soundIcon.getAttribute("src");
+  const soundOffSrc = soundButton.dataset.soundOffSrc;
+
+  soundButton.addEventListener("click", () => {
+    const isSoundOn = soundButton.getAttribute("aria-pressed") === "true";
+    const nextSoundOn = !isSoundOn;
+
+    soundButton.setAttribute("aria-pressed", String(nextSoundOn));
+    soundIcon.src = nextSoundOn ? soundOnSrc : soundOffSrc;
+  });
+
   const completeConfirm = document.getElementById("complete-confirm");
 
   if (completeConfirm) {
@@ -98,14 +115,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!category) return;
 
+  // document
+  //   .querySelectorAll(".receipt-choice, [data-keep-category]")
+  //   .forEach((link) => {
+  //     const nextUrl = new URL(link.href);
+  //     nextUrl.searchParams.set("category", category);
+  //     link.href = nextUrl.href;
+  //   });
+
   document
-    .querySelectorAll(".receipt-choice, [data-keep-category]")
+    .querySelectorAll("a.receipt-choice[href], a[data-keep-category][href]")
     .forEach((link) => {
       const nextUrl = new URL(link.href);
       nextUrl.searchParams.set("category", category);
       link.href = nextUrl.href;
     });
-
   //
   // 체험 완료 화면에서 다시하기 버튼 누른 경우 카테고리 명 감지해서 해당 카테고리 index.html로 이동
   //

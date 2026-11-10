@@ -15,12 +15,19 @@
         <p class="kiosk-title">키오스크 체험학습</p>
 
         <div class="header-right">
-          <img
-            src="./shared/images/icon/sound_b.png"
-            class="header-sound"
-            alt=""
-          />
-          <p class="header-sound-text main-sound-text">소리끄기</p>
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="./shared/images/icon/sound_b_off.png"
+          >
+            <img
+              src="./shared/images/icon/sound_b.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
         </div>
       </header>
 
