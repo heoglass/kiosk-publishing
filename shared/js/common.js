@@ -16,7 +16,7 @@ const pageRoutes = {
 
   영화관: "./pages/cinema/index.html",
   "마트 셀프계산": "./pages/self-checkout/index.html",
-  "셀프 주유": "./pages/self-gas/index.html",
+  "셀프 주유소": "./pages/self-gas/index.html",
   주차정산: "./pages/parking/index.html",
   "편의점 택배": "./pages/parcel/index.html",
   "무인 매장": "./pages/unmanned-store/index.html",
@@ -128,7 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const experienceComplete = document.querySelector(".experience-complete");
 
   if (experienceComplete && queryCategory === "parking") {
-    experienceComplete.classList.add("experience-complete-parking");
+    const completeScreen = experienceComplete.closest(".complete-screen");
+    completeScreen?.classList.add("experience-complete-parking");
 
     const experienceImage = experienceComplete.querySelector(
       ".complete-experience-image"
@@ -138,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
       experienceImage.src = "../shared/images/experience-complete-blue.png";
     }
   }
-
   // 다시하기 버튼을 누르면 해당 카테고리의 시작 화면으로 이동
   const experienceRetry = document.getElementById("experience-retry");
 
