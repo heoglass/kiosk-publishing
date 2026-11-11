@@ -95,8 +95,6 @@
 /* 탭 */
 .kiosk-main .main-tab {
   display: flex;
-  flex-shrink: 0;
-
   width: 100%;
   height: 200px;
   background: #003686;
@@ -108,7 +106,6 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 36px;
   color: #fff;
   background: transparent;
   font-size: 48px;
