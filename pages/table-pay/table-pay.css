@@ -576,6 +576,7 @@ body#tablePay {
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 #tablePay .tablePayWrap .tablePayWrap__title {
     width: 100%;
@@ -628,7 +629,7 @@ body#tablePay {
 #tablePay .tablePayWrap__cartList-items > li .cart-item-options {
     grid-column: 1 / -1;
     margin-top: 12px;
-    padding: 12px 20px;
+    padding: 18px 16px;
     background: #eeeeee;
     border-radius: 8px;
     font-size: 28px;
@@ -642,6 +643,9 @@ body#tablePay {
     width: 100%;
     text-align: center;
     padding: 20px 60px 30px;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
     flex-shrink: 0;
     box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
 
@@ -654,6 +658,10 @@ body#tablePay {
     font-weight: 700;
 }
 
+.total-price-count {
+    font-weight: 600;
+}
+
 .tablePayWrap-total .total-price-value .total-price-currency {
     color: #E03400;
 }
@@ -664,7 +672,7 @@ body#tablePay {
     height: 82px;
 }   
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back  {
-    background: #777777;
+    background: #555555;
     color: #fff;
     flex: 1;
 }
