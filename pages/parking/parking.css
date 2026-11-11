@@ -10,6 +10,43 @@
   background: #2d5df9;
   box-shadow: 0px 0px 20px 0px #001c77;
 }
+
+.parking-main .category-start {
+  width: 100% !important;
+  /* height: 100% !important; */
+  height: calc(100vh - 144px);
+  padding: 144px 60px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.parking-main .category-title-area {
+  color: #fff;
+  /* margin: 240px 0 0; */
+}
+
+.parking-main .category-title-area .category-title1 {
+  font-size: 120px;
+  font-weight: var(--font-600-weight);
+  margin-bottom: 13px;
+}
+
+.parking-main .category-title-area .category-title2 {
+  font-weight: var(--font-500-weight);
+  font-size: var(--font-44-size);
+  text-align: center;
+}
+
+.parking-main .category-main-message {
+  width: auto;
+  font-size: 48px;
+  padding: 60px 0;
+  background: #2d5df9;
+
+  border-radius: 20px;
+  box-shadow: 0px 0px 42.1px 0px #653c00;
+}
 /* 차량 번호 입력 화면 */
 .parking-main .parking-input-screen {
   display: flex;
@@ -202,7 +239,7 @@
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  animation: loading-spin 0.8s linear infinite;
+  /* animation: loading-spin 0.8s linear infinite; */
 }
 
 .parking-loading-title {

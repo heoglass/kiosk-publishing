@@ -169,10 +169,27 @@ body {
   font-weight: 600;
 }
 
-/* 테이블 결제 헤더 공통 */
+/* 
+가로 헤더 공통 
+- 테이블 결제
+- 셀프 주유
+
+
+*/
 #category-header-horizontal {
+  max-width: 1080px;
   height: 70px;
-  padding: 0 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 60px;
+  background-color: #56321c;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
 }
 #category-header-horizontal .header-left {
   display: flex;
