@@ -234,14 +234,6 @@
   text-align: center;
 }
 
-.parking-loading-spinner {
-  display: block;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  /* animation: loading-spin 0.8s linear infinite; */
-}
-
 .parking-loading-title {
   margin: 0;
   font-size: var(--font-60-size);
@@ -738,9 +730,4 @@ dialog.parking-payment-dialog {
   border-color: var(--parking-modal-blue);
   background: var(--parking-modal-blue);
   color: #fff;
-}
-
-.parking-payment-dialog .payment-spinner {
-  border-radius: 120px;
-  animation: spin 1s linear infinite;
 }
