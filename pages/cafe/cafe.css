@@ -40,8 +40,8 @@
 
 .cafe-main .category-start {
   width: 100% !important;
-  /* height: 100% !important; */
-  height: calc(100vh - 144px);
+  height: 100% !important;
+  /* height: calc(100vh - 144px); */
   padding: 144px 60px 0 !important;
   display: flex !important;
   flex-direction: column !important;

@@ -71,6 +71,10 @@
 .foodcourt {
   padding-top: 140px;
 }
+.category-start-screen {
+  height: 100%;
+  position: relative;
+}
 
 .foodcourt .foodcourt__section .foodcourt__nav {
   /* margin: 40px 60px 0; */

@@ -93,6 +93,7 @@ body {
   position: relative;
   width: 1080px;
   height: 1920px;
+  margin: 0 auto;
 }
 
 #category-header {
@@ -197,13 +198,14 @@ body {
 }
 
 .category-start-screen {
+  height: 100% !important;
   position: relative;
 }
 
 .category-start {
   border: none;
   width: 100%;
-  height: calc(100vh - 144px);
+  height: 100%;
   padding: 144px 0 0;
 }
 .category-main {
