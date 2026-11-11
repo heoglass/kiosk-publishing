@@ -12,12 +12,9 @@
   font-display: swap;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Pretendard";
-}
+/* ========================================
+   공통 변수
+======================================== */
 
 :root {
   --font-80-size: 80px;
@@ -30,18 +27,28 @@
   --font-400-weight: 400;
 }
 
-/* reset 스타일 */
-button {
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  border: 0;
-  padding: 0;
+/* ========================================
+   기본 초기화
+======================================== */
+
+* {
   margin: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  line-height: inherit;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
 }
 
 a {
@@ -54,40 +61,92 @@ ol {
   list-style: none;
 }
 
-/* 1. 모든 요소의 box-sizing 초기화 (패딩과 보더가 너비/높이에 영향을 주지 않도록 설정) */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* ========================================
+   버튼 / 입력 요소
+======================================== */
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
 }
 
-/* 2. 문서 기본 마진 및 패딩 제거 */
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin: 0;
-  padding: 0;
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  -webkit-appearance: none;
+  appearance: none;
+  text-transform: none;
 }
 
-/* 4. 리스트(ul, ol) 기본 불릿 및 여백 제거 */
-ul,
-ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+button {
+  border: 0;
+  background: none;
+  line-height: inherit;
+  cursor: pointer;
+
+  /* 스크롤과 핀치 확대를 허용하고 더블 탭 확대 제한 */
+  touch-action: manipulation;
+
+  /* 버튼 텍스트 선택 방지 */
+  -webkit-user-select: none;
+  user-select: none;
 }
-html,
-body {
-  margin: 0;
+
+button:disabled {
+  cursor: default;
+}
+
+/* Safari의 비활성화 입력 글자색 보정 */
+input:disabled,
+textarea:disabled {
+  -webkit-text-fill-color: currentColor;
+}
+
+/* ========================================
+   이미지 / 동영상
+======================================== */
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* ========================================
+   숨김 / 키보드 포커스
+======================================== */
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 4px;
+}
+
+/* ========================================
+   내부 세로 스크롤
+   필요한 요소에 kiosk-scroll 클래스 추가
+======================================== */
+
+.kiosk-scroll {
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+@supports (scrollbar-gutter: stable) {
+  .kiosk-scroll {
+    scrollbar-gutter: stable;
+  }
 }
 .kiosk-screen {
   position: relative;
@@ -95,7 +154,7 @@ body {
   height: 1920px;
 }
 
-#category-header, 
+#category-header,
 #category-header-horizontal {
   max-width: 1080px;
   width: 100%;
@@ -916,7 +975,9 @@ body.modal-open {
 }
 
 #modal-card-payment .card-payment-summary-row + .card-payment-summary-row,
-#modal-fastfood-card-payment .card-payment-summary-row + .card-payment-summary-row {
+#modal-fastfood-card-payment
+  .card-payment-summary-row
+  + .card-payment-summary-row {
   border-top: 1px solid #d9d9d9;
 }
 
@@ -1286,156 +1347,6 @@ body.modal-open {
 .receipt-choice:focus-visible {
   outline: 3px solid #305597;
   outline-offset: 3px;
-}
-
-/* --------- 주문 완료 화면 ----------  */
-.complete-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin: 80px 0 0;
-  height: calc(100vh - 144px);
-  padding: 144px 60px 0;
-  text-align: center;
-  color: #000;
-}
-
-.complte-main-contents {
-  width: 100%;
-}
-
-.complete-text-area {
-  background-color: #f5f5f5;
-  padding: 120px 0;
-  border-radius: 32px;
-}
-
-.complete-title {
-  position: relative;
-  font-size: 60px;
-  font-weight: 700;
-}
-
-.complete-message {
-  margin: 28px 0 0;
-  color: #444;
-  font-size: 44px;
-}
-
-.complete-order-image {
-  width: 600px;
-  height: 600px;
-  margin: 60px 0 0;
-}
-
-.complete-footer {
-  width: 100%;
-}
-
-.complete-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: 130px;
-  border-radius: 20px;
-  background: #f79300;
-  color: #fff;
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none;
-}
-
-/* 헤더 높이 144px, 일반 배치 기준 */
-.complete-main.experience-complete {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  width: 100%;
-  height: calc(100vh - 144px);
-  padding: 144px 60px 0;
-  text-align: center;
-  color: #000;
-}
-
-.experience-complete .complete-main-contents {
-  width: 100%;
-}
-
-/* 상단 안내 박스 */
-.experience-complete .complete-text-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  min-height: 454px;
-  padding: 60px 40px;
-  border-radius: 32px;
-  background: #f5f5f5;
-}
-
-.experience-complete .complete-title {
-  margin: 0;
-  font-size: 60px;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.experience-complete .complete-message {
-  margin: 28px 0 0;
-  color: #444;
-  font-size: 44px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* 중앙 이미지 */
-.experience-complete .complete-experience-image {
-  display: block;
-  width: 600px;
-  height: 600px;
-  margin: 60px auto 0;
-  object-fit: contain;
-}
-
-/* 하단 버튼 */
-.experience-complete .complete-actions {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  gap: 40px;
-  width: 100%;
-}
-
-.experience-complete .complete-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: 130px;
-  padding: 0 24px;
-  border: 0;
-  border-radius: 20px;
-  background: #f79300;
-  color: #fff;
-  font-family: inherit;
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.experience-complete .complete-button-secondary {
-  background: #555;
 }
 
 /* 스피너 회전 애니메이션 */
