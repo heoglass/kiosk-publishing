@@ -159,6 +159,15 @@
   display: none !important;
 }
 
+#index-fast-order .product-grid {
+  grid-template-rows: none;
+  grid-auto-rows: 1fr;
+}
+
+#index-fast-order .product-swiper .swiper-slide:not(.swiper-slide-active) {
+  height: 0;
+}
+
 .product-card .product-card__thumb img {}
 
 .product-card .product-card__info {
@@ -1289,4 +1298,29 @@
 /* 영수증 받기 모달 */
 :is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-yes {
   background: #DF3C3C;
+}
+
+#index-fast-order .category-main.fast__food--menu {
+  display: flex;
+  flex-direction: column;
+  height: 1920px;
+}
+
+#index-fast-order .fastfood__section--menu,
+#index-fast-order .dividing-line,
+#index-fast-order .order-bar {
+  flex-shrink: 0;
+}
+
+#index-fast-order .fastfood__section--menu {
+  height: auto;
+}
+
+.cart__section--selected {
+  flex: 1;
+  min-height: 0;
+}
+
+#index-fast-order .order-bar {
+  position: static;
 }

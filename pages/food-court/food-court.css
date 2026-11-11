@@ -346,6 +346,35 @@
   background-color: #fff;
 }
 
+#index-orderlist .foodcourt.category-main {
+  display: flex;
+  flex-direction: column;
+  height: 1920px;
+}
+
+#index-orderlist .orderlist__view {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#index-orderlist .orderlist__view > :not(.order-list-wrap) {
+  flex-shrink: 0;
+}
+
+#index-orderlist .orderlist__view .order-list-wrap {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+}
+
+#index-orderlist .order-bar.foodcourt__oderbar {
+  position: static;
+  flex-shrink: 0;
+}
+
 .orderlist__view .order__list-title {
   background: #F5F5F5;
   padding: 60px 0;
@@ -434,7 +463,6 @@
   gap: 24px;
   padding: 40px 60px;
   background-color: #F5F5F5;
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -617,6 +645,12 @@
   left: 50%;
   margin: 0;
   transform: translate(-50%, -50%);
+}
+
+#modal-points-phone.modal--phone-entry {
+  position: absolute;
+  top: 960px;
+  max-height: 1800px;
 }
 
 .modal-header>h2 {
