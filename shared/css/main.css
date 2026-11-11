@@ -1,18 +1,13 @@
 @charset "UTF-8";
 
 .kiosk-main {
-  position: relative;
   display: flex;
   flex-direction: column;
-
-  width: 1080px;
-  height: 1920px;
   margin: 0 auto;
   overflow: hidden;
 
   color: #000;
   background: #fff;
-  font-family: "Pretendard", sans-serif;
 }
 
 .kiosk-main p {
@@ -68,7 +63,6 @@
 /* 메인 콘텐츠 */
 .kiosk-main .main-content {
   display: flex;
-  flex: 1;
   flex-direction: column;
   min-height: 0;
 }
