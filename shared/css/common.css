@@ -186,10 +186,6 @@ body {
   align-items: center;
   padding: 17px 60px;
   background-color: #56321c;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translate(-50%, 0);
 }
 #category-header-horizontal .header-left {
   display: flex;
