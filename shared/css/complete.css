@@ -6,6 +6,159 @@
 }
 
 .experience-complete-parking .complete-actions a.complete-button {
-  background-color: #2f55f5;
+  background-color: #2d5df9;
   color: #fff;
+}
+
+/* --------- 주문 완료 화면 ----------  */
+.complete-main {
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 144px 60px 0;
+  text-align: center;
+  color: #000;
+}
+.complete-main-contents {
+  width: 100%;
+}
+.complete-text-area {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 120px 0;
+  margin: 80px 0 0;
+  border-radius: 32px;
+}
+
+.complete-title {
+  position: relative;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.complete-message {
+  margin: 28px 0 0;
+  color: #444;
+  font-size: 44px;
+}
+
+.complete-order-image {
+  width: 600px;
+  height: 600px;
+  margin: 60px 0 0;
+}
+
+.complete-footer {
+  width: 100%;
+  margin: 0 0 60px;
+}
+
+.complete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 130px;
+  border-radius: 20px;
+  background: #f79300;
+  color: #fff;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+/* 헤더 높이 144px, 일반 배치 기준 */
+.complete-main.experience-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 144px 60px 0;
+  text-align: center;
+  color: #000;
+}
+
+.experience-complete .complete-main-contents {
+  width: 100%;
+}
+
+/* 상단 안내 박스 */
+.experience-complete .complete-text-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 454px;
+  padding: 60px 40px;
+  border-radius: 32px;
+  background: #f5f5f5;
+}
+
+.experience-complete .complete-title {
+  margin: 0;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.experience-complete .complete-message {
+  margin: 28px 0 0;
+  color: #444;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* 중앙 이미지 */
+.experience-complete .complete-experience-image {
+  display: block;
+  width: 600px;
+  height: 600px;
+  margin: 60px auto 0;
+  object-fit: contain;
+}
+
+/* 하단 버튼 */
+.experience-complete .complete-actions {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 40px;
+  width: 100%;
+  margin: 0 0 60px;
+}
+
+.experience-complete .complete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 130px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 20px;
+  background: #f79300;
+  color: #fff;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.experience-complete .complete-button-secondary {
+  background: #555;
 }
