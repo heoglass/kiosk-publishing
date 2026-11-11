@@ -46,40 +46,102 @@
           </header>
 
           <section class="tablePay__setion">
-            <!-- 좌측 카테고리 메뉴 -->
+            <!-- 좌측 카테고리 메뉴 (고정형) -->
             <aside class="foodcourt-category">
-            <nav class="foodcourt-category__nav">
+              <nav class="foodcourt-category__nav">
                 <ul>
-                    <li class="is-active">전체</li>
-                    <li>세트메뉴</li>
-                    <li>단품메뉴</li>
-                    <li>안주류</li>
-                    <li>주류</li>
-                    <li>음료</li>
+                  <li class="is-active" data-category="all">전체</li>
+                  <li data-category="set">세트메뉴</li>
+                  <li data-category="single">단품메뉴</li>
+                  <li data-category="side">안주류</li>
+                  <li data-category="drink">주류</li>
+                  <li data-category="beverage">음료</li>
                 </ul>
-            </nav>
+              </nav>
 
-            <div class="foodcourt-category__bottom">
-                <button type="button">직원호출</button>
-            </div>
+              <div class="foodcourt-category__bottom">
+                <button type="button" class="btn-staff-call">직원호출</button>
+              </div>
             </aside>
 
             <!-- 우측 상품 콘텐츠 -->
             <section class="foodcourt-products">
+              <!-- 상품 그리드 영역 (3열 배치) -->
+              <div class="foodcourt-products__list">
+                <!-- 상품 카드 1: 세트메뉴 -->
+                <article
+                  class="product-card"
+                  data-type="single"
+                  data-name="돼지국밥"
+                  data-sub="국밥 + 편육"
+                  data-price="8000"
+                  data-set-menu="국밥"
+                  data-set-menu2="편육"
+                >
+                  <div class="product-thumb-box"></div>
+                  <strong class="product-name">돼지국밥</strong>
+                  <span class="product-desc">단품</span>
+                  <span class="product-price">8,000원</span>
+                </article>
 
-            <div class="foodcourt-products__list">
-                <!-- 상품 카드 영역 -->
-            </div>
+                <!-- 상품 카드 2: 세트메뉴 -->
+                <article
+                  class="product-card"
+                  data-type="set"
+                  data-name="돼지국밥세트"
+                  data-sub="국밥 + 편육"
+                  data-desc="돼지 국밥과 야들야들한 편육의 콜라보레이션"
+                  data-price="10000"
+                  data-set-menu="국밥"
+                  data-set-menu2="편육"
+                  data-has-options="true"
+                >
+                  <div class="product-thumb-box"></div>
+                  <strong class="product-name">돼지국밥세트</strong>
+                  <span class="product-desc">국밥 + 편육</span>
+                  <span class="product-price">10,000원</span>
+                </article>
 
-            <!-- 하단 주문 버튼 -->
-            <div class="foodcourt-products__bottom">
-                <button type="button">주문내역</button>
-                <button type="button">장바구니</button>
-            </div>
+                <article class="product-card" data-type="side" data-name="편육" data-price="12000">
+                  <div class="product-thumb-box"></div>
+                  <strong class="product-name">편육</strong>
+                  <span class="product-desc">안주류</span>
+                  <span class="product-price">12,000원</span>
+                </article>
 
+                <article class="product-card" data-type="drink" data-name="맥주" data-price="4000">
+                  <div class="product-thumb-box"></div>
+                  <strong class="product-name">맥주</strong>
+                  <span class="product-desc">주류</span>
+                  <span class="product-price">4,000원</span>
+                </article>
+
+                <article class="product-card" data-type="beverage" data-name="콜라" data-price="2000">
+                  <div class="product-thumb-box"></div>
+                  <strong class="product-name">콜라</strong>
+                  <span class="product-desc">음료</span>
+                  <span class="product-price">2,000원</span>
+                </article>
+              </div>
+
+              <!-- 하단 고정 주문 버튼 영역 -->
+              <div class="foodcourt-products__bottom">
+                <button type="button" class="btn-order-history">주문내역</button>
+                <button type="button" class="btn-cart">
+                  <span>장바구니</span>
+                  <span class="cart-count-badge" id="cartBadge">0개</span>
+                </button>
+              </div>
             </section>
           </section>
 
+        <dialog class="table-pay-history" aria-labelledby="table-pay-history-title">
+          <h2 id="table-pay-history-title">주문내역</h2>
+          <p class="table-pay-history__content">현재 주문 내역이 없습니다.</p>
+          <form method="dialog">
+            <button type="submit">확인</button>
+          </form>
+        </dialog>
       </main>
     </div>
     <script type="text/javascript" src="../../shared/js/common.js" defer></script>

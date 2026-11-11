@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 결제 - 상품 선택</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./table-pay.css" />
+  </head>
+  <body id="tablePay">
+    <div class="kiosk-container">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main kiosk-screen">
+        <!-- 공통헤더 -->
+        <header id="category-header-horizontal" class="tablePay__header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+            <span id="header-title"></span>
+          </div>
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
+        </header>
+
+        <section class="tablePay__setion">
+          <!-- 좌측 카테고리 메뉴 (고정형) -->
+          <aside class="foodcourt-category">
+            <nav class="foodcourt-category__nav">
+              <ul>
+                <li class="is-active" data-category="all">전체</li>
+                <li data-category="set">세트메뉴</li>
+                <li data-category="single">단품메뉴</li>
+                <li data-category="side">안주류</li>
+                <li data-category="drink">주류</li>
+                <li data-category="beverage">음료</li>
+              </ul>
+            </nav>
+
+            <div class="foodcourt-category__bottom">
+              <button type="button" class="btn-staff-call">직원호출</button>
+            </div>
+          </aside>
+
+          <!-- 우측 상품 선택 콘텐츠 -->
+          <section class="foodcourt-products">
+            <!-- 상품 상세 및 수량 선택 영역 -->
+            <div class="setitem-detail-container">
+              <div class="setitem-detail__image">
+                <img
+                  src="../../shared/images/fast-food/bulgogi.png"
+                  alt="돼지국밥세트 이미지"
+                />
+              </div>
+
+              <div class="setitem-detail__info">
+                <h2 class="setitem-title">돼지국밥세트</h2>
+                <p class="setitem-sub">국밥 + 편육</p>
+                <p class="setitem-desc">
+                  돼지 국밥과 야들야들한<br />
+                  편육의 콜라보레이션
+                </p>
+                <p class="setitem-price" id="setitemPrice">10,000원</p>
+
+                <!-- 수량 조절 카운터 -->
+                <div class="setitem-counter">
+                  <button type="button" class="btn-minus" aria-label="수량 감소">
+                    -
+                  </button>
+                  <span class="counter-value" id="setitemCount">1</span>
+                  <button type="button" class="btn-plus" aria-label="수량 증가">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 하단 고정 버튼 영역 -->
+            <div class="foodcourt-products__bottom">
+              <button type="button" class="btn-order-history">주문내역</button>
+              <button type="button" class="btn-add-cart" id="btnAddToCart">
+                담기
+              </button>
+            </div>
+          </section>
+        </section>
+        <dialog class="table-pay-history" aria-labelledby="table-pay-history-title">
+          <h2 id="table-pay-history-title">주문내역</h2>
+          <p class="table-pay-history__content">현재 주문 내역이 없습니다.</p>
+          <form method="dialog">
+            <button type="submit">확인</button>
+          </form>
+        </dialog>
+        <dialog class="table-pay-options" aria-labelledby="table-pay-options-title">
+          <form id="tablePayOptionsForm">
+            <h2 id="table-pay-options-title">옵션을 선택해주세요</h2>
+            <fieldset class="table-pay-options__list" aria-label="상품 옵션">
+              <label class="table-pay-options__choice is-selected">
+                <input type="radio" name="productOption" value="소스 따로 주세요" checked />
+                <span>소스 따로 주세요</span>
+                <span>+0원</span>
+              </label>
+              <label class="table-pay-options__choice">
+                <input type="radio" name="productOption" value="옵션 선택 안함" />
+                <span>옵션 선택 안함</span>
+                <span>+0원</span>
+              </label>
+            </fieldset>
+            <div class="table-pay-options__actions">
+              <button type="button" class="table-pay-options__cancel">취소</button>
+              <button type="submit" class="table-pay-options__submit">선택 완료</button>
+            </div>
+          </form>
+        </dialog>
+        <dialog class="table-pay-added" aria-labelledby="table-pay-added-message">
+          <p id="table-pay-added-message" role="status" aria-live="polite">
+            <strong class="table-pay-added__name">돼지국밥세트</strong><br />
+            상품을 추가하였습니다
+          </p>
+        </dialog>
+      </main>
+    </div>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./table-pay.js"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 결제-상품과 수량 확인</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./table-pay.css" />
+  </head>
+  <body id="tablePay">
+    <div class="kiosk-container">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main kiosk-screen">
+        <!-- 공통헤더 -->
+        <header id="category-header-horizontal" class="tablePay__header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+            <span id="header-title"></span>
+          </div>
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
+        </header>
+        <section id="tablePay-cart-list" class="tablePayWrap">
+          <div class="tablePayWrap__title">
+            <h3 class="tablePayWrap__title-text">주문 내역을 확인해주세요</h3>
+          </div>
+          <div class="tablePayWrap__cartList">
+            <ul class="tablePayWrap__cartList-items">
+              <li>
+                <span class="cart-item-name">돼지국밥</span>
+                <span class="cart-item-quantity">1</span>
+                <span class="cart-item-price">8,000원</span>
+              </li>
+              <li>
+                <span class="cart-item-name">돼지국밥 세트</span>
+                <span class="cart-item-quantity">1</span>
+                <span class="cart-item-price">10,000원</span>
+                <div class="cart-item-options">
+                  <span class="cart-item-option-list">옵션: 소스 따로 주세요</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="tablePayWrap-total">
+            <div class="tablePayWrap__total-price">
+              <span class="total-price-label">총 주문 합계</span>
+              <span class="total-price-count">2개</span>
+              <span class="total-price-value">
+                <span class="total-price-currency">18,000</span>
+                원
+              </span>
+            </div>
+            <div class="tablePayWrap__actions">
+              <button id="tablePayWrap__btn-back" type="button" class="tablePayWrap__btn-back">돌아가기</button>
+              <button id="tablePayWrap__btn-pay" type="button" class="tablePayWrap__btn-pay">주문하기</button>
+            </div>
+          </div>
+        </section>
+       
+        <dialog class="table-pay-history" aria-labelledby="table-pay-history-title">
+          <h2 id="table-pay-history-title">주문내역</h2>
+          <p class="table-pay-history__content">현재 주문 내역이 없습니다.</p>
+          <form method="dialog">
+            <button type="submit">확인</button>
+          </form>
+        </dialog>
+      </main>
+    </div>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./table-pay.js"></script>
+  </body>
+</html>
