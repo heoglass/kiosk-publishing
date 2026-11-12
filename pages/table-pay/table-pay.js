@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initTablePayProducts();
   initSetItemDetail();
   updateCartBadge();
+  initCartReview();
+  initPaymentType();
 });
 
 /**
@@ -288,4 +290,150 @@ function updateCartBadge() {
 
   const totalCount = getTableOrderItems().reduce((total, item) => total + item.count, 0);
   badge.textContent = `${totalCount}개`;
+}
+
+function initCartReview() {
+  document.querySelector(".btn-cart")?.addEventListener("click", () => {
+    window.location.href = "./tableP-04.html";
+  });
+
+  const review = document.getElementById("tablePay-cart-list");
+  if (!review) return;
+
+  const items = getTableOrderItems();
+  const list = review.querySelector(".tablePayWrap__cartList-items");
+  let totalCount = 0;
+  let totalPrice = 0;
+
+  if (items.length === 0) {
+    const empty = document.createElement("li");
+    empty.className = "cart-list-empty";
+    empty.textContent = "장바구니에 담긴 상품이 없습니다.";
+    list.append(empty);
+  }
+
+  items.forEach((item) => {
+    const row = document.createElement("li");
+    const name = document.createElement("span");
+    const quantity = document.createElement("span");
+    const price = document.createElement("span");
+
+    name.className = "cart-item-name";
+    name.textContent = item.name;
+    quantity.className = "cart-item-quantity";
+    quantity.textContent = `${item.count}개`;
+    price.className = "cart-item-price";
+    price.textContent = `${(item.price * item.count).toLocaleString()}원`;
+    row.append(name, quantity, price);
+
+    if (item.option) {
+      const options = document.createElement("div");
+      const option = document.createElement("span");
+      options.className = "cart-item-options";
+      option.className = "cart-item-option-list";
+      option.textContent = `옵션: ${item.option}`;
+      options.append(option);
+      row.append(options);
+    }
+
+    list.append(row);
+    totalCount += item.count;
+    totalPrice += item.price * item.count;
+  });
+
+  review.querySelector(".total-price-count").textContent = `${totalCount}개`;
+  review.querySelector(".total-price-currency").textContent = totalPrice.toLocaleString();
+  review.querySelector("#tablePayWrap__btn-back").addEventListener("click", () => {
+    window.location.href = "./index.html";
+  });
+  review.querySelector("#tablePayWrap__btn-pay").addEventListener("click", () => {
+    window.location.href = "./tableP-05.html";
+  });
+}
+
+function initPaymentType() {
+  const total = document.getElementById("tablePay-payment-total");
+  if (!total) return;
+
+  const totalPrice = getTableOrderItems().reduce(
+    (sum, item) => sum + item.price * item.count,
+    0
+  );
+  total.textContent = `총 ${totalPrice.toLocaleString()}원`;
+
+  document.querySelectorAll("[data-payment-dialog]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const dialog = document.getElementById(button.dataset.paymentDialog);
+      if (!(dialog instanceof HTMLDialogElement)) {
+        console.error("결제 안내 모달을 찾을 수 없습니다.", button.dataset.paymentDialog);
+        return;
+      }
+      dialog.showModal();
+    });
+  });
+
+  const initialDialog = document.getElementById("split-payment-dialog");
+  if (!(initialDialog instanceof HTMLDialogElement)) {
+    console.error("결제 안내 모달을 찾을 수 없습니다.", "split-payment-dialog");
+    return;
+  }
+  popupNextMove();
+  initialDialog.showModal();
+}
+
+function popupNextMove() {
+  const lottieBtn = document.getElementById("lottieBtn");
+  if (!lottieBtn) {
+    console.error("Lottie 버튼을 찾을 수 없습니다.");
+    return;
+  }
+
+  const splitDialog = document.getElementById("split-payment-dialog");
+  const loadingDialog = document.getElementById("full-payment-dialog");
+  const removedDialog = document.getElementById("card-removed-dialog");
+  const completedDialog = document.getElementById("order-completed-dialog");
+  const removedButton = removedDialog?.querySelector(".card-completed-icon");
+  const completeButton = document.getElementById("creditCompleteBtn");
+  if (
+    !(splitDialog instanceof HTMLDialogElement) ||
+    !(loadingDialog instanceof HTMLDialogElement) ||
+    !(removedDialog instanceof HTMLDialogElement) ||
+    !(completedDialog instanceof HTMLDialogElement) ||
+    !(removedButton instanceof HTMLButtonElement) ||
+    !(completeButton instanceof HTMLButtonElement)
+  ) {
+    console.error("결제 단계 모달을 찾을 수 없습니다.");
+    return;
+  }
+
+  let timer = null;
+  loadingDialog.addEventListener("cancel", (event) => {
+    if (timer !== null) event.preventDefault();
+  });
+  loadingDialog.addEventListener("close", () => {
+    if (timer !== null) {
+      window.clearTimeout(timer);
+      timer = null;
+    }
+  });
+
+  lottieBtn.addEventListener("click", () => {
+    if (timer !== null) return;
+    splitDialog.close();
+    loadingDialog.showModal();
+    timer = window.setTimeout(() => {
+      timer = null;
+      loadingDialog.close();
+      removedDialog.showModal();
+    }, 3000);
+  });
+
+  removedButton.addEventListener("click", () => {
+    removedDialog.close();
+    completedDialog.showModal();
+  });
+
+  completeButton.addEventListener("click", () => {
+    window.location.href = "./tableP-06.html";
+  });
 }

@@ -9,6 +9,14 @@ body#tablePay {
     overflow: hidden;
 }
 
+.font__red--local {
+    color: #E03400;
+}
+:root {
+    --tablepay-primary-btnColor: #227941;
+
+}
+
 #tablePay .kiosk-container {
     width: 1080px;
     height: 676px;
@@ -434,33 +442,94 @@ body#tablePay {
     background-color: #166436;
 }
 
-.table-pay-history {
-    width: 440px;
-    max-width: calc(100% - 40px);
-    margin: auto;
-    padding: 32px;
-    border: 0;
-    border-radius: 12px;
-    text-align: center;
+.table-pay-payment-alert::backdrop {
+    background-color: #000;
+    opacity: 0.6;
 }
 
-.table-pay-history::backdrop {
+.table-pay-payment-alert {
+    display: flex;
+    /* justify-content: flex-start; */
+    align-items: center;
+    width: 957px;
+    height: 360px;
+    padding: 0 0 0 48px;
+    border: 0;
+    border-radius: 24px;
+    background: #fff;
+    color: #000;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.payment__alert--loading, 
+.tablepay-modal-wrap {
+    display: block;
+    text-align: center;
+    padding: 68px 120px;
+}
+
+.payment__alert--loading > .spinner {
+    margin: 0 auto 25px;
+}
+.payment__alert--loading > h2,
+.payment__alert--loading .table-pay-history-title {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.tablepay-modal-wrap button.tablepay--completed {
+    width: 657px;
+    /* height: 86px; */
+    background: var(--tablepay-primary-btnColor);
+    border-radius: 20px;
+    color: #ffffff;
+    padding: 25px 0;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 24px;
+}
+.card-completed-icon {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background: url("../../shared/images/icon/icon-card-complete-tableorder.png") center / contain no-repeat;
+}
+#order-completed-dialog {
+    height: 443px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.table-pay-payment-alert::backdrop {
     background: rgba(0, 0, 0, 0.6);
 }
 
-.table-pay-history__content {
-    margin: 24px 0;
-    max-height: 360px;
-    overflow-y: auto;
-    white-space: pre-line;
+.table-pay-payment-alert h2 {
+    font-size: 40px;
+    font-weight: 600;
 }
 
-.table-pay-history button {
-    min-width: 160px;
-    padding: 12px 24px;
-    border-radius: 8px;
+.table-pay-payment-alert p {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.table-pay-payment-alert button.tablePayWrap__btn-pay {
+    width: 100%;
+    min-height: 76px;
+    border-radius: 20px;
     background: #227941;
     color: #fff;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -573,17 +642,17 @@ body#tablePay {
 }
 
 #tablePay .tablePayWrap {
-    height: 100%;
     display: flex;
+    flex: 1;
     flex-direction: column;
+    min-height: 0;
     position: relative;
 }
 #tablePay .tablePayWrap .tablePayWrap__title {
     width: 100%;
-    height: 100px;
-    padding: 24px 0;
+    margin-bottom: 40px;
     text-align: center;
-    background: #e5e5e5;
+    /* background: #e5e5e5; */
     color: #000;
     flex-shrink: 0;
 }
@@ -591,7 +660,21 @@ body#tablePay {
 #tablePay .tablePayWrap .tablePayWrap__title .tablePayWrap__title-text {
     font-size: 38px;
     font-weight: 700;
+    background: #f5f5f5;
+    padding: 20px 0;
 }
+/* tablePay-05 나눠서 결제하기 화면 */
+
+.tablePayWrap__credit--selcet {
+    font-size: 35px;
+}
+.tablePayWrap__credit--selcet > span {
+    display: block;
+}
+#tablePay .tablePayWrap__title--credit {
+    height: auto;
+}
+
 
 #tablePay .tablePayWrap__cartList {
     width: 100%;
@@ -599,6 +682,19 @@ body#tablePay {
     min-height: 0;
     overflow-y: auto;
     text-align: left;
+    &::-webkit-scrollbar {
+    width: 8px; /* 스크롤바 두께 */
+    display: block !important;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1; /* 스크롤바 막대 색상 */
+      border-radius: 4px; /* 둥근 모서리 */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; /* 스크롤바 배경(트랙) 색상 */
+    }
 }
 
 #tablePay .tablePayWrap__cartList .tablePayWrap__cartList-items {
@@ -618,7 +714,12 @@ body#tablePay {
     color: #000;
 }
 
-
+#tablePay .tablePayWrap__cartList-items > li.cart-list-empty {
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
 
 #tablePay .tablePayWrap__cartList-items > li .cart-item-quantity {
     text-align: center;
@@ -644,8 +745,6 @@ body#tablePay {
     text-align: center;
     padding: 20px 60px 30px;
     height: 200px;
-    position: absolute;
-    bottom: 0;
     flex-shrink: 0;
     box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
 
@@ -676,7 +775,9 @@ body#tablePay {
     color: #fff;
     flex: 1;
 }
-.tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back::before {
+.tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back::before,
+.tablePayWrap__btn-back::before 
+{
     content: "< ";
 }
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-pay {
@@ -693,3 +794,173 @@ body#tablePay {
     text-align: center;
 }
 
+/* 나눠서 결제하기영역 */
+.Wrap__creditTypeBack {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    flex-shrink: 0;
+    box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
+}
+
+.tablePayWrap-dutch {
+    padding: 40px 0;
+}
+.dutchpay-wrap {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-width: 632px;
+    min-height: 0;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.dutchpay-options {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    gap: 36px;
+    margin-bottom: 60px;
+}
+
+.dutchpay-option {
+    width: calc(100% / 2);
+    height: 248px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    border: 4px solid #000;
+    padding: 38px 0;
+}
+
+.dutchpay-option img {
+    width: 120px;
+    height: 110px;
+    object-fit: contain;
+}
+
+.dutchpay-wrap .table__actions {
+    /* padding: 20px 60px 30px; */
+    /* box-shadow: 0 0 13px rgba(0, 0, 0, 0.25); */
+}
+
+.dutchpay-wrap .tablePayWrap__btn-back {
+    display: block;
+    padding: 22px 0;
+    border-radius: 20px;
+    background: #555;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.tablePayWrap__creditType .tablePayWrap__actions {
+    margin: 0 auto;
+    height: 82px;
+}
+#split-payment-dialog .payment-image-button {
+    max-width: 171px;
+    max-height: 171px;
+}
+#split-payment-dialog .payment-image-button  > img {
+    width: 100%;
+}
+
+.table-pay-payment-alert .table-pay-payment-alert__content {
+    display: block;
+}
+.order-completed-icon {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 24px auto 0;
+    background: url('../../shared/images/icon/check-icon-gr.png') no-repeat center center;
+    background-size: contain;
+}
+.completed-msg {
+    color: #444
+}
+
+#tablePay-payment-type.tablePayWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+  background-color: #fff;
+}
+
+#tablePay-payment-type .completion-banner {
+  width: 100%;
+  max-width: 880px;
+  padding: 32px 24px;
+  background-color: #F5F5F5;
+  border-radius: 24px;
+  text-align: center;
+}
+
+#tablePay-payment-type .completion-title {
+  margin: 0 0 12px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+#tablePay-payment-type .completion-desc {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+#tablePay-payment-type .completion-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#tablePay-payment-type .completion-illustration img {
+  max-width: 240px;
+  height: auto;
+}
+
+#tablePay-payment-type .completion-actions {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 880px;
+}
+
+#tablePay-payment-type .btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 80px;
+  border: none;
+  border-radius: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+#tablePay-payment-type .btn-retry {
+  background-color: #555555;
+}
+
+#tablePay-payment-type .btn-home {
+  background-color: #227941;
+}

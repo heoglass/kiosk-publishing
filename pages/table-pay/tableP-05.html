@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 결제 - 나눠서 결제하기 선택화면</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./table-pay.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body id="tablePay">
+    <div class="kiosk-container">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main kiosk-screen">
+        <!-- 공통헤더 -->
+        <header id="category-header-horizontal" class="tablePay__header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt="" 
+                class="category-header-home"
+              />
+            </a>
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+            <span id="header-title"></span>
+          </div>
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
+        </header>
+        <section id="tablePay-payment-type" class="tablePayWrap tablePayWrap-dutch">
+          <div class="tablePayWrap__title tablePayWrap__title--credit">
+            <h3 class="tablePayWrap__credit--selcet">
+              <span class="font__red--local" id="tablePay-payment-total">총 0원</span>
+              결제할게요
+            </h3>
+          </div>
+
+          <!-- 나눠서 결제 선택영역 -->
+          <div class="dutchpay-wrap">
+            <div class="dutchpay-options" aria-label="결제 방식 선택">
+              <button type="button" class="dutchpay-option" data-payment-dialog="split-payment-dialog">
+                <img src="../../shared/images/icon/card_dutch.png" alt="" />
+                <span>나눠서 결제</span>
+              </button>
+              <button type="button" class="dutchpay-option" data-payment-dialog="full-payment-dialog">
+                <img src="../../shared/images/icon/card_total.png" alt="" />
+                <span>한 번에 결제</span>
+              </button>
+            </div>
+            <div class="table__actions">
+              <a href="./tableP-04.html" class="tablePayWrap__btn-back">돌아가기</a>
+            </div>
+          </div>
+        </section>
+
+        <dialog id="split-payment-dialog" class="table-pay-payment-alert" aria-labelledby="split-payment-title" aria-describedby="split-payment-description">
+          <button id="lottieBtn" type="button" class="payment-image-button" data-card-inserted="" data-cafe-next="modal-payment-progress" aria-label="카드 삽입">
+            <!-- <img class="card-payment-image card-insert" src="../../shared/images/icon/icon-insert-card.png" alt=""> -->
+            <div id="lottie-card-insert" class="card-payment-image card-insert">
+              <lottie-player
+                src="../../shared/images/lottie/lottie-card-insert.json"
+                background="transparent"
+                speed="0.5"
+                style="width: 160px; height: 171px"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+          </button>
+          <div class="table-pay-payment-alert__content">
+            <h2 id="split-payment-title">신용카드를 IC 전용 리더기에 넣어주세요</h2>
+            <p id="split-payment-description">삼성, LG 페이는 휴대폰 뒷면을 카드리더기에 대주세요</p>
+          </div>
+        </dialog>
+
+        <dialog id="full-payment-dialog" class="table-pay-payment-alert payment__alert--loading" aria-labelledby="full-payment-title" aria-describedby="full-payment-description">
+          <span class="spinner"></span>
+          <h2 id="full-payment-title">결제 진행중입니다</h2>
+          <p id="full-payment-description">카드를 제거하지 말고 잠시만기다려주세요</p>
+          <form method="dialog">
+            <button type="submit"></button>
+          </form>
+        </dialog>
+       
+        <dialog id="card-removed-dialog" class="table-pay-payment-alert tablepay-modal-wrap" aria-labelledby="table-pay-history-title">
+          <button type="button" class="card-completed-icon" aria-label="카드 제거 완료"></button>
+          <h2 id="table-pay-history-title">결제가 완료되었습니다</h2>
+          <p class="table-pay-history__content">카드를 제거해주세요 </p>
+        </dialog>
+        
+        <dialog id="order-completed-dialog" class="table-pay-payment-alert tablepay-modal-wrap" aria-labelledby="order-completed-title">
+          <h2 id="order-completed-title">주문이 완료되었습니다</h2>
+          <span class="order-completed-icon"></span>
+          <p class="table-pay-history__content completed-msg">
+            주문번호를 확인해주세요<br />
+            주문 번호 확인 후 카운터에서 픽업해주세요
+          </p>
+          <form method="dialog">
+            <button id="creditCompleteBtn" type="button" class="tablepay--completed">확인</button>
+          </form>
+        </dialog>
+      </main>
+    </div>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./table-pay.js"></script>
+  </body>
+</html>

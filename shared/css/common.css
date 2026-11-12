@@ -1325,6 +1325,8 @@ body.modal-open {
 
 /* 스피너 회전 애니메이션 */
 .spinner {
+  display: block;
+  /* span 태그 사용 */
   width: 100px;
   height: 100px;
   border: 6px solid #e0e0e0;
