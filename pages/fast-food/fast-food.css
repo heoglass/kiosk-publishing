@@ -903,8 +903,8 @@
 
 /* 세트 사이드 선택 화면 */
 .fastfood-set-side-page {
-  min-height: 100vh;
-  padding: 144px 0 180px;
+  /* min-height: 100vh; */
+  /* padding: 144px 0 180px; */
   background: #fff;
 }
 
@@ -1098,6 +1098,39 @@
 
 #index-payment-step1 .foodcourt-container {
   min-height: 100vh;
+}
+
+#index-option-step4 .fastfood-set-side-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+}
+
+#index-option-step4 .orderlist__view {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#index-option-step4 .fastfood__summary--order,
+#index-option-step4 .order-summary-wrap,
+#index-option-step4 .fastfood-set-confirmation__actions {
+  flex-shrink: 0;
+}
+
+#index-option-step4 .fastfood-order-confirmation__list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+#index-option-step4 .fastfood-set-confirmation__actions {
+  position: static;
+  width: 100%;
 }
 
 #index-option-step4 .fastfood-order-confirmation__item {
@@ -1320,8 +1353,16 @@
 }
 
 .cart__section--selected {
+  display: flex;
   flex: 1;
   min-height: 0;
+}
+
+#index-fast-order .cart__section--selected .cart-list {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 #index-fast-order .order-bar {

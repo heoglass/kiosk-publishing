@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const image = document.createElement('img');
         image.className = 'fastfood-set-confirmation__image';
-        image.src = '../../shared/images/fast-food/bulgogi.png';
+        image.src = item.image || '../../shared/images/fast-food/bulgogi.png';
         image.alt = '';
 
         const productInfo = document.createElement('div');
@@ -409,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalPrice = 0;
 
     if (cartList && cartItemTemplate instanceof HTMLTemplateElement) {
+      const scrollTop = cartList.scrollTop;
       cartList.replaceChildren();
 
       Object.entries(orderData).forEach(([key, item]) => {
@@ -438,6 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         totalCount += item.count;
         totalPrice += item.price * item.count;
       });
+      cartList.scrollTop = scrollTop;
     } else {
       for (const key in orderData) {
         totalCount += orderData[key].count;
@@ -503,11 +505,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // 상품 카드 클릭 시 장바구니에 추가하거나 구성 선택 모달을 연다.
   const optionLabels = document.querySelectorAll('.fastfood-composition-option');
   const optionRadios = document.querySelectorAll("input[name='food-option']");
-  const addOrderItem = (name, price) => {
+  const addOrderItem = (name, price, image) => {
     if (orderData[name]) {
       orderData[name].count += 1;
+      if (image) orderData[name].image = image;
     } else {
-      orderData[name] = { name, option: '일반', price, count: 1 };
+      orderData[name] = { name, option: '일반', price, count: 1, image };
     }
     updateOrderUI();
   };
@@ -533,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const price = parseInt(priceStr, 10) || 0;
       if (!name) return;
 
-      if (card.getAttribute('item-type') === 'burger' && modal) {
+      if (card.dataset.hasOption === 'true' && modal) {
         selectedProduct = { name, price };
         const defaultOption = modal.querySelector('input[name="food-option"]');
         if (defaultOption) {
@@ -544,7 +547,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      addOrderItem(name, price);
+      const image = card.querySelector('.product-card__img')?.getAttribute('src');
+      addOrderItem(name, price, image);
+      if (name.includes('세트')) {
+        window.location.href = 'index-tekeout-option-step1.html';
+      }
     });
   });
 
@@ -569,7 +576,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const price = Number(selectedOption.dataset.productPrice);
       if (!name || !Number.isFinite(price) || price <= 0) return;
 
-      addOrderItem(name, price);
+      const image = selectedOption.closest('.fastfood-composition-option')
+        ?.querySelector('.fastfood-composition-option__image')?.getAttribute('src');
+      addOrderItem(name, price, image);
       modal.style.display = 'none';
       selectedProduct = null;
 
