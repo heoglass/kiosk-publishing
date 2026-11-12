@@ -771,6 +771,27 @@
 #screen-review .recommend-button .cafe-button-ripple {
   background: rgb(0 0 0 / 18%);
 }
+#modal-payment.cafe .payment-main {
+  padding: 30px 60px;
+}
+#modal-payment.cafe .payment-main .payment-method {
+  padding: 0;
+  width: 100%;
+}
+#modal-card-payment.cafe-card .payment-image-button {
+  background-image: url("../../shared/images/icon/payment-card-bg.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  object-fit: fill;
+  width: 342px;
+  height: 342px;
+  border-radius: 171px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* 주문 확인 화면 위에 표시하는 카페 결제 팝업 */
 #cafe-payment-dialogs dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);

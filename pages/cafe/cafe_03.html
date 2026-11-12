@@ -13,6 +13,8 @@
       defer=""
     ></script>
     <script type="text/javascript" src="./cafe.js" defer=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body>
     <main class="cafe-main category-main kiosk-screen">
@@ -164,7 +166,7 @@
       <!-- 결제수단 선택 팝업 -->
       <dialog
         id="modal-payment"
-        class="modal modal--payment"
+        class="modal modal--payment cafe"
         aria-labelledby="modal-payment-title"
       >
         <div class="modal-header">
@@ -190,18 +192,20 @@
           <div class="payment-main">
             <button
               type="button"
-              class="payment-method"
+              class="payment-method card"
               data-payment-method="card"
               data-cafe-next="modal-card-payment"
             >
-              <img
-                src="../../shared/images/icon/icon-card.png"
-                class="payment-icon"
-                aria-hidden="true"
-                alt=""
-              />
-              <span class="payment-name">카드결제</span>
-              <span class="payment-description">(삼성/애플페이)</span>
+              <div class="payment-card-bg">
+                <img
+                  src="../../shared/images/icon/icon-card.png"
+                  class="payment-icon"
+                  aria-hidden="true"
+                  alt=""
+                />
+                <span class="payment-name">카드결제</span>
+                <span class="payment-description">(삼성/애플페이)</span>
+              </div>
             </button>
 
             <button
@@ -314,7 +318,7 @@
       <!-- 카드 결제 안내 팝업 -->
       <dialog
         id="modal-card-payment"
-        class="modal modal--card"
+        class="modal modal--card cafe-card"
         aria-labelledby="modal-card-payment-title"
       >
         <div class="modal-header">
@@ -341,11 +345,21 @@
           data-cafe-next="modal-payment-progress"
           aria-label="카드 삽입"
         >
-          <img
+          <!-- <img
             class="card-payment-image card-insert"
             src="../../shared/images/icon/icon-insert-card.png"
             alt=""
-          />
+          /> -->
+          <div id="lottie-card-insert" class="card-payment-image card-insert">
+            <lottie-player
+              src="../../shared/images/lottie/lottie-card-insert.json"
+              background="transparent"
+              speed="0.5"
+              style="width: 342px; height: 342px"
+              loop
+              autoplay
+            ></lottie-player>
+          </div>
         </button>
 
         <div class="modal-body">
