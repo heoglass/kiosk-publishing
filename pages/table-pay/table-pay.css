@@ -447,7 +447,7 @@ body#tablePay {
     opacity: 0.6;
 }
 
-.table-pay-payment-alert {
+dialog.table-pay-payment-alert[open] {
     display: flex;
     /* justify-content: flex-start; */
     align-items: center;
@@ -464,8 +464,8 @@ body#tablePay {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.payment__alert--loading, 
-.tablepay-modal-wrap {
+dialog.payment__alert--loading[open],
+dialog.tablepay-modal-wrap[open] {
     display: block;
     text-align: center;
     padding: 68px 120px;

@@ -5,7 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartBadge();
   initCartReview();
   initPaymentType();
+  initCompletionActions();
 });
+
+function initCompletionActions() {
+  document.querySelectorAll(".completion-actions .btn-retry, .completion-actions .btn-home")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        localStorage.removeItem("tableOrderItem");
+      });
+    });
+}
 
 /**
  * 좌측 카테고리 메뉴 탭 전환 및 직원호출 이벤트
@@ -360,7 +370,7 @@ function initPaymentType() {
     0
   );
   total.textContent = `총 ${totalPrice.toLocaleString()}원`;
-
+ 
   document.querySelectorAll("[data-payment-dialog]").forEach((button) => {
     button.addEventListener("click", () => {
       const dialog = document.getElementById(button.dataset.paymentDialog);
@@ -378,7 +388,6 @@ function initPaymentType() {
     return;
   }
   popupNextMove();
-  initialDialog.showModal();
 }
 
 function popupNextMove() {
