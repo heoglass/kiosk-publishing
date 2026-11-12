@@ -53,7 +53,9 @@
 }
 
 
-.foodcourt-container {}
+.foodcourt-container {
+  overflow: hidden;
+}
 
 .foodcourt-container .category-main.fast__food--menu {
   position: relative;
@@ -628,7 +630,7 @@
 
 
 /* 하단 주문 제어 버튼 바 */
-.order-bar.foodcourt__oderbar {
+.foodcourt__oderbar {
   display: flex;
   gap: 24px;
   padding: 40px 60px;
@@ -638,6 +640,7 @@
   left: 0;
   right: 0;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .fast__food--menu .foodcourt__oderbar>button {
@@ -1323,4 +1326,9 @@
 
 #index-fast-order .order-bar {
   position: static;
+  overflow: hidden;
 }
+.order-bar > button {
+  overflow: hidden;
+  padding: 32px 0;
+} 

@@ -44,6 +44,9 @@
 #category-header.foodcourt__header {
   background-color: #692119;
 }
+.foodcourt-container {
+  overflow: hidden;
+}
 
 .foodcourt-container .category-main.foodcourt {
   position: relative;
