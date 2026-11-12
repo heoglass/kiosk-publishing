@@ -473,7 +473,6 @@
 }
 
 .foodcourt .foodcourt__oderbar>button {
-  height: 200px;
   font-size: var(--font-60-size);
   font-weight: var(--font-600-weight);
   border-radius: 20px;
