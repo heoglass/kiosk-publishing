@@ -896,8 +896,8 @@ body.modal-open {
 
 #modal-fastfood-card-payment .payment-image-button .card-payment-image {
   display: block;
-  width: 280px;
-  height: 280px;
+  /* width: 280px;
+  height: 280px; */
   object-fit: contain;
 }
 

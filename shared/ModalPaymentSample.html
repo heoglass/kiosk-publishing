@@ -1,264 +1,453 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제모달 컴포넌트</title>
+    <link rel="stylesheet" href="/shared/css/common.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>결제모달 컴포넌트</title>
-  <link rel="stylesheet" href="/shared/css/common.css">
-</head>
+  <body class="modal-open">
+    <section>
+      <!-- 결제수단 선택 팝업 -->
+      <div
+        id="modal-payment"
+        class="modal modal--payment"
+        aria-labelledby="modal-payment-title"
+      >
+        <div class="modal-header">
+          <h2 id="modal-payment-title" class="modal-title">결제수단 선택</h2>
 
-<body class="modal-open">
-
-  <section>
-    <!-- 결제수단 선택 팝업 -->
-    <div id="modal-payment" class="modal modal--payment" aria-labelledby="modal-payment-title">
-      <div class="modal-header">
-        <h2 id="modal-payment-title" class="modal-title">결제수단 선택</h2>
-
-        <button type="button" class="modal-close" data-modal-close aria-label="닫기">
-          <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
-          <span>닫기</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <!-- 주요 결제수단 -->
-        <div class="payment-main">
-          <button type="button" class="payment-method" data-payment-method="card">
-            <img src="../../shared/images/icon/icon-card.png" class="payment-icon" aria-hidden="true" alt="" />
-            <span class="payment-name">카드결제</span>
-            <span class="payment-description">(삼성/애플페이)</span>
-          </button>
-
-          <button type="button" class="payment-method" data-payment-method="app-card">
-            <img src="../../shared/images/icon/icon-app-card.png" class="payment-icon" aria-hidden="true" alt="" />
-            <span class="payment-name">앱카드</span>
-            <span class="payment-description">(QR/바코드)</span>
+          <button
+            type="button"
+            class="modal-close"
+            data-modal-close
+            aria-label="닫기"
+          >
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
         </div>
 
-        <!-- 간편결제 / 쿠폰 -->
-        <div class="payment-sub">
-          <button type="button" class="payment-method" data-payment-method="kakao-pay">
-            <img src="../../shared/images/icon/icon-kakao-pay.png" class="payment-logo payment-logo--kakao"
-              aria-hidden="true" />
-            <span class="payment-name">카카오페이</span>
-          </button>
+        <div class="modal-body">
+          <!-- 주요 결제수단 -->
+          <div class="payment-main">
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="card"
+            >
+              <img
+                src="../../shared/images/icon/icon-card.png"
+                class="payment-icon"
+                aria-hidden="true"
+                alt=""
+              />
+              <span class="payment-name">카드결제</span>
+              <span class="payment-description">(삼성/애플페이)</span>
+            </button>
 
-          <button type="button" class="payment-method" data-payment-method="naver-pay">
-            <img src="../../shared/images/icon/icon-n-pay.png" class="payment-logo payment-logo--naver"
-              aria-hidden="true" />
-            <span class="payment-name">네이버페이</span>
-          </button>
-
-          <button type="button" class="payment-method" data-payment-method="payco">
-            <img src="../../shared/images/icon/icon-payco.png" class="payment-logo payment-logo--payco"
-              aria-hidden="true" />
-            <span class="payment-name">페이코</span>
-          </button>
-
-          <button type="button" class="payment-method" data-payment-method="zero-pay">
-            <img src="../../shared/images/icon/icon-zero-pay.png" class="payment-logo payment-logo--zero"
-              aria-hidden="true" />
-            <span class="payment-name">제로페이</span>
-          </button>
-
-          <button type="button" class="payment-method" data-payment-method="wechat-pay">
-            <img src="../../shared/images/icon/icon-wechat-pay.png" class="payment-logo payment-logo--wechat"
-              aria-hidden="true" />
-            <span class="payment-name">위챗페이</span>
-          </button>
-
-          <button type="button" class="payment-method" data-payment-method="danggeun-pay">
-            <img src="../../shared/images/icon/icon-d-pay.png" class="payment-logo payment-logo--danggeun"
-              aria-hidden="true" />
-            <span class="payment-name">당근페이</span>
-          </button>
-
-          <button type="button" class="payment-method" data-payment-method="coupon">
-            <span class="payment-name">쿠폰 사용</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 카드 결제 안내 팝업 -->
-    <dialog id="modal-card-payment" class="modal modal--card" aria-labelledby="modal-card-payment-title" open>
-      <div class="modal-header">
-        <h2 id="modal-card-payment-title" class="modal-title">카드 결제</h2>
-
-        <button type="button" class="modal-close" data-modal-close aria-label="닫기">
-          <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
-          <span>닫기</span>
-        </button>
-      </div>
-      <button type="button" class="payment-image-button" data-card-inserted aria-label="카드 삽입">
-        <img class="card-payment-image card-insert" src="../../shared/images/icon/icon-insert-card.png" alt="" />
-      </button>
-
-      <div class="modal-body">
-        <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>
-
-        <p class="card-payment-description">
-          삼성/애플페이로 결제시 결제화면을 실행 후<br />
-          <strong>휴대폰을 투입구 가까이</strong>에 갖다대세요.
-        </p>
-
-        <dl class="card-payment-summary">
-          <div class="card-payment-summary-row">
-            <dt>총 수량</dt>
-            <dd class="card-payment-count">0개</dd>
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="app-card"
+            >
+              <img
+                src="../../shared/images/icon/icon-app-card.png"
+                class="payment-icon"
+                aria-hidden="true"
+                alt=""
+              />
+              <span class="payment-name">앱카드</span>
+              <span class="payment-description">(QR/바코드)</span>
+            </button>
           </div>
 
-          <div class="card-payment-summary-row">
-            <dt>총 결제금액</dt>
-            <dd class="card-payment-total">0원</dd>
+          <!-- 간편결제 / 쿠폰 -->
+          <div class="payment-sub">
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="kakao-pay"
+            >
+              <img
+                src="../../shared/images/icon/icon-kakao-pay.png"
+                class="payment-logo payment-logo--kakao"
+                aria-hidden="true"
+              />
+              <span class="payment-name">카카오페이</span>
+            </button>
+
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="naver-pay"
+            >
+              <img
+                src="../../shared/images/icon/icon-n-pay.png"
+                class="payment-logo payment-logo--naver"
+                aria-hidden="true"
+              />
+              <span class="payment-name">네이버페이</span>
+            </button>
+
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="payco"
+            >
+              <img
+                src="../../shared/images/icon/icon-payco.png"
+                class="payment-logo payment-logo--payco"
+                aria-hidden="true"
+              />
+              <span class="payment-name">페이코</span>
+            </button>
+
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="zero-pay"
+            >
+              <img
+                src="../../shared/images/icon/icon-zero-pay.png"
+                class="payment-logo payment-logo--zero"
+                aria-hidden="true"
+              />
+              <span class="payment-name">제로페이</span>
+            </button>
+
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="wechat-pay"
+            >
+              <img
+                src="../../shared/images/icon/icon-wechat-pay.png"
+                class="payment-logo payment-logo--wechat"
+                aria-hidden="true"
+              />
+              <span class="payment-name">위챗페이</span>
+            </button>
+
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="danggeun-pay"
+            >
+              <img
+                src="../../shared/images/icon/icon-d-pay.png"
+                class="payment-logo payment-logo--danggeun"
+                aria-hidden="true"
+              />
+              <span class="payment-name">당근페이</span>
+            </button>
+
+            <button
+              type="button"
+              class="payment-method"
+              data-payment-method="coupon"
+            >
+              <span class="payment-name">쿠폰 사용</span>
+            </button>
           </div>
-        </dl>
-      </div>
-    </dialog>
-
-    <!-- 결제 진행 중 -->
-    <dialog id="modal-payment-progress" class="modal modal--payment-status" aria-labelledby="payment-progress-title"
-      aria-describedby="payment-progress-description">
-      <div class="modal-body">
-        <img src="../../shared/images/icon/icon-loading.png" class="payment-spinner" aria-hidden="true" alt="" />
-
-        <h2 id="payment-progress-title" class="modal-title">
-          결제 진행중입니다
-        </h2>
-
-        <p id="payment-progress-description" class="payment-status-description">
-          카드를 제거하지 말고 잠시만 기다려주세요
-        </p>
-      </div>
-    </dialog>
-
-    <!-- 결제 완료 -->
-    <dialog id="modal-payment-complete" class="modal modal--payment-status" aria-labelledby="payment-complete-title"
-      aria-describedby="payment-complete-description">
-      <div class="modal-body">
-        <button type="button" class="payment-image-button" data-card-removed aria-label="카드 제거 완료">
-          <img class="payment-complete-image" src="../../shared/images/icon/icon-card-complete.png" alt="" />
-        </button>
-
-        <h2 id="payment-complete-title" class="modal-title">
-          결제가 완료되었습니다
-        </h2>
-
-        <p id="payment-complete-description" class="payment-status-description">
-          카드를 제거해주세요
-        </p>
-      </div>
-    </dialog>
-
-    <!-- 적립 안내 -->
-    <dialog id="modal-points-prompt" class="modal modal--points-prompt" aria-labelledby="points-prompt-title">
-      <div class="modal-header">
-        <h2 id="points-prompt-title" class="modal-title">적립안내</h2>
-
-        <button type="button" class="modal-close" data-modal-close aria-label="닫기">
-          <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
-          <span>닫기</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <p class="points-prompt-description">
-          포인트를<br />
-          적립하시겠습니까?
-        </p>
-
-        <form method="dialog" class="points-prompt-actions">
-          <button type="submit" class="points-no" value="no">아니오</button>
-          <button type="submit" class="points-yes" value="yes">예</button>
-        </form>
-      </div>
-    </dialog>
-
-    <!-- 포인트 적립: 휴대폰 번호 입력 -->
-    <dialog id="modal-points-phone" class="modal modal--points-phone" aria-labelledby="points-phone-title">
-      <div class="modal-header">
-        <h2 id="points-phone-title" class="modal-title">포인트 적립</h2>
-        <button type="button" class="modal-close" data-modal-close aria-label="닫기">
-          <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
-          <span>닫기</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <label for="points-phone-number" class="points-phone-label">
-          적립할 휴대폰 번호를 <br />눌러주세요.
-        </label>
-
-        <input id="points-phone-number" class="points-phone-number" type="tel" inputmode="none" autocomplete="off"
-          placeholder="" readonly />
-
-        <div class="points-keypad" role="group" aria-label="휴대폰 번호 키패드">
-          <button type="button" data-phone-key="1">1</button>
-          <button type="button" data-phone-key="2">2</button>
-          <button type="button" data-phone-key="3">3</button>
-          <button type="button" data-phone-key="4">4</button>
-          <button type="button" data-phone-key="5">5</button>
-          <button type="button" data-phone-key="6">6</button>
-          <button type="button" data-phone-key="7">7</button>
-          <button type="button" data-phone-key="8">8</button>
-          <button type="button" data-phone-key="9">9</button>
-          <button type="button" data-phone-key="010">010</button>
-          <button type="button" data-phone-key="0">0</button>
-          <button type="button" data-phone-key="delete">지우기</button>
-        </div>
-
-        <button type="button" class="points-skip" data-open-receipt>
-          건너뛰기
-        </button>
-      </div>
-    </dialog>
-
-    <!-- 적립 완료 -->
-    <dialog id="modal-points-complete" class="modal modal--points-complete" aria-labelledby="points-complete-title">
-      <div class="modal-body">
-        <img src="../../shared/images/icon/icon-coin-saving.png" alt="" class="coin-saving-image" />
-        <h2 id="points-complete-title" class="modal-title">
-          적립이 완료되었습니다.
-        </h2>
-
-        <span class="points-complete-check" aria-hidden="true">✓</span>
-
-        <button type="button" class="points-confirm" data-open-receipt>
-          확인
-        </button>
-      </div>
-    </dialog>
-
-    <!-- 영수증 선택 -->
-    <dialog id="modal-receipt" class="modal modal--receipt" aria-labelledby="receipt-title"
-      aria-describedby="receipt-description">
-      <div class="modal-header">
-        <h2 id="receipt-title" class="modal-title">영수증</h2>
-
-        <button type="button" class="modal-close" data-modal-close aria-label="닫기">
-          <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
-          <span>닫기</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p id="receipt-description" class="receipt-description">
-          영수증을 받으시겠습니까?
-        </p>
-
-        <div class="points-prompt-actions">
-          <a class="receipt-choice points-no" href="../../shared/order-complete.html?category=cafe">
-            아니오
-          </a>
-          <a class="receipt-choice points-yes" href="../../shared/order-complete.html?category=cafe">예</a>
         </div>
       </div>
-    </dialog>
-  </section>
-  <script src="/shared/js/common.js"></script>
 
-</body>
+      <!-- 카드 결제 안내 팝업 -->
+      <dialog
+        id="modal-card-payment"
+        class="modal modal--card"
+        aria-labelledby="modal-card-payment-title"
+        open
+      >
+        <div class="modal-header">
+          <h2 id="modal-card-payment-title" class="modal-title">카드 결제</h2>
 
+          <button
+            type="button"
+            class="modal-close"
+            data-modal-close
+            aria-label="닫기"
+          >
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+        <button
+          type="button"
+          class="payment-image-button"
+          data-card-inserted
+          aria-label="카드 삽입"
+        >
+          <img
+            class="card-payment-image card-insert"
+            src="../../shared/images/icon/icon-insert-card.png"
+            alt=""
+          />
+        </button>
+
+        <div class="modal-body">
+          <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>
+
+          <p class="card-payment-description">
+            삼성/애플페이로 결제시 결제화면을 실행 후<br />
+            <strong>휴대폰을 투입구 가까이</strong>에 갖다대세요.
+          </p>
+
+          <dl class="card-payment-summary">
+            <div class="card-payment-summary-row">
+              <dt>총 수량</dt>
+              <dd class="card-payment-count">0개</dd>
+            </div>
+
+            <div class="card-payment-summary-row">
+              <dt>총 결제금액</dt>
+              <dd class="card-payment-total">0원</dd>
+            </div>
+          </dl>
+        </div>
+      </dialog>
+
+      <!-- 결제 진행 중 -->
+      <dialog
+        id="modal-payment-progress"
+        class="modal modal--payment-status"
+        aria-labelledby="payment-progress-title"
+        aria-describedby="payment-progress-description"
+      >
+        <div class="modal-body">
+          <img
+            src="../../shared/images/icon/icon-loading.png"
+            class="payment-spinner"
+            aria-hidden="true"
+            alt=""
+          />
+
+          <h2 id="payment-progress-title" class="modal-title">
+            결제 진행중입니다
+          </h2>
+
+          <p
+            id="payment-progress-description"
+            class="payment-status-description"
+          >
+            카드를 제거하지 말고 잠시만 기다려주세요
+          </p>
+        </div>
+      </dialog>
+
+      <!-- 결제 완료 -->
+      <dialog
+        id="modal-payment-complete"
+        class="modal modal--payment-status"
+        aria-labelledby="payment-complete-title"
+        aria-describedby="payment-complete-description"
+      >
+        <div class="modal-body">
+          <button
+            type="button"
+            class="payment-image-button"
+            data-card-removed
+            aria-label="카드 제거 완료"
+          >
+            <img
+              class="payment-complete-image"
+              src="../../shared/images/icon/icon-card-complete.png"
+              alt=""
+            />
+          </button>
+
+          <h2 id="payment-complete-title" class="modal-title">
+            결제가 완료되었습니다
+          </h2>
+
+          <p
+            id="payment-complete-description"
+            class="payment-status-description"
+          >
+            카드를 제거해주세요
+          </p>
+        </div>
+      </dialog>
+
+      <!-- 적립 안내 -->
+      <dialog
+        id="modal-points-prompt"
+        class="modal modal--points-prompt"
+        aria-labelledby="points-prompt-title"
+      >
+        <div class="modal-header">
+          <h2 id="points-prompt-title" class="modal-title">적립안내</h2>
+
+          <button
+            type="button"
+            class="modal-close"
+            data-modal-close
+            aria-label="닫기"
+          >
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p class="points-prompt-description">
+            포인트를<br />
+            적립하시겠습니까?
+          </p>
+
+          <form method="dialog" class="points-prompt-actions">
+            <button type="submit" class="points-no" value="no">아니오</button>
+            <button type="submit" class="points-yes" value="yes">예</button>
+          </form>
+        </div>
+      </dialog>
+
+      <!-- 포인트 적립: 휴대폰 번호 입력 -->
+      <dialog
+        id="modal-points-phone"
+        class="modal modal--points-phone"
+        aria-labelledby="points-phone-title"
+      >
+        <div class="modal-header">
+          <h2 id="points-phone-title" class="modal-title">포인트 적립</h2>
+          <button
+            type="button"
+            class="modal-close"
+            data-modal-close
+            aria-label="닫기"
+          >
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <label for="points-phone-number" class="points-phone-label">
+            적립할 휴대폰 번호를 <br />눌러주세요.
+          </label>
+
+          <input
+            id="points-phone-number"
+            class="points-phone-number"
+            type="tel"
+            inputmode="none"
+            autocomplete="off"
+            placeholder=""
+            readonly
+          />
+
+          <div
+            class="points-keypad"
+            role="group"
+            aria-label="휴대폰 번호 키패드"
+          >
+            <button type="button" data-phone-key="1">1</button>
+            <button type="button" data-phone-key="2">2</button>
+            <button type="button" data-phone-key="3">3</button>
+            <button type="button" data-phone-key="4">4</button>
+            <button type="button" data-phone-key="5">5</button>
+            <button type="button" data-phone-key="6">6</button>
+            <button type="button" data-phone-key="7">7</button>
+            <button type="button" data-phone-key="8">8</button>
+            <button type="button" data-phone-key="9">9</button>
+            <button type="button" data-phone-key="010">010</button>
+            <button type="button" data-phone-key="0">0</button>
+            <button type="button" data-phone-key="delete">지우기</button>
+          </div>
+
+          <button type="button" class="points-skip" data-open-receipt>
+            건너뛰기
+          </button>
+        </div>
+      </dialog>
+
+      <!-- 적립 완료 -->
+      <dialog
+        id="modal-points-complete"
+        class="modal modal--points-complete"
+        aria-labelledby="points-complete-title"
+      >
+        <div class="modal-body">
+          <img
+            src="../../shared/images/icon/icon-coin-saving.png"
+            alt=""
+            class="coin-saving-image"
+          />
+          <h2 id="points-complete-title" class="modal-title">
+            적립이 완료되었습니다.
+          </h2>
+
+          <span class="points-complete-check" aria-hidden="true">✓</span>
+
+          <button type="button" class="points-confirm" data-open-receipt>
+            확인
+          </button>
+        </div>
+      </dialog>
+
+      <!-- 영수증 선택 -->
+      <dialog
+        id="modal-receipt"
+        class="modal modal--receipt"
+        aria-labelledby="receipt-title"
+        aria-describedby="receipt-description"
+      >
+        <div class="modal-header">
+          <h2 id="receipt-title" class="modal-title">영수증</h2>
+
+          <button
+            type="button"
+            class="modal-close"
+            data-modal-close
+            aria-label="닫기"
+          >
+            <img
+              src="../../shared/images/icon/close_w.png"
+              class="modal-close-image"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="receipt-description" class="receipt-description">
+            영수증을 받으시겠습니까?
+          </p>
+
+          <div class="points-prompt-actions">
+            <a
+              class="receipt-choice points-no"
+              href="../../shared/order-complete.html?category=cafe"
+            >
+              아니오
+            </a>
+            <a
+              class="receipt-choice points-yes"
+              href="../../shared/order-complete.html?category=cafe"
+              >예</a
+            >
+          </div>
+        </div>
+      </dialog>
+    </section>
+    <script src="/shared/js/common.js"></script>
+  </body>
 </html>

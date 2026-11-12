@@ -12,6 +12,7 @@
       type="text/javascript"
       src="./fast-food-ui.js?v=20261109-set-side"
     ></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
 
   <body id="index-payment-step2">
@@ -140,7 +141,7 @@
     <!-- 카드 결제 안내 팝업 -->
     <div
       id="modal-fastfood-card-payment"
-      class="modal modal--payment payment__card--insert"
+      class="modal modal--payment payment__card--insert card"
       aria-labelledby="modal-fastfood-card-payment-title"
     >
       <div class="modal-header">
@@ -160,7 +161,6 @@
             alt=""
             aria-hidden="true"
           />
-          <!--  -->
         </button>
       </div>
       <button
@@ -169,11 +169,16 @@
         data-card-inserted
         aria-label="카드 삽입"
       >
-        <img
-          class="card-payment-image card-insert"
-          src="../../shared/images/icon/icon-insert-card.png"
-          alt=""
-        />
+        <div id="lottie-card-insert" class="card-payment-image card-insert">
+          <lottie-player
+            src="../../shared/images/lottie/lottie-card-insert.json"
+            background="transparent"
+            speed="0.5"
+            style="width: 342px; height: 342px"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
       </button>
 
       <div class="modal-body">
