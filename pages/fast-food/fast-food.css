@@ -1,15 +1,13 @@
 @charset "UTF-8";
 
 :root {
-
   --font-60-size: 60px;
   --font-44-size: 44px;
   --font-48-size: 48px;
 
   --font-700-weight: 700;
   --font-600-weight: 600;
-  --btncolor-red: #DF3C3C;
-
+  --btncolor-red: #df3c3c;
 }
 
 .mb-40 {
@@ -17,17 +15,30 @@
 }
 
 .text-left {
-  text-align: left!important;
+  text-align: left !important;
+}
+.category-start-screen {
+  height: 100%;
+  background-image: url("../../shared/images/fast-food/fastfood_bg.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  object-fit: fill;
+}
+.category-start-screen button {
+  background-color: transparent;
+}
+.category-title-area.fast-food {
+  color: #fff;
 }
 
 .divider {
   display: block;
   width: 100%;
   height: 24px;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
-.category-main-message.fastfood__btn--color {
-  background: #FFBC0D;
+/* .category-main-message.fastfood__btn--color {
+  background: #ffbc0d;
   box-shadow: 0px 0px 42.1px 0px rgba(177, 122, 38, 1);
 }
 .category-main-message.fastfood__btn--color span {
@@ -36,7 +47,6 @@
   color: #292929;
   font-size: var(--font-48-size);
   font-weight: var(--font-700-weight);
-
 }
 
 .category-title-area {
@@ -45,17 +55,55 @@
 
 .category-title1 {
   white-space: nowrap;
+} */
+.fast-food-main .category-start {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 144px 60px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.fast-food-main .category-title-area {
+  color: #fff;
+  /* margin: 240px 0 0; */
+}
+
+.fast-food-main .category-title-area .category-title1 {
+  font-size: 120px;
+  font-weight: var(--font-600-weight);
+  margin-bottom: 13px;
+}
+
+.fast-food-main .category-title-area .category-title2 {
+  font-weight: 500;
+  font-size: 44px;
+  text-align: center;
+}
+
+.fast-food-main .category-main-message {
+  width: auto;
+  font-size: 48px;
+  padding: 60px 0;
+  background: #ffbc0d;
+  border-radius: 20px;
+  box-shadow: 0px 0px 42.1px 0px #b17a26;
+}
+
+.fast-food-main .category-main-message span {
+  font-size: 48px;
+  color: #fff;
 }
 
 /* index-fast-food.html */
 #category-header.fastFood__header {
-  background-color: #871F13;
+  background-color: #871f13;
 }
 
-
-.foodcourt-container {
+/* .foodcourt-container {
   overflow: hidden;
-}
+} */
 
 .foodcourt-container .category-main.fast__food--menu {
   position: relative;
@@ -98,12 +146,20 @@
   scrollbar-width: none;
 }
 
-.fast__food--menu .fastfood__section .foodcourt__nav .menu-list::-webkit-scrollbar {
+.fast__food--menu
+  .fastfood__section
+  .foodcourt__nav
+  .menu-list::-webkit-scrollbar {
   display: none;
 }
 
 .nav__tab,
-.fast__food--menu .fastfood__section .foodcourt__nav .menu-list .menu-item .nav__tab {
+.fast__food--menu
+  .fastfood__section
+  .foodcourt__nav
+  .menu-list
+  .menu-item
+  .nav__tab {
   background: rgba(244, 239, 235, 1);
   border: 600px;
   padding: 34px 38px;
@@ -113,7 +169,12 @@
   text-wrap: nowrap;
 }
 
-.fast__food--menu .fastfood__section .foodcourt__nav .menu-list .menu-item .nav__tab--active {
+.fast__food--menu
+  .fastfood__section
+  .foodcourt__nav
+  .menu-list
+  .menu-item
+  .nav__tab--active {
   background: rgba(223, 60, 60, 1);
   border: 600px;
   padding: 34px 38px;
@@ -153,7 +214,6 @@
   text-align: center;
   font-size: 40px;
   box-shadow: 4px 4px 29.4px 0px rgba(0, 0, 0, 0.25);
-
 }
 
 .product-card[hidden],
@@ -170,7 +230,8 @@
   height: 0;
 }
 
-.product-card .product-card__thumb img {}
+.product-card .product-card__thumb img {
+}
 
 .product-card .product-card__info {
   display: block;
@@ -184,7 +245,7 @@
 .product-card .product-card__info .product-card__price {
   display: block;
   font-weight: 700;
-  color: #225DFF;
+  color: #225dff;
 }
 
 /* 하단 이전/다음 컨트롤러 */
@@ -233,11 +294,11 @@
 }
 
 .slider-controls__btn.swiper-button-disabled {
-  color: #AAAAAA;
+  color: #aaaaaa;
   opacity: 1;
 }
 
-.order-bar>.cart-clear {
+.order-bar > .cart-clear {
   background-color: #555;
   color: #fff;
 }
@@ -246,11 +307,11 @@
   max-width: 1080px;
   margin: 0 auto;
   left: auto;
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .order-bar .order-submit.oder__fastfood {
-  background: #FFBC0D;
+  background: #ffbc0d;
   color: #292929;
 }
 
@@ -538,7 +599,7 @@
 }
 
 .orderlist__view .order__list-title {
-  background: #F5F5F5;
+  background: #f5f5f5;
   padding: 60px 0;
   font-size: 60px;
   font-weight: 700;
@@ -556,7 +617,7 @@
 .orderlist__view .order-list-wrap .order-item {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #D9D9D9;
+  border-bottom: 1px solid #d9d9d9;
   padding: 40px 0;
 }
 
@@ -565,7 +626,11 @@
 }
 
 .orderlist__view .order-list-wrap .order-item .order-item__name,
-.order-item__count .orderlist__view .order-list-wrap .order-item .order-item__price {
+.order-item__count
+  .orderlist__view
+  .order-list-wrap
+  .order-item
+  .order-item__price {
   display: flex;
   font-size: 44px;
   font-weight: 700;
@@ -584,7 +649,7 @@
   font-size: 38px;
   font-weight: 700;
   line-height: 130%;
-  background: #EEEEEE;
+  background: #eeeeee;
   border-radius: 8px;
   padding: 12px 16px;
 }
@@ -596,7 +661,6 @@
 .order__summary--border {
   border-top: 24px solid #eee;
   border-bottom: 24px solid #eee;
-
 }
 
 .order-summary-wrap .order-summary-item {
@@ -606,7 +670,6 @@
   padding-bottom: 40px;
   font-size: var(--font-44-size);
   font-weight: var(--font-700-weight);
-
 }
 
 .order-summary-wrap .order-summary-item--total {
@@ -614,7 +677,7 @@
   padding-top: 40px;
 }
 
-.order-summary-wrap .order-summary-item+.order-summary-item {
+.order-summary-wrap .order-summary-item + .order-summary-item {
   border-top: 1px solid #f0f0f0;
 }
 
@@ -628,13 +691,12 @@
   /* 주황빛 빨강 */
 }
 
-
 /* 하단 주문 제어 버튼 바 */
 .foodcourt__oderbar {
   display: flex;
   gap: 24px;
   padding: 40px 60px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -643,7 +705,7 @@
   overflow: hidden;
 }
 
-.fast__food--menu .foodcourt__oderbar>button {
+.fast__food--menu .foodcourt__oderbar > button {
   height: 200px;
   font-size: var(--font-60-size);
   font-weight: var(--font-600-weight);
@@ -671,11 +733,11 @@
 /* 먹고가기 / 포장하기 버튼 (붉은색 계열) */
 .btn-dine-in,
 .btn-takeout {
-  background-color: #DF3C3C;
+  background-color: #df3c3c;
   color: #fff;
 }
 
-.fast__food--menu .foodcourt__oderbar button>span.sub-text {
+.fast__food--menu .foodcourt__oderbar button > span.sub-text {
   padding-top: 8px;
   font-size: var(--font-44-size);
   font-weight: 400;
@@ -687,7 +749,7 @@
 }
 
 .foodcourt-dimed::after {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -701,7 +763,6 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 .modal-title-step {
   font-size: var(--font-60-size);
@@ -721,11 +782,10 @@
 }
 
 .modal-buttons-court {
-
   gap: 30px;
 }
 
-.modal-buttons-court>button {
+.modal-buttons-court > button {
   display: inline-block;
   width: calc(100% / 2);
 }
@@ -804,7 +864,7 @@
 
 #modal-points-phone .points-phone-number,
 #modal-points-phone .points-phone-number:not(:placeholder-shown) {
-  border-color: #E42200;
+  border-color: #e42200;
 }
 
 #modal-points-phone .points-phone-number[value] {
@@ -825,13 +885,13 @@
   transform: translate(-50%, -50%);
 }
 
-.modal-header>h2 {
+.modal-header > h2 {
   color: #fff;
   margin-bottom: 0px;
 }
 
 #modal-points-phone button.points-delete {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 /* 패스트 푸드 레이아웃  */
@@ -851,7 +911,6 @@
 }
 
 .fastfood__contents--tekeout {
-  
 }
 .fastfood__contents--tekeout h2 {
   font-size: var(--font-60-size);
@@ -863,7 +922,6 @@
   display: flex;
   gap: 40px;
   justify-content: space-between;
-  
 }
 .fastfood__contents--tekeout .fastfood__btn-wrap .fastfood__btn {
   flex: 0 0 460px;
@@ -882,10 +940,12 @@
   border: 2px solid #000;
 }
 .fastfood__contents--tekeout .fastfood__btn-wrap .fastfood__btn--eat-in {
-  background: url("../../shared/images/fast-food/take-on.png") center 20px / 350px 350px no-repeat;
+  background: url("../../shared/images/fast-food/take-on.png") center 20px /
+    350px 350px no-repeat;
 }
 .fastfood__contents--tekeout .fastfood__btn-wrap .fastfood__btn--takeout {
-  background: url("../../shared/images/fast-food/take-off.png") center 20px / 350px 350px no-repeat;
+  background: url("../../shared/images/fast-food/take-off.png") center 20px /
+    350px 350px no-repeat;
 }
 .cart-quantity-value {
   box-sizing: border-box;
@@ -896,8 +956,13 @@
   font: inherit;
 }
 /* 페스트푸드 - 메뉴선택 */
-.fast__food--menu .fastfood__section .foodcourt__nav .menu-list .menu-item .nav__tab--active {
-  background: #FFBC0D;
+.fast__food--menu
+  .fastfood__section
+  .foodcourt__nav
+  .menu-list
+  .menu-item
+  .nav__tab--active {
+  background: #ffbc0d;
   box-shadow: 0px 0px 18.3px 0px rgba(255, 188, 13, 1);
 }
 
@@ -936,7 +1001,6 @@
   font-size: var(--font-60-size);
   font-weight: var(--font-700-weight);
 }
-
 
 .fastfood-set-side__summary-image {
   width: 280px;
@@ -1044,7 +1108,7 @@
 .fastfood-payment-modal .modal-header,
 .payment__card--insert .modal-header {
   padding: 40px 48px;
-  background: #871F13;
+  background: #871f13;
 }
 
 .fastfood-payment-modal .modal-title {
@@ -1055,7 +1119,7 @@
 .fastfood-payment-modal .modal-close {
   color: #fff;
   font-size: 32px;
-} 
+}
 
 .fastfood-payment-modal__options {
   display: flex;
@@ -1094,7 +1158,6 @@
 .fastfood-payment-modal__option-label strong {
   font-size: 34px;
 }
-
 
 #index-payment-step1 .foodcourt-container {
   min-height: 100vh;
@@ -1153,7 +1216,9 @@
   gap: 8px;
 }
 
-#index-option-step4 .fastfood-order-confirmation__product-info .order-item__name {
+#index-option-step4
+  .fastfood-order-confirmation__product-info
+  .order-item__name {
   font-size: 40px;
   font-weight: 700;
   overflow-wrap: anywhere;
@@ -1333,7 +1398,7 @@
 
 /* 영수증 받기 모달 */
 :is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-yes {
-  background: #DF3C3C;
+  background: #df3c3c;
 }
 
 #index-fast-order .category-main.fast__food--menu {
@@ -1372,4 +1437,4 @@
 .order-bar > button {
   overflow: hidden;
   padding: 32px 0;
-} 
+}

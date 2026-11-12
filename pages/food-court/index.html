@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>푸드코트 시작화면</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./food-court.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./food-court.js"></script>
+    <!-- CDN링크 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>푸드코트 시작화면</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="../../shared/css/common.css" />
-  <link rel="stylesheet" href="./food-court.css" />
-  <script type="text/javascript" src="../../shared/js/common.js"></script>
-  <script type="text/javascript" src="./food-court.js"></script>
-  <!-- CDN링크 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-</head>
-
-<body id="index">
-  <div class="foodcourt-container">
-    <main class="category-main foodcourt kiosk-screen">
-      <header id="category-header" class="foodcourt__header">
-        <div class="header-left">
-          <!-- <button
+  <body id="index">
+    <div class="foodcourt-container">
+      <main class="category-main food-court-main kiosk-screen">
+        <header id="category-header" class="foodcourt__header">
+          <div class="header-left">
+            <!-- <button
             type="button"
             id="header-back"
             class="header-back"
@@ -32,53 +33,55 @@
               alt="뒤로가기 화살표"
             />
           </button> -->
-          <a href="../../index.html" aria-label="처음으로">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
             <img
-              src="../../shared/images/icon/icon-home.png"
+              src="../../shared/images/icon/arrow-right-w.png"
               alt=""
-              class="category-header-home"
+              class="category-header-arrow-right"
             />
-          </a>
 
-          <img
-            src="../../shared/images/icon/arrow-right-w.png"
-            alt=""
-            class="category-header-arrow-right"
-          />
-
-          <span id="header-title"></span>
-        </div>
-        <!-- <div class="header-right"> -->
-        <button
-          type="button"
-          class="header-sound-toggle"
-          aria-label="소리"
-          aria-pressed="true"
-          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            <span id="header-title"></span>
+          </div>
+          <!-- <div class="header-right"> -->
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
+          <!-- </div> -->
+        </header>
+        <section
+          id="category-start-screen"
+          class="category-start-screen"
+          aria-label="푸드코트 주문 시작"
         >
-          <img
-            src="../../shared/images/icon/sound_w.png"
-            class="header-sound"
-            alt=""
-          />
-        </button>
-        <!-- </div> -->
-      </header>
-      <section id="category-start-screen" class="cafe-screen category-start-screen" aria-label="푸드코트 주문 시작">
-        <button id="foodcourt-start" type="button" class="category-start">
-          <img class="category-main-image" src="../../shared/images/foodcourt/foodcourt-visual.png" alt="푸드코트 주문 시작" />
-          <div class="category-title-area">
-            <p class="category-title1">Food court kiosk</p>
-            <p class="category-title2">Educational kiosk</p>
-          </div>
-          <div class="category-main-message food__btn--color">
-            <span>화면을 터치하시면 주문이 시작됩니다. </span>
-          </div>
-        </button>
-      </section>
-    </main>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-</body>
-
+          <button id="foodcourt-start" type="button" class="category-start">
+            <div class="category-title-area food-court">
+              <p class="category-title1">Food court kiosk</p>
+              <p class="category-title2">Educational kiosk</p>
+            </div>
+            <div class="category-main-message food__btn--color">
+              <span>화면을 터치하시면 주문이 시작됩니다. </span>
+            </div>
+          </button>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </body>
 </html>

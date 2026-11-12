@@ -18,6 +18,9 @@
   box-sizing: border-box;
   font-family: "Pretendard";
 }
+*::-webkit-scrollbar {
+  display: none;
+}
 
 :root {
   --font-80-size: 80px;
@@ -218,7 +221,8 @@ body {
   padding: 144px 0 0;
 }
 .category-main {
-  padding-top: 144px;
+  /* padding-top: 144px; */
+  padding-top: 139px;
   max-width: 1080px;
   min-height: 1920px;
   margin: 0 auto;
