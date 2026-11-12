@@ -903,7 +903,6 @@ dialog.tablepay-modal-wrap[open] {
 
 #tablePay-payment-type .completion-banner {
   width: 100%;
-  max-width: 880px;
   padding: 32px 24px;
   background-color: #F5F5F5;
   border-radius: 24px;
@@ -940,7 +939,6 @@ dialog.tablepay-modal-wrap[open] {
   display: flex;
   gap: 16px;
   width: 100%;
-  max-width: 880px;
 }
 
 #tablePay-payment-type .btn-action {
