@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>패스트푸드 03 세트메뉴 구성 내역 확인</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./fast-food.css?v=20261109-set-side" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script
+      type="text/javascript"
+      src="./fast-food-ui.js?v=20261109-set-side"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>패스트푸드 03 세트메뉴 구성 내역 확인</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="../../shared/css/common.css" />
-  <link rel="stylesheet" href="./fast-food.css?v=20261109-set-side" />
-  <script type="text/javascript" src="../../shared/js/common.js"></script>
-  <script type="text/javascript" src="./fast-food-ui.js?v=20261109-set-side"></script>
-
-</head>
-
-<body id="index-payment-step1">
-  <div class="foodcourt-container">
-    <main class="fast-food category-main fastfood-set-side-page">
-      <header id="category-header" class="fastFood__header">
-        <div class="header-left">
-          <!-- <button
+  <body id="index-payment-step1">
+    <div class="foodcourt-container">
+      <main class="fast-food category-main fastfood-set-side-page">
+        <header id="category-header" class="fastFood__header">
+          <div class="header-left">
+            <!-- <button
             type="button"
             id="header-back"
             class="header-back"
@@ -30,115 +31,181 @@
               alt="뒤로가기 화살표"
             />
           </button> -->
-          <a href="../../index.html" aria-label="처음으로">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
             <img
-              src="../../shared/images/icon/icon-home.png"
+              src="../../shared/images/icon/arrow-right-w.png"
               alt=""
-              class="category-header-home"
+              class="category-header-arrow-right"
             />
-          </a>
 
-          <img
-            src="../../shared/images/icon/arrow-right-w.png"
-            alt=""
-            class="category-header-arrow-right"
-          />
-
-          <span id="header-title"></span>
-        </div>
-        <button
-          type="button"
-          class="header-sound-toggle"
-          aria-label="소리"
-          aria-pressed="true"
-          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
-        >
-          <img
-            src="../../shared/images/icon/sound_w.png"
-            class="header-sound"
-            alt=""
-          />
-        </button>
-      </header>
-      <section class="fastfood__section fastfood__section--tekeout fastfood-set-side orderlist__view">
-        <div class="fastfood-set-side__summary fastfood__summary--order">
-          <div class="fastfood-set-side__summary-info option__list--selected">
-            <h1 class="order__check--confirm">주문 내역을 확인해주세요</h1>
+            <span id="header-title"></span>
           </div>
-        </div>
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
+        </header>
+        <section
+          class="fastfood__section fastfood__section--tekeout fastfood-set-side orderlist__view"
+        >
+          <div class="fastfood-set-side__summary fastfood__summary--order">
+            <div class="fastfood-set-side__summary-info option__list--selected">
+              <h1 class="order__check--confirm">주문 내역을 확인해주세요</h1>
+            </div>
+          </div>
 
-        <!-- 주문내역 확인-->
-        <div class="order-list-wrap fastfood-order-confirmation__list" aria-label="선택한 주문 메뉴">
-          <div class="order-item fastfood-order-confirmation__item">
-            <div class="fastfood-order-confirmation__product">
-              <img class="fastfood-set-confirmation__image" src="../../shared/images/fast-food/bulgogi.png" alt="" />
-              <div class="fastfood-order-confirmation__product-info">
-                <span class="order-item__name">불고기 버거 세트</span>
-                <span class="fastfood-order-confirmation__options">옵션: 아이스 아메리카노 / 프렌치프라이</span>
+          <!-- 주문내역 확인-->
+          <div
+            class="order-list-wrap fastfood-order-confirmation__list"
+            aria-label="선택한 주문 메뉴"
+          >
+            <div class="order-item fastfood-order-confirmation__item">
+              <div class="fastfood-order-confirmation__product">
+                <img
+                  class="fastfood-set-confirmation__image"
+                  src="../../shared/images/fast-food/bulgogi.png"
+                  alt=""
+                />
+                <div class="fastfood-order-confirmation__product-info">
+                  <span class="order-item__name">불고기 버거 세트</span>
+                  <span class="fastfood-order-confirmation__options"
+                    >옵션: 아이스 아메리카노 / 프렌치프라이</span
+                  >
+                </div>
+              </div>
+              <div
+                class="order-count__wrap fastfood-order-confirmation__numbers"
+              >
+                <span class="order-item__count">1개</span>
+                <span class="order-item__price">12,000원</span>
               </div>
             </div>
-            <div class="order-count__wrap fastfood-order-confirmation__numbers">
-              <span class="order-item__count">1개</span>
-              <span class="order-item__price">12,000원</span>
+          </div>
+
+          <div class="order-summary-wrap order__summary--border">
+            <div class="order-summary-item">
+              <span class="order-summary-item__name">총 수량</span>
+              <span
+                class="order-summary-item__value fastfood-order-confirmation__count"
+                >1개</span
+              >
+            </div>
+            <div class="order-summary-item order-summary-item--total">
+              <span class="order-summary-item__name">총 결제금액</span>
+              <span
+                class="order-summary-item__value order-summary-item__value--price fastfood-order-confirmation__price"
+                >12,000원</span
+              >
             </div>
           </div>
-        </div>
-
-        <div class="order-summary-wrap order__summary--border">
-          <div class="order-summary-item">
-            <span class="order-summary-item__name">총 수량</span>
-            <span class="order-summary-item__value fastfood-order-confirmation__count">1개</span>
-          </div>
-          <div class="order-summary-item order-summary-item--total">
-            <span class="order-summary-item__name">총 결제금액</span>
-            <span class="order-summary-item__value order-summary-item__value--price fastfood-order-confirmation__price">12,000원</span>
-          </div>
-        </div>
-      </section>
-      <nav class="fastfood-set-side__navigation fastfood-set-confirmation__actions" aria-label="세트메뉴 구성 내역 취소 및 담기">
-        <button type="button" id="set-side-back" class="fastfood-set-confirmation__button fastfood-set-confirmation__button--cancel">
-          돌아가기
-        </button>
-        <button type="button" id="orderComplete" class="fastfood-set-confirmation__button fastfood-set-confirmation__button--add">
-          주문완료
-        </button>
-      </nav>
-    </main>
-  </div>
-
-  <dialog id="modal-payment" class="modal modal--payment fastfood-payment-modal" aria-labelledby="modal-payment-title">
-    <div class="modal-header">
-      <h2 id="modal-payment-title" class="modal-title">결제수단 선택</h2>
-      <button type="button" class="modal-close" data-modal-close aria-label="닫기">
-        <img src="../../shared/images/icon/close_w.png" class="modal-close-image" alt="" aria-hidden="true" />
-        <!-- <span>닫기</span> -->
-      </button>
+        </section>
+        <nav
+          class="fastfood-set-side__navigation fastfood-set-confirmation__actions"
+          aria-label="세트메뉴 구성 내역 취소 및 담기"
+        >
+          <button
+            type="button"
+            id="set-side-back"
+            class="fastfood-set-confirmation__button fastfood-set-confirmation__button--cancel"
+          >
+            돌아가기
+          </button>
+          <button
+            type="button"
+            id="orderComplete"
+            class="fastfood-set-confirmation__button fastfood-set-confirmation__button--add"
+          >
+            주문완료
+          </button>
+        </nav>
+      </main>
     </div>
-    <div class="fastfood-payment-modal__options">
-      <button type="button" class="fastfood-payment-modal__option" data-payment-method="card">
-        <img src="../../shared/images/icon/icon-card.png" alt="" aria-hidden="true" />
-        <span class="fastfood-payment-modal__option-label">
-          <strong>카드결제</strong>
-          <span>(삼성/애플페이)</span>
-        </span>
-      </button>
-      <button type="button" class="fastfood-payment-modal__option" data-payment-method="payco">
-        <img src="../../shared/images/icon/icon-payco.png" alt="" aria-hidden="true" />
-        <span class="fastfood-payment-modal__option-label">
-          <strong>페이코</strong>
-        </span>
-      </button>
-      <button type="button" class="fastfood-payment-modal__option" data-payment-method="coupon">
-        <img src="../../shared/images/icon/icon-card.png" alt="" aria-hidden="true" />
-        <span class="fastfood-payment-modal__option-label">
-          <strong>쿠폰 사용</strong>
-        </span>
-      </button>
-    </div>
-  </dialog>
 
-  <!-- CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-</body>
+    <dialog
+      id="modal-payment"
+      class="modal modal--payment fastfood-payment-modal"
+      aria-labelledby="modal-payment-title"
+    >
+      <div class="modal-header">
+        <h2 id="modal-payment-title" class="modal-title">결제수단 선택</h2>
+        <button
+          type="button"
+          class="modal-close"
+          data-modal-close
+          aria-label="닫기"
+        >
+          <img
+            src="../../shared/images/icon/close_w.png"
+            class="modal-close-image"
+            alt=""
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+      <div class="fastfood-payment-modal__options">
+        <button
+          type="button"
+          class="fastfood-payment-modal__option"
+          data-payment-method="card"
+        >
+          <img
+            src="../../shared/images/icon/icon-card.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="fastfood-payment-modal__option-label">
+            <strong>카드결제</strong>
+            <span>(삼성/애플페이)</span>
+          </span>
+        </button>
+        <button
+          type="button"
+          class="fastfood-payment-modal__option"
+          data-payment-method="payco"
+        >
+          <img
+            src="../../shared/images/icon/icon-payco.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="fastfood-payment-modal__option-label">
+            <strong>페이코</strong>
+          </span>
+        </button>
+        <button
+          type="button"
+          class="fastfood-payment-modal__option"
+          data-payment-method="coupon"
+        >
+          <img
+            src="../../shared/images/icon/icon-card.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="fastfood-payment-modal__option-label">
+            <strong>쿠폰 사용</strong>
+          </span>
+        </button>
+      </div>
+    </dialog>
 
+    <!-- CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </body>
 </html>
