@@ -514,7 +514,7 @@ dialog.tablepay-modal-wrap[open] {
 
 .table-pay-payment-alert h2 {
     font-size: 40px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .table-pay-payment-alert p {
@@ -885,8 +885,9 @@ dialog.tablepay-modal-wrap[open] {
     background: url('../../shared/images/icon/check-icon-gr.png') no-repeat center center;
     background-size: contain;
 }
-.completed-msg {
-    color: #444
+.table-pay-payment-alert p.completed-msg {
+    color: #444;
+    font-size: 28px;
 }
 
 #tablePay-payment-type.tablePayWrap {
