@@ -1,0 +1,625 @@
+.self-gas-page {
+  margin: 0;
+  background-color: #111;
+}
+
+.self-gas-page > .self-gas-main {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 1920px;
+}
+
+.self-gas-frame {
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* 헤더를 가로 화면 안에서 배경 이미지 바로 위에 배치 */
+.self-gas-frame > #category-header-horizontal {
+  position: static;
+  transform: none;
+  background-color: #00453b;
+}
+
+/* 공통 가로 레이아웃을 사용하는 시작 화면의 콘텐츠 영역 */
+.self-gas-frame > .category-main-horizontal {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  transform: none;
+}
+
+.self-gas-start {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #183c37;
+  background-image: url("../../shared/images/self-gas/self-gas-visual.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 120px;
+}
+
+.self-gas-start-message {
+  padding: 21.5px 0;
+  border-radius: 20px;
+  background-color: #00453b;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  margin: 0 0 60px;
+  box-shadow: 0px 0px 42.1px 0px #1a7064;
+}
+
+/* ------------ self-gas_01 ---------------- */
+/* 주유 진행 단계 */
+.self-gas-progress {
+  padding: 24px 0;
+  background-color: #00b299;
+}
+
+.self-gas-progress-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 결제방법, 유종, 주유금액, 주유, 주유완료 */
+.self-gas-progress-list > li:not(.step-arrow) {
+  display: grid;
+  place-items: center;
+  min-height: 68px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background-color: #009e88;
+  color: #fff;
+  font-size: 30px;
+  font-weight: var(--font-700-weight, 700);
+  white-space: nowrap;
+}
+
+/* 현재 단계 */
+.self-gas-progress-list > li[aria-current="step"] {
+  background-color: #fff;
+  color: #00b299;
+}
+
+/* 단계 사이 화살표 */
+.self-gas-progress-list > .step-arrow {
+  flex: 0 0 36px;
+}
+
+.self-gas-progress-list > .step-arrow img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* 결제 방법 */
+.self-gas-payment {
+  padding: 40px 0 60px;
+  background-color: #fafafa;
+}
+
+.self-gas-payment h1 {
+  margin: 0 0 40px;
+  color: #111;
+  font-size: 35px;
+  font-weight: var(--font-700-weight);
+  text-align: center;
+}
+
+.self-gas-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 145px);
+  gap: 16px 24px;
+  max-width: 772px;
+  margin: 0 auto;
+}
+
+.self-gas-payment-option {
+  position: relative;
+  display: grid;
+}
+
+.self-gas-payment-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.self-gas-payment-option span {
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  border: 1px solid #666;
+  border-radius: 14px;
+  background-color: #fff;
+  color: #2c2c2c;
+  font-size: 35px;
+  font-weight: var(--font-700-weight);
+  text-align: center;
+}
+
+.self-gas-payment-credit {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+.self-gas-payment-credit span {
+  border-color: #14aecd;
+  background-color: #14aecd;
+  color: #fff;
+}
+
+.self-gas-payment-credit input:checked + span {
+  outline-color: #007e96;
+  box-shadow: 0px 0px 13.32px 0px #14aecd;
+}
+
+/* ------------ self-gas_02 ---------------- */
+a.self-gas-payment-credit:active > span {
+  box-shadow: 0 0 13.32px 0 #14aecd;
+}
+
+a.self-gas-payment-credit:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+.self-gas-fuel {
+  padding: 42px 0 60px;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.self-gas-fuel h1 {
+  margin: 0 0 40px;
+  color: #000;
+  font-size: 35px;
+  font-weight: var(--font-700-weight);
+}
+
+.self-gas-fuel-options {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.self-gas-fuel-option {
+  position: relative;
+  display: block;
+}
+
+.self-gas-fuel-gasoline {
+  width: 240px;
+  --fuel-background: #1a7dbb;
+  --fuel-selected-background: #1a7dbb;
+}
+
+.self-gas-fuel-diesel {
+  width: 240px;
+  --fuel-background: #e88222;
+  --fuel-selected-background: #e88222;
+}
+
+.self-gas-fuel-option > span {
+  display: grid;
+  place-items: center;
+
+  min-height: 308px;
+  border-radius: 14px;
+  background-color: var(--fuel-background);
+  color: #fff;
+  font-size: 34px;
+  font-weight: var(--font-700-weight);
+}
+
+.self-gas-fuel-option > input:checked + span {
+  background-color: var(--fuel-selected-background);
+  box-shadow: 0 0 13.32px 0 var(--fuel-selected-background);
+}
+
+/* ------------ self-gas_03 ---------------- */
+
+.self-gas-amount {
+  padding: 40px 0 60px;
+  background-color: #f2f2f2;
+}
+
+.self-gas-amount h1 {
+  margin: 0 0 21px;
+  color: #000;
+  font-size: 35px;
+  font-weight: var(--font-700-weight);
+  text-align: center;
+}
+
+.self-gas-amount-grid,
+.self-gas-amount-actions {
+  display: grid;
+  gap: 12px;
+  max-width: 848px;
+  margin-inline: auto;
+}
+
+.self-gas-amount-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.self-gas-amount-actions {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+.self-gas-amount-option {
+  display: grid;
+  place-items: center;
+  min-height: 108px;
+  padding: 8px;
+  border: 1px solid #666;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #111;
+  font-size: 28px;
+  font-weight: var(--font-500-weight, 500);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.self-gas-amount-actions .self-gas-amount-option {
+  min-height: 92px;
+}
+
+.self-gas-amount-option:disabled {
+  cursor: default;
+}
+
+/* ------------ self-gas_04 ---------------- */
+
+.self-gas-card-step [hidden] {
+  display: none;
+}
+
+.self-gas-installment,
+.self-gas-card-guide {
+  min-height: 494px;
+  background-color: #f2f2f2;
+}
+
+.self-gas-installment {
+  padding: 40px 0 60px;
+  color: #000;
+}
+
+.self-gas-installment h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: var(--font-700-weight);
+}
+
+.self-gas-installment h1 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.self-gas-installment-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 350px;
+  max-width: 100%;
+  height: 72px;
+  margin: 0 auto 16px;
+  padding: 0 16px;
+  border: 3px solid #009e88;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 30px;
+  font-weight: var(--font-600-weight);
+}
+
+.self-gas-installment-field input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: right;
+}
+
+.self-gas-installment-keypad,
+.self-gas-installment-actions {
+  display: grid;
+  gap: 8px 10px;
+  max-width: 870px;
+  margin-inline: auto;
+}
+
+.self-gas-installment-keypad {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.self-gas-installment-actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.self-gas-installment button {
+  min-height: 74px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #111;
+  font-size: 28px;
+  font-weight: var(--font-600-weight);
+}
+
+.self-gas-installment .self-gas-installment-confirm {
+  border-color: #00b299;
+  background-color: #00b299;
+  color: #fff;
+}
+
+.self-gas-card-guide {
+  padding: 72px 60px 62px;
+  color: #000;
+}
+.self-gas-card-guide h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: var(--font-700-weight);
+}
+.self-gas-card-guide-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  min-height: 360px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  background-color: #fff;
+}
+
+.self-gas-card-guide-image img {
+  width: 170px;
+  height: 170px;
+}
+
+.self-gas-card-guide p {
+  margin: 12px 0 0;
+  font-size: 24px;
+  font-weight: var(--font-600-weight);
+}
+
+button.self-gas-card-guide-box {
+  width: 100%;
+  text-align: left;
+}
+
+.self-gas-card-guide-title,
+.self-gas-bonus-guide h1,
+.self-gas-wait h1 {
+  display: block;
+  margin: 0;
+  font-size: 34px;
+  font-weight: var(--font-700-weight);
+  line-height: 1.25;
+}
+
+.self-gas-card-guide-description {
+  display: block;
+  margin-top: 14px;
+  font-size: 22px;
+  font-weight: var(--font-600-weight);
+  line-height: 1.4;
+}
+
+.self-gas-bonus-guide,
+.self-gas-wait {
+  box-sizing: border-box;
+  min-height: 494px;
+  padding: 44px 60px 60px;
+  background-color: #f2f2f2;
+  color: #111;
+  text-align: center;
+}
+
+.self-gas-bonus-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 36px 0;
+}
+.self-gas-bonus-image img {
+  width: 202px;
+  height: 202px;
+}
+
+.self-gas-bonus-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 870px;
+  margin-inline: auto;
+}
+
+.self-gas-bonus-actions button {
+  min-height: 74px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #111;
+  font-size: 28px;
+  font-weight: var(--font-600-weight, 600);
+}
+
+.self-gas-bonus-actions [data-self-gas-approve] {
+  border-color: #00b299;
+  background-color: #00b299;
+  color: #fff;
+}
+
+.self-gas-wait h1 {
+  min-height: 132px;
+}
+
+.self-gas-spinner {
+  display: block;
+  box-sizing: border-box;
+  width: 96px;
+  height: 96px;
+  margin: 64px auto 0;
+  border: 12px solid #111;
+  border-right-color: #d2d2d2;
+  border-radius: 50%;
+  animation: self-gas-spin 0.8s linear infinite;
+}
+
+@keyframes self-gas-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .self-gas-spinner {
+    animation: none;
+  }
+}
+.self-gas-fueling-panel {
+  display: grid;
+  grid-template-rows: 82px 244px auto;
+  justify-items: center;
+  align-content: start;
+  gap: 12px;
+  min-height: 494px;
+  padding: 40px 32px 52px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  color: #111;
+  text-align: center;
+}
+
+.self-gas-fueling-panel[hidden] {
+  display: none;
+}
+
+.self-gas-fueling-panel h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: var(--font-700-weight, 700);
+  line-height: 1.2;
+}
+
+.self-gas-fueling-button {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  width: 470px;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.self-gas-fueling-button:focus-visible {
+  border-radius: 8px;
+}
+
+.self-gas-fueling-image {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+}
+
+.self-gas-fueling-cap {
+  align-self: center;
+  max-width: 340px;
+}
+
+.self-gas-fueling-notice {
+  margin: 0;
+  color: #d92d20;
+  font-size: 32px;
+  font-weight: var(--font-600-weight, 600);
+  line-height: 1.25;
+}
+.self-gas-finish-panel {
+  box-sizing: border-box;
+  min-height: 494px;
+  padding: 40px 24px 48px;
+  background-color: #f2f2f2;
+  color: #111;
+  text-align: center;
+}
+
+.self-gas-finish-panel[hidden] {
+  display: none;
+}
+
+.self-gas-finish-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: var(--font-700-weight, 700);
+  line-height: 1.3;
+}
+
+.self-gas-remove-card-button {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.self-gas-remove-card-button:focus-visible {
+  border-radius: 8px;
+}
+
+.self-gas-finish-image {
+  display: block;
+  max-width: 100%;
+  height: 280px;
+  margin: 16px auto 0;
+  object-fit: contain;
+}
+
+.self-gas-remove-card-image {
+  width: 160px;
+}
+
+.self-gas-receipt-image {
+  width: 230px;
+}
+.self-gas-receipt-link {
+  display: block;
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셀프주유</title>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-gas.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-gas.js" defer></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+
+  <body class="self-gas-page">
+    <main class="self-gas-main">
+      <div class="self-gas-frame">
+        <header id="category-header-horizontal">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+
+            <span id="header-title"></span>
+          </div>
+
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              alt=""
+              class="header-sound"
+            />
+          </button>
+        </header>
+
+        <div class="category-main-horizontal self-gas-main">
+          <div class="category-main-horizontal self-gas-card-step">
+            <nav class="self-gas-progress" aria-label="주유 진행 단계">
+              <ol class="self-gas-progress-list">
+                <li>결제방법</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>유종</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li aria-current="step">주유금액</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유완료</li>
+              </ol>
+            </nav>
+
+            <section
+              id="self-gas-installment"
+              class="self-gas-installment"
+              aria-labelledby="self-gas-installment-title"
+            >
+              <h1 id="self-gas-installment-title">할부 개월을 입력해주세요</h1>
+
+              <div class="self-gas-installment-field">
+                <input
+                  type="text"
+                  aria-label="할부 개월"
+                  inputmode="none"
+                  readonly
+                />
+                <span aria-hidden="true">개월</span>
+              </div>
+
+              <div class="self-gas-installment-keypad">
+                <button type="button" disabled>1</button>
+                <button type="button" disabled>2</button>
+                <button type="button" disabled>3</button>
+                <button type="button" disabled>4</button>
+                <button type="button" disabled>5</button>
+                <button type="button" disabled>6</button>
+                <button type="button" disabled>7</button>
+                <button type="button" disabled>8</button>
+                <button type="button" disabled>9</button>
+                <button type="button" disabled>0</button>
+                <button type="button" disabled>지우기</button>
+                <button type="button" id="self-gas-lump-sum">일시불</button>
+              </div>
+
+              <div class="self-gas-installment-actions">
+                <button type="button" disabled>취소</button>
+                <button
+                  type="button"
+                  class="self-gas-installment-confirm"
+                  disabled
+                >
+                  확인
+                </button>
+              </div>
+            </section>
+
+            <section
+              id="self-gas-card-guide"
+              class="self-gas-card-guide"
+              aria-labelledby="self-gas-card-guide-title"
+              hidden
+            >
+              <button
+                type="button"
+                id="self-gas-card-guide-button"
+                class="self-gas-card-guide-box"
+              >
+                <div
+                  id="lottie-card-insert"
+                  class="card-payment-image card-insert"
+                >
+                  <!-- <lottie-player
+                    src="../../shared/images/lottie/lottie-card-insert.json"
+                    background="transparent"
+                    speed="0.5"
+                    style="width: 220px; height: 220px"
+                    loop
+                    autoplay
+                  ></lottie-player> -->
+                  <img
+                    class="card-payment-image card-insert"
+                    src="../../shared/images/icon/icon-insert-card.png"
+                    alt=""
+                  />
+                </div>
+
+                <span>
+                  <strong
+                    id="self-gas-card-guide-title"
+                    class="self-gas-card-guide-title"
+                  >
+                    신용카드를 IC 전용 리더기에 넣어주세요
+                  </strong>
+                  <span class="self-gas-card-guide-description">
+                    삼성, LG 페이는 휴대폰 뒷면을 카드리더기에 대주세요
+                  </span>
+                </span>
+              </button>
+            </section>
+
+            <section
+              id="self-gas-bonus-guide"
+              class="self-gas-bonus-guide"
+              aria-labelledby="self-gas-bonus-title"
+              hidden
+            >
+              <h1 id="self-gas-bonus-title" tabindex="-1">
+                보너스 카드를 읽혀 주세요
+              </h1>
+
+              <button
+                type="button"
+                class="self-gas-bonus-image"
+                aria-label="보너스 카드 읽히기"
+                data-self-gas-approve
+              >
+                <img src="../../shared/images/self-gas/bonus-card.png" alt="" />
+              </button>
+
+              <div class="self-gas-bonus-actions">
+                <button type="button" data-self-gas-approve>
+                  보너스 카드 없음
+                </button>
+                <button type="button" disabled>취소</button>
+              </div>
+            </section>
+
+            <section
+              id="self-gas-approval"
+              class="self-gas-wait"
+              aria-labelledby="self-gas-approval-title"
+              hidden
+            >
+              <h1 id="self-gas-approval-title" tabindex="-1">
+                신용카드를 빼지 마세요<br />
+                승인 조회 중입니다
+              </h1>
+              <span class="self-gas-spinner" aria-hidden="true"></span>
+            </section>
+
+            <section
+              id="self-gas-preparing"
+              class="self-gas-wait"
+              aria-labelledby="self-gas-preparing-title"
+              hidden
+            >
+              <h1 id="self-gas-preparing-title" tabindex="-1">
+                신용카드를 빼지 마세요<br />
+                주유 준비 중입니다<br />
+                잠시만 기다려주세요
+              </h1>
+              <span class="self-gas-spinner" aria-hidden="true"></span>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

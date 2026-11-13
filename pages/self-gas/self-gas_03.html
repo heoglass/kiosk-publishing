@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셀프주유</title>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-gas.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-gas.js" defer></script>
+  </head>
+
+  <body class="self-gas-page">
+    <main class="self-gas-main">
+      <div class="self-gas-frame">
+        <header id="category-header-horizontal">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+
+            <span id="header-title"></span>
+          </div>
+
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              alt=""
+              class="header-sound"
+            />
+          </button>
+        </header>
+
+        <div class="category-main-horizontal self-gas-main">
+          <div class="category-main-horizontal">
+            <nav class="self-gas-progress" aria-label="주유 진행 단계">
+              <ol class="self-gas-progress-list">
+                <li>결제방법</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>유종</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li aria-current="step">주유금액</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유완료</li>
+              </ol>
+            </nav>
+
+            <section
+              class="self-gas-amount"
+              aria-labelledby="self-gas-amount-title"
+            >
+              <h1 id="self-gas-amount-title">주유 금액을 선택해 주세요</h1>
+
+              <div class="self-gas-amount-grid">
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >1만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >2만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >3만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >4만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >5만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >6만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >7만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >8만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >9만원</a
+                >
+                <a class="self-gas-amount-option" href="./self-gas_04.html"
+                  >10만원</a
+                >
+              </div>
+
+              <div class="self-gas-amount-actions">
+                <button type="button" class="self-gas-amount-option" disabled>
+                  가득
+                </button>
+                <button type="button" class="self-gas-amount-option" disabled>
+                  기타금액
+                </button>
+                <button type="button" class="self-gas-amount-option" disabled>
+                  리터
+                </button>
+                <button type="button" class="self-gas-amount-option" disabled>
+                  취소
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

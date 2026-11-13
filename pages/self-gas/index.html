@@ -1,14 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>셀프주유</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./self-gas.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./self-gas.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-gas.js" defer></script>
   </head>
-  <body></body>
+
+  <body class="self-gas-page">
+    <main class="self-gas-main">
+      <div class="self-gas-frame">
+        <header id="category-header-horizontal">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+
+            <span id="header-title"></span>
+          </div>
+
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              alt=""
+              class="header-sound"
+            />
+          </button>
+        </header>
+
+        <main class="category-main-horizontal self-gas-main">
+          <a class="self-gas-start" href="./self-gas_01.html">
+            <span class="self-gas-start-message">
+              주유를 시작하시려면 먼저 화면을 눌러주세요
+            </span>
+          </a>
+        </main>
+      </div>
+    </main>
+  </body>
 </html>

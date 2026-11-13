@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셀프주유</title>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-gas.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-gas.js" defer></script>
+  </head>
+
+  <body class="self-gas-page">
+    <main class="self-gas-main">
+      <div class="self-gas-frame">
+        <header id="category-header-horizontal">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+
+            <span id="header-title"></span>
+          </div>
+
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              alt=""
+              class="header-sound"
+            />
+          </button>
+        </header>
+
+        <div class="category-main-horizontal self-gas-main">
+          <div class="category-main-horizontal">
+            <nav class="self-gas-progress" aria-label="주유 진행 단계">
+              <ol class="self-gas-progress-list">
+                <li>결제방법</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>유종</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유금액</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li aria-current="step">주유</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유완료</li>
+              </ol>
+            </nav>
+
+            <section
+              id="self-gas-fueling"
+              class="self-gas-fueling-panel"
+              aria-labelledby="self-gas-fueling-title"
+            >
+              <h1 id="self-gas-fueling-title">
+                파란색 손잡이가 경유입니다. 주유를 시작하세요
+              </h1>
+
+              <button
+                type="button"
+                id="self-gas-fueling-button"
+                class="self-gas-fueling-button"
+                aria-label="파란색 주유기로 주유 시작"
+              >
+                <img
+                  class="self-gas-fueling-image"
+                  src="../../shared/images/self-gas/put-gas.png"
+                  alt=""
+                />
+              </button>
+
+              <p class="self-gas-fueling-notice">신용카드를 빼지 마세요</p>
+            </section>
+
+            <section
+              id="self-gas-fueling-complete"
+              class="self-gas-fueling-panel"
+              aria-labelledby="self-gas-fueling-complete-title"
+              hidden
+            >
+              <h1 id="self-gas-fueling-complete-title" tabindex="-1">
+                주유가 완료되었습니다<br />
+                주유기 손잡이를 걸고, 연료캡을 닫아주세요
+              </h1>
+
+              <a
+                class="self-gas-fueling-button self-gas-fueling-cap"
+                href="./self-gas_06.html"
+                aria-label="연료캡 닫기 및 다음 화면으로 이동"
+              >
+                <img
+                  class="self-gas-fueling-image"
+                  src="../../shared/images/self-gas/close-gas-cap.png"
+                  alt=""
+                />
+              </a>
+              <p class="self-gas-fueling-notice">신용카드를 빼지 마세요</p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

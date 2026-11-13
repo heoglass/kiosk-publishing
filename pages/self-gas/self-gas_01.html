@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셀프주유</title>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-gas.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-gas.js" defer></script>
+  </head>
+
+  <body class="self-gas-page">
+    <main class="category-main-horizontal self-gas-main">
+      <div class="self-gas-frame">
+        <header id="category-header-horizontal">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+
+            <span id="header-title"></span>
+          </div>
+
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              alt=""
+              class="header-sound"
+            />
+          </button>
+        </header>
+        <nav class="self-gas-progress" aria-label="주유 진행 단계">
+          <ol class="self-gas-progress-list">
+            <li aria-current="step" class="step-text">결제방법</li>
+            <li class="step-arrow">
+              <img src="../../shared/images/icon/arrow-right-w.png" alt="" />
+            </li>
+            <li>유종</li>
+            <li class="step-arrow">
+              <img src="../../shared/images/icon/arrow-right-w.png" alt="" />
+            </li>
+            <li>주유금액</li>
+            <li class="step-arrow">
+              <img src="../../shared/images/icon/arrow-right-w.png" alt="" />
+            </li>
+            <li>주유</li>
+            <li class="step-arrow">
+              <img src="../../shared/images/icon/arrow-right-w.png" alt="" />
+            </li>
+            <li>주유완료</li>
+          </ol>
+        </nav>
+
+        <section
+          class="self-gas-payment"
+          aria-labelledby="self-gas-payment-title"
+        >
+          <h1 id="self-gas-payment-title">결제 방법을 선택해 주세요</h1>
+
+          <div
+            class="self-gas-payment-grid"
+            role="radiogroup"
+            aria-labelledby="self-gas-payment-title"
+          >
+            <label class="self-gas-payment-option" disabled>
+              <input type="radio" name="payment-method" value="cash" />
+              <span>현금</span>
+            </label>
+            <a
+              class="self-gas-payment-option self-gas-payment-credit"
+              href="./self-gas_02.html"
+            >
+              <span>신용카드</span> </a
+            ><a
+              class="self-gas-payment-option self-gas-payment-credit"
+              href="./self-gas_02.html"
+            >
+              <span>신용카드</span>
+            </a>
+
+            <label class="self-gas-payment-option" disabled>
+              <input type="radio" name="payment-method" value="points" />
+              <span>포인트</span>
+            </label>
+
+            <label class="self-gas-payment-option" disabled>
+              <input type="radio" name="payment-method" value="mobile-coupon" />
+              <span>모바일<br />쿠폰</span>
+            </label>
+
+            <label class="self-gas-payment-option" disabled>
+              <input type="radio" name="payment-method" value="card-points" />
+              <span>카드<br />포인트</span>
+            </label>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

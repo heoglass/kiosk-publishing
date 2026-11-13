@@ -580,15 +580,6 @@ body.modal-payment > dialog[open] {
   font-family: inherit;
 }
 
-.modal button:focus-visible {
-  outline: 3px solid #305597;
-  outline-offset: 3px;
-}
-
-.modal-header button:focus-visible {
-  outline-color: #fff;
-}
-
 body.modal-open {
   overflow: hidden;
 }
@@ -1071,11 +1062,6 @@ body.modal-open {
   object-fit: contain;
 }
 
-#modal-payment-complete .payment-image-button:focus-visible {
-  outline: 4px solid #ff9500;
-  outline-offset: 8px;
-}
-
 /* 적립 안내 / 번호 입력 / 적립 완료 / 영수증 공통 */
 :is(
     #modal-points-prompt,
@@ -1316,11 +1302,6 @@ body.modal-open {
   border-radius: 10px;
   font-size: 16px;
   text-decoration: none;
-}
-
-.receipt-choice:focus-visible {
-  outline: 3px solid #305597;
-  outline-offset: 3px;
 }
 
 /* 스피너 회전 애니메이션 */

@@ -119,9 +119,6 @@
 .kiosk-main .main-tab button:focus-visible {
   position: relative;
   z-index: 1;
-
-  outline: 4px solid #fff;
-  outline-offset: -8px;
 }
 
 /* 카테고리 목록: 파란색 프레임 */

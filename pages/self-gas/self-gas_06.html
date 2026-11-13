@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셀프주유</title>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-gas.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-gas.js" defer></script>
+  </head>
+
+  <body class="self-gas-page">
+    <main class="self-gas-main">
+      <div class="self-gas-frame">
+        <header id="category-header-horizontal">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt=""
+                class="category-header-home"
+              />
+            </a>
+
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+
+            <span id="header-title"></span>
+          </div>
+
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              alt=""
+              class="header-sound"
+            />
+          </button>
+        </header>
+
+        <div class="category-main-horizontal self-gas-main">
+          <div>
+            <nav class="self-gas-progress" aria-label="주유 진행 단계">
+              <ol class="self-gas-progress-list">
+                <li>결제방법</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>유종</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유금액</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li>주유</li>
+                <li class="step-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/icon/arrow-right-w.png"
+                    alt=""
+                  />
+                </li>
+                <li aria-current="step">주유완료</li>
+              </ol>
+            </nav>
+
+            <section
+              id="self-gas-remove-card"
+              class="self-gas-finish-panel"
+              aria-labelledby="self-gas-remove-card-title"
+            >
+              <h1 id="self-gas-remove-card-title" class="self-gas-finish-title">
+                <button
+                  type="button"
+                  id="self-gas-remove-card-button"
+                  class="self-gas-remove-card-button"
+                >
+                  신용카드를 제거해주세요<br />
+                  카드를 뽑으면 영수증이 나옵니다
+                  <img
+                    class="self-gas-finish-image self-gas-remove-card-image"
+                    src="../../shared/images/self-gas/pull-out-card.png"
+                    alt=""
+                  />
+                </button>
+              </h1>
+            </section>
+
+            <section
+              id="self-gas-receipt"
+              aria-labelledby="self-gas-receipt-title"
+              hidden
+            >
+              <a
+                id="self-gas-receipt-link"
+                class="self-gas-finish-panel self-gas-receipt-link"
+                data-keep-category
+                href="../../shared/experience-complete-horizontal.html"
+              >
+                <h1 id="self-gas-receipt-title" class="self-gas-finish-title">
+                  영수증을 확인해주세요<br />
+                  이용해 주셔서 감사합니다
+                </h1>
+
+                <img
+                  class="self-gas-finish-image self-gas-receipt-image"
+                  src="../../shared/images/self-gas/receipt.png"
+                  alt=""
+                />
+              </a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
