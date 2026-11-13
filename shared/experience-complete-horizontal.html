@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>체험 완료</title>
+    <link rel="stylesheet" href="../shared/css/common.css" />
+    <link rel="stylesheet" href="../shared/css/complete.css" />
+    <script src="../shared/js/common.js" defer></script>
+  </head>
+
+  <body class="complete-page-horizontal">
+    <div class="complete-screen-horizontal">
+      <header id="category-header-horizontal">
+        <div class="header-left">
+          <a href="../index.html" aria-label="처음으로">
+            <img
+              src="../shared/images/icon/icon-home.png"
+              class="category-header-home"
+              alt=""
+            />
+          </a>
+
+          <img
+            src="../shared/images/icon/arrow-right-w.png"
+            class="category-header-arrow-right"
+            alt=""
+          />
+
+          <span id="header-title">셀프주유소</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <main class="complete-main-horizontal">
+        <div class="complete-main-contents-horizontal">
+          <div class="complete-text-area-horizontal">
+            <h1 class="complete-title-horizontal">체험 완료</h1>
+            <p class="complete-message-horizontal">
+              키오스크 체험이 완료되었습니다<br />
+              수고하셨습니다
+            </p>
+          </div>
+
+          <img
+            src="../shared/images/experience-complete-green.png"
+            class="complete-experience-image-horizontal"
+            alt=""
+          />
+        </div>
+
+        <nav class="complete-actions-horizontal" aria-label="체험 완료 후 이동">
+          <a
+            id="experience-retry-horizontal"
+            class="complete-button-horizontal complete-button-secondary-horizontal"
+          >
+            다시하기
+          </a>
+          <a class="complete-button-horizontal" href="../index.html">
+            첫 화면으로 가기
+          </a>
+        </nav>
+      </main>
+    </div>
+  </body>
+</html>

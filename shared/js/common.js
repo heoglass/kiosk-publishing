@@ -141,17 +141,37 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // 다시하기 버튼을 누르면 해당 카테고리의 시작 화면으로 이동
   const experienceRetry = document.getElementById("experience-retry");
+  const horizontalRetry = document.getElementById(
+    "experience-retry-horizontal"
+  );
 
-  if (experienceRetry) {
-    experienceRetry.addEventListener("click", () => {
-      const retryCategory = queryCategory || localStorage.getItem("cat");
+  // if (experienceRetry) {
+  //   experienceRetry.addEventListener("click", () => {
+  //     const retryCategory = queryCategory || localStorage.getItem("cat");
 
-      if (!knownCategory(retryCategory)) return;
+  //     if (!knownCategory(retryCategory)) return;
 
-      window.location.href = `../pages/${retryCategory}/index.html`;
-    });
+  //     window.location.href = `../pages/${retryCategory}/index.html`;
+  //   });
+  // }
+
+  // 세로·가로 완료 화면의 다시하기 경로 설정
+
+  if (experienceRetry || horizontalRetry) {
+    const retryCategory = knownCategory(queryCategory)
+      ? queryCategory
+      : localStorage.getItem("cat");
+
+    if (knownCategory(retryCategory)) {
+      const retryHref = `../pages/${retryCategory}/index.html`;
+
+      horizontalRetry?.setAttribute("href", retryHref);
+
+      experienceRetry?.addEventListener("click", () => {
+        window.location.href = retryHref;
+      });
+    }
   }
-
   if (!category) return;
 
   document
