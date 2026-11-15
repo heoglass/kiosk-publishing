@@ -1,14 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>영화관</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>영화관 키오스크</title>
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./cinema.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./cinema.js"></script>
   </head>
-  <body></body>
+  <body>
+    <main class="cinema-main category-main kiosk-screen">
+      <header id="category-header" class="cinema__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section
+        id="screen-cinema-main"
+        class="cinema-screen"
+        aria-label="영화관 메인"
+      >
+        <div class="cinema-showcase">
+          <p class="cinema-language">한국어 <span>| 영어</span></p>
+          <!-- 포스터를 넣을 때 cinema-poster 요소 안에 img를 추가하세요. -->
+          <div class="cinema-poster-grid" aria-hidden="true">
+            <span class="cinema-poster">
+              <img
+                src="../../shared//images/cinema/movie_01.png"
+                alt="영화 포스터1"
+              />
+            </span>
+            <span class="cinema-poster"
+              ><img
+                src="../../shared//images/cinema/movie_02.png"
+                alt="영화 포스터2"
+            /></span>
+            <span class="cinema-poster"
+              ><img
+                src="../../shared//images/cinema/movie_03.png"
+                alt="영화 포스터3"
+            /></span>
+            <span class="cinema-poster"
+              ><img
+                src="../../shared//images/cinema/movie_04.png"
+                alt="영화 포스터4"
+            /></span>
+            <span class="cinema-poster"
+              ><img
+                src="../../shared//images/cinema/movie_05.png"
+                alt="영화 포스터5"
+            /></span>
+            <span class="cinema-poster"
+              ><img
+                src="../../shared//images/cinema/movie_06.png"
+                alt="영화 포스터6"
+            /></span>
+          </div>
+        </div>
+
+        <section class="cinema-menu" aria-label="이용 메뉴">
+          <div class="cinema-menu-heading">
+            <img
+              src="../../shared/images/cinema/logo-cgv.png"
+              class="cinema-logot"
+              aria-hidden="true"
+            />
+            <p class="cinema-main-time">11월 11일(수) 10:22</p>
+          </div>
+
+          <div class="cinema-menu-grid">
+            <a class="cinema-menu-tile cinema-buy" href="./cinema_01.html">
+              <span class="cinema-ticket" aria-hidden="true"></span>
+              <span>티켓구매</span>
+            </a>
+            <div class="cinema-menu-tile">
+              <span class="cinema-ticket" aria-hidden="true"></span>
+              <span>예매티켓출력</span>
+            </div>
+            <div class="cinema-menu-tile">
+              <span class="cinema-ticket" aria-hidden="true"></span>
+              <span>매점 구매</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="cinema-footer">
+        <span class="cinema-footer-item">
+          <span class="cinema-tool" aria-hidden="true">
+            <img
+              src="../../shared/images/cinema/icon-wheelchair.png"
+              alt="훨체어 아이콘"
+            />
+          </span>
+          눈높이
+        </span>
+        <span class="cinema-footer-item">
+          <span class="cinema-tool" aria-hidden="true">
+            <img
+              src="../../shared/images/cinema/icon-search.png"
+              alt="돋보기 아이콘"
+            />
+          </span>
+          돋보기
+        </span>
+      </footer>
+    </main>
+  </body>
 </html>

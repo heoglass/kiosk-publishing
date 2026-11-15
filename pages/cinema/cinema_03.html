@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화관</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./cinema.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./cinema.js"></script>
+  </head>
+  <body>
+    <main
+      class="cinema-main category-main kiosk-screen cinema-people-page cinema-seat-page"
+    >
+      <header id="category-header" class="cinema__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+
+      <section class="cinema-screen cinema-seat-screen" aria-label="좌석 선택">
+        <div class="cinema-film-summary">
+          <div class="cinema-summary-poster" aria-hidden="true">
+            <img src="../../shared/images/cinema/movie_01.png" alt="" />
+          </div>
+          <div class="cinema-summary-details">
+            <div class="cinema-summary-ratings" aria-label="관람 등급">
+              <span
+                class="cinema-rating cinema-rating-15"
+                aria-label="15세 이상 관람가"
+                >15</span
+              >
+              <span
+                class="cinema-rating cinema-rating-12"
+                aria-label="12세 이상 관람가"
+                >12</span
+              >
+            </div>
+            <h1>암살자(들)</h1>
+            <p class="cinema-summary-theater">1관</p>
+            <p class="cinema-summary-time">2026.11.24 AM10:00 ~ 12:20</p>
+          </div>
+        </div>
+        <p class="cinema-screen-label">스크린</p>
+
+        <ul class="cinema-seat-grid" aria-label="좌석 배치">
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">A1</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">A2</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">A3</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">A4</span>
+          </li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">A7</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">A8</span>
+          </li>
+
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">B1</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">B2</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">B3</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">B4</span>
+          </li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">B7</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">B8</span>
+          </li>
+
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">C1</span>
+          </li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">C4</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">C5</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">C6</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">C7</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">C8</span>
+          </li>
+
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">D1</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">D2</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">D3</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">D4</span>
+          </li>
+          <li class="cinema-seat cinema-seat-selected">
+            <span class="cinema-seat-number"
+              >D5<span class="cinema-screen-reader"> 선택됨</span></span
+            >
+          </li>
+          <li class="cinema-seat cinema-seat-selected">
+            <span class="cinema-seat-number"
+              >D6<span class="cinema-screen-reader"> 선택됨</span></span
+            >
+          </li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E1</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E2</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E3</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E4</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E5</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E6</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">E7</span>
+          </li>
+
+          <li
+            class="cinema-seat cinema-seat-unavailable"
+            aria-label="선택 불가"
+          ></li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F1</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F2</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F3</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F4</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F5</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F6</span>
+          </li>
+          <li class="cinema-seat">
+            <span class="cinema-seat-number">F7</span>
+          </li>
+        </ul>
+      </section>
+
+      <section
+        class="cinema-seat-bar cinema-seat-payment"
+        aria-label="선택한 좌석 결제"
+      >
+        <dl class="cinema-payment-lines">
+          <div>
+            <dt>총 선택 인원</dt>
+            <dd>2명</dd>
+          </div>
+          <div>
+            <dt>총 결제금액</dt>
+            <dd class="cinema-payment-amount">14,000원</dd>
+          </div>
+        </dl>
+        <a class="cinema-seat-button" href="./cinema_04.html">결제하기</a>
+      </section>
+
+      <footer class="cinema-footer">
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/icon/arrow-left-w.png" alt="" />
+          <span>이전</span>
+        </p>
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/cinema/icon-home.png" alt="" />
+          <span>홈</span>
+        </p>
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/cinema/icon-search.png" alt="" /><span
+            >돋보기</span
+          >
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

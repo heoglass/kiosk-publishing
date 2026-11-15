@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화 선택 | 영화관</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./cinema.css" />
+    <script src="./cinema.js" defer></script>
+  </head>
+  <body>
+    <main class="cinema-main category-main kiosk-screen">
+      <header id="category-header" class="cinema__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+
+      <section class="cinema-screen cinema-list" aria-label="상영 영화 선택">
+        <div class="cinema-date">
+          <h1>예매일 변경</h1>
+          <p>2026.11.11 10:00</p>
+        </div>
+
+        <!-- 포스터를 넣을 때 cinema-poster 요소 안에 img를 추가하세요. -->
+        <ul class="cinema-poster-grid">
+          <li>
+            <a class="cinema-film" href="./cinema_02.html">
+              <span class="cinema-poster" aria-hidden="true"> </span>
+              <span class="cinema-film-info"
+                ><time>10:10</time><span>117 / 120석</span
+                ><span>왕과 사는 남자</span></span
+              >
+            </a>
+          </li>
+          <li>
+            <a class="cinema-film" href="./cinema_02.html">
+              <span class="cinema-poster" aria-hidden="true"></span>
+              <span class="cinema-film-info"
+                ><time>10:40</time><span>100 / 100석</span
+                ><span>국제시장</span></span
+              >
+            </a>
+          </li>
+          <li>
+            <a class="cinema-film" href="./cinema_02.html">
+              <span class="cinema-poster" aria-hidden="true"></span>
+              <span class="cinema-film-info"
+                ><time>11:20</time><span>30 / 120석</span
+                ><span>서울의 봄</span></span
+              >
+            </a>
+          </li>
+          <li>
+            <button
+              class="cinema-film"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="cinema-age-dialog"
+              data-age-next="./cinema_02.html"
+            >
+              <span class="cinema-poster" aria-hidden="true"></span>
+              <span class="cinema-film-info"
+                ><time>12:00</time><span>117 / 120석</span
+                ><span>광해, 왕이 된 남자</span></span
+              >
+            </button>
+          </li>
+          <li>
+            <button
+              class="cinema-film"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="cinema-age-dialog"
+              data-age-next="./cinema_02.html"
+            >
+              <span class="cinema-poster" aria-hidden="true"></span>
+              <span class="cinema-film-info"
+                ><time>12:30</time><span>90 / 100석</span
+                ><span>택시운전사</span></span
+              >
+            </button>
+          </li>
+          <li>
+            <a class="cinema-film" href="./cinema_02.html">
+              <span class="cinema-poster" aria-hidden="true"></span>
+              <span class="cinema-film-info"
+                ><time>13:00</time><span>10 / 80석</span
+                ><span>신과 함께</span></span
+              >
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="cinema-footer">
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/icon/arrow-left-w.png" alt="" />
+          <span>이전</span>
+        </p>
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/cinema/icon-home.png" alt="" />
+          <span>홈</span>
+        </p>
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/cinema/icon-search.png" alt="" /><span
+            >돋보기</span
+          >
+        </p>
+      </footer>
+
+      <dialog
+        id="cinema-age-dialog"
+        class="modal cinema-age-modal"
+        aria-labelledby="cinema-age-title"
+      >
+        <header class="modal-header">
+          <h2 id="cinema-age-title" class="modal-title">안내</h2>
+          <form method="dialog">
+            <button class="modal-close" type="submit" autofocus>
+              <img
+                class="modal-close-image"
+                src="../../shared/images/icon/close_w.png"
+                alt=""
+              />
+            </button>
+          </form>
+        </header>
+        <div class="modal-body cinema-dialog-body">
+          <p class="cinema-dialog-lead">
+            본 영화는 [<span class="age-red">15세 이상 관람가</span>] 영화입니다
+          </p>
+          <p class="cinema-dialog-description">
+            관람 시, 학생증 실물을 꼭 지참해 주세요<br />
+            연령 확인 불가 시 입장이 제한될 수 있습니다.<br />
+            ※ 만 15세 미만 고객은 보호자 동반 시 관람 가능<br />
+            (부모님 또는 만 19세 이상 보호자)
+          </p>
+          <a class="cinema-dialog-agree" data-age-agree>동의하고 진행하기</a>
+        </div>
+      </dialog>
+    </main>
+  </body>
+</html>

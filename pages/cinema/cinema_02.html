@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화관</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./cinema.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./cinema.js"></script>
+  </head>
+  <body>
+    <main class="cinema-main category-main kiosk-screen">
+      <header id="category-header" class="cinema__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section
+        class="cinema-screen cinema-people-screen"
+        aria-labelledby="cinema-people-title"
+      >
+        <div class="cinema-film-summary">
+          <div class="cinema-summary-poster" aria-hidden="true"></div>
+          <div class="cinema-summary-details">
+            <div class="cinema-summary-ratings" aria-label="관람 등급">
+              <span
+                class="cinema-rating cinema-rating-15"
+                aria-label="15세 이상 관람가"
+                >15</span
+              >
+              <span
+                class="cinema-rating cinema-rating-12"
+                aria-label="12세 이상 관람가"
+                >12</span
+              >
+            </div>
+            <p class="movie-title">왕과 사는 남자</p>
+            <p class="cinema-summary-theater">1관</p>
+            <p class="cinema-summary-time">2026.11.24 AM10:00 ~ 12:20</p>
+          </div>
+        </div>
+
+        <section
+          class="cinema-people-options"
+          aria-labelledby="cinema-people-title"
+        >
+          <p class="cinema-people-title">관람 인원수를 선택해 주세요</p>
+          <p class="cinema-people-description">
+            인원수 선택은 모든 권종의 인원수를 더해
+            <strong>최대 8명</strong>까지 선택이 가능합니다.
+          </p>
+          <div class="cinema-people-row" role="group" aria-label="일반">
+            <span class="cinema-people-label" aria-hidden="true">일반</span>
+            <button type="button" aria-pressed="true">0</button>
+            <button type="button" aria-pressed="false">1</button>
+            <button type="button" aria-pressed="false">2</button>
+            <button type="button" aria-pressed="false">3</button>
+            <button type="button" aria-pressed="false">4</button>
+            <button type="button" aria-pressed="false">5</button>
+            <button type="button" aria-pressed="false">6</button>
+            <button type="button" aria-pressed="false">7</button>
+            <button type="button" aria-pressed="false">8</button>
+          </div>
+
+          <div class="cinema-people-row" role="group" aria-label="청소년">
+            <span class="cinema-people-label" aria-hidden="true">청소년</span>
+            <button type="button" aria-pressed="true">0</button>
+            <button type="button" aria-pressed="false">1</button>
+            <button type="button" aria-pressed="false">2</button>
+            <button type="button" aria-pressed="false">3</button>
+            <button type="button" aria-pressed="false">4</button>
+            <button type="button" aria-pressed="false">5</button>
+            <button type="button" aria-pressed="false">6</button>
+            <button type="button" aria-pressed="false">7</button>
+            <button type="button" aria-pressed="false">8</button>
+          </div>
+
+          <div class="cinema-people-row" role="group" aria-label="우대">
+            <span class="cinema-people-label" aria-hidden="true">우대</span>
+            <button type="button" aria-pressed="true">0</button>
+            <button type="button" aria-pressed="false">1</button>
+            <button type="button" aria-pressed="false">2</button>
+            <button type="button" aria-pressed="false">3</button>
+            <button type="button" aria-pressed="false">4</button>
+            <button type="button" aria-pressed="false">5</button>
+            <button type="button" aria-pressed="false">6</button>
+            <button type="button" aria-pressed="false">7</button>
+            <button type="button" aria-pressed="false">8</button>
+          </div>
+
+          <div class="cinema-people-row" role="group" aria-label="경로">
+            <span class="cinema-people-label" aria-hidden="true">경로</span>
+            <button type="button" aria-pressed="true">0</button>
+            <button type="button" aria-pressed="false">1</button>
+            <button type="button" aria-pressed="false">2</button>
+            <button type="button" aria-pressed="false">3</button>
+            <button type="button" aria-pressed="false">4</button>
+            <button type="button" aria-pressed="false">5</button>
+            <button type="button" aria-pressed="false">6</button>
+            <button type="button" aria-pressed="false">7</button>
+            <button type="button" aria-pressed="false">8</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="cinema-seat-bar" aria-label="좌석 선택">
+        <p class="cinema-seat-total">총 선택 인원: <strong>2명</strong></p>
+        <button
+          class="cinema-seat-button"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="cinema-senior-dialog"
+        >
+          좌석 선택하기
+        </button>
+      </section>
+
+      <footer class="cinema-footer">
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/icon/arrow-left-w.png" alt="" />
+          <span>이전</span>
+        </p>
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/cinema/icon-home.png" alt="" />
+          <span>홈</span>
+        </p>
+        <p class="cinema-footer-item">
+          <img src="../../shared/images/cinema/icon-search.png" alt="" /><span
+            >돋보기</span
+          >
+        </p>
+      </footer>
+
+      <dialog
+        id="cinema-senior-dialog"
+        class="modal cinema-age-modal cinema-senior-modal"
+        aria-labelledby="cinema-senior-title"
+        aria-describedby="cinema-senior-description"
+      >
+        <header class="modal-header">
+          <h2 id="cinema-senior-title" class="modal-title">안내</h2>
+          <form method="dialog">
+            <button class="modal-close" type="submit" autofocus>
+              <img
+                class="modal-close-image"
+                src="../../shared/images/icon/close_w.png"
+                alt=""
+              />
+              <span>닫기</span>
+            </button>
+          </form>
+        </header>
+        <div
+          id="cinema-senior-description"
+          class="modal-body cinema-dialog-body"
+        >
+          <p class="cinema-dialog-lead">
+            경로 발권은<br />
+            <strong>만 65세 이상 경로</strong><br />
+            고객에게 적용됩니다
+          </p>
+          <p class="cinema-dialog-description">
+            본인 확인 후, 기준에 따라 입장이 제한될 수 있습니다.
+          </p>
+          <a class="cinema-dialog-agree" href="./cinema_03.html">확인</a>
+        </div>
+      </dialog>
+    </main>
+  </body>
+</html>
