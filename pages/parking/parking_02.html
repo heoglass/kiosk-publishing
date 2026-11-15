@@ -63,49 +63,50 @@
         class="parking-screen parking-result-screen"
         aria-labelledby="parking-result-title"
       >
-        <img
-          class="parking-result-image"
-          src="../../shared/images/parking/parking-car2.png"
-          alt="조회된 차량 안내"
-        />
+        <div class="parking-result-top">
+          <img
+            class="parking-result-image"
+            src="../../shared/images/parking/parking-car2.png"
+            alt="조회된 차량 안내"
+          />
 
-        <h1 id="parking-result-title" class="parking-result-title">
-          차량번호 확인 후 ‘정산하기’<br />
-          버튼을 눌러주세요
-        </h1>
+          <h1 id="parking-result-title" class="parking-result-title">
+            차량번호 확인 후 ‘정산하기’<br />
+            버튼을 눌러주세요
+          </h1>
 
-        <ul class="parking-car-list" aria-label="조회된 차량 목록">
-          <li class="parking-car-item">
-            <div class="parking-license-plate">
-              <span class="parking-plate-number">124가 2239</span>
-            </div>
+          <ul class="parking-car-list" aria-label="조회된 차량 목록">
+            <li class="parking-car-item">
+              <div class="parking-license-plate">
+                <span class="parking-plate-number">124가 2239</span>
+              </div>
 
-            <button
-              type="button"
-              class="parking-payment-button"
-              data-parking-page="parking_03.html"
-              aria-label="차량 정산하기"
-            >
-              정산하기
-            </button>
-          </li>
+              <button
+                type="button"
+                class="parking-payment-button"
+                data-parking-page="parking_03.html"
+                aria-label="차량 정산하기"
+              >
+                정산하기
+              </button>
+            </li>
 
-          <li class="parking-car-item">
-            <div class="parking-license-plate">
-              <span class="parking-plate-number">271고 2239</span>
-            </div>
+            <li class="parking-car-item">
+              <div class="parking-license-plate">
+                <span class="parking-plate-number">271고 2239</span>
+              </div>
 
-            <button
-              type="button"
-              class="parking-payment-button"
-              data-parking-page="parking_03.html"
-              aria-label="차량 정산하기"
-            >
-              정산하기
-            </button>
-          </li>
-        </ul>
-
+              <button
+                type="button"
+                class="parking-payment-button"
+                data-parking-page="parking_03.html"
+                aria-label="차량 정산하기"
+              >
+                정산하기
+              </button>
+            </li>
+          </ul>
+        </div>
         <button
           type="button"
           class="parking-retry-button"

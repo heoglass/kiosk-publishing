@@ -103,7 +103,6 @@
 
   border: 4px solid #4d5259;
   border-radius: 20px;
-  outline: none;
   background: #fff;
 
   color: #2d5df9;
@@ -159,11 +158,6 @@
 .parking-keypad button:active {
   border-color: #315bff;
   background: #edf1ff;
-}
-
-.parking-keypad button:focus-visible {
-  outline: 4px solid #315bff;
-  outline-offset: 4px;
 }
 
 /* 조회하기 */
@@ -254,13 +248,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   box-sizing: border-box;
   width: 100%;
+  height: 100%;
   padding: 120px 80px 80px;
   background: #fff;
 }
+.parking-result-top {
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .parking-result-image {
   display: block;
   flex-shrink: 0;
@@ -373,10 +375,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   box-sizing: border-box;
   width: 100%;
-  padding: 114px 80px 40px;
+  height: 100%;
+  padding: 114px 80px 80px;
   background: #fff;
   color: #000;
 }
@@ -549,11 +553,6 @@
   color: var(--parking-method-blue);
 }
 
-.parking-method-input:focus-visible + .parking-method-card {
-  outline: 4px solid var(--parking-method-blue);
-  outline-offset: 6px;
-}
-
 .parking-method-name {
   font-size: 56px;
   font-weight: 700;
@@ -586,16 +585,27 @@
 
 /* --------------- parking_05  ------------- */
 
-.parking-main .parking-complete-screen {
+/* .parking-main .parking-complete-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
+  height: 100%;
+  border: 1px solid red;
   padding: 100px 80px 80px;
   background: #fff;
   color: #000;
 }
+.parking-complete-top {
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid blue;
+}
 .parking-complete-title {
   margin: 10px 0 40px;
   font-size: 60px;
@@ -607,6 +617,43 @@
   color: #444;
   font-size: var(--font-44-size);
   font-weight: var(--font-500-weight);
+  text-align: center;
+} */
+.parking-main .parking-complete-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc(1920px - 154px);
+  padding: 40px 80px 70px;
+  background: #fff;
+  color: #000;
+}
+
+.parking-complete-top {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.parking-complete-title {
+  margin: 36px 0 24px;
+  font-size: 60px;
+  font-weight: var(--font-700-weight);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.parking-complete-notice {
+  margin: 0;
+  color: #444;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-500-weight);
+  line-height: 1.3;
   text-align: center;
 }
 
