@@ -6,6 +6,8 @@
     <title>영화관 키오스크</title>
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./cinema.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./cinema.js"></script>
   </head>
   <body>
     <main class="cinema-main category-main kiosk-screen">
@@ -62,7 +64,6 @@
       >
         <div class="cinema-showcase">
           <p class="cinema-language">한국어 <span>| 영어</span></p>
-          <!-- 포스터를 넣을 때 cinema-poster 요소 안에 img를 추가하세요. -->
           <div class="cinema-poster-grid" aria-hidden="true">
             <span class="cinema-poster">
               <img
@@ -110,15 +111,21 @@
 
           <div class="cinema-menu-grid">
             <a class="cinema-menu-tile cinema-buy" href="./cinema_01.html">
-              <span class="cinema-ticket" aria-hidden="true"></span>
+              <span class="cinema-ticket" aria-hidden="true">
+                <img src="../../shared/images/cinema/icon-ticket.png" alt="" />
+              </span>
               <span>티켓구매</span>
             </a>
             <div class="cinema-menu-tile">
-              <span class="cinema-ticket" aria-hidden="true"></span>
+              <span class="cinema-ticket" aria-hidden="true">
+                <img src="../../shared/images/cinema/icon-ticket2.png" alt="" />
+              </span>
               <span>예매티켓출력</span>
             </div>
             <div class="cinema-menu-tile">
-              <span class="cinema-ticket" aria-hidden="true"></span>
+              <span class="cinema-ticket" aria-hidden="true">
+                <img src="../../shared/images/cinema/icon-ticket2.png" alt="" />
+              </span>
               <span>매점 구매</span>
             </div>
           </div>
