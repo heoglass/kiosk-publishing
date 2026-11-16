@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포인트 적립 안내 | 마트 셀프계산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-checkout.css" />
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-checkout.js" defer></script>
+  </head>
+  <body>
+    <main
+      class="self-checkout-main self-checkout-scan category-main kiosk-screen"
+    >
+      <header
+        id="category-header"
+        class="self-checkout__header self-checkout-header"
+      >
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+          <span id="header-title">마트 셀프계산</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="self-checkout-scan-content self-checkout-screen self-checkout-flow"
+        aria-label="포인트 적립 안내"
+      >
+        <div class="self-checkout-flow-top">
+          <ol class="self-checkout-steps" aria-label="셀프계산 순서">
+            <li><span aria-hidden="true">1</span>상품스캔</li>
+            <li aria-current="step"><span aria-hidden="true">2</span>포인트</li>
+            <li><span aria-hidden="true">3</span>결제</li>
+            <li><span aria-hidden="true">4</span>완료</li>
+          </ol>
+
+          <div class="self-checkout-scan-guide">
+            <p><strong>결제 완료 후</strong><br />포인트가 적립됩니다</p>
+            <p class="self-checkout-product-count">
+              상품 수량
+              <strong>6개</strong>
+            </p>
+          </div>
+
+          <dl class="self-checkout-point-summary">
+            <div>
+              <dt>적립예정 포인트</dt>
+              <dd>20P</dd>
+            </div>
+            <div>
+              <dt>누적포인트</dt>
+              <dd class="self-checkout-points-total">9,000P</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="self-checkout-flow-bottom">
+          <div class="self-checkout-flow-actions">
+            <a
+              class="self-checkout-flow-button self-checkout-flow-back"
+              href="./self-checkout_03.html"
+            >
+              이전
+            </a>
+            <a
+              class="self-checkout-flow-button self-checkout-flow-primary self-checkout-flow-next"
+              href="./self-checkout_05.html"
+              >다음</a
+            >
+          </div>
+          <div class="self-checkout-footer-layout">
+            <footer class="self-checkout-footer" aria-label="이용 편의 메뉴">
+              <span>화면확대</span>
+              <span>고대비</span>
+              <span>낮은화면</span>
+              <span>이용도우미</span>
+            </footer>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

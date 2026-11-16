@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카드 투입 안내 | 마트 셀프계산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-checkout.css" />
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-checkout.js" defer></script>
+  </head>
+  <body>
+    <main
+      class="self-checkout-main self-checkout-scan category-main kiosk-screen"
+    >
+      <header
+        id="category-header"
+        class="self-checkout__header self-checkout-header"
+      >
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+          <span id="header-title">마트 셀프계산</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="self-checkout-scan-content self-checkout-screen self-checkout-flow"
+        aria-label="카드 투입 안내"
+      >
+        <div class="self-checkout-flow-top">
+          <ol class="self-checkout-steps" aria-label="셀프계산 순서">
+            <li><span aria-hidden="true">1</span>상품스캔</li>
+            <li><span aria-hidden="true">2</span>포인트</li>
+            <li aria-current="step"><span aria-hidden="true">3</span>결제</li>
+            <li><span aria-hidden="true">4</span>완료</li>
+          </ol>
+
+          <div class="self-checkout-scan-guide self-checkout-card-guide">
+            <p>
+              <strong>카드를 카드 투입구에 넣어주세요</strong><br />
+              삼성페이는 휴대폰 뒷면을<br />
+              카드 투입구에서 떼지마세요
+            </p>
+          </div>
+
+          <button
+            id="self-checkout-card-insert"
+            type="button"
+            class="self-checkout-card-media self-checkout-payment-image-button"
+            aria-label="카드 넣기"
+          >
+            <img src="../../shared/images/self-checkout/card-ani.png" alt="" />
+          </button>
+        </div>
+        <div class="self-checkout-flow-bottom">
+          <div class="self-checkout-flow-actions">
+            <a
+              class="self-checkout-flow-button self-checkout-flow-back"
+              href="./self-checkout_05.html"
+              >이전</a
+            >
+          </div>
+          <div class="self-checkout-footer-layout">
+            <footer class="self-checkout-footer" aria-label="이용 편의 메뉴">
+              <span>화면확대</span>
+              <span>고대비</span>
+              <span>낮은화면</span>
+              <span>이용도우미</span>
+            </footer>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog
+      id="self-checkout-payment-progress"
+      class="self-checkout-payment-dialog self-checkout-payment-status"
+      aria-labelledby="self-checkout-progress-title"
+      aria-describedby="self-checkout-progress-description"
+    >
+      <div class="self-checkout-payment-status-body">
+        <span class="self-checkout-payment-spinner" aria-hidden="true"></span>
+        <h2 id="self-checkout-progress-title">결제 진행중입니다</h2>
+        <p id="self-checkout-progress-description">
+          카드를 제거하지 말고 잠시만 기다려주세요
+        </p>
+      </div>
+    </dialog>
+
+    <dialog
+      id="self-checkout-payment-complete"
+      class="self-checkout-payment-dialog self-checkout-payment-status"
+      aria-labelledby="self-checkout-complete-title"
+      aria-describedby="self-checkout-complete-description"
+    >
+      <div class="self-checkout-payment-status-body">
+        <button
+          id="self-checkout-card-remove"
+          type="button"
+          class="self-checkout-payment-image-button"
+          aria-label="카드 제거 완료"
+          autofocus
+        >
+          <img
+            class="self-checkout-payment-complete-icon"
+            src="../../shared/images/icon/icon-card-complete-white.png"
+            alt=""
+          />
+        </button>
+        <h2 id="self-checkout-complete-title">결제가 완료되었습니다</h2>
+        <p id="self-checkout-complete-description">카드를 제거해주세요</p>
+      </div>
+    </dialog>
+
+    <dialog
+      id="self-checkout-receipt"
+      class="self-checkout-payment-dialog self-checkout-receipt"
+      aria-labelledby="self-checkout-receipt-title"
+      aria-describedby="self-checkout-receipt-description"
+    >
+      <header class="self-checkout-receipt-header">
+        <h2 id="self-checkout-receipt-title">영수증</h2>
+        <button
+          id="self-checkout-receipt-close"
+          type="button"
+          class="self-checkout-receipt-close"
+          aria-label="닫기"
+        >
+          <img src="../../shared/images/icon/delete.png" alt="" />
+        </button>
+      </header>
+
+      <div class="self-checkout-receipt-body">
+        <p id="self-checkout-receipt-description">영수증을 받으시겠습니까?</p>
+        <div class="self-checkout-receipt-actions">
+          <a href="./self-checkout_07.html">아니오</a>
+          <a class="self-checkout-receipt-yes" href="./self-checkout_07.html"
+            >예</a
+          >
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

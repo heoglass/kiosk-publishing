@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품스캔 | 마트 셀프계산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-checkout.css" />
+
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-checkout.js" defer></script>
+  </head>
+  <body>
+    <main
+      class="self-checkout-main self-checkout-scan category-main kiosk-screen"
+    >
+      <header id="category-header" class="self-checkout__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+          <span id="header-title">마트 셀프계산</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="self-checkout-scan-content self-checkout-screen"
+        aria-label="상품스캔"
+      >
+        <ol class="self-checkout-steps" aria-label="셀프계산 순서">
+          <li aria-current="step"><span aria-hidden="true">1</span>상품스캔</li>
+          <li><span aria-hidden="true">2</span>포인트</li>
+          <li><span aria-hidden="true">3</span>결제</li>
+          <li><span aria-hidden="true">4</span>완료</li>
+        </ol>
+
+        <div class="self-checkout-scan-guide">
+          <p><strong>상품을 스캔 후</strong><br />포장대에 올려주세요</p>
+          <p class="self-checkout-product-count">
+            상품 수량
+            <strong><span id="self-checkout-item-count">0</span>개</strong>
+          </p>
+        </div>
+
+        <div class="self-checkout-product-area">
+          <p id="self-checkout-empty" class="self-checkout-empty">
+            <span>바코드 스캔 버튼</span>을 눌러 상품을<br />
+            등록해주세요
+          </p>
+          <ul
+            id="self-checkout-products"
+            class="self-checkout-products"
+            aria-label="스캔한 상품"
+            hidden
+          ></ul>
+          <span
+            id="self-checkout-scan-status"
+            class="self-checkout-scan-status"
+            role="status"
+          ></span>
+        </div>
+
+        <div class="self-checkout-payment">
+          <dl class="self-checkout-totals">
+            <div>
+              <dt>합계</dt>
+              <dd id="self-checkout-subtotal">0원</dd>
+            </div>
+            <div class="self-checkout-discount">
+              <dt>할인</dt>
+              <dd>0원</dd>
+            </div>
+            <div class="self-checkout-pay-total">
+              <dt>결제</dt>
+              <dd id="self-checkout-total">0원</dd>
+            </div>
+          </dl>
+          <button type="button" class="self-checkout-pay-button">
+            결제하기
+          </button>
+        </div>
+
+        <button
+          type="button"
+          id="self-checkout-scan-button"
+          class="self-checkout-scan-button"
+        >
+          <span class="self-checkout-barcode" aria-hidden="true"></span>
+          바코드 스캔
+        </button>
+      </section>
+      <div class="self-checkout-footer-layout">
+        <footer class="self-checkout-footer" aria-label="이용 편의 메뉴">
+          <span>화면확대</span>
+          <span>고대비</span>
+          <span>낮은화면</span>
+          <span>이용도우미</span>
+        </footer>
+      </div>
+    </main>
+
+    <template id="self-checkout-product-template">
+      <li class="self-checkout-product">
+        <span class="self-checkout-product-name"></span>
+        <span class="self-checkout-product-price"></span>
+        <div class="self-checkout-quantity">
+          <button
+            type="button"
+            class="self-checkout-quantity-minus"
+            aria-label="수량 줄이기"
+            disabled
+          >
+            <img
+              class="self-checkout-minus-disabled-icon"
+              src="../../shared/images/icon/minus-disabled.png"
+              alt=""
+            />
+          </button>
+          <span class="self-checkout-quantity-value"></span>
+          <button
+            type="button"
+            class="self-checkout-quantity-plus"
+            aria-label="수량 늘리기"
+          >
+            <img src="../../shared/images/icon/plus.png" alt="" />
+          </button>
+        </div>
+        <strong class="self-checkout-product-total"></strong>
+        <button
+          type="button"
+          class="self-checkout-product-remove"
+          aria-label="상품 삭제"
+        >
+          <img src="../../shared/images/icon/delete.png" alt="" />
+        </button>
+      </li>
+    </template>
+  </body>
+</html>

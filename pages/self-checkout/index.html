@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,64 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./self-checkout.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./self-checkout.js"></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./self-checkout.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <main class="self-checkout-main category-main kiosk-screen">
+      <header id="category-header" class="self-checkout__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+          <span id="header-title">마트 셀프계산</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        id="category-start-screen"
+        class="self-checkout-screen category-start-screen"
+        aria-label="마트 셀프계산 시작 화면"
+      >
+        <div class="category-start">
+          <a href="./self-checkout_01.html" class="move-01">
+            <div class="category-main-message-container">
+              <span class="category-main-message">
+                셀프계산을 시작하려면 화면을 터치해주세요
+              </span>
+            </div>
+          </a>
+          <footer class="self-checkout-footer" aria-label="이용 편의 메뉴">
+            <span>화면확대</span>
+            <span>고대비</span>
+            <span>낮은화면</span>
+            <span>이용도우미</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

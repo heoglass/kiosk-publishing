@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포인트 조회 방법 | 마트 셀프계산</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./self-checkout.css" />
+    <script src="../../shared/js/common.js" defer></script>
+  </head>
+  <body>
+    <main
+      class="self-checkout-main self-checkout-scan category-main kiosk-screen"
+    >
+      <header
+        id="category-header"
+        class="self-checkout__header self-checkout-header"
+      >
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+          <span id="header-title">마트 셀프계산</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="self-checkout-scan-content self-checkout-screen self-checkout-flow point-select-screen"
+        aria-label="포인트 조회 방법"
+      >
+        <div class="self-checkout-flow-top">
+          <ol class="self-checkout-steps" aria-label="셀프계산 순서">
+            <li><span aria-hidden="true">1</span>상품스캔</li>
+            <li aria-current="step"><span aria-hidden="true">2</span>포인트</li>
+            <li><span aria-hidden="true">3</span>결제</li>
+            <li><span aria-hidden="true">4</span>완료</li>
+          </ol>
+
+          <div class="self-checkout-scan-guide">
+            <p><strong>적립을 위해</strong><br />조회방법을 선택해주세요</p>
+            <p class="self-checkout-product-count">
+              상품 수량
+              <strong>6개</strong>
+            </p>
+          </div>
+
+          <div class="self-checkout-methods">
+            <a
+              class="self-checkout-method self-checkout-method-active"
+              href="./self-checkout_03.html"
+            >
+              <span class="self-checkout-method-icon" aria-hidden="true">
+                <img src="../../shared/images/self-checkout/phone.png" alt="" />
+              </span>
+              <span>휴대폰 번호 입력</span>
+            </a>
+            <button type="button" class="self-checkout-method" disabled>
+              <span class="self-checkout-method-icon" aria-hidden="true">
+                <img
+                  src="../../shared/images/self-checkout/barcode.png"
+                  alt=""
+                />
+              </span>
+              <span>바코드 스캔</span>
+            </button>
+            <button type="button" class="self-checkout-method" disabled>
+              <span class="self-checkout-method-icon" aria-hidden="true">
+                <img src="../../shared/images/self-checkout/star.png" alt="" />
+              </span>
+              <span>포인트카드</span>
+            </button>
+            <button type="button" class="self-checkout-method" disabled>
+              <span class="self-checkout-method-icon" aria-hidden="true">
+                <img src="../../shared/images/self-checkout/card.png" alt="" />
+              </span>
+              <span>제휴신용카드</span>
+            </button>
+          </div>
+        </div>
+        <div class="self-checkout-flow-bottom">
+          <div class="self-checkout-flow-actions">
+            <button
+              type="button"
+              class="self-checkout-flow-button self-checkout-flow-back"
+              disabled
+            >
+              이전
+            </button>
+            <button
+              type="button"
+              class="self-checkout-flow-button self-checkout-flow-primary"
+              disabled
+            >
+              적립안함
+            </button>
+          </div>
+          <div class="self-checkout-footer-layout">
+            <footer class="self-checkout-footer" aria-label="이용 편의 메뉴">
+              <span>화면확대</span>
+              <span>고대비</span>
+              <span>낮은화면</span>
+              <span>이용도우미</span>
+            </footer>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
