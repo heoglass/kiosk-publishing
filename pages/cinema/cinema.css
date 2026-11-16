@@ -876,7 +876,6 @@ body:has(.cinema-payment-modal[open]) {
 .cinema-payment-status .cinema-payment-body {
   align-content: center;
   padding: 100px 60px 100px;
-  border: 2px solid blue;
 }
 
 .cinema-payment-modal .cinema-ticket-image {
