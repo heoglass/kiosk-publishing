@@ -1,0 +1,754 @@
+@charset "UTF-8";
+
+#category-header.civil-service__header {
+  background-color: #fafafa;
+}
+#category-header.civil-service__header #header-title {
+  color: #000;
+}
+body {
+  background-color: #032949;
+}
+.civil-service-flex-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.civil-service-screen {
+  padding: 150px 75px 0;
+  height: 100%;
+}
+.civil-service-screen .service-title,
+.civil-service-screen .service-description {
+  text-align: center;
+  word-break: keep-all;
+}
+
+.civil-service-screen .service-title {
+  margin-bottom: 24px;
+  color: #ffbf00;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.civil-service-screen .service-description {
+  margin-bottom: 60px;
+  font-size: 44px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.civil-service-screen .service-types-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px 28px;
+}
+
+.civil-service-screen .service-types-documents {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 36px;
+}
+
+.civil-service-screen .service-type {
+  box-sizing: border-box;
+  width: 100%;
+  height: 132px;
+  padding: 0 8px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.civil-service-screen .service-types-documents .service-type {
+  height: 160px;
+}
+
+.civil-service-screen .service-type:disabled {
+  opacity: 1;
+  cursor: default;
+  -webkit-text-fill-color: #fff;
+}
+.civil-service-screen .service-type-link {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+.civil-service-screen .service-type:is(:enabled, .service-type-link) {
+  background-color: #0058a3;
+  box-shadow: 0 0 36px rgb(0 123 230 / 55%);
+}
+.civil-service-screen .service-type:enabled {
+  background-color: #0058a3;
+  box-shadow: 0px 0px 42.1px 0px #0058a3;
+}
+
+.civil-service-main .civil-service-footer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 37px 60px;
+}
+
+.civil-service-footer .footer-left-text,
+.civil-service-footer .wheelchair-text {
+  margin: 0;
+  color: #fff;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.civil-service-footer .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14.5px 32px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+
+.civil-service-footer .wheelchair {
+  width: 38px;
+  height: 38px;
+}
+
+.civil-service-main dialog.service-loading {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: min(840px, calc(100% - 48px));
+  max-width: none;
+  max-height: calc(100% - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 32px;
+  background-color: #fff;
+  color: #000;
+}
+
+.civil-service-main dialog.service-loading::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.service-loading-content {
+  box-sizing: border-box;
+  display: grid;
+  min-height: min(592px, calc(100vh - 48px));
+  align-content: center;
+  justify-items: center;
+  gap: 72px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.service-loading-content p {
+  margin: 0;
+  font-size: clamp(26px, 5.3vw, 60px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.service-spinner {
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  border: 12px solid #000;
+  border-right-color: #d9d9d9;
+  border-radius: 50%;
+  animation: service-spin 800ms linear infinite;
+}
+
+@keyframes service-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* civil-service_02 */
+
+.civil-service-screen .registration-number {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) auto minmax(0, 7fr);
+  align-items: center;
+  column-gap: 24px;
+  height: 130px;
+  padding: 0 160px;
+  border: 4px solid #ffbf00;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 60px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.civil-service-screen .registration-number input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: inherit;
+  pointer-events: none;
+}
+
+.civil-service-screen #registration-front {
+  text-align: right;
+}
+
+.civil-service-screen .registration-notice {
+  margin: 58px 0 62px;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.civil-service-screen .registration-notice span {
+  color: #ffbf00;
+}
+
+.civil-service-screen .registration-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 28px;
+}
+
+.civil-service-screen .registration-keypad button,
+.civil-service-main .registration-confirm {
+  box-sizing: border-box;
+  padding: 0 16px;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  touch-action: manipulation;
+}
+
+.civil-service-screen .registration-keypad button {
+  height: 128px;
+  border: 2px solid #84909b;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.civil-service-screen .registration-keypad button:active {
+  background-color: #e7edf3;
+}
+
+.civil-service-main .registration-actions {
+  padding: 32px 52px 0;
+}
+
+.civil-service-main .registration-confirm {
+  width: 100%;
+  height: 140px;
+  border: 0;
+  background-color: #7e7e7e;
+  color: #fafafa;
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+}
+
+.civil-service-main .registration-confirm:enabled {
+  background-color: #ffbf00;
+  color: #000;
+}
+
+/* civil-service_03 */
+
+.service-auth-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.civil-service-screen .service-auth-option {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding: 0 12px 50px;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  text-align: center;
+}
+.service-auth-option:enabled {
+  touch-action: manipulation;
+}
+
+.civil-service-screen .service-auth-option[aria-pressed="true"] {
+  background-color: #0058a3;
+  box-shadow: 0 0 36px rgb(0 123 230 / 55%);
+}
+
+.service-auth-option .service-auth-option-image {
+  display: block;
+  width: 350px;
+  height: 330px;
+  object-fit: contain;
+}
+
+.service-auth-option-title {
+  margin-top: 8px;
+  color: #ffbf00;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.service-auth-option-description {
+  margin-top: 22px;
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.civil-service-main .service-auth-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin: 0 60px 30px;
+}
+
+.service-auth-actions .service-auth-back,
+.service-auth-actions .service-auth-confirm {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 140px;
+  padding: 20px 76px;
+  border: 0;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.service-auth-actions .service-auth-back {
+  background-color: #6e8191;
+  color: #fff;
+}
+
+.service-auth-actions .service-auth-confirm {
+  background-color: #ffbf00;
+  color: #032949;
+}
+
+.service-auth-back::before,
+.service-auth-confirm::after {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: solid currentColor;
+  border-width: 0 4px 4px 0;
+  content: "";
+}
+
+.service-auth-back::before {
+  left: 58px;
+  transform: rotate(135deg);
+}
+
+.service-auth-confirm::after {
+  right: 58px;
+  transform: rotate(-45deg);
+}
+
+/* civil-service_04 */
+.civil-service-screen.service-fingerprint-screen {
+  padding: 150px 0 0;
+}
+.service-fingerprint-screen .service-fingerprint-title {
+  margin: 0 0 64px;
+  color: #fff;
+  font-size: 56px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.service-fingerprint-title span {
+  color: #ffbf00;
+  font-weight: 700;
+}
+
+.civil-service-screen .service-fingerprint-reader {
+  display: block;
+  width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.service-fingerprint-reader img {
+  display: block;
+  width: 960px;
+  height: auto;
+  aspect-ratio: auto 3 / 2;
+}
+
+.service-fingerprint-screen .service-fingerprint-guide {
+  margin: 60px 0 0;
+  padding: 20px 60px;
+  background-color: #2c4e6b;
+  color: #ffbf00;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.civil-service-main
+  dialog.service-fingerprint-loading
+  .service-loading-content {
+  gap: 8px;
+}
+
+.service-fingerprint-loading .service-fingerprint-loading-image {
+  display: block;
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+/* civil-service_05 */
+/* .civil-service-screen.service-issuance-screen {
+  padding-inline: 60px;
+} */
+
+.service-issuance-panel {
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ececec;
+  color: #000;
+}
+
+.service-issuance-tools,
+.service-issuance-row,
+.service-issuance-group {
+  display: flex;
+  align-items: center;
+}
+
+.service-issuance-tools,
+.service-issuance-row {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.service-issuance-tools {
+  min-height: 98px;
+  padding: 0 40px;
+  border-bottom: 2px solid #c9c9c9;
+  background: #fff;
+}
+
+.service-issuance-group {
+  flex: 0 0 auto;
+  gap: 24px;
+}
+
+.service-issuance-row {
+  min-height: 64px;
+  padding: 0 28px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.service-issuance-rows {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 20px 34px;
+  list-style: none;
+}
+
+.service-issuance-row-title,
+.service-issuance-choice {
+  margin: 0;
+  color: #000;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+#issuance-item-6-title {
+  font-size: 26px;
+}
+
+.service-issuance-choice {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.service-issuance-choice input {
+  appearance: none;
+  box-sizing: border-box;
+  display: grid;
+  flex: 0 0 32px;
+  place-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  border: 2px solid #e60000;
+  border-radius: 0;
+  background: #fff;
+  cursor: pointer;
+}
+
+.service-issuance-choice input:checked {
+  background: #e60000;
+}
+
+.service-issuance-use input {
+  border-color: #a0a0a0;
+}
+
+.service-issuance-use input:checked {
+  border-color: #042949;
+  background: #042949;
+}
+
+.service-issuance-choice input:checked::after {
+  width: 15px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 0 3px 3px;
+  content: "";
+  transform: translateY(-2px) rotate(-45deg);
+}
+
+.service-issuance-alert-content {
+  display: grid;
+  gap: 48px;
+  margin: 0;
+  padding: 56px 60px 60px;
+  text-align: center;
+}
+
+.service-issuance-alert-content p {
+  margin: 0;
+  color: #000;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.service-issuance-alert-button {
+  width: 100%;
+  min-height: 130px;
+  border: 0;
+  border-radius: 20px;
+  background: #ffbf00;
+  color: #042949;
+  font: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  touch-action: manipulation;
+}
+
+/* civil-service_06 */
+.service-print-screen .service-description {
+  margin-bottom: 60px;
+}
+
+.service-copy-display {
+  display: grid;
+  place-items: center;
+  width: 516px;
+  min-height: 128px;
+  margin: 0 auto;
+  border: 4px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 66px;
+  font-weight: 500;
+}
+
+.service-print-screen .service-print-note {
+  margin: 60px 0;
+  color: #ffbf00;
+  font-size: 44px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.service-copy-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 28px;
+}
+
+.service-copy-keypad button {
+  min-height: 152px;
+  border: 2px solid #4d5259;
+  border-radius: 20px;
+  background: #fff;
+  color: #000;
+  font: inherit;
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.service-copy-keypad button:active {
+  background: #e7edf3;
+}
+
+/* 07 */
+.service-print-screen.service-batch-screen,
+.service-print-screen#service-print-progress {
+  padding-top: 210px;
+}
+
+.service-print-screen .service-print-options {
+  gap: 40px;
+}
+
+.service-print-options .service-auth-option {
+  align-content: center;
+  /* min-height: 406px; */
+  /* padding: 16px 12px; */
+  padding: 130px 0;
+}
+
+.service-print-option-title {
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.service-print-option-description {
+  margin-top: 20px;
+  font-size: 37px;
+  font-weight: 600;
+}
+
+/* 08 */
+.service-print-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 116px;
+  padding: 3px 40px;
+  border-radius: 8px;
+  background: #2f5574;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.service-print-document {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 292px;
+  height: 360px;
+  margin: 108px auto 0;
+}
+
+.service-print-document::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 42px;
+  background: #6b6c6c;
+  clip-path: polygon(0 0, 63% 0, 100% 34%, 100% 100%, 0 100%);
+  content: "";
+}
+/* 증명서 발급 중 화면  */
+.service-print-document::after {
+  position: absolute;
+  inset: 12px;
+  border-radius: 32px;
+  background: linear-gradient(#777 0 0) 51% 39% / 50% 10px no-repeat,
+    linear-gradient(#777 0 0) 51% 62% / 50% 10px no-repeat,
+    linear-gradient(#777 0 0) 51% 80% / 50% 10px no-repeat,
+    linear-gradient(45deg, #d2d2d2 49%, #777 50% 56%, #e9e9e9 57%) right top /
+      37% 34% no-repeat,
+    #d8d8d8;
+  clip-path: polygon(0 0, 63% 0, 100% 34%, 100% 100%, 0 100%);
+  content: "";
+}
+
+.service-print-spinner {
+  z-index: 1;
+  width: 92px;
+  height: 92px;
+  border: 11px solid transparent;
+  border-bottom-color: #050505;
+  border-left-color: #050505;
+  border-radius: 50%;
+  animation: service-spin 800ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-print-spinner {
+    animation: none;
+  }
+}
+
+.service-collection-screen .service-description {
+  margin-bottom: 40px;
+}
+
+.service-collection-illustration {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.service-collection-screen .service-print-note {
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.service-print-screen.service-print-final {
+  padding-top: 610px;
+}
+.service-print-final .service-description {
+  font-weight: 500;
+  line-height: 1.3;
+}
+.civil-service-main .service-auth-actions.service-print-actions-single {
+  grid-template-columns: 1fr;
+}
+
+.service-print-actions-single .service-auth-confirm::after {
+  content: none;
+}
+.experience-complete .complete-button-secondary.civil-service {
+  background-color: #6e8191;
+}
+
+.civil-service-first-btn {
+  background-color: #ffbc0d;
+  color: #032949;
+  padding: 38.5px 0;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
+  border-radius: 20px;
+}

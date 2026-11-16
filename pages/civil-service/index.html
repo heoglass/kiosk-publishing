@@ -10,5 +10,165 @@
     <script type="text/javascript" src="../../shared/js/common.js"></script>
     <script type="text/javascript" src="./civil-service.js"></script>
   </head>
-  <body></body>
+  <body>
+    <main class="civil-service-main category-main kiosk-screen">
+      <header id="category-header" class="civil-service__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <div class="civil-service-flex-container">
+        <section class="civil-service-screen" aria-labelledby="service-title">
+          <h1 class="service-title" id="service-title">
+            발급을 원하는 증명종류를 선택하세요
+          </h1>
+          <p class="service-description">
+            개인정보 보호법에 의거 카메라 작동 중
+          </p>
+
+          <ul class="service-types-container">
+            <li>
+              <button
+                type="button"
+                class="service-type"
+                id="service-registration"
+              >
+                주민등록
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>차량</button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                지적,토지,건축
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                보건복지
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                병적증명서
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                농지대장,<br />농업경영체
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                지방세
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                어선원부
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                고용,산재보험
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                교육제증명
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                국제증명
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                교통(경찰청)
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                건강보험
+              </button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>여권</button>
+            </li>
+            <li>
+              <button type="button" class="service-type" disabled>
+                국민연금
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <footer class="civil-service-footer">
+          <p class="footer-left-text">현금 가능 | 카드가능</p>
+          <div class="footer-right">
+            <img
+              src="../../shared/images/icon/icon-wheelchair.png"
+              alt=""
+              class="wheelchair"
+            />
+            <p class="wheelchair-text">휠체어 사용자 보기</p>
+          </div>
+        </footer>
+      </div>
+
+      <dialog
+        class="service-loading"
+        id="service-loading"
+        aria-labelledby="service-loading-title"
+      >
+        <div class="service-loading-content">
+          <span class="service-spinner" aria-hidden="true"></span>
+          <p id="service-loading-title">자료 수신 중입니다.</p>
+        </div>
+      </dialog>
+    </main>
+  </body>
 </html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>민원서류발급</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./civil-service.css" />
+    <link rel="stylesheet" href="./civil-service.css" />
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./civil-service.js" defer></script>
+  </head>
+  <body class="civil-service-page">
+    <main class="civil-service-main category-main kiosk-screen">
+      <header id="category-header" class="civil-service__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+
+      <div class="civil-service-flex-container">
+        <section
+          class="civil-service-screen service-print-screen service-batch-screen"
+          aria-labelledby="service-title"
+        >
+          <h1 class="service-title" id="service-title">
+            증명서 일괄 발급 여부
+          </h1>
+          <p class="service-description">
+            증명서를 추가하여 일괄 발급할지<br />여부를 선택해주세요
+          </p>
+
+          <div
+            class="service-auth-options service-print-options"
+            role="group"
+            aria-label="일괄 발급 여부"
+          >
+            <button type="button" class="service-auth-option" disabled>
+              <span class="service-print-option-title">증명서 추가</span>
+              <span class="service-print-option-description"
+                >선택한 문서 외에 추가 발급</span
+              >
+            </button>
+            <button
+              type="button"
+              class="service-auth-option"
+              id="service-print-selected"
+              aria-pressed="false"
+            >
+              <span class="service-print-option-title">선택 완료</span>
+              <span class="service-print-option-description"
+                >선택한 문서만 발급</span
+              >
+            </button>
+          </div>
+
+          <p class="service-print-note">
+            [추가 발급 가능한 증명서]<br />
+            주민등록, 가족관계등록부, 제적부, 보건복지,<br />
+            농지원부, 병적증명서, 지방세 세목별 과세 증명서,<br />
+            국세 증명서 등
+          </p>
+        </section>
+
+        <div class="service-auth-bottom">
+          <div class="service-auth-actions">
+            <a
+              href="./civil-service_06.html"
+              class="service-auth-back"
+              data-service-link
+              >이전</a
+            >
+            <button
+              type="button"
+              class="service-auth-confirm"
+              id="service-print-confirm"
+              disabled
+            >
+              확인
+            </button>
+          </div>
+          <footer class="civil-service-footer">
+            <p class="footer-left-text">현금 가능 | 카드가능</p>
+            <div class="footer-right">
+              <img
+                src="../../shared/images/icon/icon-wheelchair.png"
+                alt=""
+                class="wheelchair"
+              />
+              <p class="wheelchair-text">휠체어 사용자 보기</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

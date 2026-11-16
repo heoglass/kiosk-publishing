@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>민원서류발급</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./civil-service.css" />
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./civil-service.js" defer></script>
+  </head>
+  <body class="civil-service-page">
+    <main class="civil-service-main category-main kiosk-screen">
+      <header id="category-header" class="civil-service__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+
+      <div class="civil-service-flex-container">
+        <section class="civil-service-screen" aria-labelledby="service-title">
+          <h1 class="service-title" id="service-title">주민등록 서비스</h1>
+          <p class="service-description" id="registration-instruction">
+            주민등록번호를 입력하시고 [확인]을 눌러주세요
+          </p>
+
+          <div
+            class="registration-number"
+            role="group"
+            aria-labelledby="registration-instruction"
+          >
+            <input
+              id="registration-front"
+              type="text"
+              aria-label="주민등록번호 앞 6자리"
+              inputmode="none"
+              autocomplete="off"
+              tabindex="-1"
+              readonly
+            />
+            <span aria-hidden="true">-</span>
+            <input
+              id="registration-back"
+              type="text"
+              aria-label="주민등록번호 뒤 7자리"
+              inputmode="none"
+              autocomplete="off"
+              tabindex="-1"
+              readonly
+            />
+          </div>
+
+          <p class="registration-notice">
+            본인확인이 필요한 증명서입니다<br />
+            <span>주민등록증을 발급받으신 분에</span><br />
+            한하여 발급 가능합니다
+          </p>
+
+          <div
+            class="registration-keypad"
+            role="group"
+            aria-label="주민등록번호 숫자 키패드"
+          >
+            <button type="button" data-registration-key="1">1</button>
+            <button type="button" data-registration-key="2">2</button>
+            <button type="button" data-registration-key="3">3</button>
+            <button type="button" data-registration-key="4">4</button>
+            <button type="button" data-registration-key="5">5</button>
+            <button type="button" data-registration-key="6">6</button>
+            <button type="button" data-registration-key="7">7</button>
+            <button type="button" data-registration-key="8">8</button>
+            <button type="button" data-registration-key="9">9</button>
+            <button type="button" data-registration-key="clear">삭제</button>
+            <button type="button" data-registration-key="0">0</button>
+            <button type="button" data-registration-key="backspace">
+              정정
+            </button>
+          </div>
+        </section>
+
+        <div class="registration-bottom">
+          <div class="registration-actions">
+            <button
+              type="button"
+              class="registration-confirm"
+              id="registration-confirm"
+              data-loading-next="./civil-service_03.html"
+              data-loading-delay="2000"
+              disabled
+            >
+              확인
+            </button>
+          </div>
+          <footer class="civil-service-footer">
+            <p class="footer-left-text">현금 가능 | 카드가능</p>
+            <div class="footer-right">
+              <img
+                src="../../shared/images/icon/icon-wheelchair.png"
+                alt=""
+                class="wheelchair"
+              />
+              <p class="wheelchair-text">휠체어 사용자 보기</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <dialog
+        class="service-loading"
+        id="service-loading"
+        aria-labelledby="service-loading-title"
+      >
+        <div class="service-loading-content">
+          <span class="service-spinner" aria-hidden="true"></span>
+          <p id="service-loading-title">자료 수신 중입니다.</p>
+        </div>
+      </dialog>
+    </main>
+  </body>
+</html>

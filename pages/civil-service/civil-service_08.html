@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>민원서류발급</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./civil-service.css" />
+    <link rel="stylesheet" href="./civil-service.css" />
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./civil-service.js" defer></script>
+  </head>
+  <body class="civil-service-page">
+    <main class="civil-service-main category-main kiosk-screen">
+      <header id="category-header" class="civil-service__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home-b.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-b.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_b_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_b.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+
+      <div class="civil-service-flex-container">
+        <section
+          class="civil-service-screen service-print-screen"
+          id="service-print-progress"
+          aria-labelledby="service-title"
+        >
+          <h1 class="service-title" id="service-title">증명서 발급</h1>
+          <p class="service-description" role="status">
+            증명서를 발급하는 중입니다 잠시만 기다려주세요
+          </p>
+
+          <div class="service-print-summary">
+            <span>주민등록표 (등본)</span>
+            <span><span id="service-print-copies">1</span>부 인쇄</span>
+          </div>
+
+          <div class="service-print-document" aria-hidden="true">
+            <span class="service-print-spinner"></span>
+          </div>
+        </section>
+
+        <div class="service-auth-bottom">
+          <div class="service-auth-actions">
+            <a
+              href="./civil-service_07.html"
+              class="service-auth-back"
+              data-service-link
+              >이전</a
+            >
+            <button type="button" class="service-auth-confirm" disabled>
+              확인
+            </button>
+          </div>
+          <footer class="civil-service-footer">
+            <p class="footer-left-text">현금 가능 | 카드가능</p>
+            <div class="footer-right">
+              <img
+                src="../../shared/images/icon/icon-wheelchair.png"
+                alt=""
+                class="wheelchair"
+              />
+              <p class="wheelchair-text">휠체어 사용자 보기</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
