@@ -4,7 +4,7 @@
   background-color: #0c2d5e;
 }
 .category-title-area.parking .category-title1 {
-  font-size: 80px;
+  font-size: 80px !important;
 }
 .category-main-message.parking {
   background: #2d5df9;
