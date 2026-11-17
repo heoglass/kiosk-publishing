@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제증명 발급 | 병원진료 발급기</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./hospital.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./hospital.js" defer></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <main class="hospital-main category-main kiosk-screen">
+      <header id="category-header" class="hospital__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title">병원진료 발급기</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="hospital-screen hospital-issue-screen"
+        aria-labelledby="hospital-issue-title"
+      >
+        <div class="hospital-issue-top">
+          <h1 id="hospital-issue-title" class="hospital-entry-title">
+            본인인증
+          </h1>
+
+          <dl class="hospital-issue-patient">
+            <dt>환자이름</dt>
+            <dd>홍길동</dd>
+            <dt>주민번호</dt>
+            <dd>520715-*******</dd>
+          </dl>
+
+          <p class="hospital-issue-guide">
+            조회 기간 및 발행부수를<br />
+            선택해주세요
+          </p>
+
+          <div class="hospital-date-fields">
+            <div class="hospital-date-field">
+              <label for="hospital-start-month">시작연월</label>
+              <div class="hospital-date-row">
+                <input
+                  id="hospital-start-month"
+                  class="hospital-date-display"
+                  type="text"
+                  readonly
+                />
+                <button
+                  type="button"
+                  class="hospital-date-change"
+                  data-month-target="hospital-start-month"
+                  data-month-title="시작 연월을 선택해주세요"
+                  aria-label="시작연월 변경"
+                  aria-haspopup="dialog"
+                >
+                  변경
+                </button>
+              </div>
+            </div>
+            <div class="hospital-date-field">
+              <label for="hospital-end-month">종료연월</label>
+              <div class="hospital-date-row">
+                <input
+                  id="hospital-end-month"
+                  class="hospital-date-display"
+                  type="text"
+                  readonly
+                />
+                <button
+                  type="button"
+                  class="hospital-date-change"
+                  data-month-target="hospital-end-month"
+                  data-month-title="종료 연월을 선택해주세요"
+                  aria-label="종료연월 변경"
+                  aria-haspopup="dialog"
+                >
+                  변경
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p class="hospital-period-note">• 발행 가능 기간은 5년입니다</p>
+
+          <div class="hospital-issue-options">
+            <span id="hospital-copy-label">발행부수</span>
+            <div
+              class="hospital-copy-list"
+              role="group"
+              aria-labelledby="hospital-copy-label"
+            >
+              <button type="button" aria-pressed="false">1부</button>
+              <button type="button" aria-pressed="false">2부</button>
+              <button type="button" aria-pressed="false">3부</button>
+              <button type="button" aria-pressed="false">4부</button>
+              <button type="button" aria-pressed="false">5부</button>
+            </div>
+            <span id="hospital-fee-label">수수료</span>
+            <!-- <output
+              id="hospital-document-fee"
+              aria-labelledby="hospital-fee-label"
+              >무료</output
+            > -->
+            <output
+              id="hospital-document-fee"
+              aria-labelledby="hospital-fee-label"
+              >1,000원</output
+            >
+          </div>
+        </div>
+        <div class="hospital-issue-bottom">
+          <div class="hospital-issue-actions">
+            <button type="button" class="hospital-same-day" disabled>
+              당일내역
+            </button>
+            <button type="button" class="hospital-issue-confirm" disabled>
+              발급확인
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <dialog
+        class="hospital-month-dialog"
+        aria-labelledby="hospital-month-title"
+      >
+        <form method="dialog" class="hospital-month-form">
+          <h2 id="hospital-month-title">연월을 선택해주세요</h2>
+
+          <div class="hospital-year-control">
+            <button
+              type="button"
+              class="hospital-year-arrow hospital-year-previous"
+              aria-label="이전 연도"
+            >
+              <span class="hospital-year-arrow-icon" aria-hidden="true"></span>
+            </button>
+            <output
+              class="hospital-month-year"
+              aria-live="polite"
+              aria-label="선택 연도"
+            ></output>
+            <button
+              type="button"
+              class="hospital-year-arrow hospital-year-next"
+              aria-label="다음 연도"
+              disabled
+            >
+              <span class="hospital-year-arrow-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="hospital-month-grid" role="group" aria-label="월 선택">
+            <button type="button" data-month="1" aria-pressed="false">
+              1월
+            </button>
+            <button type="button" data-month="2" aria-pressed="false">
+              2월
+            </button>
+            <button type="button" data-month="3" aria-pressed="false">
+              3월
+            </button>
+            <button type="button" data-month="4" aria-pressed="false">
+              4월
+            </button>
+            <button type="button" data-month="5" aria-pressed="false">
+              5월
+            </button>
+            <button type="button" data-month="6" aria-pressed="false">
+              6월
+            </button>
+            <button type="button" data-month="7" aria-pressed="false">
+              7월
+            </button>
+            <button type="button" data-month="8" aria-pressed="false">
+              8월
+            </button>
+            <button type="button" data-month="9" aria-pressed="false">
+              9월
+            </button>
+            <button type="button" data-month="10" aria-pressed="false">
+              10월
+            </button>
+            <button type="button" data-month="11" aria-pressed="false">
+              11월
+            </button>
+            <button type="button" data-month="12" aria-pressed="false">
+              12월
+            </button>
+          </div>
+
+          <div class="hospital-month-actions">
+            <button type="submit" value="cancel">취소</button>
+            <button
+              type="submit"
+              value="confirm"
+              class="hospital-month-confirm"
+              disabled
+            >
+              확인
+            </button>
+          </div>
+        </form>
+      </dialog>
+      <dialog
+        id="hospital-card-payment"
+        class="modal hospital-payment-modal"
+        aria-labelledby="hospital-card-title"
+      >
+        <header class="hospital-payment-header">
+          <h2 id="hospital-card-title">카드 결제</h2>
+          <form method="dialog">
+            <button
+              class="hospital-payment-close"
+              type="submit"
+              aria-label="닫기"
+              autofocus
+            >
+              <img
+                src="../../shared/images/icon/close_w.png"
+                class="modal-close-image"
+                alt=""
+              />
+            </button>
+          </form>
+        </header>
+        <div class="hospital-payment-body">
+          <button
+            class="hospital-payment-image hospital-card-image"
+            type="button"
+            data-hospital-payment-next="hospital-payment-progress"
+            aria-label="카드 투입하기"
+          >
+            <lottie-player
+              src="../../shared/images/lottie/lottie-card-insert.json"
+              background="transparent"
+              speed="0.5"
+              style="width: 342px; height: 342px"
+              loop
+              autoplay
+            ></lottie-player>
+          </button>
+          <p class="hospital-payment-title">카드를 투입구에 넣어주세요</p>
+          <p class="hospital-payment-description">
+            삼성/애플페이로 결제 시 결제화면을 실행 후<br />
+            휴대폰을 투입구 가까이에 가져다 대세요
+          </p>
+          <dl class="hospital-card-summary">
+            <div>
+              <dt>총 결제금액</dt>
+              <dd id="hospital-payment-amount"></dd>
+            </div>
+          </dl>
+        </div>
+      </dialog>
+
+      <dialog
+        id="hospital-payment-progress"
+        class="modal hospital-payment-modal hospital-payment-status"
+        aria-labelledby="hospital-payment-progress-title"
+      >
+        <div class="hospital-payment-body">
+          <span class="hospital-payment-spinner" aria-hidden="true"></span>
+          <h2
+            id="hospital-payment-progress-title"
+            class="hospital-payment-title"
+          >
+            결제 진행 중입니다
+          </h2>
+          <p class="hospital-payment-description">
+            카드를 제거하지 말고 잠시만 기다려주세요
+          </p>
+        </div>
+      </dialog>
+
+      <dialog
+        id="hospital-payment-complete"
+        class="modal hospital-payment-modal hospital-payment-status"
+        aria-labelledby="hospital-payment-complete-title"
+      >
+        <div class="hospital-payment-body">
+          <button
+            class="hospital-payment-image hospital-payment-remove"
+            type="button"
+            data-hospital-payment-next="hospital-certificate-progress"
+            aria-label="카드 제거하고 증명서 발급하기"
+          >
+            <img
+              src="../../shared/images/icon/icon-card-complete-white.png"
+              alt=""
+            />
+          </button>
+          <h2
+            id="hospital-payment-complete-title"
+            class="hospital-payment-title"
+          >
+            결제가 완료되었습니다
+          </h2>
+          <p class="hospital-payment-description">카드를 제거해주세요</p>
+        </div>
+      </dialog>
+
+      <dialog
+        id="hospital-certificate-progress"
+        class="modal hospital-payment-modal hospital-certificate-progress"
+        aria-labelledby="hospital-certificate-progress-title"
+        aria-describedby="hospital-certificate-progress-guide"
+      >
+        <div class="hospital-payment-body">
+          <h2
+            id="hospital-certificate-progress-title"
+            class="hospital-payment-title"
+          >
+            증명서 발급 중입니다
+          </h2>
+          <p
+            id="hospital-certificate-progress-guide"
+            class="hospital-payment-description"
+          >
+            잠시만 기다려주세요
+          </p>
+          <span class="hospital-payment-spinner" aria-hidden="true"></span>
+        </div>
+      </dialog>
+    </main>
+  </body>
+</html>

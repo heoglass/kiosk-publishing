@@ -1,0 +1,788 @@
+@charset "UTF-8";
+
+#category-header.hospital__header {
+  background-color: #0a60f3;
+  color: #fff;
+}
+.hospital-main.kiosk-screen {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  background: #fafafa;
+}
+.hospital-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.hospital-start-button,
+.hospital-document-button {
+  border: 2px solid #000;
+  color: #111;
+  font-size: 60px;
+  font-weight: 600;
+  opacity: 1;
+  text-align: center;
+}
+
+.hospital-action {
+  border-color: #0a60f3;
+  box-shadow: 4px 4px 18.3px 0px #0a60f3;
+}
+
+/* index.html — 시작 화면 */
+.hospital-contents {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: end;
+  row-gap: 140px;
+}
+
+.hospital-contents-top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-inline: 60px;
+}
+
+.hospital-start-button {
+  display: grid;
+  align-content: center;
+  background: #f7f7f7;
+  padding: 226px 0;
+  border-radius: 40px;
+}
+
+.hospital-contents-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.hospital-main-bottom-img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* hospital_01.html — 발급 서류 선택 화면 */
+.hospital-document-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 60px;
+}
+
+.hospital-document-intro {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.hospital-document-intro h1 {
+  color: #000;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.hospital-document-intro p {
+  margin: 24px 0 0;
+  color: #000;
+  font-size: 44px;
+  font-weight: 500;
+}
+
+.hospital-document-list {
+  display: grid;
+  gap: 36px;
+}
+
+.hospital-document-button {
+  display: block;
+  width: 100%;
+  border-radius: 24px;
+  background: #fff;
+  font-size: 52px;
+  font-weight: 600;
+  padding: 40px 0;
+}
+
+/* .hospital-document-button[aria-pressed="true"] {
+  background: #0a60f3;
+  color: #fff;
+} */
+
+/* hospital_02.html — 제증명 발급기 */
+
+.hospital-entry-screen {
+  color: #000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 60px;
+}
+
+.hospital-entry-title {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.hospital-entry-guide {
+  margin: 24px 0 40px;
+  font-size: 44px;
+  font-weight: 500;
+}
+.hospital-entry-guide span {
+  font-weight: 700;
+}
+
+.hospital-number-field {
+  width: 100%;
+  min-width: 0;
+  height: 150px;
+  padding: 12px 20px;
+  border: 4px solid #0a60f3;
+  border-radius: 20px;
+  background: #fafafa;
+  color: #000;
+  font: inherit;
+  font-size: 56px;
+  font-weight: 700;
+  opacity: 1;
+  text-align: center;
+}
+
+.hospital-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 24px;
+  margin-top: 40px;
+}
+
+.hospital-keypad button,
+.hospital-auth-request {
+  min-height: 152px;
+  border: 2px solid #4d5259;
+  border-radius: 20px;
+  background: #fff;
+  color: #000;
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.hospital-keypad .hospital-confirm {
+  border-color: #4d5259;
+  background: #0a60f3;
+  color: #fff;
+}
+
+.hospital-keypad .hospital-confirm:disabled {
+  background: #7e7e7e;
+  color: #fff;
+  opacity: 1;
+}
+
+/* hospital_03.html — 본인인증 */
+/* .hospital-auth-screen {
+  padding-top: 235px;
+} */
+
+.hospital-auth-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 40px;
+  border: 2px solid #000;
+  border-radius: 32px;
+  background: #fff;
+  text-align: left;
+}
+
+.hospital-auth-image {
+  display: grid;
+  place-items: center;
+}
+
+.hospital-auth-details {
+  display: grid;
+  flex: 1;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px 6px;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 60px;
+}
+
+.hospital-auth-details dd {
+  color: #0a60f3;
+  text-align: right;
+}
+
+.hospital-auth-screen .hospital-entry-guide {
+  margin: 60px 0;
+}
+
+.hospital-auth-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 26px;
+}
+
+.hospital-auth-entry .hospital-number-field,
+.hospital-auth-request {
+  height: 132px;
+  min-height: 132px;
+}
+
+.hospital-auth-request {
+  border-color: #0a60f3;
+  background: #0a60f3;
+  color: #fff;
+  font-size: 38px;
+}
+
+.hospital-auth-request.is-resend {
+  border-color: #ff4d4d;
+  background: #ff4d4d;
+  opacity: 1;
+}
+
+.hospital-auth-screen .hospital-keypad {
+  margin-top: 24px;
+}
+
+.hospital-keypad button[data-key]:disabled {
+  opacity: 1;
+}
+
+/* hospital_04.html — 발행 기간 및 부수 선택 */
+
+.hospital-issue-screen {
+  padding: 0 60px 80px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hospital-issue-top {
+  padding-top: 100px;
+}
+
+.hospital-issue-screen .hospital-entry-title {
+  text-align: center;
+}
+
+.hospital-issue-patient {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px 0;
+  margin: 24px 0 0;
+  padding: 40px 64px;
+  border: 2px solid #000;
+  border-radius: 32px;
+  background: #fff;
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.hospital-issue-patient dd {
+  margin: 0;
+  color: #0a60f3;
+  text-align: right;
+}
+
+.hospital-issue-guide {
+  margin: 40px 0 40px;
+  font-size: 44px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.hospital-date-fields {
+  display: grid;
+  gap: 32px;
+}
+
+.hospital-date-field label {
+  display: block;
+  margin: 0 0 20px 20px;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.hospital-date-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+}
+
+.hospital-date-display,
+.hospital-date-change {
+  height: 130px;
+  border: 4px solid #0a60f3;
+  border-radius: 20px;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.hospital-date-display {
+  width: 100%;
+  min-width: 0;
+  padding: 0 20px;
+  background: transparent;
+  color: #000;
+  text-align: center;
+}
+
+.hospital-date-change {
+  background: #0a60f3;
+  color: #fff;
+}
+
+.hospital-period-note {
+  margin: 40px 0;
+  font-size: 42px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.hospital-issue-options {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px 15px;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.hospital-copy-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.hospital-copy-list button {
+  min-height: 100px;
+  padding: 0;
+  border: 4px solid #0a60f3;
+  border-radius: 20px;
+  background: #fafafa;
+  color: #000;
+}
+
+.hospital-copy-list button[aria-pressed="true"] {
+  background: #0a60f3;
+  color: #fff;
+}
+
+.hospital-issue-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.hospital-issue-actions button {
+  min-height: 140px;
+  color: #fff;
+  font: inherit;
+  font-size: 44px;
+  font-weight: 700;
+  opacity: 1;
+  border-radius: 20px;
+}
+
+.hospital-same-day {
+  background: #ff5353;
+}
+
+.hospital-issue-confirm {
+  background: #555;
+}
+
+.hospital-month-dialog {
+  width: 960px;
+  max-width: calc(100% - 48px);
+  margin: auto;
+  padding: 72px 60px;
+  border: 0;
+  border-radius: 32px;
+  background: #f4f5fc;
+  color: #000;
+  text-align: center;
+}
+
+.hospital-month-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hospital-month-form h2 {
+  margin: 0 0 36px;
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.hospital-year-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.hospital-month-year {
+  display: grid;
+  width: 370px;
+  min-width: 0;
+  height: 96px;
+  place-items: center;
+  border: 4px solid #0a60f3;
+  border-radius: 18px;
+  background: #fff;
+  color: #111;
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.hospital-year-arrow {
+  display: grid;
+  flex: 0 0 64px;
+  height: 96px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+
+.hospital-year-arrow:disabled {
+  color: #999;
+  cursor: default;
+  opacity: 1;
+}
+
+.hospital-year-arrow-icon {
+  box-sizing: border-box;
+  width: 42px;
+  height: 42px;
+  border-top: 7px solid currentColor;
+  border-right: 7px solid currentColor;
+}
+
+.hospital-year-previous .hospital-year-arrow-icon {
+  transform: rotate(-135deg);
+}
+
+.hospital-year-next .hospital-year-arrow-icon {
+  transform: rotate(45deg);
+}
+
+.hospital-year-arrow img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.hospital-year-arrow:disabled img {
+  opacity: 0.4;
+}
+
+.hospital-month-grid,
+.hospital-month-actions {
+  display: grid;
+  gap: 16px;
+}
+
+.hospital-month-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hospital-month-actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 40px;
+}
+
+.hospital-month-grid button,
+.hospital-month-actions button {
+  min-height: 132px;
+  padding: 0;
+  border: 2px solid #737680;
+  border-radius: 18px;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.hospital-month-grid button:enabled,
+.hospital-month-actions button:enabled {
+  cursor: pointer;
+}
+
+.hospital-month-grid button[aria-pressed="true"],
+.hospital-month-actions .hospital-month-confirm {
+  border-color: #0a60f3;
+  background: #0a60f3;
+  color: #fff;
+}
+
+.hospital-month-actions .hospital-month-confirm:disabled {
+  opacity: 0.55;
+}
+
+.hospital-month-actions button {
+  min-height: 140px;
+}
+
+/* 모달 */
+.hospital-main dialog.hospital-payment-modal {
+  position: fixed;
+  inset: 0;
+  width: 840px;
+  max-width: calc(100% - 48px);
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 0;
+  border-radius: 24px;
+  background: #fff;
+  color: #111;
+}
+
+.hospital-main dialog.hospital-payment-modal:not([open]) {
+  display: none;
+}
+
+.hospital-main dialog.hospital-payment-modal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body:has(.hospital-payment-modal[open]) {
+  overflow: hidden;
+}
+
+.hospital-payment-modal .hospital-payment-header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 140px;
+  padding: 24px 48px;
+  background: #0a60f3;
+  color: #fff;
+  font-size: 44px;
+}
+
+.hospital-payment-header h2 {
+  margin: 0;
+  font-size: inherit;
+}
+
+.hospital-payment-close {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hospital-payment-modal .hospital-payment-body {
+  display: grid;
+  justify-items: center;
+  padding: 50px 80px 64px;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.hospital-payment-modal .hospital-payment-title {
+  margin: 0;
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.hospital-payment-modal .hospital-payment-description {
+  margin: 16px 0 0;
+  font-size: 38px;
+  line-height: 1.4;
+}
+
+.hospital-payment-modal .hospital-payment-image {
+  display: grid;
+  place-items: center;
+  margin-bottom: 40px;
+  background: transparent;
+}
+
+.hospital-payment-modal .hospital-card-image {
+  width: 342px;
+  max-width: 100%;
+  height: 342px;
+  border-radius: 171px;
+  background: url("../../shared/images/icon/payment-card-bg-blue.png") center /
+    contain no-repeat;
+}
+
+/* .hospital-card-image lottie-player {
+  width: 100%;
+  height: 100%;
+} */
+
+.hospital-card-fallback {
+  display: block;
+  box-sizing: border-box;
+  width: 188px;
+  height: 120px;
+  border: 8px solid #111;
+  border-radius: 16px;
+  background: #fff;
+  transform: rotate(-12deg);
+}
+
+.hospital-card-fallback::before {
+  display: block;
+  height: 18px;
+  margin-top: 20px;
+  background: #111;
+  content: "";
+}
+
+.hospital-card-summary {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 48px 0 0;
+  padding: 28px 48px;
+  border-radius: 24px;
+  background: #f2f2f2;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.hospital-card-summary > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.hospital-card-summary dd {
+  margin: 0;
+  color: #e93300;
+  white-space: nowrap;
+}
+
+.hospital-payment-status .hospital-payment-body {
+  padding: 100px 60px;
+}
+
+.hospital-payment-modal .hospital-payment-remove {
+  width: 200px;
+  height: 160px;
+}
+
+.hospital-payment-remove img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hospital-payment-spinner {
+  display: block;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  margin: 0 0 54px;
+  border: 12px solid #111;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: hospital-payment-spin 850ms linear infinite;
+}
+
+@keyframes hospital-payment-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hospital-main dialog.hospital-certificate-progress {
+  width: 1080px;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+}
+
+.hospital-certificate-progress .hospital-payment-body {
+  padding: 350px 60px 80px;
+}
+
+.hospital-certificate-progress .hospital-payment-description {
+  margin-top: 6px;
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.hospital-certificate-progress .hospital-payment-spinner {
+  width: 190px;
+  height: 190px;
+  margin: 340px 0 0;
+  border-width: 24px;
+  border-right-color: #e1e1e1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hospital-payment-spinner {
+    animation: none;
+  }
+}
+
+/* hospital_05.html  */
+.hospital-complete-screen {
+  padding-top: 100px;
+}
+.hospital-complete-top {
+  padding-top: 229px;
+  height: 100%;
+}
+.hospital-complete-image {
+  /* position: relative; */
+  display: grid;
+  justify-items: center;
+  place-self: center;
+  width: 416px;
+  height: 416px;
+  margin: 130px 0 0;
+  color: #0a60f3;
+}
+
+.hospital-complete-button {
+  display: grid;
+  min-height: 130px;
+  place-items: center;
+  margin-top: auto;
+  border-radius: 20px;
+  background: #0a60f3;
+  color: #fff;
+  font-size: 44px;
+  font-weight: 700;
+}
+.hospital-first-btn {
+  background-color: #0a60f3;
+  color: #fff;
+  padding: 38.5px 0;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
+  border-radius: 20px;
+}

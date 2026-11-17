@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제증명 발급기 | 병원진료 발급기</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./hospital.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./hospital.js" defer></script>
+  </head>
+  <body>
+    <main class="hospital-main category-main kiosk-screen">
+      <header id="category-header" class="hospital__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title">병원진료 발급기</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="hospital-screen hospital-entry-screen"
+        aria-labelledby="hospital-lookup-title"
+      >
+        <h1 id="hospital-lookup-title" class="hospital-entry-title">
+          제증명 발급기
+        </h1>
+        <p id="hospital-lookup-guide" class="hospital-entry-guide">
+          <span>진료카드번호</span> 또는 <span>주민등록번호</span>를<br />
+          입력 후 확인 버튼을 누르세요
+        </p>
+
+        <form
+          action="./hospital_03.html"
+          method="get"
+          data-hospital-keypad
+          data-min-digits="6"
+          data-max-digits="13"
+          data-hyphen-after="6"
+        >
+          <input type="hidden" name="category" value="hospital" />
+          <input
+            type="text"
+            class="hospital-number-field"
+            aria-label="진료카드번호 또는 주민등록번호"
+            aria-describedby="hospital-lookup-guide"
+            autocomplete="off"
+            inputmode="none"
+            readonly
+          />
+          <div
+            class="hospital-keypad"
+            role="group"
+            aria-label="진료카드번호 또는 주민등록번호 입력 키패드"
+          >
+            <button type="button" data-key="1">1</button>
+            <button type="button" data-key="2">2</button>
+            <button type="button" data-key="3">3</button>
+            <button type="button" data-key="4">4</button>
+            <button type="button" data-key="5">5</button>
+            <button type="button" data-key="6">6</button>
+            <button type="button" data-key="7">7</button>
+            <button type="button" data-key="8">8</button>
+            <button type="button" data-key="9">9</button>
+            <button type="button" data-key="delete">정정</button>
+            <button type="button" data-key="0">0</button>
+            <button type="submit" class="hospital-confirm" disabled>
+              확인
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

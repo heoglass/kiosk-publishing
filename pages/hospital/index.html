@@ -1,14 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>진료발급기</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>병원진료 발급기</title>
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./hospital.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./hospital.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./hospital.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <main class="hospital-main category-main kiosk-screen">
+      <header id="category-header" class="hospital__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title">병원진료 발급기</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="hospital-screen hospital-first-screen"
+        aria-label="병원 진료 발급 선택"
+      >
+        <div class="hospital-contents">
+          <div class="hospital-contents-top">
+            <button type="button" class="hospital-start-button" disabled>
+              번호표<br />
+              발행기
+            </button>
+            <a
+              class="hospital-start-button hospital-action"
+              href="./hospital_01.html"
+            >
+              병원<br />
+              진료발급
+            </a>
+          </div>
+          <div class="hospital-contents-bottom">
+            <img
+              src="../../shared/images/hospital/hospital-main-bottom.png"
+              class="hospital-main-bottom-img"
+              alt=""
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

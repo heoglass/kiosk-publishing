@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>본인인증 | 병원진료 발급기</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./hospital.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./hospital.js" defer></script>
+  </head>
+  <body>
+    <main class="hospital-main category-main kiosk-screen">
+      <header id="category-header" class="hospital__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title">병원진료 발급기</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="hospital-screen hospital-entry-screen hospital-auth-screen"
+        aria-labelledby="hospital-auth-title"
+      >
+        <h1 id="hospital-auth-title" class="hospital-entry-title">본인인증</h1>
+
+        <div class="hospital-auth-card">
+          <div class="hospital-auth-image">
+            <img src="../../shared/images/hospital/phone-auth.png" alt="" />
+          </div>
+
+          <dl class="hospital-auth-details">
+            <dt>환자이름</dt>
+            <dd>홍길동</dd>
+            <dt>생년월일</dt>
+            <dd>1957.07.15</dd>
+            <dt>전화번호</dt>
+            <dd>010-1234-5678</dd>
+          </dl>
+        </div>
+
+        <p id="hospital-auth-guide" class="hospital-entry-guide">
+          위의 정보를 확인하신 후<br />
+          인증번호요청 버튼을 눌러주세요
+        </p>
+
+        <form
+          action="./hospital_04.html"
+          method="get"
+          data-hospital-keypad
+          data-min-digits="4"
+          data-max-digits="4"
+        >
+          <input type="hidden" name="category" value="hospital" />
+          <div class="hospital-auth-entry">
+            <input
+              type="text"
+              class="hospital-number-field"
+              aria-label="인증번호 4자리"
+              aria-describedby="hospital-auth-guide"
+              autocomplete="off"
+              inputmode="none"
+              readonly
+              disabled
+            />
+            <button type="button" class="hospital-auth-request">
+              인증번호 요청
+            </button>
+          </div>
+          <div
+            class="hospital-keypad"
+            role="group"
+            aria-label="인증번호 입력 키패드"
+          >
+            <button type="button" data-key="1" disabled>1</button>
+            <button type="button" data-key="2" disabled>2</button>
+            <button type="button" data-key="3" disabled>3</button>
+            <button type="button" data-key="4" disabled>4</button>
+            <button type="button" data-key="5" disabled>5</button>
+            <button type="button" data-key="6" disabled>6</button>
+            <button type="button" data-key="7" disabled>7</button>
+            <button type="button" data-key="8" disabled>8</button>
+            <button type="button" data-key="9" disabled>9</button>
+            <button type="button" data-key="delete" disabled>정정</button>
+            <button type="button" data-key="0" disabled>0</button>
+            <button type="submit" class="hospital-confirm" disabled>
+              확인
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>서류 선택 | 병원진료 발급기</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./hospital.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./hospital.js" defer></script>
+  </head>
+  <body>
+    <main class="hospital-main category-main kiosk-screen">
+      <header id="category-header" class="hospital__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title">병원진료 발급기</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+
+      <section
+        class="hospital-screen hospital-document-screen"
+        aria-labelledby="hospital-document-title"
+      >
+        <div class="hospital-document-intro">
+          <h1 id="hospital-document-title">물품가액을 입력해주세요</h1>
+          <p>50만원 초과 상품은 접수가 불가능합니다.</p>
+        </div>
+
+        <ul class="hospital-document-list" aria-label="발급 서류">
+          <li>
+            <a
+              class="hospital-document-button hospital-action"
+              href="./hospital_02.html"
+            >
+              입퇴원확인서(유료)
+            </a>
+          </li>
+          <li>
+            <a
+              class="hospital-document-button hospital-action"
+              href="./hospital_02.html"
+            >
+              진료비상세내역서
+            </a>
+          </li>
+          <li>
+            <button type="button" class="hospital-document-button" disabled>
+              외래진료확인서(유료)
+            </button>
+          </li>
+          <li>
+            <button type="button" class="hospital-document-button" disabled>
+              장애인증명서(유료)
+            </button>
+          </li>
+          <li>
+            <button type="button" class="hospital-document-button" disabled>
+              진료납입확인서
+            </button>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

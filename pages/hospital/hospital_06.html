@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>체험 완료</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./hospital.css" />
+    <link rel="stylesheet" href="../../shared/css/complete.css" />
+    <script src="../../shared/js/common.js" defer></script>
+  </head>
+  <body>
+    <div class="kiosk-screen complete-screen">
+      <header id="category-header" class="hospital__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+      <main class="complete-main experience-complete">
+        <div class="complete-main-contents">
+          <div class="complete-text-area">
+            <h1 class="complete-title">체험 완료</h1>
+            <p class="complete-message">
+              키오스크 체험이 완료되었습니다.<br />수고하셨습니다.
+            </p>
+          </div>
+          <img
+            src="../../shared/images/hospital/experience-complete-hospital.png"
+            class="complete-experience-image"
+            alt="키오스크 체험 완료"
+          />
+        </div>
+        <div class="complete-actions" aria-label="체험 완료 후 이동">
+          <a
+            type="button"
+            id="experience-retry"
+            class="complete-button complete-button-secondary"
+            href="./index.html"
+          >
+            다시하기
+          </a>
+          <a class="hospital-first-btn" href="../../index.html"
+            >첫 화면으로 가기</a
+          >
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
