@@ -749,7 +749,7 @@ dialog.parking-payment-dialog {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .parking-payment-dialog .card-payment-summary {
   box-sizing: border-box;
