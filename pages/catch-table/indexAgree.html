@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>캐치테이블 약관동의</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./catch-table.css" />
+    
+  </head>
+  <body id="catchTableBody" data-page="catchTableAgree">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main table-screen-size">
+        <section class="catchTable--section__wrap kiosk-container">
+
+          <div class="catchTable__step">
+            <div class="step__header">
+              <ol class="step__badges">
+                <li class="step__badge step__badge--active">1</li>
+                <li class="step__badge">2</li>
+                <li class="step__badge">3</li>
+              </ol>
+              <h2 class="step__title">이용 약관을 확인해주세요</h2>
+              <button type="button" class="step__cancel">취소</button>
+            </div>
+
+            <div class="step__body">
+              <div class="agree__box">
+                <label class="agree__all">
+                 <input type="checkbox" class="agree__check agree__check--gray" id="agreeAll" />
+                  <span class="agree__all-text">전체동의</span>
+                </label>
+                <ul class="agree__list">
+                  <li class="agree__item"><label class="agree__label"><input type="checkbox" class="agree__check" data-required="true" /><span class="agree__required">(필수)</span><span class="agree__text">서비스 이용약관에 동의합니다.</span></label></li>
+                  <li class="agree__item"><label class="agree__label"><input type="checkbox" class="agree__check" data-required="true" /><span class="agree__required">(필수)</span><span class="agree__text">개인정보 수집 및 이용에 동의합니다.</span></label></li>
+                  <li class="agree__item"><label class="agree__label"><input type="checkbox" class="agree__check" data-required="true" /><span class="agree__required">(필수)</span><span class="agree__text">개인정보 제3자 제공에 동의합니다.</span></label></li>
+                  <li class="agree__item"><label class="agree__label"><input type="checkbox" class="agree__check agree__check--gray" data-optional="true" /><span class="agree__required agree__required--optional">(선택)</span><span class="agree__text">위치기반서비스 이용약관에 동의합니다.</span></label></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="step__footer">
+              <button type="button" class="footer-btn footer-btn--gray footer-btn--full" id="agreeNextBtn" disabled>다음</button>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+    <script type="text/javascript" src="./catch-table.js"></script>
+  </body>
+</html>

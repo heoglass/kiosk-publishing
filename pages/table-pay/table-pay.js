@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCartReview();
   initPaymentType();
   initCompletionActions();
+  initHomeReset();
 });
 
 function initCompletionActions() {
@@ -63,28 +64,28 @@ function initTablePayCategoryNav() {
     });
   }
 
-  // 주문내역 버튼
-  const orderHistoryBtns = document.querySelectorAll(".btn-order-history");
-  const historyDialog = document.querySelector(".table-pay-history");
-  const historyContent = document.querySelector(".table-pay-history__content");
-  orderHistoryBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const savedItems = getTableOrderItems();
-      if (savedItems.length === 0) {
-        historyContent.textContent = "현재 주문 내역이 없습니다.";
-      } else {
-        const descriptions = savedItems.map((item) => {
-          const itemDesc = item.단품
-            ? `[단품] ${item.name} (${item.count}개)`
-            : `[세트] ${item.name} - 구성: ${item.setMenu || ""}, ${item.setMenu2 || ""} (${item.count}개)`;
-          const optionDesc = item.option ? `\n옵션: ${item.option}` : "";
-          return `${itemDesc}${optionDesc}\n금액: ${(item.price * item.count).toLocaleString()}원`;
-        });
-        historyContent.textContent = descriptions.join("\n\n");
-      }
-      historyDialog.showModal();
-    });
-  });
+  // 설계서에 없는 버튼 내용 
+  // const orderHistoryBtns = document.querySelectorAll(".btn-order-history");
+  // const historyDialog = document.querySelector(".table-pay-history");
+  // const historyContent = document.querySelector(".table-pay-history__content");
+  // orderHistoryBtns.forEach((btn) => {
+  //   btn.addEventListener("click", () => {
+  //     const savedItems = getTableOrderItems();
+  //     if (savedItems.length === 0) {
+  //       historyContent.textContent = "현재 주문 내역이 없습니다.";
+  //     } else {
+  //       const descriptions = savedItems.map((item) => {
+  //         const itemDesc = item.단품
+  //           ? `[단품] ${item.name} (${item.count}개)`
+  //           : `[세트] ${item.name} - 구성: ${item.setMenu || ""}, ${item.setMenu2 || ""} (${item.count}개)`;
+  //         const optionDesc = item.option ? `\n옵션: ${item.option}` : "";
+  //         return `${itemDesc}${optionDesc}\n금액: ${(item.price * item.count).toLocaleString()}원`;
+  //       });
+  //       historyContent.textContent = descriptions.join("\n\n");
+  //     }
+  //     historyDialog.showModal();
+  //   });
+  // });
 }
 
 /**
@@ -303,8 +304,10 @@ function updateCartBadge() {
 }
 
 function initCartReview() {
-  document.querySelector(".btn-cart")?.addEventListener("click", () => {
-    window.location.href = "./tableP-04.html";
+  document.querySelectorAll(".btn-cart, .btn-order-history").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      window.location.href = "./tableP-04.html";
+    });
   });
 
   const review = document.getElementById("tablePay-cart-list");
@@ -444,5 +447,18 @@ function popupNextMove() {
 
   completeButton.addEventListener("click", () => {
     window.location.href = "./tableP-06.html";
+  });
+}
+// 홈 이동시 임시로 저장한 카트 아이템 로컬스토리지 초기화
+function initHomeReset() {
+  const header = document.getElementById("category-header-horizontal");
+  if (!header) return;
+
+  const homeLink = header.querySelector('a[aria-label="처음으로"]');
+  if (!homeLink) return;
+
+  homeLink.addEventListener("click", () => {
+    localStorage.removeItem("tableOrderItem");
+    console.log("테이블오더 카트아이템 임시저장 삭제");
   });
 }

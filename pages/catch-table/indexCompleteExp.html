@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>캐치테이블 체험완료</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./catch-table.css" />
+    
+  </head>
+  <body id="catchTableBody" data-page="catchTableCompleteExp">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main table-screen-size">
+        <!-- 상단 헤더 (공통 헤더 구조) -->
+        <header id="category-header-horizontal" class="tablePay__header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img
+                src="../../shared/images/icon/icon-home.png"
+                alt="" 
+                class="category-header-home"
+              />
+            </a>
+            <img
+              src="../../shared/images/icon/arrow-right-w.png"
+              alt=""
+              class="category-header-arrow-right"
+            />
+            <span id="header-title"></span>
+          </div>
+          <button
+            type="button"
+            class="header-sound-toggle"
+            aria-label="소리"
+            aria-pressed="true"
+            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+          >
+            <img
+              src="../../shared/images/icon/sound_w.png"
+              class="header-sound"
+              alt=""
+            />
+          </button>
+        </header>
+
+        <section class="catchTable--section__wrap kiosk-container">
+          <div class="complete__main">
+            <div class="complete__notice">
+              <h2 class="complete__title">체험 완료</h2>
+              <p class="complete__text">키오스크 체험이 완료되었습니다<br />수고하셨습니다</p>
+            </div>
+
+            <div class="complete__img">
+              <img src="../../shared/images/table/kiosk-or.png" alt="교육용 키오스크 체험 완료" />
+            </div>
+
+            <div class="complete__btns">
+              <button type="button" id="completeRetryBtn" class="complete__btn complete__btn--gray">다시하기</button>
+              <button type="button" id="completeHomeBtn" class="complete__btn complete__btn--primary">첫 화면으로 가기</button>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+    <script type="text/javascript" src="./catch-table.js"></script>
+  </body>
+</html>

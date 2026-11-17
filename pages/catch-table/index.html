@@ -1,14 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>캐치 테이블</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>캐치테이블</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
     <link rel="stylesheet" href="./catch-table.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./catch-table.js"></script>
+    
   </head>
-  <body></body>
+  <body id="catchTableBody" data-page="catchTableHome">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main table-screen-size">
+        <section class="catchTable--section__wrap kiosk-container">
+
+          <!-- 좌측: 매장 정보 / 대기 팀 -->
+          <div class="waiting__main">
+            <h1 class="catchTable__logo-wrap">
+              <img class="catchTable__logo" src="../../shared/images/icon/catch-table-log.png" alt="CATCHTABLE" />
+            </h1>
+            <div class="waiting__desc-wrap">
+              <p class="waiting__desc">휴대폰 번호를 입력하시면 카카오톡으로<br />실시간 웨이팅 현황을 알려드려요</p>
+              <h2 class="waiting__store">원산면옥</h2>
+            </div>
+            
+            <p class="waiting__team">
+              <span class="waiting__team-label">현재 대기 팀</span>
+              <span class="waiting__team-count">3</span><span class="waiting__team-unit">팀</span>
+            </p>
+          </div>
+
+          <!-- 우측: 휴대폰 번호 키패드 -->
+          <div class="nonfication__number">
+            <div class="keypad__display">
+              <p class="keypad__number" id="phoneNumber">010-</p>
+              <p class="keypad__guide">안내 받을 수 있는 휴대폰 번호를 입력해주세요</p>
+            </div>
+            <div class="keypad__grid">
+              <button type="button" class="keypad__key" data-key="1">1</button>
+              <button type="button" class="keypad__key" data-key="2">2</button>
+              <button type="button" class="keypad__key" data-key="3">3</button>
+              <button type="button" class="keypad__key" data-key="4">4</button>
+              <button type="button" class="keypad__key" data-key="5">5</button>
+              <button type="button" class="keypad__key" data-key="6">6</button>
+              <button type="button" class="keypad__key" data-key="7">7</button>
+              <button type="button" class="keypad__key" data-key="8">8</button>
+              <button type="button" class="keypad__key" data-key="9">9</button>
+              <button type="button" class="keypad__key keypad__key--icon" data-key="reset" aria-label="다시 입력">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9" /><path d="M20 4v5h-5" /></svg>
+              </button>
+              <button type="button" class="keypad__key" data-key="0">0</button>
+              <button type="button" class="keypad__key keypad__key--icon" data-key="back" aria-label="지우기">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4" /><path d="M10 6l-6 6 6 6" /></svg>
+              </button>
+            </div>
+            <div class="keypad__footer">
+              <button type="button" class="footer-btn footer-btn--gray" id="waitingListBtn">웨이팅 목록</button>
+              <button type="button" class="footer-btn footer-btn--primary" id="waitingStartBtn">웨이팅 시작</button>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./catch-table.js"></script>
+  </body>
 </html>

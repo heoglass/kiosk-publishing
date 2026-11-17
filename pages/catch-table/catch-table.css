@@ -1,0 +1,698 @@
+@charset "UTF-8";
+:root {
+    --catchTable-primary-color: #FE3D06;
+    --catchTable-nagative-color: #555555;
+    --catchTable-bg-Color: #0B0C20;
+    /* 추가 변수 */
+    --catchTable-panel-bg: #FAFAFA;
+    --catchTable-gray-bg: #EEEEEE;
+    --catchTable-light-primary: #FFE6DF;
+    --catchTable-text-color: #000;
+}
+
+body#catchTableBody {
+    min-width: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.font__red--local {
+    color: #E03400;
+}
+:root {
+    --tablepay-primary-btnColor: #227941;
+
+}
+#catchTableBody .table-screen-size {
+    width: 1080px;
+    height: 676px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-color: #FAFAFA;
+}
+
+
+#catchTableBody .catchTable--section__wrap {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    color: var(--catchTable-text-color);
+}
+
+#catchTableBody h1,
+#catchTableBody h2,
+#catchTableBody p,
+#catchTableBody dl,
+#catchTableBody dd,
+#catchTableBody ol,
+#catchTableBody ul {
+    margin: 0;
+    padding: 0;
+}
+
+#catchTableBody button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* 상단 가로형 헤더 */
+#category-header-horizontal.tablePay__header {
+    height: 70px;
+    padding: 0 36px;
+    background-color: #227941;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+#category-header-horizontal.tablePay__header > * {
+    color: #fff;
+}
+
+#category-header-horizontal .header-left {
+    display: flex;
+    align-items: center;
+}
+
+#category-header-horizontal .header-left > * + * {
+    margin-left: 12px;
+}
+
+#category-header-horizontal #header-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+#category-header-horizontal .category-header-home,
+#category-header-horizontal .category-header-arrow-right,
+#category-header-horizontal .header-sound {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+#category-header-horizontal .header-sound-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   캐치테이블 공통
+   ========================================================= */
+
+/* 캐치테이블 헤더 컬러 (공통 헤더 덮어쓰기) */
+#catchTableBody #category-header-horizontal.tablePay__header {
+    background-color: var(--catchTable-primary-color);
+}
+#catchTableBody #category-header-horizontal .header-back {
+    background: transparent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+#catchTableBody #category-header-horizontal #header-title {
+    font-size: 28px;
+}
+#catchTableBody #category-header-horizontal .header-sound-text {
+    margin-left: 6px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* 로고 */
+#catchTableBody .catchTable__logo-wrap {
+    display: block;
+    width: 432px;
+    height: 138px;
+    margin-bottom: 40px;
+    object-fit: contain;
+}   
+#catchTableBody .catchTable__logo-wrap .catchTable__logo {
+    width: 100%;
+    height: 100%;
+}
+
+/* 하단 버튼 */
+#catchTableBody .footer-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+}
+#catchTableBody .footer-btn--gray {
+    background-color: var(--catchTable-nagative-color);
+}
+#catchTableBody .footer-btn--primary {
+    background-color: var(--catchTable-primary-color);
+}
+
+
+/* =========================================================
+   index : 메인 (웨이팅 정보 + 휴대폰 번호 키패드)
+   ========================================================= */
+
+/* 좌측 패널 */
+#catchTableBody .waiting__main {
+    width: 540px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: var(--catchTable-bg-Color);
+    color: #fff;
+    text-align: center;
+}
+#catchTableBody .waiting__desc-wrap {
+    height: 200;
+    margin-bottom: 112px;
+}
+#catchTableBody .waiting__desc-wrap .waiting__desc {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 130%;
+}
+#catchTableBody .waiting__desc-wrap .waiting__store {
+    margin-top: 62px;
+    font-size: 52px;
+    line-height: 72px;
+    font-weight: 700;
+}
+#catchTableBody .waiting__team {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+}
+#catchTableBody .waiting__team-label {
+    font-size: 28px;
+    font-weight: 500;
+}
+#catchTableBody .waiting__team-count {
+    margin-left: 44px;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+}
+#catchTableBody .waiting__team-unit {
+    padding-top: 26px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* 우측 패널 : 키패드 */
+#catchTableBody .nonfication__number {
+    width: 540px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    background-color: var(--catchTable-panel-bg);
+}
+#catchTableBody .keypad__display {
+    height: 207px;
+    padding-top: 54px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+#catchTableBody .keypad__number {
+    padding-left: 76px;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 92px;
+}
+#catchTableBody .keypad__guide {
+    margin-top: 4px;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+}
+#catchTableBody .keypad__grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    border-top: 1px solid var(--catchTable-nagative-color);
+}
+#catchTableBody .keypad__key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--catchTable-panel-bg);
+    color: var(--catchTable-text-color);
+    font-size: 40px;
+    font-weight: 600;
+    border-right: 1px solid var(--catchTable-nagative-color);
+    border-bottom: 1px solid var(--catchTable-nagative-color);
+}
+#catchTableBody .keypad__key:nth-child(3n) {
+    border-right: 0;
+}
+#catchTableBody .keypad__key:nth-last-child(-n+3) {
+    border-bottom: 0;
+}
+#catchTableBody .keypad__key--icon svg {
+    width: 40px;
+    height: 40px;
+}
+#catchTableBody .keypad__key--icon[data-key="reset"] {
+    color: var(--catchTable-nagative-color);
+}
+#catchTableBody .keypad__footer {
+    height: 113px;
+    display: flex;
+    flex-shrink: 0;
+}
+#catchTableBody .keypad__footer .footer-btn {
+    flex: 1;
+}
+
+
+/* =========================================================
+   indexAgree / indexUser / indexUserCheck : 단계형 화면
+   ========================================================= */
+#catchTableBody .catchTable__step {
+        min-width: 1080px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 단계 헤더 */
+#catchTableBody .step__header {
+    position: relative;
+    height: 58px;
+    margin: 28px 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+#catchTableBody .step__badges {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#catchTableBody .step__badge {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--catchTable-light-primary);
+    color: var(--catchTable-text-color);
+    font-size: 30px;
+    font-weight: 500;
+}
+#catchTableBody .step__badge--active {
+    background-color: var(--catchTable-primary-color);
+    color: #fff;
+    font-weight: 700;
+}
+#catchTableBody .step__title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 34px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+#catchTableBody .step__cancel {
+    background: transparent;
+    color: var(--catchTable-primary-color);
+    font-size: 34px;
+    font-weight: 700;
+}
+
+/* 단계 본문 */
+#catchTableBody .step__body {
+    flex: 1;
+    min-height: 0;
+    padding: 0 96px;
+}
+#catchTableBody .step__desc {
+    margin-top: 40px;
+    margin-bottom: 29px;
+    font-size: 24px;
+    line-height: 34px;
+    text-align: center;
+}
+
+/* 단계 하단 버튼 */
+#catchTableBody .step__footer {
+    height: 90px;
+    display: flex;
+    flex-shrink: 0;
+}
+#catchTableBody .step__footer .footer-btn {
+    flex: 1;
+}
+#catchTableBody .step__footer .footer-btn--prev {
+    flex: 0 0 401px;
+}
+#catchTableBody .step__footer .footer-btn--full {
+    flex: 1;
+}
+
+
+/* ---------- 약관동의 ---------- */
+#catchTableBody .agree__box {
+    margin-top: 46px;
+    border: 1px solid var(--catchTable-nagative-color);
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: var(--catchTable-gray-bg);
+}
+#catchTableBody .agree__all {
+    height: 78px;
+    padding-left: 60px;
+    display: flex;
+    align-items: center;
+    background-color: var(--catchTable-panel-bg);
+    border-bottom: 1px solid var(--catchTable-nagative-color);
+    cursor: pointer;
+}
+#catchTableBody .agree__all-text {
+    margin-left: 24px;
+    font-size: 28px;
+    font-weight: 700;
+}
+#catchTableBody .agree__list {
+    margin: 0;
+    padding: 20px 35px 30px;
+    list-style: none;
+}
+#catchTableBody .agree__item + .agree__item {
+    margin-top: 16px;
+}
+#catchTableBody .agree__label {
+    height: 58px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+#catchTableBody .agree__required {
+    margin-left: 24px;
+    color: var(--catchTable-primary-color);
+    font-weight: 700;
+}
+#catchTableBody .agree__text {
+    margin-left: 9px;
+    font-weight: 500;
+}
+
+/* 체크박스 */
+#catchTableBody .agree__check {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background-color: #555;
+    background-image: url("../../shared/images/icon/check-w.png");
+    background-position: center;
+    background-repeat: no-repeat;    
+    cursor: pointer;
+}
+#catchTableBody .agree__check:checked,
+#catchTableBody .agree__check--gray:checked {
+    border-color: var(--catchTable-primary-color);
+    background-color: var(--catchTable-primary-color);
+    background-image: url("../../shared/images/icon/check-w.png");
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+/* #catchTableBody .agree__check--gray:checked {
+    border-color: var(--catchTable-nagative-color);
+    background-color: var(--catchTable-nagative-color);
+} */
+
+/* 약관 : 선택 항목 라벨 / 다음 버튼 비활성 */
+#catchTableBody .agree__required--optional {
+    color: var(--catchTable-nagative-color);
+}
+#catchTableBody .footer-btn:disabled {
+    cursor: default;
+}
+
+
+/* ---------- 입장인원 ---------- */
+#catchTableBody .count__box {
+    height: 105px;
+    padding: 0 40px;
+    margin: 0 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background-color: var(--catchTable-gray-bg);
+}
+#catchTableBody .count__label {
+    font-size: 32px;
+    font-weight: 700;
+}
+#catchTableBody .count__stepper {
+    display: flex;
+    align-items: center;
+}
+#catchTableBody .count__btn {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--catchTable-primary-color);
+    color: #fff;
+}
+#catchTableBody .count__btn svg {
+    width: 36px;
+    height: 36px;
+}
+#catchTableBody .count__btn:disabled {
+    border: 2px solid #b5b5b5;
+    background-color: transparent;
+    color: #b5b5b5;
+    cursor: default;
+}
+#catchTableBody .count__num {
+    min-width: 80px;
+    font-size: 44px;
+    font-weight: 700;
+    text-align: center;
+}
+/* 인원수 : 성인 / 유아 행 간격 */
+#catchTableBody .count__box + .count__box {
+    margin-top: 24px;
+}
+
+/* ---------- 웨이팅 정보 확인 ---------- */
+#catchTableBody .info__list {
+    margin: 0 auto;
+}
+#catchTableBody .info__row {
+    height: 80px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: var(--catchTable-gray-bg);
+}
+#catchTableBody .info__row + .info__row {
+    margin-top: 24px;
+}
+#catchTableBody .info__label {
+    width: 239px;
+    flex-shrink: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+#catchTableBody .info__value {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   indexKakaoMsg : 웨이팅 등록 완료
+   ========================================================= */
+#catchTableBody .waiting__main--white {
+    background-color: #fff;
+    color: var(--catchTable-text-color);
+    padding-bottom: 112px;
+}
+#catchTableBody .waiting__main--white .catchTable__logo {
+    width: 432px;
+    height: auto;
+    display: block;
+    margin-bottom: 39px;
+}
+#catchTableBody .waiting__kakao {
+    margin-top: 39px;
+    display: flex;
+    align-items: center;
+}
+#catchTableBody .waiting__kakao-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+}
+.waiting__main--white .waiting__desc  {
+    font-size: 24px;
+    font-weight: 600;
+}
+#catchTableBody .waiting__kakao-text {
+    font-size: 36px;
+    font-weight: 600;
+}
+#catchTableBody .waiting__timer {
+    margin-top: auto;
+    /* padding-bottom: 112px; */
+    display: flex;
+    align-items: center;
+    color: var(--catchTable-primary-color);
+}
+#catchTableBody .waiting__timer-circle {
+    width: 66px;
+    height: 66px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--catchTable-primary-color);
+    border-radius: 50%;
+    font-size: 36px;
+    font-weight: 700;
+}
+#catchTableBody .waiting__timer-text {
+    margin-left: 8px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#catchTableBody .nonfication__number--dark {
+    align-items: center;
+    padding-top: 218px;
+    background-color: var(--catchTable-bg-Color);
+    color: #fff;
+    text-align: center;
+}
+#catchTableBody .nonfication__title {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 600;
+}
+#catchTableBody .nonfication__num {
+    margin-top: 37px;
+    font-size: 72px;
+    line-height: 100px;
+    font-weight: 700;
+}
+#catchTableBody .nonfication__desc {
+    margin-top: 93px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 31px;
+}
+
+
+/* =========================================================
+   indexCompleteExp : 체험 완료
+   ========================================================= */
+#catchTableBody .complete__main {
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--catchTable-panel-bg);
+}
+#catchTableBody .complete__notice {
+    height: 154px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #F5F5F5;
+    text-align: center;
+}
+#catchTableBody .complete__title {
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 700;
+}
+#catchTableBody .complete__text {
+    margin-top: 4px;
+    color: #333;
+    font-size: 26px;
+    line-height: 36px;
+}
+#catchTableBody .complete__img {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#catchTableBody .complete__img img {
+    display: block;
+    height: 214px;
+    width: auto;
+}
+#catchTableBody .complete__btns {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+#catchTableBody .complete__btn {
+    width: 467px;
+    height: 73px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+}
+#catchTableBody .complete__btn--gray {
+    background-color: var(--catchTable-nagative-color);
+}
+#catchTableBody .complete__btn--primary {
+    background-color: var(--catchTable-primary-color);
+}

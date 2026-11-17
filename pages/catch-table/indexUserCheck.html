@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+        <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>캐치테이블 입장인원 체크</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./catch-table.css" />
+    
+  </head>
+  <body id="catchTableBody" data-page="catchTableUserCheck">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main table-screen-size">
+        <section class="catchTable--section__wrap kiosk-container">
+
+          <div class="catchTable__step">
+            <div class="step__header">
+              <ol class="step__badges">
+                <li class="step__badge">1</li>
+                <li class="step__badge">2</li>
+                <li class="step__badge step__badge--active">3</li>
+              </ol>
+              <h2 class="step__title">웨이팅 정보를 확인해주세요</h2>
+              <button type="button" class="step__cancel">취소</button>
+            </div>
+
+            <div class="step__body">
+              <p class="step__desc">입력한 정보가 맞으면, 아래 ‘웨이팅’ 등록 버튼을 눌러주세요</p>
+              <dl class="info__list">
+                <div class="info__row">
+                  <dt class="info__label">전화번호</dt>
+                  <dd class="info__value" id="infoPhone"></dd>
+                </div>
+                <div class="info__row">
+                  <dt class="info__label">총 입장 인원</dt>
+                  <dd class="info__value" id="infoPeople"></dd>
+                </div>
+                <div class="info__row">
+                  <dt class="info__label">매장 이용방식</dt>
+                  <dd class="info__value" id="infoVisitType">매장식사</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="step__footer">
+              <button type="button" id="backBtn" class="footer-btn footer-btn--gray footer-btn--prev">이전</button>
+              <button type="button" id="waitingRegisterBtn" class="footer-btn footer-btn--primary">웨이팅 등록</button>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+    <script type="text/javascript" src="./catch-table.js"></script>
+  </body>
+</html>

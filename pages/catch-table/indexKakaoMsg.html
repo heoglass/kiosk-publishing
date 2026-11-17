@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>캐치테이블 카카오메세지 알림</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./catch-table.css" />
+    
+  </head>
+  <body id="catchTableBody" data-page="catchTableKakaoMsg">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main table-screen-size">
+        <section class="catchTable--section__wrap kiosk-container">
+
+          <!-- 좌측: 등록 완료 안내 -->
+          <div class="waiting__main waiting__main--white">
+            <img class="catchTable__logo" src="../../shared/images/icon/catch-table-log.png" alt="CATCHTABLE" />
+            <p class="waiting__desc">웨이팅이 등록되었어요</p>
+            <p class="waiting__kakao">
+              <img class="waiting__kakao-icon" src="../../shared/images/icon/kakaoIcon.png" alt="카카오" />
+              <span class="waiting__kakao-text">카카오톡을 확인해주세요!</span>
+            </p>
+            <p class="waiting__timer">
+              <span class="waiting__timer-circle" id="redirectSec">5</span>
+              <span class="waiting__timer-text">초 후 메인화면으로 이동합니다</span>
+            </p>
+          </div>
+
+          <!-- 우측: 웨이팅 번호 -->
+          <div class="nonfication__number nonfication__number--dark">
+            <h2 class="nonfication__title">웨이팅 번호</h2>
+            <p class="nonfication__num">3</p>
+            <p class="nonfication__desc">순서가 되면 카카오톡으로 알려드려요<br />방문이 어렵다면 취소 또는 미루기를<br /> 
+              이용해주세요</p>
+          </div>
+
+        </section>
+      </main>
+    <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+    <script type="text/javascript" src="./catch-table.js"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+        <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>캐치테이블 입장인원</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./catch-table.css" />
+    
+  </head>
+  <body id="catchTableBody" data-page="catchTableUser">
+      <!-- 메인 콘텐츠 영역 -->
+      <main class="kiosk-main table-screen-size">
+        <section class="catchTable--section__wrap kiosk-container">
+
+          <div class="catchTable__step">
+            <div class="step__header">
+              <ol class="step__badges">
+                <li class="step__badge">1</li>
+                <li class="step__badge step__badge--active">2</li>
+                <li class="step__badge">3</li>
+              </ol>
+              <h2 class="step__title">총 입장 인원을 입력해주세요</h2>
+              <button type="button" class="step__cancel">취소</button>
+            </div>
+
+            <div class="step__body">
+              <p class="step__desc">인원 수에 맞는 좌석이 준비 안될 경우 입장 순서가 바뀔 수도 있어요</p>
+              <div class="count__box" data-type="adult">
+                <span class="count__label">성인</span>
+                <div class="count__stepper">
+                  <button type="button" class="count__btn count__btn--minus" data-action="minus" aria-label="성인 감소" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14" /></svg>
+                  </button>
+                  <span class="count__num">1</span>
+                  <button type="button" class="count__btn count__btn--plus" data-action="plus" aria-label="성인 증가">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="count__box" data-type="child">
+                <span class="count__label">유아</span>
+                <div class="count__stepper">
+                  <button type="button" class="count__btn count__btn--minus" data-action="minus" aria-label="유아 감소" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14" /></svg>
+                  </button>
+                  <span class="count__num">0</span>
+                  <button type="button" class="count__btn count__btn--plus" data-action="plus" aria-label="유아 증가">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="step__footer">
+              <button type="button" class="footer-btn footer-btn--gray footer-btn--prev" id="backBtn">이전</button>
+              <button type="button" class="footer-btn footer-btn--primary" id="userNextBtn">다음 (총 입장인원 : <span id="nextCount">1</span>명)</button>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+    <script type="text/javascript" src="./catch-table.js"></script>
+  </body>
+</html>
