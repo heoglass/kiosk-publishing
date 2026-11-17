@@ -1,0 +1,204 @@
+const pageRoutes = {
+  카페: "./pages/cafe/index.html",
+  "패스트 푸드": "./pages/fast-food/index.html",
+  "푸드 코트": "./pages/food-court/index.html",
+  "테이블 오더": "./pages/table-order/index.html",
+  "테이블 결제": "./pages/table-pay/index.html",
+  캐치테이블: "./pages/catch-table/index.html",
+
+  민원서류발급: "./pages/civil-service/index.html",
+  진료발급기: "./pages/hospital/index.html",
+  "은행 ATM": "./pages/atm/index.html",
+
+  "고속/시외버스": "./pages/express-bus/index.html",
+  "기차/KTX": "./pages/ktx/index.html",
+  "공항 체크인": "./pages/airport-checkin/index.html",
+
+  영화관: "./pages/cinema/index.html",
+  "마트 셀프계산": "./pages/self-checkout/index.html",
+  "셀프 주유소": "./pages/self-gas/index.html",
+  주차정산: "./pages/parking/index.html",
+  "편의점 택배": "./pages/parcel/index.html",
+  "무인 매장": "./pages/unmanned-store/index.html",
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 카테고리 시작 화면에서 뒤로가기 버튼을 누르면 키오스크 메인으로 이동
+  const headerBack = document.getElementById("header-back");
+
+  if (headerBack && headerBack.dataset.backManaged !== "true") {
+    headerBack.addEventListener("click", () => {
+      const startScreen = document.getElementById("category-start-screen");
+
+      if (!startScreen || startScreen.hidden) return;
+
+      window.location.href = "../../index.html";
+    });
+  }
+
+  // 헤더에 카테고리명 표시
+  const headerTitle = document.getElementById("header-title");
+
+  if (headerTitle) {
+    const currentFolder = window.location.pathname.split("/").at(-2);
+    const category = new URLSearchParams(window.location.search).get(
+      "category"
+    );
+
+    const routes = Object.entries(pageRoutes);
+
+    const currentRoute = routes.find(([, path]) => {
+      return path.split("/").at(-2) === currentFolder;
+    });
+
+    if (window.location.pathname.endsWith("/index.html") && currentRoute) {
+      localStorage.setItem("cat", currentFolder);
+      localStorage.removeItem("fastFoodOrderType");
+      localStorage.removeItem("kiosk_order_data");
+    }
+
+    const sharedRoute = routes.find(([, path]) => {
+      return path.split("/").at(-2) === category;
+    });
+
+    headerTitle.textContent = currentRoute?.[0] ?? sharedRoute?.[0] ?? "";
+  }
+
+  // 공통 완료 화면으로 이동할 때 카테고리 전달
+  function goToCompletePage(path) {
+    const currentUrl = new URL(window.location.href);
+    const currentFolder = currentUrl.pathname.split("/").at(-2);
+    const category = currentUrl.searchParams.get("category") || currentFolder;
+
+    const nextUrl = new URL(path, currentUrl);
+    nextUrl.searchParams.set("category", category);
+
+    window.location.href = nextUrl.href;
+  }
+
+  // 헤더 소리 아이콘 토글
+  const soundButton = document.querySelector(
+    ":is(#main-header, #category-header, #category-header-horizontal, #category-header-vertical) .header-sound-toggle"
+  );
+  const soundIcon = soundButton?.querySelector(".header-sound");
+
+  if (soundButton && soundIcon) {
+    const soundOnSrc = soundIcon.getAttribute("src");
+    const soundOffSrc = soundButton.dataset.soundOffSrc;
+
+    soundButton.addEventListener("click", () => {
+      const isSoundOn = soundButton.getAttribute("aria-pressed") === "true";
+      const nextSoundOn = !isSoundOn;
+
+      soundButton.setAttribute("aria-pressed", String(nextSoundOn));
+      soundIcon.src = nextSoundOn ? soundOnSrc : soundOffSrc;
+    });
+  }
+
+  const completeConfirm = document.getElementById("complete-confirm");
+
+  if (completeConfirm) {
+    completeConfirm.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      goToCompletePage(completeConfirm.href);
+    });
+  }
+
+  const pathParts = window.location.pathname.split("/");
+  const params = new URLSearchParams(window.location.search);
+
+  const currentCategory = Object.values(pageRoutes)
+    .map((path) => path.split("/").at(-2))
+    .find((folder) => pathParts.includes(folder));
+
+  const queryCategory = params.get("category");
+  const knownCategory = (category) =>
+    Object.values(pageRoutes).some(
+      (path) => path.split("/").at(-2) === category
+    );
+
+  if (queryCategory && knownCategory(queryCategory)) {
+    localStorage.setItem("cat", queryCategory);
+  }
+
+  const category = currentCategory ?? queryCategory;
+
+  // 주차정산 체험 완료 화면에 파란색 테마 적용
+  const experienceComplete = document.querySelector(".experience-complete");
+
+  if (experienceComplete && queryCategory === "parking") {
+    const completeScreen = experienceComplete.closest(".complete-screen");
+    completeScreen?.classList.add("experience-complete-parking");
+
+    const experienceImage = experienceComplete.querySelector(
+      ".complete-experience-image"
+    );
+
+    if (experienceImage) {
+      experienceImage.src = "../shared/images/experience-complete-blue.png";
+    }
+  }
+  // 다시하기 버튼을 누르면 해당 카테고리의 시작 화면으로 이동
+  const experienceRetry = document.getElementById("experience-retry");
+
+  if (experienceRetry) {
+    experienceRetry.addEventListener("click", () => {
+      const retryCategory = queryCategory || localStorage.getItem("cat");
+
+      if (!knownCategory(retryCategory)) return;
+
+      window.location.href = `../pages/${retryCategory}/index.html`;
+    });
+  }
+
+  if (!category) return;
+
+  document
+    .querySelectorAll("a.receipt-choice[href], a[data-keep-category][href]")
+    .forEach((link) => {
+      const nextUrl = new URL(link.href);
+      nextUrl.searchParams.set("category", category);
+      link.href = nextUrl.href;
+    });
+
+  // 공통 팝업 열기
+  window.openModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    if (!(modal instanceof HTMLDialogElement)) return;
+
+    document.querySelectorAll("dialog.modal[open]").forEach((openedModal) => {
+      if (openedModal !== modal) {
+        openedModal.close();
+      }
+    });
+
+    if (!modal.open) {
+      modal.showModal();
+    }
+
+    document.body.classList.add("modal-open");
+  };
+
+  // 공통 닫기 버튼
+  document.addEventListener("click", (event) => {
+    const closeButton = event.target.closest("[data-modal-close]");
+    if (!closeButton) return;
+
+    closeButton.closest("dialog.modal")?.close();
+  });
+
+  // 팝업이 닫혔을 때 스크롤 상태 갱신
+  document.addEventListener(
+    "close",
+    (event) => {
+      if (!event.target.matches("dialog.modal")) return;
+
+      document.body.classList.toggle(
+        "modal-open",
+        Boolean(document.querySelector("dialog.modal[open]"))
+      );
+    },
+    true
+  );
+});
