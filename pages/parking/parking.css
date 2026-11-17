@@ -481,11 +481,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   height: 100%;
   padding: 0 80px 88px;
   background: #fff;
   color: #000;
+}
+.parking-method-top {
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.parking-method-screen .parking-fee-vehicle {
+  margin-bottom: 50px;
 }
 
 .parking-method-screen .payment-select {
@@ -566,7 +575,7 @@
 }
 
 .parking-method-title {
-  margin: 80px 0 0;
+  margin: 0 0 60px;
   font-size: var(--font-60-size);
   font-weight: var(--font-700-weight);
   text-align: center;
@@ -777,4 +786,12 @@ dialog.parking-payment-dialog {
   border-color: var(--parking-modal-blue);
   background: var(--parking-modal-blue);
   color: #fff;
+}
+.parking-first-btn {
+  background-color: #2d5df9;
+  color: #fff;
+  padding: 38.5px 0;
+  font-size: var(--font-44-size);
+  font-weight: var(--font-700-weight);
+  border-radius: 20px;
 }

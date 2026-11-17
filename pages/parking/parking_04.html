@@ -63,61 +63,70 @@
         class="parking-screen parking-method-screen"
         aria-labelledby="parking-method-title"
       >
-        <div class="payment-select" role="group" aria-label="지불 방법">
-          <label class="parking-method-option">
-            <input
-              class="parking-method-input"
-              type="radio"
-              name="parking-payment-method"
-              value="card"
-              checked
+        <div class="parking-method-top">
+          <div class="parking-fee-vehicle">
+            <img
+              class="parking-fee-image"
+              src="../../shared/images/parking/parking-car3.png"
+              alt=""
             />
+            <span class="parking-fee-plate-number">124가 2239</span>
+          </div>
+          <h1 id="parking-method-title" class="parking-method-title">
+            지불 방법 선택 후 ‘정산하기’<br />
+            버튼을 눌러주세요
+          </h1>
+          <div class="payment-select" role="group" aria-label="지불 방법">
+            <label class="parking-method-option">
+              <input
+                class="parking-method-input"
+                type="radio"
+                name="parking-payment-method"
+                value="card"
+                checked
+              />
 
-            <span class="parking-method-card">
-              <img
-                class="parking-method-icon parking-method-icon-default"
-                src="../../shared/images/parking/icon-card-bk.png"
-                alt=""
-              />
-              <img
-                class="parking-method-icon parking-method-icon-active"
-                src="../../shared/images/parking/icon-card-bl.png"
-                alt=""
-              />
-              <strong class="parking-method-name">카드결제</strong>
-              <span class="parking-method-description">(삼성/애플페이)</span>
-            </span>
-          </label>
+              <span class="parking-method-card">
+                <img
+                  class="parking-method-icon parking-method-icon-default"
+                  src="../../shared/images/parking/icon-card-bk.png"
+                  alt=""
+                />
+                <img
+                  class="parking-method-icon parking-method-icon-active"
+                  src="../../shared/images/parking/icon-card-bl.png"
+                  alt=""
+                />
+                <strong class="parking-method-name">카드결제</strong>
+                <span class="parking-method-description">(삼성/애플페이)</span>
+              </span>
+            </label>
 
-          <label class="parking-method-option">
-            <input
-              class="parking-method-input"
-              type="radio"
-              name="parking-payment-method"
-              value="coupon"
-            />
+            <label class="parking-method-option">
+              <input
+                class="parking-method-input"
+                type="radio"
+                name="parking-payment-method"
+                value="coupon"
+              />
 
-            <span class="parking-method-card">
-              <img
-                class="parking-method-icon parking-method-icon-default"
-                src="../../shared/images/parking/icon-coupon-bk.png"
-                alt=""
-              />
-              <img
-                class="parking-method-icon parking-method-icon-active"
-                src="../../shared/images/parking/icon-coupon-bl.png"
-                alt=""
-              />
-              <strong class="parking-method-name">할인권</strong>
-              <span class="parking-method-description">(QR/바코드)</span>
-            </span>
-          </label>
+              <span class="parking-method-card">
+                <img
+                  class="parking-method-icon parking-method-icon-default"
+                  src="../../shared/images/parking/icon-coupon-bk.png"
+                  alt=""
+                />
+                <img
+                  class="parking-method-icon parking-method-icon-active"
+                  src="../../shared/images/parking/icon-coupon-bl.png"
+                  alt=""
+                />
+                <strong class="parking-method-name">할인권</strong>
+                <span class="parking-method-description">(QR/바코드)</span>
+              </span>
+            </label>
+          </div>
         </div>
-
-        <h1 id="parking-method-title" class="parking-method-title">
-          지불 방법 선택 후 ‘정산하기’<br />
-          버튼을 눌러주세요
-        </h1>
 
         <div class="parking-method-actions">
           <button
