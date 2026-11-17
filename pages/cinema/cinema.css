@@ -134,6 +134,10 @@
   align-items: center;
   gap: 12px;
 }
+.footer-item-link {
+  display: flex;
+  align-items: center;
+}
 
 .cinema-footer .cinema-home-icon,
 .cinema-footer .cinema-back-icon {
