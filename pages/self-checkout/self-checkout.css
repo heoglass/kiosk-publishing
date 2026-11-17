@@ -351,11 +351,6 @@
   background: #fff2d8;
 }
 
-.self-checkout-scan-button:focus-visible {
-  outline: 6px solid #874819;
-  outline-offset: 4px;
-}
-
 .self-checkout-barcode {
   width: 140px;
   height: 54px;
