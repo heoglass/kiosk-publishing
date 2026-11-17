@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./parking.css" />
     <script type="text/javascript" src="../../shared/js/common.js"></script>
     <script type="text/javascript" src="./parking.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body>
     <main class="parking-main category-main kiosk-screen">
@@ -173,11 +174,15 @@
             class="payment-image-button"
             aria-label="카드 삽입"
           >
-            <img
-              src="../../shared/images/icon/icon-insert-card.png"
-              class="card-payment-image card-insert"
-              alt=""
-            />
+            <div id="lottie-card-insert" class="card-payment-image card-insert">
+              <lottie-player
+                src="../../shared/images/lottie/lottie-card-insert.json"
+                background="transparent"
+                speed="0.5"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
           </button>
 
           <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>

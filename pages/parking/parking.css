@@ -714,7 +714,7 @@ dialog.parking-payment-dialog {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 80px 80px 60px;
+  padding: 50px 80px 60px;
 }
 
 /* .parking-payment-dialog .modal-body .modal-title, */
@@ -728,18 +728,29 @@ dialog.parking-payment-dialog {
 .parking-payment-dialog .card-payment-description,
 .parking-payment-dialog .payment-status-description {
   font-size: 38px;
-  line-height: 1.3;
   font-weight: var(--font-500-weight);
   margin-bottom: 40px;
 }
 
-.parking-payment-dialog .card-payment-image,
 .parking-payment-dialog .payment-complete-image {
   width: 280px;
   height: 280px;
   object-fit: contain;
 }
+.parking-payment-dialog .card-payment-image {
+  background-image: url("../../shared/images/icon/payment-card-bg-blue.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  object-fit: fill;
+  width: 342px;
+  height: 342px;
+  border-radius: 171px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
 .parking-payment-dialog .card-payment-summary {
   box-sizing: border-box;
   width: 100%;
