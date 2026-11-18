@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexProductType">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+              </a>
+              <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexProductType">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">보내는 물품 유형을 선택해 주세요</h2>
+            </div>
+            <ul class="product-grid">
+              <li class="product-grid__item">
+                <a href="./indexAgree.html" class="product-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="" class="product-card__img" />
+                  <span class="product-card__name">의류</span>
+                </a>
+              </li>
+              <li class="product-grid__item">
+                <a href="./indexAgree.html" class="product-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="" class="product-card__img" />
+                  <span class="product-card__name">잡화/서적류</span>
+                </a>
+              </li>
+              <li class="product-grid__item">
+                <a href="./indexAgree.html" class="product-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="" class="product-card__img" />
+                  <span class="product-card__name">가전제품</span>
+                </a>
+              </li>
+              <li class="product-grid__item">
+                <a href="./indexAgree.html" class="product-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="" class="product-card__img" />
+                  <span class="product-card__name">곡물류</span>
+                </a>
+              </li>
+              <li class="product-grid__item">
+                <a href="./indexAgree.html" class="product-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="" class="product-card__img" />
+                  <span class="product-card__name">식품류</span>
+                </a>
+              </li>
+              <li class="product-grid__item">
+                <a href="./indexAgree.html" class="product-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="" class="product-card__img" />
+                  <span class="product-card__name">서신/서류</span>
+                </a>
+              </li>
+            </ul>
+            <div class="parcel-notice">
+              <h3 class="parcel-notice__title">유의사항</h3>
+              <ul class="parcel-notice__list">
+              <li>유리 / 사기 / 아크릴 제품 / 물품가액 50만원이상 / 현금 / 신분증 / 여권 / 중량 5kg 초과 물품 / 예술품 / 운송장 면적보다 작은 크기의 물품</li>
+              </ul>
+            </div>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexWeight.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>

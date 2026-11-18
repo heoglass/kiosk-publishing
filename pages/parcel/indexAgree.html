@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexAgree">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexAgree">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">선택하신 상품의<br />파손 면책 동의가 필요합니다</h2>
+            <p class="parcel-title__sub">또한, 이용불가 상품을 포함하여 발송할 경우<br /> 사고 발생시 보상이 불가합니다 동의하시겠습니까?</p>
+            </div>
+            <div class="agree-block">
+              <h3 class="agree-block__title">수거 가능 포장방법</h3>
+              <div class="pack-card">
+                <img src="../../shared/images/parcel/sample_img.png" alt="샘플이미지" class="pack-card__img" />
+                <div class="pack-card__text">
+                  <strong class="pack-card__title">박스포장</strong>
+                  <span class="pack-card__desc">가로 X 세로 X 높이 X 합이 1m 이하</span>
+                </div>
+              </div>
+            </div>
+            <div class="agree-block">
+              <h3 class="agree-block__title">수거 불가 예시 <span class="agree-block__sub">시습성 상품, 운송장 보다 작은 상품 수거 물가</span></h3>
+              <ul class="deny-list">
+                <li class="deny-list__item">
+                  <span class="deny-list__img"><img src="../../shared/images/parcel/sample.png" alt="" /></span>
+                  <span class="deny-list__name">귀금속</span>
+                </li>
+                <li class="deny-list__item">
+                  <span class="deny-list__img"><img src="../../shared/images/parcel/sample.png" alt="" /></span>
+                  <span class="deny-list__name">액체류</span>
+                </li>
+                <li class="deny-list__item">
+                  <span class="deny-list__img"><img src="../../shared/images/parcel/sample.png" alt="" /></span>
+                  <span class="deny-list__name">예술품</span>
+                </li>
+                <li class="deny-list__item">
+                  <span class="deny-list__img"><img src="../../shared/images/parcel/sample.png" alt="" /></span>
+                  <span class="deny-list__name">골프채, 낚시대</span>
+                </li>
+              </ul>
+            </div>
+            <div class="parcel-notice">
+              <h3 class="parcel-notice__title">파속 면책이란?</h3>
+              <ul class="parcel-notice__list">
+              <li>배송 중 포장부실로 인한 상품의 고장/파손에 대하여 택배사의 배상 책임을 묻지 않겠다는 고객확인</li>
+              </ul>
+            </div>
+            <div class="btn-area btn-area--row">
+              <a href="javascript:void(0);" class="btn btn--outline">동의하지 않음</a>
+              <a href="./indexCost.html" class="btn btn--primary">동의</a>
+            </div>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexProductType.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>

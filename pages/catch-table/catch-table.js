@@ -158,7 +158,7 @@ function initPeopleCount() {
   const nextBtn = document.getElementById("userNextBtn");
   if (!boxes.length || !nextCount) return;
 
-  const NEXT_PAGE = "/pages/catch-table/indexUserCheck.html";
+  const NEXT_PAGE = "./indexUserCheck.html";
   const MAX_COUNT = 10; // 성인 / 유아 각각 최대 인원
   const MIN_COUNT = { adult: 1, child: 0 }; // 성인은 최소 1명
 
@@ -227,7 +227,7 @@ function initKakaoMsg() {
   const secEl = document.getElementById("redirectSec");
   if (!secEl) return;
 
-  const NEXT_PAGE = "/pages/catch-table/indexCompleteExp.html";
+  const NEXT_PAGE = "./indexCompleteExp.html";
   const REDIRECT_SEC = 5;
 
   const noEl = document.getElementById("waitingNo");

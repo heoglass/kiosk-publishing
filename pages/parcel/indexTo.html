@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexTo">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexTo">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">받는 분 정보를 입력해주세요</h2>
+            </div>
+            <form class="parcel-form" action="#" autocomplete="off">
+              <div class="parcel-form__row">
+                <label for="toName" class="parcel-form__label">성명</label>
+                <input type="text" id="toName" class="parcel-form__input" placeholder="보내시는 분 성명을 입력해주세요" inputmode="none" />
+              </div>
+              <div class="parcel-form__row">
+                <label for="toPhone" class="parcel-form__label">휴대전화번호</label>
+                <input type="tel" id="toPhone" class="parcel-form__input" placeholder="휴대폰 번호를 입력해주세요" inputmode="none" />
+              </div>
+              <div class="parcel-form__row">
+                <label for="toAddr" class="parcel-form__label">보내는 분 주소</label>
+                <input type="text" id="toAddr" class="parcel-form__input" placeholder="주소" inputmode="none" />
+              </div>
+              <div class="parcel-form__row parcel-form__row--sub">
+                <label for="toAddrDetail" class="blind">상세주소</label>
+                <input type="text" id="toAddrDetail" class="parcel-form__input" placeholder="상세주소을 입력해주세요" inputmode="none" />
+              </div>
+            </form>
+            <div class="btn-area">
+              <a href="./indexParcelChk.html" class="btn disabled-color">다음</a>
+            </div>
+            <div class="keyboard" role="group" aria-label="화상 키보드">
+              <div class="keyboard__row keyboard__row--1">
+                <button type="button" class="keyboard__key" data-key="1">1</button>
+                <button type="button" class="keyboard__key" data-key="2">2</button>
+                <button type="button" class="keyboard__key" data-key="3">3</button>
+                <button type="button" class="keyboard__key" data-key="4">4</button>
+                <button type="button" class="keyboard__key" data-key="5">5</button>
+                <button type="button" class="keyboard__key" data-key="6">6</button>
+                <button type="button" class="keyboard__key" data-key="7">7</button>
+                <button type="button" class="keyboard__key" data-key="8">8</button>
+                <button type="button" class="keyboard__key" data-key="9">9</button>
+                <button type="button" class="keyboard__key" data-key="0">0</button>
+                <button type="button" class="keyboard__key" data-key="=">=</button>
+              </div>
+              <div class="keyboard__row keyboard__row--2">
+                <button type="button" class="keyboard__key" data-key="ㅂ">ㅂ</button>
+                <button type="button" class="keyboard__key" data-key="ㅈ">ㅈ</button>
+                <button type="button" class="keyboard__key" data-key="ㄷ">ㄷ</button>
+                <button type="button" class="keyboard__key" data-key="ㄱ">ㄱ</button>
+                <button type="button" class="keyboard__key" data-key="ㅅ">ㅅ</button>
+                <button type="button" class="keyboard__key" data-key="ㅛ">ㅛ</button>
+                <button type="button" class="keyboard__key" data-key="ㅕ">ㅕ</button>
+                <button type="button" class="keyboard__key" data-key="ㅑ">ㅑ</button>
+                <button type="button" class="keyboard__key" data-key="ㅐ">ㅐ</button>
+                <button type="button" class="keyboard__key" data-key="ㅔ">ㅔ</button>
+              </div>
+              <div class="keyboard__row keyboard__row--3">
+                <button type="button" class="keyboard__key" data-key="ㅁ">ㅁ</button>
+                <button type="button" class="keyboard__key" data-key="ㄴ">ㄴ</button>
+                <button type="button" class="keyboard__key" data-key="ㅇ">ㅇ</button>
+                <button type="button" class="keyboard__key" data-key="ㄹ">ㄹ</button>
+                <button type="button" class="keyboard__key" data-key="ㅎ">ㅎ</button>
+                <button type="button" class="keyboard__key" data-key="ㅗ">ㅗ</button>
+                <button type="button" class="keyboard__key" data-key="ㅓ">ㅓ</button>
+                <button type="button" class="keyboard__key" data-key="ㅏ">ㅏ</button>
+                <button type="button" class="keyboard__key" data-key="ㅣ">ㅣ</button>
+              </div>
+              <div class="keyboard__row keyboard__row--4">
+                <button type="button" class="keyboard__key" data-key="ㅋ">ㅋ</button>
+                <button type="button" class="keyboard__key" data-key="ㅌ">ㅌ</button>
+                <button type="button" class="keyboard__key" data-key="ㅊ">ㅊ</button>
+                <button type="button" class="keyboard__key" data-key="ㅍ">ㅍ</button>
+                <button type="button" class="keyboard__key" data-key="ㅠ">ㅠ</button>
+                <button type="button" class="keyboard__key" data-key="ㅜ">ㅜ</button>
+                <button type="button" class="keyboard__key" data-key="ㅡ">ㅡ</button>
+                <button type="button" class="keyboard__key" data-key=",">,</button>
+                <button type="button" class="keyboard__key" data-key=".">.</button>
+                <button type="button" class="keyboard__key keyboard__key--func keyboard__key--back" data-key="backspace"><span class="blind">지우기</span></button>
+              </div>
+              <div class="keyboard__row keyboard__row--func">
+                <button type="button" class="keyboard__key keyboard__key--func keyboard__key--shift" data-key="shift">쌍자음</button>
+                <button type="button" class="keyboard__key keyboard__key--func keyboard__key--lang" data-key="lang"><span class="blind">한/영 전환</span>영</button>
+                <button type="button" class="keyboard__key keyboard__key--func keyboard__key--space" data-key="space">띄움</button>
+              </div>
+            </div>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexFrom.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexWeight">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexWeight">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">저울 위에<br />택배 상자를 올려 무게를<br />측정해주세요</h2>
+            </div>
+            <div class="weight-gauge" role="status" aria-live="polite">
+              <span class="weight-gauge__label">중량</span>
+              <strong class="weight-gauge__value" id="weightValue">0g</strong>
+            </div>
+            <div class="parcel-notice">
+              <h3 class="parcel-notice__title">유의사항</h3>
+              <ul class="parcel-notice__list">
+              <li>최대 5kg까지 접수가 가능합니다.</li>
+              <li>중량이 허위로 측정될 경우 수거가 거부될 수 있으며, 사고 발생 시 보상 대상에서 제외 됩니다.</li>
+              </ul>
+            </div>
+            <div class="btn-area btn-area--row">
+              <button type="button" id="weightRetryBtn" class="btn btn--outline"><img src="../../shared/images/icon/arrow-left-w.png" alt="" class="btn__icon" />다시 측정할래요</button>
+              <a href="./indexProductType.html" class="btn disabled-color">다음</a>
+            </div>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexServiceType.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>

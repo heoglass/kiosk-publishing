@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexServiceType">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexServiceType">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">원하시는 서비스를 선택해주세요</h2>
+            </div>
+            <ul class="option-list">
+              <li class="option-list__item">
+                <a href="./indexWeight.html" class="option-card is-selected">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="국내택배" class="option-card__img" />
+                  <span class="option-card__text">
+                    <strong class="option-card__title">국내택배</strong>
+                    <span class="option-card__desc">원하는 주소로 배송</span>
+                  </span>
+                </a>
+              </li>
+              <li class="option-list__item">
+                <a href="./indexWeight.html" class="option-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="내일보장택배" class="option-card__img" />
+                  <span class="option-card__text">
+                    <strong class="option-card__title">내일보장택배</strong>
+                    <span class="option-card__desc">18시이내 접수 시 내일 도착보장</span>
+                  </span>
+                </a>
+              </li>
+              <li class="option-list__item">
+                <a href="./indexWeight.html" class="option-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="반값택배" class="option-card__img" />
+                  <span class="option-card__text">
+                    <strong class="option-card__title">반값택배</strong>
+                    <span class="option-card__desc">편의점으로 보내요(3일 내 도착 보장)</span>
+                  </span>
+                </a>
+              </li>
+              <li class="option-list__item">
+                <a href="./indexWeight.html" class="option-card">
+                  <img src="../../shared/images/parcel/sample_img.png" alt="편의점택배" class="option-card__img" />
+                  <span class="option-card__text">
+                    <strong class="option-card__title">국제택배</strong>
+                    <span class="option-card__desc">국내에서 해외로 배송</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexMemberType.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="푸터 뒤로가기" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>

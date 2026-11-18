@@ -1,0 +1,702 @@
+@charset "UTF-8";
+:root {
+    --parcel-primary-color: #2D1A6E;
+    --parcel-primaryBtn-color: #491ED7;
+    --parcel-nagative-color: #555555;
+    --parcel-disabled-color: #727272;
+    --parcel-box-shadow: box-shadow: 0px 0px 25px 0px rgba(73, 30, 215, 0.64);
+}
+
+html, body {
+  margin: 0 auto;
+}
+
+body#parcelBody {
+    min-width: 1080px;
+}
+#parcelBody .d-none {
+  display: none!important;
+}
+button.disabled-color,
+a.disabled-color,
+.disabled-color {
+  background-color: var(--parcel-disabled-color);
+  color: #fff;
+}
+
+#catchTableBody .table-screen-size {
+    width: 1080px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-color: #FAFAFA;
+}
+#parcelBody #category-header-vertical.parcel__header {
+  background-color: var(--parcel-primary-color);
+    padding: 30px 60px;
+    height: 139px;
+}
+#parcelBody #category-header-vertical.parcel__header .header-sound {
+  width: 80px;
+  height: 80px;
+}
+
+/* =====================================================================
+   편의점 택배 키오스크 (1080 x 1920 고정형)
+   - 아래부터 신규 작성 / 모든 셀렉터는 #parcelBody 하위로 한정
+   ===================================================================== */
+
+/* ---------- 공통 레이아웃 ---------- */
+body#parcelBody {
+  background-color: #FAFAFA;
+  color: #000;
+  font-family: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  letter-spacing: -0.02em;
+}
+#parcelBody .parcel-main {
+  width: 1080px;
+  height: 1920px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: #FAFAFA;
+}
+#parcelBody .parcel-main,
+#parcelBody .parcel-main *,
+#parcelBody .parcel-main *::before,
+#parcelBody .parcel-main *::after { box-sizing: border-box; }
+#parcelBody .parcel-main a { line-height: 60px; text-decoration: none; }
+#parcelBody .parcel-main .header-left > a { line-height: 1; }
+#parcelBody .parcel-main button { font-family: inherit; cursor: pointer; }
+#parcelBody .parcel__header { flex: none; }
+
+/* 본문 영역 : 헤더(139) ~ 푸터(152) 사이 */
+#parcelBody .parcel__content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 80px 60px 0px;
+  /* 내용이 영역보다 길면 세로 스크롤 (스크롤바는 숨김) */
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#parcelBody .parcel__content::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* 하단 이전 바 */
+#parcelBody .parcel__footer {
+  flex: none;
+  height: 152px;
+  background-color: var(--parcel-primary-color);
+  display: flex;
+  align-items: center;
+  padding-left: 77px;
+}
+#parcelBody .parcel__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff!important;
+  font-size: 40px;
+  font-weight: 700;
+}
+#parcelBody .parcel__back-icon { width: 60px; height: auto; }
+
+/* 스크린리더 전용 */
+#parcelBody .blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- 단계 표시 ---------- */
+#parcelBody .parcel-step {
+  flex: none;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 43px;
+  margin: 0 22px;
+  padding: 0;
+  list-style: none;
+}
+#parcelBody .parcel-step::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  background-color: #E4DDFB;
+}
+#parcelBody .parcel-step__item {
+  position: relative;
+  z-index: 1;
+  width: 43px;
+  height: 43px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 3px solid var(--parcel-primaryBtn-color);
+}
+#parcelBody .parcel-step__item.is-active,
+#parcelBody .parcel-step__item.btn-active,
+#parcelBody .btn-active {
+  background-color: var(--parcel-primaryBtn-color);
+}
+
+/* ---------- 타이틀 ---------- */
+#parcelBody .parcel-title {
+  flex: none;
+  margin: 203px 0 72px;
+  text-align: center;
+}
+#parcelBody .parcel-title__main {
+  margin: 0;
+  font-size: 60px;
+  line-height: 130%;
+  font-weight: 700;
+}
+#parcelBody .parcel-title__sub {
+  margin: 24px 0 0;
+  /* padding: 0 44px; */
+  font-size: 44px;
+  line-height: 58px;
+  font-weight: 500;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* ---------- 유의사항 박스 ---------- */
+#parcelBody .parcel-notice {
+  flex: none;
+  padding: 32px 40px;
+  list-style: disc;
+  box-sizing: border-box;
+  border-radius: 32px;
+  background-color: #f5f5f5;
+  color: var(--parcel-nagative-color);
+}
+#parcelBody .parcel-notice__title {
+  margin: 0 0 28px;
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 700;
+  color: #000;
+}
+#parcelBody .parcel-notice__list {
+  margin: 0;
+  padding: 0;
+  font-size: 38px;
+  line-height: 50px;
+  color: #444;
+}
+
+/* ---------- 버튼 ---------- */
+#parcelBody .btn-area {
+  display: flex;
+  flex-direction: column;
+}
+#parcelBody .btn-area--row { flex-direction: row; gap: 30px; }
+#parcelBody .btn-area--row .btn { flex: 1; height: 140px; }
+#parcelBody .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 130px;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+}
+#parcelBody .btn:active { opacity: .85; }
+#parcelBody .btn--primary { background-color: var(--parcel-primaryBtn-color); }
+#parcelBody .btn--negative { background-color: var(--parcel-nagative-color); }
+#parcelBody .btn--outline {
+  background-color: #fff;
+  border: 3px solid var(--parcel-nagative-color);
+  color: var(--parcel-nagative-color);
+}
+#parcelBody .btn--outline-dark {
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+}
+#parcelBody .btn__icon { height: 40px; width: auto; margin-right: 16px; }
+
+/* ---------- 선택 카드 (회원 / 서비스) ---------- */
+#parcelBody .option-list {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 61px;
+  margin: 0 110px;
+  padding: 0;
+  list-style: none;
+}
+#parcelBody .option-card {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 253px;
+  padding: 0 52px;
+  border: 2px solid #000;
+  border-radius: 60px;
+  background-color: #fff;
+}
+#parcelBody .option-card:active { background-color: #F1EEFC; }
+#parcelBody .option-card__img { width: 155px; height: auto; flex: none; }
+#parcelBody .option-card__text { display: flex; flex-direction: column; margin-left: 42px; }
+#parcelBody .option-card__title { font-size: 56px; line-height: 70px; font-weight: 700; }
+#parcelBody .option-card__desc { font-size: 36px; line-height: 50px; font-weight: 500; }
+
+/* ---------- 홈 (접수 방식) ---------- */
+#parcelBody .receipt-select {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+#parcelBody .receipt-card {
+    width: calc(100% / 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 451px;
+  padding: 60px 0;
+  border: 2px solid #000;
+  border-radius: 40px;
+  background-color: #fff;
+}
+#parcelBody .receipt-card.is-selected,
+#parcelBody .option-card.is-selected,
+#parcelBody *.is-selected {
+  border: 4px solid var(--parcel-primaryBtn-color);
+  box-shadow: 0 0 25px 0 rgba(73, 30, 215, 0.4);
+  color: var(--parcel-primaryBtn-color);
+}
+#parcelBody .receipt-card__icon { height: 160px; width: 160px; margin-bottom: 43px; }
+#parcelBody .receipt-card__title { font-size: 60px; line-height: 70px; font-weight: 600; white-space: nowrap; }
+#parcelBody .receipt-card__desc { font-size: 38px; line-height: 50px; font-weight: 500; white-space: nowrap; }
+#parcelBody .btn--invoice {
+  flex: none;
+  height: 179px;
+  font-size: 52px;
+}
+#parcelBody .deadline { flex: none; margin-top: 39px; text-align: center; }
+#parcelBody .deadline__title { margin: 0; font-size: 48px; line-height: 60px; font-weight: 700; }
+#parcelBody .deadline__time {
+  margin: 12px 0 0;
+  font-size: 48px;
+  line-height: 70px;
+  font-weight: 700;
+  color: var(--parcel-primaryBtn-color);
+}
+
+/* ---------- 중량 측정 ---------- */
+#parcelBody .weight-gauge {
+  cursor: pointer;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 460px;
+  height: 460px;
+  margin: 0 auto 66px;
+  border: 18px solid var(--parcel-primaryBtn-color);
+  border-radius: 50%;
+  background-color: #FAFAFA;
+  box-shadow: 0 0 40px 0 rgba(73, 30, 215, 0.35);
+}
+#parcelBody .weight-gauge__label { font-size: 40px; line-height: 50px; font-weight: 700; }
+#parcelBody .weight-gauge__value { font-size: 70px; line-height: 90px; font-weight: 700; }
+
+/* ---------- 물품 유형 ---------- */
+#parcelBody .product-grid {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-auto-rows: 362px;
+  column-gap: 30px;
+  row-gap: 28px;
+  margin-bottom: 40px;
+  padding: 0;
+  list-style: none;
+}
+#parcelBody .product-grid__item {
+  border-radius: 32px;
+  white-space: nowrap;
+  box-shadow: 4px 4px 29.4px 0px rgba(0, 0, 0, 0.25);
+}
+#parcelBody .product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: auto;
+  padding: 40px 45px;
+  border-radius: 32px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
+  white-space: nowrap;
+}
+#parcelBody .product-card:active { background-color: #F1EEFC; }
+#parcelBody .product-card__img { width: 180px; height: auto; }
+#parcelBody .product-card__name { margin-top: 53px; font-size: 40px; line-height: 50px; font-weight: 500; }
+
+/* ---------- 파손 면책 동의 ---------- */
+#parcelBody .agree-block { margin: 0; }
+#parcelBody .agree-block + .agree-block { margin-top: 50px; }
+#parcelBody .agree-block__title {
+  margin: 0 0 15px;
+  padding-left: 17px;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 700;
+}
+#parcelBody .agree-block__sub { font-size: 30px; font-weight: 500; margin-left: 8px; }
+#parcelBody .pack-card {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 178px;
+  padding: 0 53px;
+  border: 2px solid #000;
+  border-radius: 40px;
+  background-color: #fff;
+}
+#parcelBody .pack-card__img { width: 150px; height: auto; flex: none; }
+#parcelBody .pack-card__text { display: flex; flex-direction: column; margin-left: 33px; }
+#parcelBody .pack-card__title { font-size: 44px; line-height: 56px; font-weight: 700; }
+#parcelBody .pack-card__desc { font-size: 36px; line-height: 50px; font-weight: 500; }
+#parcelBody .deny-list {
+  display: grid;
+  grid-template-columns: repeat(4, 199px);
+  column-gap: 48px;
+  padding: 0;
+  list-style: none;
+}
+#parcelBody .deny-list__item { display: flex; flex-direction: column; align-items: center; }
+#parcelBody .deny-list__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 199px;
+  height: 199px;
+  border: 2px solid #000;
+  border-radius: 40px;
+  background-color: #fff;
+}
+#parcelBody .deny-list__img img { max-width: 70%; max-height: 70%; }
+#parcelBody .deny-list__name { margin-top: 14px; font-size: 36px; line-height: 50px; font-weight: 500; white-space: nowrap; }
+
+/* ---------- 물품가액 입력 ---------- */
+#parcelBody .amount-input {
+  flex: none;
+  position: relative;
+  box-sizing: border-box;
+  height: 128px;
+  border: 3px solid var(--parcel-primaryBtn-color);
+  border-radius: 25px;
+  background-color: #fff;
+  margin-bottom: 40px
+}
+#parcelBody .amount-input__field {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0 158px 0 40px;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  font-family: inherit;
+  font-size: 54px;
+  font-weight: 700;
+  text-align: right;
+}
+#parcelBody .amount-input__unit {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 54px;
+  font-weight: 700;
+  color: var(--parcel-primaryBtn-color);
+}
+#parcelBody .keypad {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 25px;
+  row-gap: 20px;
+  margin-bottom: 147px;
+}
+#parcelBody .keypad__key {
+  height: 130px;
+  border: 2px solid var(--parcel-nagative-color);
+  border-radius: 25px;
+  background-color: #fff;
+  font-size: 48px;
+  font-weight: 600;
+  color: #000;
+}
+#parcelBody .keypad__key:active { background-color: #F1EEFC; }
+#parcelBody .keypad__key--func { font-size: 46px; }
+
+/* ---------- 보내는 분 / 받는 분 입력 ---------- */
+#parcelBody .parcel-form { flex: none; }
+#parcelBody .parcel-form__row {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  margin-bottom: 22px;
+}
+#parcelBody .parcel-form__row:last-child { margin-bottom: 0; }
+#parcelBody .parcel-form__row--sub { padding-left: 248px; }
+#parcelBody .parcel-form__label {
+  flex: none;
+  width: 227px;
+  text-align: right;
+  font-size: 36px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+#parcelBody .parcel-form__input {
+  flex: 1;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 98px;
+  padding: 0 43px;
+  border: 3px solid var(--parcel-primaryBtn-color);
+  border-radius: 25px;
+  background-color: #fff;
+  outline: 0;
+  font-family: inherit;
+  font-size: 38px;
+  color: #000;
+}
+#parcelBody .parcel-form__input::placeholder { color: #000; opacity: 1; }
+
+/* 화상 키보드 */
+#parcelBody .keyboard {
+  flex: none;
+  box-sizing: border-box;
+  height: 383px;
+  margin-top: auto;
+  padding-top: 24px;
+  background-color: #fff;
+}
+#parcelBody .keyboard__row { display: flex; justify-content: center; gap: 13px; margin-bottom: 4px; }
+#parcelBody .keyboard__row--func { gap: 22px; margin: 10px 0 0; }
+#parcelBody .keyboard__key {
+  width: 78px;
+  height: 58px;
+  padding: 0;
+  border: 1px solid #CFCFCF;
+  border-radius: 14px;
+  background: linear-gradient(#F6F6F6, #E0E0E0);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.18);
+  font-size: 38px;
+  font-weight: 500;
+  color: #111;
+}
+#parcelBody .keyboard__key:active { background: #D4CCF5; }
+#parcelBody .keyboard__key--func {
+  border-color: var(--parcel-nagative-color);
+  background: var(--parcel-nagative-color);
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+#parcelBody .keyboard__row--func .keyboard__key { height: 63px; }
+#parcelBody .keyboard__key--shift { width: 169px; }
+#parcelBody .keyboard__key--lang { width: 72px; }
+#parcelBody .keyboard__key--space { width: 572px; }
+
+/* ---------- 정보 확인 / 결제 ---------- */
+#parcelBody .check-box {
+  flex: none;
+  box-sizing: border-box;
+  padding: 36px 22px 36px 44px;
+  border: 3px solid var(--parcel-primaryBtn-color);
+  border-radius: 25px;
+  background-color: #fff;
+}
+#parcelBody .check-box--summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 115px;
+  padding: 0 44px;
+  font-size: 36px;
+}
+#parcelBody .check-box dl { margin: 0; display: flex; gap: 8px; }
+#parcelBody .check-box dt { font-weight: 500; }
+#parcelBody .check-box dd { margin: 0; font-weight: 700; }
+#parcelBody .check-box__name { margin: 0; font-size: 40px; line-height: 1; font-weight: 700;  margin-bottom: 16px; }
+#parcelBody .check-box__addr { margin: 0; font-size: 38px; line-height: 1; font-weight: 600; }
+#parcelBody .check-title {
+  flex: none;
+  margin: 23px 0 17px;
+  padding-left: 2px;
+  font-size: 36px;
+  line-height: 50px;
+  font-weight: 700;
+}
+#parcelBody .check-box--summary + .check-title { margin-top: 60px; }
+#parcelBody .check-box--pay { padding: 25px 44px; }
+#parcelBody .check-box--pay .check-box__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  font-size: 42px;
+  font-weight: 700;
+}
+#parcelBody .check-box--pay dl.check-box__row { gap: 0; }
+#parcelBody .check-box__price { color: #FF0000; font-size: 48px; }
+#parcelBody .pay-type { display: flex; gap: 24px; }
+#parcelBody .pay-type__item input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+#parcelBody .pay-type__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 166px;
+  height: 65px;
+  border-radius: 33px;
+  background-color: var(--parcel-nagative-color);
+  font-size: 34px;
+  font-weight: 700;
+  color: #fff;
+}
+#parcelBody .pay-type__item input:checked + .pay-type__text { background-color: var(--parcel-primaryBtn-color); }
+#parcelBody .pay-type__item input:checked + .pay-type__text::before { content: "\2713"; margin-right: 10px; font-size: 44px; }
+#parcelBody .agree-check {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 40px;
+  font-size: 30px;
+  line-height: 40px;
+}
+.agree-check__text { white-space: nowrap; }
+#parcelBody .agree-check input { width: 32px; height: 32px; margin: 0; accent-color: #D60000; }
+
+/* ---------- 운송장 출력 ---------- */
+#parcelBody .invoice-preview { width: 100%; }
+#parcelBody .invoice-preview__img { display: block; width: 1015px; height: auto; }
+#parcelBody .btn--reprint { flex: none; margin: 85px 0; }
+
+/* ---------- 체험 완료 ---------- */
+#parcelBody .complete-box {
+  flex: none;
+  box-sizing: border-box;
+  height: 453px;
+  padding-top: 110px;
+  border-radius: 32px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+#parcelBody .complete-box__title { margin: 0; font-size: 64px; line-height: 90px; font-weight: 700; }
+#parcelBody .complete-box__desc { margin: 22px 0 0; font-size: 42px; line-height: 57px; font-weight: 500; color: #444; }
+#parcelBody .complete-visual { flex: none; display: flex; justify-content: center; }
+#parcelBody .complete-visual__img { height: 500px; width: auto; }
+#parcelBody .parcel__content--indexExpComplete .btn-area { 
+    /* position: absolute;
+    bottom: 60px;
+    padding: 0 60px;
+    left: 0;
+    width: 100%; */
+    gap: 40px;
+    margin-top: 80px;
+  }
+
+/* ---------- 화면별 위치 보정 (시안 기준) ---------- */
+#parcelBody .parcel__content--index { padding-top: 328px; padding-bottom: 60px; padding: 328px 110px 60px; }
+#parcelBody .parcel__content--index .parcel-title { margin-top: 0; }
+#parcelBody .parcel__content--indexExpComplete { justify-content: space-between; padding-top: 81px; padding-bottom: 60px; }
+
+#parcelBody .parcel__content--indexServiceType .parcel-title { margin-bottom: 42px; }
+#parcelBody .parcel__content--indexServiceType .option-list { gap: 41px; }
+#parcelBody .parcel__content--indexServiceType .option-card { height: 213px; }
+
+#parcelBody .parcel__content--indexProductType .parcel-title { margin-top: 225px; margin-bottom: 40px; }
+
+#parcelBody .parcel__content--indexWeight .parcel-title { margin-top: 128px; margin-bottom: 70px; }
+#parcelBody .parcel__content--indexWeight .parcel-notice { margin-bottom: 61px; }
+
+#parcelBody .parcel__content--indexAgree { padding-top: 70px; }
+#parcelBody .parcel__content--indexAgree .parcel-title { margin: 54px 0 40px; }
+#parcelBody .parcel__content--indexAgree .parcel-notice { margin: 49px 0 40px; }
+
+#parcelBody .parcel__content--indexFrom,
+#parcelBody .parcel__content--indexTo { padding-bottom: 0; }
+#parcelBody .parcel__content--indexFrom .parcel-title,
+#parcelBody .parcel__content--indexTo .parcel-title { margin-bottom: 97px; }
+#parcelBody .parcel__content--indexFrom .btn-area,
+#parcelBody .parcel__content--indexTo .btn-area { margin-top: 61px; }
+#parcelBody .parcel__content--indexFrom .keyboard,
+#parcelBody .parcel__content--indexTo .keyboard { margin-top: auto; }
+
+#parcelBody .parcel__content--indexParcelChk { padding-top: 55px; padding-bottom: 60px; }
+#parcelBody .parcel__content--indexParcelChk .parcel-title { margin-top: 66px; margin-bottom: 40px; }
+
+#parcelBody .parcel__content--indexParcelView { padding-top: 72px; padding-bottom: 88px; }
+#parcelBody .parcel__content--indexParcelView .parcel-title { margin-top: 49px; margin-bottom: 62px; }
+
+
+/* 운송장출력 모달 */
+#parcelBody .modal-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#parcelBody .modal-dim[hidden] { display: none; }
+#parcelBody .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 840px;
+  height: 664px;
+  padding-top: 80px;
+  border-radius: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+#parcelBody .modal__title { margin: 0; font-size: 60px; line-height: 80px; font-weight: 700; }
+#parcelBody .modal__body { display: flex; flex-direction: column; align-items: center; }
+#parcelBody .modal .spinner { margin-top: 80px; }    /* 스피너 크기는 만들어 두신 값 사용 */
+#parcelBody .modal__desc { margin: 0 auto; font-size: 44px; line-height: 64px; font-weight: 500; }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexCost">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexCost">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">물품가액을 입력해주세요</h2>
+            <p class="parcel-title__sub">50만원 초과 상품은 접수가 불가능합니다.</p>
+            </div>
+            <div class="amount-input">
+              <label for="costInput" class="blind">물품가액(만원)</label>
+              <input type="text" id="costInput" class="amount-input__field" inputmode="none" readonly />
+              <span class="amount-input__unit">만원</span>
+            </div>
+            <div class="keypad" role="group" aria-label="숫자 키패드">
+                <button type="button" class="keypad__key" data-key="1">1</button>
+                <button type="button" class="keypad__key" data-key="2">2</button>
+                <button type="button" class="keypad__key" data-key="3">3</button>
+                <button type="button" class="keypad__key" data-key="4">4</button>
+                <button type="button" class="keypad__key" data-key="5">5</button>
+                <button type="button" class="keypad__key" data-key="6">6</button>
+                <button type="button" class="keypad__key" data-key="7">7</button>
+                <button type="button" class="keypad__key" data-key="8">8</button>
+                <button type="button" class="keypad__key" data-key="9">9</button>
+                <span class="keypad__blank" aria-hidden="true"></span>
+                <button type="button" class="keypad__key" data-key="0">0</button>
+                <button type="button" class="keypad__key keypad__key--func" data-key="clear">지우기</button>
+            </div>
+            <div class="btn-area">
+              <a href="./indexFrom.html" class="btn disabled-color">다음</a>
+            </div>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexAgree.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>

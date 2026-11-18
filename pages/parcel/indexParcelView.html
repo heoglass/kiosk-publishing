@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>편의점 택배</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./percel.css" />
+    <script type="text/javascript" src="./percel.js"></script>
+  </head>
+  <body id="parcelBody" data-page="indexParcelView">
+    <main class="parcel-main kiosk-screen">
+        <!-- 세로형 공통헤더 -->
+        <header id="category-header-vertical" class="parcel__header">
+            <div class="header-left">
+              <a href="../../index.html" aria-label="처음으로">
+                <img
+                  src="../../shared/images/icon/icon-home.png"
+                  alt=""
+                  class="category-header-home"
+                />
+              </a>
+              <img
+                src="../../shared/images/icon/arrow-right-w.png"
+                alt=""
+                class="category-header-arrow-right"
+              />
+
+              <span id="header-title"></span>
+            </div>
+            <!-- <div class="header-right"> -->
+            <button
+              type="button"
+              class="header-sound-toggle"
+              aria-label="소리"
+              aria-pressed="true"
+              data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+            >
+              <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+            </button>
+            <!-- </div> -->
+        </header>
+
+        <section class="parcel__content parcel__content--indexParcelView">
+            <ol class="parcel-step" aria-label="진행 단계">
+              <li class="parcel-step__item is-active"><span class="blind">1단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">2단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">3단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">4단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">5단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">6단계</span></li>
+              <li class="parcel-step__item is-active"><span class="blind">7단계</span></li>
+              <li class="parcel-step__item is-active" aria-current="step"><span class="blind">8단계</span></li>
+            </ol>
+            <div class="parcel-title">
+              <h2 class="parcel-title__main">출력된 운송장을 상자에 붙여<br />점포 근무자에게 접수해주세요</h2>
+            <p class="parcel-title__sub">접수되지 않는 물품은 수거할 수 없습니다</p>
+            </div>
+            <figure class="invoice-preview">
+              <img src="../../shared/images/parcel/parcel_sample.png" alt="출력된 운송장 예시: 물품에 부착하는 부분과 고객 보관용 부분" class="invoice-preview__img" />
+            </figure>
+            <button type="button" id="reprintBtn" class="btn btn--outline btn--reprint">운송장 재출력하기</button>
+            <div class="btn-area btn-area--row">
+              <a href="./indexServiceType.html" class="btn btn--negative">추가 접수하기</a>
+              <a href="./indexExpComplete.html" class="btn btn--primary">종료하기</a>
+            </div>
+        </section>
+
+        <!-- 하단 이전 버튼 -->
+        <footer class="parcel__footer">
+            <a href="./indexParcelChk.html" id="backBtn" class="parcel__back">
+              <img src="../../shared/images/icon/arrow-left-w.png" alt="" class="parcel__back-icon" />
+              <span>이전</span>
+            </a>
+        </footer>
+    </main>
+
+  <script type="text/javascript" src="../../shared/js/localCommon.js" defer></script>
+  </body>
+</html>
