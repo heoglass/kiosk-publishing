@@ -106,7 +106,8 @@
   background: #fff;
   font-size: 52px;
   font-weight: 600;
-  padding: 40px 0;
+  padding: 42px 0;
+  min-height: 150px;
 }
 
 /* .hospital-document-button[aria-pressed="true"] {
@@ -186,9 +187,11 @@
 }
 
 /* hospital_03.html — 본인인증 */
-/* .hospital-auth-screen {
-  padding-top: 235px;
-} */
+.hospital-entry-screen.hospital-auth-screen {
+  /* padding-top: 235px; */
+  justify-content: start;
+  padding: 100px 60px 0;
+}
 
 .hospital-auth-card {
   display: flex;
@@ -269,7 +272,7 @@
   justify-content: space-between;
 }
 .hospital-issue-top {
-  padding-top: 100px;
+  padding: 200px 0 0;
 }
 
 .hospital-issue-screen .hospital-entry-title {
@@ -280,7 +283,7 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 14px 0;
-  margin: 24px 0 0;
+  /* margin: 24px 0 0; */
   padding: 40px 64px;
   border: 2px solid #000;
   border-radius: 32px;
