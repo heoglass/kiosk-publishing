@@ -157,19 +157,12 @@ body {
 }
 
 .service-spinner {
-  box-sizing: border-box;
   width: 100px;
   height: 100px;
   border: 12px solid #000;
-  border-right-color: #d9d9d9;
+  border-right-color: #dadada;
   border-radius: 50%;
-  animation: service-spin 800ms linear infinite;
-}
-
-@keyframes service-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  animation: spin 1s linear infinite;
 }
 
 /* civil-service_02 */

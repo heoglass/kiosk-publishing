@@ -883,16 +883,10 @@ body:has(.cinema-payment-modal[open]) {
   width: 100px;
   height: 100px;
   margin: 66px 0 74px;
-  border: 12px solid #111;
-  border-right-color: transparent;
+  border: 12px solid #000;
+  border-right-color: #dadada;
   border-radius: 50%;
-  animation: cinema-payment-spin 850ms linear infinite;
-}
-
-@keyframes cinema-payment-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  animation: spin 1s linear infinite;
 }
 
 .cinema-main.kiosk-screen.cinema-complete-page {

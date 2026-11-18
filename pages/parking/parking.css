@@ -55,8 +55,9 @@
 
   box-sizing: border-box;
   width: 100%;
+  height: 100%;
   padding: 130px 80px 60px;
-  background: #fff;
+  background: #fafafa;
 }
 
 .parking-input-image {
@@ -715,6 +716,10 @@ dialog.parking-payment-dialog {
   align-items: center;
   text-align: center;
   padding: 50px 80px 60px;
+}
+
+.parking-payment-dialog .spinner-modal-body {
+  padding: 100px 80px 60px;
 }
 
 /* .parking-payment-dialog .modal-body .modal-title, */

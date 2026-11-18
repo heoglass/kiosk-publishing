@@ -502,23 +502,12 @@ button.self-gas-card-guide-box {
   width: 96px;
   height: 96px;
   margin: 64px auto 0;
-  border: 12px solid #111;
-  border-right-color: #d2d2d2;
+  border: 12px solid #000;
+  border-right-color: #dadada;
   border-radius: 50%;
-  animation: self-gas-spin 0.8s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
-@keyframes self-gas-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .self-gas-spinner {
-    animation: none;
-  }
-}
 .self-gas-fueling-panel {
   display: grid;
   grid-template-rows: 82px 244px auto;

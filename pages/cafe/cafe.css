@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.cafe-main.kiosk-screen {
+  background: #fafafa;
+}
 
 .category-start-screen {
   height: 100%;

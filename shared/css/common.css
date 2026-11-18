@@ -1310,8 +1310,8 @@ body.modal-open {
   /* span 태그 사용 */
   width: 100px;
   height: 100px;
-  border: 6px solid #e0e0e0;
-  border-top: 6px solid #000000;
+  border: 12px solid #000;
+  border-right-color: #dadada;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 74px;

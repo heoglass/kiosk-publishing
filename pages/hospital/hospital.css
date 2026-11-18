@@ -704,9 +704,9 @@ body:has(.hospital-payment-modal[open]) {
   box-sizing: border-box;
   width: 100px;
   height: 100px;
-  margin: 0 0 54px;
-  border: 12px solid #111;
-  border-right-color: transparent;
+  margin: 25px 0 74px;
+  border: 12px solid #000;
+  border-right-color: #dadada;
   border-radius: 50%;
   animation: hospital-payment-spin 850ms linear infinite;
 }
