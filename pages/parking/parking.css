@@ -255,7 +255,7 @@
   width: 100%;
   height: 100%;
   padding: 120px 80px 80px;
-  background: #fff;
+  background: #fafafa;
 }
 .parking-result-top {
   width: 100%;
@@ -382,7 +382,7 @@
   width: 100%;
   height: 100%;
   padding: 114px 80px 80px;
-  background: #fff;
+  background: #fafafa;
   color: #000;
 }
 .parking-fee-vehicle {
@@ -629,15 +629,17 @@
   font-weight: var(--font-500-weight);
   text-align: center;
 } */
+.parking-main {
+  height: 100%;
+}
 .parking-main .parking-complete-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
   width: 100%;
-  min-height: calc(1920px - 154px);
+  min-height: calc(1920px - 141px);
   padding: 40px 80px 70px;
-  background: #fff;
+  background: #fafafa;
   color: #000;
 }
 
