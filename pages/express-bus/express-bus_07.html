@@ -37,13 +37,11 @@
               class="category-header-home"
             />
           </a>
-
           <img
             src="../../shared/images/icon/arrow-right-w.png"
             alt=""
             class="category-header-arrow-right"
           />
-
           <span id="header-title"></span>
         </div>
         <!-- <div class="header-right"> -->
@@ -72,35 +70,66 @@
               />
               <p>서울</p>
             </div>
-
             <div class="time-container">
               <p class="top-date">2026-11-09 월요일</p>
               <p class="top-time">현재 시간 <span>09:45</span></p>
             </div>
           </div>
-
           <div class="contents-center">
-            <div class="title-container page6">
+            <div class="title-container page7">
               <p class="page-title">이용해 주셔서 감사합니다</p>
               <p class="page-dexcription">
                 출력된 승차권을 확인하여 주십시오<br />
                 승차권에 문제에 있을 경우 창구로 문의하여 주십시오
               </p>
             </div>
-
-            <div class="bus-ticket-wrap">
-              <img
-                src="../../shared/images/express-bus/bus-ticket-completed.png"
-                alt="승차권"
-                class="bus-ticket-complete-image"
-              />
-
-              <p class="bus-ticket-location bus-ticket-departure">출발지</p>
-              <p class="bus-ticket-location bus-ticket-arrival">도착지</p>
+            <div
+              class="bus-ticket-wrap bus-ticket-paper"
+              role="group"
+              aria-label="시외/고속버스 승차권"
+            >
+              <div class="bus-ticket-paper-header">
+                <img
+                  src="../../shared/images/express-bus/icon-bus-w.png"
+                  alt=""
+                  class="bus-ticket-paper-icon"
+                />
+                <p>시외/고속버스 승차권</p>
+              </div>
+              <div class="bus-ticket-paper-body">
+                <div
+                  class="bus-ticket-paper-route"
+                  aria-label="출발지에서 도착지까지"
+                >
+                  <span class="bus-ticket-paper-departure">출발지</span>
+                  <span class="bus-ticket-paper-arrow" aria-hidden="true"
+                    >→</span
+                  >
+                  <span class="bus-ticket-paper-arrival">도착지</span>
+                </div>
+                <dl class="bus-ticket-paper-details">
+                  <div class="bus-ticket-paper-detail-row">
+                    <dt>출발일</dt>
+                    <dd>2025.03.12(토)</dd>
+                  </div>
+                  <div class="bus-ticket-paper-detail-row">
+                    <dt>출발시간</dt>
+                    <dd>12:00</dd>
+                  </div>
+                  <div class="bus-ticket-paper-detail-row">
+                    <dt>좌석</dt>
+                    <dd>54C</dd>
+                  </div>
+                </dl>
+                <img
+                  src="../../shared/images/express-bus/bus-ticket-barcode.png"
+                  alt="승차권 바코드"
+                  class="bus-ticket-paper-barcode"
+                />
+              </div>
             </div>
           </div>
         </div>
-
         <div class="contens-bottom">
           <div class="bottom-button-container">
             <a

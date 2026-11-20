@@ -102,6 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const terminalScroll = screen.querySelector(".bus-terminal-scroll");
     const emptyMessage = screen.querySelector(".bus-terminal-empty");
 
+    initRegionTabsMouseDrag(tabs);
+
     tabs.addEventListener("click", (event) => {
       const button = event.target.closest(".bus-region-button");
       if (!button || !tabs.contains(button)) return;
@@ -173,6 +175,99 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       window.location.href = returnUrl.href;
     });
+  }
+
+  // 02 화면 지역 탭: PC 마우스 드래그. 터치는 기존 네이티브 스크롤을 사용합니다.
+  function initRegionTabsMouseDrag(tabs) {
+    let drag = null;
+    let blockDragClick = false;
+    let blockClickTimer;
+    const dragThreshold = 6;
+
+    const resetClickBlock = () => {
+      window.clearTimeout(blockClickTimer);
+      blockDragClick = false;
+    };
+
+    tabs.addEventListener("pointerdown", (event) => {
+      if (event.isPrimary === false) return;
+      resetClickBlock();
+      if (
+        event.pointerType !== "mouse" ||
+        event.button !== 0 ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        event.altKey ||
+        tabs.scrollWidth <= tabs.clientWidth
+      )
+        return;
+
+      drag = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startScrollLeft: tabs.scrollLeft,
+        moved: false,
+      };
+    });
+
+    tabs.addEventListener("pointermove", (event) => {
+      if (!drag || event.pointerId !== drag.pointerId) return;
+      const distance = event.clientX - drag.startX;
+      if (!drag.moved && Math.abs(distance) < dragThreshold) return;
+
+      if (!drag.moved) {
+        drag.moved = true;
+        tabs.classList.add("is-dragging");
+        // 드래그가 시작된 뒤에만 캡처하여 일반 탭 클릭은 그대로 유지합니다.
+        tabs.setPointerCapture(event.pointerId);
+      }
+      event.preventDefault();
+      tabs.scrollLeft = drag.startScrollLeft - distance;
+    });
+
+    const endDrag = (event) => {
+      if (
+        !drag ||
+        (event.pointerId !== undefined && event.pointerId !== drag.pointerId)
+      )
+        return;
+      const finished = drag;
+      drag = null;
+      tabs.classList.remove("is-dragging");
+      if (tabs.hasPointerCapture(finished.pointerId)) {
+        tabs.releasePointerCapture(finished.pointerId);
+      }
+      if (finished.moved) {
+        // 마우스를 놓을 때 발생하는 클릭으로 지역이 바뀌지 않게 합니다.
+        blockDragClick = true;
+        window.clearTimeout(blockClickTimer);
+        blockClickTimer = window.setTimeout(resetClickBlock, 300);
+      }
+    };
+
+    tabs.addEventListener("pointerup", endDrag);
+    tabs.addEventListener("pointercancel", endDrag);
+    tabs.addEventListener("lostpointercapture", endDrag);
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("blur", endDrag);
+    window.addEventListener("pagehide", () => {
+      endDrag({});
+      resetClickBlock();
+    });
+
+    tabs.addEventListener(
+      "click",
+      (event) => {
+        if (!blockDragClick || event.detail === 0) return;
+        resetClickBlock();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      },
+      { capture: true }
+    );
+
+    tabs.addEventListener("dragstart", (event) => event.preventDefault());
   }
 
   // 04 화면: 좌석 선택, 승객 유형, 선택 목록과 결제 금액

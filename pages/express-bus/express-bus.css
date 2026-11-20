@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 #category-header.bus__header {
   background-color: #002164;
   color: #fff;
@@ -61,7 +60,6 @@
   font-size: 44px;
   font-weight: 700;
 }
-
 /* index.html 메인 화면 */
 .ticket-select-container {
   height: 100%;
@@ -122,7 +120,6 @@
   color: #fff;
   background-color: #9c0084;
 }
-
 /* express-bus_01.html 출발 / 도착 선택 화면 */
 .title-container {
   padding: 40px 0;
@@ -180,7 +177,6 @@
 /* .date-button-container .date-prev-button {
   background-color: #787878;
 } */
-
 .date-button-container .date-next-button {
   /* background-color: #002164; */
   justify-content: end;
@@ -197,7 +193,6 @@
   font-weight: 600;
   font-size: 44px;
 }
-
 /* 출발지, 도착지 선택 */
 .departure-arrival-container {
   display: flex;
@@ -306,7 +301,6 @@
   width: 80px;
   height: 80px;
 }
-
 .bus-region-tabs {
   display: flex;
   flex-wrap: nowrap;
@@ -318,12 +312,20 @@
   overscroll-behavior-x: contain;
   touch-action: pan-x;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
 }
-
+.bus-region-tabs .bus-region-button {
+  cursor: inherit;
+}
+.bus-region-tabs.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
 .bus-region-tabs::-webkit-scrollbar {
   display: none;
 }
-
 .bus-region-button {
   flex: 0 0 auto;
   box-sizing: border-box;
@@ -340,13 +342,11 @@
   white-space: nowrap;
   cursor: pointer;
 }
-
 .bus-region-button[aria-pressed="true"] {
   border-bottom-color: #9c0084;
   color: #9c0084;
   font-weight: 700;
 }
-
 .bus-terminal-scroll {
   flex: 1 1 0px;
   width: 100%;
@@ -358,18 +358,15 @@
   touch-action: pan-y;
   scrollbar-width: none;
 }
-
 .bus-terminal-scroll::-webkit-scrollbar {
   display: none;
 }
-
 .bus-terminal-grid {
   display: grid;
   grid-template-columns: 470px 470px;
   gap: 20px;
   align-content: start;
 }
-
 .bus-terminal-button {
   display: flex;
   align-items: center;
@@ -385,17 +382,14 @@
   font-family: inherit;
   text-align: left;
 }
-
 .bus-terminal-button[aria-pressed="true"] {
   border-color: #9c0084;
   background: #ffeafc;
   box-shadow: 0px 0px 18.3px 0px #9c0084;
 }
-
 .bus-terminal-button[hidden] {
   display: none;
 }
-
 .bus-terminal-badge {
   display: flex;
   flex: 0 0 88px;
@@ -412,42 +406,34 @@
   white-space: nowrap;
   padding: 20px;
 }
-
 .bus-terminal-badge-express {
   background: #0741ca;
 }
-
 .bus-terminal-badge-intercity {
   background: #21a719;
 }
-
 .bus-terminal-badge-both {
   background: linear-gradient(to right, #0741ca 44px, #21a719 44px);
 }
-
 .bus-terminal-badge-both span {
   flex: 0 0 44px;
   text-align: center;
 }
-
 .bus-terminal-name {
   min-width: 0;
   font-size: 44px;
   font-weight: 600;
 }
-
 .bus-terminal-empty {
   margin: 80px 0;
   font-size: 40px;
   line-height: 56px;
   text-align: center;
 }
-
 .bus-area-bottom {
   background: #fff;
   z-index: 1;
 }
-
 /* express-bus_03.html  */
 .screen-bus-time-select .departure-arrival-text-area {
   display: flex;
@@ -471,7 +457,6 @@
   border-bottom: 0;
 }
 /* express-bus_03.html 시간대별 버스 목록 추가 */
-
 .screen-bus-time-select .bus-time-scroll {
   flex: 1 1 0px;
   padding: 0 60px 40px;
@@ -481,17 +466,14 @@
   touch-action: pan-y;
   scrollbar-width: none;
 }
-
 .screen-bus-time-select .bus-time-scroll::-webkit-scrollbar {
   display: none;
 }
-
 .screen-bus-time-select .bus-time-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
 .screen-bus-time-select .bus-time-card {
   display: flex;
   align-items: stretch;
@@ -505,13 +487,11 @@
   color: #000;
   text-align: left;
 }
-
 .screen-bus-time-select .bus-time-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-
 .screen-bus-time-select .bus-time-type {
   box-sizing: border-box;
   display: flex;
@@ -528,18 +508,15 @@
   line-height: 40px;
   margin-bottom: 8px;
 }
-
 .screen-bus-time-select .bus-time-departure {
   font-size: 60px;
   font-weight: 600;
 }
-
 .screen-bus-time-select .bus-time-duration {
   margin-top: auto;
   font-size: 32px;
   font-weight: 600;
 }
-
 .screen-bus-time-select .bus-time-fare {
   display: flex;
   flex-direction: column;
@@ -547,18 +524,15 @@
   justify-content: flex-end;
   gap: 12px;
 }
-
 .screen-bus-time-select .bus-time-price {
   font-size: 60px;
   font-weight: 600;
 }
-
 .screen-bus-time-select .bus-time-tags {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .screen-bus-time-select .bus-time-grade,
 .screen-bus-time-select .bus-time-seats {
   display: flex;
@@ -569,24 +543,19 @@
   font-size: 32px;
   font-weight: 500;
 }
-
 .screen-bus-time-select .bus-time-grade {
   background-color: #e7e7e7;
   color: #9c0084;
 }
-
 .screen-bus-time-select .bus-time-seats {
   background-color: #f9d7d7;
   color: #ff2121;
 }
-
 .screen-bus-time-select > .contens-bottom.page3 {
   background-color: #fff;
   z-index: 1;
 }
-
 /* express-bus_04.html  */
-
 .title-container.select-seat-title {
   padding: 40px 0 20px;
   display: flex;
@@ -594,66 +563,54 @@
   row-gap: 20px;
   margin-bottom: 60px;
 }
-
 .selected-bus-info {
   padding: 0 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .selected-bus-info .info-left {
   display: flex;
   align-items: center;
   column-gap: 24px;
 }
-
 .selected-bus-info .info-left .departutr-arrival-info {
   display: flex;
   align-items: center;
   column-gap: 41.5px;
 }
-
 .selected-bus-info .info-left .departutr-arrival-info p {
   font-weight: 700;
   font-size: 44px;
 }
-
 .selected-bus-info .info-right {
   display: flex;
   align-items: center;
   column-gap: 14px;
 }
-
 .selected-bus-info .info-right .selected-time {
   font-weight: 600;
   font-size: 60px;
 }
-
 .selected-bus-info .info-right .selected-duration {
   font-weight: 600;
   font-size: 32px;
 }
-
 .bottom-button-container.two-btn {
   padding: 60px 0 0;
   display: flex;
   align-items: center;
   column-gap: 30px;
 }
-
 .bottom-button-container.two-btn .bottom-button.back {
   background-color: #fff;
   color: #000;
   border: 3px solid #ccc;
 }
-
 .bottom-button-container.two-btn .bottom-button.completed {
   background-color: #7e7e7e;
 }
-
 /* express-bus_04.html 좌석 선택 영역 추가 */
-
 .screen-bus-seat-select .bus-seat-layout {
   display: grid;
   flex: 1 1 0px;
@@ -661,11 +618,9 @@
   column-gap: 15px;
   padding: 0 60px;
 }
-
 .screen-bus-seat-select .bus-seat-layout [hidden] {
   display: none;
 }
-
 .screen-bus-seat-select .bus-seat-map {
   min-height: 0;
   overflow-x: hidden;
@@ -673,16 +628,13 @@
   overscroll-behavior-y: contain;
   scrollbar-width: none;
 }
-
 .screen-bus-seat-select .bus-seat-map::-webkit-scrollbar,
 .screen-bus-seat-select .bus-selected-seat-list::-webkit-scrollbar {
   display: none;
 }
-
 /* .screen-bus-seat-select .bus-seat-coach {
   width: 453px;
 } */
-
 .screen-bus-seat-select .bus-seat-coach-head {
   position: relative;
   height: 96px;
@@ -690,13 +642,11 @@
   font-size: 38px;
   font-weight: 500;
 }
-
 .screen-bus-seat-select .bus-seat-driver {
   position: absolute;
   top: 0;
   left: 0;
 }
-
 .screen-bus-seat-select .bus-seat-exit {
   position: absolute;
   top: 0;
@@ -704,13 +654,11 @@
   width: 218px;
   height: 90px;
 }
-
 .screen-bus-seat-select .bus-seat-exit > span {
   position: absolute;
   top: 0;
   right: 0;
 }
-
 .screen-bus-seat-select .bus-seat-exit::before {
   position: absolute;
   top: 14px;
@@ -722,7 +670,6 @@
   border-top-left-radius: 20px;
   content: "";
 }
-
 .screen-bus-seat-select .bus-seat-exit::after {
   position: absolute;
   top: 72px;
@@ -734,7 +681,6 @@
   transform: rotate(45deg);
   content: "";
 }
-
 .screen-bus-seat-select .bus-seat-grid {
   display: grid;
   grid-template-columns: repeat(5, 69px);
@@ -742,7 +688,6 @@
   column-gap: 27px;
   row-gap: 28px;
 }
-
 .screen-bus-seat-select .bus-seat {
   position: relative;
   display: block;
@@ -752,7 +697,6 @@
   color: #000;
   font-family: inherit;
 }
-
 .screen-bus-seat-select .bus-seat-image,
 .screen-bus-seat-select .bus-seat-legend-icon img {
   display: block;
@@ -760,7 +704,6 @@
   height: 64px;
   object-fit: contain;
 }
-
 .screen-bus-seat-select .bus-seat-number,
 .screen-bus-seat-select .bus-seat-legend-number {
   position: absolute;
@@ -775,18 +718,15 @@
   font-weight: 500;
   pointer-events: none;
 }
-
 .screen-bus-seat-select .bus-seat.is-selected .bus-seat-number {
   visibility: hidden;
 }
-
 .screen-bus-seat-select .bus-seat-side {
   display: flex;
   flex-direction: column;
   min-width: 0;
   min-height: 0;
 }
-
 .screen-bus-seat-select .bus-seat-legend {
   display: flex;
   flex: 0 0 auto;
@@ -795,7 +735,6 @@
   padding: 0 0 20px;
   margin: 0 0 20px;
 }
-
 .screen-bus-seat-select .bus-seat-legend-item {
   display: flex;
   flex-direction: column;
@@ -807,19 +746,16 @@
   font-weight: 500;
   text-align: center;
 }
-
 .screen-bus-seat-select .bus-seat-legend-icon {
   position: relative;
   display: block;
   width: 69px;
   height: 64px;
 }
-
 .screen-bus-seat-select .bus-seat-legend-sold img {
   opacity: 1;
   filter: none;
 }
-
 .screen-bus-seat-select .bus-seat-side-content {
   display: flex;
   flex: 1 1 0px;
@@ -827,7 +763,6 @@
   min-height: 0;
   padding: 0 0 24px;
 }
-
 .screen-bus-seat-select .bus-seat-prompt {
   display: flex;
   align-items: center;
@@ -851,7 +786,6 @@
   font-size: 44px;
   text-align: center;
 }
-
 .screen-bus-seat-select .bus-seat-notice {
   margin: auto 0 0;
   color: #000;
@@ -859,7 +793,6 @@
   font-weight: 500;
   text-align: center;
 }
-
 .screen-bus-seat-select .bus-passenger-picker {
   flex: 1 1 0px;
   min-height: 0;
@@ -869,20 +802,17 @@
   /* border: 1px solid blue; */
   padding: 0 15px;
 }
-
 .screen-bus-seat-select .bus-passenger-title {
   margin: 0 0 16px 24px;
   font-size: 38px;
   font-weight: 600;
   line-height: 44px;
 }
-
 .screen-bus-seat-select .bus-passenger-options {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 .screen-bus-seat-select .bus-passenger-button {
   display: block;
   height: 80px;
@@ -893,24 +823,20 @@
   font-weight: 600;
   text-align: center;
 }
-
 .screen-bus-seat-select .bus-passenger-button:active,
 .screen-bus-seat-select .bus-passenger-button.is-active {
   background-color: #ffeafc;
   box-shadow: 0px 0px 18.3px 0px #9c0084;
 }
-
 .screen-bus-seat-select .bus-passenger-cancel {
   border-color: #b2b2b2;
   background-color: #eee;
   color: #373737;
 }
-
 .screen-bus-seat-select .bus-passenger-cancel:active {
   background-color: #ddd;
   box-shadow: none;
 }
-
 .screen-bus-seat-select .bus-selected-seat-list {
   display: flex;
   flex: 1 1 0px;
@@ -925,7 +851,6 @@
   list-style: none;
   scrollbar-width: none;
 }
-
 .screen-bus-seat-select .bus-selected-seat-row {
   display: grid;
   flex: 0 0 78px;
@@ -940,11 +865,9 @@
   font-size: 28px;
   font-weight: 500;
 }
-
 .screen-bus-seat-select .bus-selected-seat-price {
   text-align: right;
 }
-
 .screen-bus-seat-select .bus-selected-seat-remove {
   display: flex;
   align-items: center;
@@ -957,7 +880,6 @@
   font-size: 28px;
   line-height: 30px;
 }
-
 .screen-bus-seat-select .bus-seat-status {
   flex: 0 0 auto;
   margin: 14px 0 0;
@@ -965,11 +887,9 @@
   font-size: 28px;
   font-weight: 600;
 }
-
 .screen-bus-seat-select .bus-seat-status:empty {
   display: none;
 }
-
 .screen-bus-seat-select .bus-seat-payment {
   display: flex;
   flex-direction: column;
@@ -978,7 +898,6 @@
   border-radius: 24px;
   background-color: #f2f2f2;
 }
-
 .screen-bus-seat-select .bus-seat-payment-title {
   font-size: 42px;
   font-weight: 700;
@@ -986,14 +905,12 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #d9d9d9;
 }
-
 .screen-bus-seat-select .bus-seat-payment-total {
   color: #e03400;
   font-size: 44px;
   font-weight: 700;
   text-align: right;
 }
-
 .screen-bus-seat-select .two-btn .bottom-button {
   display: flex;
   align-items: center;
@@ -1001,24 +918,20 @@
   height: 140px;
   min-height: 140px;
 }
-
 .screen-bus-seat-select .two-btn .bottom-button.completed:disabled {
   border: 0;
   background-color: #7e7e7e;
   cursor: default;
 }
-
 .screen-bus-seat-select .two-btn .bottom-button.completed:not(:disabled) {
   border: 0;
   background-color: #fe7507;
   cursor: pointer;
 }
-
 /* 판매된 좌석: HTML disabled + seat-disabled.png 사용 */
 .screen-bus-seat-select .bus-seat:disabled {
   cursor: default;
 }
-
 .screen-bus-seat-select .bus-seat:disabled .bus-seat-number {
   visibility: hidden;
 }
@@ -1026,7 +939,6 @@
 .screen-bus-seat-select .bus-seat-legend {
   border-bottom: 0;
 }
-
 /* 유형 선택 후 좌석 목록이 표시되면 테두리 추가 */
 .screen-bus-seat-select:has(.bus-selected-seat-list:not([hidden]))
   .bus-seat-legend {
@@ -1035,7 +947,6 @@
 .screen-bus-seat-select .bus-seat-prompt[hidden] {
   display: none;
 }
-
 /* express-bus_05.html */
 .screen-bus-card-insert .title-container {
   padding: 64px 0;
@@ -1048,7 +959,6 @@
   width: 342px;
   height: 342px;
   border-radius: 171px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1074,7 +984,6 @@
   line-height: 130%;
   text-align: center;
 }
-
 /* express-bus_05.html 결제 정보 / 카드 제거 안내 팝업 추가 */
 .screen-bus-card-insert .bus-payment-summary {
   /* flex: 0 0 auto; */
@@ -1086,14 +995,12 @@
   color: #000;
   width: 100%;
 }
-
 .screen-bus-card-insert .bus-payment-summary-top {
   display: flex;
   align-items: stretch;
   justify-content: space-between;
   gap: 32px;
 }
-
 .screen-bus-card-insert .bus-payment-route {
   position: relative;
   display: flex;
@@ -1104,7 +1011,6 @@
   min-height: 256px;
   padding-left: 54px;
 }
-
 .screen-bus-card-insert .bus-payment-route-line {
   position: absolute;
   top: 24px;
@@ -1113,7 +1019,6 @@
   width: 2px;
   background-color: #fe7507;
 }
-
 .screen-bus-card-insert .bus-payment-route-line::before,
 .screen-bus-card-insert .bus-payment-route-line::after {
   position: absolute;
@@ -1124,26 +1029,21 @@
   background-color: #fe7507;
   content: "";
 }
-
 .screen-bus-card-insert .bus-payment-route-line::before {
   top: -12px;
 }
-
 .screen-bus-card-insert .bus-payment-route-line::after {
   bottom: -12px;
 }
-
 .screen-bus-card-insert .bus-payment-terminal {
   font-size: 38px;
   font-weight: 700;
 }
-
 .screen-bus-card-insert .bus-payment-duration {
   font-size: 32px;
   font-weight: 500;
   white-space: nowrap;
 }
-
 .screen-bus-card-insert .bus-payment-details {
   display: flex;
   flex: 1 1 0px;
@@ -1151,7 +1051,6 @@
   justify-content: space-between;
   gap: 24px;
 }
-
 .screen-bus-card-insert .bus-payment-detail-row {
   display: flex;
   align-items: center;
@@ -1161,15 +1060,12 @@
   font-weight: 500;
   white-space: nowrap;
 }
-
 .screen-bus-card-insert .bus-payment-detail-row dt {
   color: #555;
 }
-
 .screen-bus-card-insert .bus-payment-detail-row dd {
   text-align: right;
 }
-
 .screen-bus-card-insert .bus-payment-total {
   display: flex;
   align-items: center;
@@ -1179,18 +1075,15 @@
   padding-top: 26px;
   border-top: 2px solid #dbdbdb;
 }
-
 .screen-bus-card-insert .bus-payment-total-title,
 .screen-bus-card-insert .bus-payment-total-price {
   font-size: 44px;
   font-weight: 700;
 }
-
 .screen-bus-card-insert .bus-payment-total-price {
   color: #e03400;
   text-align: right;
 }
-
 dialog.bus-card-confirm-dialog {
   width: 840px;
   max-width: 840px;
@@ -1201,11 +1094,9 @@ dialog.bus-card-confirm-dialog {
   background-color: #fff;
   color: #000;
 }
-
 dialog.bus-card-confirm-dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
-
 .bus-card-confirm-title {
   margin: 0 0 60px;
   font-size: 44px;
@@ -1213,7 +1104,6 @@ dialog.bus-card-confirm-dialog::backdrop {
   line-height: 1.4;
   text-align: center;
 }
-
 .bus-card-confirm-button {
   display: flex;
   align-items: center;
@@ -1226,12 +1116,10 @@ dialog.bus-card-confirm-dialog::backdrop {
   font-size: 44px;
   font-weight: 700;
 }
-
 /* 
 express-bus_06.html,
 express-bus_07.html 
 */
-
 .screen-bus-ticket-complete .contents-center {
   display: flex;
   flex-direction: column;
@@ -1241,7 +1129,12 @@ express-bus_07.html
   padding: 200px 0 104px;
   text-align: center;
 }
-.title-container.page6 .page-dexcription {
+.title-container.page7 {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.title-container.page6 .page-dexcription,
+.title-container.page7 .page-dexcription {
   font-weight: 500;
   font-size: 44px;
   margin-top: 16px;
@@ -1252,30 +1145,7 @@ express-bus_07.html
   height: 516px;
 }
 .bus-ticket-wrap {
-  position: relative;
-}
-.bus-ticket-wrap .bus-ticket-complete-image {
-  display: block;
-  height: auto;
-}
-
-.bus-ticket-location {
-  position: absolute;
-  top: 205px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  font-size: 44px;
-  font-weight: 700;
-}
-
-.bus-ticket-departure {
-  left: 140px;
-}
-
-.bus-ticket-arrival {
-  left: 430px;
+  border: 1px solid red;
 }
 .bottom-button.confirm {
   background-color: #fe7507;
@@ -1296,26 +1166,22 @@ express-bus_07.html
   font-weight: var(--font-700-weight);
   border-radius: 20px;
 }
-
 /* express-bus_09.html 승차권 환불 */
 .screen-bus-refund [hidden] {
   display: none;
 }
-
 .bus-refund-content {
   display: flex;
   flex: 1 1 0px;
   flex-direction: column;
   padding: 0 60px;
 }
-
 .bus-refund-policy-title {
   margin: 0 0 36px;
   font-size: 44px;
   font-weight: 700;
   text-align: center;
 }
-
 .bus-refund-table-wrap {
   width: 960px;
   /* overflow: hidden; */
@@ -1323,7 +1189,6 @@ express-bus_07.html
   border-radius: 16px;
   background-color: #fff;
 }
-
 .bus-refund-table {
   /* width: 956px; */
   border-collapse: collapse;
@@ -1335,31 +1200,24 @@ express-bus_07.html
   line-height: 46px;
   text-align: center;
 }
-
 .bus-refund-period-col {
   width: 304px;
 }
-
 .bus-refund-weekday-col {
   width: 178px;
 }
-
 .bus-refund-weekend-col {
   width: 274px;
 }
-
 .bus-refund-holiday-col {
   width: 200px;
 }
-
 .bus-refund-table tr {
   height: 100px;
 }
-
 .bus-refund-table tbody tr:nth-child(3) {
   height: 144px;
 }
-
 .bus-refund-table th,
 .bus-refund-table td {
   padding: 8px;
@@ -1367,27 +1225,22 @@ express-bus_07.html
   border-bottom: 1px solid #000;
   vertical-align: middle;
 }
-
 .bus-refund-table tr > :last-child {
   border-right: 0;
 }
-
 .bus-refund-table tbody tr:last-child > * {
   border-bottom: 0;
 }
-
 .bus-refund-table thead th {
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -1px;
   white-space: nowrap;
 }
-
 .bus-refund-table tbody th {
   font-size: 32px;
   font-weight: 600;
 }
-
 .bus-refund-policy-note {
   margin: 40px 0 0;
   color: #ff0000;
@@ -1396,14 +1249,12 @@ express-bus_07.html
   text-align: center;
   margin-bottom: 72px;
 }
-
 .bus-refund-insert {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 44px;
 }
-
 .bus-refund-ticket-button {
   display: flex;
   align-items: center;
@@ -1411,13 +1262,11 @@ express-bus_07.html
   width: 226px;
   height: 226px;
 }
-
 .bus-refund-ticket-image {
   display: block;
   width: 240px;
   height: 240px;
 }
-
 .bus-refund-insert-note {
   color: #ff0000;
   font-size: 44px;
@@ -1425,9 +1274,7 @@ express-bus_07.html
   text-align: center;
   line-height: 1.3;
 }
-
 /* 환불 확인증 출력 부분 */
-
 .bus-refund-receipt {
   display: flex;
   align-items: center;
@@ -1436,7 +1283,6 @@ express-bus_07.html
   font-size: 44px;
   font-weight: 700;
 }
-
 .bus-refund-receipt .bus-refund-checkbox {
   position: relative;
   box-sizing: border-box;
@@ -1451,7 +1297,6 @@ express-bus_07.html
   background-color: #9c0084;
   opacity: 1;
 }
-
 .bus-refund-checkbox:checked::after {
   position: absolute;
   left: 50%;
@@ -1464,13 +1309,11 @@ express-bus_07.html
   transform: rotate(45deg); */
   content: url("../../shared/images/express-bus/icon-checked-w.png");
 }
-
 .bus-refund-amounts {
   margin: 60px 0 0;
   font-size: 44px;
   font-weight: 700;
 }
-
 .bus-refund-amount-row {
   display: flex;
   align-items: center;
@@ -1479,17 +1322,14 @@ express-bus_07.html
 .bus-refund-amount-row.first {
   margin-bottom: 20px;
 }
-
 .bus-refund-amount-total {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 2px solid #ddd;
 }
-
 .bus-refund-amount-total dd {
   color: #e03400;
 }
-
 /* 승차권 환불을 완료하였습니다. */
 .bus-refund-state {
   height: 100%;
@@ -1505,13 +1345,11 @@ express-bus_07.html
   font-weight: 700;
   text-align: center;
 }
-
 .bus-refund-actions {
   display: flex;
   align-items: center;
   gap: 30px;
 }
-
 .bus-refund-cancel,
 .bus-refund-submit,
 .bus-refund-confirm {
@@ -1524,24 +1362,20 @@ express-bus_07.html
   font-weight: 700;
   text-align: center;
 }
-
 .bus-refund-cancel {
   border: 3px solid #ccc;
   background-color: #fafafa;
   color: #333;
 }
-
 .bus-refund-submit {
   background-color: #7e7e7e;
   color: #fff;
 }
-
 .bus-refund-submit.is-active,
 .bus-refund-confirm {
   background-color: #9c0084;
   color: #fff;
 }
-
 dialog.bus-refund-loading-dialog {
   position: fixed;
   inset: 0;
@@ -1554,11 +1388,9 @@ dialog.bus-refund-loading-dialog {
   background: transparent;
   color: #fff;
 }
-
 dialog.bus-refund-loading-dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
-
 .bus-refund-loading-title {
   position: absolute;
   top: 360px;
@@ -1571,7 +1403,6 @@ dialog.bus-refund-loading-dialog::backdrop {
   line-height: 1.3;
   text-align: center;
 }
-
 .bus-refund-spinner {
   position: absolute;
   top: 860px;
@@ -1583,4 +1414,103 @@ dialog.bus-refund-loading-dialog::backdrop {
   border-right-color: #ddd;
   border-radius: 200px;
   animation: spin 1s linear infinite;
+}
+
+/* express-bus_07.html 승차권 카드 */
+.screen-bus-ticket-complete .bus-ticket-wrap.bus-ticket-paper {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 840px;
+  overflow: hidden;
+  border: 2px solid #555;
+  border-radius: 32px;
+  background-color: #fff;
+  color: #222;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 152px;
+  background-color: #002164;
+  color: #fff;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-header p {
+  margin: 0;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 80px;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-icon {
+  display: block;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-body {
+  padding: 0 48px;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-route {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  min-height: 216px;
+  border-bottom: 2px solid #ddd;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 104px;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-arrow {
+  flex: 0 0 96px;
+  color: #000;
+  font-size: 92px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 48px 8px;
+  border-bottom: 2px solid #ddd;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-detail-row {
+  display: grid;
+  grid-template-columns: 172px 1fr;
+  gap: 24px;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 54px;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-detail-row dt {
+  margin: 0;
+  color: #7e7e7e;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-detail-row dd {
+  margin: 0;
+  color: #222;
+}
+
+.screen-bus-ticket-complete .bus-ticket-paper-barcode {
+  display: block;
+  width: 100%;
+  height: 166px;
+  margin: 48px 0;
+  object-fit: fill;
 }
