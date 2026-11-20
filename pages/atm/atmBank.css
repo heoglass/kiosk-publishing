@@ -1,0 +1,534 @@
+@charset "UTF-8";
+:root {
+    --parcel-primary-color: #103D79;
+    --primary-color--header: #103D79;
+    --parcel-primaryBtn-color: #2169CA;
+    --parcel-nagative-color: #555555;
+    --parcel-disabled-color: #727272;
+    --parcel-box-shadow: box-shadow: 0px 0px 25px 0px rgba(73, 30, 215, 0.64);
+    --kiosk-background-color: #F4F7FC;
+}
+
+html, body {
+    overflow: hidden;
+    margin: 0 auto;
+}
+body#bankAtmBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #303030;
+  height: 100vh;
+}
+.bottom__60 {
+  position: absolute;
+  bottom: 60px;
+  margin-bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mb__8 {
+  margin-bottom: 8px!important;
+}
+.mb__16 {
+  margin-bottom: 16px!important;
+}
+
+#category-header-horizontal .header-left {
+    display: flex;
+    align-items: center;
+}
+
+#category-header-horizontal .h eader-left > * + * {
+    margin-left: 12px;
+}
+
+#category-header-horizontal #header-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+#category-header-horizontal .category-header-home,
+#category-header-horizontal .category-header-arrow-right,
+#category-header-horizontal .header-sound {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+#category-header-horizontal .header-sound-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+main.atm__screen {
+    display: flex;
+    flex-direction: column;
+    max-width: 1080px;
+    width: 100%;
+    height: 676px;
+    /* 상위 element 화면에 꽉 차도록 */
+    margin: 0 auto;
+}
+.atm__section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 40px 60px;
+}
+
+.atm__section .atm__subject {
+    margin-bottom: 40px;
+}
+
+.atm__section h2 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #123A68;
+}   
+
+
+.atm__section h3 {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #435C7A;
+}
+.atm__section h2,
+h2.atmg__title--tight {
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+}
+.atm__buttons {
+    display: flex;
+    width: 100%;
+
+}
+:root {
+  --parcel-primaryBtn-color: #2169CA;
+  --parcel-nagative-color: #555555;
+}
+
+.atm__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 467px);
+  grid-auto-rows: 73px;
+  gap: 20px 26px; /* row-gap column-gap */
+}
+
+.atm-btn {
+  width: 467px;
+  height: 73px;
+  border: 1px solid #cdd6ee;
+  border-radius: 12px;
+  background: #fff;
+  color: #000;
+  font-size: 30px;
+  font-weight: 700;
+  transition: box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* a 태그 버튼 */
+a.atm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.atm-btn:active {
+  box-shadow: 0px 0px 18.3px 0px rgba(33, 105, 202, 1);
+}
+
+.atm-btn.btn--primary {
+  background: var(--parcel-primaryBtn-color);
+  border-color: var(--parcel-primaryBtn-color);
+  color: #fff;
+}
+.atm-btn.btn--cancel {
+  background: var(--parcel-nagative-color);
+  border-color: var(--parcel-nagative-color);
+  color: #fff;
+}
+
+/* .atm__content  */
+.atm__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 16px;
+}
+.atm__content.money--img {
+  margin-bottom: 1rem;
+}
+
+/* ATMG-01 카드 투입구 안내 */
+.atm__section h3.atmg__desc {
+  line-height: 130%;
+}
+.atmg__warn {
+  color: #FF0000;
+}
+.atmg__img {
+  display: block;
+  width: 230px;
+  height: auto;
+}
+
+/* ATMG-02 카드를 넣어주세요 / ATMG-03 카드를 읽고 있습니다 */
+.atm__section h2.atmg__title--multi {
+  line-height: 130%;
+}
+.atmg__card-link {
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+.atmg__img.atmg__img--card {
+  width: 284px;
+  height: 223px;
+}
+
+/* ATMG-04 입금 안내 */
+.atm__section h3.atmg__desc--dark {
+  color: #000;
+}
+.atmg__point {
+  color: #174A8B;
+}
+.atmg__notice {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 130%;
+  text-align: center;
+  color: #000;
+}
+.atmg__img.atmg__img--check {
+  width: 393px;
+  height: auto;
+}
+
+/* ATMG-05 지폐를 세고 있습니다 (콘텐츠 세로 중앙 정렬) */
+.atm__section.atmg__section--center {
+  justify-content: center;
+}
+.atmg__section--center .atm__subject {
+  margin-bottom: 56px;
+}
+.atmg__section--center .atm__content {
+  flex: none;
+}
+.atm__section h2.atmg__title--tight {
+  line-height: 115%;
+}
+.atmg__img.atmg__img--cash {
+  width: 463px;
+  height: auto;
+}
+
+/* ATMG-06 입금 내용 확인 */
+.atm__section .atmg__subject--compact {
+  margin-bottom: 20px;
+}
+.atm__content.atmg__content--table {
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+.atmg__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: #E6E8EB;
+}
+.atmg__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  padding: 0 25px;
+  border-radius: 6px;
+  background: #FFFFFF;
+}
+.atmg__row:nth-child(odd) {
+  background: #F1F6FD;
+}
+.atmg__row dt {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #2B4468;
+}
+.atmg__row dd {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #123A68;
+}
+
+/* ATMG-07 명세표 출력 선택 */
+.atmg__list.atmg__list--white {
+  background: #FFFFFF;
+}
+.atm__buttons.atmg__buttons--raised {
+  margin-bottom: 20px;
+}
+
+/* ATMe-01 이용 감사 */
+.atm__section .atmg__subject--lower {
+  margin-top: 24px;
+}
+.atm__content.atmg__content--bag {
+  margin-bottom: 36px;
+}
+.atmg__img.atmg__img--bag {
+  width: 220px;
+  height: 215px;
+}
+.atm__buttons.atmg__buttons--single {
+  grid-template-columns: 868px;
+  justify-content: center;
+}
+.atmg__buttons--single .atm-btn {
+  width: 868px;
+}
+
+/* ATM 체험 완료 (atm-end) */
+.atm__section.atmg__section--end {
+  background: #FFFFFF;
+}
+.atm__section .atmg__subject--card {
+  margin-top: 20px;
+  margin-bottom: 23px;
+  padding: 14px 0 19px;
+  border-radius: 30px;
+  background: #F4F4F4;
+}
+.atm__section h2.atmg__subject--card {
+  color: #000;
+}
+.atm__section .atmg__subject--card > h3 {
+  color: #444;
+}
+.atm__content.atmg__content--end {
+  justify-content: flex-start;
+}
+.atmg__img.atmg__img--end {
+  width: 152px;
+  height: 213px;
+}
+
+/* ATM-09 금액 선택 */
+.atm__section .atm__subject.atmg__subject--amount {
+  margin-top: 8px;
+}
+.atm__section .atm__subject > h3.atmg__desc--navy {
+  color: #1F3F6B;
+}
+.atm__content.atmg__content--amount {
+  justify-content: flex-start;
+}
+.atmg__amount-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 160px);
+  grid-auto-rows: 112px;
+  gap: 18px 16px;
+}
+.atmg__amount {
+  box-sizing: border-box;
+  width: 160px;
+  height: 112px;
+  border: 1px solid #cdd6ee;
+  border-radius: 8px;
+  background: #fff;
+  color: #123A68;
+  font-size: 28px;
+  font-weight: 700;
+  transition: box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.atmg__amount:active {
+  box-shadow: 0px 0px 18.3px 0px rgba(33, 105, 202, 1);
+}
+.atmg__amount.is-selected {
+  background: var(--parcel-primaryBtn-color);
+  border-color: var(--parcel-primaryBtn-color);
+  color: #fff;
+}
+.atm__buttons.atmg__buttons--narrow {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 19px;
+  width: 868px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.atmg__buttons--narrow .atm-btn {
+  width: 100%;
+}
+section.sectiom__atm-09 {
+  padding: 46px 56px;
+}
+
+/* ATM-10 보이스피싱 주의 */
+.atm__section.atm-10 {
+  padding: 100px 60px 0;
+}
+.atm__section.atm-10 .atm__subject {
+  margin-bottom: 88px;
+}
+.atm__section.atm-10 h2 {
+  margin-bottom: 1rem;
+  font-size: 44px;
+  font-weight: 700;
+}
+.atm__section.atm-10 h3 {
+  font-size: 35px;
+  font-weight: 700;
+}
+.atm__buttons.atmg__buttons--stack {
+  row-gap: 17px;
+}
+.atmg__buttons--stack .atm-btn.atmg__btn--wide {
+  grid-column: 1 / -1;
+  background: #7E7E7E;
+  color: #fff;
+}
+.atmg__buttons--stack .atm-btn.atmg__btn--wide.btn--primary {
+  background: var(--parcel-primaryBtn-color);
+  border-color: var(--parcel-primaryBtn-color);
+}
+
+/* ATM-13 현금 선택 */
+.atm__section.atm-13 {
+  padding: 100px 106px 60px;
+}
+.atm-13 .atm__subject {
+  margin-bottom: 64px;
+}
+
+
+.atm__content.atmg__content--cash {
+  justify-content: flex-start;
+}
+.atmg__cash-list {
+  display: grid;
+  grid-template-columns: repeat(2, 414px);
+  grid-auto-rows: 166px;
+  gap: 0 40px;
+}
+.atmg__cash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 414px;
+  height: 166px;
+  border-radius: 24px;
+  background: var(--parcel-primaryBtn-color);
+  color: #fff;
+    font-size: 44px;
+    font-weight: 600;
+  text-decoration: none;
+  transition: box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.atmg__cash:active  {
+  box-shadow: 0px 0px 18.3px 0px rgba(33, 105, 202, 1);
+}
+
+/* ATM-14 비밀번호 입력 */
+.atm__section.atm-14 {
+  padding: 25px 60px;
+}
+.atm__section.atm-14 .atm__subject {
+  margin-bottom: 16px;
+}
+.atm__section.atm-14 h3 {
+  font-size: 24px;
+}
+.atmg__underline {
+  color: #123A68;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.atm__section.atm-14 .atm__buttons {
+  margin-top: 15px;
+}
+.atm__content.atmg__content--pin {
+  justify-content: flex-start;
+}
+.atmg__pin-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 868px;
+  height: 62px;
+  border-radius: 10px;
+  background: #E5EBF7;
+  color: #123A68;
+  font-size: 28px;
+  letter-spacing: 14px;
+  text-indent: 14px; /* letter-spacing 으로 쏠리는 가운데 정렬 보정 */
+}
+.atmg__keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 24px;
+  width: 868px;
+}
+.atmg__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 60px;
+  border: 1px solid #BED0EA;
+  border-radius: 8px;
+  background: #fff;
+  color: #123A68;
+  font-size: 26px;
+  font-weight: 700;
+  transition: box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.atmg__key:active,
+.atmg__key.is-pressed {
+
+  background:#7E7E7E;
+  color: #1F3B62;
+}
+
+/* ATM-15 명세표 출력 선택 */
+.atm__section.atm-15 {
+  padding: 50px 106px 60px;
+}
+.atm__section.atm-15 .atm__subject {
+  margin-bottom: 32px;
+}
+.atm__section.atm-15 .atmg__list {
+  padding-bottom: 28px;
+}
+.atm__16,
+.atm__17 {
+  padding: 120px 60px;
+} 

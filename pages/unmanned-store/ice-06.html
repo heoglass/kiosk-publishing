@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무인매장</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./selfCheckout.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <!-- CDN링크 -->
+  </head>
+
+  <body id="selfCheckout">
+      <main class="category-main kiosk-screen">
+        <header id="category-header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+            </a>
+            <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+            <span id="header-title"></span>
+          </div>
+
+          <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+          </button>
+        </header>
+        <!-- 컨텐츠 -->
+        <section id="category-start-screen" class="selfCheckout__section selfCheckout__section--cart selfCheckout__section--pay" aria-label="결제수단 선택">
+          <!-- 모달 뒤 배경 화면 (ice-03 주문내역) -->
+          <h2 class="selfCheckout__cart-title">주문내역</h2>
+
+          <ul class="selfCheckout__cart-list">
+            <li class="selfCheckout__cart-item" data-price="3500">
+              <span class="selfCheckout__cart-name">서울우유</span>
+              <span class="selfCheckout__cart-price">3,500</span>
+              <div class="selfCheckout__cart-qty">
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--minus is-disabled" aria-label="수량 감소" disabled></button>
+                <input type="text" class="selfCheckout__qty-count" value="1" aria-label="수량" readonly />
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--plus" aria-label="수량 증가" disabled></button>
+              </div>
+              <strong class="selfCheckout__cart-total">3,500원</strong>
+              <button type="button" class="selfCheckout__cart-remove" aria-label="서울우유 삭제" disabled></button>
+            </li>
+            <li class="selfCheckout__cart-item" data-price="1000">
+              <span class="selfCheckout__cart-name">감자</span>
+              <span class="selfCheckout__cart-price">1,000</span>
+              <div class="selfCheckout__cart-qty">
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--minus is-disabled" aria-label="수량 감소" disabled></button>
+                <input type="text" class="selfCheckout__qty-count" value="1" aria-label="수량" readonly />
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--plus" aria-label="수량 증가" disabled></button>
+              </div>
+              <strong class="selfCheckout__cart-total">1,000원</strong>
+              <button type="button" class="selfCheckout__cart-remove" aria-label="감자 삭제" disabled></button>
+            </li>
+            <li class="selfCheckout__cart-item" data-price="10000">
+              <span class="selfCheckout__cart-name">계란 30개</span>
+              <span class="selfCheckout__cart-price">10,000</span>
+              <div class="selfCheckout__cart-qty">
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--minus is-disabled" aria-label="수량 감소" disabled></button>
+                <input type="text" class="selfCheckout__qty-count" value="1" aria-label="수량" readonly />
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--plus" aria-label="수량 증가" disabled></button>
+              </div>
+              <strong class="selfCheckout__cart-total">10,000원</strong>
+              <button type="button" class="selfCheckout__cart-remove" aria-label="계란 30개 삭제" disabled></button>
+            </li>
+            <li class="selfCheckout__cart-item" data-price="1000">
+              <span class="selfCheckout__cart-name">애호박</span>
+              <span class="selfCheckout__cart-price">1,000</span>
+              <div class="selfCheckout__cart-qty">
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--minus" aria-label="수량 감소" disabled></button>
+                <input type="text" class="selfCheckout__qty-count" value="2" aria-label="수량" readonly />
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--plus" aria-label="수량 증가" disabled></button>
+              </div>
+              <strong class="selfCheckout__cart-total">2,000원</strong>
+              <button type="button" class="selfCheckout__cart-remove" aria-label="애호박 삭제" disabled></button>
+            </li>
+            <li class="selfCheckout__cart-item is-highlight" data-price="3500">
+              <span class="selfCheckout__cart-name">오이맛고추</span>
+              <span class="selfCheckout__cart-price">3,500</span>
+              <div class="selfCheckout__cart-qty">
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--minus is-disabled" aria-label="수량 감소" disabled></button>
+                <input type="text" class="selfCheckout__qty-count" value="1" aria-label="수량" readonly />
+                <button type="button" class="selfCheckout__qty-btn selfCheckout__qty-btn--plus" aria-label="수량 증가" disabled></button>
+              </div>
+              <strong class="selfCheckout__cart-total">3,500원</strong>
+              <button type="button" class="selfCheckout__cart-remove" aria-label="오이맛고추 삭제" disabled></button>
+            </li>
+          </ul>
+
+          <div class="selfCheckout__cart-bottom">
+            <dl class="selfCheckout__summary">
+              <div class="selfCheckout__summary-row">
+                <dt>합계</dt>
+                <dd>20,000원</dd>
+              </div>
+              <div class="selfCheckout__summary-row selfCheckout__summary-row--discount">
+                <dt>할인</dt>
+                <dd>0원</dd>
+              </div>
+              <div class="selfCheckout__summary-row selfCheckout__summary-row--total">
+                <dt>결제</dt>
+                <dd>20,000원</dd>
+              </div>
+            </dl>
+            <button type="button" class="selfCheckout__pay-btn" disabled>결제하기</button>
+          </div>
+
+          <button type="button" class="selfCheckout__barcode-btn" disabled>
+            <svg class="selfCheckout__barcode-icon" viewBox="0 0 72 56" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M0 0h5v56H0zM9 0h2v56H9zM14 0h4v56h-4zM21 0h2v56h-2zM26 0h5v56h-5zM34 0h2v56h-2zM39 0h3v56h-3zM45 0h2v56h-2zM50 0h4v56h-4zM57 0h2v56h-2zM62 0h3v56h-3zM68 0h4v56h-4z" />
+            </svg>
+            <span class="selfCheckout__barcode-text">바코드 스캔</span>
+          </button>
+
+          <!-- 결제 진행 모달 + dimmed -->
+          <div class="selfCheckout__dimmed" id="payModal" data-payment-next="./ice-07.html" role="dialog" aria-modal="true" aria-labelledby="payment-progress-title" aria-describedby="payment-progress-description">
+            <div id="modal-card-loading" class="modal modal--payment">
+              <div class="modal-body">
+                <div class="spinner" aria-hidden="true"></div>
+                <h2 id="payment-progress-title" class="modal-title">결제 진행중입니다</h2>
+                <p id="payment-progress-description" class="payment-status-description">카드를 제거하지 말고 잠시만 기다려주세요</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+  <script type="text/javascript" src="./selfCheckout.js"></script>
+  </body>
+</html>

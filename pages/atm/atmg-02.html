@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>은행 ATM</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+
+  </head>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+
+      <section class="kiosk-container atm__section atmg__section--center">
+        <div class="atm__subject">
+          <h2>카드를 넣어주세요</h2>
+        </div>
+
+        <div class="atm__content">
+          <!-- 카드 이미지 터치 시 ATMG-03 이동 -->
+          <a href="./atmg-03.html" class="atmg__card-link" aria-label="카드 넣기">
+            <img src="../../shared/images/atm/insertCard.png" alt="카드 투입구에 카드를 넣는 모습" class="atmg__img atmg__img--card" />
+          </a>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
+</html>

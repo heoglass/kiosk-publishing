@@ -107,11 +107,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px 60px;
-  background-color: #56321c;
+  /* background-color: #56321c; */
   max-height: 144px;
   position: absolute;
   left: 50%;
   top: 0;
+  z-index: 10;
   transform: translate(-50%, 0);
 }
 
@@ -194,6 +195,7 @@ body {
 - 테이블 결제
 - 셀프 주유
 */
+
 #category-header-horizontal {
   max-width: 1080px;
   height: 70px;
@@ -203,7 +205,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 17px 60px;
-  /* background-color: #56321c; */
+  /* 배경컬러는 각 서브페이지 컬러변수 사용 */
+  background-color: var(--primary-color--header);
 }
 #category-header-horizontal .header-left {
   display: flex;
@@ -1359,4 +1362,14 @@ body.modal-open {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* .kiosk-container 가로형 컨테이너 */
+main .kiosk-container,
+body .kiosk-container,
+.kiosk-main .kiosk-container {
+    /* 각 페이지의 --kiosk-background-color 변수컬러 사용 */
+    background-color: var(--kiosk-background-color);
+    position: relative;
+    overflow: hidden;
 }

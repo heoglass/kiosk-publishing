@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>은행 ATM</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+
+  </head>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+
+      <section class="kiosk-container atm__section sectiom__atm-09">
+        <div class="atm__subject atmg__subject--amount">
+          <h2>금액 선택</h2>
+          <h3 class="atmg__desc atmg__desc--navy">해당 금액이 없으면 ‘기타’를 눌러주세요</h3>
+        </div>
+
+        <div class="atm__content atmg__content--amount">
+          <div class="atmg__amount-grid" data-next="./atm-10.html">
+            <button type="button" class="atmg__amount" data-amount="10000" aria-pressed="true">1만원</button>
+            <button type="button" class="atmg__amount" data-amount="30000" aria-pressed="true">3만원</button>
+            <button type="button" class="atmg__amount" data-amount="50000" aria-pressed="false">5만원</button>
+            <button type="button" class="atmg__amount" data-amount="100000" aria-pressed="false">10만원</button>
+            <button type="button" class="atmg__amount" data-amount="200000" aria-pressed="false">20만원</button>
+            <button type="button" class="atmg__amount" data-amount="300000" aria-pressed="false">30만원</button>
+            <button type="button" class="atmg__amount" data-amount="400000" aria-pressed="false">40만원</button>
+            <button type="button" class="atmg__amount" data-amount="500000" aria-pressed="false">50만원</button>
+            <button type="button" class="atmg__amount" data-amount="700000" aria-pressed="false">70만원</button>
+            <button type="button" class="atmg__amount" data-amount="1000000" aria-pressed="false">100만원</button>
+          </div>
+        </div>
+
+        <div class="atm__buttons atmg__buttons--narrow atmg__buttons--raised">
+          <a href="./index.html" class="atm-btn">거래 취소</a>
+          <a href="javascript:void(0);" class="atm-btn btn--primary">기타</a>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
+</html>

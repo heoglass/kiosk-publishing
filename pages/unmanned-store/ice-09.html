@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무인매장</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./selfCheckout.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <!-- CDN링크 -->
+  </head>
+
+  <body id="selfCheckout">
+    <main class="category-main kiosk-screen">
+      <header id="category-header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+            </a>
+            <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+            <span id="header-title"></span>
+          </div>
+
+          <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+          </button>
+      </header>
+      <!-- 컨텐츠 -->
+      <section id="category-start-screen" class="selfCheckout__section selfCheckout__section--complete" aria-label="쇼핑 완료">
+        <div class="selfCheckout__finish-message">
+          <h1>쇼핑이 완료되었습니다</h1>
+          <p>놓고 가시는 물건이 없는지 확인해주세요</p>
+        </div>
+        <img class="selfCheckout__finish-image" src="../../shared/images/unnamed_store/complete.png" alt="완료버튼" />
+        <a type="button" class="selfCheckout__finish-button" href="./end-16.html">완료</a>
+      </section>
+    </main>
+    <script type="text/javascript" src="./selfCheckout.js"></script>
+  </body>
+</html>

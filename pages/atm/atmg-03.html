@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>은행 ATM</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+
+  </head>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+
+      <section class="kiosk-container atm__section atmg__section--center">
+        <div class="atm__subject">
+          <h2 class="atmg__title--multi">카드를 읽고 있습니다<br />잠시 기다려 주세요</h2>
+        </div>
+
+        <div class="atm__content" data-trade-next data-auto-delay="2000">
+          <!-- 카드 읽는 중 애니메이션 영역 -->
+          <img src="../../shared/images/atm/insertCard.png" alt="카드를 읽는 중" class="atmg__img atmg__img--card" />
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
+</html>

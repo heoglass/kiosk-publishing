@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=1080, initial-scale=1.0"> -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은행 ATM</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../shared/css/common.css" />
-    <link rel="stylesheet" href="./atm.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./atm.js"></script>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+    
   </head>
-  <body></body>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+      
+      <section class="kiosk-container atm__section">
+        <div class="atm__subject">
+          <h2>원하시는 거래를 선택해주세요.</h2>
+          <h3>안전하고 편리한 은행 ATM 서비스</h3>
+        </div>
+
+        <div class="atm__buttons">
+          <a href="./atmg-01.html" class="atm-btn btn--primary" data-trade-type="withdrawal">예금 출금</a>
+          <a href="./atmg-01.html" class="atm-btn btn--primary" data-trade-type="deposit">입금</a>
+          <button type="button" class="atm-btn">계좌 송금</button>
+          <button type="button" class="atm-btn">조회 업무</button>
+          <button type="button" class="atm-btn">신용카드</button>
+          <button type="button" class="atm-btn">공과금/지방세</button>
+          <button type="button" class="atm-btn btn--cancel">취소</button>
+          <button type="button" class="atm-btn">Global Service</button>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
 </html>

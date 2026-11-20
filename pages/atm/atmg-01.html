@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>은행 ATM</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+    
+  </head>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+      
+      <section class="kiosk-container atm__section">
+        <div class="atm__subject">
+          <h2>ATM 정상 카드 투입구 안내</h2>
+          <h3 class="atmg__desc">
+            <span class="atmg__warn">카드 투입구에 이상한 장치가 부착된 경우</span> 사용을 중단하시고<br />
+            영업점이나 인터폰으로 신고하여 주시기 바랍니다
+          </h3>
+        </div>
+
+        <div class="atm__content">
+          <img src="../../shared/images/atm/atm_insert.png" alt="정상 카드 투입구" class="atmg__img atmg__img--slot" />
+        </div>
+
+        <div class="atm__buttons">
+          <a href="./index.html" class="atm-btn" data-href="./index.html">거래 취소</a>
+          <a href="./atmg-02.html" class="atm-btn btn--primary" data-href="./atmg-02.html">계속 거래</a>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
+</html>

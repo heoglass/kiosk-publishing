@@ -128,7 +128,7 @@ body#parcelBody {
   display: flex;
   justify-content: space-between;
   height: 43px;
-  margin: 0 22px;
+  margin: 0 80px;
   padding: 0;
   list-style: none;
 }
@@ -211,6 +211,17 @@ body#parcelBody {
   flex-direction: column;
 }
 #parcelBody .btn-area--row { flex-direction: row; gap: 30px; }
+
+
+#parcelBody .btn-area--row--bottom {
+   padding: 0 60px;
+    position: absolute;
+    bottom: 40px;
+    width: 100%
+}
+
+
+
 #parcelBody .btn-area--row .btn { flex: 1; height: 140px; }
 #parcelBody .btn {
   display: flex;
@@ -611,9 +622,9 @@ body#parcelBody {
 #parcelBody .agree-check input { width: 32px; height: 32px; margin: 0; accent-color: #D60000; }
 
 /* ---------- 운송장 출력 ---------- */
-#parcelBody .invoice-preview { width: 100%; }
-#parcelBody .invoice-preview__img { display: block; width: 1015px; height: auto; }
-#parcelBody .btn--reprint { flex: none; margin: 85px 0; }
+#parcelBody .invoice-preview { position: relative; width: 100%; }
+#parcelBody .invoice-preview__img { display: block; width: 100%; height: auto; }
+#parcelBody .btn--reprint { margin: 60px; }
 
 /* ---------- 체험 완료 ---------- */
 #parcelBody .complete-box {
@@ -627,22 +638,21 @@ body#parcelBody {
 }
 #parcelBody .complete-box__title { margin: 0; font-size: 64px; line-height: 90px; font-weight: 700; }
 #parcelBody .complete-box__desc { margin: 22px 0 0; font-size: 42px; line-height: 57px; font-weight: 500; color: #444; }
-#parcelBody .complete-visual { flex: none; display: flex; justify-content: center; }
+#parcelBody .complete-visual { margin-top:60px; flex: none; display: flex; justify-content: center; }
 #parcelBody .complete-visual__img { height: 500px; width: auto; }
 #parcelBody .parcel__content--indexExpComplete .btn-area { 
-    /* position: absolute;
+    width: 100%;
+    position: absolute;
     bottom: 60px;
     padding: 0 60px;
     left: 0;
-    width: 100%; */
     gap: 40px;
-    margin-top: 80px;
   }
 
 /* ---------- 화면별 위치 보정 (시안 기준) ---------- */
 #parcelBody .parcel__content--index { padding-top: 328px; padding-bottom: 60px; padding: 328px 110px 60px; }
 #parcelBody .parcel__content--index .parcel-title { margin-top: 0; }
-#parcelBody .parcel__content--indexExpComplete { justify-content: space-between; padding-top: 81px; padding-bottom: 60px; }
+#parcelBody .parcel__content--indexExpComplete { padding-top: 81px; padding-bottom: 60px; }
 
 #parcelBody .parcel__content--indexServiceType .parcel-title { margin-bottom: 42px; }
 #parcelBody .parcel__content--indexServiceType .option-list { gap: 41px; }
@@ -669,7 +679,7 @@ body#parcelBody {
 #parcelBody .parcel__content--indexParcelChk { padding-top: 55px; padding-bottom: 60px; }
 #parcelBody .parcel__content--indexParcelChk .parcel-title { margin-top: 66px; margin-bottom: 40px; }
 
-#parcelBody .parcel__content--indexParcelView { padding-top: 72px; padding-bottom: 88px; }
+#parcelBody .parcel__content--indexParcelView { position: relative; padding-top: 72px; padding-bottom: 88px; padding: 72px 0 60px; }
 #parcelBody .parcel__content--indexParcelView .parcel-title { margin-top: 49px; margin-bottom: 62px; }
 
 

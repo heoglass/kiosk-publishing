@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무인매장</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./selfCheckout.css" />
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <!-- CDN링크 -->
+  </head>
+
+  <body id="selfCheckout">
+      <main class="category-main kiosk-screen">
+        <header id="category-header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+            </a>
+            <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+            <span id="header-title"></span>
+          </div>
+
+          <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+          </button>
+        </header>
+        <!-- 컨텐츠 -->
+        <section id="category-start-screen" class="selfCheckout__section selfCheckout__section--end" aria-label="체험 완료">
+          <div class="selfCheckout__end-notice">
+            <h2 class="selfCheckout__end-title">체험 완료</h2>
+            <p class="selfCheckout__end-desc">키오스크 체험이 완료되었습니다<br />수고하셨습니다</p>
+          </div>
+
+          <!-- 키오스크 일러스트 (이미지 에셋 있으면 <img>로 교체) -->
+          <svg class="selfCheckout__end-illust" viewBox="0 0 360 500" role="img" aria-label="교육용 키오스크 체험 완료">
+            <defs>
+              <linearGradient id="endKioskBody" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4d4d4d" />
+                <stop offset="1" stop-color="#2b2b2b" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="355" height="380" rx="30" fill="url(#endKioskBody)" />
+            <rect x="23" y="30" width="307" height="296" rx="8" fill="#efefef" />
+            <circle cx="177" cy="143" r="50" fill="#245b93" />
+            <path d="M152 143l17 17 30-32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="177" y="256" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="30" font-weight="700" fill="#000">교육용 키오스크</text>
+            <rect x="117" y="380" width="123" height="85" fill="#f4f4f4" stroke="#000" stroke-width="3" />
+            <rect x="212" y="381" width="27" height="84" fill="#e6e6e6" />
+            <rect x="57" y="465" width="245" height="33" rx="10" fill="#f4f4f4" stroke="#000" stroke-width="3" />
+            <path d="M272 262c-4-12 10-18 15-6l9 22 12-4c6-2 12 2 13 8l4 24c2 14-6 28-22 34l-14 6-26-30z" fill="#f4d3d0" stroke="#000" stroke-width="4" stroke-linejoin="round" />
+            <path d="M312 362l36-12 8 24-36 14z" fill="#245b93" stroke="#000" stroke-width="4" stroke-linejoin="round" />
+          </svg>
+
+          <div class="selfCheckout__end-actions">
+            <button type="button" class="selfCheckout__end-btn selfCheckout__end-btn--retry" data-href="./index.html">다시하기</button>
+            <button type="button" class="selfCheckout__end-btn selfCheckout__end-btn--home" data-href="../../index.html">첫 화면으로 가기</button>
+          </div>
+        </section>
+      </main>
+  <script type="text/javascript" src="./selfCheckout.js"></script>
+  </body>
+</html>

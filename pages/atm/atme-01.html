@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>은행 ATM</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+
+  </head>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+
+      <section class="kiosk-container atm__section">
+        <div class="atm__subject atmg__subject--lower">
+          <h2 class="mb__16">이용해 주셔서 감사합니다.</h2>
+          <h3 class="atmg__desc">놓고 가시는 물건이 없는지 확인해 주세요.</h3>
+        </div>
+
+        <div class="atm__content atmg__content--bag">
+          <img src="../../shared/images/atm/cart.png" alt="놓고 가시는 물건이 없는지 확인" class="atmg__img atmg__img--bag" />
+        </div>
+
+        <div class="atm__buttons atmg__buttons--single">
+          <a href="./atm-end.html" class="atm-btn btn--primary">확인</a>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
+</html>

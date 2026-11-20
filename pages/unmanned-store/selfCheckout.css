@@ -1,0 +1,685 @@
+@charset "UTF-8";
+:root {
+    --selfCheckout-primary-color: #245B93;
+    --selfCheckout-primaryBtn-color: # 245B93;
+    --selfCheckout-box-shadow: 0px 0px 42.1px 0px rgba(35, 92, 149, 1);
+}
+
+button.disabled-color, 
+a.disabled-color,
+.disabled-color {
+  background-color: var(--selfCheckout-disabled-color);
+  color: #fff;
+}
+
+.d-none {
+  display: none!important;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+#selfCheckout #category-header {
+  background-color: var(--selfCheckout-primary-color);
+}
+.selfCheckout__button {
+  background-color: var(--selfCheckout-primary-color);
+  box-shadow: var(--selfCheckout-box-shadow);
+  text-align: center;
+  text-decoration: none;
+    bottom: 80px;
+}
+.selfCheckout__section {
+  padding: 64px 60px;
+}
+.selfCheckout__section--bg {
+  height: 100%;
+  background-color: #fff;
+  background-image: url("../../shared/images/unnamed_store/keyvisual.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+
+
+.selfCheckout__section button {
+  background-color: transparent;
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 24px;
+  background-color: #eeeeee;
+}
+/* 신규작성 */
+.selfCheckout__subject {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 329px 104px;
+}
+.selfCheckout__subject h2 {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 60px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.selfCheckout__subject h3 {
+  font-family: Pretendard;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 44px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* 바코드 스캔 버튼 (추가) */
+.selfCheckout__section--barcode {
+  position: relative;
+  height: 100%;
+}
+.selfCheckout__section .selfCheckout__barcode-btn {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 140px;
+  border: 4px solid #000;
+  border-radius: 24px;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+.selfCheckout__barcode-icon {
+  width: 72px;
+  height: 56px;
+  flex-shrink: 0;
+}
+.selfCheckout__barcode-text {
+  font-family: Pretendard;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 130%;
+  letter-spacing: 0%;
+}
+
+/* ice-03 주문내역 (selfCheckout__section--cart 분기) */
+.selfCheckout__section--cart {
+  position: relative;
+  height: 100%;
+}
+.selfCheckout__section--cart .selfCheckout__cart-title {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 130%;
+  text-align: center;
+}
+.selfCheckout__cart-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.selfCheckout__cart-item {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  margin-bottom: 16px;
+  padding: 0 52px 0 40px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 36px;
+  color: #000;
+}
+.selfCheckout__cart-item.is-highlight {
+  background-color: #fff2da;
+  
+}
+.selfCheckout__cart-name {
+  width: 249px;
+  flex-shrink: 0;
+}
+.selfCheckout__cart-price {
+  width: 161px;
+  flex-shrink: 0;
+}
+.selfCheckout__cart-qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  flex-shrink: 0;
+}
+.selfCheckout__section .selfCheckout__qty-count {
+  width: 80px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+}
+.selfCheckout__section .selfCheckout__qty-btn {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background-color: #333;
+  cursor: pointer;
+}
+.selfCheckout__qty-btn::before,
+.selfCheckout__qty-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+.selfCheckout__qty-btn::before {
+  width: 28px;
+  height: 4px;
+}
+.selfCheckout__qty-btn--minus::after {
+  display: none;
+}
+.selfCheckout__qty-btn--plus::after {
+  width: 4px;
+  height: 28px;
+}
+.selfCheckout__section .selfCheckout__qty-btn.is-disabled {
+  border-color: #bbb;
+  background-color: #fff;
+  cursor: default;
+}
+.selfCheckout__qty-btn.is-disabled::before {
+  background-color: #bbb;
+}
+.selfCheckout__cart-total {
+  flex: 1;
+  margin-right: 22px;
+  font-weight: 700;
+  text-align: right;
+}
+.selfCheckout__section .selfCheckout__cart-remove {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  cursor: pointer;
+}
+.selfCheckout__cart-remove::before,
+.selfCheckout__cart-remove::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 3px;
+  background-color: #000;
+}
+.selfCheckout__cart-remove::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.selfCheckout__cart-remove::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.selfCheckout__cart-bottom {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 240px;
+  display: flex;
+  gap: 24px;
+  height: 288px;
+}
+.selfCheckout__summary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0 48px 0 40px;
+  border: 4px solid #000;
+  border-radius: 24px;
+  font-size: 44px;
+  line-height: 130%;
+  color: #000;
+}
+.selfCheckout__summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+.selfCheckout__summary-row dt,
+.selfCheckout__summary-row dd {
+  margin: 0;
+}
+.selfCheckout__summary-row--discount dd {
+  color: #e60012;
+}
+.selfCheckout__summary-row--total dt,
+.selfCheckout__summary-row--total dd {
+  font-weight: 700;
+}
+.selfCheckout__section .selfCheckout__pay-btn {
+  width: 250px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 24px;
+  background-color: var(--selfCheckout-primary-color);
+  color: #fff;
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 44px;
+  cursor: pointer;
+}
+
+/* 상품 리스트 영역: 제목 아래 ~ 합계 박스 위까지 고정, 넘치면 아래로 스크롤 */
+.selfCheckout__section--cart .selfCheckout__cart-list {
+  position: absolute;
+  top: 179px;
+  left: 60px;
+  right: 60px;
+  bottom: 652px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.selfCheckout__section--cart .selfCheckout__cart-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* ice-04 결제수단 선택 모달 + dimmed */
+.selfCheckout__dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.selfCheckout__dimmed.is-open {
+  display: flex;
+}
+.selfCheckout__modal {
+  width: 840px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  scrollbar-width: thin;
+  border-radius: 24px;
+  background-color: #fff;
+  color: #000;
+}
+.selfCheckout__modal::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+.selfCheckout__modal::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #aaa;
+}
+#modal-card-loading.modal,
+#modal-card-complete.modal {
+  width: 840px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100dvh - 32px);
+  border-radius: 32px;
+  box-shadow: none;
+}
+#modal-card-loading .modal-body,
+#modal-card-complete .modal-body {
+  padding: 166px 24px 100px;
+  text-align: center;
+}
+#modal-card-complete .modal-body {
+  padding-top: 95px;
+}
+.selfCheckout__complete-image {
+  display: block;
+  width: 256px;
+  height: 256px;
+  margin: 0 auto;
+}
+.selfCheckout__complete-link {
+  display: block;
+  width: 256px;
+  margin: 0 auto;
+}
+.selfCheckout__complete-link:focus-visible {
+  outline: 3px solid var(--selfCheckout-primary-color);
+  outline-offset: 4px;
+}
+#modal-card-loading .modal-title,
+#modal-card-complete .modal-title {
+  margin: 0;
+  font-size: 60px;
+  line-height: 130%;
+}
+#modal-card-loading .payment-status-description,
+#modal-card-complete .payment-status-description {
+  margin: 16px 0 0;
+  font-size: 40px;
+  line-height: 130%;
+}
+.selfCheckout__modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 140px;
+  padding: 0 48px;
+  background-color: var(--selfCheckout-primary-color);
+  color: #fff;
+}
+.selfCheckout__modal-header h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 130%;
+}
+.selfCheckout__section .selfCheckout__modal-close {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  cursor: pointer;
+}
+.selfCheckout__modal-close::before,
+.selfCheckout__modal-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 4px;
+  background-color: #fff;
+}
+.selfCheckout__modal-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.selfCheckout__modal-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.selfCheckout__receipt {
+  padding: 80px 60px 60px;
+  text-align: center;
+}
+.selfCheckout__receipt-link {
+  display: block;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 130%;
+}
+.selfCheckout__receipt-actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 80px;
+}
+.selfCheckout__section .selfCheckout__receipt-choice {
+  flex: 1;
+  min-width: 0;
+  height: 130px;
+  line-height: 130px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #fff;
+  color: #000;
+  font-size: 48px;
+  font-weight: 700;
+}
+.selfCheckout__section .selfCheckout__receipt-choice--yes {
+  border-color: var(--selfCheckout-primary-color);
+  background: var(--selfCheckout-primary-color);
+  color: #fff;
+}
+.selfCheckout__section--complete {
+  position: relative;
+  height: 100%;
+  padding: 329px 60px 60px;
+  background: #FAFAFA;
+  text-align: center;
+}
+.selfCheckout__finish-message h1 {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 130%;
+}
+.selfCheckout__finish-message p {
+  margin-top: 16px;
+  font-size: 44px;
+  line-height: 130%;
+}
+.selfCheckout__finish-image {
+  display: block;
+  width: 560px;
+  height: auto;
+  margin: 88px auto 0;
+}
+.selfCheckout__section .selfCheckout__finish-button {
+  position: absolute;
+  right: 60px;
+  bottom: 60px;
+  left: 60px;
+  height: 140px;
+  line-height: 140px;
+  border-radius: 20px;
+  background: var(--selfCheckout-primary-color);
+  color: #fff;
+  font-size: 44px;
+  font-weight: 700;
+}
+.selfCheckout__card-payment {
+  padding: 48px 80px 60px;
+  text-align: center;
+}
+.selfCheckout__section .selfCheckout__card-payment .payment-image-button {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.selfCheckout__card-guide {
+  margin: 12px 0 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 130%;
+}
+.selfCheckout__card-description {
+  margin: 24px 0 0;
+  font-size: 36px;
+  line-height: 130%;
+}
+.selfCheckout__card-summary {
+  margin: 60px 0 0;
+  padding: 16px 60px;
+  border-radius: 24px;
+  background: #f0f0f0;
+  font-size: 40px;
+  font-weight: 700;
+}
+.selfCheckout__card-summary > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 0;
+}
+.selfCheckout__card-summary > div + div {
+  border-top: 1px solid #ddd;
+}
+.selfCheckout__card-summary dd {
+  margin: 0;
+}
+.selfCheckout__card-summary [data-payment-amount] {
+  color: #e83200;
+}
+.selfCheckout__modal-mode {
+  display: flex;
+  justify-content: space-between;
+  padding: 29px 60px;
+  background-color: #F5F5F5;
+}
+.selfCheckout__section .selfCheckout__mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 316px;
+  height: 300px;
+  padding-top: 52px;
+  border: 0;
+  border-radius: 24px;
+  color: #000;
+  cursor: pointer;
+}
+.selfCheckout__section .selfCheckout__mode-btn.is-active {
+  background-color: #8E9EC5;
+}
+.selfCheckout__mode-icon {
+  height: 74px;
+  margin-bottom: 28px;
+}
+.selfCheckout__mode-btn strong {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 130%;
+}
+.selfCheckout__mode-btn span {
+  font-size: 32px;
+  line-height: 130%;
+}
+.selfCheckout__pay-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 41px;
+  margin: 0;
+  padding: 60px 50px 0;
+  list-style: none;
+}
+.selfCheckout__section .selfCheckout__pay-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  cursor: pointer;
+}
+.selfCheckout__pay-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.selfCheckout__pay-logo img {
+  max-width: 72px;
+  max-height: 72px;
+}
+.selfCheckout__pay-logo--kakao { background-color: #fee500; }
+.selfCheckout__pay-logo--naver { background-color: #03e05f; }
+.selfCheckout__pay-logo--payco { background-color: #ff2a3a; }
+.selfCheckout__pay-logo--zero { background-color: #e4e6ff; }
+.selfCheckout__pay-logo--wechat { background-color: #d9f6dc; }
+.selfCheckout__pay-logo--daangn { background-color: #ffe9dc; }
+.selfCheckout__pay-name {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+  color: #000;
+}
+.selfCheckout__section .selfCheckout__coupon-btn {
+  display: block;
+  width: 720px;
+  height: 128px;
+  margin: 62px 60px 65px;
+  border: 2px solid #000;
+  border-radius: 16px;
+  background-color: #fff;
+  color: #444;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-size: 44px;
+  cursor: pointer;
+}
+
+/* end-16 체험 완료 */
+.selfCheckout__section--end {
+  position: relative;
+  height: 100%;
+}
+.selfCheckout__end-notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 453px;
+  margin-top: 17px;
+  border-radius: 32px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+.selfCheckout__end-title {
+  margin: 0 0 24px;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 130%;
+  color: #000;
+}
+.selfCheckout__end-desc {
+  margin: 0;
+  font-size: 40px;
+  line-height: 145%;
+  color: #444;
+}
+.selfCheckout__end-illust {
+  display: block;
+  width: 360px;
+  height: 500px;
+  margin: 111px auto 0;
+}
+.selfCheckout__end-actions {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.selfCheckout__section .selfCheckout__end-btn {
+  height: 130px;
+  border: 0;
+  border-radius: 24px;
+  color: #fff;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-size: 44px;
+  cursor: pointer;
+}
+.selfCheckout__section .selfCheckout__end-btn--retry {
+  background-color: #555;
+}
+.selfCheckout__section .selfCheckout__end-btn--home {
+  background-color: var(--selfCheckout-primary-color);
+}

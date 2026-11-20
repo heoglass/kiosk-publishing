@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>무인 매장</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../shared/css/common.css" />
-    <link rel="stylesheet" href="./unmanned-store.css" />
+    <title>무인매장</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./selfCheckout.css" />
     <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./unmanned-store.js"></script>
+    <!-- CDN링크 -->
   </head>
-  <body></body>
+
+  <body id="selfCheckout">
+      <main class="category-main kiosk-screen">
+        <header id="category-header">
+          <div class="header-left">
+            <a href="../../index.html" aria-label="처음으로">
+              <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+            </a>
+            <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+            <span id="header-title"></span>
+          </div>
+
+          <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+          </button>
+        </header>
+        <!-- 컨텐츠 -->
+        <section id="category-start-screen" class="selfCheckout__section selfCheckout__section--bg" aria-label="푸드코트 주문 시작">
+     
+          <a href="./ice-02.html" class="category-main-message selfCheckout__button">
+            <span>화면을 터치하시면 정산이 시작됩니다</span>
+          </a>
+        </section>
+      </main>
+  <script type="text/javascript" src="./selfCheckout.js"></script>
+  </body>
 </html>

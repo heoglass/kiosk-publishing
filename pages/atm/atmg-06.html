@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>은행 ATM</title>
+    <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
+    <link rel="stylesheet" href="./atmBank.css" />
+
+  </head>
+  <body id="bankAtmBody" data-page="atm-index">
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="kiosk-main atm__screen">
+      <!-- 가로형 공통헤더 -->
+      <header id="category-header-horizontal" class="tablePay__header--bank">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+
+      <section class="kiosk-container atm__section">
+        <div class="atm__subject atmg__subject--compact">
+          <h2 class="mb__8">입금 내용 확인</h2>
+          <h3 class="atmg__desc">
+            맞으면 ‘확인’을 틀리면 ‘취소’를 눌러주세요.<br />
+            ‘취소’를 누르면 금액이 반환됩니다.
+          </h3>
+        </div>
+
+        <div class="atm__content atmg__content--table">
+          <dl class="atmg__list">
+            <div class="atmg__row">
+              <dt>입금계좌번호</dt>
+              <dd>123-56-7890</dd>
+            </div>
+            <div class="atmg__row">
+              <dt>입금금액</dt>
+              <dd>500,000원</dd>
+            </div>
+            <div class="atmg__row">
+              <dt>오만원권</dt>
+              <dd>8장</dd>
+            </div>
+            <div class="atmg__row">
+              <dt>만원권</dt>
+              <dd>10장</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="atm__buttons">
+          <a href="./index.html" class="atm-btn">취소</a>
+          <a href="./atmg-07.html" class="atm-btn btn--primary">확인</a>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js" defer></script>
+    <script type="text/javascript" src="./atmBank.js"></script>
+  </body>
+</html>
