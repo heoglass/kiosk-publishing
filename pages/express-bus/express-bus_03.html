@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>고속/시외버스</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+
+    <link rel="stylesheet" href="./express-bus.css" />
+
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+
+    <script type="text/javascript" src="./express-bus.js" defer=""></script>
+  </head>
+
+  <body>
+    <main class="bus-main kiosk-screen bus-time-page">
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <!-- <button
+
+            type="button"
+
+            id="header-back"
+
+            class="header-back"
+
+            aria-label="이전 화면으로"
+
+          >
+
+            <img
+
+              src="../../shared/images/icon/arrow-back.png"
+
+              class="arrow-back"
+
+              alt="뒤로가기 화살표"
+
+            />
+
+          </button> -->
+
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+
+        <!-- <div class="header-right"> -->
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+
+        <!-- </div> -->
+      </header>
+
+      <section id="screen-bus-main" class="screen-bus-time-select">
+        <div class="contens-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+
+              <p>서울</p>
+            </div>
+
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+
+          <div class="title-container">
+            <p class="page-title">출발시간을 선택하세요</p>
+
+            <p class="page-description">
+              <span>출발 5분 전</span>부터 발권이 되지 않습니다
+            </p>
+          </div>
+
+          <div class="departure-arrival-text-area">
+            <p>서울 경부</p>
+
+            <img
+              src="../../shared/images/express-bus/arrow-right-136.png"
+              alt=""
+            />
+
+            <p>대구</p>
+          </div>
+
+          <div class="date-button-container">
+            <button class="date-prev-button">
+              <img
+                src="../../shared/images/express-bus/arrow-left-w80.png"
+                alt=""
+              />
+
+              <span>이전날</span>
+            </button>
+
+            <p class="departure-date">2026-11-09 (월)</p>
+
+            <button class="date-next-button">
+              <span>다음날</span>
+
+              <img
+                src="../../shared/images/express-bus/arrow-right-w80.png"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+
+        <!-- 이 영역 안에서만 시간대별 버스 목록이 스크롤됩니다. -->
+        <div
+          class="bus-time-scroll"
+          tabindex="0"
+          role="region"
+          aria-label="출발시간별 버스 목록"
+        >
+          <ul class="bus-time-list">
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="11:30"
+                aria-label="고속버스 11:30 출발, 약 2시간, 우등, 18,800원, 21석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">11:30</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">18,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">우등</span>
+                    <span class="bus-time-seats">21석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="12:20"
+                aria-label="고속버스 12:20 출발, 약 2시간, 일반, 9,200원, 10석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">12:20</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">9,200원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">일반</span>
+                    <span class="bus-time-seats">10석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="13:45"
+                aria-label="고속버스 13:45 출발, 약 2시간, 프리미엄, 32,800원, 15석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">13:45</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">32,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">프리미엄</span>
+                    <span class="bus-time-seats">15석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="14:30"
+                aria-label="고속버스 14:30 출발, 약 2시간, 우등, 18,800원, 18석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">14:30</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">18,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">우등</span>
+                    <span class="bus-time-seats">18석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="15:10"
+                aria-label="고속버스 15:10 출발, 약 2시간, 일반, 9,200원, 24석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">15:10</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">9,200원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">일반</span>
+                    <span class="bus-time-seats">24석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="16:00"
+                aria-label="고속버스 16:00 출발, 약 2시간, 프리미엄, 32,800원, 12석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">16:00</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">32,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">프리미엄</span>
+                    <span class="bus-time-seats">12석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="16:50"
+                aria-label="고속버스 16:50 출발, 약 2시간, 우등, 18,800원, 16석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">16:50</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">18,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">우등</span>
+                    <span class="bus-time-seats">16석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="17:40"
+                aria-label="고속버스 17:40 출발, 약 2시간, 일반, 9,200원, 8석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">17:40</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">9,200원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">일반</span>
+                    <span class="bus-time-seats">8석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="18:30"
+                aria-label="고속버스 18:30 출발, 약 2시간, 프리미엄, 32,800원, 9석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">18:30</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">32,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">프리미엄</span>
+                    <span class="bus-time-seats">9석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li class="bus-time-item">
+              <button
+                type="button"
+                class="bus-time-card"
+                data-departure-time="19:20"
+                aria-label="고속버스 19:20 출발, 약 2시간, 우등, 18,800원, 22석 남음"
+              >
+                <span class="bus-time-info">
+                  <span class="bus-time-type">고속</span>
+                  <span class="bus-time-departure">19:20</span>
+                  <span class="bus-time-duration">약 2시간</span>
+                </span>
+                <span class="bus-time-fare">
+                  <span class="bus-time-price">18,800원</span>
+                  <span class="bus-time-tags">
+                    <span class="bus-time-grade">우등</span>
+                    <span class="bus-time-seats">22석 남음</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contens-bottom page3">
+          <div class="bottom-button-container">
+            <a type="button" href="./express-bus_01.html" class="bottom-button">
+              이전으로
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const busTimeList = document.querySelector(".bus-time-list");
+
+      if (busTimeList) {
+        busTimeList.addEventListener("click", (event) => {
+          const card = event.target.closest(".bus-time-card");
+          if (!card || card.disabled || !busTimeList.contains(card)) return;
+
+          window.location.href = "./express-bus_04.html";
+        });
+      }
+    </script>
+  </body>
+</html>

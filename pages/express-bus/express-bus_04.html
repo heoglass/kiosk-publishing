@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>고속/시외버스</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+
+    <link rel="stylesheet" href="./express-bus.css" />
+
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+
+    <script type="text/javascript" src="./express-bus.js" defer=""></script>
+  </head>
+
+  <body>
+    <main class="bus-main kiosk-screen bus-time-page bus-seat-page">
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <!-- <button
+
+            type="button"
+
+            id="header-back"
+
+            class="header-back"
+
+            aria-label="이전 화면으로"
+
+          >
+
+            <img
+
+              src="../../shared/images/icon/arrow-back.png"
+
+              class="arrow-back"
+
+              alt="뒤로가기 화살표"
+
+            />
+
+
+
+          </button> -->
+
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+
+        <!-- <div class="header-right"> -->
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+
+        <!-- </div> -->
+      </header>
+
+      <section
+        id="screen-bus-main"
+        class="screen-bus-time-select screen-bus-seat-select"
+      >
+        <div class="contens-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+
+              <p>서울</p>
+            </div>
+
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+
+          <div class="title-container select-seat-title">
+            <p class="page-title">좌석을 선택하세요</p>
+
+            <div class="selected-bus-info">
+              <div class="info-left">
+                <span class="bus-time-type">고속</span>
+
+                <div class="departutr-arrival-info">
+                  <p>서울 경부</p>
+
+                  <img
+                    src="../../shared/images/express-bus/arrow-right-54.png"
+                    alt=""
+                  />
+
+                  <p>대구</p>
+                </div>
+              </div>
+
+              <div class="info-right">
+                <p class="selected-time">15:20</p>
+
+                <p class="selected-duration">약 2시간</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 화면: 좌석 배치 / 승객 유형 / 선택 내역 -->
+        <div
+          class="bus-seat-layout"
+          data-default-seat-src="../../shared/images/express-bus/seat-default.png"
+          data-selected-seat-src="../../shared/images/express-bus/seat-selected.png"
+        >
+          <div class="bus-seat-map" role="region" aria-label="버스 좌석 배치">
+            <div class="bus-seat-coach">
+              <div class="bus-seat-coach-head">
+                <span class="bus-seat-driver">운전석</span>
+                <span class="bus-seat-exit"><span>출입구</span></span>
+              </div>
+              <div
+                class="bus-seat-grid"
+                role="group"
+                aria-label="좌석 선택, 총 45석"
+              >
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="1"
+                  style="grid-row: 1; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="1번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">1</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="2"
+                  style="grid-row: 1; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="2번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">2</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="3"
+                  style="grid-row: 1; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="3번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">3</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="4"
+                  style="grid-row: 1; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="4번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">4</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="5"
+                  style="grid-row: 2; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="5번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">5</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="6"
+                  style="grid-row: 2; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="6번 좌석 판매 완료"
+                  disabled
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-disabled.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">6</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="7"
+                  style="grid-row: 2; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="7번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">7</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="8"
+                  style="grid-row: 2; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="8번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">8</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="9"
+                  style="grid-row: 3; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="9번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">9</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="10"
+                  style="grid-row: 3; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="10번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">10</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="11"
+                  style="grid-row: 3; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="11번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">11</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="12"
+                  style="grid-row: 3; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="12번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">12</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="13"
+                  style="grid-row: 4; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="13번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">13</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="14"
+                  style="grid-row: 4; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="14번 좌석 판매 완료"
+                  disabled
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-disabled.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">14</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="15"
+                  style="grid-row: 4; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="15번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">15</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="16"
+                  style="grid-row: 4; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="16번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">16</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="17"
+                  style="grid-row: 5; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="17번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">17</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="18"
+                  style="grid-row: 5; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="18번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">18</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="19"
+                  style="grid-row: 5; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="19번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">19</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="20"
+                  style="grid-row: 5; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="20번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">20</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="21"
+                  style="grid-row: 6; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="21번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">21</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="22"
+                  style="grid-row: 6; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="22번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">22</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="23"
+                  style="grid-row: 6; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="23번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">23</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="24"
+                  style="grid-row: 6; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="24번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">24</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="25"
+                  style="grid-row: 7; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="25번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">25</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="26"
+                  style="grid-row: 7; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="26번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">26</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="27"
+                  style="grid-row: 7; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="27번 좌석 판매 완료"
+                  disabled
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-disabled.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">27</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="28"
+                  style="grid-row: 7; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="28번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">28</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="29"
+                  style="grid-row: 8; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="29번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">29</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="30"
+                  style="grid-row: 8; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="30번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">30</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="31"
+                  style="grid-row: 8; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="31번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">31</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="32"
+                  style="grid-row: 8; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="32번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">32</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="33"
+                  style="grid-row: 9; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="33번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">33</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="34"
+                  style="grid-row: 9; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="34번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">34</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="35"
+                  style="grid-row: 9; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="35번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">35</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="36"
+                  style="grid-row: 9; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="36번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">36</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="37"
+                  style="grid-row: 10; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="37번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">37</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="38"
+                  style="grid-row: 10; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="38번 좌석 판매 완료"
+                  disabled
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-disabled.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">38</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="39"
+                  style="grid-row: 10; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="39번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">39</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="40"
+                  style="grid-row: 10; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="40번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">40</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="41"
+                  style="grid-row: 11; grid-column: 1"
+                  aria-pressed="false"
+                  aria-label="41번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">41</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="42"
+                  style="grid-row: 11; grid-column: 2"
+                  aria-pressed="false"
+                  aria-label="42번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">42</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="43"
+                  style="grid-row: 11; grid-column: 3"
+                  aria-pressed="false"
+                  aria-label="43번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">43</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="44"
+                  style="grid-row: 11; grid-column: 4"
+                  aria-pressed="false"
+                  aria-label="44번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">44</span>
+                </button>
+                <button
+                  type="button"
+                  class="bus-seat"
+                  data-seat="45"
+                  style="grid-row: 11; grid-column: 5"
+                  aria-pressed="false"
+                  aria-label="45번 좌석 선택"
+                >
+                  <img
+                    class="bus-seat-image"
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-number">45</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <aside class="bus-seat-side" aria-label="좌석 선택 정보">
+            <div class="bus-seat-legend" aria-label="좌석 표시 안내">
+              <div class="bus-seat-legend-item">
+                <span class="bus-seat-legend-icon">
+                  <img
+                    src="../../shared/images/express-bus/seat-default.png"
+                    alt=""
+                  />
+                  <span class="bus-seat-legend-number">1</span>
+                </span>
+                <span>선택가능<br />좌석</span>
+              </div>
+              <div class="bus-seat-legend-item">
+                <span class="bus-seat-legend-icon bus-seat-legend-sold">
+                  <img
+                    src="../../shared/images/express-bus/seat-disabled.png"
+                    alt=""
+                  />
+                </span>
+                <span>판매된<br />좌석</span>
+              </div>
+              <div class="bus-seat-legend-item">
+                <span class="bus-seat-legend-icon">
+                  <img
+                    src="../../shared/images/express-bus/seat-selected.png"
+                    alt=""
+                  />
+                </span>
+                <span>선택한<br />좌석</span>
+              </div>
+            </div>
+            <div class="bus-seat-side-content">
+              <div class="bus-seat-prompt">
+                <div class="bus-seat-prompt-arrow" aria-hidden="true">
+                  <img
+                    src="../../shared/images/express-bus/arrow-left-yellow1.png"
+                    alt=""
+                  />
+                  <img
+                    src="../../shared/images/express-bus/arrow-left-yellow2.png"
+                    alt=""
+                  />
+                  <span>좌석을 선택하세요</span>
+                </div>
+              </div>
+              <div class="bus-passenger-picker" hidden>
+                <p class="bus-passenger-title">선택해주세요</p>
+                <div
+                  class="bus-passenger-options"
+                  role="group"
+                  aria-label="선택 좌석의 승객 유형"
+                >
+                  <button
+                    type="button"
+                    class="bus-passenger-button"
+                    data-passenger="adult"
+                    aria-pressed="false"
+                  >
+                    일반
+                  </button>
+                  <button
+                    type="button"
+                    class="bus-passenger-button"
+                    data-passenger="child"
+                    aria-pressed="false"
+                  >
+                    초등생
+                  </button>
+                  <button
+                    type="button"
+                    class="bus-passenger-button"
+                    data-passenger="student"
+                    aria-pressed="false"
+                  >
+                    중등생
+                  </button>
+                  <button
+                    type="button"
+                    class="bus-passenger-button"
+                    data-passenger="veteran30"
+                    aria-pressed="false"
+                  >
+                    보훈30
+                  </button>
+                  <button
+                    type="button"
+                    class="bus-passenger-button"
+                    data-passenger="veteran50"
+                    aria-pressed="false"
+                  >
+                    보훈50
+                  </button>
+                  <button
+                    type="button"
+                    class="bus-passenger-button bus-passenger-cancel"
+                    data-passenger-cancel
+                  >
+                    취소
+                  </button>
+                </div>
+              </div>
+              <ul
+                class="bus-selected-seat-list"
+                aria-label="선택한 좌석 목록"
+                hidden
+              ></ul>
+              <p class="bus-seat-notice">
+                승차권 1매<br />최대 발권 매수는 10매입니다
+              </p>
+              <p class="bus-seat-status" role="status" aria-live="polite"></p>
+            </div>
+            <div class="bus-seat-payment" aria-live="polite" aria-atomic="true">
+              <p class="bus-seat-payment-title">총 결제 금액</p>
+              <p class="bus-seat-payment-total">0원</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="contens-bottom page4">
+          <div class="bottom-button-container two-btn">
+            <a
+              type="button"
+              href="./express-bus_03.html"
+              class="bottom-button back"
+            >
+              이전
+            </a>
+
+            <button type="button" class="bottom-button completed" disabled>
+              선택 완료
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

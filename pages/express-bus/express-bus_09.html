@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고속/시외버스</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./express-bus.css" />
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+    <script type="text/javascript" src="./express-bus.js" defer=""></script>
+  </head>
+  <body>
+    <main
+      class="bus-main kiosk-screen bus-time-page bus-seat-page bus-refund-page"
+    >
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+      <section id="screen-bus-main" class="screen-bus-refund">
+        <div class="contens-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+
+              <p>서울</p>
+            </div>
+
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+
+          <div class="title-container">
+            <p class="page-title">승차권을 투입구 넣어주세요</p>
+          </div>
+        </div>
+
+        <div class="bus-refund-content">
+          <div class="bus-refund-policy">
+            <h2 class="bus-refund-policy-title" id="bus-refund-policy-title">
+              환불 규정·취소수수료
+            </h2>
+            <div class="bus-refund-table-wrap">
+              <table
+                class="bus-refund-table"
+                aria-labelledby="bus-refund-policy-title"
+              >
+                <colgroup>
+                  <col class="bus-refund-period-col" />
+                  <col class="bus-refund-weekday-col" />
+                  <col class="bus-refund-weekend-col" />
+                  <col class="bus-refund-holiday-col" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <span class="bus-refund-visually-hidden"></span>
+                    </th>
+                    <th scope="col">평일(월~목)</th>
+                    <th scope="col">주말(금~일, 공휴일)</th>
+                    <th scope="col">명절(설·추석)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">2일전</th>
+                    <td>0%</td>
+                    <td>0%</td>
+                    <td>0%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1일전~<br />3시간 이전</th>
+                    <td>5%</td>
+                    <td>7.5%</td>
+                    <td>10%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">출발 후~<br />도착 예정시간<br />이전</th>
+                    <td colspan="3">60%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">도착 시간 초과</th>
+                    <td colspan="3">100%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="bus-refund-policy-note">
+              최종 수수료는 하단의 [환불] 버튼을 누르는 시간을<br />
+              기준으로 위의 안내 기준에 따라 계산됩니다
+            </p>
+          </div>
+          <div class="bus-refund-state">
+            <!-- 최초 진입: 티켓 이미지 클릭으로 다음 상태 표시 -->
+            <div class="bus-refund-insert">
+              <button
+                type="button"
+                class="bus-refund-ticket-button"
+                aria-label="환불할 승차권 투입"
+              >
+                <img
+                  src="../../shared/images/express-bus/bus-ticket.png"
+                  class="bus-refund-ticket-image"
+                  alt=""
+                />
+              </button>
+              <p class="bus-refund-insert-note">
+                승차권을 환불 투입구에 한장씩 넣어주세요
+              </p>
+            </div>
+
+            <div class="bus-refund-review" hidden>
+              <label class="bus-refund-receipt">
+                <input
+                  type="checkbox"
+                  class="bus-refund-checkbox"
+                  checked
+                  disabled
+                />
+                <span>환불 확인증 출력</span>
+              </label>
+              <dl class="bus-refund-amounts">
+                <div class="bus-refund-amount-row first">
+                  <dt>결제금액</dt>
+                  <dd>20,000원</dd>
+                </div>
+                <div class="bus-refund-amount-row">
+                  <dt>취소수수료</dt>
+                  <dd>0원</dd>
+                </div>
+                <div class="bus-refund-amount-row bus-refund-amount-total">
+                  <dt>환불금액</dt>
+                  <dd>[카드] 20,000원</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="bus-refund-complete" role="status" hidden>
+              <p>승차권 환불을 완료하였습니다</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contens-bottom page9 bus-refund-footer">
+          <div class="bottom-button-container two-btn bus-refund-actions">
+            <a
+              type="button"
+              href="./index.html"
+              class="bottom-button back bus-refund-cancel"
+            >
+              이전
+            </a>
+            <button
+              type="button"
+              class="bottom-button refund bus-refund-submit"
+              disabled
+            >
+              환불
+            </button>
+          </div>
+          <!-- 환불 완료 후 기존 두 버튼 대신 표시됩니다. -->
+          <a
+            href="./express-bus_10.html"
+            class="bottom-button bus-refund-confirm"
+            hidden
+            >확인</a
+          >
+        </div>
+      </section>
+      <dialog
+        class="bus-refund-loading-dialog"
+        id="bus-refund-loading"
+        aria-labelledby="bus-refund-loading-title"
+        aria-busy="true"
+        tabindex="-1"
+      >
+        <p class="bus-refund-loading-title" id="bus-refund-loading-title">
+          환불 중입니다<br />잠시만 기다려주세요
+        </p>
+        <div class="bus-refund-spinner" aria-hidden="true"></div>
+      </dialog>
+    </main>
+  </body>
+</html>

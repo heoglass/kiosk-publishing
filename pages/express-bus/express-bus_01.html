@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고속/시외버스</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./express-bus.css" />
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+    <script type="text/javascript" src="./express-bus.js" defer=""></script>
+  </head>
+  <body>
+    <main class="bus-main kiosk-screen">
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section id="screen-bus-main" class="screen-bus-first">
+        <div class="contens-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+              <p>서울</p>
+            </div>
+
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+
+          <div class="title-container">
+            <p class="page-title">출발지와 도착지를 선택하세요</p>
+          </div>
+
+          <div class="date-select-container">
+            <p class="date-select-title">출발일</p>
+            <div class="date-button-container">
+              <button class="date-prev-button">
+                <img
+                  src="../../shared/images/express-bus/arrow-left-w80.png"
+                  alt=""
+                />
+                <span>이전날</span>
+              </button>
+              <p class="departure-date">2026-11-09 (월)</p>
+              <button class="date-next-button is-active">
+                <span>다음날</span>
+                <img
+                  src="../../shared/images/express-bus/arrow-right-w80.png"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="departure-arrival-container">
+            <a
+              href="./express-bus_02.html?select=departure"
+              class="area-card bus-route-card"
+            >
+              <p class="area-card-title">출발지</p>
+              <p class="area-card-area">출발지 선택</p>
+            </a>
+
+            <img
+              src="../../shared/images/express-bus/arrow-right-136.png"
+              alt=""
+            />
+
+            <a
+              href="./express-bus_02.html?select=arrival"
+              class="area-card bus-route-card"
+            >
+              <p class="area-card-title">도착지</p>
+              <p class="area-card-area">도착지 선택</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="departure-descriprion">
+          <p>
+            출발시간 5분 전 부터 발권되지 않습니다 <br />
+            다음 출발 차량을 이용해주세요
+          </p>
+        </div>
+
+        <div class="contens-bottom">
+          <div class="bottom-description">
+            <p>
+              탑승시간을 확인 후, 승차권을 구입해 주세요<br />
+              미 탑승시 <span>수수료</span>가 발생합니다
+            </p>
+          </div>
+
+          <div class="bottom-button-container">
+            <a type="button" href="./express-bus_03.html" class="bottom-button">
+              조회하기
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

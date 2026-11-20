@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고속/시외버스</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./express-bus.css" />
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+    <script type="text/javascript" src="./express-bus.js" defer=""></script>
+  </head>
+  <body>
+    <main class="bus-main kiosk-screen">
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section id="screen-bus-main" class="screen-bus-ticket-complete">
+        <div class="contens-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+              <p>서울</p>
+            </div>
+
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+
+          <div class="contents-center">
+            <div class="title-container page6">
+              <p class="page-title">승차권 발행이 완료되었습니다</p>
+              <p class="page-dexcription">아래에서 티켓을 확인해주세요</p>
+            </div>
+
+            <img
+              src="../../shared/images/express-bus/bus-ticket.png"
+              alt=""
+              class="bus-ticket-image"
+            />
+          </div>
+        </div>
+
+        <div class="contens-bottom">
+          <div class="bottom-button-container">
+            <a
+              type="button"
+              href="./express-bus_07.html"
+              class="bottom-button confirm"
+            >
+              확인
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

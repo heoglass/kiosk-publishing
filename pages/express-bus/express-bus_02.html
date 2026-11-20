@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고속/시외버스</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="./express-bus.css" />
+    <!-- 기존 CSS 다음에 추가 스타일을 불러옵니다. -->
+    <script src="../../shared/js/common.js" defer></script>
+    <script src="./express-bus.js" defer></script>
+  </head>
+  <body>
+    <main class="bus-main kiosk-screen bus-area-page">
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title">고속/시외버스</span>
+        </div>
+
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+      </header>
+      <section id="screen-bus-main" class="bus-area-screen">
+        <div class="contens-top bus-area-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                class="bus-area-location-icon"
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+              <p>서울</p>
+            </div>
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+          <div class="title-container">
+            <h1 class="page-title" id="bus-area-title">출발지를 선택하세요</h1>
+          </div>
+          <div class="area-search-container">
+            <!-- 디자인용 영역: 검색 입력과 클릭 기능은 없습니다. -->
+            <div class="search-box">
+              <p class="search-text" id="bus-area-search-text">
+                출발지 터미널명 선택
+              </p>
+              <img
+                src="../../shared/images/express-bus/icon-search.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <nav class="area-tab bus-region-tabs" aria-label="터미널 지역 선택">
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="전체"
+              aria-pressed="true"
+            >
+              전체
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="서울"
+              aria-pressed="false"
+            >
+              서울
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="인천/경기"
+              aria-pressed="false"
+            >
+              인천/경기
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="강원"
+              aria-pressed="false"
+            >
+              강원
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="대전/충남"
+              aria-pressed="false"
+            >
+              대전/충남
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="충북"
+              aria-pressed="false"
+            >
+              충북
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="광주/전남"
+              aria-pressed="false"
+            >
+              광주/전남
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="전북"
+              aria-pressed="false"
+            >
+              전북
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="부산/경남"
+              aria-pressed="false"
+            >
+              부산/경남
+            </button>
+            <button
+              type="button"
+              class="bus-region-button"
+              data-region="대구/경북"
+              aria-pressed="false"
+            >
+              대구/경북
+            </button>
+          </nav>
+        </div>
+        <div
+          class="bus-terminal-scroll"
+          tabindex="0"
+          role="region"
+          aria-label="터미널 목록"
+        >
+          <div class="bus-terminal-grid">
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="서울경부"
+              data-region="서울"
+              aria-pressed="false"
+              aria-label="서울경부, 고속"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-express"
+                aria-hidden="true"
+                >고속</span
+              >
+              <span class="bus-terminal-name">서울경부</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="동서울"
+              data-region="서울"
+              aria-pressed="false"
+              aria-label="동서울, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">동서울</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="서울남부"
+              data-region="서울"
+              aria-pressed="false"
+              aria-label="서울남부, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">서울남부</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="인천"
+              data-region="인천/경기"
+              aria-pressed="false"
+              aria-label="인천, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">인천</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="수원"
+              data-region="인천/경기"
+              aria-pressed="false"
+              aria-label="수원, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">수원</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="고천"
+              data-region="인천/경기"
+              aria-pressed="false"
+              aria-label="고천, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">고천</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="원주종합"
+              data-region="강원"
+              aria-pressed="false"
+              aria-label="원주종합, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">원주종합</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="춘천"
+              data-region="강원"
+              aria-pressed="false"
+              aria-label="춘천, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">춘천</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="강릉시외터미널"
+              data-region="강원"
+              aria-pressed="false"
+              aria-label="강릉시외터미널, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">강릉시외터미널</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="천안"
+              data-region="대전/충남"
+              aria-pressed="false"
+              aria-label="천안, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">천안</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="유성복합"
+              data-region="대전/충남"
+              aria-pressed="false"
+              aria-label="유성복합, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">유성복합</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="서산"
+              data-region="대전/충남"
+              aria-pressed="false"
+              aria-label="서산, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">서산</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="청주시외"
+              data-region="충북"
+              aria-pressed="false"
+              aria-label="청주시외, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">청주시외</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="충주"
+              data-region="충북"
+              aria-pressed="false"
+              aria-label="충주, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">충주</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="감곡"
+              data-region="충북"
+              aria-pressed="false"
+              aria-label="감곡, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">감곡</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="순천"
+              data-region="광주/전남"
+              aria-pressed="false"
+              aria-label="순천, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">순천</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="광양"
+              data-region="광주/전남"
+              aria-pressed="false"
+              aria-label="광양, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">광양</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="마전(충남)"
+              data-region="대전/충남"
+              aria-pressed="false"
+              aria-label="마전(충남), 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">마전(충남)</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="전주고속터미널"
+              data-region="전북"
+              aria-pressed="false"
+              aria-label="전주고속터미널, 고속"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-express"
+                aria-hidden="true"
+                >고속</span
+              >
+              <span class="bus-terminal-name">전주고속터미널</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="계남"
+              data-region="전북"
+              aria-pressed="false"
+              aria-label="계남, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">계남</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="계북"
+              data-region="전북"
+              aria-pressed="false"
+              aria-label="계북, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">계북</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="창원"
+              data-region="부산/경남"
+              aria-pressed="false"
+              aria-label="창원, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">창원</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="마산"
+              data-region="부산/경남"
+              aria-pressed="false"
+              aria-label="마산, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">마산</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="고현(거제)"
+              data-region="부산/경남"
+              aria-pressed="false"
+              aria-label="고현(거제), 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">고현(거제)</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="경북도청"
+              data-region="대구/경북"
+              aria-pressed="false"
+              aria-label="경북도청, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">경북도청</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="낙서"
+              data-region="대구/경북"
+              aria-pressed="false"
+              aria-label="낙서, 시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-intercity"
+                aria-hidden="true"
+                >시외</span
+              >
+              <span class="bus-terminal-name">낙서</span>
+            </button>
+            <button
+              type="button"
+              class="bus-terminal-button"
+              data-terminal="상주"
+              data-region="대구/경북"
+              aria-pressed="false"
+              aria-label="상주, 고속·시외"
+            >
+              <span
+                class="bus-terminal-badge bus-terminal-badge-both"
+                aria-hidden="true"
+                ><span>고</span><span>시</span></span
+              >
+              <span class="bus-terminal-name">상주</span>
+            </button>
+          </div>
+          <p class="bus-terminal-empty" hidden>
+            해당 지역의 터미널이 없습니다.
+          </p>
+        </div>
+        <div class="contens-bottom page2 bus-area-bottom">
+          <div class="bottom-button-container">
+            <a href="./express-bus_01.html" class="bottom-button">이전으로</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

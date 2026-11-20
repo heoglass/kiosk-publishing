@@ -1,14 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>고속시외버스</title>
+    <title>고속/시외버스</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./express-bus.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./express-bus.js"></script>
+    <script
+      type="text/javascript"
+      src="../../shared/js/common.js"
+      defer=""
+    ></script>
+    <script type="text/javascript" src="./express-bus.js" defer=""></script>
   </head>
-  <body></body>
+  <body>
+    <main class="bus-main kiosk-screen">
+      <header id="category-header" class="bus__header">
+        <div class="header-left">
+          <!-- <button
+            type="button"
+            id="header-back"
+            class="header-back"
+            aria-label="이전 화면으로"
+          >
+            <img
+              src="../../shared/images/icon/arrow-back.png"
+              class="arrow-back"
+              alt="뒤로가기 화살표"
+            />
+          </button> -->
+          <a href="../../index.html" aria-label="처음으로">
+            <img
+              src="../../shared/images/icon/icon-home.png"
+              alt=""
+              class="category-header-home"
+            />
+          </a>
+
+          <img
+            src="../../shared/images/icon/arrow-right-w.png"
+            alt=""
+            class="category-header-arrow-right"
+          />
+
+          <span id="header-title"></span>
+        </div>
+        <!-- <div class="header-right"> -->
+        <button
+          type="button"
+          class="header-sound-toggle"
+          aria-label="소리"
+          aria-pressed="true"
+          data-sound-off-src="../../shared/images/icon/sound_w_off.png"
+        >
+          <img
+            src="../../shared/images/icon/sound_w.png"
+            class="header-sound"
+            alt=""
+          />
+        </button>
+        <!-- </div> -->
+      </header>
+      <section id="screen-bus-main" class="screen-bus-main">
+        <div class="main-top">
+          <div class="location-time-bar">
+            <div class="location-container">
+              <img
+                src="../../shared/images/express-bus/location-w.png"
+                alt=""
+              />
+              <p>서울</p>
+            </div>
+
+            <div class="time-container">
+              <p class="top-date">2026-11-09 월요일</p>
+              <p class="top-time">현재 시간 <span>09:45</span></p>
+            </div>
+          </div>
+          <div class="main-title-container">
+            <p>버스 승차권 발매기</p>
+            <p>[카드전용]</p>
+          </div>
+        </div>
+        <div class="ticket-select-container">
+          <a
+            type="button"
+            href="./express-bus_01.html"
+            class="ticket-button type1"
+          >
+            <img
+              src="../../shared/images/cafe/coffe-01.png"
+              alt=""
+              class="icon-ticket"
+            />
+
+            <p class="ticket-text-area">
+              <span class="ticket-title">현장 발권</span>
+              <span class="ticket-description">승차권 바로 구매</span>
+            </p>
+          </a>
+          <button type="button" href="" class="ticket-button type2">
+            <img
+              src="../../shared/images/cafe/coffe-01.png"
+              alt=""
+              class="icon-ticket"
+            />
+
+            <p class="ticket-text-area">
+              <span class="ticket-title">온라인 예매 발권</span>
+              <span class="ticket-description">예매한 승차권 찾기</span>
+            </p>
+          </button>
+          <a
+            type="button"
+            href="./express-bus_09.html"
+            class="ticket-button type3"
+          >
+            <img
+              src="../../shared/images/cafe/coffe-01.png"
+              alt=""
+              class="icon-ticket"
+            />
+
+            <p class="ticket-text-area">
+              <span class="ticket-title">환불</span>
+              <span class="ticket-description">구매 승차권 환불</span>
+            </p>
+          </a>
+        </div>
+        <div class="main-bott om">
+          <ul class="language-container">
+            <li class="korea">한국어</li>
+            <li>ENGLISH</li>
+            <li>中國語</li>
+            <li>日本語</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
