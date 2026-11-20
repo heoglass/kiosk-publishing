@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 화면별 초기화를 분리해 다른 화면의 return이 04 초기화를 막지 않게 합니다.
   initBusFirstScreen();
   initBusAreaScreen();
   initBusSeatScreen();
   initBusCardInsertScreen();
   initBusRefundScreen();
 
-  // 01 화면: 출발지/도착지 선택 여부에 따른 조회 버튼 색상
+  // 01 화면: URL로 전달된 터미널 표시와 조회 버튼 활성화
   function initBusFirstScreen() {
     const busFirstScreen = document.querySelector(".screen-bus-first");
     if (!busFirstScreen) return;
@@ -18,17 +17,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchButton = busFirstScreen.querySelector(".bottom-button");
     if (!areaContainer || areaTexts.length !== 2 || !searchButton) return;
 
+    // 별도 저장 없이 02 화면에서 URL로 넘긴 선택값만 표시합니다.
+    const params = new URLSearchParams(window.location.search);
+    const departure = params.get("departure")?.trim();
+    const arrival = params.get("arrival")?.trim();
+    if (departure) areaTexts[0].textContent = departure;
+    if (arrival) areaTexts[1].textContent = arrival;
+
     const updateSearchButton = () => {
-      const departure = areaTexts[0].textContent.trim();
-      const arrival = areaTexts[1].textContent.trim();
-      const isSelected =
-        departure !== "" &&
-        departure !== "출발지 선택" &&
-        arrival !== "" &&
-        arrival !== "도착지 선택";
+      const departureName = areaTexts[0].textContent.trim();
+      const arrivalName = areaTexts[1].textContent.trim();
+      const hasDeparture =
+        departureName !== "" && departureName !== "출발지 선택";
+      const hasArrival = arrivalName !== "" && arrivalName !== "도착지 선택";
+      const isSelected = hasDeparture && hasArrival;
 
       searchButton.classList.toggle("is-active", isSelected);
+      searchButton.setAttribute("aria-disabled", String(!isSelected));
+
+      // 반대쪽 카드를 고르러 02로 이동해도 앞서 선택한 터미널을 전달합니다.
+      areaContainer.querySelectorAll("a.area-card").forEach((card) => {
+        const nextUrl = new URL(
+          card.getAttribute("href"),
+          window.location.href
+        );
+        params.forEach((value, key) => {
+          if (key !== "select") nextUrl.searchParams.set(key, value);
+        });
+        if (hasDeparture) nextUrl.searchParams.set("departure", departureName);
+        else nextUrl.searchParams.delete("departure");
+        if (hasArrival) nextUrl.searchParams.set("arrival", arrivalName);
+        else nextUrl.searchParams.delete("arrival");
+        card.href = nextUrl.href;
+      });
     };
+
+    // 출발지와 도착지가 모두 선택되어야 03 화면으로 이동합니다.
+    searchButton.addEventListener("click", (event) => {
+      if (!searchButton.classList.contains("is-active")) event.preventDefault();
+    });
 
     updateSearchButton();
     new MutationObserver(updateSearchButton).observe(areaContainer, {
@@ -54,6 +81,16 @@ document.addEventListener("DOMContentLoaded", () => {
       "#bus-area-search-text"
     ).textContent = `${label} 터미널명 선택`;
     document.title = `${label} 선택 | 고속/시외버스`;
+
+    // 기존 선택값과 category 등의 쿼리는 유지하고 선택 모드만 제거합니다.
+    const createReturnUrl = () => {
+      const url = new URL("./express-bus_01.html", window.location.href);
+      url.search = params.toString();
+      url.searchParams.delete("select");
+      return url;
+    };
+    const previousLink = screen.querySelector(".contens-bottom .bottom-button");
+    if (previousLink) previousLink.href = createReturnUrl().href;
 
     const tabs = screen.querySelector(".bus-region-tabs");
     const regionButtons = Array.from(
@@ -108,13 +145,33 @@ document.addEventListener("DOMContentLoaded", () => {
       { passive: false }
     );
 
-    // 터미널 버튼을 누르면 선택 표시를 변경합니다.
+    // 터미널을 누르면 선택한 이름을 URL로 전달하고 01로 바로 돌아갑니다.
     terminalScroll.addEventListener("click", (event) => {
       const button = event.target.closest(".bus-terminal-button");
-      if (!button || button.hidden || !terminalScroll.contains(button)) return;
+      if (
+        !button ||
+        button.hidden ||
+        button.disabled ||
+        !terminalScroll.contains(button)
+      )
+        return;
+      const terminalName = (
+        button.dataset.terminal ||
+        button.querySelector(".bus-terminal-name")?.textContent ||
+        ""
+      ).trim();
+      if (!terminalName) return;
+
+      event.preventDefault();
       terminalButtons.forEach((item) => {
         item.setAttribute("aria-pressed", String(item === button));
       });
+      const returnUrl = createReturnUrl();
+      returnUrl.searchParams.set(
+        isArrival ? "arrival" : "departure",
+        terminalName
+      );
+      window.location.href = returnUrl.href;
     });
   }
 
