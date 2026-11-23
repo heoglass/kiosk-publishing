@@ -789,3 +789,34 @@ body:has(.hospital-payment-modal[open]) {
   font-weight: var(--font-700-weight);
   border-radius: 20px;
 }
+
+/* 시작연월·종료연월·발행부수 선택을 모두 마친 경우 */
+.hospital-issue-actions .hospital-issue-confirm:enabled {
+  background-color: #0a60f3;
+}
+
+/* cafe.js와 같은 클릭 위치 기준 리플 */
+.hospital-ripple-target {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hospital-ripple-target > .hospital-button-ripple {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  border-radius: 50%;
+  background: var(--hospital-ripple-color, rgb(255 255 255 / 55%));
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.hospital-ripple-light {
+  --hospital-ripple-color: rgb(0 88 163 / 22%);
+}
+
+.hospital-copy-list button[aria-pressed="true"],
+.hospital-month-grid button[aria-pressed="true"] {
+  --hospital-ripple-color: rgb(255 255 255 / 55%);
+}
