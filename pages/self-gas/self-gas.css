@@ -461,11 +461,11 @@ button.self-gas-card-guide-box {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 36px 0;
+  padding: 10px 0;
 }
 .self-gas-bonus-image img {
-  width: 202px;
-  height: 202px;
+  width: 287px;
+  /* height: 202px; */
 }
 
 .self-gas-bonus-actions {
