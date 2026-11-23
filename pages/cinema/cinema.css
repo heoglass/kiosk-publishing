@@ -968,3 +968,28 @@ body:has(.cinema-payment-modal[open]) {
   font-weight: var(--font-700-weight);
   border-radius: 20px;
 }
+
+/* cafe.js와 같은 클릭 위치 기준 리플 */
+.cinema-ripple-target {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cinema-ripple-target > .cinema-button-ripple {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  border-radius: 50%;
+  background: var(--cinema-ripple-color, rgb(255 255 255 / 55%));
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.cinema-ripple-light {
+  --cinema-ripple-color: rgb(0 0 0 / 18%);
+}
+
+.cinema-people-row button[aria-pressed="true"] {
+  --cinema-ripple-color: rgb(255 255 255 / 55%);
+}
