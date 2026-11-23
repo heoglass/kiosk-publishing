@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+body {
+  background-color: #fafafa;
+}
 #category-header.parking__header {
   background-color: #0c2d5e;
 }
@@ -10,7 +12,23 @@
   background: #2d5df9;
   box-shadow: 0px 0px 20px 0px #001c77;
 }
+.parking-main section {
+  height: 100%;
+}
+.parking-main.kiosk-screen {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
 
+.parking-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 140px;
+}
 .parking-main .category-start {
   width: 100% !important;
   /* height: 100% !important; */
@@ -23,7 +41,6 @@
 
 .parking-main .category-title-area {
   color: #fff;
-  /* margin: 240px 0 0; */
 }
 
 .parking-main .category-title-area .category-title1 {
@@ -51,9 +68,9 @@
 .parking-main .parking-input-screen {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 130px 80px 60px;
@@ -244,17 +261,15 @@
 
 /* ------ parking_02 --------- */
 
-/* 차량 조회 결과 화면 */
 .parking-main .parking-result-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 120px 80px 80px;
+  padding: 120px 80px 60px;
   background: #fafafa;
 }
 .parking-result-top {
@@ -334,14 +349,9 @@
   align-items: center;
   justify-content: center;
 
-  box-sizing: border-box;
   height: 130px;
-  margin: 0;
   padding: 0 20px;
-
-  border: 0;
   border-radius: 20px;
-
   color: #fff;
   font-family: inherit;
   font-size: 44px;
@@ -361,7 +371,6 @@
 
 .parking-retry-button {
   width: 100%;
-  margin-top: 60px;
   background: #555;
 }
 
@@ -595,52 +604,16 @@
 
 /* --------------- parking_05  ------------- */
 
-/* .parking-main .parking-complete-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  border: 1px solid red;
-  padding: 100px 80px 80px;
-  background: #fff;
-  color: #000;
-}
-.parking-complete-top {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid blue;
-}
-.parking-complete-title {
-  margin: 10px 0 40px;
-  font-size: 60px;
-  font-weight: var(--font-700-weight);
-}
-
-.parking-complete-notice {
-  margin: 20px 0 60px;
-  color: #444;
-  font-size: var(--font-44-size);
-  font-weight: var(--font-500-weight);
-  text-align: center;
-} */
-.parking-main {
-  height: 100%;
-}
 .parking-main .parking-complete-screen {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+
   width: 100%;
-  min-height: calc(1920px - 141px);
-  padding: 40px 80px 70px;
-  background: #fafafa;
-  color: #000;
+  height: calc(100vh - 144px);
+  padding: 0 80px 60px;
+  margin-top: 0;
 }
 
 .parking-complete-top {
