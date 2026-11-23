@@ -124,36 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const category = currentCategory ?? queryCategory;
 
-  // 주차정산 체험 완료 화면에 파란색 테마 적용
-  const experienceComplete = document.querySelector(".experience-complete");
-
-  if (experienceComplete && queryCategory === "parking") {
-    const completeScreen = experienceComplete.closest(".complete-screen");
-    completeScreen?.classList.add("experience-complete-parking");
-
-    const experienceImage = experienceComplete.querySelector(
-      ".complete-experience-image"
-    );
-
-    if (experienceImage) {
-      experienceImage.src = "../shared/images/experience-complete-blue.png";
-    }
-  }
   // 다시하기 버튼을 누르면 해당 카테고리의 시작 화면으로 이동
   const experienceRetry = document.getElementById("experience-retry");
   const horizontalRetry = document.getElementById(
     "experience-retry-horizontal"
   );
-
-  // if (experienceRetry) {
-  //   experienceRetry.addEventListener("click", () => {
-  //     const retryCategory = queryCategory || localStorage.getItem("cat");
-
-  //     if (!knownCategory(retryCategory)) return;
-
-  //     window.location.href = `../pages/${retryCategory}/index.html`;
-  //   });
-  // }
 
   // 세로·가로 완료 화면의 다시하기 경로 설정
 
