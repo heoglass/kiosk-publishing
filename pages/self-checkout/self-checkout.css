@@ -584,57 +584,27 @@
   text-align: center;
 }
 
-.self-checkout-card-media {
-  width: 960px;
-  margin: 140px auto 0;
-}
-
-/* 06 */
+/* self-checkout_06.html */
 .self-checkout-flow .self-checkout-card-guide {
-  flex-basis: 260px;
+  /* flex-basis: 260px; */
   justify-content: center;
   text-align: center;
 }
 
 .self-checkout-card-media {
-  width: 960px;
-  margin: 140px auto 0;
+  /* border: 1px solid red; */
+  /* width: 960px; */
+  /* margin: 140px auto 0; */
+  width: 100%;
 }
 
 .self-checkout-payment-image-button {
   display: grid;
   place-items: center;
-  padding: 0;
-  border: 0;
   background: transparent;
   color: inherit;
   font: inherit;
-  cursor: pointer;
 }
-
-/* .self-checkout-card-media > :is(img, video, canvas, lottie-player) {
-  max-width: 100%;
-} */
-
-/* .self-checkout-card-media:has(
-    img,
-    lottie-player,
-    dotlottie-wc,
-    video,
-    canvas,
-    svg
-  )
-  .self-checkout-card-fallback {
-  display: none;
-} */
-
-/* .self-checkout-card-fallback {
-  padding: 26px 48px;
-  border: 3px solid #ffc107;
-  border-radius: 20px;
-  font-size: 40px;
-  font-weight: 700;
-} */
 
 dialog.self-checkout-payment-dialog {
   --self-checkout-dialog-yellow: #ffc107;
@@ -701,7 +671,7 @@ dialog.self-checkout-payment-dialog {
 
 .self-checkout-payment-complete-icon {
   display: block;
-  width: 200px;
+  width: 240px;
   height: auto;
 }
 
