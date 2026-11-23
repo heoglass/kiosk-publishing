@@ -707,19 +707,12 @@ body {
 
 .service-print-spinner {
   z-index: 1;
-  width: 92px;
-  height: 92px;
-  border: 11px solid transparent;
-  border-bottom-color: #050505;
-  border-left-color: #050505;
+  width: 100px;
+  height: 100px;
+  border: 12px solid #000;
+  border-right-color: #dadada;
   border-radius: 50%;
-  animation: service-spin 800ms linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-print-spinner {
-    animation: none;
-  }
+  animation: spin 1s linear infinite;
 }
 
 .service-collection-screen .service-description {
@@ -769,4 +762,28 @@ body {
   font-size: var(--font-44-size);
   font-weight: var(--font-700-weight);
   border-radius: 20px;
+}
+
+.civil-service-ripple-target {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.civil-service-ripple-target > .civil-service-button-ripple {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  border-radius: 50%;
+  background: var(--civil-service-ripple-color, rgb(255 255 255 / 55%));
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.civil-service-ripple-light {
+  --civil-service-ripple-color: rgb(0 88 163 / 22%);
+}
+
+.civil-service-ripple-yellow {
+  --civil-service-ripple-color: rgb(0 0 0 / 18%);
 }

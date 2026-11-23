@@ -1,4 +1,92 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  let pendingAction = null;
+  const activeRipples = new Set();
+
+  // cafe.js와 동일하게 클릭 위치에서 원이 퍼지며 사라지는 리플입니다.
+  function playRipple(event, target, duration = 700) {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      typeof target.animate !== "function"
+    )
+      return null;
+
+    target.classList.add("civil-service-ripple-target");
+    if (
+      target.matches(
+        ".registration-keypad button, .service-copy-keypad button, .service-issuance-choice"
+      )
+    ) {
+      target.classList.add("civil-service-ripple-light");
+    }
+    if (
+      target.matches(
+        ".registration-confirm, .service-auth-confirm, .service-issuance-alert-button, .civil-service-first-btn"
+      )
+    ) {
+      target.classList.add("civil-service-ripple-yellow");
+    }
+    if (getComputedStyle(target).position === "static") {
+      target.style.position = "relative";
+    }
+    const rect = target.getBoundingClientRect();
+    const size = Math.hypot(target.clientWidth, target.clientHeight) * 2;
+    const x = event.detail
+      ? ((event.clientX - rect.left) / (rect.width || 1)) * 100
+      : 50;
+    const y = event.detail
+      ? ((event.clientY - rect.top) / (rect.height || 1)) * 100
+      : 50;
+    const ripple = document.createElement("span");
+    ripple.className = "civil-service-button-ripple";
+    ripple.setAttribute("aria-hidden", "true");
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}%`;
+    ripple.style.top = `${y}%`;
+    target.append(ripple);
+
+    const animation = ripple.animate(
+      [
+        { transform: "translate(-50%, -50%) scale(0)", opacity: 1 },
+        { transform: "translate(-50%, -50%) scale(1)", opacity: 0 },
+      ],
+      { duration, easing: "ease-out" }
+    );
+    activeRipples.add(animation);
+    function cleanUp() {
+      ripple.remove();
+      activeRipples.delete(animation);
+    }
+    animation.addEventListener("finish", cleanUp);
+    animation.addEventListener("cancel", cleanUp);
+    return animation;
+  }
+
+  function afterRipple(event, target, action, duration = 350) {
+    event.preventDefault();
+    if (target.matches(":disabled") || pendingAction) return;
+    const animation = playRipple(event, target, duration);
+    if (!animation) {
+      action();
+      return;
+    }
+    pendingAction = animation;
+    animation.addEventListener("finish", () => {
+      if (pendingAction !== animation) return;
+      pendingAction = null;
+      action();
+    });
+    animation.addEventListener("cancel", () => {
+      if (pendingAction === animation) pendingAction = null;
+    });
+  }
+
+  window.addEventListener("pagehide", () => {
+    pendingAction?.cancel();
+    pendingAction = null;
+    Array.from(activeRipples).forEach((animation) => animation.cancel());
+  });
+
   function civilServiceUrl(path) {
     const nextPage = new URL(path, window.location.href);
     nextPage.search = window.location.search;
@@ -22,13 +110,20 @@ document.addEventListener("DOMContentLoaded", () => {
     dialog.addEventListener("cancel", (event) => event.preventDefault());
 
     function openLoading(event) {
-      if (event.currentTarget.disabled || dialog.open) return;
-      if (canOpen && !canOpen()) return;
-
-      dialog.showModal();
-      navigationTimer = window.setTimeout(() => {
-        window.location.assign(destination);
-      }, delay);
+      const button = event.currentTarget;
+      if (button.disabled || dialog.open || pendingAction) return;
+      afterRipple(
+        event,
+        button,
+        () => {
+          if (canOpen && !canOpen()) return;
+          dialog.showModal();
+          navigationTimer = window.setTimeout(() => {
+            window.location.assign(destination);
+          }, delay);
+        },
+        250
+      );
     }
 
     for (const button of triggers) {
@@ -64,7 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     keypad.addEventListener("click", (event) => {
       const keyButton = event.target.closest("button[data-registration-key]");
-      if (!keyButton) return;
+      if (!keyButton || keyButton.disabled || pendingAction) return;
+      playRipple(event, keyButton);
 
       const key = keyButton.dataset.registrationKey;
 
@@ -187,30 +283,37 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       for (const key of keys) {
-        key.addEventListener("click", () => {
+        key.addEventListener("click", (event) => {
+          if (key.disabled || pendingAction) return;
+          playRipple(event, key);
           selectedCopies = key.dataset.serviceCopy;
           renderCopies();
         });
       }
 
-      copyConfirm.addEventListener("click", () => {
-        const nextPage = new URL(civilServiceUrl("./civil-service_07.html"));
-        nextPage.searchParams.set("copies", selectedCopies);
-        window.location.assign(nextPage.href);
+      copyConfirm.addEventListener("click", (event) => {
+        afterRipple(event, copyConfirm, () => {
+          const nextPage = new URL(civilServiceUrl("./civil-service_07.html"));
+          nextPage.searchParams.set("copies", selectedCopies);
+          window.location.assign(nextPage.href);
+        });
       });
 
       renderCopies();
     }
 
     if (printSelected && printConfirm) {
-      printSelected.addEventListener("click", () => {
+      printSelected.addEventListener("click", (event) => {
+        if (printSelected.disabled || pendingAction) return;
+        playRipple(event, printSelected);
         printSelected.setAttribute("aria-pressed", "true");
         printConfirm.disabled = false;
       });
 
-      printConfirm.addEventListener("click", () => {
-        if (printConfirm.disabled) return;
-        window.location.assign(civilServiceUrl("./civil-service_08.html"));
+      printConfirm.addEventListener("click", (event) => {
+        afterRipple(event, printConfirm, () => {
+          window.location.assign(civilServiceUrl("./civil-service_08.html"));
+        });
       });
     }
 
@@ -281,9 +384,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (certificateButton.tagName === "A") {
       certificateButton.href = destination;
     } else {
-      certificateButton.addEventListener("click", () =>
-        window.location.assign(destination)
-      );
+      certificateButton.addEventListener("click", (event) => {
+        afterRipple(event, certificateButton, () =>
+          window.location.assign(destination)
+        );
+      });
     }
   }
 
@@ -305,14 +410,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (fingerprintOption && authConfirm) {
-    fingerprintOption.addEventListener("click", () => {
+    fingerprintOption.addEventListener("click", (event) => {
+      if (fingerprintOption.disabled || pendingAction) return;
+      playRipple(event, fingerprintOption);
       fingerprintOption.setAttribute("aria-pressed", "true");
       authConfirm.disabled = false;
     });
 
-    authConfirm.addEventListener("click", () => {
-      if (authConfirm.disabled) return;
-      window.location.assign(civilServiceUrl("./civil-service_04.html"));
+    authConfirm.addEventListener("click", (event) => {
+      afterRipple(event, authConfirm, () => {
+        window.location.assign(civilServiceUrl("./civil-service_04.html"));
+      });
     });
   }
 
@@ -330,4 +438,65 @@ document.addEventListener("DOMContentLoaded", () => {
     initIssuanceOptions(issuancePanel, loadingDialog);
   }
   initCertificatePrinting();
+
+  // 표시된 선택 영역만 처리하고, 라벨에서 라디오로 전달된 클릭은 중복 재생하지 않습니다.
+  if (issuancePanel) {
+    let forwardedInput = null;
+    issuancePanel.addEventListener("click", (event) => {
+      const choice = event.target.closest(".service-issuance-choice");
+      const input = choice?.querySelector("input");
+      if (!input || input.matches(":disabled") || pendingAction) return;
+      if (event.target === input && forwardedInput === input) {
+        forwardedInput = null;
+        return;
+      }
+      forwardedInput = event.target === input ? null : input;
+      playRipple(event, choice);
+    });
+  }
+
+  const warningButton = document.querySelector(
+    ".service-issuance-alert-button"
+  );
+  if (warningButton) {
+    warningButton.addEventListener("click", (event) => {
+      afterRipple(
+        event,
+        warningButton,
+        () => {
+          warningButton.closest("dialog").close(warningButton.value);
+        },
+        250
+      );
+    });
+    // Enter로 폼을 제출해도 닫기 전에 같은 리플을 재생합니다.
+    warningButton.form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      warningButton.click();
+    });
+  }
+
+  // 일반 링크와 체험 완료 링크도 리플이 끝난 뒤 이동합니다.
+  document
+    .querySelectorAll(
+      "a#service-certificate, a[data-service-link], #service-print-finish, .complete-actions #experience-retry, .complete-actions .civil-service-first-btn"
+    )
+    .forEach((link) => {
+      link.addEventListener(
+        "click",
+        (event) => {
+          if (
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey ||
+            (event.button != null && event.button !== 0)
+          )
+            return;
+          event.stopImmediatePropagation();
+          afterRipple(event, link, () => window.location.assign(link.href));
+        },
+        { capture: true }
+      );
+    });
 });
