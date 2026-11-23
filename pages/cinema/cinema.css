@@ -486,7 +486,7 @@ body:has(.cinema-age-modal[open]) {
 }
 
 .cinema-senior-modal::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .cinema-senior-modal .modal-header {
@@ -767,7 +767,7 @@ body:has(.cinema-age-modal[open]) {
 }
 
 .cinema-main dialog.cinema-payment-modal::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 body:has(.cinema-payment-modal[open]) {

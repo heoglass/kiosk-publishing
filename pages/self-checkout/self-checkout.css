@@ -621,7 +621,7 @@ dialog.self-checkout-payment-dialog {
 }
 
 .self-checkout-payment-dialog::backdrop {
-  background: rgb(0 0 0 / 60%);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .self-checkout-payment-status-body {

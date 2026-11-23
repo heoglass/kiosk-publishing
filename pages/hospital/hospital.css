@@ -420,7 +420,7 @@
 }
 
 .hospital-month-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .hospital-month-form h2 {
@@ -564,7 +564,7 @@
 }
 
 .hospital-main dialog.hospital-payment-modal::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 body:has(.hospital-payment-modal[open]) {

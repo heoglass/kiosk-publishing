@@ -1096,7 +1096,7 @@ dialog.bus-card-confirm-dialog {
   color: #000;
 }
 dialog.bus-card-confirm-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
 }
 .bus-card-confirm-title {
   margin: 0 0 60px;
@@ -1391,7 +1391,7 @@ dialog.bus-refund-loading-dialog {
   color: #fff;
 }
 dialog.bus-refund-loading-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
 }
 .bus-refund-loading-title {
   position: absolute;
