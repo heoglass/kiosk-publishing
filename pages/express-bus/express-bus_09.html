@@ -13,6 +13,7 @@
       defer=""
     ></script>
     <script type="text/javascript" src="./express-bus.js" defer=""></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body>
     <main
@@ -138,11 +139,21 @@
                 class="bus-refund-ticket-button"
                 aria-label="환불할 승차권 투입"
               >
-                <img
+                <!-- <img
                   src="../../shared/images/express-bus/bus-ticket-refund.png"
                   class="bus-refund-ticket-image"
                   alt=""
-                />
+                /> -->
+                <div id="lottie-ticket-refund" class="lottie-ticket-refund">
+                  <lottie-player
+                    src="../../shared/images/lottie/bus-ticket-refund.json"
+                    background="transparent"
+                    speed="0.5"
+                    style="width: 240px; height: 240px"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                </div>
               </button>
               <p class="bus-refund-insert-note">
                 승차권을 환불 투입구에 한장씩 넣어주세요
