@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./civil-service.css" />
     <script src="../../shared/js/common.js" defer></script>
     <script src="./civil-service.js" defer></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body class="civil-service-page">
     <main class="civil-service-main category-main kiosk-screen">
@@ -75,7 +76,6 @@
             id="service-fingerprint-reader"
             aria-label="지문 인식 시작"
             data-loading-next="./civil-service_05.html"
-            data-loading-delay="2000"
           >
             <img
               src="../../shared/images/civil-service/fingerprint-reader.png"
@@ -125,13 +125,23 @@
         aria-labelledby="service-loading-title"
       >
         <div class="service-loading-content">
-          <img
+          <!-- <img
             class="service-fingerprint-loading-image"
             src="../../shared/images/civil-service/fingerprint-b.png"
             width="240"
             height="240"
             alt=""
-          />
+          /> -->
+          <div id="lottie-fingerprint" class="lottie-fingerprint">
+            <lottie-player
+              src="../../shared/images/lottie/fingerprint.json"
+              background="transparent"
+              speed="0.3"
+              style="width: 800px"
+              loop
+              autoplay
+            ></lottie-player>
+          </div>
           <p id="service-loading-title">
             지문 인식중입니다.<br />손을 떼지마세요
           </p>
