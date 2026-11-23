@@ -621,3 +621,35 @@ button.self-gas-card-guide-box {
 .self-gas-receipt-link {
   display: block;
 }
+
+/* 표시된 이미지 영역을 그대로 유지하면서 리플을 겹칩니다. */
+.self-gas-ripple-image {
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.self-gas-ripple-target {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.self-gas-ripple-target > .self-gas-button-ripple {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--self-gas-ripple-color, rgb(255 255 255 / 55%));
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.self-gas-ripple-light {
+  --self-gas-ripple-color: rgb(0 158 136 / 24%);
+}
