@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     target.classList.add("self-gas-ripple-target");
     if (
       target.matches(
-        ".self-gas-amount-option, #self-gas-lump-sum, .self-gas-ripple-image, .card-payment-image, .self-gas-fueling-button"
+        ".self-gas-amount-option, #self-gas-lump-sum, .self-gas-ripple-image, .self-gas-card-guide-box, .self-gas-fueling-button"
       )
     ) {
       target.classList.add("self-gas-ripple-light");
@@ -59,8 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     if (target.matches(":disabled") || pendingAction) return;
     const visualTarget =
-      target.querySelector(".self-gas-ripple-image, .card-payment-image") ||
-      target;
+      target.querySelector(".self-gas-ripple-image") || target;
     const animation = playRipple(event, visualTarget, duration);
     if (!animation) {
       action();
