@@ -965,7 +965,7 @@
   margin-bottom: 9px;
 }
 .screen-bus-card-insert .contens-center {
-  padding: 50px 60px 0;
+  padding: 40px 60px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -977,6 +977,7 @@
   font-weight: 700;
   font-size: 52px;
   text-align: center;
+  margin-bottom: 24px;
 }
 .screen-bus-card-insert .center-text-area .center-description {
   font-weight: 500;
@@ -984,7 +985,7 @@
   line-height: 130%;
   text-align: center;
 }
-/* express-bus_05.html 결제 정보 / 카드 제거 안내 팝업 추가 */
+/* express-bus_05.html */
 .screen-bus-card-insert .bus-payment-summary {
   /* flex: 0 0 auto; */
   /* width: 960px; */
@@ -1120,6 +1121,7 @@ dialog.bus-card-confirm-dialog::backdrop {
 express-bus_06.html,
 express-bus_07.html 
 */
+
 .screen-bus-ticket-complete .contents-center {
   display: flex;
   flex-direction: column;
