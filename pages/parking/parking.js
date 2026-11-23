@@ -1,4 +1,4 @@
-(() => {
+document.addEventListener("DOMContentLoaded", function () {
   let pendingAction = null;
   const activeRipples = new Set();
 
@@ -86,7 +86,7 @@
     Array.from(activeRipples).forEach((animation) => animation.cancel());
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initParkingPages() {
     // 시작 화면 → 차량 번호 입력 화면
     const startButton = document.querySelector(".category-start");
 
@@ -240,9 +240,9 @@
 
     // 초기 입력 상태 반영
     updateCarNumber(carNumberInput.value);
-  });
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initParkingPayment() {
     const paymentButton = document.querySelector("[data-parking-payment]");
     const cardDialog = document.getElementById("parking-dialog-card");
     const progressDialog = document.getElementById("parking-dialog-progress");
@@ -309,9 +309,9 @@
         window.location.href = "./parking_05.html";
       }
     });
-  });
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initParkingExtras() {
     // 카드결제 라벨 → 라디오로 전달되는 두 번째 클릭은 건너뜁니다.
     const cardInput = document.querySelector(
       '.parking-method-input[value="card"]'
@@ -348,5 +348,8 @@
           { capture: true }
         );
       });
-  });
-})();
+  }
+  initParkingPages();
+  initParkingPayment();
+  initParkingExtras();
+});
