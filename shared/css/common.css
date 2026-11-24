@@ -1190,7 +1190,7 @@ body.modal-open {
 
 #modal-points-phone .points-phone-number:not(:placeholder-shown) {
   border: 3px solid #f09308;
-  color: #f09308;
+  color: #000;
 }
 
 /* 숫자 키패드 */
