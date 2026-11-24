@@ -1,4 +1,90 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  let pendingAction = null;
+  const activeRipples = new Set();
+
+  // cafe.js와 동일하게 클릭 위치에서 원이 퍼지며 사라지는 리플입니다.
+  function playRipple(event, target, duration = 700) {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      typeof target.animate !== "function"
+    )
+      return null;
+
+    target.classList.add("bus-ripple-target");
+    if (
+      target.matches(
+        ".area-card, .bus-terminal-button, .bus-refund-ticket-button, .bus-time-card, .bus-seat, .bus-passenger-button, .bottom-button.back, .payment-image-button, .bus-card-confirm-button"
+      )
+    ) {
+      target.classList.add("bus-ripple-light");
+    }
+    if (getComputedStyle(target).position === "static") {
+      target.style.position = "relative";
+    }
+    const rect = target.getBoundingClientRect();
+    const size = Math.hypot(target.clientWidth, target.clientHeight) * 2;
+    const x = event.detail
+      ? ((event.clientX - rect.left) / (rect.width || 1)) * 100
+      : 50;
+    const y = event.detail
+      ? ((event.clientY - rect.top) / (rect.height || 1)) * 100
+      : 50;
+    const ripple = document.createElement("span");
+    ripple.className = "bus-button-ripple";
+    ripple.setAttribute("aria-hidden", "true");
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}%`;
+    ripple.style.top = `${y}%`;
+    target.append(ripple);
+
+    const animation = ripple.animate(
+      [
+        { transform: "translate(-50%, -50%) scale(0)", opacity: 1 },
+        { transform: "translate(-50%, -50%) scale(1)", opacity: 0 },
+      ],
+      { duration, easing: "ease-out" }
+    );
+    activeRipples.add(animation);
+    function cleanUp() {
+      ripple.remove();
+      activeRipples.delete(animation);
+    }
+    animation.addEventListener("finish", cleanUp);
+    animation.addEventListener("cancel", cleanUp);
+    return animation;
+  }
+
+  function afterRipple(event, target, action, duration = 350) {
+    event.preventDefault();
+    if (
+      target.matches(":disabled") ||
+      target.getAttribute("aria-disabled") === "true" ||
+      pendingAction
+    )
+      return;
+    const animation = playRipple(event, target, duration);
+    if (!animation) {
+      action();
+      return;
+    }
+    pendingAction = animation;
+    animation.addEventListener("finish", () => {
+      if (pendingAction !== animation) return;
+      pendingAction = null;
+      action();
+    });
+    animation.addEventListener("cancel", () => {
+      if (pendingAction === animation) pendingAction = null;
+    });
+  }
+
+  window.addEventListener("pagehide", () => {
+    pendingAction?.cancel();
+    pendingAction = null;
+    Array.from(activeRipples).forEach((animation) => animation.cancel());
+  });
+
   initBusFirstScreen();
   initBusAreaScreen();
   initBusSeatScreen();
@@ -161,13 +247,14 @@ document.addEventListener("DOMContentLoaded", () => {
       { passive: false }
     );
 
-    // 터미널을 누르면 선택한 이름을 URL로 전달하고 01로 바로 돌아갑니다.
+    // 터미널 선택 리플이 끝나면 선택한 이름을 URL로 전달하고 01로 돌아갑니다.
     terminalScroll.addEventListener("click", (event) => {
       const button = event.target.closest(".bus-terminal-button");
       if (
         !button ||
         button.hidden ||
         button.disabled ||
+        pendingAction ||
         !terminalScroll.contains(button)
       )
         return;
@@ -187,7 +274,9 @@ document.addEventListener("DOMContentLoaded", () => {
         isArrival ? "arrival" : "departure",
         terminalName
       );
-      window.location.href = returnUrl.href;
+      afterRipple(event, button, () => {
+        window.location.href = returnUrl.href;
+      });
     });
   }
 
@@ -374,8 +463,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     grid.addEventListener("click", (event) => {
       const seat = event.target.closest(".bus-seat");
-      if (!seat || !grid.contains(seat) || seat.disabled || isApplyingType)
+      if (
+        !seat ||
+        !grid.contains(seat) ||
+        seat.disabled ||
+        isApplyingType ||
+        pendingAction
+      )
         return;
+      playRipple(event, seat);
       const number = Number(seat.dataset.seat);
 
       status.textContent = "";
@@ -394,14 +490,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     options.addEventListener("click", (event) => {
-      if (isApplyingType) return;
+      if (isApplyingType || pendingAction) return;
 
       const cancel = event.target.closest("[data-passenger-cancel]");
       if (cancel && options.contains(cancel)) {
         // 취소는 이번에 고른 좌석만 해제하고, 앞서 확정한 좌석은 유지합니다.
-        pending.clear();
-        status.textContent = "";
-        render();
+        afterRipple(
+          event,
+          cancel,
+          () => {
+            pending.clear();
+            status.textContent = "";
+            render();
+          },
+          250
+        );
         return;
       }
 
@@ -410,25 +513,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const fare = fares[button.dataset.passenger];
       if (!fare) return;
 
-      pending.forEach((number) => selected.set(number, fare));
-      pending.clear();
-      isApplyingType = true;
-      button.classList.add("is-active");
-      button.setAttribute("aria-pressed", "true");
-      picker.setAttribute("aria-busy", "true");
-      status.textContent = "";
-      render();
+      afterRipple(
+        event,
+        button,
+        () => {
+          pending.forEach((number) => selected.set(number, fare));
+          pending.clear();
+          isApplyingType = true;
+          button.classList.add("is-active");
+          button.setAttribute("aria-pressed", "true");
+          picker.setAttribute("aria-busy", "true");
+          status.textContent = "";
+          render();
 
-      // 유형 선택 시 분홍색 효과를 잠깐 보여준 뒤 선택 목록을 표시합니다.
-      window.setTimeout(() => {
-        isApplyingType = false;
-        typeButtons.forEach((item) => {
-          item.classList.remove("is-active");
-          item.setAttribute("aria-pressed", "false");
-        });
-        picker.setAttribute("aria-busy", "false");
-        render();
-      }, 220);
+          // 유형 선택 시 분홍색 효과를 잠깐 보여준 뒤 선택 목록을 표시합니다.
+          window.setTimeout(() => {
+            isApplyingType = false;
+            typeButtons.forEach((item) => {
+              item.classList.remove("is-active");
+              item.setAttribute("aria-pressed", "false");
+            });
+            picker.setAttribute("aria-busy", "false");
+            render();
+          }, 220);
+        },
+        250
+      );
     });
 
     list.addEventListener("click", (event) => {
@@ -439,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
       render();
     });
 
-    complete.addEventListener("click", () => {
+    complete.addEventListener("click", (event) => {
       if (
         complete.disabled ||
         selected.size === 0 ||
@@ -447,7 +557,9 @@ document.addEventListener("DOMContentLoaded", () => {
         isApplyingType
       )
         return;
-      window.location.href = "./express-bus_05.html";
+      afterRipple(event, complete, () => {
+        window.location.href = "./express-bus_05.html";
+      });
     });
 
     render();
@@ -466,15 +578,18 @@ document.addEventListener("DOMContentLoaded", () => {
     imageButton.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      if (!dialog.open) dialog.showModal();
+      if (dialog.open) return;
+      afterRipple(event, imageButton, () => dialog.showModal(), 250);
     });
 
     dialog.addEventListener("cancel", (event) => {
       event.preventDefault();
     });
 
-    confirmButton.addEventListener("click", () => {
-      window.location.href = "./express-bus_06.html";
+    confirmButton.addEventListener("click", (event) => {
+      afterRipple(event, confirmButton, () => {
+        window.location.href = "./express-bus_06.html";
+      });
     });
   }
 
@@ -503,34 +618,100 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     let state = "insert";
 
-    ticketButton.addEventListener("click", () => {
+    ticketButton.addEventListener("click", (event) => {
       if (state !== "insert") return;
-      state = "ready";
-      insert.hidden = true;
-      review.hidden = false;
-      submit.disabled = false;
-      submit.classList.add("is-active");
+      afterRipple(
+        event,
+        ticketButton,
+        () => {
+          state = "ready";
+          insert.hidden = true;
+          review.hidden = false;
+          submit.disabled = false;
+          submit.classList.add("is-active");
+        },
+        250
+      );
     });
 
-    submit.addEventListener("click", () => {
+    submit.addEventListener("click", (event) => {
       if (submit.disabled || state !== "ready" || loading.open) return;
-      state = "loading";
-      submit.disabled = true;
-      screen.setAttribute("aria-busy", "true");
-      loading.showModal();
-      window.setTimeout(() => {
-        loading.close();
-        state = "complete";
-        insert.hidden = true;
-        review.hidden = true;
-        completed.hidden = false;
-        actions.hidden = true;
-        confirm.hidden = false;
-        screen.setAttribute("aria-busy", "false");
-        confirm.focus({ preventScroll: true });
-      }, 2000);
+      afterRipple(
+        event,
+        submit,
+        () => {
+          state = "loading";
+          submit.disabled = true;
+          screen.setAttribute("aria-busy", "true");
+          loading.showModal();
+          window.setTimeout(() => {
+            loading.close();
+            state = "complete";
+            insert.hidden = true;
+            review.hidden = true;
+            completed.hidden = false;
+            actions.hidden = true;
+            confirm.hidden = false;
+            screen.setAttribute("aria-busy", "false");
+            confirm.focus({ preventScroll: true });
+          }, 2000);
+        },
+        250
+      );
     });
 
     loading.addEventListener("cancel", (event) => event.preventDefault());
   }
+
+  // 표시된 링크는 기존 경로를 유지하고 리플이 끝난 뒤 이동합니다.
+  document
+    .querySelectorAll(
+      "a.ticket-button, a.area-card, a.bottom-button, .complete-actions #experience-retry, .complete-actions .bus-first-btn, .complete-actions .bus-refund-first-btn"
+    )
+    .forEach((link) => {
+      // 목적지가 없는 결제 취소 예시 링크는 기존 동작을 유지합니다.
+      if (!link.getAttribute("href")) return;
+      link.addEventListener(
+        "click",
+        (event) => {
+          if (
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey ||
+            (event.button != null && event.button !== 0)
+          )
+            return;
+          event.stopImmediatePropagation();
+          afterRipple(event, link, () => window.location.assign(link.href));
+        },
+        { capture: true }
+      );
+    });
+
+  // 날짜와 온라인 예매 발권 버튼은 기존 상태를 유지하며 리플만 재생합니다.
+  document
+    .querySelectorAll(
+      ".date-prev-button, .date-next-button, button.ticket-button"
+    )
+    .forEach((button) => {
+      button.addEventListener("click", (event) => {
+        if (button.disabled || pendingAction) return;
+        playRipple(event, button);
+      });
+    });
+
+  // 03 HTML의 즉시 이동 이벤트보다 먼저 리플을 처리합니다.
+  document.querySelectorAll(".bus-time-card").forEach((button) => {
+    button.addEventListener(
+      "click",
+      (event) => {
+        event.stopImmediatePropagation();
+        afterRipple(event, button, () => {
+          window.location.assign("./express-bus_04.html");
+        });
+      },
+      { capture: true }
+    );
+  });
 });

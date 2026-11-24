@@ -1516,3 +1516,28 @@ dialog.bus-refund-loading-dialog::backdrop {
   margin: 48px 0;
   object-fit: fill;
 }
+
+/* cafe.js와 같은 클릭 위치 기준 리플 */
+.bus-ripple-target {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.bus-ripple-target > .bus-button-ripple {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bus-ripple-color, rgb(255 255 255 / 55%));
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.bus-ripple-light {
+  --bus-ripple-color: rgb(156 0 132 / 22%);
+}
