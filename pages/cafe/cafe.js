@@ -19,20 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const options = document.getElementById("screen-options");
   const review = document.getElementById("screen-review");
 
-  const lottieCardInsert = document.getElementById("lottie-card-insert");
-
-  if (lottieCardInsert && window.lottie && window.lottieCardInsertData) {
-    const cardAnimation = window.lottie.loadAnimation({
-      container: lottieCardInsert,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: window.lottieCardInsertData,
-    });
-
-    cardAnimation.setSpeed(0.5);
-  }
-
   [start, menu, options, review].forEach((screen) => {
     if (screen) screen.hidden = false;
   });

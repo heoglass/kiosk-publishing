@@ -196,4 +196,18 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     true
   );
+
+  const lottieCardInsert = document.getElementById("lottie-card-insert");
+
+  if (lottieCardInsert && window.lottie && window.lottieCardInsertData) {
+    const cardAnimation = window.lottie.loadAnimation({
+      container: lottieCardInsert,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: window.lottieCardInsertData,
+    });
+
+    cardAnimation.setSpeed(0.5);
+  }
 });

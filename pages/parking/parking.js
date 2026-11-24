@@ -349,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       });
   }
+
   initParkingPages();
   initParkingPayment();
   initParkingExtras();
