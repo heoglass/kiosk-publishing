@@ -222,7 +222,19 @@ document.addEventListener("DOMContentLoaded", () => {
       switchDialog(receipt, complete);
     });
   }
+  const martCardInsert = document.getElementById("mart-card-insert");
 
+  if (martCardInsert && window.lottie && window.martCardInsertData) {
+    const cardAnimation = window.lottie.loadAnimation({
+      container: martCardInsert,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: window.martCardInsertData,
+    });
+
+    cardAnimation.setSpeed(1);
+  }
   initScanPage();
   initPhonePage();
   initPaymentPage();

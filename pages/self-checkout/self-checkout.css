@@ -592,7 +592,6 @@
 }
 
 .self-checkout-card-media {
-  /* border: 1px solid red; */
   /* width: 960px; */
   /* margin: 140px auto 0; */
   width: 100%;
@@ -605,7 +604,10 @@
   color: inherit;
   font: inherit;
 }
-
+#mart-card-insert {
+  width: 960px;
+  margin-inline: auto;
+}
 dialog.self-checkout-payment-dialog {
   --self-checkout-dialog-yellow: #ffc107;
 
