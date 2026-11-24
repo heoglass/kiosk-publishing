@@ -499,4 +499,18 @@ document.addEventListener("DOMContentLoaded", function () {
         { capture: true }
       );
     });
+
+  const lottieFingerPrint = document.getElementById("lottie-fingerprint");
+
+  if (lottieFingerPrint && window.lottie && window.lottieFingerPrintData) {
+    const cardAnimation = window.lottie.loadAnimation({
+      container: lottieFingerPrint,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: window.lottieFingerPrintData,
+    });
+
+    cardAnimation.setSpeed(0.7);
+  }
 });
