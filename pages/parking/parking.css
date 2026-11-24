@@ -390,7 +390,7 @@ body {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 114px 80px 80px;
+  padding: 114px 80px 60px;
   background: #fafafa;
   color: #000;
 }
@@ -493,7 +493,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 80px 88px;
+  padding: 0 80px 60px;
   background: #fff;
   color: #000;
 }
