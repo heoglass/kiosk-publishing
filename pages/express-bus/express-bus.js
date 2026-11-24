@@ -5,6 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
   initBusCardInsertScreen();
   initBusRefundScreen();
 
+  const lottieTicketRefund = document.getElementById("lottie-ticket-refund");
+
+  if (lottieTicketRefund && window.lottie && window.lottieTicketRefundData) {
+    const cardAnimation = window.lottie.loadAnimation({
+      container: lottieTicketRefund,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: window.lottieTicketRefundData,
+    });
+
+    cardAnimation.setSpeed(1);
+  }
+
   // 01 화면: URL로 전달된 터미널 표시와 조회 버튼 활성화
   function initBusFirstScreen() {
     const busFirstScreen = document.querySelector(".screen-bus-first");
