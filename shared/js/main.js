@@ -1,10 +1,9 @@
 // 로컬저장소 기존 데이타 초기화 후 진입
 localStorage.removeItem("cat"); // 카테코리정보
 localStorage.removeItem("fastFoodOrderType"); // 패스트푸드 주문타입정보
-localStorage.removeItem("kiosk_order_data");  // 패스트푸드 주문정보
+localStorage.removeItem("kiosk_order_data"); // 패스트푸드 주문정보
 
 document.addEventListener("DOMContentLoaded", () => {
-
   let mainCategoryMoving = false;
 
   initMainTabs();
@@ -32,6 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const panels = Array.from(
       document.querySelectorAll(".main-category-panel")
     );
+    const mainVisualImage = document.querySelector(".main-visual-image img");
+
+    const visualByCategory = {
+      food: { file: "main-visual1.png", alt: "음료·음식 키오스크 체험" },
+      public: {
+        file: "main-visual2.png",
+        alt: "관공서·병원·은행 키오스크 체험",
+      },
+      travel: { file: "main-visual3.png", alt: "교통·여행 키오스크 체험" },
+      life: { file: "main-visual4.png", alt: "생활·문화 키오스크 체험" },
+    };
 
     function selectCategory(category) {
       if (!panels.some((panel) => panel.dataset.category === category)) return;
@@ -44,6 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
       panels.forEach((panel) => {
         panel.hidden = panel.dataset.category !== category;
       });
+
+      const visual = visualByCategory[category];
+
+      if (mainVisualImage && visual) {
+        mainVisualImage.src = `./shared/images/main/${visual.file}`;
+        mainVisualImage.alt = visual.alt;
+      }
     }
 
     tabButtons.forEach((button) => {
