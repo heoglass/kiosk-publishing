@@ -801,3 +801,28 @@ dialog.self-checkout-payment-dialog {
   font-weight: var(--font-700-weight);
   border-radius: 20px;
 }
+
+/* cafe.js와 같은 클릭 위치 기준 리플 */
+.self-checkout-ripple-target {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.self-checkout-ripple-target > .self-checkout-button-ripple {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--self-checkout-ripple-color, rgb(255 255 255 / 55%));
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.self-checkout-ripple-light {
+  --self-checkout-ripple-color: rgb(255 175 0 / 32%);
+}
