@@ -430,10 +430,10 @@ body {
 
 /* 개별 삭제 */
 .cart-remove {
-  padding: 6.5px 0;
-  border: 2px solid #000;
+  /* padding: 6.5px 0; */
+  border: none;
+  background-color: #fff;
   border-radius: 12px;
-  background: #eee;
   font-family: "Pretendard-Medium";
   color: #000;
   font-size: 36px;

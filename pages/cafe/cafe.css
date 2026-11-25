@@ -71,15 +71,10 @@
 .cafe-main .category-main-message {
   width: auto;
   font-size: 48px;
-  /* position: absolute;
-  bottom: 100px;
-  left: 80px;
-  right: 80px; */
   padding: 60px 0;
   background: #f09308;
   border-radius: 20px;
   box-shadow: 0px 0px 42.1px 0px #653c00;
-  /* margin: 0 0 60px; */
 }
 
 .cafe-main .category-main-message span {
