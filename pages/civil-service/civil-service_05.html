@@ -14,18 +14,6 @@
     <main class="civil-service-main category-main kiosk-screen">
       <header id="category-header" class="civil-service__header">
         <div class="header-left">
-          <!-- <button
-            type="button"
-            id="header-back"
-            class="header-back"
-            aria-label="이전 화면으로"
-          >
-            <img
-              src="../../shared/images/icon/arrow-back.png"
-              class="arrow-back"
-              alt="뒤로가기 화살표"
-            />
-          </button> -->
           <a href="../../index.html" aria-label="처음으로">
             <img
               src="../../shared/images/icon/icon-home-b.png"
@@ -63,348 +51,356 @@
           class="civil-service-screen service-issuance-screen"
           aria-labelledby="service-title"
         >
-          <h1 class="service-title" id="service-title">주민등록표(등본)</h1>
-          <p class="service-description">
-            개인정보 보호를 위해 아래의 등본 사항 중<br />
-            필요 사항 선택 후 [확인]을 눌러주세요
-          </p>
+          <div>
+            <h1 class="service-title" id="service-title">주민등록표(등본)</h1>
+            <p class="service-description">
+              개인정보 보호를 위해 아래의 등본 사항 중<br />
+              필요 사항 선택 후 [확인]을 눌러주세요
+            </p>
+          </div>
 
-          <div class="service-issuance-panel" id="service-issuance-options">
-            <div class="service-issuance-tools">
-              <div
-                class="service-issuance-group"
-                role="group"
-                aria-label="발급 용도"
-              >
-                <label class="service-issuance-choice service-issuance-use">
-                  <input
-                    type="radio"
-                    name="issuance-use"
-                    value="court"
-                    checked
-                  />
-                  <span>법원</span>
-                </label>
-                <label class="service-issuance-choice service-issuance-use">
-                  <input type="radio" name="issuance-use" value="finance" />
-                  <span>금융</span>
-                </label>
+          <div class="checkbox-wrap">
+            <div class="service-issuance-panel" id="service-issuance-options">
+              <div class="service-issuance-tools">
+                <div
+                  class="service-issuance-group"
+                  role="group"
+                  aria-label="발급 용도"
+                >
+                  <label class="service-issuance-choice service-issuance-use">
+                    <input
+                      type="radio"
+                      name="issuance-use"
+                      value="court"
+                      checked
+                    />
+                    <span>법원</span>
+                  </label>
+                  <label class="service-issuance-choice service-issuance-use">
+                    <input type="radio" name="issuance-use" value="finance" />
+                    <span>금융</span>
+                  </label>
+                </div>
+
+                <div
+                  class="service-issuance-group"
+                  role="group"
+                  aria-label="등본 항목 일괄 선택"
+                >
+                  <label class="service-issuance-choice">
+                    <input type="radio" name="issuance-bulk" value="include" />
+                    <span>전체 포함</span>
+                  </label>
+                  <label class="service-issuance-choice">
+                    <input type="radio" name="issuance-bulk" value="exclude" />
+                    <span>미포함</span>
+                  </label>
+                </div>
               </div>
 
-              <div
-                class="service-issuance-group"
-                role="group"
-                aria-label="등본 항목 일괄 선택"
-              >
-                <label class="service-issuance-choice">
-                  <input type="radio" name="issuance-bulk" value="include" />
-                  <span>전체 포함</span>
-                </label>
-                <label class="service-issuance-choice">
-                  <input type="radio" name="issuance-bulk" value="exclude" />
-                  <span>미포함</span>
-                </label>
-              </div>
+              <ol class="service-issuance-rows" aria-label="등본 발급 항목">
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-1-title"
+                  >
+                    1. 과거의 주소 변동 사항
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-1-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-1"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-1"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-2-title"
+                  >
+                    2. 세대 구성 사유
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-2-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-2"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-2"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-3-title"
+                  >
+                    3. 세대 구성일자
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-3-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-3"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-3"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-4-title"
+                  >
+                    4. 발생일 / 신고일
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-4-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-4"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-4"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-5-title"
+                  >
+                    5. 변동 사유
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-5-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-5"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-5"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-6-title"
+                  >
+                    6. 교부 대상자 외 세대주·세대원·외국인 등의 이름
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-6-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-6"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-6"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-7-title"
+                  >
+                    7. 주민등록번호 뒷자리
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-7-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-7"
+                        value="all"
+                        data-issuance-choice="include"
+                      />
+                      <span>세대전부</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input type="radio" name="issuance-item-7" value="some" />
+                      <span>세대일부</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-7"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-8-title"
+                  >
+                    8. 세대원의 세대주와의 관계
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-8-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-8"
+                        value="general"
+                        data-issuance-choice="include"
+                      />
+                      <span>일반</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-8"
+                        value="detail"
+                      />
+                      <span>상세</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-8"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+                <li class="service-issuance-row">
+                  <p
+                    class="service-issuance-row-title"
+                    id="issuance-item-9-title"
+                  >
+                    9. 동거인
+                  </p>
+                  <div
+                    class="service-issuance-group"
+                    role="group"
+                    aria-labelledby="issuance-item-9-title"
+                  >
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-9"
+                        value="include"
+                        data-issuance-choice="include"
+                      />
+                      <span>포함</span>
+                    </label>
+                    <label class="service-issuance-choice">
+                      <input
+                        type="radio"
+                        name="issuance-item-9"
+                        value="exclude"
+                        data-issuance-choice="exclude"
+                      />
+                      <span>미포함</span>
+                    </label>
+                  </div>
+                </li>
+              </ol>
             </div>
-
-            <ol class="service-issuance-rows" aria-label="등본 발급 항목">
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-1-title"
-                >
-                  1. 과거의 주소 변동 사항
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-1-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-1"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-1"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-2-title"
-                >
-                  2. 세대 구성 사유
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-2-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-2"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-2"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-3-title"
-                >
-                  3. 세대 구성일자
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-3-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-3"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-3"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-4-title"
-                >
-                  4. 발생일 / 신고일
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-4-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-4"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-4"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-5-title"
-                >
-                  5. 변동 사유
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-5-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-5"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-5"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-6-title"
-                >
-                  6. 교부 대상자 외 세대주·세대원·외국인 등의 이름
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-6-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-6"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-6"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-7-title"
-                >
-                  7. 주민등록번호 뒷자리
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-7-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-7"
-                      value="all"
-                      data-issuance-choice="include"
-                    />
-                    <span>세대전부</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input type="radio" name="issuance-item-7" value="some" />
-                    <span>세대일부</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-7"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-8-title"
-                >
-                  8. 세대원의 세대주와의 관계
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-8-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-8"
-                      value="general"
-                      data-issuance-choice="include"
-                    />
-                    <span>일반</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input type="radio" name="issuance-item-8" value="detail" />
-                    <span>상세</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-8"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-              <li class="service-issuance-row">
-                <p
-                  class="service-issuance-row-title"
-                  id="issuance-item-9-title"
-                >
-                  9. 동거인
-                </p>
-                <div
-                  class="service-issuance-group"
-                  role="group"
-                  aria-labelledby="issuance-item-9-title"
-                >
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-9"
-                      value="include"
-                      data-issuance-choice="include"
-                    />
-                    <span>포함</span>
-                  </label>
-                  <label class="service-issuance-choice">
-                    <input
-                      type="radio"
-                      name="issuance-item-9"
-                      value="exclude"
-                      data-issuance-choice="exclude"
-                    />
-                    <span>미포함</span>
-                  </label>
-                </div>
-              </li>
-            </ol>
           </div>
         </section>
 
