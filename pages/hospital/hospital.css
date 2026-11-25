@@ -22,7 +22,7 @@
   border: 2px solid #000;
   color: #111;
   font-size: 60px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   opacity: 1;
   text-align: center;
 }
@@ -84,14 +84,14 @@
 .hospital-document-intro h1 {
   color: #000;
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-document-intro p {
   margin: 24px 0 0;
   color: #000;
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 
 .hospital-document-list {
@@ -105,7 +105,7 @@
   border-radius: 24px;
   background: #fff;
   font-size: 52px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   padding: 42px 0;
   min-height: 150px;
 }
@@ -128,16 +128,16 @@
 
 .hospital-entry-title {
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-entry-guide {
   margin: 24px 0 40px;
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 .hospital-entry-guide span {
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-number-field {
@@ -151,7 +151,7 @@
   color: #000;
   font: inherit;
   font-size: 56px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   opacity: 1;
   text-align: center;
 }
@@ -171,7 +171,7 @@
   background: #fff;
   color: #000;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 .hospital-keypad .hospital-confirm {
@@ -216,7 +216,7 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: 14px 6px;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   line-height: 60px;
 }
 
@@ -289,7 +289,7 @@
   border-radius: 32px;
   background: #fff;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 .hospital-issue-patient dd {
@@ -301,7 +301,7 @@
 .hospital-issue-guide {
   margin: 40px 0 40px;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   text-align: center;
   line-height: 1.3;
 }
@@ -315,7 +315,7 @@
   display: block;
   margin: 0 0 20px 20px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-date-row {
@@ -330,7 +330,7 @@
   border: 4px solid #0a60f3;
   border-radius: 20px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-date-display {
@@ -350,7 +350,7 @@
 .hospital-period-note {
   margin: 40px 0;
   font-size: 42px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: center;
 }
 
@@ -360,7 +360,7 @@
   align-items: center;
   gap: 24px 15px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-copy-list {
@@ -394,7 +394,7 @@
   color: #fff;
   font: inherit;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   opacity: 1;
   border-radius: 20px;
 }
@@ -426,7 +426,7 @@
 .hospital-month-form h2 {
   margin: 0 0 36px;
   font-size: 56px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-year-control {
@@ -448,7 +448,7 @@
   background: #fff;
   color: #111;
   font-size: 56px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-year-arrow {
@@ -520,7 +520,7 @@
   color: #111;
   font: inherit;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 .hospital-month-grid button:enabled,
@@ -611,7 +611,7 @@ body:has(.hospital-payment-modal[open]) {
 .hospital-payment-modal .hospital-payment-title {
   margin: 0;
   font-size: 52px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-payment-modal .hospital-payment-description {
@@ -668,7 +668,7 @@ body:has(.hospital-payment-modal[open]) {
   border-radius: 24px;
   background: #f2f2f2;
   font-size: 42px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-card-summary > div {
@@ -734,7 +734,7 @@ body:has(.hospital-payment-modal[open]) {
 .hospital-certificate-progress .hospital-payment-description {
   margin-top: 6px;
   font-size: 52px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-certificate-progress .hospital-payment-spinner {
@@ -779,14 +779,14 @@ body:has(.hospital-payment-modal[open]) {
   background: #0a60f3;
   color: #fff;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .hospital-first-btn {
   background-color: #0a60f3;
   color: #fff;
   padding: 38.5px 0;
   font-size: var(--font-44-size);
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   border-radius: 20px;
 }
 

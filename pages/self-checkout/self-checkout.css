@@ -40,12 +40,12 @@
 
 .self-checkout-main .category-title-area .category-title1 {
   font-size: 120px;
-  font-weight: var(--font-600-weight);
+  font-family: "Pretendard-SemiBold";
   margin-bottom: 13px;
 }
 
 .self-checkout-main .category-title-area .category-title2 {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";;
   font-size: 44px;
   text-align: center;
 } */
@@ -75,7 +75,7 @@
   background: #ffc107;
   border-radius: 20px;
   box-shadow: 0px 0px 42.1px 0px #ffc107;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   color: #292929;
 }
 
@@ -139,7 +139,7 @@
   align-items: center;
   gap: 16px;
   color: #555;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-steps li + li::before {
@@ -157,12 +157,12 @@
   background: #fddfb8;
   color: #473423;
   font-size: 32px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-steps [aria-current="step"] {
   color: #000;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-steps [aria-current="step"] > span {
@@ -184,14 +184,14 @@
 }
 
 .self-checkout-product-count {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: right;
 }
 
 .self-checkout-product-count strong {
   display: block;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-product-area {
@@ -204,7 +204,7 @@
 .self-checkout-empty {
   place-self: center;
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.3;
   text-align: center;
 }
@@ -256,7 +256,7 @@
   align-items: center;
   gap: 8px;
   text-align: center;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-quantity-minus,
@@ -290,7 +290,7 @@
   border-radius: 22px;
   font-size: 44px;
   line-height: 1.4;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 
 .self-checkout-totals > div {
@@ -304,7 +304,7 @@
 }
 
 .self-checkout-pay-total {
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-pay-button {
@@ -315,7 +315,7 @@
   border-radius: 22px;
   font-family: inherit;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   background-color: #ffc107;
 }
 
@@ -327,7 +327,7 @@
   border-radius: 22px;
   font-family: inherit;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-scan-content .self-checkout-pay-button:disabled {
@@ -391,7 +391,7 @@
 .self-checkout-phone-keypad > button {
   box-sizing: border-box;
   font-family: inherit;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-decoration: none;
 }
 
@@ -499,7 +499,7 @@
 
 .self-checkout-phone-entry label {
   font-size: 42px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-phone-entry .self-checkout-phone-number {
@@ -514,7 +514,7 @@
   color: #000;
   font: inherit;
   font-size: 56px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 
@@ -543,7 +543,7 @@
   margin: 64px 0 0;
   color: #000;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.2;
 }
 
@@ -576,7 +576,7 @@
   color: #000;
   font-size: 44px;
   text-align: center;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 .self-checkout-flow .self-checkout-card-guide {
   flex-basis: 260px;
@@ -645,7 +645,7 @@ dialog.self-checkout-payment-dialog {
 .self-checkout-payment-status p {
   margin-top: 16px;
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 
 .self-checkout-payment-spinner {
@@ -711,7 +711,7 @@ dialog.self-checkout-payment-dialog {
 
 .self-checkout-receipt-body p {
   font-size: 54px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.3;
 }
 
@@ -731,7 +731,7 @@ dialog.self-checkout-payment-dialog {
   background: #fff;
   color: #000;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-receipt-actions .self-checkout-receipt-yes {
@@ -777,7 +777,7 @@ dialog.self-checkout-payment-dialog {
 .self-checkout-finished-message h1 {
   margin: 0 0 22px;
   font-size: 58px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.2;
 }
 
@@ -798,7 +798,7 @@ dialog.self-checkout-payment-dialog {
   color: #000;
   padding: 38.5px 0;
   font-size: var(--font-44-size);
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   border-radius: 20px;
 }
 

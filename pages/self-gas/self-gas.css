@@ -54,7 +54,7 @@
   background-color: #00453b;
   color: #fff;
   font-size: 36px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.35;
   text-align: center;
   margin: 0 0 60px;
@@ -120,7 +120,7 @@
   margin: 0 0 40px;
   color: #111;
   font-size: 35px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 
@@ -155,7 +155,7 @@
   background-color: #ededed;
   color: #a8a8a8;
   font-size: 35px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 
@@ -185,7 +185,7 @@ a.self-gas-payment-credit:active > span {
   margin: 0 0 40px;
   color: #000;
   font-size: 35px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
 }
 
 .self-gas-fuel-options {
@@ -223,7 +223,7 @@ a.self-gas-payment-credit:active > span {
   background-color: var(--fuel-background);
   color: #fff;
   font-size: 34px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
 }
 
 .self-gas-fuel-option > input:checked + span {
@@ -242,7 +242,7 @@ a.self-gas-payment-credit:active > span {
   margin: 0 0 21px;
   color: #000;
   font-size: 35px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 
@@ -273,7 +273,7 @@ a.self-gas-payment-credit:active > span {
   background-color: #fff;
   color: #000;
   font-size: 30px;
-  font-weight: var(--font-500-weight);
+  font-family: "Pretendard-Medium";
   white-space: nowrap;
 }
 .self-gas-amount-actions .self-gas-amount-option {
@@ -310,7 +310,7 @@ a.self-gas-payment-credit:active > span {
 .self-gas-installment h1 {
   margin: 0;
   font-size: 34px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
 }
 
 .self-gas-installment h1 {
@@ -331,7 +331,7 @@ a.self-gas-payment-credit:active > span {
   border-radius: 8px;
   background-color: #fff;
   font-size: 30px;
-  font-weight: var(--font-600-weight);
+  font-family: "Pretendard-SemiBold";
 }
 
 .self-gas-installment-field input {
@@ -371,7 +371,7 @@ a.self-gas-payment-credit:active > span {
   background-color: #fff;
   color: #111;
   font-size: 28px;
-  font-weight: var(--font-600-weight);
+  font-family: "Pretendard-SemiBold";
 }
 
 .self-gas-installment .self-gas-installment-confirm {
@@ -387,7 +387,7 @@ a.self-gas-payment-credit:active > span {
 .self-gas-card-guide h1 {
   margin: 0;
   font-size: 40px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
 }
 .self-gas-card-guide-box {
   display: flex;
@@ -421,7 +421,7 @@ a.self-gas-payment-credit:active > span {
 .self-gas-card-guide p {
   margin: 12px 0 0;
   font-size: 24px;
-  font-weight: var(--font-600-weight);
+  font-family: "Pretendard-SemiBold";
 }
 
 button.self-gas-card-guide-box {
@@ -435,7 +435,7 @@ button.self-gas-card-guide-box {
   display: block;
   margin: 0;
   font-size: 34px;
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   line-height: 1.25;
 }
 
@@ -443,7 +443,7 @@ button.self-gas-card-guide-box {
   display: block;
   margin-top: 14px;
   font-size: 22px;
-  font-weight: var(--font-600-weight);
+  font-family: "Pretendard-SemiBold";
   line-height: 1.4;
 }
 

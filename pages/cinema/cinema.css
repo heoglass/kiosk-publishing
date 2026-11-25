@@ -57,7 +57,7 @@
 }
 
 .cinema-main-time {
-  font-weight: var(--font-500-weight);
+  font-family: "Pretendard-Medium";
   font-size: 40px;
 }
 
@@ -158,14 +158,14 @@
 
 .cinema-date h1 {
   font-size: 56px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-date p {
   border-radius: 14px;
   background: #d02828;
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   padding: 7px 14px;
 }
 
@@ -186,7 +186,7 @@
   color: #fff;
   text-align: left;
   font-size: var(--font-44-size);
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-film-info {
@@ -233,7 +233,7 @@ body:has(.cinema-age-modal[open]) {
 .cinema-age-modal .modal-title {
   color: inherit;
   font-size: 52px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 .cinema-age-modal .modal-close {
@@ -257,7 +257,7 @@ body:has(.cinema-age-modal[open]) {
 .cinema-main .cinema-dialog-lead {
   margin-bottom: 24px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .cinema-main .cinema-dialog-lead strong {
   color: #df3c3c;
@@ -269,7 +269,7 @@ body:has(.cinema-age-modal[open]) {
 
 .cinema-dialog-description {
   font-size: 38px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 
 .cinema-main .cinema-dialog-agree {
@@ -281,7 +281,7 @@ body:has(.cinema-age-modal[open]) {
   margin-top: 60px;
   color: #fff;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 /* -------------- cinema_02 ----------- */
 
@@ -326,7 +326,7 @@ body:has(.cinema-age-modal[open]) {
   border-radius: 8px;
   color: #fff;
   font-size: 28px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1;
 }
 
@@ -340,18 +340,18 @@ body:has(.cinema-age-modal[open]) {
 .movie-title {
   margin: 0 0 48px;
   font-size: 72px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-main .cinema-summary-theater {
   margin-bottom: 8px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-summary-time {
   font-size: 40px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 
 .cinema-people-options {
@@ -360,12 +360,12 @@ body:has(.cinema-age-modal[open]) {
 }
 .cinema-people-title {
   font-size: 56px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   margin-bottom: 30px;
 }
 .cinema-people-description {
   font-size: 32px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   margin-bottom: 100px;
 }
 
@@ -389,7 +389,7 @@ body:has(.cinema-age-modal[open]) {
 .cinema-people-label {
   text-align: left;
   font-size: 46px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-people-row button {
@@ -403,7 +403,7 @@ body:has(.cinema-age-modal[open]) {
   background: #ffe6df;
   color: #111;
   font-size: 38px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   cursor: pointer;
 }
 
@@ -420,7 +420,7 @@ body:has(.cinema-age-modal[open]) {
   padding: 0 82px;
   background: #18191e;
   font-size: 40px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-seat-total {
@@ -438,7 +438,7 @@ body:has(.cinema-age-modal[open]) {
   background: #d02828;
   color: #fff;
   font-size: 40px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   cursor: pointer;
 }
 
@@ -567,7 +567,7 @@ body:has(.cinema-age-modal[open]) {
 .cinema-main .cinema-seat-screen .cinema-summary-details h1 {
   margin: 18px 0 48px;
   font-size: 72px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-review-page .cinema-summary-details h1 {
@@ -585,7 +585,7 @@ body:has(.cinema-age-modal[open]) {
   background: #bebed3;
   color: #000;
   font-size: 32px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-main .cinema-seat-screen > .cinema-seat-grid {
@@ -620,7 +620,7 @@ body:has(.cinema-age-modal[open]) {
   position: relative;
   margin-top: 18px;
   font-size: 28px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   color: #000;
 }
 
@@ -646,7 +646,7 @@ body:has(.cinema-age-modal[open]) {
   display: grid;
   gap: 24px;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 .cinema-payment-lines > div {
@@ -656,7 +656,7 @@ body:has(.cinema-age-modal[open]) {
   gap: 24px;
 }
 .cinema-payment-lines {
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .cinema-payment-amount {
   color: #ff9900;
@@ -675,7 +675,7 @@ body:has(.cinema-age-modal[open]) {
   padding: 62px 48px 0;
   text-align: center;
   font-size: 40px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-review-heading h2 {
@@ -743,7 +743,7 @@ body:has(.cinema-age-modal[open]) {
   background: #d02828;
   color: #fff;
   font-size: 40px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 /* 영화관 카드 결제와 티켓 출력 */
 .cinema-main dialog.cinema-payment-modal {
@@ -821,7 +821,7 @@ body:has(.cinema-payment-modal[open]) {
 }
 .cinema-payment-modal .cinema-payment-title {
   font-size: 52px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-payment-modal .cinema-payment-description {
@@ -849,7 +849,7 @@ body:has(.cinema-payment-modal[open]) {
   border-radius: 24px;
   background: #f2f2f2;
   font-size: 42px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-card-summary > div {
@@ -913,7 +913,7 @@ body:has(.cinema-payment-modal[open]) {
 
 .cinema-complete-message h1 {
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-complete-message p {
@@ -941,7 +941,7 @@ body:has(.cinema-payment-modal[open]) {
   background: #555;
   color: #fff;
   font-size: 42px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-complete-actions a:last-child {
@@ -965,7 +965,7 @@ body:has(.cinema-payment-modal[open]) {
   color: #fff;
   padding: 38.5px 0;
   font-size: var(--font-44-size);
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   border-radius: 20px;
 }
 

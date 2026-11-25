@@ -6,6 +6,7 @@
 .kiosk-screen.bus-main {
   background-color: #fafafa;
   padding: 144px 0 0;
+  overflow: hidden;
 }
 .kiosk-screen.bus-main section {
   background-color: #fafafa;
@@ -21,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   color: #fff;
 }
 .location-time-bar {
@@ -38,7 +39,7 @@
 }
 .location-container p {
   color: #fff;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 60px;
 }
 .time-container {
@@ -50,15 +51,15 @@
 }
 .time-container .top-date {
   font-size: 32px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .time-container .top-time {
   font-size: 38px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 .time-container .top-time span {
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 /* index.html 메인 화면 */
 .ticket-select-container {
@@ -92,11 +93,11 @@
   color: #fff;
 }
 .ticket-button .ticket-text-area .ticket-title {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 60px;
 }
 .ticket-button .ticket-text-area .ticket-description {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   font-size: 38px;
 }
 .ticket-select-container .ticket-button img {
@@ -113,7 +114,7 @@
 .language-container li {
   padding: 20px 30px;
   font-size: 52px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   border-radius: 100px;
 }
 .language-container .korea {
@@ -130,12 +131,12 @@
 }
 .title-container .page-title {
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 .title-container .page-description {
   font-size: 38px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 .title-container .page-description span {
@@ -149,7 +150,7 @@
   padding: 0 60px;
 }
 .date-select-title {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 56px;
 }
 .date-button-container {
@@ -182,7 +183,7 @@
   justify-content: end;
 }
 .date-button-container .departure-date {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 50px;
 }
 .date-button-container img {
@@ -190,7 +191,7 @@
   height: 80px;
 }
 .date-button-container span {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 44px;
 }
 /* 출발지, 도착지 선택 */
@@ -214,13 +215,13 @@
   text-align: center;
 }
 .departure-arrival-container .area-card-title {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 44px;
   padding-bottom: 20px;
   border-bottom: 4px solid #929292;
 }
 .departure-arrival-container .area-card-area {
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   font-size: 50px;
   margin-top: 40px;
 }
@@ -229,7 +230,7 @@
   padding-top: 186px;
 }
 .departure-descriprion p {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 38px;
   text-align: center;
   line-height: 1.3;
@@ -242,7 +243,7 @@
   margin-bottom: 40px;
 }
 .bottom-description p {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 44px;
   line-height: 1.3;
   text-align: center;
@@ -268,7 +269,7 @@
   background-color: #555;
   text-align: center;
   font-family: Pretendard;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   font-size: 44px;
   color: #fff;
   border-radius: 20px;
@@ -294,7 +295,7 @@
   align-items: center;
 }
 .area-search-container .search-box .search-text {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   font-size: 56px;
 }
 .area-search-container .search-box img {
@@ -337,7 +338,7 @@
   color: #111;
   font-family: inherit;
   font-size: 40px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   line-height: 56px;
   white-space: nowrap;
   cursor: pointer;
@@ -345,7 +346,7 @@
 .bus-region-button[aria-pressed="true"] {
   border-bottom-color: #9c0084;
   color: #9c0084;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .bus-terminal-scroll {
   flex: 1 1 0px;
@@ -401,7 +402,7 @@
   border-radius: 88px;
   color: #fff;
   font-size: 32px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   line-height: 36px;
   white-space: nowrap;
   padding: 20px;
@@ -422,7 +423,7 @@
 .bus-terminal-name {
   min-width: 0;
   font-size: 44px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 .bus-terminal-empty {
   margin: 80px 0;
@@ -443,7 +444,7 @@
   margin-bottom: 40px;
 }
 .screen-bus-time-select .departure-arrival-text-area p {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 60px;
   text-align: center;
   min-width: 255px;
@@ -504,18 +505,18 @@
   background-color: #0741ca;
   color: #fff;
   font-size: 32px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   line-height: 40px;
   margin-bottom: 8px;
 }
 .screen-bus-time-select .bus-time-departure {
   font-size: 60px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 .screen-bus-time-select .bus-time-duration {
   margin-top: auto;
   font-size: 32px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 .screen-bus-time-select .bus-time-fare {
   display: flex;
@@ -526,7 +527,7 @@
 }
 .screen-bus-time-select .bus-time-price {
   font-size: 60px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 .screen-bus-time-select .bus-time-tags {
   display: flex;
@@ -541,7 +542,7 @@
   padding: 13px 20px;
   border-radius: 16px;
   font-size: 32px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 .screen-bus-time-select .bus-time-grade {
   background-color: #e7e7e7;
@@ -580,7 +581,7 @@
   column-gap: 41.5px;
 }
 .selected-bus-info .info-left .departutr-arrival-info p {
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   font-size: 44px;
 }
 .selected-bus-info .info-right {
@@ -589,11 +590,11 @@
   column-gap: 14px;
 }
 .selected-bus-info .info-right .selected-time {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 60px;
 }
 .selected-bus-info .info-right .selected-duration {
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   font-size: 32px;
 }
 .bottom-button-container.two-btn {
@@ -640,7 +641,7 @@
   height: 96px;
   color: #111;
   font-size: 38px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 .screen-bus-seat-select .bus-seat-driver {
   position: absolute;
@@ -715,7 +716,7 @@
   width: 69px;
   /* height: 54px; */
   font-size: 36px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   pointer-events: none;
 }
 .screen-bus-seat-select .bus-seat.is-selected .bus-seat-number {
@@ -743,7 +744,7 @@
   width: 140px;
   color: #000;
   font-size: 30px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: center;
 }
 .screen-bus-seat-select .bus-seat-legend-icon {
@@ -770,7 +771,7 @@
   margin: 0;
   color: #000;
   font-size: 34px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   line-height: 46px;
   white-space: nowrap;
 }
@@ -782,7 +783,7 @@
   width: 60px;
 }
 .screen-bus-seat-select .bus-seat-prompt-arrow span {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   font-size: 44px;
   text-align: center;
 }
@@ -790,7 +791,7 @@
   margin: auto 0 0;
   color: #000;
   font-size: 32px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: center;
 }
 .screen-bus-seat-select .bus-passenger-picker {
@@ -805,7 +806,7 @@
 .screen-bus-seat-select .bus-passenger-title {
   margin: 0 0 16px 24px;
   font-size: 38px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   line-height: 44px;
 }
 .screen-bus-seat-select .bus-passenger-options {
@@ -820,7 +821,7 @@
   border-radius: 16px;
   color: #9c0084;
   font-size: 38px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   text-align: center;
 }
 .screen-bus-seat-select .bus-passenger-button:active,
@@ -863,7 +864,7 @@
   background-color: #f2f2f2;
   color: #000;
   font-size: 28px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 }
 .screen-bus-seat-select .bus-selected-seat-price {
   text-align: right;
@@ -885,7 +886,7 @@
   margin: 14px 0 0;
   color: #9c0084;
   font-size: 28px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 .screen-bus-seat-select .bus-seat-status:empty {
   display: none;
@@ -900,7 +901,7 @@
 }
 .screen-bus-seat-select .bus-seat-payment-title {
   font-size: 42px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #d9d9d9;
@@ -908,7 +909,7 @@
 .screen-bus-seat-select .bus-seat-payment-total {
   color: #e03400;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: right;
 }
 .screen-bus-seat-select .two-btn .bottom-button {
@@ -974,13 +975,13 @@
   margin-bottom: 100px;
 }
 .screen-bus-card-insert .center-text-area .center-title {
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   font-size: 52px;
   text-align: center;
   margin-bottom: 24px;
 }
 .screen-bus-card-insert .center-text-area .center-description {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   font-size: 38px;
   line-height: 130%;
   text-align: center;
@@ -1038,11 +1039,11 @@
 }
 .screen-bus-card-insert .bus-payment-terminal {
   font-size: 38px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .screen-bus-card-insert .bus-payment-duration {
   font-size: 32px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   white-space: nowrap;
 }
 .screen-bus-card-insert .bus-payment-details {
@@ -1058,7 +1059,7 @@
   justify-content: space-between;
   gap: 16px;
   font-size: 38px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   white-space: nowrap;
 }
 .screen-bus-card-insert .bus-payment-detail-row dt {
@@ -1079,7 +1080,7 @@
 .screen-bus-card-insert .bus-payment-total-title,
 .screen-bus-card-insert .bus-payment-total-price {
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .screen-bus-card-insert .bus-payment-total-price {
   color: #e03400;
@@ -1101,7 +1102,7 @@ dialog.bus-card-confirm-dialog::backdrop {
 .bus-card-confirm-title {
   margin: 0 0 60px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.4;
   text-align: center;
 }
@@ -1115,7 +1116,7 @@ dialog.bus-card-confirm-dialog::backdrop {
   background-color: #fe7507;
   color: #fff;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 /* 
 express-bus_06.html,
@@ -1137,7 +1138,7 @@ express-bus_07.html
 }
 .title-container.page6 .page-dexcription,
 .title-container.page7 .page-dexcription {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   font-size: 44px;
   margin-top: 16px;
   line-height: 1.3;
@@ -1157,7 +1158,7 @@ express-bus_07.html
   color: #fff;
   padding: 38.5px 0;
   font-size: var(--font-44-size);
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   border-radius: 20px;
 }
 .bus-refund-first-btn {
@@ -1165,7 +1166,7 @@ express-bus_07.html
   color: #fff;
   padding: 38.5px 0;
   font-size: var(--font-44-size);
-  font-weight: var(--font-700-weight);
+  font-family: "Pretendard-Bold";
   border-radius: 20px;
 }
 /* express-bus_09.html 승차권 환불 */
@@ -1181,7 +1182,7 @@ express-bus_07.html
 .bus-refund-policy-title {
   margin: 0 0 36px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 .bus-refund-table-wrap {
@@ -1198,7 +1199,7 @@ express-bus_07.html
   table-layout: fixed;
   color: #000;
   font-size: 32px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   line-height: 46px;
   text-align: center;
 }
@@ -1235,19 +1236,19 @@ express-bus_07.html
 }
 .bus-refund-table thead th {
   font-size: 32px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   letter-spacing: -1px;
   white-space: nowrap;
 }
 .bus-refund-table tbody th {
   font-size: 32px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 .bus-refund-policy-note {
   margin: 40px 0 0;
   color: #ff0000;
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: center;
   margin-bottom: 72px;
 }
@@ -1272,7 +1273,7 @@ express-bus_07.html
 .bus-refund-insert-note {
   color: #ff0000;
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: center;
   line-height: 1.3;
 }
@@ -1283,7 +1284,7 @@ express-bus_07.html
   justify-content: center;
   gap: 20px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .bus-refund-receipt .bus-refund-checkbox {
   position: relative;
@@ -1314,7 +1315,7 @@ express-bus_07.html
 .bus-refund-amounts {
   margin: 60px 0 0;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 .bus-refund-amount-row {
   display: flex;
@@ -1344,7 +1345,7 @@ express-bus_07.html
 }
 .bus-refund-complete p {
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 .bus-refund-actions {
@@ -1361,7 +1362,7 @@ express-bus_07.html
   height: 140px;
   border-radius: 20px;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 .bus-refund-cancel {
@@ -1401,7 +1402,7 @@ dialog.bus-refund-loading-dialog::backdrop {
   margin: 0;
   color: #fff;
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 1.3;
   text-align: center;
 }
@@ -1444,7 +1445,7 @@ dialog.bus-refund-loading-dialog::backdrop {
 .screen-bus-ticket-complete .bus-ticket-paper-header p {
   margin: 0;
   font-size: 60px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   line-height: 80px;
 }
 
@@ -1469,7 +1470,7 @@ dialog.bus-refund-loading-dialog::backdrop {
   min-height: 216px;
   border-bottom: 2px solid #ddd;
   font-size: 80px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   line-height: 104px;
 }
 
@@ -1477,7 +1478,7 @@ dialog.bus-refund-loading-dialog::backdrop {
   flex: 0 0 96px;
   color: #000;
   font-size: 92px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   text-align: center;
 }
 
@@ -1495,7 +1496,7 @@ dialog.bus-refund-loading-dialog::backdrop {
   grid-template-columns: 172px 1fr;
   gap: 24px;
   font-size: 40px;
-  font-weight: 400;
+  font-family: "Pretendard-Regular";
   line-height: 54px;
 }
 

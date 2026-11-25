@@ -10,10 +10,6 @@
   background: #fff;
 }
 
-.kiosk-main p {
-  margin: 0;
-}
-
 .kiosk-main button {
   color: inherit;
   background: none;
@@ -38,8 +34,9 @@
 }
 
 .kiosk-main .kiosk-title {
+  font-family: "Pretendard-SemiBold";
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 .kiosk-main .header-right {
@@ -54,23 +51,14 @@
   object-fit: contain;
 }
 
-.kiosk-main .main-sound-text {
-  color: #000;
-  font-size: 48px;
-  font-weight: 500;
-}
-
 /* 메인 콘텐츠 */
 .kiosk-main .main-content {
   display: flex;
   flex-direction: column;
-  min-height: 0;
 }
 
 /* 상단 이미지 */
 .main-visual-image {
-  /* flex-shrink: 0; */
-
   width: 100%;
   height: 770px;
   overflow: hidden;
@@ -109,7 +97,9 @@
   color: #fff;
   background: transparent;
   font-size: 48px;
-  font-weight: 700;
+}
+.kiosk-main .main-tab button span {
+  font-family: "Pretendard-Bold";
 }
 
 .kiosk-main .main-tab button[aria-pressed="true"] {
@@ -186,7 +176,7 @@
 
 .main-category-button span {
   font-size: 50px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   text-align: center;
 }
 
@@ -203,7 +193,7 @@
 
 .main-footer p {
   font-size: 42px;
-  font-weight: 400;
+  font-family: "Pretendard-Regular";
   text-align: center;
 }
 

@@ -58,12 +58,12 @@
 
 .cafe-main .category-title-area .category-title1 {
   font-size: 120px;
-  font-weight: var(--font-600-weight);
+  font-family: "Pretendard-SemiBold";
   margin-bottom: 13px;
 }
 
 .cafe-main .category-title-area .category-title2 {
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   font-size: 44px;
   text-align: center;
 }
@@ -98,7 +98,7 @@
 
 .menu-tab > button[aria-pressed="true"] > span {
   color: #fff;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 /* 비활성 메뉴 */
@@ -164,7 +164,7 @@
 .cafe-menu-type {
   color: #fff;
   font-size: 32px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   padding: 4px 20px;
   border-radius: 60px;
   position: absolute;
@@ -184,12 +184,12 @@
 }
 .menu-card-name {
   font-size: 40px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   margin-bottom: 6px;
 }
 .menu-card-price {
   font-size: 40px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   color: #ff2259;
 }
 .menu-controls {
@@ -299,13 +299,13 @@
 
 #screen-options .option-product-name {
   font-size: 44px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   margin: 0 0 28px;
 }
 
 #screen-options .option-title {
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 #screen-options .option-product-description {
@@ -355,7 +355,7 @@
   padding: 0;
 
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 /* 기본 2열 */
@@ -390,7 +390,7 @@
 
   color: #000;
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 
   word-break: keep-all;
 
@@ -457,13 +457,13 @@
   margin: 0;
 
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 #screen-options .option-total {
   color: #e03400;
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   white-space: nowrap;
 }
 
@@ -488,7 +488,7 @@
   color: #fff;
   font: inherit;
   font-size: 48px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 #screen-options .option-cancel {
@@ -506,7 +506,7 @@
   margin-top: 4px;
   color: #555;
   font-size: 0.65em;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   overflow-wrap: anywhere;
 }
 #screen-options :is(.option-choice, .option-submit) {
@@ -567,7 +567,7 @@
   background: #f5f5f5;
 
   font-size: 60px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
   text-align: center;
 }
 
@@ -589,7 +589,7 @@
   padding: 40px 0;
 
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 #screen-review .review-item + .review-item {
@@ -607,12 +607,12 @@
 
 #screen-review .review-item-quantity {
   text-align: center;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 #screen-review .review-item-price {
   text-align: right;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 /* 합계 */
@@ -635,7 +635,7 @@
   padding: 30px 0;
 
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 #screen-review .review-total-row + .review-total-row {
@@ -665,7 +665,7 @@
   margin: 0 0 24px;
 
   font-size: 44px;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 }
 
 #screen-review .recommend-list {
@@ -712,7 +712,7 @@
 
 #screen-review .recommend-name {
   font-size: 40px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
   word-break: keep-all;
 }
 
@@ -721,7 +721,7 @@
 
   color: #e93300;
   font-size: 40px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 /* 하단 버튼: 본문 스크롤과 관계없이 아래에 유지 */
@@ -750,7 +750,7 @@
   color: #fff;
   font: inherit;
   font-size: 60px;
-  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
 }
 
 #screen-review .review-bottom .review-back {
@@ -759,7 +759,7 @@
 
 #screen-review .review-bottom small {
   font-size: 44px;
-  font-weight: 400;
+  font-family: "Pretendard-Regular";
 }
 #screen-review :is(.recommend-button, .review-dine-in, .review-takeout) {
   overflow: hidden;
