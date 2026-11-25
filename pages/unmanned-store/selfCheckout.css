@@ -142,8 +142,10 @@ a.disabled-color,
   color: #000;
 }
 .selfCheckout__cart-item.is-highlight {
-  background-color: #fff2da;
-  
+  background-color: #fff2da; 
+}
+.selfCheckout__cart-item:last-child {
+  margin-bottom: 0;
 }
 .selfCheckout__cart-name {
   width: 249px;
@@ -358,8 +360,8 @@ a.disabled-color,
 }
 .selfCheckout__complete-image {
   display: block;
-  width: 256px;
-  height: 256px;
+  width: 240px;
+  height: 240px;
   margin: 0 auto;
 }
 .selfCheckout__complete-link {

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 예약 확인 방법 선택</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-05">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="예약 확인 방법 선택">
+        <h2 class="air-title">예약 확인을 위한 방법을 선택해주세요</h2>
+
+        <!-- 예약 확인 방법 -->
+        <ul class="air-method-list">
+          <li>
+            <a href="./air-06.html" class="air-method active" data-method="reserve">
+              <span class="air-method__icon-container" aria-hidden="true">
+                <img src="../../shared/images/airport/one.png" alt="" class="air-method__icon" />
+              </span>
+              <span class="air-method__text">예약 번호</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="air-method" data-method="qr">
+              <span class="air-method__icon-container" aria-hidden="true">
+                <img src="../../shared/images/airport/qr.png" alt="" class="air-method__icon" />
+              </span>
+              <span class="air-method__text">QR코드</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="air-method" data-method="codeshare">
+              <span class="air-method__icon-container" aria-hidden="true">
+                <img src="../../shared/images/airport/ic_outline-airplane-ticket.png" alt="" class="air-method__icon" />
+              </span>
+              <span class="air-method__text">대한항공 공동운항 항공권</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions air-actions--single">
+          <a href="./air-04.html" class="air-btn air-btn--back">이전으로</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+  </body>
+</html>

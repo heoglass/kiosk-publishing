@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 탑승권 발급 완료</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-10">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="탑승권 발급 완료">
+        <h2 class="air-title air-title--complete">탑승권 발급이 완료되었습니다</h2>
+        <p class="air-subtitle air-subtitle--sm">항공기 출발 5분전까지 탑승을 완료해주세요</p>
+
+        <!-- 탑승권 -->
+        <div class="air-pass">
+          <p class="air-pass__head">BOARDING PASS</p>
+          <div class="air-pass__body">
+            <div class="air-pass__route">
+              <strong class="air-pass__code">CJJ</strong>
+              <div>
+                <img src="../../shared/images/airport/air-badge.png" alt="비행기 아이콘" class="air-pass__plane" />
+              </div>
+              <strong class="air-pass__code">NRT</strong>
+            </div>
+            <dl class="air-pass__info">
+              <div class="air-pass__row"><dt>출발일</dt><dd id="airPassDate">2025.03.12(토)</dd></div>
+              <div class="air-pass__row"><dt>출발시간</dt><dd id="airPassTime">12:00</dd></div>
+              <div class="air-pass__row"><dt>좌석</dt><dd id="airPassSeat">54C</dd></div>
+            </dl>
+            <span class="air-pass__barcode" role="img" aria-label="탑승권 바코드"></span>
+          </div>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions air-actions--single">
+          <a href="./end-17.html" class="air-btn air-btn--next">확인</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airPortUtil.js"></script>
+  </body>
+</html>

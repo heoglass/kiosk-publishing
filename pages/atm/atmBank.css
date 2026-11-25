@@ -92,7 +92,7 @@ main.atm__screen {
     letter-spacing: 0%;
     text-align: center;
     margin-bottom: 16px;
-    color: #123A68;
+    color: #000000;
 }   
 
 
@@ -186,7 +186,7 @@ a.atm-btn {
 }
 .atmg__img {
   display: block;
-  width: 230px;
+  width: 284px;
   height: auto;
 }
 
@@ -203,6 +203,15 @@ a.atm-btn {
   height: 223px;
 }
 
+body[data-page="atmg-02"] .atm__section,
+body[data-page="atmg-03"] .atm__section {
+  padding: 126px 60px 60px;
+    display: block;
+}
+body[data-page="atmg-02"] .atm__section .atm__subject,
+body[data-page="atmg-03"] .atm__section .atm__subject {
+  margin-bottom: 0;
+}
 /* ATMG-04 입금 안내 */
 .atm__section h3.atmg__desc--dark {
   color: #000;
@@ -328,6 +337,11 @@ a.atm-btn {
 }
 .atm__section .atmg__subject--card > h3 {
   color: #444;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 .atm__content.atmg__content--end {
   justify-content: flex-start;

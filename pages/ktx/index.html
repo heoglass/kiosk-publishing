@@ -1,14 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>기차KTX</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <title>KTX 예매</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
     <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktx-index">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--bg" aria-label="기차KTX 메뉴 선택">
+        <!-- 타이틀 -->
+        <h2 class="ktx__title--startpage">원하시는 메뉴를 선택해주세요</h2>
+
+        <!-- 메뉴 4칸 -->
+        <div class="ktx-menu">
+          <a href="./ktx-02.html" class="ktx-menu__item ktx-menu__item--reserve">승차권 예매</a>
+          <a href="./ktxRe-01.html" class="ktx-menu__item ktx-menu__item--refund">승차권 환불</a>
+          <!-- <button type="button" class="ktx-menu__item ktx-menu__item--refund" data-next="./ktxRe-01.html">승차권 환불</button> -->
+          <button type="button" class="ktx-menu__item ktx-menu__item--receipt">영수증 출력</button>
+          <button type="button" class="ktx-menu__item ktx-menu__item--inquiry">조회·기타</button>
+        </div>
+
+        <!-- 접근성 버튼 -->
+        <div class="ktx-access">
+          <button type="button" class="ktx-access__btn">수어</button>
+          <button type="button" class="ktx-access__btn">고대비</button>
+          <button type="button" class="ktx-access__btn">화면확대</button>
+          <button type="button" class="ktx-access__btn">낮은화면</button>
+        </div>
+
+        <!-- 언어 선택 -->
+        <div class="ktx-lang">
+          <button type="button" class="ktx-lang__btn is-active" aria-pressed="true">한국어</button>
+          <button type="button" class="ktx-lang__btn" aria-pressed="false">ENGLISH</button>
+          <button type="button" class="ktx-lang__btn" aria-pressed="false">中國語</button>
+          <button type="button" class="ktx-lang__btn" aria-pressed="false">日本語</button>
+        </div>
+
+        <!-- 하단 원격 상담 -->
+        <div class="ktx-help">
+          <p class="ktx-help__text">기기 사용에 어려움이 있다면?</p>
+          <button type="button" class="ktx-help__btn">
+            <img src="../../shared/images/ktx/tell.png" alt="원격상담" class="ktx-help__icon" />
+            <span>원격 상담</span>
+          </button>
+        </div>
+      </section>
+
+      <aside id="ktxModal">
+        <div class="ktx-modal__box">
+          <h3 id="ktxModalTitle" class="ktx-modal__title">기차/KTX</h3>
+
+          <ul class="ktx-modal__list">
+            <li>통합승차권, 무임권, 교통카드결제 승차권은 단건 환불만 가능합니다.</li>
+            <li>자동발매기에서 발급한 좌석지정 승차권(합석, 자유선 제외)만 환불 접수 가능합니다.</li>
+            <li>열차 출발시각 이후에는 역에서 환불하셔야 합니다.</li>
+            <li>승차권에 표기된 도착역, 도착시각 이후에는 취소하실 수 없습니다.</li>
+            <li>구입한 승차권을 환불접수하는 경우 신청완료 시점으로 환불 위약금이 발생합니다.</li>
+          </ul>
+        
+          <p class="ktx-modal__timer"><span id="ktxModalCount">30</span>초 후 종료됩니다</p>
+        
+          <button type="button" class="ktx-modal__confirm" id="ktxModalConfirm">확인</button>
+        </div>
+      </aside>
+    </main>
+
     <script type="text/javascript" src="../../shared/js/common.js"></script>
     <script type="text/javascript" src="./ktx.js"></script>
-  </head>
-  <body></body>
+  </body>
 </html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 좌석 선택</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-08">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="좌석 선택">
+        <h2 class="air-title">좌석을 선택해주세요</h2>
+
+        <div class="air-seat-wrap">
+          <!-- 좌석 배치도 -->
+          <div class="air-seatmap" aria-label="좌석 배치도">
+            <div class="air-seatmap__cols" aria-hidden="true">
+              <div class="air-seatmap__group"><span>A</span><span>B</span><span>C</span></div>
+              <div class="air-seatmap__group"><span>E</span><span>F</span><span>G</span></div>
+            </div>
+
+            <ul class="air-seatmap__rows">
+          <li class="air-seatmap__row" data-row="47">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="47A" disabled aria-label="47A 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="47B">47B</button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="47C" disabled aria-label="47C 선택 불가"></button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="47E" disabled aria-label="47E 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="47F">47F</button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="47G" disabled aria-label="47G 선택 불가"></button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="48">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="48A" disabled aria-label="48A 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="48B">48B</button>
+                <button type="button" class="air-seat" data-seat="48C">48C</button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="48E" disabled aria-label="48E 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="48F" disabled aria-label="48F 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="48G">48G</button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="49">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="49A" disabled aria-label="49A 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="49B" disabled aria-label="49B 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="49C" disabled aria-label="49C 선택 불가"></button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="49E" disabled aria-label="49E 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="49F" disabled aria-label="49F 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="49G" disabled aria-label="49G 선택 불가"></button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="50">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="50A" disabled aria-label="50A 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="50B" disabled aria-label="50B 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="50C" disabled aria-label="50C 선택 불가"></button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="50E" disabled aria-label="50E 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="50F">50F</button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="50G" disabled aria-label="50G 선택 불가"></button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="51">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="51A" disabled aria-label="51A 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="51B" disabled aria-label="51B 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="51C" disabled aria-label="51C 선택 불가"></button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="51E" disabled aria-label="51E 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="51F" disabled aria-label="51F 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="51G">51G</button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="52">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="52A" disabled aria-label="52A 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="52B">52B</button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="52C" disabled aria-label="52C 선택 불가"></button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="52E" disabled aria-label="52E 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="52F" disabled aria-label="52F 선택 불가"></button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="52G" disabled aria-label="52G 선택 불가"></button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="53">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="53A" disabled aria-label="53A 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="53B">53B</button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="53C" disabled aria-label="53C 선택 불가"></button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat air-seat--disabled" data-seat="53E" disabled aria-label="53E 선택 불가"></button>
+                <button type="button" class="air-seat" data-seat="53F">53F</button>
+                <button type="button" class="air-seat air-seat--disabled" data-seat="53G" disabled aria-label="53G 선택 불가"></button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="54">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat" data-seat="54A">54A</button>
+                <button type="button" class="air-seat" data-seat="54B">54B</button>
+                <button type="button" class="air-seat" data-seat="54C">54C</button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat" data-seat="54E">54E</button>
+                <button type="button" class="air-seat" data-seat="54F">54F</button>
+                <button type="button" class="air-seat" data-seat="54G">54G</button>
+            </div>
+          </li>
+          <li class="air-seatmap__row" data-row="55">
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat" data-seat="55A">55A</button>
+                <button type="button" class="air-seat" data-seat="55B">55B</button>
+                <button type="button" class="air-seat" data-seat="55C">55C</button>
+            </div>
+            <div class="air-seatmap__group">
+                <button type="button" class="air-seat" data-seat="55E">55E</button>
+                <button type="button" class="air-seat" data-seat="55F">55F</button>
+                <button type="button" class="air-seat" data-seat="55G">55G</button>
+            </div>
+          </li>
+            </ul>
+
+            <!-- 범례 -->
+            <ul class="air-legend">
+              <li class="air-legend__item air-legend__item--disabled"><span class="air-legend__box"></span>불가좌석</li>
+              <li class="air-legend__item air-legend__item--able"><span class="air-legend__box"></span>가능좌석</li>
+              <li class="air-legend__item air-legend__item--selected"><span class="air-legend__box"></span>선택좌석</li>
+            </ul>
+          </div>
+
+          <!-- 기내 구역 -->
+          <div class="air-cabin">
+            <span class="air-cabin__cap air-cabin__cap--front">앞</span>
+            <ul class="air-cabin__list">
+              <li><button type="button" class="air-cabin__zone" data-zone="A" disabled><strong class="air-cabin__name">A</strong><span class="air-cabin__remain">잔여 <em>0</em>석</span></button></li>
+              <li><button type="button" class="air-cabin__zone" data-zone="B" disabled><strong class="air-cabin__name">B</strong><span class="air-cabin__remain">잔여 <em>0</em>석</span></button></li>
+              <li><button type="button" class="air-cabin__zone active" data-zone="C"><strong class="air-cabin__name">C</strong><span class="air-cabin__remain">잔여 <em>30</em>석</span></button></li>
+            </ul>
+            <span class="air-cabin__cap air-cabin__cap--rear">뒤</span>
+          </div>
+        </div>
+
+        <!-- 하단 버튼 : 좌석 선택 전 비활성 -->
+        <div class="air-actions">
+          <a href="./air-07.html" class="air-btn air-btn--prev">이전</a>
+          <button type="button" id="airSeatSubmit" class="air-btn air-btn--next disabled-color" disabled>탑승권 발급</button>
+        </div>
+      </section>
+
+      <div id="airSeatLoading" class="air-loading-overlay" hidden role="status" aria-live="polite">
+        <p class="air-loading__title">탑승권 발급중입니다</p>
+        <div class="air-loading__spinner" aria-hidden="true"></div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airPortUtil.js"></script>
+  </body>
+</html>

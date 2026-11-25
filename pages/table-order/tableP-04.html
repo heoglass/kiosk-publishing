@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>테이블 결제-상품과 수량 확인</title>
+    <title>테이블오더 - tableP-04.html</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
-    <link rel="stylesheet" href="./table-pay.css" />
+    <link rel="stylesheet" href="./table-order.css" />
   </head>
   <body id="tablePay">
     <div class="kiosk-container">
@@ -16,36 +16,18 @@
         <header id="category-header-horizontal" class="tablePay__header">
           <div class="header-left">
             <a href="../../index.html" aria-label="처음으로">
-              <img
-                src="../../shared/images/icon/icon-home.png"
-                alt=""
-                class="category-header-home"
-              />
+              <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
             </a>
-            <img
-              src="../../shared/images/icon/arrow-right-w.png"
-              alt=""
-              class="category-header-arrow-right"
-            />
+            <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right"/>
             <span id="header-title"></span>
           </div>
-          <button
-            type="button"
-            class="header-sound-toggle"
-            aria-label="소리"
-            aria-pressed="true"
-            data-sound-off-src="../../shared/images/icon/sound_w_off.png"
-          >
-            <img
-              src="../../shared/images/icon/sound_w.png"
-              class="header-sound"
-              alt=""
-            />
+          <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt=""/>
           </button>
         </header>
         <section id="tablePay-cart-list" class="tablePayWrap">
           <div class="tablePayWrap__title">
-            <h3 class="tablePayWrap__title-text">주문 내역을 확인해주세요</h3>
+            <h3 class="tablePayWrap__title-text">상품과 수량을 확인해주세요</h3>
           </div>
           <div class="tablePayWrap__cartList" tabindex="0" aria-label="장바구니 상품 목록">
             <ul class="tablePayWrap__cartList-items"></ul>

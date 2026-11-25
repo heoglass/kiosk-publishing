@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 기내 휴대수하물 안내</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-04">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="기내 휴대수하물 안내">
+        <h2 class="air-title air-title--line">기내 휴대수하물 안내</h2>
+
+        <!-- 수하물 규격 일러스트 -->
+        <div class="air-baggage">
+          <img src="../../shared/images/airport/bag.png" alt="휴대수하물 가로(B)·세로(C)·높이(A) 측정 안내" class="air-baggage__img" />
+          <p class="air-baggage__formula">A+B+C≤ <em>115cm</em></p>
+        </div>
+
+        <div class="air-box air-box--notice air-box--baggage">
+          <ul class="air-list">
+            <li>휴대수하물이 <strong>1개를 초과하는 경우,</strong><br /><strong>반드시 수속카운터에서 미리 위탁</strong>해주시기 바랍니다.<br />허용량 초과시, 탑승구에서 <strong>별도 수수료가 발생됩니다.</strong></li>
+            <li>기내 휴대수하물 허용 규격에 부합하는 경우, 기내 반입이 가능합니다.<br /><strong>단, 기내 탑재공간 부족시 탑승구에서 위탁</strong>될 수 있으니,<br />이점 양지하여 주시기 바랍니다.</li>
+          </ul>
+          <ul class="air-list air-list--note">
+            <li>기내 휴대수하물 허용 규격<br />세변의 총합 115cm 이하, 각 변의 최대치 가로 40cm, 세로 20cm, 높이 55cm 미만</li>
+            <li>추가허용 품목 : 노트북 컴퓨터, 서류가방, 핸드백 중 1개</li>
+          </ul>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions">
+          <a href="./air-03.html" class="air-btn air-btn--prev">이전</a>
+          <a href="./air-05.html" class="air-btn air-btn--next">다음</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airport.js"></script>
+  </body>
+</html>

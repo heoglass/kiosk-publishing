@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 탑승권 발급중</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-08-loading">
+    <main class="air-main kiosk-screen air-main--loading">
+      <section id="air-start-screen" class="air__section air__section--loading" aria-label="탑승권 발급중" aria-live="polite">
+        <h2 class="air-loading__title">탑승권 발급중입니다</h2>
+        <div class="air-loading__spinner" role="status" aria-label="로딩중"></div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airPortUtil.js"></script>
+  </body>
+</html>

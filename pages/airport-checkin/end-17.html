@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>체험 완료</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="../../shared/css/complete.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="end-17">
+    <div class="kiosk-screen complete-screen ktx-complete">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+      <main class="complete-main experience-complete">
+        <div class="complete-main-contents">
+          <div class="complete-text-area">
+            <h1 class="complete-title">체험 완료</h1>
+            <p class="complete-message">키오스크 체험이 완료되었습니다<br />수고하셨습니다</p>
+          </div>
+          <img src="../../shared/images/experience-complete-blue.png" class="complete-experience-image" alt="키오스크 체험 완료" />
+        </div>
+        <div class="complete-actions" aria-label="체험 완료 후 이동">
+          <a href="./index.html" class="complete-button complete-button-secondary" data-ktx-reset>다시하기</a>
+          <a href="../../index.html" class="complete-button" data-ktx-reset>첫 화면으로 가기</a>
+        </div>
+      </main>
+    </div>
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

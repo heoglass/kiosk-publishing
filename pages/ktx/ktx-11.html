@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 예매: 좌석선택</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktx-11">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative" aria-label="기차KTX 좌석 선택">
+        <!-- 진행 단계 : 여정선택 완료(is-done), 열차선택 진행중(is-active) -->
+        <ol class="ktx-step">
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">여정선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-active" aria-current="step">
+            <span class="ktx-step__label">열차선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">결제</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">발권</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+        </ol>
+
+        <!-- 타이틀 -->
+        <h2 class="ktx-content-subject">열차를 선택해주세요</h2>
+
+        <div class="ktx-train-select">
+          <!-- 좌측: 열차 정보 / 범례 -->
+          <div class="ktx-train-select__side">
+            <p class="ktx-train-select__head">
+              <span class="ktx-badge">KTX</span>
+              <span>261</span>
+            </p>
+            <p class="ktx-train-select__text">일반실</p>
+            <p class="ktx-train-select__text" id="ktxCarNumber" data-car="9">9호차</p>
+            <p class="ktx-train-select__text"><strong>잔여 48석</strong> / 60석</p>
+            <button type="button" class="ktx-train-select__change">호차변경</button>
+
+            <ul class="ktx-legend" aria-label="좌석 범례">
+              <li>순방향<span class="ktx-legend__seat ktx-legend__seat--forward"></span></li>
+              <li>역방향<span class="ktx-legend__seat ktx-legend__seat--reverse"></span></li>
+              <li>선택불가<span class="ktx-legend__seat ktx-legend__seat--disabled"></span></li>
+            </ul>
+          </div>
+
+          <!-- 우측: 좌석 배치도 -->
+          <div class="ktx-seatmap" id="ktxSeatMap" aria-label="좌석 선택">
+            <div class="ktx-seatmap__rows">
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="1A" aria-pressed="false"><span>1A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="1B" aria-pressed="false" disabled><span>1B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="1C" aria-pressed="false"><span>1C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="1D" aria-pressed="false" disabled><span>1D</span></button>
+                </div>
+              </div>
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="2A" aria-pressed="false"><span>2A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="2B" aria-pressed="false"><span>2B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="2C" aria-pressed="false"><span>2C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="2D" aria-pressed="false"><span>2D</span></button>
+                </div>
+              </div>
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="3A" aria-pressed="false"><span>3A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="3B" aria-pressed="false" disabled><span>3B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="3C" aria-pressed="false"><span>3C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="3D" aria-pressed="false" disabled><span>3D</span></button>
+                </div>
+              </div>
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="4A" aria-pressed="false"><span>4A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="4B" aria-pressed="false"><span>4B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="4C" aria-pressed="false"><span>4C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="4D" aria-pressed="false"><span>4D</span></button>
+                </div>
+              </div>
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="5A" aria-pressed="false"><span>5A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="5B" aria-pressed="false"><span>5B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="5C" aria-pressed="false"><span>5C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="5D" aria-pressed="false" disabled><span>5D</span></button>
+                </div>
+              </div>
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="6A" aria-pressed="false"><span>6A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="6B" aria-pressed="false"><span>6B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="6C" aria-pressed="false"><span>6C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="6D" aria-pressed="false"><span>6D</span></button>
+                </div>
+              </div>
+              <div class="ktx-seatmap__row">
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="7A" aria-pressed="false"><span>7A</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="7B" aria-pressed="false"><span>7B</span></button>
+                </div>
+                <div class="ktx-seatmap__pair">
+                  <button type="button" class="ktx-seatmap__seat" data-seat="7C" aria-pressed="false"><span>7C</span></button>
+                  <button type="button" class="ktx-seatmap__seat" data-seat="7D" aria-pressed="false" disabled><span>7D</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 하단 버튼 -->
+          <a href="./ktx-07.html" class="ktx-train-select__prev">이전</a>
+          <button type="button" id="ktxSeatDone" class="ktx-train-select__done" disabled>0/3석 선택완료</button>
+        </div>
+
+        <!-- 하단 바 -->
+        <div class="ktx-help">
+          <p class="ktx-help__text">기기 사용에 어려움이 있다면?</p>
+          <button type="button" class="ktx-help__btn">
+            <img src="../../shared/images/ktx/tell.png" alt="원격상담 아이콘" class="ktx-help__icon" />
+            <span>원격 상담</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>테이블 결제 - 나눠서 결제하기 선택화면</title>
+    <title>테이블오더 - tableP-05.html</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
-    <link rel="stylesheet" href="./table-pay.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="./table-order.css" />
+    <script src="../../shared/js/lottie-player.js"></script>
+    <script src="../../shared/images/lottie/lottie-card-insert-data.js"></script>
   </head>
   <body id="tablePay">
     <div class="kiosk-container">
@@ -76,7 +76,7 @@
             <!-- <img class="card-payment-image card-insert" src="../../shared/images/icon/icon-insert-card.png" alt=""> -->
             <div id="lottie-card-insert" class="card-payment-image card-insert">
               <lottie-player
-                src="../../shared/images/lottie/lottie-card-insert.json"
+                data-animation="lottieCardInsert"
                 background="transparent"
                 speed="0.5"
                 style="width: 160px; height: 171px"
@@ -110,8 +110,8 @@
           <h2 id="order-completed-title">주문이 완료되었습니다</h2>
           <span class="order-completed-icon"></span>
           <p class="table-pay-history__content completed-msg">
-            주문번호를 확인해주세요<br />
-            주문 번호 확인 후 카운터에서 픽업해주세요
+            카운터에서 주문을 확인중입니다<br />
+            맛있게 조리하겠습니다
           </p>
           <form method="dialog">
             <button id="creditCompleteBtn" type="button" class="tablepay--completed">확인</button>
@@ -121,5 +121,15 @@
     </div>
     <script type="text/javascript" src="../../shared/js/common.js" defer></script>
     <script type="text/javascript" src="./table-pay.js"></script>
+    <script>
+      document.querySelectorAll("lottie-player[data-animation]").forEach(function (player) {
+        player.addEventListener("error", function () {
+          console.error("애니메이션을 불러오지 못했습니다:", player.dataset.animation);
+        });
+        player.updateComplete.then(function () {
+          player.load(window[player.dataset.animation]);
+        });
+      });
+    </script>
   </body>
 </html>

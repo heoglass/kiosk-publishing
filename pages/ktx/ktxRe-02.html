@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 환불: QR스캔</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktxRe-02">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative" aria-label="기차KTX 환불 QR스캔">
+        <!-- 진행 단계 (3단계) -->
+        <ol class="ktx-step ktx-step--3">
+          <li class="ktx-step__item is-active" aria-current="step">
+            <span class="ktx-step__label">QR스캔</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">정보확인</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">환불처리</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+        </ol>
+
+        <h2 class="ktx-content-subject">승차권 환불</h2>
+
+        <p class="ktxre-qr__title">QR리더기에<br />승차권 QR코드를 스캔해주세요</p>
+        <p class="ktxre-qr__desc">화면이 어두울 경우 인식이 안될 수 있습니다</p>
+        <a href="./ktxRe-03.html" class="ktxre-qr__link" aria-label="승차권 QR코드 스캔하기">
+          <img src="../../shared/images/ktx/qr1.png" alt="승차권 QR코드를 QR리더기에 스캔하는 모습" class="ktxre-qr__img" />
+        </a>
+
+        <a href="./ktxRe-03.html" class="ktxre-wide-btn ktxre-wide-btn--primary ktxre-qr__input">승차권 번호 직접 입력하기</a>
+        <a href="./index.html" class="ktxre-wide-btn ktxre-wide-btn--cancel ktxre-qr__cancel">취소</a>
+
+        <!-- 하단 바 -->
+        <div class="ktx-help">
+          <a href="./index.html" class="ktx-help__btn ktx-help__btn--prev">이전으로</a>
+          <button type="button" class="ktx-help__btn">
+            <img src="../../shared/images/ktx/tell.png" alt="원격상담 아이콘" class="ktx-help__icon" />
+            <span>원격 상담</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

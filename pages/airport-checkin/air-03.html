@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 위험물 반입 규정 (1/2)</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-03">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="항공기 위험물 반입 규정 안내">
+        <!-- 언어 선택 -->
+        <ul class="air-lang" role="tablist" aria-label="언어 선택">
+          <li><button type="button" class="air-lang__btn active" role="tab" aria-selected="true" data-lang="ko">한국어</button></li>
+          <li><button type="button" class="air-lang__btn" role="tab" aria-selected="false" data-lang="en">ENGLISH</button></li>
+          <li><button type="button" class="air-lang__btn" role="tab" aria-selected="false" data-lang="zh">中國語</button></li>
+          <li><button type="button" class="air-lang__btn" role="tab" aria-selected="false" data-lang="ja">日本語</button></li>
+        </ul>
+
+        <h2 class="air-title">항공기 위험물 반입 규정 안내</h2>
+
+        <div class="air-box air-box--hazard" data-air-hazard-pages>
+          <div class="air-hazard-page" data-air-hazard-page aria-hidden="false">
+            <img src="../../shared/images/airport/attention1.png" alt="기내 반입 및 위탁수하물 불가 위험물 안내" class="air-hazard-image" />
+          </div>
+          <div class="air-hazard-page" data-air-hazard-page aria-hidden="true" hidden>
+            <img src="../../shared/images/airport/attention2.png" alt="기내 반입 불가, 위탁수하물 가능 위험물 안내" class="air-hazard-image" />
+          </div>
+        </div>
+
+        <!-- 페이지 이동 -->
+        <div class="air-pager" aria-label="위험물 안내 페이지 이동">
+          <button type="button" class="air-pager__btn air-pager__btn--prev disabled-color" aria-label="이전 페이지" data-hazard-page="previous" disabled><span class="air-pager__arrow" aria-hidden="true"></span></button>
+          <span class="air-pager__count" aria-live="polite">1/2</span>
+          <button type="button" class="air-pager__btn air-pager__btn--next" aria-label="다음 페이지" data-hazard-page="next"><span class="air-pager__arrow" aria-hidden="true"></span></button>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions">
+          <a href="./air-02.html" class="air-btn air-btn--prev">이전</a>
+          <a href="./air-04.html" class="air-btn air-btn--next" data-hazard-next>다음</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airPortUtil.js"></script>
+  </body>
+</html>

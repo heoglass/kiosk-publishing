@@ -34,8 +34,7 @@ a.disabled-color,
 }
 #parcelBody #category-header-vertical.parcel__header {
   background-color: var(--parcel-primary-color);
-    padding: 30px 60px;
-    height: 139px;
+
 }
 #parcelBody #category-header-vertical.parcel__header .header-sound {
   width: 80px;
@@ -79,7 +78,7 @@ body#parcelBody {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 80px 60px 0px;
+  padding: 80px 110px 0px;
   /* 내용이 영역보다 길면 세로 스크롤 (스크롤바는 숨김) */
   overflow-x: hidden;
   overflow-y: auto;
@@ -88,6 +87,30 @@ body#parcelBody {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+body#parcelBody[data-page="indexProductType"] .parcel__content,
+body#parcelBody[data-page="indexAgree"] .parcel__content,
+body#parcelBody[data-page="indexParcelChk"] .parcel__content,
+body#parcelBody[data-page="indexFrom"] .parcel__content,
+body#parcelBody[data-page="indexTo"] .parcel__content
+{
+  padding: 54px 60px 0px;
+}
+
+body[data-page="indexCost"] .parcel__content,
+body[data-page="indexWeight"] .parcel__content,
+body[data-page="indexFrom"] .parcel__content,
+body[data-page="indexTo"] .parcel__content {
+ position: relative;
+}
+
+body[data-page="indexCost"] .btn-area,
+body[data-page="indexWeight"] .btn-area {
+    bottom: 60px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 0 60px;
 }
 #parcelBody .parcel__content::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
@@ -124,11 +147,12 @@ body#parcelBody {
 /* ---------- 단계 표시 ---------- */
 #parcelBody .parcel-step {
   flex: none;
+  align-self: center;
   position: relative;
   display: flex;
   justify-content: space-between;
+  width: 920px;
   height: 43px;
-  margin: 0 80px;
   padding: 0;
   list-style: none;
 }
@@ -161,7 +185,7 @@ body#parcelBody {
 /* ---------- 타이틀 ---------- */
 #parcelBody .parcel-title {
   flex: none;
-  margin: 203px 0 72px;
+  margin: 44px 0 72px;
   text-align: center;
 }
 #parcelBody .parcel-title__main {
@@ -210,6 +234,18 @@ body#parcelBody {
   display: flex;
   flex-direction: column;
 }
+body[data-page="indexCost"] .btn-area {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 0 60px;
+}
+
+
+
+
+
 #parcelBody .btn-area--row { flex-direction: row; gap: 30px; }
 
 
@@ -259,7 +295,7 @@ body#parcelBody {
   display: flex;
   flex-direction: column;
   gap: 61px;
-  margin: 0 110px;
+  /* margin: 0 auto; */
   padding: 0;
   list-style: none;
 }
@@ -272,7 +308,7 @@ body#parcelBody {
   border: 2px solid #000;
   border-radius: 60px;
   background-color: #fff;
-}
+} 
 #parcelBody .option-card:active { background-color: #F1EEFC; }
 #parcelBody .option-card__img { width: 155px; height: auto; flex: none; }
 #parcelBody .option-card__text { display: flex; flex-direction: column; margin-left: 42px; }
@@ -299,7 +335,9 @@ body#parcelBody {
 }
 #parcelBody .receipt-card.is-selected,
 #parcelBody .option-card.is-selected,
-#parcelBody *.is-selected {
+#parcelBody *.is-selected,
+#parcelBody .option-card:active,
+#parcelBody .receipt-card:active {
   border: 4px solid var(--parcel-primaryBtn-color);
   box-shadow: 0 0 25px 0 rgba(73, 30, 215, 0.4);
   color: var(--parcel-primaryBtn-color);
@@ -396,7 +434,7 @@ body#parcelBody {
   border-radius: 40px;
   background-color: #fff;
 }
-#parcelBody .pack-card__img { width: 150px; height: auto; flex: none; }
+#parcelBody .pack-card__img { width: 176px; height: 176px; flex: none; }
 #parcelBody .pack-card__text { display: flex; flex-direction: column; margin-left: 33px; }
 #parcelBody .pack-card__title { font-size: 44px; line-height: 56px; font-weight: 700; }
 #parcelBody .pack-card__desc { font-size: 36px; line-height: 50px; font-weight: 500; }
@@ -417,11 +455,16 @@ body#parcelBody {
   height: 199px;
   border: 2px solid #000;
   border-radius: 40px;
+  position: relative;
   background-color: #fff;
 }
 #parcelBody .deny-list__img img { max-width: 70%; max-height: 70%; }
 #parcelBody .deny-list__name { margin-top: 14px; font-size: 36px; line-height: 50px; font-weight: 500; white-space: nowrap; }
+#parcelBody .deny-list__item:first-child .deny-list__img img {
 
+    width: 222px;
+    height: 193px;
+}
 /* ---------- 물품가액 입력 ---------- */
 #parcelBody .amount-input {
   flex: none;
@@ -512,14 +555,21 @@ body#parcelBody {
 /* 화상 키보드 */
 #parcelBody .keyboard {
   flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   box-sizing: border-box;
   height: 383px;
   margin-top: auto;
-  padding-top: 24px;
+      position: absolute;
+    bottom: 157px;
   background-color: #fff;
 }
-#parcelBody .keyboard__row { display: flex; justify-content: center; gap: 13px; margin-bottom: 4px; }
-#parcelBody .keyboard__row--func { gap: 22px; margin: 10px 0 0; }
+#parcelBody .keyboard > .btn-area {
+      margin-top: 0 !important;
+  margin-bottom: 10px;
+}
+#parcelBody .keyboard__row { display: flex; justify-content: center; gap: 10px; }
 #parcelBody .keyboard__key {
   width: 78px;
   height: 58px;
@@ -622,7 +672,7 @@ body#parcelBody {
 #parcelBody .agree-check input { width: 32px; height: 32px; margin: 0; accent-color: #D60000; }
 
 /* ---------- 운송장 출력 ---------- */
-#parcelBody .invoice-preview { position: relative; width: 100%; }
+#parcelBody .invoice-preview { position: relative; width: 100%;     padding: 0px 32px; }
 #parcelBody .invoice-preview__img { display: block; width: 100%; height: auto; }
 #parcelBody .btn--reprint { margin: 60px; }
 
@@ -650,7 +700,7 @@ body#parcelBody {
   }
 
 /* ---------- 화면별 위치 보정 (시안 기준) ---------- */
-#parcelBody .parcel__content--index { padding-top: 328px; padding-bottom: 60px; padding: 328px 110px 60px; }
+#parcelBody .parcel__content--index { padding-top: 328px; padding-bottom: 60px; padding: 166px 110px 60px; }
 #parcelBody .parcel__content--index .parcel-title { margin-top: 0; }
 #parcelBody .parcel__content--indexExpComplete { padding-top: 81px; padding-bottom: 60px; }
 
@@ -658,9 +708,9 @@ body#parcelBody {
 #parcelBody .parcel__content--indexServiceType .option-list { gap: 41px; }
 #parcelBody .parcel__content--indexServiceType .option-card { height: 213px; }
 
-#parcelBody .parcel__content--indexProductType .parcel-title { margin-top: 225px; margin-bottom: 40px; }
+#parcelBody .parcel__content--indexProductType .parcel-title {  margin-bottom: 40px; }
 
-#parcelBody .parcel__content--indexWeight .parcel-title { margin-top: 128px; margin-bottom: 70px; }
+#parcelBody .parcel__content--indexWeight .parcel-title {  margin-bottom: 70px; }
 #parcelBody .parcel__content--indexWeight .parcel-notice { margin-bottom: 61px; }
 
 #parcelBody .parcel__content--indexAgree { padding-top: 70px; }

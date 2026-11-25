@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 예매: 결제 진행</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="kpay-03">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header" inert>
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative ktx-card-payment" aria-label="기차KTX 카드 결제" inert>
+        <ol class="ktx-step">
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">여정선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">열차선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-active" aria-current="step">
+            <span class="ktx-step__label">결제</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">발권</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+        </ol>
+
+        <h2 class="ktx-content-subject">결제단말기에 카드를 넣어주세요</h2>
+        <p class="ktx-card-payment__description">삼성페이·애플페이는 휴대폰을 접촉해주세요</p>
+        <button type="button" class="ktx-card-payment__image" aria-label="카드 삽입">
+          <img src="../../shared/images/ktx/card-m.png" alt="" />
+        </button>
+        <p class="ktx-card-payment__timer"><span id="ktxCardCount">30</span><span>초 후</span> 종료됩니다</p>
+        <a href="./kpay-01.html" class="ktx-pay-prev ktx-card-payment__prev">이전으로</a>
+      </section>
+
+      <aside id="ktxModal" role="dialog" aria-modal="true" aria-labelledby="ktxPaymentProgressTitle" aria-describedby="ktxPaymentProgressDescription" tabindex="-1">
+        <div class="ktx-modal__box ktx-payment-status__modal" id="ktxPaymentProgress">
+          <div class="spinner" aria-hidden="true"></div>
+          <h2 id="ktxPaymentProgressTitle">결제 진행중입니다</h2>
+          <p id="ktxPaymentProgressDescription">카드를 제거하지 말고 잠시만 기다려주세요</p>
+        </div>
+        <div class="ktx-modal__box ktx-payment-status__modal" id="ktxPaymentComplete" hidden>
+          <a href="./ktx-13.html" class="ktx-payment-status__complete-link" aria-label="카드 제거 후 발권하기">
+            <img class="ktx-payment-status__complete-image" src="../../shared/images/icon/icon-card-complete-blue.png" alt="" />
+          </a>
+          <h2 id="ktxPaymentCompleteTitle">결제가 완료되었습니다</h2>
+          <p id="ktxPaymentCompleteDescription">카드를 제거해주세요</p>
+        </div>
+      </aside>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

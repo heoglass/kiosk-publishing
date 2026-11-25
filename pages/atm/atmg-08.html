@@ -34,12 +34,20 @@
         <div class="atm__content">
           <!-- 카드(명세표) 배출 애니메이션 영역 / 터치 시 ATMe-01 이동 -->
           <a href="./atme-01.html" class="atmg__card-link" aria-label="카드(명세표) 받기">
-            <img src="../../shared/images/atm/atm_insert.png" alt="임시이미지" class="atmg__img atmg__img--anim" />
+             <lottie-player
+            src="../../shared/images/atm/lottie_atm/atmOutput.json"
+            background="transparent"
+            speed="0.5"
+            style="width: 378px; height: 198px"
+            loop
+            autoplay
+          ></lottie-player>
             <!-- <span style="font-size: 26px; color: #FF0000; text-align:center;">카드 명세표가 나오는 애니메이션(임시이미지)</span> -->
           </a>
         </div>
       </section>
     </main>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script type="text/javascript" src="../../shared/js/common.js" defer></script>
     <script type="text/javascript" src="./atmBank.js"></script>
   </body>

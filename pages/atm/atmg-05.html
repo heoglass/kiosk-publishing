@@ -34,11 +34,20 @@
 
         <div class="atm__content" data-auto-next="./atmg-06.html" data-auto-delay="2000">
           <!-- 지폐 세는 중 애니메이션 영역 -->
-          <img src="../../shared/images/atm/counting.png" alt="지폐를 세는 중" class="atmg__img atmg__img--cash" />
+          <!-- <img src="../../shared/images/atm/counting.png" alt="지폐를 세는 중" class="atmg__img atmg__img--cash" /> -->
+          <lottie-player
+            src="../../shared/images/atm/lottie_atm/atmPay.json"
+            background="transparent"
+            speed="0.5"
+            style="width: 378px; height: 198px"
+            loop
+            autoplay
+          ></lottie-player>
         </div>
       </section>
     </main>
     <script type="text/javascript" src="../../shared/js/common.js" defer></script>
     <script type="text/javascript" src="./atmBank.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </body>
 </html>

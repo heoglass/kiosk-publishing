@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 예매: 예약 내역 확인</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktx-12">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative" aria-label="기차KTX 예약 내역 확인">
+        <!-- 진행 단계 : 여정선택 완료(is-done), 열차선택 진행중(is-active) -->
+        <ol class="ktx-step">
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">여정선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-active" aria-current="step">
+            <span class="ktx-step__label">열차선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">결제</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">발권</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+        </ol>
+
+        <!-- 타이틀 -->
+        <h2 class="ktx-content-subject">예약 내역을 확인하세요</h2>
+
+        <!-- 예약 내역 -->
+        <div class="ktx-reserve">
+          <div class="ktx-reserve__head">
+            <p id="ktxReserveDate" class="ktx-reserve__date">2026-11-05(목) 14:00</p>
+            <span id="ktxReserveCount" class="ktx-reserve__count">8매</span>
+          </div>
+
+          <div class="ktx-reserve__body">
+            <p id="ktxReserveRoute" class="ktx-reserve__route">서울 → 대전</p>
+            <p id="ktxReserveTime" class="ktx-reserve__time">00:00 — 00:00</p>
+
+            <ul id="ktxReserveList" class="ktx-reserve__list" aria-label="예약 좌석">
+              <li class="ktx-reserve__item">
+                <div class="ktx-reserve__train">
+                  <p class="ktx-reserve__name"><span class="ktx-badge">KTX</span><span>261</span></p>
+                  <p class="ktx-reserve__class">일반실</p>
+                </div>
+                <div class="ktx-reserve__seat">
+                  <p>9호차</p>
+                  <p>15B</p>
+                </div>
+              </li>
+              <li class="ktx-reserve__item">
+                <div class="ktx-reserve__train">
+                  <p class="ktx-reserve__name"><span class="ktx-badge">KTX</span><span>261</span></p>
+                  <p class="ktx-reserve__class">일반실</p>
+                </div>
+                <div class="ktx-reserve__seat">
+                  <p>9호차</p>
+                  <p>15B</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="ktx-station__pagination">
+              <button type="button" id="ktxReservePrev" aria-label="이전 예약 목록" disabled></button>
+              <span id="ktxReservePage">1/5</span>
+              <button type="button" id="ktxReserveNext" aria-label="다음 예약 목록"></button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ktx-reserve__notice">10분이내 결제하지 않으면 예약이 취소돼요</p>
+
+        <div class="ktx-reserve__actions">
+          <a href="./index.html" class="ktx-reserve__cancel">예약취소</a>
+          <a href="./kpay-01.html" id="ktxReservePay" class="ktx-reserve__pay">결제하기</a>
+        </div>
+
+        <!-- 하단 바 -->
+        <div class="ktx-help">
+          <p class="ktx-help__text">기기 사용에 어려움이 있다면?</p>
+          <button type="button" class="ktx-help__btn">
+            <img src="../../shared/images/ktx/tell.png" alt="원격상담 아이콘" class="ktx-help__icon" />
+            <span>원격 상담</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

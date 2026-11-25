@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 예매: 발권 완료</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktx-14">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative ktx-issue" aria-label="기차KTX 발권 완료">
+        <ol class="ktx-step">
+          <li class="ktx-step__item is-done"><span class="ktx-step__label">여정선택</span><span class="ktx-step__dot"></span></li>
+          <li class="ktx-step__item is-done"><span class="ktx-step__label">열차선택</span><span class="ktx-step__dot"></span></li>
+          <li class="ktx-step__item is-done"><span class="ktx-step__label">결제</span><span class="ktx-step__dot"></span></li>
+          <li class="ktx-step__item is-done" aria-current="step"><span class="ktx-step__label">발권</span><span class="ktx-step__dot"></span></li>
+        </ol>
+
+        <h2 class="ktx-content-subject ktx-issue__title">발권이 완료되었습니다</h2>
+        <dl class="ktx-ticket" aria-label="열차 승차권">
+          <div class="ktx-ticket__date"><dt>승차일자</dt><dd id="ktxTicketDate">—</dd></div>
+          <div class="ktx-ticket__departure"><dt>출발</dt><dd id="ktxTicketDeparture">—</dd></div>
+          <div class="ktx-ticket__departure-time"><dt>출발 시간</dt><dd id="ktxTicketDepartureTime">—</dd></div>
+          <div class="ktx-ticket__arrival"><dt>도착</dt><dd id="ktxTicketArrival">—</dd></div>
+          <div class="ktx-ticket__arrival-time"><dt>도착 시간</dt><dd id="ktxTicketArrivalTime">—</dd></div>
+          <div class="ktx-ticket__car"><dt>호차번호</dt><dd id="ktxTicketCar">—</dd></div>
+          <div class="ktx-ticket__seat"><dt>좌석번호</dt><dd id="ktxTicketSeat">—</dd></div>
+          <div class="ktx-ticket__amount"><dt>영수금액</dt><dd id="ktxTicketAmount">—</dd></div>
+        </dl>
+        <div class="ktx-station__pagination ktx-ticket__pagination" id="ktxTicketPagination" aria-label="승차권 선택" hidden>
+          <button type="button" id="ktxTicketPrev" aria-label="이전 승차권">‹</button>
+          <span id="ktxTicketPage"></span>
+          <button type="button" id="ktxTicketNext" aria-label="다음 승차권">›</button>
+        </div>
+        <a href="./end-12.html" class="ktx-pay-prev ktx-ticket__confirm">확인</a>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

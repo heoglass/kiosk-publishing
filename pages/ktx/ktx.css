@@ -1,0 +1,2322 @@
+@charset "UTF-8";
+/* ==========================================================
+   KTX 메인 메뉴 (프레임) - 1080 x 1920 고정형
+   ※ 헤더는 수정하지 않음 / 세부 간격은 직접 조정
+   ========================================================== */
+#ktxBody {
+  --ktx-header-h: 139px;            /* 시안 기준 헤더 높이 */
+  --ktx-reserve-color: #0B5FF5;     /* 승차권 예매 */
+  --ktx-refund-color: #1783FF;      /* 승차권 환불 */
+  --ktx-receipt-color: #1E3A63;     /* 영수증 출력 */
+  --ktx-inquiry-color: #234272;     /* 조회·기타 */
+  --ktx-access-bg: #D5DFEC;
+  --ktx-primary-color: #245B93;
+  --ktx-primaryBtn-color: #245B93;
+  --ktx-box-shadow: 0px 0px 42.1px 0px rgba(35, 92, 149, 1);
+  --ktx-disabled-color: #555555;
+  --ktxBtnActiveColor: #0A60F3;
+
+}
+
+button.disabled-color,
+a.disabled-color,
+.disabled-color {
+  background-color: var(--ktx-disabled-color);
+  color: #fff;
+}
+
+.d-none {
+  display: none!important;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+#ktxBody #category-header {
+  background-color:#0C2D5E;
+  color: #fff;
+}
+
+main.ktx-main {
+  padding-top: 139px;  
+}
+/* 섹션: 배경 비주얼 + 하단 여백색 */
+body[page-type="ktx-index"] .ktx__section,
+body[page-type="ktxRe-01"] .ktx__section {
+  position: relative;
+   display: flow-root;   
+  min-height: calc(1920px - var(--ktx-header-h));
+  background-color: #F9FAFB;
+  background-image: url(../../shared/images/ktx/visual_.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+
+body[page-type="ktx-02"] .ktx__section--relative {
+  position: relative;
+  height: 100%;
+}
+
+/* 타이틀 (헤더 아래 절대배치) */
+#ktxBody .ktx__title--startpage {
+  position: absolute;
+  top: 135px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 90px;
+  text-align: center;
+  color: #fff;
+}
+
+.ktx-content-subject {
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: 700;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* 메뉴 4칸 : 헤더 기준 위쪽 마진 662px */
+#ktxBody .ktx-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 228px);
+  width: 920px;
+  margin: 662px auto 0;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(12, 45, 94, 0.25);
+}
+
+#ktxBody .ktx-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  font-size: 64px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+#ktxBody .ktx-menu__item--reserve { background-color: var(--ktx-reserve-color); }
+#ktxBody .ktx-menu__item--refund  { background-color: var(--ktx-refund-color); }
+#ktxBody .ktx-menu__item--receipt { background-color: var(--ktx-receipt-color); }
+#ktxBody .ktx-menu__item--inquiry { background-color: var(--ktx-inquiry-color); }
+
+/* 접근성 버튼 4개 */
+#ktxBody .ktx-access {
+  display: flex;
+  justify-content: space-between;
+  width: 960px;
+  margin: 205px auto 0;
+}
+#ktxBody .ktx-access__btn {
+  width: 215px;
+  height: 112px;
+  border: 2px solid #3C4B60;
+  border-radius: 24px;
+  background-color: var(--ktx-access-bg);
+  font-size: 40px;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+}
+
+/* 언어 선택 */
+#ktxBody .ktx-lang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 960px;
+  margin: 42px auto 0;
+}
+#ktxBody .ktx-lang__btn {
+  min-width: 195px;
+  height: 100px;
+  border: 0;
+  border-radius: 50px;
+  background: transparent;
+  font-size: 52px;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+}
+#ktxBody .ktx-lang__btn.is-active {
+  background-color: var(--ktx-reserve-color);
+  color: #fff;
+}
+
+/* 하단 원격 상담 바 */
+#ktxBody .ktx-help {
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 162px;
+  padding: 0 80px;
+  box-sizing: border-box;
+  background-color: #F4F6FA;
+}
+#ktxBody .ktx-help__text {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 500;
+  color: #111;
+}
+#ktxBody .ktx-help__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 238px;
+  height: 82px;
+  border: 2px solid #111;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 34px;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+}
+#ktxBody .ktx-help__icon {
+  width: 40px;
+  height: auto;
+}
+
+
+/* ==========================================================
+   KTX 안내 모달 (960 x 1416 카드)
+   ========================================================== */
+#ktxModal {
+  position: absolute;          /* .kiosk-screen(relative) 기준 */
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#ktxModal .ktx-modal__box {
+  display: flex;
+  flex-direction: column;
+  width: 960px;
+  height: auto;
+  padding: 100px 60px;
+  border-radius: 40px;
+  background: #F4F6FD;
+
+}
+
+#ktxModal .ktx-modal__title {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #111;
+}
+
+#ktxModal .ktx-modal__list {
+  margin: 30px 0 0;
+  padding: 0 18px;
+  font-size: 38px;
+  list-style: none;
+}
+#ktxModal .ktx-modal__list li {
+  position: relative;
+  margin-bottom: 60px;
+  padding-left: 35px;
+  font-size: 40px;
+  line-height: 1.5;
+  word-break: break-all;       /* 시안처럼 글자 단위 줄바꿈 */
+  color: #111;
+}
+#ktxModal .ktx-modal__list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+}
+
+#ktxModal .ktx-modal__timer {
+  margin: auto 0 0;            /* 리스트와 버튼 사이 가운데로 밀어냄 */
+  font-size: 64px;
+  font-weight: 800;
+  text-align: center;
+  color: #E8001C;
+}
+
+#ktxModal .ktx-modal__confirm {
+  width: 840px;
+  height: 140px;
+  margin: 100px auto 0;
+  border: 0;
+  border-radius: 24px;
+  background-color: var(--ktx-reserve-color, #0B5FF5);
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ktx02.html */
+/* 진행 단계 (파란 밴드 200px) */
+#ktxBody .ktx-step {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 200px;
+  padding: 38px 3px 0;
+  margin: 0;
+  list-style: none;
+  background-color: var(--ktx-reserve-color);
+}
+#ktxBody .ktx-step__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#ktxBody .ktx-step__label {
+  font-size: 36px;
+  line-height: 42px;
+  color: #fff;
+}
+#ktxBody .ktx-step__dot {
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  margin-top: 38px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background-color: var(--ktx-reserve-color);
+}
+#ktxBody .ktx-step__item.is-active .ktx-step__dot {
+  background-color: #fff;
+}
+/* 점과 점을 잇는 선 */
+#ktxBody .ktx-step__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 57px;
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+}
+
+/* 서브 타이틀 */
+#ktxBody .ktx-content-subject {
+  margin: 51px 0 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 90px;
+  text-align: center;
+  color: #111;
+}
+
+/* 폼 영역 */
+#ktxBody .ktx-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 960px;
+  margin: 52px auto 0;
+}
+
+/* 공통 카드 */
+#ktxBody .ktx-trip,
+#ktxBody .ktx-route,
+#ktxBody .ktx-date,
+#ktxBody .ktx-select__btn {
+  border: 2px solid #C9CED6;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+/* 공통 화살표(>) */
+#ktxBody .ktx-route__row::after,
+#ktxBody .ktx-date::after,
+#ktxBody .ktx-select__btn::after {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  border-top: 4px solid #111;
+  border-right: 4px solid #111;
+  transform: rotate(45deg);
+}
+
+/* 편도 / 왕복 */
+#ktxBody .ktx-trip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 162px;
+  padding: 19px 23px;
+}
+#ktxBody .ktx-trip__btn {
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  font-size: 48px;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+}
+#ktxBody .ktx-trip__btn.is-active {
+  background-color: var(--ktx-reserve-color);
+  color: #fff;
+}
+
+/* 출발지 / 도착지 */
+#ktxBody .ktx-route {
+  display: flex;
+  align-items: center;
+  height: 254px;
+  padding: 0 40px 0 40px;
+}
+#ktxBody .ktx-route__swap {
+  flex: none;
+  width: 110px;
+  height: 110px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--ktx-reserve-color);
+  cursor: pointer;
+}
+#ktxBody .ktx-route__swap img {
+  width: 70px;
+  height: auto;
+}
+#ktxBody .ktx-route__list {
+  flex: 1;
+  margin-left: 44px;
+}
+#ktxBody .ktx-route__row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  height: 110px;
+  padding: 0 20px 0 23px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+#ktxBody .ktx-route__row + .ktx-route__row {
+  border-top: 2px solid #8A8A8A;
+}
+#ktxBody .ktx-route__label {
+  font-size: 48px;
+  color: #777;
+}
+#ktxBody .ktx-route__value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* 가는날 */
+#ktxBody .ktx-date {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  padding: 0 58px;
+  text-align: left;
+  cursor: pointer;
+}
+#ktxBody .ktx-date__label {
+  font-size: 40px;
+  color: #777;
+}
+#ktxBody .ktx-date__value {
+  margin-left: 50px;
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* 인원 / 좌석 */
+#ktxBody .ktx-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+#ktxBody .ktx-select__btn {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  padding: 32px 60px;
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+}
+#ktxBody .ktx-select__icon {
+  width: 52px;
+  height: auto;
+  margin-right: 38px;
+}
+
+/* 열차조회 */
+#ktxBody .ktx-submit {
+  height: 140px;
+  border: 0;
+  border-radius: 24px;
+  background-color: var(--ktx-disabled-color);
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+#ktxBody .ktx-submit.active {
+  background-color: var(--ktxBtnActiveColor);
+}
+
+/* 하단 바: 이전으로 / 원격 상담 */
+body[page-type="ktx-02"] .ktx-help,
+body[page-type="ktx-03"] .ktx-help,
+body[page-type="ktx-05"] .ktx-help,
+body[page-type="ktx-06"] .ktx-help {
+  margin-top: 262px;
+}
+#ktxBody .ktx-help__btn--prev {
+  width: 185px;
+  text-decoration: none;
+  color: #111;
+}
+
+/* 출/도착역 선택 */
+#ktxModal .ktx-station {
+  padding: 90px 60px;
+}
+.ktx-station__route {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  margin-top: 52px;
+}
+.ktx-station__route-list {
+  flex: 1;
+  overflow: hidden;
+  border: 2px solid #777;
+  border-radius: 20px;
+}
+.ktx-station__route-btn {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  height: 110px;
+  padding: 0 40px;
+  background: #fff;
+  font-size: 40px;
+  text-align: left;
+}
+.ktx-station__route-btn + .ktx-station__route-btn {
+  border-top: 2px solid #aaa;
+}
+.ktx-station__route-btn.is-active {
+  background: #CFDFFF;
+}
+.ktx-station__route-btn span {
+  color: #555;
+}
+.ktx-station__route-btn::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  border-top: 4px solid #111;
+  border-right: 4px solid #111;
+  transform: rotate(45deg);
+}
+.ktx-station__swap {
+  flex: none;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--ktx-reserve-color);
+}
+.ktx-station__swap img {
+  width: 70px;
+}
+.ktx-station__filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 40px;
+  padding: 10px;
+  border: 2px solid #777;
+  border-radius: 20px;
+  background: #fff;
+}
+.ktx-station__filters button {
+  height: 96px;
+  border-radius: 16px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.ktx-station__filters button.is-active {
+  background: var(--ktx-reserve-color);
+  color: #fff;
+}
+.ktx-station__search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  font-size: 34px;
+}
+.ktx-station__search[hidden] {
+  display: none;
+}
+.ktx-station__search input {
+  flex: 1;
+  min-width: 0;
+  height: 80px;
+  padding: 0 20px;
+  border: 2px solid #777;
+  border-radius: 12px;
+  font-size: 34px;
+}
+.ktx-station__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  align-content: start;
+  gap: 20px;
+  min-height: 580px;
+  margin-top: 20px;
+}
+.ktx-station__item {
+  border: 2px solid #111;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 40px;
+  font-weight: 700;
+}
+.ktx-station__item:active,
+.ktx-station__item.is-selected {
+  border-color: var(--ktx-reserve-color);
+  box-shadow: 0px 0px 18.3px 0px rgba(10, 96, 243, 1);
+}
+.ktx-station__status {
+  min-height: 40px;
+  margin-top: 12px;
+  color: #b00020;
+  font-size: 28px;
+  text-align: center;
+}
+.ktx-station__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 18px;
+  font-size: 40px;
+  color: #555;
+}
+.ktx-station__pagination button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--ktx-reserve-color);
+  color: #fff;
+  font-size: 64px;
+  line-height: 1;
+}
+.ktx-station__pagination button:disabled {
+  background: #555;
+}
+.ktx-station__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 60px;
+}
+.ktx-station__actions a,
+.ktx-station__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  border-radius: 20px;
+  font-size: 44px;
+  font-weight: 700;
+}
+.ktx-station__cancel {
+  border: 2px solid #ccc;
+  background: #fff;
+  color: #555;
+}
+.ktx-station__actions button {
+  background: var(--ktxBtnActiveColor);
+  color: #fff;
+}
+.ktx-station__actions button:disabled {
+  background: #777;
+}
+
+/* 가는날 선택 */
+#ktxModal .ktx-calendar {
+  background: #F4F6FD;
+}
+.ktx-calendar__selection {
+  margin-top: 40px;
+  font-size: 46px;
+  font-weight: 700;
+  text-align: center;
+}
+.ktx-calendar__month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 50px;
+}
+.ktx-calendar__month strong {
+  font-size: 46px;
+}
+.ktx-calendar__month button {
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: var(--ktxBtnActiveColor);
+  color: #fff;
+  font-size: 38px;
+  font-weight: 700;
+}
+.ktx-calendar__month button:disabled {
+  background: #888;
+}
+.ktx-calendar__weekdays,
+.ktx-calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+.ktx-calendar__weekdays {
+  margin-top: 50px;
+  font-size: 44px;
+  font-weight: 700;
+}
+.ktx-calendar__days {
+  grid-auto-rows: 105px;
+  margin-top: 15px;
+}
+.ktx-calendar__days button {
+  justify-self: center;
+  align-self: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  font-size: 44px;
+  font-weight: 700;
+}
+.ktx-calendar__days button:disabled {
+  color: #aaa;
+}
+.ktx-calendar__days button.is-selected {
+  background: var(--ktx-reserve-color);
+  color: #fff;
+}
+.ktx-calendar__hours {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  margin-top: 35px;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+.ktx-calendar__hours button {
+  flex: none;
+  min-width: 135px;
+  height: 90px;
+  border-radius: 12px;
+  background: #92A1BA;
+  color: #fff;
+  font-size: 42px;
+  font-weight: 700;
+  cursor: grab;
+}
+.ktx-calendar__hours.is-dragging,
+.ktx-calendar__hours.is-dragging button {
+  cursor: grabbing;
+}
+.ktx-calendar__hours button:disabled {
+  background: #ccc;
+}
+.ktx-calendar__hours button.is-selected {
+  background: var(--ktx-reserve-color);
+}
+.ktx-calendar__status {
+  min-height: 36px;
+  margin-top: 15px;
+  color: #b00020;
+  font-size: 28px;
+  text-align: center;
+}
+#ktxModal .ktx-calendar .ktx-station__actions {
+  margin-top: 30px;
+}
+
+/* 인원 선택 */
+#ktxModal .ktx-person {
+  padding: 75px 60px;
+}
+.ktx-person__description {
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+.ktx-person__list {
+  display: grid;
+  gap: 20px;
+  margin-top: 45px;
+}
+.ktx-person__row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 84px;
+}
+.ktx-person__label {
+  flex: 1;
+  font-size: 44px;
+  font-weight: 700;
+}
+.ktx-person__label small {
+  font-size: 36px;
+  font-weight: 500;
+}
+.ktx-person__row button {
+  flex: none;
+  width: 68px;
+  height: 68px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  font-size: 46px;
+  line-height: 1;
+}
+.ktx-person__row button:disabled {
+  border-color: #aaa;
+  background: transparent;
+  color: #aaa;
+  cursor: default;
+}
+.ktx-person__row output {
+  flex: none;
+  width: 50px;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+#ktxModal .ktx-person .ktx-station__actions {
+  margin-top: 30px;
+}
+
+/* 좌석 선택 유형 (ktx-04) */
+#ktxModal .ktx-seat {
+  padding: 100px 60px;
+}
+.ktx-seat__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 140px;
+  gap: 40px 20px;
+  margin-top: 49px;
+}
+.ktx-seat__item {
+  border: 3px solid #111;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+}
+#ktxModal .ktx-seat__item.active {
+  box-shadow: 0px 0px 18.3px 0px rgba(10, 96, 243, 1);
+  border: 3px solid rgba(10, 96, 243, 1);
+}
+/* ==========================================================
+   ktx-08 ~ ktx-11 (열차 선택 이후)  ※ ktx.css 맨 아래에 추가
+   ========================================================== */
+
+/* 공통: KTX 배지 */
+.ktx-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 103px;
+  height: 58px;
+  border-radius: 8px;
+  background-color: #0742BF;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* 공통: 모달 '예매하기' 링크 버튼 (.ktx-station__actions 안) */
+.ktx-station__actions .ktx-station__confirm {
+  background: var(--ktxBtnActiveColor);
+  color: #fff;
+}
+
+/* 진행 단계: 완료(체크) */
+#ktxBody .ktx-step__item.is-done .ktx-step__dot {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%230B5FF5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 26px no-repeat;
+}
+
+/* ----------------------------------------------------------
+   ktx-08 열차정보
+   ---------------------------------------------------------- */
+.ktx-train__date {
+  margin-top: 28px;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 52px;
+  text-align: center;
+  color: #111;
+}
+.ktx-train__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 46px;
+  padding: 61px 0 62px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+}
+.ktx-train__name {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 40px;
+  color: #111;
+}
+.ktx-train__route {
+  margin-top: 17px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 50px;
+  color: #111;
+}
+.ktx-train__time {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 86px;
+  color: #111;
+}
+.ktx-train__duration {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  margin-top: 14px;
+  padding: 0 20px;
+  border-radius: 24px;
+  background: #FBD9D9;
+  font-size: 32px;
+  font-weight: 500;
+  color: #E8001C;
+}
+.ktx-train__links {
+  display: flex;
+  gap: 17px;
+  margin-top: 22px;
+}
+.ktx-train__links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 196px;
+  height: 95px;
+  border: 2px solid #888;
+  border-radius: 12px;
+  font-size: 40px;
+  color: #555;
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------------
+   ktx-09 운행경로
+   ---------------------------------------------------------- */
+.ktx-path__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 24px;
+  padding: 27px 0 20px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background: #fff;
+}
+.ktx-path__date {
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 52px;
+  color: #111;
+}
+.ktx-path__train {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 40px;
+  color: #111;
+}
+.ktx-path__list {
+  margin-top: 42px;
+  padding: 43px 0 44px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+  list-style: none;
+}
+.ktx-path__stop {
+  position: relative;
+  display: grid;
+  grid-template-columns: 255px 40px 1fr;   /* 역명 | 점 | 시간 */
+  align-items: center;
+  height: 83px;
+  margin: 0 62px 0 60px;
+}
+/* 세로 선 */
+.ktx-path__stop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 273px;
+  width: 3px;
+  background: var(--ktxBtnActiveColor);
+}
+.ktx-path__stop:first-child::before { top: 50%; }
+.ktx-path__stop:last-child::before { bottom: 50%; }
+/* 점선 구분 */
+.ktx-path__stop:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -23px;
+  bottom: 0;
+  left: -22px;
+  border-bottom: 2px dashed #aaa;
+}
+.ktx-path__name {
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+}
+.ktx-path__dot {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ktxBtnActiveColor);
+}
+.ktx-path__time {
+  justify-self: end;
+  font-size: 44px;
+  font-weight: 500;
+  color: #111;
+}
+#ktxModal .ktx-path .ktx-station__pagination {
+  margin-top: 41px;
+}
+#ktxModal .ktx-path .ktx-station__actions {
+  margin-top: 25px;
+}
+
+/* ----------------------------------------------------------
+   ktx-10 운행요금
+   ---------------------------------------------------------- */
+.ktx-fare__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 23px;
+  padding: 22px 0 25px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+}
+.ktx-fare__train {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 40px;
+  color: #111;
+}
+.ktx-fare__route {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 68px;
+  color: #111;
+}
+.ktx-fare__table-wrap {
+  margin-top: 21px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+.ktx-fare__table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: center;
+}
+.ktx-fare__table thead th {
+  height: 87px;
+  background: var(--ktx-reserve-color);
+  font-size: 44px;
+  font-weight: 500;
+  color: #fff;
+}
+.ktx-fare__table td,
+.ktx-fare__table .ktx-fare__seat {
+  height: 77px;
+  border: 2px solid #111;
+  font-size: 40px;
+  font-weight: 400;
+  color: #111;
+}
+.ktx-fare__table .ktx-fare__seat { border-left: 0; border-bottom: 0; }
+.ktx-fare__table td:last-child { border-right: 0; }
+.ktx-fare__table tbody tr:first-child td,
+.ktx-fare__table tbody tr:first-child .ktx-fare__seat { border-top: 0; }
+.ktx-fare__table tbody tr:last-child td { border-bottom: 0; }
+.ktx-fare__notes {
+  margin-top: 17px;
+  list-style: none;
+}
+.ktx-fare__notes li {
+  position: relative;
+  padding-left: 48px;
+  font-size: 34px;
+  line-height: 47px;
+  color: #111;
+}
+.ktx-fare__notes li::before {
+  content: "•";
+  position: absolute;
+  left: 22px;
+}
+#ktxModal .ktx-fare .ktx-station__actions {
+  margin-top: 12px;
+}
+
+/* ----------------------------------------------------------
+   ktx-11 좌석선택 (컨텐츠 화면)
+   ---------------------------------------------------------- */
+body[page-type="ktx-11"] .ktx__section--relative {
+  position: relative;
+  height: 100%;
+}
+.ktx-train-select {
+  display: grid;
+  grid-template-columns: 345px 584px;
+  grid-template-rows: 1020px 140px;
+  gap: 40px 31px;
+  width: 960px;
+  margin: 37px auto 0;
+}
+
+/* 좌측 */
+.ktx-train-select__side {
+  display: flex;
+  flex-direction: column;
+}
+.ktx-train-select__head {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 38px;
+  color: #111;
+}
+.ktx-train-select__text {
+  font-size: 38px;
+  line-height: 58px;
+  color: #111;
+}
+.ktx-train-select__head + .ktx-train-select__text {
+  margin-top: 6px;
+}
+.ktx-train-select__text strong {
+  font-weight: 500;
+  color: var(--ktxBtnActiveColor);
+}
+.ktx-train-select__change {
+  width: 272px;
+  height: 99px;
+  margin-top: 26px;
+  border: 2px solid var(--ktxBtnActiveColor);
+  border-radius: 20px;
+  background: transparent;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--ktxBtnActiveColor);
+  cursor: pointer;
+}
+
+/* 범례 */
+.ktx-legend {
+  width: 334px;
+  margin-top: auto;
+  list-style: none;
+}
+.ktx-legend li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 77px;
+  font-size: 40px;
+  color: #111;
+}
+.ktx-legend__seat,
+.ktx-seatmap__seat {
+  position: relative;
+  background: #555;
+}
+.ktx-legend__seat {
+  width: 48px;
+  height: 44px;
+  border-radius: 14px;
+}
+.ktx-legend__seat::after {
+  content: "";
+  position: absolute;
+  inset: 3px 7px 6px;
+  border-radius: 6px;
+  background: #fff;
+}
+.ktx-legend__seat--reverse::after { inset: 6px 7px 3px; }
+.ktx-legend__seat--disabled { background: #AEAEAE; }
+
+/* 좌석 배치도 */
+.ktx-seatmap {
+  padding: 75px 30px 0;
+  border: 2px solid var(--ktxBtnActiveColor);
+  border-radius: 40px;
+}
+.ktx-seatmap__rows {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+}
+/* 통로 화살표(장식) */
+.ktx-seatmap__rows::before {
+  content: "";
+  position: absolute;
+  top: 98px;
+  bottom: 90px;
+  left: 50%;
+  width: 28px;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 104'%3E%3Cpath d='M4 11l10-9 10 9M4 23l10-9 10 9' fill='none' stroke='%23333' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 0 0 / 28px 104px repeat-y;
+}
+.ktx-seatmap__row {
+  display: flex;
+  justify-content: space-between;
+}
+.ktx-seatmap__pair {
+  display: flex;
+  gap: 19px;
+}
+.ktx-seatmap__seat {
+    width: 95px;
+    height: 86px;
+  padding: 0;
+  border: 0;
+  border-radius: 26px 26px 30px 30px;
+  cursor: pointer;
+}
+.ktx-seatmap__seat span {
+  width: 57px;
+  height: 65px;
+  position: absolute;
+  inset: 4px 14px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 30px;
+  font-weight: 500;
+  color: #111;
+      left: 19px;
+}
+.ktx-seatmap__seat:disabled {
+  background: #AEAEAE;
+  cursor: default;
+}
+.ktx-seatmap__seat:disabled span {
+  color: #B5B5B5;
+}
+/* 선택된 좌석 */
+.ktx-seatmap__seat.active {
+  background: #0742BF;
+}
+.ktx-seatmap__seat.active span {
+  background: var(--ktxBtnActiveColor);
+  color: #fff;
+  width: 57px;
+  height: 65px;
+}
+.ktx-seatmap__seat.active::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -6px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ktxBtnActiveColor) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 22px no-repeat;
+}
+
+/* 하단 버튼 */
+.ktx-train-select__prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 44px;
+  font-weight: 700;
+  color: #555;
+  text-decoration: none;
+}
+.ktx-train-select__done {
+  border: 0;
+  border-radius: 20px;
+  background: #4F6FA5;            /* 비활성 */
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.ktx-train-select__done.active {
+  background: var(--ktxBtnActiveColor);
+}
+
+
+/* ==========================================================
+   ktx-07 열차 선택  ※ ktx.css 맨 아래에 추가
+   (.ktx-badge, 단계 is-done 스타일은 ktx-add.css 에 있음)
+   ========================================================== */
+body[page-type="ktx-07"] .ktx__section--relative {
+  position: relative;
+  height: 100%;
+}
+
+/* 이전날 / 날짜 / 다음날 */
+.ktx-date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 960px;
+  margin: 52px auto 0;
+}
+.ktx-date-nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 238px;
+  height: 104px;
+  border: 0;
+  border-radius: 24px;
+  font-size: 44px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.ktx-date-nav__btn--prev { background: #01206B; }
+.ktx-date-nav__btn--next { background: #01206B; }
+.ktx-date-nav__btn:disabled {
+  background: #7A7A7A;
+  cursor: default;
+}
+.ktx-date-nav__btn--prev::before,
+.ktx-date-nav__btn--next::after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  border: solid #fff;
+  border-width: 0 0 5px 5px;       /* 이전날 '<' */
+  transform: rotate(45deg);
+}
+.ktx-date-nav__btn--next::after {
+  border-width: 5px 5px 0 0;       /* 다음날 '>' */
+}
+.ktx-date-nav__date {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 52px;
+  text-align: center;
+  color: #111;
+}
+
+/* 열차 카드 */
+.ktx-train-list {
+  width: 960px;
+  margin: 62px auto 0;
+  list-style: none;
+}
+.ktx-train-card {
+  display: flex;
+  height: 321px;
+  margin-bottom: 28px;
+  padding: 26px 21px 26px 40px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+}
+.ktx-train-card__info {
+  flex: 1;
+}
+.ktx-train-card__route {
+  margin-top: 13px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 50px;
+  color: #111;
+}
+.ktx-train-card__time {
+  color: #111;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-bottom: 15px;
+}
+.ktx-train-card__duration {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  margin-top: 9px;
+  padding: 0 20px;
+  border-radius: 25px;
+  background: #FBD9D9;
+  font-size: 32px;
+  font-weight: 500;
+  color: #E8001C;
+}
+.ktx-train-card__classes {
+  display: flex;
+  gap: 18px;
+  width: 432px;
+  padding-left: 16px;
+  border-left: 2px solid #555;
+}
+.ktx-train-card__class {
+  flex: 1;
+  border: 2px solid #555;
+  border-radius: 30px;
+  background: #fff;
+  font-size: 44px;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+}
+.ktx-train-card__class.active {
+  border-color: var(--ktxBtnActiveColor);
+  box-shadow: 0px 0px 18.3px 0px rgba(10, 96, 243, 1);
+}
+
+/* 페이지네이션 (공통 .ktx-station__pagination 재사용) */
+body[page-type="ktx-07"] .ktx-station__pagination,
+body[page-type="ktx-08"] .ktx-station__pagination {
+  margin-top: 60px;
+}
+
+/* 열차 예매하기 */
+.ktx-train-submit {
+  display: block;
+  width: 960px;
+  height: 140px;
+  margin: 68px auto 0;
+  border: 0;
+  border-radius: 20px;
+  background: #4F6FA5;             /* 비활성 */
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.ktx-train-submit.active {
+  background: var(--ktxBtnActiveColor);
+}
+
+/* ==========================================================
+   ktx-12 예약 내역 확인  ※ ktx.css 맨 아래에 추가
+   (.ktx-badge, 단계 is-done, .ktx-station__pagination 은 기존 CSS 재사용)
+   ========================================================== */
+body[page-type="ktx-12"] .ktx__section--relative {
+  position: relative;
+  height: 100%;
+}
+
+/* 예약 카드 */
+.ktx-reserve {
+  width: 960px;
+  margin: 31px auto 0;
+  overflow: hidden;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+}
+.ktx-reserve__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 125px;
+  padding: 0 58px 0 60px;
+  background: #E8EEFB;
+}
+.ktx-reserve__date {
+  font-size: 44px;
+  font-weight: 500;
+  color: #111;
+}
+.ktx-reserve__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 101px;
+  height: 64px;
+  padding: 0 20px;
+  border-radius: 32px;
+  background: #0C2D5E;
+  font-size: 44px;
+  font-weight: 700;
+  color: #fff;
+}
+.ktx-reserve__body {
+  padding: 47px 58px 37px;
+}
+.ktx-reserve__route {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 72px;
+  text-align: center;
+  color: #111;
+}
+.ktx-reserve__time {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: center;
+  color: #111;
+}
+.ktx-reserve__list {
+  margin-top: 40px;
+  list-style: none;
+}
+.ktx-reserve__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 425px 1fr;
+  height: 198px;
+  margin-bottom: 22px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+}
+.ktx-reserve__item:last-child {
+  margin-bottom: 0;
+}
+/* 가운데 세로 구분선 */
+.ktx-reserve__item::before {
+  content: "";
+  position: absolute;
+  top: 23px;
+  bottom: 23px;
+  left: 425px;
+  width: 2px;
+  background: #555;
+}
+.ktx-reserve__train {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ktx-reserve__name {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 44px;
+  color: #111;
+}
+.ktx-reserve__name .ktx-badge {
+  width: 115px;
+  height: 65px;
+}
+.ktx-reserve__class {
+  margin-top: 9px;
+  font-size: 44px;
+  line-height: 60px;
+  color: #111;
+}
+.ktx-reserve__seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 64px;
+  font-size: 44px;
+  line-height: 70px;
+  color: #111;
+}
+.ktx-reserve .ktx-station__pagination {
+  margin-top: 41px;
+}
+
+/* 안내 문구 */
+.ktx-reserve__notice {
+  margin-top: 50px;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 52px;
+  text-align: center;
+  color: #E8001C;
+}
+
+/* 예약취소 / 결제하기 */
+.ktx-reserve__actions {
+  display: grid;
+  grid-template-columns: 345px 584px;
+  gap: 31px;
+  width: 960px;
+  height: 140px;
+  margin: 52px auto 0;
+}
+.ktx-reserve__cancel,
+.ktx-reserve__pay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ktx-reserve__cancel {
+  border: 2px solid #ccc;
+  background: #F9FAFB;
+  font-size: 44px;
+  color: #111;
+}
+.ktx-reserve__pay {
+  background: var(--ktxBtnActiveColor);
+  font-size: 52px;
+  color: #fff;
+}
+
+/* ==========================================================
+   kpay-01 결제수단 선택  ※ ktx.css 맨 아래에 추가
+   (단계 is-done 스타일은 ktx-add.css 재사용)
+   ========================================================== */
+body[page-type="kpay-01"] .ktx__section--relative {
+  position: relative;
+  height: 100%;
+}
+
+/* 결제 금액 */
+.ktx-pay-summary {
+  width: 960px;
+  margin: 22px auto 0;
+  padding: 0 22px;
+}
+.ktx-pay-summary__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 73px;
+  font-size: 44px;
+  font-weight: 500;
+  color: #111;
+}
+.ktx-pay-summary__row dd {
+  font-weight: 700;
+}
+.ktx-pay-summary__row--total {
+  height: 87px;
+}
+.ktx-pay-summary__row--total dt {
+  font-size: 60px;
+  font-weight: 700;
+}
+.ktx-pay-summary__row--total dd {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--ktxBtnActiveColor);
+}
+
+/* 결제 수단 */
+.ktx-pay-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 960px;
+  margin: 45px auto 0;
+}
+.ktx-pay-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 148px;
+  border: 2px solid #555;
+  border-radius: 28px;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+}
+.ktx-pay-method.active {
+  border: 2px solid rgba(10, 96, 243, 1);
+  box-shadow: 0px 0px 18.3px 0px rgba(10, 96, 243, 1);
+}
+.ktx-pay-method strong {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 52px;
+}
+.ktx-pay-method > span {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 44px;
+}
+.ktx-pay-method__logo--zero {
+  height: 30px;
+  margin-top: 4px;
+}
+.ktx-pay-methods__half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.ktx-pay-method--half {
+  height: 146px;
+}
+.ktx-pay-method--half strong {
+  font-size: 40px;
+}
+.ktx-pay-method__logos {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-top: 10px;
+}
+.ktx-pay-method__logos img {
+    height: 46px;
+    line-height: 77px;
+}
+
+/* 이전으로 */
+.ktx-pay-prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 960px;
+  height: 140px;
+  margin: 64px auto 0;
+  border-radius: 20px;
+  background: #555;
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* kpay-02 카드 결제 */
+.ktx-card-payment {
+  position: relative;
+  height: 100%;
+  background: #f8f8f8;
+}
+.ktx-card-payment__description {
+  margin-top: 10px;
+  font-size: 44px;
+  font-weight: 500;
+  text-align: center;
+}
+.ktx-card-payment__image {
+  position: absolute;
+  top: 455px;
+  left: 50%;
+  width: 900px;
+  transform: translateX(-50%);
+}
+.ktx-card-payment__image img {
+  display: block;
+  width: 100%;
+}
+.ktx-card-payment__image:focus-visible {
+  outline: 4px solid var(--ktxBtnActiveColor);
+  outline-offset: 4px;
+}
+.ktx-card-payment__timer {
+  position: absolute;
+  top: 1445px;
+  width: 100%;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+.ktx-card-payment__timer span {
+  color: var(--ktxBtnActiveColor);
+}
+.ktx-card-payment__prev {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  margin: 0;
+}
+
+/* kpay-03 결제 진행 및 완료 */
+#ktxModal .ktx-payment-status__modal {
+  width: 840px;
+  min-height: 590px;
+    padding: 100px 60px 100px;
+  border-radius: 32px;
+  background: #fff;
+  color: #000;
+  text-align: center;
+}
+#ktxModal .ktx-payment-status__modal[hidden] {
+  display: none;
+}
+.ktx-payment-status__modal h2 {
+  font-size: 60px;
+  font-weight: 700;
+}
+.ktx-payment-status__modal p {
+  margin-top: 16px;
+  font-size: 44px;
+  font-weight: 500;
+}
+.ktx-payment-status__complete-link {
+  display: block;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto;
+}
+.ktx-payment-status__complete-link:focus-visible {
+  outline: 4px solid var(--ktxBtnActiveColor);
+  outline-offset: 4px;
+}
+.ktx-payment-status__complete-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ktx-13 발권 */
+.ktx-issue {
+  height: 100%;
+  background: #f8f8f8;
+}
+#ktxBody .ktx-issue__title {
+  margin-top: 94px;
+}
+.ktx-issue__visual {
+  position: relative;
+  width: 100%;
+  margin: 106px auto 0;
+}
+.ktx-issue__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ktx-issue__message {
+  position: absolute;
+  top: 44%;
+  right: 0;
+  left: 0;
+  margin: 0;
+  color: #080808;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  transform: translateY(-50%);
+}
+.ktx-issue__hint {
+  position: absolute;
+  right: 18%;
+  bottom: 80px;
+  left: 18%;
+  display: flex;
+  height: 9%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: #080808;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ktx-14 발권 완료 */
+.ktx-ticket {
+  position: relative;
+  width: 928px;
+  height: 808px;
+  margin: 100px auto 0;
+  background: url("../../shared/images/ktx/tiket-bg.png") center / 100% 100% no-repeat;
+}
+.ktx-ticket dt {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+.ktx-ticket > div {
+  position: absolute;
+  text-align: center;
+}
+.ktx-ticket dd {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.ktx-ticket__date {
+  top: 193px;
+  left: 295px;
+  width: 600px;
+  font-size: 58px;
+}
+.ktx-ticket__departure,
+.ktx-ticket__arrival {
+  top: 356px;
+  width: 300px;
+  font-size: 60px;
+}
+.ktx-ticket__departure,
+.ktx-ticket__departure-time {
+  left: 92px;
+}
+.ktx-ticket__arrival,
+.ktx-ticket__arrival-time {
+  left: 514px;
+}
+.ktx-ticket__departure-time,
+.ktx-ticket__arrival-time {
+  top: 430px;
+  width: 300px;
+  font-size: 32px;
+}
+.ktx-ticket__car,
+.ktx-ticket__seat,
+.ktx-ticket__amount {
+  top: 535px;
+  width: 280px;
+  font-size: 60px;
+}
+.ktx-ticket__car { left: 42px; }
+.ktx-ticket__seat { left: 318px; }
+.ktx-ticket__amount { left: 614px; font-size: 38px; top: 551px; }
+.ktx-ticket__pagination[hidden] {
+  display: none;
+}
+.ktx-ticket__pagination {
+  margin-top: 40px;
+}
+.ktx-ticket__confirm {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  margin: 0;
+  background: var(--ktxBtnActiveColor);
+}
+
+/* end-12 체험 완료 */
+.ktx-complete .complete-actions .complete-button:not(.complete-button-secondary) {
+  background: var(--ktxBtnActiveColor);
+}
+
+/* ktx-11 좌석 범례 */
+.ktx-legend__seat {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.ktx-legend__seat::after {
+  content: none;
+}
+.ktx-legend__seat--forward {
+  background-image: url("../../shared/images/ktx/hugeicons_airplane-seat.png");
+}
+.ktx-legend__seat--reverse {
+  background-image: url("../../shared/images/ktx/hugeicons_airplane-seat-02.png");
+}
+.ktx-legend__seat--disabled {
+  background-image: url("../../shared/images/ktx/hugeicons_airplane-seat-disable.png");
+}
+
+.ktx-seatmap__seat {
+  border-radius: 0;
+  background: transparent url("../../shared/images/ktx/hugeicons_airplane-seat.png") center / 100% 100% no-repeat;
+}
+.ktx-seatmap__seat span {
+  /* inset: 14px 23px 26px; */
+  z-index: 1;
+  background: transparent;
+}
+.ktx-seatmap__seat:disabled {
+  background: transparent url("../../shared/images/ktx/hugeicons_airplane-seat-disable.png") center / 100% 100% no-repeat;
+}
+.ktx-seatmap__seat.active {
+  background: transparent;
+}
+.ktx-seatmap__seat.active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  background: url("../../shared/images/ktx/hugeicons_airplane-seat.png") center / 100% 100% no-repeat;
+  filter: brightness(0) saturate(100%) invert(17%) sepia(98%) saturate(2841%) hue-rotate(218deg) brightness(93%) contrast(101%);
+}
+.ktx-seatmap__seat.active::after {
+  z-index: 9;
+  box-shadow: 0 0 0 2px #0742BF;
+}
+.ktx-seatmap__seat:focus-visible {
+  outline: 3px solid var(--ktxBtnActiveColor);
+  outline-offset: 3px;
+}
+
+/* ktx-12 예약 목록 페이지 이동 */
+#ktxReservePrev,
+#ktxReserveNext {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 23px 41px;
+}
+#ktxReservePrev {
+  background-image: url("../../shared/images/ktx/bullet-left.png");
+}
+#ktxReserveNext {
+  background-image: url("../../shared/images/ktx/bullet-right.png");
+}
+
+/* ==========================================================
+   ktxRe-02 ~ ktxRe-06 승차권 환불  ※ ktx.css 맨 아래에 추가
+   (.ktx-badge, 단계 is-done 스타일은 ktx-add.css 재사용)
+   ========================================================== */
+body[page-type^="ktxRe-0"] .ktx__section--relative {
+  position: relative;
+  height: 100%;
+}
+
+/* 진행 단계 3단계 (QR스캔 / 정보확인 / 환불처리) */
+#ktxBody .ktx-step.ktx-step--3 {
+  grid-template-columns: repeat(3, 343px);
+  justify-content: center;
+  padding: 38px 0 0;
+}
+
+/* 공통: 가로 와이드 버튼 */
+.ktxre-wide-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 960px;
+  height: 140px;
+  margin: 0 auto;
+  border-radius: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+.ktxre-wide-btn--primary { background: var(--ktxBtnActiveColor); font-size: 52px; }
+.ktxre-wide-btn--cancel  { background: #555; font-size: 52px; }
+
+/* 공통: 취소 / 확인 */
+.ktxre-actions {
+  /* display: grid;
+  grid-template-columns: 345px 584px;
+  gap: 31px;
+  width: 960px;
+  height: 140px;
+  margin: 128px auto 0; */
+  position: absolute;
+  left: 60px;
+  bottom: 202px;
+  display: grid;
+  grid-template-columns: 345px 584px;
+  gap: 31px;
+  width: 960px;
+  height: 140px;
+}
+.ktxre-actions--bottom {
+  margin-top: 219px;               /* ktxRe-05: 카드 하단 ~ 버튼 */
+}
+.ktxre-actions__cancel,
+.ktxre-actions__ok {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ktxre-actions__cancel {
+  border: 2px solid #ccc;
+  background: #F9FAFB;
+  font-size: 44px;
+  color: #111;
+}
+.ktxre-actions__ok {
+  background: var(--ktxBtnActiveColor);
+  font-size: 52px;
+  color: #fff;
+}
+
+/* ----------------------------------------------------------
+   ktxRe-02 QR 스캔
+   ---------------------------------------------------------- */
+.ktxre-qr__title {
+  margin-top: 52px;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 70px;
+  text-align: center;
+  color: #111;
+}
+.ktxre-qr__desc {
+  margin-top: 29px;
+  font-size: 44px;
+  line-height: 52px;
+  text-align: center;
+  color: #111;
+}
+.ktxre-qr__img {
+  display: block;
+  width: 542px;
+  height: 573px;
+  margin: 37px auto 0;
+  object-fit: contain;
+}
+.ktxre-qr__input  { margin-top: 34px; font-size: 48px; }
+.ktxre-qr__cancel { margin-top: 40px; }
+
+.ktxre-qr__link {
+  display: block;
+  width: 542px;
+  margin: 37px auto 0;      /* 기존 이미지 margin을 링크로 이동 */
+}
+.ktxre-qr__img {
+  display: block;
+  width: 542px;
+  height: 573px;
+  object-fit: contain;
+}
+
+/* ----------------------------------------------------------
+   ktxRe-03 승차권 번호 입력 (모달)
+   ---------------------------------------------------------- */
+#ktxModal .ktxre-ticketno {
+  padding: 100px 60px;
+}
+.ktxre-ticketno__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 128px;
+  margin-top: 41px;
+  border: 3px solid var(--ktxBtnActiveColor);
+  border-radius: 24px;
+  background: #fff;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #111;
+}
+.ktx-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 130px;
+  gap: 20px 15px;
+  margin-top: 31px;
+}
+.ktx-keypad button {
+  border: 3px solid #111;
+  border-radius: 24px;
+  background: #fff;
+  font-size: 52px;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+}
+.ktx-keypad button[data-key="all"],
+.ktx-keypad button[data-key="back"] {
+  font-size: 44px;
+  font-weight: 700;
+}
+#ktxModal .ktxre-ticketno .ktx-station__actions {
+  margin-top: 40px;
+}
+
+/* ----------------------------------------------------------
+   ktxRe-04 정보확인
+   ---------------------------------------------------------- */
+.ktxre-ticket {
+  width: 960px;
+  margin: 41px auto 0;
+  padding: 42px 100px 27px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+}
+.ktxre-ticket__date {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: center;
+  color: #111;
+}
+.ktxre-ticket__train {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 8px;
+  font-size: 40px;
+  color: #111;
+}
+.ktxre-ticket__route-box {
+  margin-top: 20px;
+  padding: 11px 0;
+  background: #E8F0FD;
+  text-align: center;
+}
+.ktxre-ticket__route {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 50px;
+  color: #111;
+}
+.ktxre-ticket__time {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 80px;
+  color: #111;
+}
+.ktxre-ticket__info {
+  margin-top: 20px;
+  padding-top: 8px;
+  border-top: 2px solid #999;
+}
+.ktxre-ticket__info > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 69px;
+  padding: 0 10px;
+  font-size: 40px;
+  color: #111;
+}
+.ktxre-notice {
+  margin-top: 127px;
+  color: #111;
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* ----------------------------------------------------------
+   ktxRe-05 환불 진행 확인
+   ---------------------------------------------------------- */
+.ktxre-fare {
+  width: 960px;
+  margin: 110px auto 0;
+  padding: 47px 59px 59px;
+  border: 2px solid #ccc;
+  border-radius: 40px;
+  background: #fff;
+}
+.ktxre-fare__rows {
+  margin-bottom: 170px;
+}
+.ktxre-fare__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88px;
+  padding: 0 12px;
+  font-size: 48px;
+  color: #111;
+}
+.ktxre-fare__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 140px;
+  padding-top: 50px;
+  border-top: 2px solid #999;
+  color: #111;
+}
+.ktxre-fare__total span {
+  font-size: 56px;
+  font-weight: 700;
+}
+.ktxre-fare__total strong {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--ktxBtnActiveColor);
+}
+
+/* ----------------------------------------------------------
+   ktxRe-06 환불 완료
+   ---------------------------------------------------------- */
+.ktxre-receipt {
+  display: block;
+  width: 926px;
+  margin: 38px auto 0;
+}
+.ktxre-done {
+  margin-top: 47px;
+}
+
+#ktxReserveNext:disabled {
+  background-color: var(--ktx-reserve-color);
+}

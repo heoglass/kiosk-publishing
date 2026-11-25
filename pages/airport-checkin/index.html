@@ -1,14 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공항 체크인</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../shared/css/common.css" />
-    <link rel="stylesheet" href="./airport-checkin.css" />
-    <script type="text/javascript" src="../../shared/js/common.js"></script>
-    <script type="text/javascript" src="./airport-checkin.js"></script>
+    <title>공항 체크인: 항공사 선택</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
   </head>
-  <body></body>
+  <body id="airBody" page-type="airRise-index">
+    <main class="air-main air-main--start kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="공항 체크인 항공사 선택">
+        <h2 class="air-title air-title--main">셀프 체크인을 진행합니다</h2>
+        <p class="air-subtitle">예약하신 항공사를 선택해주세요</p>
+
+        <!-- 항공사 목록 (2x2) -->
+        <ul class="air-airline-list">
+          <li class="air-airline-list__item">
+            <a href="./air-02.html" class="air-airline" data-airline="KE">
+              <img src="../../shared/images/airport/ko_air.png" alt="KOREAN AIR" class="air-airline__logo" />
+              <span class="air-airline__name">대한항공</span>
+            </a>
+          </li>
+          <li class="air-airline-list__item">
+            <a href="./air-02.html" class="air-airline" data-airline="OZ">
+              <img src="../../shared/images/airport/asia_air.png" alt="ASIANA AIRLINES" class="air-airline__logo" />
+              <span class="air-airline__name">아시아나항공</span>
+            </a>
+          </li>
+          <li class="air-airline-list__item">
+            <a href="./air-02.html" class="air-airline" data-airline="7C">
+              <img src="../../shared/images/airport/jejuair.png" alt="JEJUair" class="air-airline__logo" />
+              <span class="air-airline__name">제주항공</span>
+            </a>
+          </li>
+          <li class="air-airline-list__item">
+            <a href="./air-02.html" class="air-airline" data-airline="LJ">
+              <img src="../../shared/images/airport/jin_air.png" alt="JINAIR" class="air-airline__logo" />
+              <span class="air-airline__name">진에어</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airport.js"></script>
+  </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 승객·티켓 정보 확인</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-07">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="승객과 티켓 정보 확인">
+        <h2 class="air-title">승객과 티켓정보를 확인해주세요</h2>
+
+        <!-- 승객 정보 -->
+        <div class="air-passenger">
+          <img src="../../shared/images/airport/user.png" alt="" class="air-passenger__icon" />
+          <span class="air-passenger__item air-passenger__name">홍길동</span>
+          <span class="air-passenger__item air-passenger__nation">한국(KOR)</span>
+          <span class="air-passenger__item air-passenger__id">520710-1*******</span>
+        </div>
+
+        <!-- 항공권 정보 -->
+        <div class="air-flight">
+          <div class="air-flight__arc">
+            <img src="../../shared/images/airport/Line.png" alt="" class="air-flight__arc-img" />
+            <img src="../../shared/images/airport/flight.png" alt="" class="air-flight__plane" />
+            <span class="air-flight__duration">2hr 30min</span>
+          </div>
+
+          <div class="air-flight__route">
+            <div class="air-flight__point air-flight__point--dep">
+              <strong class="air-flight__code">CJJ</strong>
+              <span class="air-flight__city">청주</span>
+              <span class="air-flight__datetime">5월5일 11:55</span>
+            </div>
+            <span class="air-flight__dot" aria-hidden="true"></span>
+            <div class="air-flight__point air-flight__point--arr">
+              <strong class="air-flight__code">NRT</strong>
+              <span class="air-flight__city">도쿄/나리타</span>
+              <span class="air-flight__datetime">5월16일 18:45</span>
+            </div>
+          </div>
+
+          <dl class="air-flight__time">
+            <div class="air-flight__time-item">
+              <dt>출발시간</dt>
+              <dd>16:40</dd>
+            </div>
+            <div class="air-flight__time-item">
+              <dt>도착시간</dt>
+              <dd>17:35</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions">
+          <a href="./air-06.html" class="air-btn air-btn--prev">이전</a>
+          <a href="./air-08.html" class="air-btn air-btn--next">다음</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+  </body>
+</html>

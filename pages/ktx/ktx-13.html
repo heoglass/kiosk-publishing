@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 예매: 발권</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktx-13">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative ktx-issue" aria-label="기차KTX 발권">
+        <ol class="ktx-step">
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">여정선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">열차선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">결제</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-active" aria-current="step">
+            <span class="ktx-step__label">발권</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+        </ol>
+
+        <h2 class="ktx-content-subject ktx-issue__title">발권 중입니다</h2>
+        <div class="ktx-issue__visual">
+          <img class="ktx-issue__image" src="../../shared/images/ktx/ticket.png" alt="승차권 출력 프린터 일러스트" />
+          <p class="ktx-issue__message">승차권을 출력하고 있습니다</p>
+          <p class="ktx-issue__hint">잠시만 기다려 주세요</p>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

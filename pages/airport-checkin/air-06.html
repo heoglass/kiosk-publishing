@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 예약 번호 입력</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-06">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="예약 번호 입력">
+        <h2 class="air-title">예약 번호를 입력해주세요</h2>
+
+        <!-- 예약번호 입력 -->
+        <div class="air-input">
+          <input type="text" id="airReserveNo" class="air-input__field" placeholder="예약번호" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" autofocus aria-label="예약번호" />
+          <p class="air-input__example">예약 번호 예시 : AZ6E7G</p>
+        </div>
+
+        <!-- 가상 키보드 -->
+        <div class="air-keyboard" id="airKeyboard">
+          <div class="air-keyboard__row air-keyboard__row--1">
+            <button type="button" class="air-key" data-key="1">1</button>
+            <button type="button" class="air-key" data-key="2">2</button>
+            <button type="button" class="air-key" data-key="3">3</button>
+            <button type="button" class="air-key" data-key="4">4</button>
+            <button type="button" class="air-key" data-key="5">5</button>
+            <button type="button" class="air-key" data-key="6">6</button>
+            <button type="button" class="air-key" data-key="7">7</button>
+            <button type="button" class="air-key" data-key="8">8</button>
+            <button type="button" class="air-key" data-key="9">9</button>
+            <button type="button" class="air-key" data-key="0">0</button>
+          </div>
+          <div class="air-keyboard__row air-keyboard__row--2">
+            <button type="button" class="air-key" data-key="Q">Q</button>
+            <button type="button" class="air-key" data-key="W">W</button>
+            <button type="button" class="air-key" data-key="E">E</button>
+            <button type="button" class="air-key" data-key="R">R</button>
+            <button type="button" class="air-key" data-key="T">T</button>
+            <button type="button" class="air-key" data-key="Y">Y</button>
+            <button type="button" class="air-key" data-key="U">U</button>
+            <button type="button" class="air-key" data-key="I">I</button>
+            <button type="button" class="air-key" data-key="O">O</button>
+            <button type="button" class="air-key" data-key="P">P</button>
+          </div>
+          <div class="air-keyboard__row air-keyboard__row--3">
+            <button type="button" class="air-key" data-key="A">A</button>
+            <button type="button" class="air-key" data-key="S">S</button>
+            <button type="button" class="air-key" data-key="D">D</button>
+            <button type="button" class="air-key" data-key="F">F</button>
+            <button type="button" class="air-key" data-key="G">G</button>
+            <button type="button" class="air-key" data-key="H">H</button>
+            <button type="button" class="air-key" data-key="J">J</button>
+            <button type="button" class="air-key" data-key="K">K</button>
+            <button type="button" class="air-key" data-key="L">L</button>
+          </div>
+          <div class="air-keyboard__row air-keyboard__row--4">
+            <button type="button" class="air-key" data-key="Z">Z</button>
+            <button type="button" class="air-key" data-key="X">X</button>
+            <button type="button" class="air-key" data-key="C">C</button>
+            <button type="button" class="air-key" data-key="V">V</button>
+            <button type="button" class="air-key" data-key="B">B</button>
+            <button type="button" class="air-key" data-key="N">N</button>
+            <button type="button" class="air-key" data-key="M">M</button>
+            <button type="button" class="air-key air-key--back" data-key="back">Backspace</button>
+          </div>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions air-actions--single">
+          <a href="./air-05.html" class="air-btn air-btn--back">이전으로</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airPortUtil.js"></script>
+  </body>
+</html>

@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
     <link rel="stylesheet" href="./atmBank.css" />
 
+
   </head>
-  <body id="bankAtmBody" data-page="atm-index">
+  <body id="bankAtmBody" data-page="atmg-02">
     <!-- 메인 콘텐츠 영역 -->
     <main class="kiosk-main atm__screen">
       <!-- 가로형 공통헤더 -->
@@ -34,12 +35,23 @@
         <div class="atm__content">
           <!-- 카드 이미지 터치 시 ATMG-03 이동 -->
           <a href="./atmg-03.html" class="atmg__card-link" aria-label="카드 넣기">
-            <img src="../../shared/images/atm/insertCard.png" alt="카드 투입구에 카드를 넣는 모습" class="atmg__img atmg__img--card" />
+            <!-- <img src="../../shared/images/atm/insertCard.png" alt="카드 투입구에 카드를 넣는 모습" class="atmg__img atmg__img--card" /> -->
+              <div id="lottie-card-insert" class="card-payment-image card-insert">
+                <lottie-player
+                  src="../../shared/images/atm/lottie_atm/atmCardInsert.json"
+                  background="transparent"
+                  speed="0.5"
+                  style="width: 350px; height: 350px"
+                  loop
+                  autoplay
+                  ></lottie-player>
+              </div>
           </a>
         </div>
       </section>
     </main>
     <script type="text/javascript" src="../../shared/js/common.js" defer></script>
     <script type="text/javascript" src="./atmBank.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </body>
 </html>

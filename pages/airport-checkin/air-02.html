@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공항 체크인: 이용 제한 승객 안내</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./airPortTask.css" />
+  </head>
+  <body id="airBody" page-type="air-02">
+    <main class="air-main kiosk-screen">
+      <header id="category-header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title">공항 체크인</span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="air-start-screen" class="air__section air__section--relative" aria-label="셀프 체크인 이용 제한 승객 안내">
+        <!-- 언어 선택 -->
+        <ul class="air-lang" role="tablist" aria-label="언어 선택">
+          <li><button type="button" class="air-lang__btn active" role="tab" aria-selected="true" data-lang="ko">한국어</button></li>
+          <li><button type="button" class="air-lang__btn" role="tab" aria-selected="false" data-lang="en">ENGLISH</button></li>
+          <li><button type="button" class="air-lang__btn" role="tab" aria-selected="false" data-lang="zh">中國語</button></li>
+          <li><button type="button" class="air-lang__btn" role="tab" aria-selected="false" data-lang="ja">日本語</button></li>
+        </ul>
+
+        <h2 class="air-title">셀프 체크인 이용 제한 승객 안내</h2>
+
+        <div class="air-box air-box--notice">
+          <ul class="air-list">
+            <li>만 2세 미만의 유아 동반 승객</li>
+            <li>임신합병증이 있는 승객</li>
+            <li>임신 32주 이상 임산부 승객</li>
+            <li>기내반입 반려동물 동반 승객</li>
+            <li>직원의 도움이 필요한 승객</li>
+            <li>신분증 미 소지 승객</li>
+            <li>비상구열 사전 구매 승객</li>
+          </ul>
+          <p class="air-box__warn">상기 사항 해당 시 항공사의 유인 체크인 카운터에서 직원을 통한 체크인을 진행해주시기 바랍니다.</p>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="air-actions">
+          <a href="./index.html" class="air-btn air-btn--prev">이전</a>
+          <a href="./air-03.html" class="air-btn air-btn--next">확인</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./airport.js"></script>
+  </body>
+</html>

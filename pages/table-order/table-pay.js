@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  getTableOrderItems();
   initTablePayCategoryNav();
   initTablePayProducts();
   initSetItemDetail();
@@ -13,7 +14,8 @@ function initCompletionActions() {
   document.querySelectorAll(".completion-actions .btn-retry, .completion-actions .btn-home")
     .forEach((link) => {
       link.addEventListener("click", () => {
-        localStorage.removeItem("tableOrderItem");
+        sessionStorage.removeItem("tablePay_selected_item");
+        sessionStorage.removeItem("tableOrder_selected_product");
       });
     });
 }
@@ -118,15 +120,16 @@ function initTablePayProducts() {
       const setMenu = card.dataset.setMenu || "국밥";
       const setMenu2 = card.dataset.setMenu2 || "편육";
 
-      if (["set", "side", "drink", "beverage"].includes(type)) {
+      if (["set", "single", "side", "drink", "beverage"].includes(type)) {
         sessionStorage.setItem(
-          "tablePay_selected_item",
+          "tableOrder_selected_product",
           JSON.stringify({
             type,
             name,
             price,
             setMenu,
             setMenu2,
+            image: card.querySelector(".product-thumb-box img")?.getAttribute("src"),
             sub: card.dataset.sub || card.querySelector(".product-desc").textContent,
             desc: card.dataset.desc,
             hasOptions: card.dataset.hasOptions === "true",
@@ -165,7 +168,7 @@ function initSetItemDetail() {
 
   let count = 1;
   const selectedItemInfo = JSON.parse(
-    sessionStorage.getItem("tablePay_selected_item") || "{}"
+    sessionStorage.getItem("tableOrder_selected_product") || "{}"
   );
   const basePrice = selectedItemInfo.price || 10000;
   const name = selectedItemInfo.name || "돼지국밥세트";
@@ -180,9 +183,10 @@ function initSetItemDetail() {
     description.hidden = !selectedItemInfo.desc;
   }
   const image = document.querySelector(".setitem-detail__image img");
-  image.hidden = !isSet;
+  if (selectedItemInfo.image) image.src = selectedItemInfo.image;
+  image.hidden = !selectedItemInfo.image;
   image.alt = `${name} 이미지`;
-  image.parentElement.classList.toggle("is-placeholder", !isSet);
+  image.parentElement.classList.toggle("is-placeholder", image.hidden);
   priceEl.textContent = `${basePrice.toLocaleString()}원`;
 
   // 수량 감소
@@ -258,19 +262,19 @@ function initSetItemDetail() {
 }
 
 /**
- * tableOrderItem 로컬스토리지 저장 함수
+ * 주문 상품 저장 함수
  */
 function saveTableOrderItem(itemData) {
   const items = getTableOrderItems();
   items.push(itemData);
-  localStorage.setItem("tableOrderItem", JSON.stringify(items));
+  sessionStorage.setItem("tablePay_selected_item", JSON.stringify(items));
 }
 
 /**
- * tableOrderItem 로컬스토리지 로드 함수
+ * 주문 상품 로드 함수
  */
 function getTableOrderItems() {
-  const data = localStorage.getItem("tableOrderItem");
+  const data = sessionStorage.getItem("tablePay_selected_item");
   if (data === null) return [];
   let saved;
   try {
@@ -278,6 +282,15 @@ function getTableOrderItems() {
   } catch (error) {
     console.error("장바구니 데이터를 읽을 수 없습니다.", error);
     throw error;
+  }
+  if (saved && typeof saved === "object" && !Array.isArray(saved) &&
+      typeof saved.name === "string" && Number.isFinite(saved.price) &&
+      saved.count === undefined) {
+    if (sessionStorage.getItem("tableOrder_selected_product") === null) {
+      sessionStorage.setItem("tableOrder_selected_product", data);
+    }
+    sessionStorage.setItem("tablePay_selected_item", "[]");
+    return [];
   }
   const items = Array.isArray(saved) ? saved : [saved];
   if (!items.every((item) =>
@@ -304,7 +317,7 @@ function updateCartBadge() {
 }
 
 function initCartReview() {
-  document.querySelectorAll(".btn-cart, .btn-order-history").forEach((btn) => {
+  document.querySelectorAll(".btn-cart").forEach((btn) => {
     btn.addEventListener("click", () => {
       window.location.href = "./tableP-04.html";
     });
@@ -315,51 +328,93 @@ function initCartReview() {
 
   const items = getTableOrderItems();
   const list = review.querySelector(".tablePayWrap__cartList-items");
-  let totalCount = 0;
-  let totalPrice = 0;
+  const payButton = review.querySelector("#tablePayWrap__btn-pay");
 
-  if (items.length === 0) {
-    const empty = document.createElement("li");
-    empty.className = "cart-list-empty";
-    empty.textContent = "장바구니에 담긴 상품이 없습니다.";
-    list.append(empty);
-  }
+  function render() {
+    list.replaceChildren();
+    let totalCount = 0;
+    let totalPrice = 0;
 
-  items.forEach((item) => {
-    const row = document.createElement("li");
-    const name = document.createElement("span");
-    const quantity = document.createElement("span");
-    const price = document.createElement("span");
-
-    name.className = "cart-item-name";
-    name.textContent = item.name;
-    quantity.className = "cart-item-quantity";
-    quantity.textContent = `${item.count}개`;
-    price.className = "cart-item-price";
-    price.textContent = `${(item.price * item.count).toLocaleString()}원`;
-    row.append(name, quantity, price);
-
-    if (item.option) {
-      const options = document.createElement("div");
-      const option = document.createElement("span");
-      options.className = "cart-item-options";
-      option.className = "cart-item-option-list";
-      option.textContent = `옵션: ${item.option}`;
-      options.append(option);
-      row.append(options);
+    if (items.length === 0) {
+      const empty = document.createElement("li");
+      empty.className = "cart-list-empty";
+      empty.textContent = "장바구니에 담긴 상품이 없습니다.";
+      list.append(empty);
     }
 
-    list.append(row);
-    totalCount += item.count;
-    totalPrice += item.price * item.count;
-  });
+    items.forEach((item, index) => {
+      const row = document.createElement("li");
+      const name = document.createElement("span");
+      const quantity = document.createElement("div");
+      const minus = document.createElement("button");
+      const count = document.createElement("span");
+      const plus = document.createElement("button");
+      const price = document.createElement("span");
+      const remove = document.createElement("button");
 
-  review.querySelector(".total-price-count").textContent = `${totalCount}개`;
-  review.querySelector(".total-price-currency").textContent = totalPrice.toLocaleString();
+      name.className = "cart-item-name";
+      name.textContent = item.name;
+      quantity.className = "cart-item-quantity";
+      minus.type = plus.type = remove.type = "button";
+      minus.className = "cart-item-quantity-btn";
+      minus.textContent = "−";
+      minus.setAttribute("aria-label", `${item.name} 수량 감소`);
+      minus.disabled = item.count <= 1;
+      count.textContent = item.count;
+      plus.className = "cart-item-quantity-btn";
+      plus.textContent = "+";
+      plus.setAttribute("aria-label", `${item.name} 수량 증가`);
+      quantity.append(minus, count, plus);
+      price.className = "cart-item-price";
+      price.textContent = `${(item.price * item.count).toLocaleString()}원`;
+      remove.className = "cart-item-remove";
+      remove.textContent = "삭제";
+      remove.setAttribute("aria-label", `${item.name} 삭제`);
+      row.append(name, quantity, price, remove);
+
+      function updateItem(change) {
+        if (change === 0) {
+          items.splice(index, 1);
+        } else {
+          item.count += change;
+        }
+        sessionStorage.setItem("tablePay_selected_item", JSON.stringify(items));
+        render();
+        const nextRow = list.children[Math.min(index, items.length - 1)];
+        const focusTarget = change === 0 ? nextRow?.querySelector(".cart-item-remove") :
+          nextRow?.querySelectorAll(".cart-item-quantity-btn")[change < 0 && item.count > 1 ? 0 : 1];
+        (focusTarget || review.querySelector("#tablePayWrap__btn-back")).focus();
+      }
+
+      minus.addEventListener("click", () => updateItem(-1));
+      plus.addEventListener("click", () => updateItem(1));
+      remove.addEventListener("click", () => updateItem(0));
+
+      if (item.option) {
+        const options = document.createElement("div");
+        const option = document.createElement("span");
+        options.className = "cart-item-options";
+        option.className = "cart-item-option-list";
+        option.textContent = `옵션: ${item.option}`;
+        options.append(option);
+        row.append(options);
+      }
+
+      list.append(row);
+      totalCount += item.count;
+      totalPrice += item.price * item.count;
+    });
+
+    review.querySelector(".total-price-count").textContent = `${totalCount}개`;
+    review.querySelector(".total-price-currency").textContent = totalPrice.toLocaleString();
+    payButton.disabled = items.length === 0;
+  }
+
+  render();
   review.querySelector("#tablePayWrap__btn-back").addEventListener("click", () => {
     window.location.href = "./index.html";
   });
-  review.querySelector("#tablePayWrap__btn-pay").addEventListener("click", () => {
+  payButton.addEventListener("click", () => {
     window.location.href = "./tableP-05.html";
   });
 }
@@ -402,16 +457,12 @@ function popupNextMove() {
 
   const splitDialog = document.getElementById("split-payment-dialog");
   const loadingDialog = document.getElementById("full-payment-dialog");
-  const removedDialog = document.getElementById("card-removed-dialog");
   const completedDialog = document.getElementById("order-completed-dialog");
-  const removedButton = removedDialog?.querySelector(".card-completed-icon");
   const completeButton = document.getElementById("creditCompleteBtn");
   if (
     !(splitDialog instanceof HTMLDialogElement) ||
     !(loadingDialog instanceof HTMLDialogElement) ||
-    !(removedDialog instanceof HTMLDialogElement) ||
     !(completedDialog instanceof HTMLDialogElement) ||
-    !(removedButton instanceof HTMLButtonElement) ||
     !(completeButton instanceof HTMLButtonElement)
   ) {
     console.error("결제 단계 모달을 찾을 수 없습니다.");
@@ -436,20 +487,15 @@ function popupNextMove() {
     timer = window.setTimeout(() => {
       timer = null;
       loadingDialog.close();
-      removedDialog.showModal();
+      completedDialog.showModal();
     }, 3000);
-  });
-
-  removedButton.addEventListener("click", () => {
-    removedDialog.close();
-    completedDialog.showModal();
   });
 
   completeButton.addEventListener("click", () => {
     window.location.href = "./tableP-06.html";
   });
 }
-// 홈 이동시 임시로 저장한 카트 아이템 로컬스토리지 초기화
+// 홈 이동시 임시로 저장한 카트 아이템 초기화
 function initHomeReset() {
   const header = document.getElementById("category-header-horizontal");
   if (!header) return;
@@ -458,7 +504,8 @@ function initHomeReset() {
   if (!homeLink) return;
 
   homeLink.addEventListener("click", () => {
-    localStorage.removeItem("tableOrderItem");
+    sessionStorage.removeItem("tablePay_selected_item");
+    sessionStorage.removeItem("tableOrder_selected_product");
     console.log("테이블오더 카트아이템 임시저장 삭제");
   });
 }

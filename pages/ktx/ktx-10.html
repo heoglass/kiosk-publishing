@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KTX 예매: 운행요금</title>
+    <link rel="stylesheet" href="../../shared/css/localCommon.css" />
+    <link rel="stylesheet" href="./ktx.css" />
+  </head>
+  <body id="ktxBody" page-type="ktx-10">
+    <main class="ktx-main kiosk-screen">
+      <header id="category-header" inert>
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="ktx-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="ktx-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+            <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="소리 버튼" />
+        </button>
+      </header>
+
+      <section id="ktx-start-screen" class="ktx__section ktx__section--relative" aria-label="기차KTX 열차 선택" inert>
+        <!-- 진행 단계 : 여정선택 완료(is-done), 열차선택 진행중(is-active) -->
+        <ol class="ktx-step">
+          <li class="ktx-step__item is-done">
+            <span class="ktx-step__label">여정선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item is-active" aria-current="step">
+            <span class="ktx-step__label">열차선택</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">결제</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+          <li class="ktx-step__item">
+            <span class="ktx-step__label">발권</span>
+            <span class="ktx-step__dot"></span>
+          </li>
+        </ol>
+
+        <!-- 타이틀 -->
+        <h2 class="ktx-content-subject">열차를 선택해주세요</h2>
+
+        <!-- 이전날 / 날짜 / 다음날 -->
+        <div class="ktx-date-nav">
+          <button type="button" class="ktx-date-nav__btn ktx-date-nav__btn--prev" disabled>이전날</button>
+          <p class="ktx-date-nav__date">2026-11-09 (금)<br />14시 이후</p>
+          <button type="button" class="ktx-date-nav__btn ktx-date-nav__btn--next">다음날</button>
+        </div>
+
+        <!-- 열차 목록 -->
+        <ul id="ktxTrainList" class="ktx-train-list" aria-label="열차 목록">
+          <li class="ktx-train-card" data-train-id="261">
+            <div class="ktx-train-card__info">
+              <span class="ktx-badge">KTX</span>
+              <p class="ktx-train-card__route">출발지 — 도착지</p>
+              <p class="ktx-train-card__time">11:30 → 16:27</p>
+              <p class="ktx-train-card__duration">1시간 4분 소요</p>
+            </div>
+            <div class="ktx-train-card__classes">
+              <button type="button" class="ktx-train-card__class" data-seat-class="일반실" aria-pressed="false">일반실</button>
+              <button type="button" class="ktx-train-card__class" data-seat-class="특실" aria-pressed="false">특실</button>
+            </div>
+          </li>
+          <li class="ktx-train-card" data-train-id="263">
+            <div class="ktx-train-card__info">
+              <span class="ktx-badge">KTX</span>
+              <p class="ktx-train-card__route">출발지 — 도착지</p>
+              <p class="ktx-train-card__time">11:30 → 16:27</p>
+              <p class="ktx-train-card__duration">1시간 4분 소요</p>
+            </div>
+            <div class="ktx-train-card__classes">
+              <button type="button" class="ktx-train-card__class" data-seat-class="일반실" aria-pressed="false">일반실</button>
+              <button type="button" class="ktx-train-card__class" data-seat-class="특실" aria-pressed="false">특실</button>
+            </div>
+          </li>
+        </ul>
+
+        <!-- 페이지네이션 -->
+        <div class="ktx-station__pagination">
+          <button type="button" id="ktxTrainPrev" aria-label="이전 열차 목록" disabled>‹</button>
+          <span id="ktxTrainPage">1/3</span>
+          <button type="button" id="ktxTrainNext" aria-label="다음 열차 목록">›</button>
+        </div>
+
+        <!-- 열차 예매하기 -->
+        <button type="button" id="ktxTrainSubmit" class="ktx-train-submit" disabled>열차 예매하기</button>
+
+        <!-- 하단 바 -->
+        <div class="ktx-help">
+          <a href="./ktx-02.html" class="ktx-help__btn ktx-help__btn--prev">이전으로</a>
+          <button type="button" class="ktx-help__btn">
+            <img src="../../shared/images/ktx/tell.png" alt="원격상담 아이콘" class="ktx-help__icon" />
+            <span>원격 상담</span>
+          </button>
+        </div>
+      </section>
+
+      <aside id="ktxModal" role="dialog" aria-modal="true" aria-labelledby="ktxFareTitle">
+        <div class="ktx-modal__box ktx-fare">
+          <h3 id="ktxFareTitle" class="ktx-modal__title">운행요금</h3>
+
+          <div class="ktx-fare__head">
+            <p class="ktx-fare__train">
+              <span class="ktx-badge">KTX</span>
+              <span>261 (XXX행)</span>
+            </p>
+            <p class="ktx-fare__route" id="ktxFareRoute">— → —</p>
+          </div>
+
+          <div class="ktx-fare__table-wrap">
+            <table class="ktx-fare__table">
+              <caption class="d-none">운행요금</caption>
+              <colgroup>
+                <col style="width: 313px" />
+                <col style="width: 214px" />
+                <col style="width: 313px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">좌석정보</th>
+                  <th scope="col">구분</th>
+                  <th scope="col">운임요금</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3" class="ktx-fare__seat">일반실</th>
+                  <td>운임</td>
+                  <td>13,000원</td>
+                </tr>
+                <tr>
+                  <td>요금</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>합계</td>
+                  <td>13,000원</td>
+                </tr>
+                <tr>
+                  <th scope="rowgroup" rowspan="3" class="ktx-fare__seat">특실</th>
+                  <td>운임</td>
+                  <td>13,000원</td>
+                </tr>
+                <tr>
+                  <td>요금</td>
+                  <td>13,000원</td>
+                </tr>
+                <tr>
+                  <td>합계</td>
+                  <td>13,000원</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="ktx-fare__notes">
+            <li>경로: 운임의 30%할인<br />(KTX/새마을 열차는 토,일,공휴일 할인 제외)</li>
+            <li>어린이: 운임의 50%할인</li>
+            <li>자유석: 운임의 5%할인</li>
+            <li>합석: 운임의 15%할인</li>
+            <li>특실(우등실)요금: 운임의 40%(우등실은 20%)</li>
+          </ul>
+
+          <div class="ktx-station__actions">
+            <a href="./ktx-08.html" class="ktx-station__cancel">취소</a>
+            <a href="./ktx-11.html" class="ktx-station__confirm">예매하기</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script type="text/javascript" src="../../shared/js/common.js"></script>
+    <script type="text/javascript" src="./ktx.js"></script>
+  </body>
+</html>

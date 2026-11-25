@@ -40,8 +40,7 @@ body#tablePay {
 /* 상단 가로형 헤더 */
 #category-header-horizontal.tablePay__header {
     height: 70px;
-    padding: 0 36px;
-    background-color: #227941;
+     background: #227941;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,16 +54,6 @@ body#tablePay {
 #category-header-horizontal .header-left {
     display: flex;
     align-items: center;
-}
-
-#category-header-horizontal .header-left > * + * {
-    margin-left: 12px;
-}
-
-#category-header-horizontal #header-title {
-    font-size: 26px;
-    font-weight: 700;
-    color: #ffffff;
 }
 
 #category-header-horizontal .category-header-home,
@@ -117,19 +106,18 @@ body#tablePay {
     padding: 0;
 }
 
-.foodcourt-category__nav li {
+/* .foodcourt-category__nav li {
     display: flex;
     align-items: center;
-    height: 58px;
-    padding: 0 24px;
-    font-size: 22px;
-    font-weight: 700;
+    padding: 20px 40px;
+    font-size: 30px;
+    font-weight: 600;
     color: #ffffff;
     cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
     transition: background-color 0.2s, color 0.2s;
-}
+} */
 
 .foodcourt-category__nav li.is-active {
     background-color: #f7a900;
@@ -158,11 +146,6 @@ body#tablePay {
     transition: background-color 0.2s;
 }
 
-.foodcourt-category__bottom button:active,
-.btn-staff-call:active {
-    background-color: #c93030;
-}
-
 /* ========================================================
    우측 상품 영역 (그리드 + 하단 고정 액션 바)
    ======================================================== */
@@ -183,7 +166,7 @@ body#tablePay {
     padding: 22px 24px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 18px;
+    grid-gap: 25px 33px;
     overflow-y: auto;
     align-content: start;
 }
@@ -191,7 +174,7 @@ body#tablePay {
 /* 상품 카드 */
 .product-card {
     background-color: #ffffff;
-    border: 1.5px solid #222222;
+    border: 2px solid rgba(0, 0, 0, 1); 
     border-radius: 14px;
     padding: 16px 12px 14px;
     display: flex;
@@ -199,7 +182,7 @@ body#tablePay {
     align-items: center;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 2.63px 2.63px 19.32px 0px rgba(0, 0, 0, 0.25);
     transition: transform 0.15s, box-shadow 0.15s;
     -webkit-user-select: none;
     user-select: none;
@@ -210,9 +193,8 @@ body#tablePay {
 }
 
 .product-thumb-box {
-    width: 110px;
-    height: 110px;
-    background-color: #a6a6a6;
+    width: 118px;
+    height: 118px;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -221,8 +203,8 @@ body#tablePay {
 }
 
 .product-thumb-box img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -251,7 +233,7 @@ body#tablePay {
 
 /* 하단 고정 주문내역 / 장바구니 버튼 영역 */
 .foodcourt-products__bottom {
-    height: 72px;
+    height: 97px;
     background-color: #ffffff;
     border-top: 1px solid #e0e0e0;
     padding: 0 24px;
@@ -268,8 +250,14 @@ body#tablePay {
     margin-left: 24px ;
 }
 
+.foodcourt-products__bottom > button {
+    height:57px;
+    font-size: 30px;
+    font-weight: 700;
+    
+}
+
 .btn-order-history {
-    height: 48px;
     padding: 0 28px;
     background-color: #4e4e4e;
     color: #ffffff;
@@ -286,10 +274,10 @@ body#tablePay {
 }
 
 .btn-cart {
-    height: 48px;
     padding: 0 22px;
-    background-color: #1e7e44;
-    color: #ffffff;
+    background: rgba(34, 121, 65, 1);
+
+    color: #fff;
     font-size: 19px;
     font-weight: 700;
     border: none;
@@ -307,10 +295,11 @@ body#tablePay {
 
 .btn-cart:active {
     background-color: #166436;
+    color: #fff;
 }
 
 .cart-count-badge {
-    background-color: #115328;
+    background: #292929;
     color: #ffffff;
     padding: 2px 10px;
     border-radius: 12px;
@@ -336,14 +325,15 @@ body#tablePay {
 .setitem-detail__image {
     width: 210px;
     height: 210px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .setitem-detail__image img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -386,17 +376,18 @@ body#tablePay {
 
 .setitem-counter {
     display: flex;
+    gap: 30px;
     align-items: center;
     margin-top: 74px;
 }
 
 .setitem-counter > * + * {
-    margin-left: 14px;
+    /* margin-left: 14px; */
 }
 
 .setitem-counter button {
-    width: 44px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -408,20 +399,26 @@ body#tablePay {
 
 .setitem-counter .btn-minus {
     background-color: #ffffff;
-    border: 1.5px solid #d0d0d0;
+    background-image: url("../../shared/images/table/bullet-prev.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid #AAAAAA;
     color: #999999;
 }
 
 .setitem-counter .btn-plus {
     background-color: #333333;
+    background-image: url("../../shared/images/table/bullet-plus.png");
+    background-position: center;
+    background-repeat: no-repeat;
     border: none;
     color: #ffffff;
 }
 
 .setitem-counter .counter-value {
-    font-size: 22px;
-    font-weight: 700;
-    color: #111111;
+    font-size: 44px;
+    font-weight: 600;
+    color: #000;
     min-width: 26px;
     text-align: center;
 }
@@ -704,7 +701,8 @@ dialog.tablepay-modal-wrap[open] {
 }
 #tablePay .tablePayWrap__cartList-items > li {
     display: grid;
-    grid-template-columns: 1fr 120px 200px;
+    grid-template-columns: minmax(0, 1fr) 190px 230px 84px;
+    gap: 24px;
     align-items: center;
     padding: 18px 0;
     border-bottom: 1px solid #d9d9d9;
@@ -723,14 +721,55 @@ dialog.tablepay-modal-wrap[open] {
 }
 
 #tablePay .tablePayWrap__cartList-items > li .cart-item-quantity {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#tablePay .tablePayWrap__cartList-items > li .cart-item-quantity span {
+    flex: 1;
+    height: 48px;
+    margin: 0 -24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 400;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+.cart-item-quantity-btn {
+    position: relative;
+    z-index: 1;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+}
+.cart-item-quantity-btn:disabled {
+    background: #aaa;
+    cursor: default;
 }
 #tablePay .tablePayWrap__cartList-items > li .cart-item-price {
     text-align: right;
+    font-size: 28px;
+    font-weight: 400;
+}
+.cart-item-remove {
+    height: 52px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #fff;
+    color: #111;
+    font-size: 26px;
+    cursor: pointer;
 }
 #tablePay .tablePayWrap__cartList-items > li .cart-item-options {
     grid-column: 1 / -1;
-    margin-top: 12px;
     padding: 18px 16px;
     background: #eeeeee;
     border-radius: 8px;
@@ -785,6 +824,11 @@ dialog.tablepay-modal-wrap[open] {
     background: #227941;
     color: #fff;
     flex: 1.8;
+}
+.tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-pay:disabled {
+    background: #ccc;
+    color: #666;
+    cursor: default;
 }
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back,
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-pay {
@@ -889,6 +933,7 @@ dialog.tablepay-modal-wrap[open] {
 .table-pay-payment-alert p.completed-msg {
     color: #444;
     font-size: 28px;
+    font-weight: 500;
 }
 
 #tablePay-payment-type.tablePayWrap {

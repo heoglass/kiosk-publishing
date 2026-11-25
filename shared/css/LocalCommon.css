@@ -1,14 +1,40 @@
 @charset "UTF-8";
-
 @font-face {
+  /* font-weight: 400 */
   font-family: "Pretendard-Regular";
   src: url("../fonts/Pretendard-Regular.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
+  /* font-weight: 500 */
+  font-family: "Pretendard-Medium";
+  src: url("../fonts/Pretendard-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  /* font-weight: 600 */
+  font-family: "Pretendard-SemiBold";
+  src: url("../fonts/Pretendard-SemiBold.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  /* font-weight: 700 */ 
   font-family: "Pretendard-Bold";
   src: url("../fonts/Pretendard-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  /* font-weight: 800 */
+  font-family: "Pretendard-ExtraBold";
+  src: url("../fonts/Pretendard-ExtraBold.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  /* font-weight: 900 */
+  font-family: "Pretendard-Black";
+  src: url("../fonts/Pretendard-Black.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -107,13 +133,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px 60px;
-  /* background-color: #56321c; */
   max-height: 144px;
   position: absolute;
-  left: 50%;
   top: 0;
   z-index: 10;
-  transform: translate(-50%, 0);
 }
 
 #category-header-vertical {
@@ -142,7 +165,7 @@ body {
 
 #category-header #header-title,
 #category-header-vertical #header-title {
-  font-family: "Pretendard-Regular";
+  font-family: "Pretendard-Bold";
   font-size: 56px;
   font-weight: 700;
   color: #fff;
@@ -1372,4 +1395,17 @@ body .kiosk-container,
     background-color: var(--kiosk-background-color);
     position: relative;
     overflow: hidden;
+}
+/* 테이블페이 NAV 메뉴 공통 */
+.foodcourt-category__nav li {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background-color 0.2s, color 0.2s;
 }

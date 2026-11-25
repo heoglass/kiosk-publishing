@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>테이블 결제 - 상품 선택</title>
+    <title>테이블오더 - tableP-03.html</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../shared/css/LocalCommon.css" />
-    <link rel="stylesheet" href="./table-pay.css" />
+    <link rel="stylesheet" href="./table-order.css" />
   </head>
   <body id="tablePay">
     <div class="kiosk-container">
@@ -68,10 +68,7 @@
             <!-- 상품 상세 및 수량 선택 영역 -->
             <div class="setitem-detail-container">
               <div class="setitem-detail__image">
-                <img
-                  src="../../shared/images/fast-food/bulgogi.png"
-                  alt="돼지국밥세트 이미지"
-                />
+                <img alt="" hidden />
               </div>
 
               <div class="setitem-detail__info">
@@ -86,11 +83,9 @@
                 <!-- 수량 조절 카운터 -->
                 <div class="setitem-counter">
                   <button type="button" class="btn-minus" aria-label="수량 감소">
-                    -
                   </button>
                   <span class="counter-value" id="setitemCount">1</span>
                   <button type="button" class="btn-plus" aria-label="수량 증가">
-                    +
                   </button>
                 </div>
               </div>

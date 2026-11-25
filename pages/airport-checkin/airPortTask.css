@@ -1,0 +1,1331 @@
+@charset "UTF-8";
+/* ==========================================================
+   공항 - 1080 x 1920 고정형
+   ※ 헤더는 공통마크업 사용
+   ========================================================== */
+#airBody {
+  --airBody-header-h: 139px;             
+  --airBody-primary-color: #1C79E2;
+  --airBody-primaryBtn-color: #1C79E2;
+  --airBody-box-shadow: 0px 0px 42.1px 0px rgba(35, 92, 149, 1);
+  --airBody-disabled-color: #7E7E7E;
+  --airBodyBtnActive: #1C79E2;
+  --airBtnActive: radial-gradient(50% 50% at 50% 50%, #6BB0FF 0%, rgba(107, 176, 255, 0) 100%);
+  font-family: "Pretendard", sans-serif;
+}
+
+button.disabled-color,
+a.disabled-color,
+.disabled-color {
+  background-color: var(--airBody-disabled-color);
+  color: #fff;
+}
+
+.d-none {
+  display: none!important;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+#airBody #category-header {
+  background-color: var(--airBody-primary-color);
+  color: #fff;
+}
+
+#airBody .experience-complete .complete-button {
+  background-color: var(--airBody-primaryBtn-color);
+}
+
+#airBody .experience-complete .complete-button-secondary {
+background: #555555;
+}
+
+#airBody .air-title {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 60px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center; 
+}
+
+/* 항공사 선택 첫 화면 */
+#airBody .air-main--start {
+  height: 1920px;
+  overflow: hidden;
+  color: #fff;
+  background: #6bb8f8 url("../../shared/images/airport/ariport_bg.png") center / 100% 100% no-repeat;
+}
+#airBody #air-start-screen {
+  text-align: center;
+  padding-top: 139px;
+}
+
+#airBody[page-type="air-02"] #air-start-screen {
+  height: 100%;
+  text-align: center;
+  padding: 139px 60px 60px;
+}
+
+#airBody .air-title--main {
+  margin-top: 324px;
+  margin-bottom: 24px;
+  width: 100%;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+#airBody .air-subtitle {
+  width: 100%;
+  margin-bottom: 36px;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+#airBody .air-airline-list {
+  margin: 0 80px;
+  display: grid;
+  width: 920px;
+  height: 606px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  border: 2px solid #d5d5d5;
+  border-radius: 34px;
+  background-color: #fff;
+}
+
+#airBody .air-airline-list__item {
+  min-width: 0;
+  min-height: 0;
+}
+
+#airBody .air-airline-list__item:nth-child(odd) {
+  border-right: 2px solid #d5d5d5;
+}
+
+#airBody .air-airline-list__item:nth-child(-n + 2) {
+  border-bottom: 2px solid #d5d5d5;
+}
+
+#airBody .air-airline {
+  display: flex;
+  width: 100%;
+  padding-top: 88px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #050505;
+}
+
+#airBody .air-airline__logo {
+  display: block;
+  width: 230px;
+  height: 54px;
+  object-fit: contain;
+}
+
+#airBody .air-airline__name {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+#airBody .air-airline:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 6px solid #1c79e2;
+  outline-offset: -8px;
+}
+
+/* 이용 제한 승객 안내 화면 */
+#airBody[page-type="air-02"] .air-main {
+  overflow: hidden;
+  color: #080808;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-03"] .air-main,
+#airBody[page-type="air-04"] .air-main {
+  color: #080808;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-03"] #air-start-screen,
+#airBody[page-type="air-04"] #air-start-screen {
+  display: flex;
+  height: 1920px;
+  flex-direction: column;
+  padding: 139px 60px 60px;
+  text-align: center;
+}
+
+#airBody[page-type="air-02"] .air-lang,
+#airBody[page-type="air-03"] .air-lang,
+#airBody[page-type="air-04"] .air-lang {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 182px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#airBody[page-type="air-02"] .air-lang::before,
+#airBody[page-type="air-03"] .air-lang::before,
+#airBody[page-type="air-04"] .air-lang::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 1080px;
+  border-bottom: 2px solid #d5d5d5;
+  content: "";
+  transform: translateX(-50%);
+}
+
+#airBody[page-type="air-02"] .air-lang__btn,
+#airBody[page-type="air-03"] .air-lang__btn,
+#airBody[page-type="air-04"] .air-lang__btn {
+  min-height: 102px;
+  padding: 0 30px;
+  border-radius: 60px;
+  color: #080808;
+  font-size: 50px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#airBody[page-type="air-02"] .air-lang__btn.active,
+#airBody[page-type="air-03"] .air-lang__btn.active,
+#airBody[page-type="air-04"] .air-lang__btn.active {
+  color: #fff;
+  background-color: var(--airBody-primary-color);
+}
+
+#airBody[page-type="air-02"] .air-title,
+#airBody[page-type="air-03"] .air-title,
+#airBody[page-type="air-04"] .air-title {
+  width: 100%;
+  margin: 40px 0;
+}
+
+#airBody[page-type="air-02"] .air-box--notice {
+  display: flex;
+  width: 960px;
+  height: 1028px;
+  flex-direction: column;
+  padding: 100px 0;
+  border: 2px solid #d5d5d5;
+  border-radius: 32px;
+  background-color: #fffdfa;
+}
+
+#airBody[page-type="air-02"] .air-list {
+  color: #080808;
+  text-align: left;
+  padding-left: 78px;
+  margin-bottom: 120px;
+}
+
+#airBody[page-type="air-02"] .air-list li {
+  position: relative;
+  margin-bottom: 27px;
+  padding-left: 38px;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+#airBody[page-type="air-02"] .air-list li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: currentColor;
+  content: "";
+}
+
+#airBody[page-type="air-02"] .air-list li:last-child {
+  margin-bottom: 0;
+}
+
+#airBody[page-type="air-02"] .air-box__warn {
+ padding: 0 42px;
+  color: #EB001B;
+  font-size: 44px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 130%;
+  letter-spacing: 0%;
+
+}
+
+#airBody[page-type="air-02"] .air-actions {
+  position: absolute;
+  right: 60px;
+  bottom: 60px;
+  left: 60px;
+  display: flex;
+  height: 140px;
+  gap: 30px;
+}
+
+#airBody[page-type="air-02"] .air-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #d5d5d5;
+  border-radius: 20px;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-02"] .air-btn--prev {
+  color: #292929;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-02"] .air-btn--next {
+  border-color: var(--airBody-primaryBtn-color);
+  color: #fff;
+  background-color: var(--airBody-primaryBtn-color);
+}
+
+#airBody[page-type="air-02"] .air-lang__btn:focus-visible,
+#airBody[page-type="air-02"] .air-btn:focus-visible,
+#airBody[page-type="air-03"] .air-lang__btn:focus-visible,
+#airBody[page-type="air-03"] .air-btn:focus-visible,
+#airBody[page-type="air-04"] .air-lang__btn:focus-visible,
+#airBody[page-type="air-04"] .air-btn:focus-visible {
+  outline: 6px solid #111;
+  outline-offset: 4px;
+}
+
+#airBody[page-type="air-03"] .air-box--hazard {
+  display: flex;
+  width: 960px;
+  height: 1028px;
+  flex: 0 0 1028px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+#airBody[page-type="air-03"] .air-hazard-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  border: 2px solid #CCCCCC;
+  background: #FDF8F4;
+  border-radius: 32px;
+  padding-top: 35px;
+}
+
+#airBody[page-type="air-03"] .air-hazard-page[hidden] {
+  display: none !important;
+}
+
+#airBody[page-type="air-03"] .air-hazard-image {
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 32px;
+}
+
+#airBody[page-type="air-03"] [data-air-hazard-page]:first-child .air-hazard-image {
+  width: 918px;
+  height: 928px;
+}
+
+#airBody[page-type="air-03"] [data-air-hazard-page]:nth-child(2) .air-hazard-image {
+  width: 918px;
+  height: 763px;
+}
+
+#airBody[page-type="air-03"] .air-pager {
+  display: flex;
+  height: 60px;
+  flex: 0 0 60px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+#airBody[page-type="air-03"] .air-pager__btn {
+  display: flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d5d5d5;
+  border-radius: 50%;
+  color: #fff;
+  background: #555555;
+}
+
+#airBody[page-type="air-03"] .air-pager__btn--next {
+  border-color: var(--airBody-primary-color);
+  color: #fff;
+  background-color: var(--airBody-primary-color);
+}
+
+#airBody[page-type="air-03"] .air-pager__btn:disabled {
+  border-color: #555;
+  color: #fff;
+  background-color: #555;
+  cursor: default;
+}
+
+#airBody[page-type="air-03"] .air-pager__arrow {
+  width: 18px;
+  height: 18px;
+  border-top: 4px solid currentColor;
+  border-right: 4px solid currentColor;
+  transform: rotate(45deg);
+}
+
+#airBody[page-type="air-03"] .air-pager__btn--prev .air-pager__arrow {
+  transform: rotate(-135deg);
+}
+
+#airBody[page-type="air-03"] .air-pager__count {
+  min-width: 70px;
+  color: #292929;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#airBody[page-type="air-03"] .air-actions,
+#airBody[page-type="air-04"] .air-actions {
+  display: flex;
+  height: 140px;
+  flex: 0 0 140px;
+  gap: 30px;
+  margin-top: auto;
+}
+
+#airBody[page-type="air-03"] .air-btn,
+#airBody[page-type="air-04"] .air-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #d5d5d5;
+  border-radius: 20px;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-03"] .air-btn--prev,
+#airBody[page-type="air-04"] .air-btn--prev {
+  color: #292929;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-03"] .air-btn--next,
+#airBody[page-type="air-04"] .air-btn--next {
+  border-color: var(--airBody-primaryBtn-color);
+  color: #fff;
+  background-color: var(--airBody-primaryBtn-color);
+}
+
+#airBody[page-type="air-04"] .air-title--line {
+  width: 1080px;
+  margin: 40px -60px 43px;
+  padding: 0 60px 40px;
+  border-bottom: 2px solid #d5d5d5;
+}
+
+#airBody[page-type="air-04"] .air-baggage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+#airBody[page-type="air-04"] .air-baggage__img {
+  display: block;
+  width: 620px;
+  height: auto;
+}
+
+#airBody[page-type="air-04"] .air-baggage__formula {
+  margin-top: 30px;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#airBody[page-type="air-04"] .air-baggage__formula em {
+  color: #eb001b;
+  font-style: normal;
+}
+
+#airBody[page-type="air-04"] .air-box--baggage {
+  display: flex;
+  width: 960px;
+  height: 780px;
+  flex: 0 0 780px;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 70px 40px 60px;
+  border: 2px solid #d5d5d5;
+  border-radius: 32px;
+
+  background: #FDF8F4;
+
+}
+
+#airBody[page-type="air-04"] .air-box--baggage .air-list {
+  padding-left: 44px;
+  color: #080808;
+  list-style: disc;
+  text-align: left;
+}
+
+#airBody[page-type="air-04"] .air-box--baggage .air-list li {
+  margin-bottom: 24px;
+  font-size: 34px;
+  line-height: 1.25;
+}
+
+#airBody[page-type="air-04"] .air-box--baggage .air-list li:last-child {
+  margin-bottom: 0;
+}
+
+#airBody[page-type="air-04"] .air-box--baggage .air-list--note {
+  margin-top: 20px;
+  list-style: none;
+}
+
+#airBody[page-type="air-04"] .air-box--baggage .air-list--note li::marker {
+  content: "※ ";
+}
+
+#airBody[page-type="air-04"] .air-box--baggage .air-list--note li:last-child {
+  font-size: 32px;
+}
+
+/* 예약 확인 방법 */
+#airBody[page-type="air-05"] .air-main,
+#airBody[page-type="air-06"] .air-main,
+#airBody[page-type="air-07"] .air-main,
+#airBody[page-type="air-08"] .air-main,
+#airBody[page-type="air-10"] .air-main {
+  overflow: hidden;
+  color: #080808;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-05"] #air-start-screen,
+#airBody[page-type="air-06"] #air-start-screen,
+#airBody[page-type="air-07"] #air-start-screen,
+#airBody[page-type="air-08"] #air-start-screen,
+#airBody[page-type="air-10"] #air-start-screen {
+  display: flex;
+  height: 1920px;
+  flex-direction: column;
+  padding: 139px 60px 60px;
+  text-align: center;
+}
+
+#airBody[page-type="air-05"] .air-title,
+#airBody[page-type="air-06"] .air-title,
+#airBody[page-type="air-07"] .air-title,
+#airBody[page-type="air-08"] .air-title {
+  width: 100%;
+  margin: 160px 0 0;
+  font-size: 60px;
+  line-height: 1.3;
+}
+
+#airBody[page-type="air-05"] .air-title {
+  font-size: 52px;
+}
+
+#airBody[page-type="air-05"] .air-method-list {
+  display: flex;
+  width: 860px;
+  flex-direction: column;
+  gap: 40px;
+  margin: 110px auto 0;
+}
+
+#airBody[page-type="air-05"] .air-method,
+#airBody[page-type="air-05"] .air-method-list > li {
+  width: 100%;
+  height: 254px;
+}
+
+#airBody[page-type="air-05"] .air-method {
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  border: 2px solid #d5d5d5;
+  border-radius: 42px;
+  background-color: #fafafa;
+  text-align: left;
+}
+
+#airBody[page-type="air-05"] .air-method.active {
+  border-color: #1c79e2;
+  box-shadow: 0 4px 14px rgba(28, 121, 226, 0.22);
+}
+
+#airBody[page-type="air-05"] .air-method__icon-container {
+  display: flex;
+  width: 210px;
+  height: 210px;
+  flex: 0 0 210px;
+  align-items: center;
+  justify-content: center;
+  margin-left: -23px;
+  margin-right: 5px;
+}
+
+#airBody[page-type="air-05"] .air-method__icon {
+  display: block;
+  max-width: 160px;
+  max-height: 160px;
+  object-fit: contain;
+}
+
+#airBody[page-type="air-05"] .air-method__text {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+#airBody[page-type="air-05"] .air-actions--single,
+#airBody[page-type="air-06"] .air-actions--single,
+#airBody[page-type="air-10"] .air-actions--single {
+  display: flex;
+  width: 100%;
+  height: 140px;
+  flex: 0 0 140px;
+}
+
+#airBody[page-type="air-05"] .air-actions--single {
+  margin-top: auto;
+}
+
+#airBody[page-type="air-05"] .air-btn--back,
+#airBody[page-type="air-06"] .air-btn--back {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #d5d5d5;
+  border-radius: 20px;
+  color: #595959;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+/* 예약 번호 입력 */
+#airBody[page-type="air-06"] .air-input {
+  width: 960px;
+  margin: 100px auto 0;
+}
+
+#airBody[page-type="air-06"] .air-input__field {
+  display: block;
+  width: 100%;
+  height: 148px;
+  border: 4px solid #1c79e2;
+  border-radius: 20px;
+  color: #080808;
+  background: transparent;
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#airBody[page-type="air-06"] .air-input__field::placeholder {
+  color: #080808;
+  opacity: 1;
+}
+
+#airBody[page-type="air-06"] .air-input__example {
+  margin-top: 20px;
+  font-size: 44px;
+  line-height: 1.3;
+}
+
+#airBody[page-type="air-06"] .air-keyboard {
+  display: flex;
+  width: 960px;
+  height: 440px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto auto 0;
+  padding: 28px 34px;
+  border-radius: 18px;
+  background-color: #c9cacc;
+}
+
+#airBody[page-type="air-06"] .air-keyboard__row {
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  gap: 10px;
+}
+
+#airBody[page-type="air-06"] .air-keyboard__row--3 {
+  padding: 0 38px;
+}
+
+#airBody[page-type="air-06"] .air-key {
+  min-width: 0;
+  height: 80px;
+  flex: 1;
+  border-radius: 12px;
+  color: #080808;
+  background-color: #f2f2f3;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+#airBody[page-type="air-06"] .air-key--back {
+  flex: 1.7;
+  font-size: 34px;
+}
+
+#airBody[page-type="air-06"] .air-actions--single {
+  margin-top: 40px;
+}
+
+/* 승객 및 항공권 정보 */
+#airBody[page-type="air-07"] .air-passenger {
+  display: flex;
+  width: 960px;
+  height: 156px;
+  flex: 0 0 156px;
+  align-items: center;
+  gap: 20px;
+  margin: 100px auto 0;
+  padding: 26px 40px;
+  border: 2px solid #d5d5d5;
+  border-radius: 32px;
+  background-color: #fff;
+}
+
+#airBody[page-type="air-07"] .air-passenger__icon {
+  display: block;
+  width: 100px;
+  height: 100px;
+  flex: 0 0 100px;
+}
+
+#airBody[page-type="air-07"] .air-passenger__item {
+  display: flex;
+  height: 76px;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#airBody[page-type="air-07"] .air-passenger__name {
+  flex: 0.8;
+}
+
+#airBody[page-type="air-07"] .air-passenger__nation,
+#airBody[page-type="air-07"] .air-passenger__id {
+  border-left: 4px solid #d5d5d5;
+}
+
+#airBody[page-type="air-07"] .air-passenger__nation {
+  flex: 1.2;
+}
+
+#airBody[page-type="air-07"] .air-passenger__id {
+  flex: 1.5;
+}
+
+#airBody[page-type="air-07"] .air-flight {
+  display: flex;
+  width: 960px;
+  height: 880px;
+  flex: 0 0 880px;
+  flex-direction: column;
+  margin: 60px auto 0;
+  padding: 98px 78px 52px;
+  border: 2px solid #d5d5d5;
+  border-radius: 32px;
+  background-color: #fff;
+}
+
+#airBody[page-type="air-07"] .air-flight__arc {
+  position: relative;
+  width: 430px;
+  height: 140px;
+  flex: 0 0 140px;
+  align-self: center;
+}
+
+#airBody[page-type="air-07"] .air-flight__arc-img {
+  display: block;
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+}
+
+#airBody[page-type="air-07"] .air-flight__plane {
+  position: absolute;
+  top: -21px;
+  left: calc(50% - 24px);
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(9%) sepia(43%) saturate(1714%) hue-rotate(186deg) brightness(91%) contrast(98%);
+}
+
+#airBody[page-type="air-07"] .air-flight__duration {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  color: #082c5a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-07"] .air-flight__route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr;
+  align-items: start;
+  margin-top: 22px;
+}
+
+#airBody[page-type="air-07"] .air-flight__point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#airBody[page-type="air-07"] .air-flight__code {
+  color: #222;
+  font-size: 124px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+#airBody[page-type="air-07"] .air-flight__city,
+#airBody[page-type="air-07"] .air-flight__datetime {
+  font-size: 40px;
+  line-height: 1.3;
+}
+
+#airBody[page-type="air-07"] .air-flight__dot {
+  display: flex;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  align-self: center;
+  margin-bottom: 62px;
+  border-radius: 50%;
+  background-color: #222;
+}
+
+#airBody[page-type="air-07"] .air-flight__time {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  flex: 0 0 300px;
+  margin: 26px 0 0;
+  border: 4px solid #d5d5d5;
+  border-radius: 40px;
+}
+
+#airBody[page-type="air-07"] .air-flight__time-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#airBody[page-type="air-07"] .air-flight__time-item + .air-flight__time-item {
+  border-left: 4px solid #d5d5d5;
+}
+
+#airBody[page-type="air-07"] .air-flight__time-item dt {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+#airBody[page-type="air-07"] .air-flight__time-item dd {
+  margin-top: 12px;
+  font-size: 80px;
+  font-weight: 700;
+}
+
+/* 좌석 선택 */
+#airBody[page-type="air-07"] .air-actions,
+#airBody[page-type="air-08"] .air-actions {
+  display: flex;
+  height: 140px;
+  flex: 0 0 140px;
+  gap: 30px;
+  margin-top: auto;
+}
+
+#airBody[page-type="air-07"] .air-btn,
+#airBody[page-type="air-08"] .air-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #d5d5d5;
+  border-radius: 20px;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-07"] .air-btn--prev,
+#airBody[page-type="air-08"] .air-btn--prev {
+  color: #292929;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-07"] .air-btn--next,
+#airBody[page-type="air-08"] .air-btn--next {
+  border-color: var(--airBody-primaryBtn-color);
+  color: #fff;
+  background-color: var(--airBody-primaryBtn-color);
+}
+
+#airBody[page-type="air-08"] .air-seat-wrap {
+  display: flex;
+  width: 960px;
+  height: 1100px;
+  flex: 0 0 1100px;
+  gap: 52px;
+  margin: 80px auto 0;
+  text-align: center;
+}
+
+#airBody[page-type="air-08"] .air-seatmap {
+  display: flex;
+  width: 640px;
+  height: 1100px;
+  flex: 0 0 640px;
+  flex-direction: column;
+  padding: 34px 36px;
+  border: 2px solid #d5d5d5;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+#airBody[page-type="air-08"] .air-seatmap__cols,
+#airBody[page-type="air-08"] .air-seatmap__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+#airBody[page-type="air-08"] .air-seatmap__group {
+  display: grid;
+  grid-template-columns: repeat(3, 68px);
+  gap: 18px;
+}
+
+#airBody[page-type="air-08"] .air-seatmap__cols .air-seatmap__group {
+  color: #1c79e2;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-08"] .air-seatmap__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#airBody[page-type="air-08"] .air-seat {
+  display: flex;
+  width: 68px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #fff;
+  background-color: #8ab3ff;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+#airBody[page-type="air-08"] .air-seat--disabled {
+  color: transparent;
+  background-color: #d3d3d3;
+}
+
+#airBody[page-type="air-08"] .air-seat--disabled::before {
+  width: 42px;
+  height: 42px;
+  background:
+    linear-gradient(45deg, transparent 46%, #fff 47% 53%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, #fff 47% 53%, transparent 54%);
+  content: "";
+}
+
+#airBody[page-type="air-08"] .air-seat--selected {
+  background-color: #0057ff;
+}
+
+#airBody[page-type="air-08"] .air-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+  white-space: nowrap;
+}
+
+#airBody[page-type="air-08"] .air-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+#airBody[page-type="air-08"] .air-legend__box {
+  display: block;
+  width: 68px;
+  height: 58px;
+  border-radius: 12px;
+  background-color: #d3d3d3;
+}
+
+#airBody[page-type="air-08"] .air-legend__item--disabled .air-legend__box {
+  background:
+    linear-gradient(45deg, transparent 46%, #fff 47% 53%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, #fff 47% 53%, transparent 54%),
+    #d3d3d3;
+}
+
+#airBody[page-type="air-08"] .air-legend__item--able .air-legend__box {
+  background-color: #8ab3ff;
+}
+
+#airBody[page-type="air-08"] .air-legend__item--selected .air-legend__box {
+  background-color: #0057ff;
+}
+
+#airBody[page-type="air-08"] .air-cabin {
+  display: flex;
+  width: 268px;
+  height: 774px;
+  flex: 0 0 268px;
+  flex-direction: column;
+  margin-top: 58px;
+  overflow: hidden;
+  border-radius: 140px;
+  background-color: #d5d5d5;
+}
+
+#airBody[page-type="air-08"] .air-cabin__cap {
+  display: flex;
+  height: 110px;
+  flex: 0 0 110px;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-08"] .air-cabin__list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-right: 2px solid #888;
+  border-left: 2px solid #888;
+}
+
+#airBody[page-type="air-08"] .air-cabin__list li {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+#airBody[page-type="air-08"] .air-cabin__list li:nth-child(1) {
+  flex: 135;
+}
+
+#airBody[page-type="air-08"] .air-cabin__list li:nth-child(2) {
+  flex: 177;
+}
+
+#airBody[page-type="air-08"] .air-cabin__list li:nth-child(3) {
+  flex: 245;
+}
+
+#airBody[page-type="air-08"] .air-cabin__zone {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid #888;
+  color: #080808;
+  background-color: #fafafa;
+}
+
+#airBody[page-type="air-08"] .air-cabin__zone.active {
+  border: 8px solid #0057ff;
+}
+
+#airBody[page-type="air-08"] .air-cabin__name {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+#airBody[page-type="air-08"] .air-cabin__remain {
+  margin-top: 8px;
+  font-size: 34px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#airBody[page-type="air-08"] .air-cabin__remain em {
+  color: #0057ff;
+  font-style: normal;
+}
+
+#airBody[page-type="air-08"] .air-actions .disabled-color {
+  border-color: #858585;
+  background-color: #858585;
+}
+
+/* 탑승권 발급중 */
+#airBody[page-type="air-08-loading"] .air-main--loading {
+  overflow: hidden;
+  color: #fff;
+  background-color: #666;
+}
+
+#airBody[page-type="air-08-loading"] #air-start-screen.air__section--loading {
+  display: flex;
+  height: 1920px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 350px;
+  text-align: center;
+}
+
+#airBody[page-type="air-08-loading"] .air-loading__title {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-08-loading"] .air-loading__spinner {
+  width: 200px;
+  height: 200px;
+  margin-top: 430px;
+  border: 24px solid #ddd;
+  border-top-color: #000;
+  border-right-color: #000;
+  border-radius: 50%;
+  animation: air-loading-spin 1.2s linear infinite;
+}
+
+@keyframes air-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #airBody[page-type="air-08-loading"] .air-loading__spinner {
+    animation-duration: 3s;
+  }
+}
+
+#airBody[page-type="air-08"] .air-loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.68);
+  text-align: center;
+}
+
+#airBody[page-type="air-08"] .air-loading-overlay[hidden] {
+  display: none;
+}
+
+#airBody[page-type="air-08"] .air-loading__title {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-08"] .air-loading__spinner {
+  width: 200px;
+  height: 200px;
+  margin-top: 80px;
+  border: 24px solid #ddd;
+  border-top-color: #000;
+  border-right-color: #000;
+  border-radius: 50%;
+  animation: air-loading-spin 1.2s linear infinite;
+}
+
+/* 탑승권 발급 완료 */
+#airBody[page-type="air-10"] .air-title--complete {
+  margin-top: 200px;
+  font-size: 60px;
+  line-height: 1.3;
+}
+
+#airBody[page-type="air-10"] .air-subtitle--sm {
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 44px;
+  line-height: 1.3;
+}
+
+#airBody[page-type="air-10"] .air-pass {
+  width: 840px;
+  height: 1014px;
+  flex: 0 0 1014px;
+  margin: 64px auto 0;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-radius: 32px;
+  background-color: #fff;
+}
+
+#airBody[page-type="air-10"] .air-pass__head {
+  display: flex;
+  height: 158px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #08284f;
+  font-size: 56px;
+  font-weight: 600;
+}
+
+#airBody[page-type="air-10"] .air-pass__body {
+  display: flex;
+  height: calc(100% - 158px);
+  flex-direction: column;
+  padding: 46px 50px 48px;
+}
+
+#airBody[page-type="air-10"] .air-pass__route {
+  display: flex;
+  height: 190px;
+  flex: 0 0 190px;
+  align-items: center;
+}
+
+#airBody[page-type="air-10"] .air-pass__route > * {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+#airBody[page-type="air-10"] .air-pass__code {
+  color: #222;
+  font-size: 112px;
+  font-weight: 700;
+}
+
+#airBody[page-type="air-10"] .air-pass__plane {
+  width: 100px;
+  height: 100px;
+  color: #1c79e2;
+}
+
+#airBody[page-type="air-10"] .air-pass__info {
+  padding: 48px 0;
+  border-top: 2px solid #d5d5d5;
+  border-bottom: 2px solid #d5d5d5;
+}
+
+#airBody[page-type="air-10"] .air-pass__row {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  font-size: 38px;
+}
+
+#airBody[page-type="air-10"] .air-pass__row dt {
+  width: 195px;
+  flex: 0 0 195px;
+  color: #888;
+}
+
+#airBody[page-type="air-10"] .air-pass__row dd {
+  color: #292929;
+}
+
+#airBody[page-type="air-10"] .air-pass__barcode {
+  display: block;
+  width: 100%;
+  height: 165px;
+  flex: 0 0 165px;
+  margin-top: auto;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #222 0 8px,
+      transparent 8px 13px,
+      #222 13px 20px,
+      transparent 20px 27px,
+      #222 27px 39px,
+      transparent 39px 45px,
+      #222 45px 50px,
+      transparent 50px 58px
+    );
+}
+
+#airBody[page-type="air-10"] .air-actions--single {
+  margin-top: auto;
+}
+
+#airBody[page-type="air-10"] .air-btn--next {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--airBody-primaryBtn-color);
+  border-radius: 20px;
+  color: #fff;
+  background-color: var(--airBody-primaryBtn-color);
+  font-size: 42px;
+  font-weight: 700;
+}
+
