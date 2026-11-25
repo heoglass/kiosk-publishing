@@ -249,6 +249,11 @@
 
 .order-bar .order-count {
   background-color: #a76400;
+  font-family: "Pretendard-SemiBold";
+}
+.order-bar .order-total,
+.order-bar .order-label {
+  font-family: "Pretendard-Bold";
 }
 .cart-list {
   padding: 50px 60px 100px;
@@ -386,15 +391,13 @@
 
   border: 2px solid #000;
   border-radius: 20px;
-  /* background: #fff; */
-
   color: #000;
   font-size: 44px;
   font-family: "Pretendard-Bold";
-
   word-break: keep-all;
-
-  cursor: pointer;
+}
+#screen-options .option-choice span {
+  font-family: "Pretendard-Bold";
 }
 
 /* 이름과 추가금액을 가운데에 나란히 배치 */
@@ -452,11 +455,10 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  min-width: 0;
-  margin: 0;
-
   font-size: 44px;
+  font-family: "Pretendard-Bold";
+}
+#screen-options .option-price span {
   font-family: "Pretendard-Bold";
 }
 
@@ -602,7 +604,7 @@
 
 #screen-review .review-item-name {
   display: block;
-  overflow-wrap: anywhere;
+  font-family: "Pretendard-Bold";
 }
 
 #screen-review .review-item-quantity {
@@ -618,10 +620,6 @@
 /* 합계 */
 #screen-review .review-summary {
   padding: 20px 60px;
-}
-
-#screen-review .review-totals {
-  margin: 0;
 }
 
 #screen-review .review-total-row {
@@ -642,20 +640,13 @@
   border-top: 1px solid #d9d9d9;
 }
 
-#screen-review .review-total-row dt,
-#screen-review .review-total-row dd {
-  margin: 0;
-}
-
-#screen-review .review-total-row dd {
-  text-align: right;
-  white-space: nowrap;
-}
-
 #screen-review .review-total-price {
   color: #e03400;
 }
-
+.review-total-row dt,
+.review-total-row dd {
+  font-family: "Pretendard-Bold";
+}
 /* 추천 메뉴 */
 #screen-review .recommend-section {
   padding: 60px 60px 72px;
@@ -756,13 +747,13 @@
 #screen-review .review-bottom .review-back {
   background: #555;
 }
+#screen-review .review-bottom span {
+  font-family: "Pretendard-Bold";
+}
 
 #screen-review .review-bottom small {
   font-size: 44px;
   font-family: "Pretendard-Regular";
-}
-#screen-review :is(.recommend-button, .review-dine-in, .review-takeout) {
-  overflow: hidden;
 }
 
 #screen-review .cafe-button-ripple {

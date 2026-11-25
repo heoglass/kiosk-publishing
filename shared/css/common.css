@@ -958,7 +958,10 @@ body.modal-open {
   min-height: 128px;
   padding: 24px 0;
 }
-
+.card-payment-summary-row dt,
+.card-payment-summary-row dd {
+  font-family: "Pretendard-Bold";
+}
 #modal-card-payment .card-payment-summary-row + .card-payment-summary-row,
 #modal-fastfood-card-payment
   .card-payment-summary-row

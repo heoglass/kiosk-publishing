@@ -22,8 +22,10 @@
   justify-content: space-between;
   align-items: center;
   font-size: 44px;
-  font-family: "Pretendard-Bold";
   color: #fff;
+}
+.main-title-container p {
+  font-family: "Pretendard-Bold";
 }
 .location-time-bar {
   display: flex;
@@ -140,6 +142,7 @@
   text-align: center;
 }
 .title-container .page-description span {
+  font-family: "Pretendard-Bold";
   color: #002164;
 }
 .date-select-container {
@@ -1228,6 +1231,9 @@ express-bus_07.html
   border-bottom: 1px solid #000;
   vertical-align: middle;
 }
+.bus-refund-table td {
+  font-family: "Pretendard-Medium";
+}
 .bus-refund-table tr > :last-child {
   border-right: 0;
 }
@@ -1284,6 +1290,8 @@ express-bus_07.html
   justify-content: center;
   gap: 20px;
   font-size: 44px;
+}
+.bus-refund-receipt span {
   font-family: "Pretendard-Bold";
 }
 .bus-refund-receipt .bus-refund-checkbox {
@@ -1315,12 +1323,15 @@ express-bus_07.html
 .bus-refund-amounts {
   margin: 60px 0 0;
   font-size: 44px;
-  font-family: "Pretendard-Bold";
 }
 .bus-refund-amount-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.bus-refund-amount-row dt,
+.bus-refund-amount-row dd {
+  font-family: "Pretendard-Bold";
 }
 .bus-refund-amount-row.first {
   margin-bottom: 20px;
@@ -1462,18 +1473,19 @@ dialog.bus-refund-loading-dialog::backdrop {
 }
 
 .screen-bus-ticket-complete .bus-ticket-paper-route {
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 56px;
-  min-height: 216px;
   border-bottom: 2px solid #ddd;
   font-size: 80px;
-  font-family: "Pretendard-Bold";
-  line-height: 104px;
+  padding: 28px 0 18px;
 }
-
+.bus-ticket-paper-route .bus-ticket-paper-departure,
+.bus-ticket-paper-route .bus-ticket-paper-arrival {
+  font-family: "Pretendard-Bold";
+  line-height: 149px;
+}
 .screen-bus-ticket-complete .bus-ticket-paper-arrow {
   flex: 0 0 96px;
   color: #000;

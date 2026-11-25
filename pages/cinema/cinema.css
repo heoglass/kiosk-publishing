@@ -107,12 +107,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* min-height: 307px; */
   border-radius: 28px;
   font-size: var(--font-44-size);
   white-space: nowrap;
   border: 2px solid #fff;
   padding: 37px 0 50px;
+}
+.cinema-menu-tile span {
+  font-family: "Pretendard-Medium";
 }
 
 .cinema-main .cinema-buy {
@@ -127,6 +129,9 @@
   padding: 46px 60px;
   background: #08080b;
   font-size: 40px;
+}
+.cinema-footer span {
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-footer-item {
@@ -186,13 +191,16 @@
   color: #fff;
   text-align: left;
   font-size: var(--font-44-size);
-  font-family: "Pretendard-Bold";
 }
 
 .cinema-film-info {
   display: grid;
   gap: 8px;
   padding: 24px 20px 0;
+}
+.cinema-film-info time,
+.cinema-film-info span {
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-film-info > :last-child {
@@ -256,17 +264,13 @@ body:has(.cinema-age-modal[open]) {
 
 .cinema-main .cinema-dialog-lead {
   margin-bottom: 24px;
+  font-family: "Pretendard-Bold";
   font-size: 44px;
+}
+.cinema-main .cinema-dialog-lead span {
+  color: #df3c3c;
   font-family: "Pretendard-Bold";
 }
-.cinema-main .cinema-dialog-lead strong {
-  color: #df3c3c;
-}
-
-.age-red {
-  color: #df3c3c;
-}
-
 .cinema-dialog-description {
   font-size: 38px;
   font-family: "Pretendard-Medium";
@@ -420,13 +424,13 @@ body:has(.cinema-age-modal[open]) {
   padding: 0 82px;
   background: #18191e;
   font-size: 40px;
-  font-family: "Pretendard-Bold";
 }
 
 .cinema-seat-total {
   display: flex;
   align-items: baseline;
   gap: 36px;
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-seat-bar .cinema-seat-button {
@@ -439,7 +443,6 @@ body:has(.cinema-age-modal[open]) {
   color: #fff;
   font-size: 40px;
   font-family: "Pretendard-Bold";
-  cursor: pointer;
 }
 
 .cinema-people-page .cinema-footer {
@@ -646,7 +649,12 @@ body:has(.cinema-age-modal[open]) {
   display: grid;
   gap: 24px;
   font-size: 44px;
+}
+.cinema-payment-lines dt {
   font-family: "Pretendard-SemiBold";
+}
+.cinema-payment-lines dd {
+  font-family: "Pretendard-Bold";
 }
 
 .cinema-payment-lines > div {
@@ -675,10 +683,11 @@ body:has(.cinema-age-modal[open]) {
   padding: 62px 48px 0;
   text-align: center;
   font-size: 40px;
+}
+.cinema-review-heading p {
   font-family: "Pretendard-Bold";
 }
-
-.cinema-review-heading h2 {
+.cinema-review-heading #cinema-review-title {
   font-size: 52px;
 }
 
@@ -688,7 +697,7 @@ body:has(.cinema-age-modal[open]) {
 }
 
 .cinema-review-screen .cinema-film-summary {
-  margin-top: 142px;
+  margin-top: 140px;
 }
 
 .cinema-review-details {
@@ -696,6 +705,15 @@ body:has(.cinema-age-modal[open]) {
   gap: 10px;
   margin-top: 18px;
   font-size: 40px;
+}
+.cinema-review-details dt,
+.cinema-review-details dd {
+  font-family: "Pretendard-Medium";
+}
+.cinema-review-details dt {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
 }
 
 .cinema-review-details > div {

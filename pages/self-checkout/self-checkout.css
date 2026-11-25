@@ -182,16 +182,19 @@
   font-size: 42px;
   line-height: 1.3;
 }
-
-.self-checkout-product-count {
+.self-checkout-scan-guide p {
   font-family: "Pretendard-Medium";
+}
+.self-checkout-scan-guide span {
+  font-family: "Pretendard-Bold";
+}
+.self-checkout-product-count {
   text-align: right;
 }
 
-.self-checkout-product-count strong {
+.self-checkout-product-count .count-text {
   display: block;
   font-size: 44px;
-  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-product-area {
@@ -211,6 +214,7 @@
 
 .self-checkout-empty span {
   color: #895129;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-product-area [hidden] {
@@ -290,9 +294,15 @@
   border-radius: 22px;
   font-size: 44px;
   line-height: 1.4;
+}
+.self-checkout-totals dt,
+.self-checkout-totals dd {
   font-family: "Pretendard-Medium";
 }
-
+.self-checkout-pay-total dt,
+.self-checkout-pay-total dd {
+  font-family: "Pretendard-Bold";
+}
 .self-checkout-totals > div {
   display: flex;
   justify-content: space-between;
@@ -391,10 +401,11 @@
 .self-checkout-phone-keypad > button {
   box-sizing: border-box;
   font-family: inherit;
-  font-family: "Pretendard-Bold";
   text-decoration: none;
 }
-
+.self-checkout-flow .self-checkout-method span {
+  font-family: "Pretendard-Bold";
+}
 .self-checkout-flow .self-checkout-method {
   display: grid;
   place-content: center;
@@ -442,7 +453,9 @@
 }
 .self-checkout-flow-actions-wide a {
   background-color: #ffc107;
+  font-family: "Pretendard-Bold";
 }
+
 .self-checkout-flow .self-checkout-flow-button {
   position: relative;
   display: grid;
@@ -457,10 +470,13 @@
   line-height: 1.2;
   text-align: center;
 }
-
+.self-checkout-flow .self-checkout-flow-back {
+  font-family: "Pretendard-Bold";
+}
 .self-checkout-flow .self-checkout-flow-primary {
   border-color: #ffc107;
   background: #ffc107;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-flow .self-checkout-flow-button:disabled,
@@ -498,7 +514,7 @@
 }
 
 .self-checkout-phone-entry label {
-  font-size: 42px;
+  font-size: 44px;
   font-family: "Pretendard-Bold";
 }
 
@@ -533,7 +549,7 @@
   background: #fff;
   color: #000;
   font-size: 44px;
-  cursor: pointer;
+  font-family: "Pretendard-SemiBold";
 }
 
 /* .self-checkout-phone-keypad > button:active {
@@ -543,8 +559,11 @@
   margin: 64px 0 0;
   color: #000;
   font-size: 44px;
+}
+.self-checkout-point-summary dt,
+.self-checkout-point-summary dd {
   font-family: "Pretendard-Bold";
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .self-checkout-point-summary > div {
@@ -640,6 +659,7 @@ dialog.self-checkout-payment-dialog {
   margin-top: 40px;
   font-size: 54px;
   line-height: 1.25;
+  font-family: "Pretendard-Bold";
 }
 
 .self-checkout-payment-status p {

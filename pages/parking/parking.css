@@ -453,9 +453,11 @@ body {
   justify-content: space-between;
   min-height: 138px;
   font-size: var(--font-44-size);
+}
+.parking-fee-row dt,
+.parking-fee-row dd {
   font-family: "Pretendard-Medium";
 }
-
 .parking-fee-row + .parking-fee-row {
   border-top: 1px solid #dddfe6;
 }

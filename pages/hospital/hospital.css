@@ -216,10 +216,12 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: 14px 6px;
   font-size: 44px;
-  font-family: "Pretendard-SemiBold";
   line-height: 60px;
 }
-
+.hospital-auth-details dt,
+.hospital-auth-details dd {
+  font-family: "Pretendard-SemiBold";
+}
 .hospital-auth-details dd {
   color: #0a60f3;
   text-align: right;
@@ -289,9 +291,11 @@
   border-radius: 32px;
   background: #fff;
   font-size: 44px;
+}
+.hospital-issue-patient dt,
+.hospital-issue-patient dd {
   font-family: "Pretendard-SemiBold";
 }
-
 .hospital-issue-patient dd {
   margin: 0;
   color: #0a60f3;
@@ -362,7 +366,11 @@
   font-size: 44px;
   font-family: "Pretendard-Bold";
 }
-
+.hospital-issue-options #hospital-copy-label,
+.hospital-issue-options #hospital-fee-label,
+.hospital-issue-options #hospital-document-fee {
+  font-family: "Pretendard-Bold";
+}
 .hospital-copy-list {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -376,6 +384,7 @@
   border-radius: 20px;
   background: #fafafa;
   color: #000;
+  font-family: "Pretendard-Bold";
 }
 
 .hospital-copy-list button[aria-pressed="true"] {
