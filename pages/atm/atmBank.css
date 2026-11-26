@@ -84,6 +84,9 @@ main.atm__screen {
 .atm__section .atm__subject {
     margin-bottom: 40px;
 }
+body[data-page="atm-index-atm-17"] .atm__section .atm__subject {
+  margin-bottom: 0px;
+}
 
 .atm__section h2 {
     font-weight: 700;
@@ -314,17 +317,29 @@ body[data-page="atmg-03"] .atm__section .atm__subject {
   height: 215px;
 }
 .atm__buttons.atmg__buttons--single {
-  grid-template-columns: 868px;
-  justify-content: center;
+  grid-template-columns: 1fr;
 }
 .atmg__buttons--single .atm-btn {
-  width: 868px;
+  width: 100%;
 }
 
 /* ATM 체험 완료 (atm-end) */
 .atm__section.atmg__section--end {
   background: #FFFFFF;
 }
+ body[data-page="atmExpComplete"] section,
+ body[data-page="atm-complete"] section {
+  padding: 60px;
+ }
+body[data-page="atmExpComplete"] .atm__section .atmg__subject--card,
+body[data-page="atm-complete"] .atm__section .atmg__subject--card {
+  padding:14px 0;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+
+
 .atm__section .atmg__subject--card {
   margin-top: 20px;
   margin-bottom: 23px;
@@ -363,14 +378,14 @@ body[data-page="atmg-03"] .atm__section .atm__subject {
 }
 .atmg__amount-grid {
   display: grid;
-  grid-template-columns: repeat(5, 160px);
+  grid-template-columns: repeat(5, 1fr); /* 160px → 1fr */
   grid-auto-rows: 112px;
-  gap: 18px 16px;
+  gap: 20px 30px;
+  width: 100%;
 }
 .atmg__amount {
   box-sizing: border-box;
-  width: 160px;
-  height: 112px;
+  height: 116px;
   border: 1px solid #cdd6ee;
   border-radius: 8px;
   background: #fff;
@@ -391,7 +406,6 @@ body[data-page="atmg-03"] .atm__section .atm__subject {
 .atm__buttons.atmg__buttons--narrow {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 19px;
-  width: 868px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -399,7 +413,7 @@ body[data-page="atmg-03"] .atm__section .atm__subject {
   width: 100%;
 }
 section.sectiom__atm-09 {
-  padding: 46px 56px;
+  padding: 60px 60px 60px;
 }
 
 /* ATM-10 보이스피싱 주의 */
@@ -542,7 +556,7 @@ section.sectiom__atm-09 {
 .atm__section.atm-15 .atmg__list {
   padding-bottom: 28px;
 }
-.atm__16,
-.atm__17 {
-  padding: 120px 60px;
+body[data-page="atm-index-atm-16"] .atm__16,
+body[data-page="atm-index-atm-17"] .atm__17 {
+  padding: 120px 60px 80px;
 } 

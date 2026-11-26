@@ -1,6 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
+  initAtmAnimations();
   initAtmUi();
 });
+
+const initAtmAnimations = () => {
+  document.querySelectorAll("lottie-player[data-animation]").forEach((player) => {
+    const name = player.dataset.animation;
+    const animation = window[name];
+    if (!animation || !player.updateComplete || typeof player.load !== "function") {
+      console.error("애니메이션을 불러오지 못했습니다:", name);
+      return;
+    }
+
+    player.addEventListener("error", () => {
+      console.error("애니메이션을 불러오지 못했습니다:", name);
+    });
+    player.updateComplete.then(() => player.load(animation)).catch((error) => {
+      console.error("애니메이션을 불러오지 못했습니다:", name, error);
+    });
+  });
+};
 
 /**
  * 자동 화면 이동
