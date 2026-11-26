@@ -501,6 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   const lottieFingerPrint = document.getElementById("lottie-fingerprint");
+  const lottieFingerPrintThumb = document.getElementById("fingerprint-thumb");
 
   if (lottieFingerPrint && window.lottie && window.lottieFingerPrintData) {
     const cardAnimation = window.lottie.loadAnimation({
@@ -512,5 +513,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     cardAnimation.setSpeed(0.7);
+  }
+  if (lottieFingerPrintThumb && window.lottie && window.fingerPrintThumbData) {
+    const cardAnimation = window.lottie.loadAnimation({
+      container: lottieFingerPrintThumb,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: window.fingerPrintThumbData,
+    });
+
+    cardAnimation.setSpeed(1);
   }
 });
