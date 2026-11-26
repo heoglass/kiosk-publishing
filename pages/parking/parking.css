@@ -299,15 +299,6 @@ body {
   bottom: 133px;
   left: 46%;
 }
-.parking-result-image {
-  display: block;
-  flex-shrink: 0;
-  width: 540px;
-  height: 400px;
-  object-fit: contain;
-  border: 1px solid red;
-}
-
 .parking-result-title {
   margin: 10px 0 80px;
   color: #000;
@@ -321,7 +312,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  box-sizing: border-box;
   width: 100%;
   padding: 60px 70px;
   border-radius: 32px;
