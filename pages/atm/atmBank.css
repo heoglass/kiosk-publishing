@@ -78,12 +78,21 @@ main.atm__screen {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 40px 60px;
+    padding: 60px;
 }
 
 .atm__section .atm__subject {
     margin-bottom: 40px;
 }
+
+body[data-page="atmg-01"] .atm__section .atm__subject {
+  margin-bottom: 0px;
+  background: rgba(221, 232, 247, 1);
+  border-radius: 16px; 
+  padding: 20px 0px 0;
+  margin-bottom: 40px;
+}
+
 body[data-page="atm-index-atm-17"] .atm__section .atm__subject {
   margin-bottom: 0px;
 }
@@ -189,8 +198,9 @@ a.atm-btn {
 }
 .atmg__img {
   display: block;
-  width: 284px;
-  height: auto;
+  width: 234px;
+  height: 164x;
+  margin: 0 auto;
 }
 
 /* ATMG-02 카드를 넣어주세요 / ATMG-03 카드를 읽고 있습니다 */

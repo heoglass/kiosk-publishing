@@ -349,10 +349,19 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+.fastfood-modal-header {
+  background: rgba(135, 31, 19, 1);
+}
+
+.fastfood-modal-header .points-prompt-actions .points-yes {
+  background: rgba(255, 188, 13, 1);
+
+}
+
 .modal-title {
   font-size: 60px;
   font-weight: 700;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   color: #000;
 }
 
@@ -1395,7 +1404,8 @@
 
 /* 영수증 받기 모달 */
 :is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-yes {
-  background: #df3c3c;
+  background: #FFBC0D;
+
 }
 
 #index-fast-order .category-main.fast__food--menu {
