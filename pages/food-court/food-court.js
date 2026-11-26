@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const formatPhoneNumber = (digits) => {
+    const parts = [digits.slice(0, 3), digits.slice(3, 7), digits.slice(7, 11)];
+    return parts.filter(Boolean).join('-');
+  };
+
+  const renderPhoneInput = (input, digits, preserveCaret = false) => {
+    const digitsBeforeCaret = preserveCaret
+      ? input.value.slice(0, input.selectionStart).replace(/\D/g, '').length
+      : 0;
+    input.value = formatPhoneNumber(digits);
+    if (preserveCaret) {
+      const caret = formatPhoneNumber(digits.slice(0, digitsBeforeCaret)).length;
+      input.setSelectionRange(caret, caret);
+    }
+  };
+
+  const enablePhoneSeparatorDeletion = (input) => {
+    input.addEventListener('keydown', (event) => {
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+      if (start !== end) return;
+
+      if (event.key === 'Backspace' && input.value[start - 1] === '-') {
+        event.preventDefault();
+        input.setRangeText('', start - 2, start, 'end');
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      } else if (event.key === 'Delete' && input.value[start] === '-') {
+        event.preventDefault();
+        input.setRangeText('', start, start + 2, 'end');
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    });
+  };
+
   if (window.location.pathname.endsWith('/index-orderlist-payment-step3.html')) {
     window.setTimeout(() => {
       window.location.href = 'index-orderlist-payment-step4.html';
@@ -159,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let phoneDigits = '';
       let isNavigating = false;
 
-      const updatePhoneInput = () => {
-        phoneInput.value = phoneDigits;
+      const updatePhoneInput = (preserveCaret = false) => {
+        renderPhoneInput(phoneInput, phoneDigits, preserveCaret);
         modalConfirmBtn.disabled = phoneDigits.length !== 11;
       };
 
@@ -171,9 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
+      enablePhoneSeparatorDeletion(phoneInput);
       phoneInput.addEventListener('input', () => {
         phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
-        updatePhoneInput();
+        updatePhoneInput(true);
         goToNextStep();
       });
 
@@ -424,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalConfirmBtn.addEventListener('click', () => {
       if (isPhoneEntryStep) {
         const phoneInput = document.getElementById('points-phone-number');
-        if (!(phoneInput instanceof HTMLInputElement) || phoneInput.value.length !== 11) return;
+        if (!(phoneInput instanceof HTMLInputElement) || phoneInput.value.replace(/\D/g, '').length !== 11) return;
       }
       window.location.href = 'index-orderlist-payment-step2.html';
     });
@@ -448,8 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
       let isNavigating = false;
 
-      const updatePhoneInput = () => {
-        phoneInput.value = phoneDigits;
+      const updatePhoneInput = (preserveCaret = false) => {
+        renderPhoneInput(phoneInput, phoneDigits, preserveCaret);
         savePointsButton.disabled = false;
       };
 
@@ -461,9 +496,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
+      enablePhoneSeparatorDeletion(phoneInput);
       phoneInput.addEventListener('input', () => {
         phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
-        updatePhoneInput();
+        updatePhoneInput(true);
         goToNextStep();
       });
 
@@ -501,8 +537,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let phoneDigits = savedPhoneNumber.replace(/\D/g, '').slice(0, 11);
       let isNavigating = false;
 
-      const updatePhoneInput = () => {
-        phoneInput.value = phoneDigits;
+      const updatePhoneInput = (preserveCaret = false) => {
+        renderPhoneInput(phoneInput, phoneDigits, preserveCaret);
       };
 
       const goToNextStep = () => {
@@ -513,9 +549,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
+      enablePhoneSeparatorDeletion(phoneInput);
       phoneInput.addEventListener('input', () => {
         phoneDigits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
-        updatePhoneInput();
+        updatePhoneInput(true);
         goToNextStep();
       });
 

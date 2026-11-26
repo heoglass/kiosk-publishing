@@ -609,7 +609,7 @@
 }
 
 #modal-points-phone .modal-body-court {
-  padding: 100px 60px;
+  padding: 60px;
 }
 
 .modal-buttons-court {
@@ -644,6 +644,7 @@
 
 .modal--payment .modal-body {
   padding: 100px 0;
+  border-radius: 32px;
 }
 
 #modal-points-prompt .modal-header .modal-title {
@@ -681,6 +682,11 @@
 #modal-points-phone .points-phone-number,
 #modal-points-phone .points-phone-number:not(:placeholder-shown) {
   border-color: #e42200;
+}
+
+#modal-points-phone .points-phone-number:focus {
+  border: 3px solid rgba(228, 34, 0, 1);
+  outline: none;
 }
 
 #modal-points-phone .points-phone-number[value] {

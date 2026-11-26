@@ -834,6 +834,9 @@
 
 .modal--payment .modal-body {
   padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* #modal-fastfood-card-loading .modal-body {
@@ -891,6 +894,7 @@
 }
 
 .modal-header > h2 {
+  font-size: 52px;
   color: #fff;
   margin-bottom: 0px;
 }
@@ -989,13 +993,13 @@
   min-height: 280px;
   align-items: center;
   gap: 20px;
-  padding: 24px 60px;
+  padding: 0 60px;
   background: #f2f2f2;
 }
 
 .fastfood__summary--order {
   min-height: 192px;
-  padding: 60px;
+  padding: 40px;
 }
 
 .fastfood-set-side__summary .option__list--selected {
@@ -1035,7 +1039,7 @@
 #index-option-step3 .fastfood-set-side__summary {
   justify-content: center;
   min-height: 192px;
-  padding: 60px 40px;
+  padding: 40px 0;
 }
 
 #index-option-step3 .fastfood-set-side__summary-info {
@@ -1112,7 +1116,7 @@
 
 .fastfood-payment-modal .modal-header,
 .payment__card--insert .modal-header {
-  padding: 40px 48px;
+  padding: 20px 48px;
   background: #871f13;
 }
 
@@ -1144,6 +1148,12 @@
   background: #fff;
   color: #111;
   text-align: left;
+}
+
+.fastfood-payment-modal__option.active {
+  box-shadow: 0px 0px 18.3px 0px rgba(255, 188, 13, 1);
+  border: 2px solid rgba(255, 188, 13, 1);
+
 }
 
 .fastfood-payment-modal__option > img {
@@ -1405,6 +1415,7 @@
 /* 영수증 받기 모달 */
 :is(#modal-points-prompt, #modal-receipt) .points-prompt-actions .points-yes {
   background: #FFBC0D;
+  color: #292929;
 
 }
 
@@ -1444,4 +1455,38 @@
 .order-bar > button {
   overflow: hidden;
   padding: 32px 0;
+}
+
+body#index-payment-step3 .modal-body,
+body#index-payment-step4 .modal--payment-status .modal-body {
+    padding: 96px 0;
+    min-height: 591px;
+    
+}
+
+body[data-page="fastfood-complete"] #category-header  {
+  background: #871F13;
+}
+.complete-main {
+    width: 100%;
+    max-width: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 144px 60px 0;
+    text-align: center;
+    color: #000;
+}
+
+body[data-page="fastfood-complete"] #fastfood-complete-confirm,
+body[data-page="fastfood-complete"] .complete-button {
+  background: #FFBC0D;
+  color: #292929;
+}
+
+body[data-page="fastfood-complete"] .experience-complete .complete-button-secondary {
+    background: #555;
+    color: #fff;
 }

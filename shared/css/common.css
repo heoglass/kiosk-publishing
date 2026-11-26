@@ -1120,7 +1120,8 @@ body.modal-open {
 /* 적립 안내 / 영수증 본문 */
 :is(#modal-points-prompt, #modal-receipt) .modal-body {
   display: block;
-  padding: 80px 60px 60px;
+  padding: 81px 60px 60px;
+  /* 헤더 흰색 라인 안보이도록 수정 */
   text-align: center;
 }
 

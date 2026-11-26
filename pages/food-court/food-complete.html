@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문 완료</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="../../shared/css/complete.css" />
+    <link rel="stylesheet" href="./food-court.css" />
+    <script src="../../shared/js/common.js" defer></script>
+  </head>
+  <body>
+    <div class="kiosk-screen complete-screen">
+      <header id="category-header" class="cafe__header parking__header foodcourt__header">
+        <div class="header-left">
+          <a href="../../index.html" aria-label="처음으로">
+            <img src="../../shared/images/icon/icon-home.png" alt="" class="category-header-home" />
+          </a>
+          <img src="../../shared/images/icon/arrow-right-w.png" alt="" class="category-header-arrow-right" />
+          <span id="header-title"></span>
+        </div>
+        <button type="button" class="header-sound-toggle" aria-label="소리" aria-pressed="true" data-sound-off-src="../../shared/images/icon/sound_w_off.png">
+          <img src="../../shared/images/icon/sound_w.png" class="header-sound" alt="" />
+        </button>
+      </header>
+      <main class="complete-main order-complete">
+        <div class="complete-main-contents">
+          <div class="complete-text-area">
+            <h1 class="complete-title">주문이 완료되었습니다.</h1>
+            <p class="complete-message">
+              주문번호를 확인해주세요.<br />주문 번호 확인 후 카운터에서
+              픽업해주세요.
+            </p>
+          </div>
+          <img src="../../shared/images/order-number-red.png" class="complete-order-image" alt="주문완료 이미지" />
+        </div>
+        <footer class="complete-footer">
+          <a class="complete-button" href="./food-experience-complete.html" style="background-color: #DF3C3C">확인</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
