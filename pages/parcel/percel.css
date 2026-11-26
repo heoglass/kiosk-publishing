@@ -89,13 +89,13 @@ body#parcelBody {
   -ms-overflow-style: none;
 }
 body#parcelBody[data-page="indexProductType"] .parcel__content,
-body#parcelBody[data-page="indexAgree"] .parcel__content,
-body#parcelBody[data-page="indexParcelChk"] .parcel__content,
 body#parcelBody[data-page="indexFrom"] .parcel__content,
 body#parcelBody[data-page="indexTo"] .parcel__content
 {
-  padding: 54px 60px 0px;
+  padding: 80px 60px 0px;
 }
+
+body#parcelBody[data-page="indexAgree"] 
 
 body[data-page="indexCost"] .parcel__content,
 body[data-page="indexWeight"] .parcel__content,
@@ -121,17 +121,20 @@ body[data-page="indexWeight"] .btn-area {
   background-color: var(--parcel-primary-color);
   display: flex;
   align-items: center;
-  padding-left: 77px;
+  justify-content: space-between;
+  padding: 0 60px 0 77px;
 }
-#parcelBody .parcel__back {
+#parcelBody .parcel__back,
+#parcelBody .parcel__home {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   color: #fff!important;
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 700;
 }
 #parcelBody .parcel__back-icon { width: 60px; height: auto; }
+#parcelBody .parcel__home-icon { width: 60px; height: 60px; }
 
 /* 스크린리더 전용 */
 #parcelBody .blind {
@@ -185,7 +188,7 @@ body[data-page="indexWeight"] .btn-area {
 /* ---------- 타이틀 ---------- */
 #parcelBody .parcel-title {
   flex: none;
-  margin: 44px 0 72px;
+  margin: 100px 0 72px;
   text-align: center;
 }
 #parcelBody .parcel-title__main {
@@ -236,19 +239,13 @@ body[data-page="indexWeight"] .btn-area {
 }
 body[data-page="indexCost"] .btn-area {
     position: absolute;
-    bottom: 40px;
+    bottom: 192px;
     left: 0;
     width: 100%;
     padding: 0 60px;
 }
 
-
-
-
-
 #parcelBody .btn-area--row { flex-direction: row; gap: 30px; }
-
-
 #parcelBody .btn-area--row--bottom {
    padding: 0 60px;
     position: absolute;
@@ -256,15 +253,14 @@ body[data-page="indexCost"] .btn-area {
     width: 100%
 }
 
-
-
 #parcelBody .btn-area--row .btn { flex: 1; height: 140px; }
 #parcelBody .btn {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 130px;
+  height: 140px;
+  line-height: 140px;
   padding: 0;
   border: 0;
   border-radius: 20px;
@@ -713,9 +709,32 @@ body[data-page="indexCost"] .btn-area {
 #parcelBody .parcel__content--indexWeight .parcel-title {  margin-bottom: 70px; }
 #parcelBody .parcel__content--indexWeight .parcel-notice { margin-bottom: 61px; }
 
-#parcelBody .parcel__content--indexAgree { padding-top: 70px; }
 #parcelBody .parcel__content--indexAgree .parcel-title { margin: 54px 0 40px; }
 #parcelBody .parcel__content--indexAgree .parcel-notice { margin: 49px 0 40px; }
+
+/* 간격 다른 화면 분기처리 */
+body#parcelBody[data-page="indexAgree"] .parcel-title,
+body#parcelBody[data-page="indexParcelChk"] .parcel-title { 
+  margin-top: 44px; 
+}
+body#parcelBody[data-page="indexAgree"] .parcel__content,
+body#parcelBody[data-page="indexParcelChk"] .parcel__content {
+    padding: 80px 60px 0px;
+}
+
+body#parcelBody[data-page="indexCost"] .parcel__content {
+    padding: 80px 80px 40px;
+}
+
+body#parcelBody[data-page="indexParcelView"] .parcel__content {
+  position: relative;
+    padding: 80px 0 40px;
+}
+
+body#parcelBody[data-page="indexParcelView"] .parcel-title {
+  margin: 80px 0 46px;
+}
+
 
 #parcelBody .parcel__content--indexFrom,
 #parcelBody .parcel__content--indexTo { padding-bottom: 0; }
@@ -725,13 +744,7 @@ body[data-page="indexCost"] .btn-area {
 #parcelBody .parcel__content--indexTo .btn-area { margin-top: 61px; }
 #parcelBody .parcel__content--indexFrom .keyboard,
 #parcelBody .parcel__content--indexTo .keyboard { margin-top: auto; }
-
-#parcelBody .parcel__content--indexParcelChk { padding-top: 55px; padding-bottom: 60px; }
 #parcelBody .parcel__content--indexParcelChk .parcel-title { margin-top: 66px; margin-bottom: 40px; }
-
-#parcelBody .parcel__content--indexParcelView { position: relative; padding-top: 72px; padding-bottom: 88px; padding: 72px 0 60px; }
-#parcelBody .parcel__content--indexParcelView .parcel-title { margin-top: 49px; margin-bottom: 62px; }
-
 
 /* 운송장출력 모달 */
 #parcelBody .modal-dim {

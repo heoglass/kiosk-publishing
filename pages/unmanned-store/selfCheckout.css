@@ -558,7 +558,8 @@ a.disabled-color,
   cursor: pointer;
 }
 .selfCheckout__section .selfCheckout__mode-btn.is-active {
-  background-color: #8E9EC5;
+    box-shadow: 0px 0px 18.3px 0px rgba(36, 91, 147, 1);
+    border: 8px solid rgba(40, 107, 173, 1);
 }
 .selfCheckout__mode-icon {
   height: 74px;
