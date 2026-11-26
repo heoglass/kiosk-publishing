@@ -247,7 +247,7 @@ body#tablePay {
     height: 97px;
     background-color: #ffffff;
     border-top: 1px solid #e0e0e0;
-    padding: 0 24px;
+    padding: 20px 24px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -795,7 +795,7 @@ dialog.tablepay-modal-wrap[open] {
 .tablePayWrap-total .tablePayWrap__total-price {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 25px;
     font-size: 32px;
     font-weight: 700;
 }
@@ -821,13 +821,19 @@ dialog.tablepay-modal-wrap[open] {
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back::before,
 .tablePayWrap__btn-back::before 
 {
-    content: "< ";
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url("../../shared/images/table/back-btn-arrow.png") center / contain no-repeat;
+    vertical-align: middle;
 }
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-pay {
     background: #FFBC0D;
     color:  #292929;
     flex: 1.8;
 }
+
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-pay:disabled {
     background: #ccc;
     color: #666;
@@ -840,6 +846,13 @@ dialog.tablepay-modal-wrap[open] {
     border-radius: 20px;
     padding: 22px 0;
     text-align: center;
+    color: #292929;
+}
+
+.tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back {
+    background: #555555;
+    color: #fff;
+    flex: 1;
 }
 
 /* 나눠서 결제하기영역 */

@@ -236,7 +236,7 @@ body#tablePay {
     height: 97px;
     background-color: #ffffff;
     border-top: 1px solid #e0e0e0;
-    padding: 0 24px;
+    padding: 20px 24px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -816,9 +816,15 @@ dialog.tablepay-modal-wrap[open] {
     flex: 1;
 }
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-back::before,
-.tablePayWrap__btn-back::before 
-{
-    content: "< ";
+.tablePayWrap__btn-back::before {
+    /* content: "< "; */
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url(../../shared/images/table/back-btn-arrow.png) center / contain no-repeat;
+    vertical-align: middle;
+
 }
 .tablePayWrap-total .tablePayWrap__actions .tablePayWrap__btn-pay {
     background: #227941;

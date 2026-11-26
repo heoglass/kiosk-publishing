@@ -555,15 +555,15 @@ body[data-page="indexCost"] .btn-area {
   flex-direction: column;
   gap: 10px;
   box-sizing: border-box;
-  height: 383px;
+  height: fit-content;
   margin-top: auto;
-      position: absolute;
-    bottom: 157px;
+  position: absolute;
+  bottom: 36px;
   background-color: #fff;
 }
 #parcelBody .keyboard > .btn-area {
-      margin-top: 0 !important;
-  margin-bottom: 10px;
+  margin-top: 0 !important;
+  margin-bottom: 60px;
 }
 #parcelBody .keyboard__row { display: flex; justify-content: center; gap: 10px; }
 #parcelBody .keyboard__key {
@@ -727,7 +727,7 @@ body#parcelBody[data-page="indexCost"] .parcel__content {
 }
 
 body#parcelBody[data-page="indexParcelView"] .parcel__content {
-  position: relative;
+  position: relative; 
     padding: 80px 0 40px;
 }
 
