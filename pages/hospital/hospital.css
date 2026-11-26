@@ -38,8 +38,8 @@
   align-items: center;
   background-color: #f3f8fd;
 }
-.hospital-top-container.main {
-  margin: 15px 0 0;
+.hospital-top-container.main .hospital-top-gohome {
+  visibility: hidden;
 }
 .hospital-top-title {
   font-size: 44px;

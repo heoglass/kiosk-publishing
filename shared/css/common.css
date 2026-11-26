@@ -430,7 +430,6 @@ body {
 
 /* 개별 삭제 */
 .cart-remove {
-  /* padding: 6.5px 0; */
   border: none;
   background-color: #fff;
   border-radius: 12px;

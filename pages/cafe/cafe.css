@@ -772,13 +772,16 @@
 #modal-payment .payment-method .payment-card-bg {
   width: 316px;
   height: 300px;
-  background-color: #c5af8e;
+  /* background-color: #c5af8e; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 27px 38px;
   border-radius: 24px;
+  border: 8px solid #f09308;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  box-shadow: 0px 0px 18.3px 0px #e08d00;
 }
 #modal-card-payment.cafe-card .payment-image-button {
   background-image: url("../../shared/images/icon/payment-card-bg.png");

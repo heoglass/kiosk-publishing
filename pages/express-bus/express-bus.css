@@ -252,9 +252,9 @@
   text-align: center;
 }
 .bottom-description span {
-  font-weight: 800;
   font-size: 44px;
   color: #002164;
+  font-family: "Pretendard-ExtraBold";
 }
 .bottom-button-container {
   width: 100%;
@@ -1553,4 +1553,33 @@ dialog.bus-refund-loading-dialog::backdrop {
 
 .bus-ripple-light {
   --bus-ripple-color: rgb(156 0 132 / 22%);
+}
+
+.bottom-button-container.bus-footer-with-home:not([hidden]) {
+  display: flex;
+  align-items: stretch;
+  gap: 30px;
+}
+
+.bus-footer-with-home > .bottom-button {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 40px 0;
+}
+
+.bus-footer-with-home > .bus-footer-home {
+  flex: 0 0 205px;
+  border: 2px solid #555;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #000;
+}
+
+.bottom-button-container.bus-footer-with-home > .bottom-button.back {
+  border: 0;
+  background-color: #555;
+  color: #fff;
 }
