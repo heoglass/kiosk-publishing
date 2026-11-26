@@ -217,11 +217,21 @@
   border-radius: 20px;
   text-align: center;
 }
+.departure-arrival-container .area-card.arrival {
+  background-color: #f5fff3;
+  border: 2px solid #116400;
+}
 .departure-arrival-container .area-card-title {
   font-family: "Pretendard-SemiBold";
   font-size: 44px;
   padding-bottom: 20px;
   border-bottom: 4px solid #929292;
+}
+.departure-arrival-container .area-card-title.departure-title {
+  color: #002164;
+}
+.departure-arrival-container .area-card-title.arrival-title {
+  color: #1f6311;
 }
 .departure-arrival-container .area-card-area {
   font-family: "Pretendard-Bold";
@@ -1163,6 +1173,7 @@ express-bus_07.html
   font-size: var(--font-44-size);
   font-family: "Pretendard-Bold";
   border-radius: 20px;
+  height: 130px;
 }
 .bus-refund-first-btn {
   background-color: #9c0084;
@@ -1171,6 +1182,7 @@ express-bus_07.html
   font-size: var(--font-44-size);
   font-family: "Pretendard-Bold";
   border-radius: 20px;
+  height: 130px;
 }
 /* express-bus_09.html 승차권 환불 */
 .screen-bus-refund [hidden] {

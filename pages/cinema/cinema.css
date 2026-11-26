@@ -985,6 +985,7 @@ body:has(.cinema-payment-modal[open]) {
   font-size: var(--font-44-size);
   font-family: "Pretendard-Bold";
   border-radius: 20px;
+  height: 130px;
 }
 
 /* cafe.js와 같은 클릭 위치 기준 리플 */

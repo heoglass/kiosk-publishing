@@ -195,7 +195,9 @@
 }
 .menu-controls button {
   border: none;
+  background-color: transparent;
   font-size: 44px;
+  font-family: "Pretendard-SemiBold";
 }
 .menu-pagination {
   display: flex;
