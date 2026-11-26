@@ -68,13 +68,7 @@ body#catchTableBody {
 
 /* 상단 가로형 헤더 */
 #category-header-horizontal.tablePay__header {
-    height: 70px;
-    padding: 0 36px;
     background-color: #227941;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
 }
 
 #category-header-horizontal.tablePay__header > * {
