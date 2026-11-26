@@ -95,6 +95,7 @@
 .self-checkout-footer > span {
   display: grid;
   padding: 22px 0;
+  font-family: "Pretendard-SemiBold";
 }
 
 .self-checkout-footer > span + span {
@@ -329,8 +330,14 @@
   background-color: #ffc107;
 }
 
+.self-checkout-scan-content .self-checkout-pay-button:disabled {
+  border: 0;
+  background: var(--self-checkout-yellow);
+  color: #000;
+  opacity: 1;
+}
+
 .self-checkout-scan-button {
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -338,23 +345,12 @@
   font-family: inherit;
   font-size: 44px;
   font-family: "Pretendard-Bold";
-}
-
-.self-checkout-scan-content .self-checkout-pay-button:disabled {
-  border: 0;
-  background: var(--self-checkout-yellow);
-  color: #171200;
-  opacity: 1;
-}
-
-.self-checkout-scan-button {
   flex: 0 0 140px;
   gap: 22px;
   margin-top: 40px;
-  border: 4px solid #252525;
-  background: #f7f7f7;
-  color: #171200;
-  cursor: pointer;
+  border: 4px solid #ffc107;
+  box-shadow: 0px 0px 18.3px 0px #ffc107;
+  color: #000;
 }
 
 .self-checkout-scan-button:active {
@@ -364,15 +360,9 @@
 .self-checkout-barcode {
   width: 140px;
   height: 54px;
-  background: repeating-linear-gradient(
-    90deg,
-    #171200 0 5px,
-    transparent 5px 9px,
-    #171200 9px 13px,
-    transparent 13px 15px,
-    #171200 15px 17px,
-    transparent 17px 23px
-  );
+  background-image: url("../../shared/images/self-checkout/icon-barcode-scan.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .self-checkout-scan-status {
@@ -820,6 +810,7 @@ dialog.self-checkout-payment-dialog {
   font-size: var(--font-44-size);
   font-family: "Pretendard-Bold";
   border-radius: 20px;
+  height: 130px;
 }
 
 /* cafe.js와 같은 클릭 위치 기준 리플 */

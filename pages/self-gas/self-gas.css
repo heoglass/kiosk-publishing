@@ -129,7 +129,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(2, 145px);
   gap: 16px 24px;
-  max-width: 772px;
+  max-width: 770px;
   margin: 0 auto;
 }
 
@@ -250,7 +250,7 @@ a.self-gas-payment-credit:active > span {
 .self-gas-amount-actions {
   display: grid;
   gap: 12px;
-  max-width: 848px;
+  max-width: 960px;
   margin-inline: auto;
 }
 
@@ -260,7 +260,8 @@ a.self-gas-payment-credit:active > span {
 
 .self-gas-amount-actions {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 10px;
+  margin-top: 12px;
+  gap: 30px;
 }
 
 .self-gas-amount-option {
@@ -347,8 +348,8 @@ a.self-gas-payment-credit:active > span {
 .self-gas-installment-keypad,
 .self-gas-installment-actions {
   display: grid;
-  gap: 8px 10px;
-  max-width: 870px;
+  gap: 8px 14px;
+  max-width: 960px;
   margin-inline: auto;
 }
 
@@ -498,11 +499,10 @@ button.self-gas-card-guide-box {
 
 .self-gas-spinner {
   display: block;
-  box-sizing: border-box;
   width: 96px;
   height: 96px;
   margin: 64px auto 0;
-  border: 12px solid #000;
+  border: 12px solid #00b299;
   border-right-color: #dadada;
   border-radius: 50%;
   animation: spin 1s linear infinite;

@@ -816,6 +816,7 @@ body:has(.hospital-payment-modal[open]) {
   font-size: var(--font-44-size);
   font-family: "Pretendard-Bold";
   border-radius: 20px;
+  height: 130px;
 }
 
 /* 시작연월·종료연월·발행부수 선택을 모두 마친 경우 */
