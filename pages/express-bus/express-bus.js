@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ".departure-arrival-container"
     );
     const areaTexts = busFirstScreen.querySelectorAll(".area-card-area");
-    const searchButton = busFirstScreen.querySelector(".bottom-button");
+    const searchButton = busFirstScreen.querySelector(".bus-search-button");
     if (!areaContainer || areaTexts.length !== 2 || !searchButton) return;
 
     // 별도 저장 없이 02 화면에서 URL로 넘긴 선택값만 표시합니다.
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
       url.searchParams.delete("select");
       return url;
     };
-    const previousLink = screen.querySelector(".contens-bottom .bottom-button");
+    const previousLink = screen.querySelector(".bus-terminal-back");
     if (previousLink) previousLink.href = createReturnUrl().href;
 
     const tabs = screen.querySelector(".bus-region-tabs");
