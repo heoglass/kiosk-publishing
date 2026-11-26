@@ -1,4 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
+  let pendingRipple = null;
+
+  const playRipple = (event, target, duration = 350) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
+    target.classList.add('food-ripple-host');
+    if (getComputedStyle(target).position === 'static') target.style.position = 'relative';
+    const rect = target.getBoundingClientRect();
+    const size = Math.hypot(target.clientWidth, target.clientHeight) * 2;
+    const ripple = document.createElement('span');
+    ripple.className = 'cafe-button-ripple';
+    ripple.setAttribute('aria-hidden', 'true');
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.detail ? ((event.clientX - rect.left) / rect.width) * 100 : 50}%`;
+    ripple.style.top = `${event.detail ? ((event.clientY - rect.top) / rect.height) * 100 : 50}%`;
+    target.append(ripple);
+
+    const animation = ripple.animate([
+      { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+      { transform: 'translate(-50%, -50%) scale(1)', opacity: 0 },
+    ], { duration, easing: 'ease-out' });
+    animation.addEventListener('finish', () => ripple.remove());
+    animation.addEventListener('cancel', () => ripple.remove());
+    return animation;
+  };
+
+  const runAfterRipple = (event, target, action, duration) => {
+    if (pendingRipple) return;
+    const animation = playRipple(event, target, duration);
+    if (!animation) {
+      action();
+      return;
+    }
+    pendingRipple = animation;
+    animation.addEventListener('finish', () => {
+      if (pendingRipple !== animation) return;
+      pendingRipple = null;
+      action();
+    });
+  };
+
+  window.addEventListener('pagehide', () => {
+    pendingRipple?.cancel();
+    pendingRipple = null;
+  });
+
+  document.querySelectorAll('a.complete-button, a.receipt-choice, #category-header .header-left a[href]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey ||
+          event.shiftKey || event.altKey || link.hasAttribute('download') ||
+          (link.target && link.target !== '_self')) return;
+      event.preventDefault();
+      runAfterRipple(event, link, () => {
+        window.location.href = link.href;
+      }, 250);
+    });
+  });
+
+  if (document.querySelector('.complete-screen')) return;
+
   const formatPhoneNumber = (digits) => {
     const parts = [digits.slice(0, 3), digits.slice(3, 7), digits.slice(7, 11)];
     return parts.filter(Boolean).join('-');
@@ -83,24 +144,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('.btn-dine-in, .btn-takeout').forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step1.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        window.location.href = 'index-orderlist-payment-step1.html';
+      }, 250);
     });
   });
 
   document.querySelectorAll('.order__btn--back').forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.href = 'index-order.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        window.location.href = 'index-order.html';
+      }, 250);
     });
   });
 
   // 첫화면 이동 버튼 처리 (#foodcourt-start)
   const foodcourtStartBtn = document.getElementById('foodcourt-start');
   if (foodcourtStartBtn) {
-    foodcourtStartBtn.addEventListener('click', () => {
-      orderData = {};
-      localStorage.removeItem(STORAGE_KEY);
-      window.location.href = 'index-order.html'; // 주문 화면 파일명으로 이동
+    foodcourtStartBtn.addEventListener('click', (event) => {
+      runAfterRipple(event, foodcourtStartBtn, () => {
+        orderData = {};
+        localStorage.removeItem(STORAGE_KEY);
+        window.location.href = 'index-order.html';
+      }, 350);
     });
   }
 
@@ -324,9 +391,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const optionLabels = document.querySelectorAll('.option-item');
   const optionRadios = document.querySelectorAll("input[name='food-option']");
 
+  optionLabels.forEach((label) => {
+    label.addEventListener('click', (event) => {
+      const radio = label.querySelector('input[type="radio"]');
+      if (event.target === radio || !radio || radio.disabled || pendingRipple) return;
+      playRipple(event, label);
+    });
+  });
+
   productCards.forEach((card) => {
     card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
+    const selectProduct = () => {
       // dataset 속성이 없을 경우를 대비해 내부 텍스트 요소를 자동 파싱
       const titleEl = card.querySelector('.product-card__title');
       const priceEl = card.querySelector('.product-card__price');
@@ -438,6 +513,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateOrderUI();
         selectedProduct = null;
       }
+    };
+    card.addEventListener('click', (event) => {
+      runAfterRipple(event, card, selectProduct, 350);
     });
   });
 
@@ -456,22 +534,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (modalConfirmBtn && phoneModal) {
-    modalConfirmBtn.addEventListener('click', () => {
+    modalConfirmBtn.addEventListener('click', (event) => {
       if (isPhoneEntryStep) {
         const phoneInput = document.getElementById('points-phone-number');
         if (!(phoneInput instanceof HTMLInputElement) || phoneInput.value.replace(/\D/g, '').length !== 11) return;
       }
-      window.location.href = 'index-orderlist-payment-step2.html';
+      runAfterRipple(event, modalConfirmBtn, () => {
+        window.location.href = 'index-orderlist-payment-step2.html';
+      }, 250);
     });
   }
 
-  document.querySelector('[data-card-inserted]')?.addEventListener('click', () => {
-    window.location.href = 'index-orderlist-payment-step3.html';
+  document.querySelector('[data-card-inserted]')?.addEventListener('click', (event) => {
+    runAfterRipple(event, event.currentTarget, () => {
+      window.location.href = 'index-orderlist-payment-step3.html';
+    }, 250);
   });
 
   if (window.location.pathname.endsWith('/index-orderlist-payment-step4.html')) {
-    document.getElementById('modal-card-loading')?.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step5.html';
+    document.getElementById('modal-card-loading')?.addEventListener('click', (event) => {
+      const target = event.target instanceof Element
+        ? event.target.closest('[data-card-removed]') || event.currentTarget
+        : event.currentTarget;
+      runAfterRipple(event, target, () => {
+        window.location.href = 'index-orderlist-payment-step5.html';
+      }, 250);
     });
   }
 
@@ -516,13 +603,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      savePointsButton.addEventListener('click', () => {
-        if (phoneDigits) {
-          sessionStorage.setItem('foodCourtPointsPhoneNumber', phoneDigits);
-        } else {
-          sessionStorage.removeItem('foodCourtPointsPhoneNumber');
-        }
-        window.location.href = 'index-orderlist-payment-step7.html';
+      savePointsButton.addEventListener('click', (event) => {
+        runAfterRipple(event, savePointsButton, () => {
+          if (phoneDigits) {
+            sessionStorage.setItem('foodCourtPointsPhoneNumber', phoneDigits);
+          } else {
+            sessionStorage.removeItem('foodCourtPointsPhoneNumber');
+          }
+          window.location.href = 'index-orderlist-payment-step7.html';
+        }, 250);
       });
 
       updatePhoneInput();
@@ -573,8 +662,10 @@ document.addEventListener('DOMContentLoaded', () => {
       goToNextStep();
     }
 
-    document.querySelector('.points-skip')?.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step8.html';
+    document.querySelector('.points-skip')?.addEventListener('click', (event) => {
+      runAfterRipple(event, event.currentTarget, () => {
+        window.location.href = 'index-orderlist-payment-step8.html';
+      }, 250);
     });
   }
 
@@ -594,7 +685,9 @@ document.addEventListener('DOMContentLoaded', () => {
         nextUrl.searchParams.set('orderImage', 'red');
       }
 
-      window.location.href = nextUrl.href;
+      runAfterRipple(event, pointsYesBtn, () => {
+        window.location.href = nextUrl.href;
+      }, 250);
     });
 
     pointsNoBtn.addEventListener('click', (event) => {
@@ -609,19 +702,24 @@ document.addEventListener('DOMContentLoaded', () => {
         nextUrl.searchParams.set('orderImage', 'red');
       }
 
-      window.location.href = nextUrl.href;
+      runAfterRipple(event, pointsNoBtn, () => {
+        window.location.href = nextUrl.href;
+      }, 250);
     });
   }
 
   document.querySelectorAll('.points-confirm').forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step9.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        window.location.href = 'index-orderlist-payment-step9.html';
+      }, 250);
     });
   });
 
   // 전체 취소(전체삭제) 버튼 클릭 시 객체 삭제 및 초기화
   if (cartClearBtn) {
-    cartClearBtn.addEventListener('click', () => {
+    cartClearBtn.addEventListener('click', (event) => {
+      playRipple(event, cartClearBtn);
       orderData = {};
       localStorage.removeItem(STORAGE_KEY);
       updateOrderUI();
@@ -630,9 +728,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 주문하기 버튼 클릭 시 주문 목록으로 이동
   if (orderSubmitBtn) {
-    orderSubmitBtn.addEventListener('click', () => {
+    orderSubmitBtn.addEventListener('click', (event) => {
       if (orderSubmitBtn.hasAttribute('disabled')) return;
-      window.location.href = 'index-orderlist.html';
+      runAfterRipple(event, orderSubmitBtn, () => {
+        window.location.href = 'index-orderlist.html';
+      }, 250);
     });
   }
 });

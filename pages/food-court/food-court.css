@@ -93,6 +93,31 @@
 #category-header.foodcourt__header {
   background-color: #692119;
 }
+
+.food-ripple-host {
+  overflow: hidden;
+}
+
+.food-ripple-host > .cafe-button-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgb(255 149 0 / 30%);
+  pointer-events: none;
+}
+
+:is(.product-card, .option-item).food-ripple-host > .cafe-button-ripple {
+  background: rgb(223 60 60 / 30%);
+}
+
+:is(.order-submit, .btn-dine-in, .btn-takeout, .points-yes, .points-confirm, .points-skip, #modal-confirm, .complete-button:not(.complete-button-secondary)).food-ripple-host > .cafe-button-ripple {
+  background: rgb(255 255 255 / 45%);
+}
+
+#foodcourt-start.food-ripple-host > .cafe-button-ripple {
+  z-index: 2;
+  background: rgb(255 255 255 / 65%);
+}
 /* .foodcourt-container {
   overflow: hidden;
 } */

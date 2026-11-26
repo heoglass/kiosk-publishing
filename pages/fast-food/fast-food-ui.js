@@ -1,4 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
+  let pendingRipple = null;
+
+  const playRipple = (event, target, duration = 700) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
+    target.classList.add('food-ripple-host');
+    if (getComputedStyle(target).position === 'static') target.style.position = 'relative';
+    const rect = target.getBoundingClientRect();
+    const size = Math.hypot(target.clientWidth, target.clientHeight) * 2;
+    const ripple = document.createElement('span');
+    ripple.className = 'cafe-button-ripple';
+    ripple.setAttribute('aria-hidden', 'true');
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.detail ? ((event.clientX - rect.left) / rect.width) * 100 : 50}%`;
+    ripple.style.top = `${event.detail ? ((event.clientY - rect.top) / rect.height) * 100 : 50}%`;
+    target.append(ripple);
+
+    const animation = ripple.animate([
+      { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+      { transform: 'translate(-50%, -50%) scale(1)', opacity: 0 },
+    ], { duration, easing: 'ease-out' });
+    animation.addEventListener('finish', () => ripple.remove());
+    animation.addEventListener('cancel', () => ripple.remove());
+    return animation;
+  };
+
+  const runAfterRipple = (event, target, action, duration) => {
+    if (pendingRipple) return;
+    const animation = playRipple(event, target, duration);
+    if (!animation) {
+      action();
+      return;
+    }
+    pendingRipple = animation;
+    animation.addEventListener('finish', () => {
+      if (pendingRipple !== animation) return;
+      pendingRipple = null;
+      action();
+    });
+  };
+
+  window.addEventListener('pagehide', () => {
+    pendingRipple?.cancel();
+    pendingRipple = null;
+  });
+
+  document.querySelectorAll('a.complete-button, a.receipt-choice, #category-header .header-left a[href]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey ||
+          event.shiftKey || event.altKey || link.hasAttribute('download') ||
+          (link.target && link.target !== '_self')) return;
+      event.preventDefault();
+      runAfterRipple(event, link, () => {
+        window.location.href = link.href;
+      }, 250);
+    });
+  });
+
+  if (document.querySelector('.complete-screen')) return;
+
   const tabs = document.querySelectorAll('.foodcourt__nav .nav__tab');
   const contents = document.querySelectorAll('.foodcourt__content');
   const swiperInstances = [];
@@ -18,8 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('modal-open');
     }
 
-    document.querySelector('[data-payment-method="card"]')?.addEventListener('click', () => {
-      window.location.href = 'index-payment-step2.html';
+    document.querySelector('[data-payment-method="card"]')?.addEventListener('click', (event) => {
+      runAfterRipple(event, event.currentTarget, () => {
+        window.location.href = 'index-payment-step2.html';
+      }, 250);
     });
   }
 
@@ -30,8 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.foodcourt-container')?.classList.remove('foodcourt-dimed');
     });
 
-    document.querySelector('[data-card-inserted]')?.addEventListener('click', () => {
-      window.location.href = 'index-payment-step3.html';
+    document.querySelector('[data-card-inserted]')?.addEventListener('click', (event) => {
+      runAfterRipple(event, event.currentTarget, () => {
+        window.location.href = 'index-payment-step3.html';
+      }, 250);
     });
   }
 
@@ -42,8 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('modal-open');
     }
 
-    document.querySelector('[data-card-removed]')?.addEventListener('click', () => {
-      window.location.href = 'index-payment-step5.html';
+    document.querySelector('[data-card-removed]')?.addEventListener('click', (event) => {
+      runAfterRipple(event, event.currentTarget, () => {
+        window.location.href = 'index-payment-step5.html';
+      }, 250);
     });
   }
 
@@ -112,7 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   setSideOptions.forEach((option) => {
-    option.addEventListener('click', () => {
+    option.addEventListener('click', (event) => {
+      if (pendingRipple) return;
+      playRipple(event, option);
       selectedSetSide = getSetSideOptionValue(option) || '프렌치프라이';
       if (!isSetDrinkStep) {
         localStorage.setItem('option-set-side', selectedSetSide);
@@ -123,7 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateSetSideSelection();
 
-  document.getElementById('set-side-back')?.addEventListener('click', () => {
+  const setSideBack = document.getElementById('set-side-back');
+  const goToPreviousSideStep = () => {
     if (currentPageId === 'index-option-step3') {
       const savedOrderData = JSON.parse(localStorage.getItem('kiosk_order_data') || '{}');
       const setItem = Object.values(savedOrderData).find((item) => item.name.includes('세트'));
@@ -141,9 +211,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = currentPageId === 'index-option-step2'
       ? 'index-tekeout-option-step1.html'
       : 'index-order.html';
+  };
+  setSideBack?.addEventListener('click', (event) => {
+    runAfterRipple(event, setSideBack, goToPreviousSideStep, 250);
   });
 
-  document.getElementById('set-side-next')?.addEventListener('click', () => {
+  const setSideNext = document.getElementById('set-side-next');
+  const goToNextSideStep = () => {
     if (currentPageId === 'index-option-step3') {
       window.location.href = 'index-order.html';
       return;
@@ -164,36 +238,49 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = isSetDrinkStep
       ? 'index-tekeout-option-step3.html'
       : 'index-tekeout-option-step2.html';
+  };
+  setSideNext?.addEventListener('click', (event) => {
+    runAfterRipple(event, setSideNext, goToNextSideStep, 250);
   });
 
-  document.getElementById('orderComplete')?.addEventListener('click', () => {
-    window.location.href = 'index-payment-step1.html';
+  document.getElementById('orderComplete')?.addEventListener('click', (event) => {
+    runAfterRipple(event, event.currentTarget, () => {
+      window.location.href = 'index-payment-step1.html';
+    }, 250);
   });
 
   document.querySelectorAll('.fastfood__contents--tekeout .fastfood__btn').forEach((button) => {
-    button.addEventListener('click', () => {
-      localStorage.setItem('fastFoodOrderType', button.value);
-      window.location.href = 'index-order.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        localStorage.setItem('fastFoodOrderType', button.value);
+        window.location.href = 'index-order.html';
+      }, 250);
     });
   });
 
   document.querySelectorAll('.btn-dine-in, .btn-takeout').forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step1.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        window.location.href = 'index-orderlist-payment-step1.html';
+      }, 250);
     });
   });
 
   document.querySelectorAll('.order__btn--back').forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.href = 'index-order.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        window.location.href = 'index-order.html';
+      }, 250);
     });
   });
 
   // 첫화면 이동 버튼 처리 (#foodcourt-start)
   const foodcourtStartBtn = document.getElementById('fastfood-start');
   if (foodcourtStartBtn) {
-    foodcourtStartBtn.addEventListener('click', () => {
-      window.location.href = 'index-tekeout-select.html'; // 주문 화면 파일명으로 이동
+    foodcourtStartBtn.addEventListener('click', (event) => {
+      runAfterRipple(event, foodcourtStartBtn, () => {
+        window.location.href = 'index-tekeout-select.html';
+      }, 350);
     });
   }
 
@@ -526,9 +613,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  optionLabels.forEach((label) => {
+    label.addEventListener('click', (event) => {
+      const radio = label.querySelector('input[type="radio"]');
+      if (event.target === radio || !radio || radio.disabled || pendingRipple) return;
+      playRipple(event, label);
+    });
+  });
+
   productCards.forEach((card) => {
     card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
+    const selectProduct = () => {
       const titleEl = card.querySelector('.product-card__title');
       const priceEl = card.querySelector('.product-card__price');
       const name = card.dataset.name || (titleEl ? titleEl.textContent.trim() : '');
@@ -552,6 +647,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (name.includes('세트')) {
         window.location.href = 'index-tekeout-option-step1.html';
       }
+    };
+    card.addEventListener('click', (event) => {
+      runAfterRipple(event, card, selectProduct, 700);
     });
   });
 
@@ -568,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (modalConfirmBtn && modal) {
-    modalConfirmBtn.addEventListener('click', () => {
+    modalConfirmBtn.addEventListener('click', (event) => {
       const selectedOption = modal.querySelector('input[name="food-option"]:checked');
       if (!selectedProduct || !(selectedOption instanceof HTMLInputElement)) return;
 
@@ -578,19 +676,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const image = selectedOption.closest('.fastfood-composition-option')
         ?.querySelector('.fastfood-composition-option__image')?.getAttribute('src');
-      addOrderItem(name, price, image);
-      modal.style.display = 'none';
-      selectedProduct = null;
+      runAfterRipple(event, modalConfirmBtn, () => {
+        addOrderItem(name, price, image);
+        modal.style.display = 'none';
+        selectedProduct = null;
 
-      if (selectedOption.value === '세트') {
-        window.location.href = 'index-tekeout-option-step1.html';
-      }
+        if (selectedOption.value === '세트') {
+          window.location.href = 'index-tekeout-option-step1.html';
+        }
+      }, 250);
     });
   }
 
   if (modalConfirmBtn && phoneModal) {
-    modalConfirmBtn.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step2.html';
+    modalConfirmBtn.addEventListener('click', (event) => {
+      runAfterRipple(event, modalConfirmBtn, () => {
+        window.location.href = 'index-orderlist-payment-step2.html';
+      }, 250);
     });
   }
 
@@ -610,7 +712,9 @@ document.addEventListener('DOMContentLoaded', () => {
         nextUrl.searchParams.set('orderImage', 'red');
       }
 
-      window.location.href = nextUrl.href;
+      runAfterRipple(event, pointsYesBtn, () => {
+        window.location.href = nextUrl.href;
+      }, 250);
     });
 
     pointsNoBtn.addEventListener('click', (event) => {
@@ -625,19 +729,24 @@ document.addEventListener('DOMContentLoaded', () => {
         nextUrl.searchParams.set('orderImage', 'red');
       }
 
-      window.location.href = nextUrl.href;
+      runAfterRipple(event, pointsNoBtn, () => {
+        window.location.href = nextUrl.href;
+      }, 250);
     });
   }
 
   document.querySelectorAll('.points-confirm').forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.href = 'index-orderlist-payment-step9.html';
+    button.addEventListener('click', (event) => {
+      runAfterRipple(event, button, () => {
+        window.location.href = 'index-orderlist-payment-step9.html';
+      }, 250);
     });
   });
 
   // 전체 취소(전체삭제) 버튼 클릭 시 객체 삭제 및 초기화
   if (cartClearBtn) {
-    cartClearBtn.addEventListener('click', () => {
+    cartClearBtn.addEventListener('click', (event) => {
+      playRipple(event, cartClearBtn);
       orderData = {};
       localStorage.removeItem(STORAGE_KEY);
       updateOrderUI();
@@ -646,9 +755,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 주문하기 버튼 클릭 시 최종 주문 확인 화면으로 이동
   if (orderSubmitBtn) {
-    orderSubmitBtn.addEventListener('click', () => {
+    orderSubmitBtn.addEventListener('click', (event) => {
       if (orderSubmitBtn.hasAttribute('disabled')) return;
-      window.location.href = 'index-tekeout-option-step4.html';
+      runAfterRipple(event, orderSubmitBtn, () => {
+        window.location.href = 'index-tekeout-option-step4.html';
+      }, 250);
     });
   }
 });
