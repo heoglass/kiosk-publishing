@@ -918,8 +918,13 @@ dialog.tablepay-modal-wrap[open] {
     height: 82px;
 }
 #split-payment-dialog .payment-image-button {
-    max-width: 171px;
-    max-height: 171px;
+    flex-shrink: 0;
+    background-image: url(../../shared/images/icon/payment-card-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 170px 170px;
+    object-fit: fill;
+    border-radius: 171px;  
 }
 #split-payment-dialog .payment-image-button  > img {
     width: 100%;
@@ -999,7 +1004,7 @@ dialog.tablepay-modal-wrap[open] {
   align-items: center;
   justify-content: center;
   flex: 1;
-  height: 80px;
+  height: 73px;
   border: none;
   border-radius: 16px;
   font-size: 24px;

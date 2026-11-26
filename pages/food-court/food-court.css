@@ -685,6 +685,7 @@
 
 .payment-image-button {
   margin-bottom: 36px;
+  
 }
 
 .modal__title--complete {
@@ -741,4 +742,17 @@
 
 #modal-points-phone button.points-delete {
   background-color: #f8f8f8;
+}
+
+#modal-card-payment #foodCardInsertLottie {
+      background-image: url(../../shared/images/icon/payment-card-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    object-fit: fill;
+    width: 342px;
+    height: 342px;
+    border-radius: 171px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

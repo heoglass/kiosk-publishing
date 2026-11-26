@@ -870,8 +870,19 @@
   font-size: 48px;
 }
 
-.payment-image-button {
+#modal-fastfood-card-payment #fast-food-CardInsertLottie {
   margin-bottom: 36px;
+  background-image: url(../../shared/images/icon/payment-card-bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 342px 342px;
+  object-fit: fill;
+  width: 342px;
+  height: 342px;
+  border-radius: 171px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal__title--complete {
@@ -1510,4 +1521,19 @@ body[data-page="fastfood-complete"] .complete-button {
 body[data-page="fastfood-complete"] .experience-complete .complete-button-secondary {
     background: #555;
     color: #fff;
+}
+
+
+
+#modal-card-payment.cafe-card .payment-image-button {
+    background-image: url(../../shared/images/icon/payment-card-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    object-fit: fill;
+    width: 342px;
+    height: 342px;
+    border-radius: 171px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
