@@ -1828,20 +1828,15 @@ body[page-type="kpay-01"] .ktx__section--relative {
 }
 .ktx-payment-status__complete-link {
   display: block;
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   margin: 0 auto;
+  background: radial-gradient(50% 50% at 50% 50%, #426EFF 0%, rgba(66, 110, 255, 0) 100%);
 }
 .ktx-payment-status__complete-link:focus-visible {
   outline: 4px solid var(--ktxBtnActiveColor);
   outline-offset: 4px;
 }
-.ktx-payment-status__complete-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 /* ktx-13 발권 */
 .ktx-issue {
   height: 100%;

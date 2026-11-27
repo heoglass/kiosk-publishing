@@ -1,6 +1,80 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", () => {
+  const rippleTargets = [
+    ".air-airline", ".air-btn", ".air-method", ".air-lang__btn",
+    ".air-pager__btn", ".air-key", ".air-seat", ".air-cabin__zone",
+    ".complete-button"
+  ].join(", ");
+  let pendingNavigation = null;
+
+  function playRipple(event, target, duration) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+
+    const host = target.classList.contains("air-airline") ? target.parentElement : target;
+    host.classList.add("air-ripple-host");
+    if (getComputedStyle(host).position === "static") host.style.position = "relative";
+    const rect = host.getBoundingClientRect();
+    const size = Math.hypot(host.clientWidth, host.clientHeight) * 2;
+    const ripple = document.createElement("span");
+    ripple.className = "air-ripple";
+    ripple.setAttribute("aria-hidden", "true");
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.detail ? ((event.clientX - rect.left) / rect.width) * 100 : 50}%`;
+    ripple.style.top = `${event.detail ? ((event.clientY - rect.top) / rect.height) * 100 : 50}%`;
+    host.append(ripple);
+
+    const animation = ripple.animate([
+      { transform: "translate(-50%, -50%) scale(0)", opacity: 1 },
+      { transform: "translate(-50%, -50%) scale(1)", opacity: 0 }
+    ], { duration, easing: "ease-out" });
+    animation.addEventListener("finish", () => ripple.remove());
+    animation.addEventListener("cancel", () => ripple.remove());
+    return animation;
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const target = event.target.closest(rippleTargets);
+    if (!target || target.disabled || target.classList.contains("disabled-color") ||
+        target.getAttribute("aria-disabled") === "true") return;
+    if (target instanceof HTMLButtonElement) playRipple(event, target, 700);
+  }, true);
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const link = event.target.closest(rippleTargets);
+    if (!(link instanceof HTMLAnchorElement) || !link.hasAttribute("href") || link.classList.contains("disabled-color") ||
+        link.getAttribute("aria-disabled") === "true" || event.button !== 0 ||
+        event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
+        link.hasAttribute("download") || (link.target && link.target !== "_self")) return;
+
+    if (event.defaultPrevented || link.getAttribute("href").startsWith("#")) {
+      playRipple(event, link, 700);
+      return;
+    }
+
+    if (pendingNavigation) {
+      event.preventDefault();
+      return;
+    }
+    const animation = playRipple(event, link, 250);
+    if (!animation) return;
+    event.preventDefault();
+    pendingNavigation = animation;
+    animation.addEventListener("finish", () => {
+      if (pendingNavigation !== animation) return;
+      pendingNavigation = null;
+      window.location.href = link.href;
+    });
+  });
+
+  window.addEventListener("pagehide", () => {
+    if (pendingNavigation) pendingNavigation.cancel();
+    pendingNavigation = null;
+  });
+
   const pager = document.querySelector(".air-pager");
   const pages = Array.from(
     document.querySelectorAll("[data-air-hazard-page]")

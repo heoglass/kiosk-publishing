@@ -451,7 +451,7 @@ dialog.table-pay-payment-alert[open] {
     align-items: center;
     width: 957px;
     height: 360px;
-    padding: 0 0 0 48px;
+    padding: 0 0 0 21px;
     border: 0;
     border-radius: 24px;
     background: #fff;
@@ -466,7 +466,14 @@ dialog.payment__alert--loading[open],
 dialog.tablepay-modal-wrap[open] {
     display: block;
     text-align: center;
-    padding: 68px 120px;
+    padding: 45px 0;
+}
+
+dialog#card-removed-dialog[open] {
+    bottom: auto;
+    height: auto;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
 }
 
 .payment__alert--loading > .spinner {
@@ -491,10 +498,10 @@ dialog.tablepay-modal-wrap[open] {
 }
 .card-completed-icon {
     display: block;
-    width: 120px;
-    height: 120px;
+    width: 170px;
+    height: 170px;
     margin: 0 auto;
-    background: url("../../shared/images/icon/icon-card-complete-tableorder.png") center / contain no-repeat;
+    background: radial-gradient(50% 50% at 50% 50%, #FFC240 0%, rgba(255, 194, 64, 0) 100%);
 }
 #order-completed-dialog {
     height: 443px;

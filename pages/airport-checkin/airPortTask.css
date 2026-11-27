@@ -145,6 +145,22 @@ background: #555555;
   outline-offset: -8px;
 }
 
+#airBody .air-ripple-host {
+  overflow: hidden;
+}
+
+#airBody .air-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgba(28, 121, 226, 0.3);
+  pointer-events: none;
+}
+
+#airBody :is(.air-btn--next, .air-seat, .air-pager__btn--next, .air-lang__btn.active, .complete-button:not(.complete-button-secondary)) > .air-ripple {
+  background: rgba(107, 176, 255, 0.55);
+}
+
 /* 이용 제한 승객 안내 화면 */
 #airBody[page-type="air-02"] .air-main {
   overflow: hidden;

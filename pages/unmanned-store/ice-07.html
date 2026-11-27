@@ -118,7 +118,14 @@
             <div id="modal-card-complete" class="modal modal--payment">
               <div class="modal-body">
                 <a class="selfCheckout__complete-link" href="./ice-08.html" aria-label="카드 제거">
-                  <img class="selfCheckout__complete-image" src="../../shared/images/unnamed_store/card-complete.png" alt="카드 결제 완료" />
+                  <lottie-player
+                    data-animation="lottieCardReturn"
+                    background="transparent"
+                    speed="0.5"
+                    style="width: 280px; height: 280px"
+                    loop
+                    autoplay
+                  ></lottie-player>
                 </a>
                 <h2 id="payment-complete-title" class="modal-title">결제가 완료되었습니다</h2>
                 <p id="payment-complete-description" class="payment-status-description">카드를 제거해주세요</p>
@@ -127,6 +134,19 @@
           </div>
         </section>
       </main>
+  <script src="../../shared/js/lottie-player.js"></script>
+  <script src="../../shared/images/lottie/cardReturn-data.js"></script>
+  <script>
+    const cardReturnPlayer = document.querySelector('lottie-player[data-animation="lottieCardReturn"]');
+    cardReturnPlayer.addEventListener("error", function () {
+      console.error("카드 반환 애니메이션을 불러오지 못했습니다.");
+    });
+    cardReturnPlayer.updateComplete.then(function () {
+      return cardReturnPlayer.load(window.lottieCardReturn);
+    }).catch(function (error) {
+      console.error("카드 반환 애니메이션을 불러오지 못했습니다:", error);
+    });
+  </script>
   <script type="text/javascript" src="./selfCheckout.js"></script>
   </body>
 </html>

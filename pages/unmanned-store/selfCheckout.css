@@ -362,15 +362,17 @@ a.disabled-color,
   text-align: center;
 }
 #modal-card-complete .modal-body {
+  height: auto;
+  min-height: 590px;
   padding-top: 95px;
 }
 
-.selfCheckout__complete-link,
-.selfCheckout__complete-image {
+.selfCheckout__complete-link {
   display: block;
-  width: 240px;
-  height:240px;
+  width: 280px;
+  height: 280px;
   margin: 0 auto;
+  background: radial-gradient(50% 50% at 50% 50%, #426EFF 0%, rgba(66, 110, 255, 0) 100%);
 }
 .selfCheckout__complete-link:focus-visible {
   outline: 3px solid var(--selfCheckout-primary-color);
