@@ -177,7 +177,7 @@ body {
   background: #edf1ff;
 }
 
-/* 26-11-26 지우기, 전체지우기 버튼 background-color 변경 */
+/* [수정] 2026-11-27 | 지우기, 전체지우기 버튼 background-color 변경 */
 .parking-keypad .clear,
 .parking-keypad .delete {
   background-color: #ccc;
@@ -301,6 +301,8 @@ body {
   bottom: 133px;
   left: 46%;
 }
+/* [수정] 2026-11-27 | 하단 간격 조정 
+변경 전: margin: 10px 0 80px / 변경 후: margin: 10px 0 174px */
 .parking-result-title {
   margin: 10px 0 174px;
   color: #000;

@@ -245,7 +245,7 @@ a.self-gas-payment-credit:active > span {
   font-family: "Pretendard-Bold";
   text-align: center;
 }
-
+/* [수정] 2026-11-27 | max-width: 960px 추가 */
 .self-gas-amount-grid,
 .self-gas-amount-actions {
   display: grid;
@@ -344,7 +344,7 @@ a.self-gas-payment-credit:active > span {
   font: inherit;
   text-align: right;
 }
-
+/* [수정] 2026-11-27 | max-width: 960px 추가 */
 .self-gas-installment-keypad,
 .self-gas-installment-actions {
   display: grid;
@@ -496,7 +496,7 @@ button.self-gas-card-guide-box {
 .self-gas-wait h1 {
   min-height: 132px;
 }
-
+/* [수정] 2026-11-27 | 로딩바 컬러 변경 */
 .self-gas-spinner {
   display: block;
   width: 96px;
