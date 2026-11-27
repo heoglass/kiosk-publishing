@@ -51,9 +51,10 @@
         <dialog id="order-completed-dialog" class="table-pay-payment-alert tablepay-modal-wrap" aria-labelledby="order-completed-title">
           <h2 id="order-completed-title">주문이 완료되었습니다</h2>
           <span class="order-completed-icon"></span>
+          <!-- [수정] 2026-11-27 | 텍스트 수정 -->
           <p class="table-pay-history__content completed-msg">
             카운터에서 주문을 확인중입니다<br />
-            맛있게 조리하겠습니다
+            맛있게 조리하겠습니다.
           </p>
           <form method="dialog">
             <button id="creditCompleteBtn" type="button" class="tablepay--completed">확인</button>
@@ -61,6 +62,7 @@
         </dialog>
 
         <dialog class="table-pay-history" aria-labelledby="table-pay-history-title">
+          <!-- [수정] 2026-11-27 | 주문내역 링크 제거 -->
           <h2 id="table-pay-history-title">주문내역</h2>
           <p class="table-pay-history__content">현재 주문 내역이 없습니다.</p>
           <form method="dialog">

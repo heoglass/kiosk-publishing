@@ -88,6 +88,9 @@ body#parcelBody {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+/* [수정] 2026-11-27 | 키패드 간격 수정  */
+/* 변경 후: 상단 여백 일관화 및 컨텐츠에 따른 패딩 요구사항 반영 */
 body#parcelBody[data-page="indexProductType"] .parcel__content,
 body#parcelBody[data-page="indexFrom"] .parcel__content,
 body#parcelBody[data-page="indexTo"] .parcel__content

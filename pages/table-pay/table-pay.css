@@ -469,6 +469,18 @@ dialog.tablepay-modal-wrap[open] {
     padding: 45px 0;
 }
 
+dialog#full-payment-dialog[open],
+dialog#order-completed-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#full-payment-dialog > form {
+    position: absolute;
+}
+
 dialog#card-removed-dialog[open] {
     bottom: auto;
     height: auto;
@@ -503,8 +515,30 @@ dialog#card-removed-dialog[open] {
     margin: 0 auto;
     background: radial-gradient(50% 50% at 50% 50%, #FFC240 0%, rgba(255, 194, 64, 0) 100%);
 }
-#order-completed-dialog {
+dialog#order-completed-dialog[open] {
+    bottom: auto;
     height: 443px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+}
+
+#order-completed-dialog > * {
+    flex-shrink: 0;
+}
+
+#order-completed-dialog h2,
+#order-completed-dialog .tablepay--completed {
+    font-family: "Pretendard-Bold", sans-serif;
+}
+
+#order-completed-dialog .completed-msg {
+    font-family: "Pretendard-Medium", sans-serif;
+}
+
+#order-completed-dialog .tablepay--completed {
+    height: 86px;
+    margin-top: 40px;
+    padding: 0;
 }
 
 @keyframes spin {
@@ -732,6 +766,7 @@ dialog#card-removed-dialog[open] {
     align-items: center;
     justify-content: space-between;
 }
+/* [수정] 2026-11-27 | 수량조절 버튼 간격 및 디자인 */
 #tablePay .tablePayWrap__cartList-items > li .cart-item-quantity span {
     flex: 1;
     height: 48px;

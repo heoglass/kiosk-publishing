@@ -469,7 +469,8 @@ dialog.payment__alert--loading[open],
 dialog.tablepay-modal-wrap[open] {
     display: block;
     text-align: center;
-    padding: 68px 120px;
+    padding: 55px 150px;
+        overflow: hidden;
 }
 
 .payment__alert--loading > .spinner {
@@ -728,6 +729,7 @@ dialog.tablepay-modal-wrap[open] {
     align-items: center;
     justify-content: space-between;
 }
+/* [수정] 2026-11-27 | 수량조절 버튼 간격 및 디자인 */
 #tablePay .tablePayWrap__cartList-items > li .cart-item-quantity span {
     flex: 1;
     height: 48px;

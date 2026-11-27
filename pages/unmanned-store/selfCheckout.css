@@ -219,6 +219,8 @@ a.disabled-color,
   font-weight: 700;
   text-align: right;
 }
+
+  /* [수정] 2026-11-27 | 장바구니 삭제 버튼 스타일 반영 */
 .selfCheckout__section .selfCheckout__cart-remove {
   position: relative;
   flex-shrink: 0;
