@@ -19,6 +19,9 @@
 }
 
 /* 헤더 */
+/* [수정] 2026-11-27 | 헤더 상단 패딩 조정
+  변경 전: padding: 60px 변경 후: padding: 20px 60px 0
+*/
 .kiosk-main #main-header {
   position: absolute;
   top: 0;
@@ -30,7 +33,7 @@
   justify-content: space-between;
 
   width: 100%;
-  padding: 60px;
+  padding: 20px 60px 0;
 }
 
 .kiosk-main .kiosk-title {

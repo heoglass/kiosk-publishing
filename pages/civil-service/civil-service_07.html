@@ -70,11 +70,14 @@
                 >선택한 문서 외에 추가 발급</span
               >
             </button>
+            <!-- [수정] 2026-11-27 | 선택완료 버튼 기본 포커싱 변경 
+              변경 전: aria-pressed="false" / 변경 후: aria-pressed="true"
+            -->
             <button
               type="button"
               class="service-auth-option"
               id="service-print-selected"
-              aria-pressed="false"
+              aria-pressed="true"
             >
               <span class="service-print-option-title">선택 완료</span>
               <span class="service-print-option-description"

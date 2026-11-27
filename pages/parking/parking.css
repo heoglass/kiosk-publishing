@@ -425,10 +425,8 @@ body {
 
 .parking-fee-plate-number {
   position: absolute;
-  bottom: 60px;
-  left: 120px;
-  /* left: 50%;
-  transform: translate(-50%, -50%); */
+  bottom: 16%;
+  left: 23%;
 
   color: #000;
   font-size: 64px;
@@ -738,10 +736,6 @@ dialog.parking-payment-dialog {
 /* [수정] 2026-11-27 | 로티 이미지 수정 */
 /* .parking-payment-dialog .card-payment-image, */
 .parking-payment-dialog .payment-image-button {
-  /* background-image: url("../../shared/images/icon/payment-card-bg-blue.png");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  object-fit: fill; */
   background: radial-gradient(
     50% 50% at 50% 50%,
     #426eff 0%,

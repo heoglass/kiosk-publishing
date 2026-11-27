@@ -785,12 +785,11 @@
   box-shadow: 0px 4px 4px 0px #00000040;
   box-shadow: 0px 0px 18.3px 0px #e08d00;
 }
+#modal-payment-complete .modal-body {
+  padding: 60px 0 100px;
+}
 #modal-card-payment.cafe-card .payment-image-button,
 #modal-payment-complete.cafe-card .payment-image-button {
-  /* background-image: url("../../shared/images/icon/payment-card-bg.png");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  object-fit: fill; */
   background: radial-gradient(
     50% 50% at 50% 50%,
     #ffc240 0%,
