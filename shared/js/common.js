@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   const lottieCardInsert = document.getElementById("lottie-card-insert");
+  const lottieCardReturn = document.getElementById("lottie-card-return");
 
   if (lottieCardInsert && window.lottie && window.lottieCardInsertData) {
     const cardAnimation = window.lottie.loadAnimation({
@@ -206,6 +207,18 @@ document.addEventListener("DOMContentLoaded", function () {
       loop: true,
       autoplay: true,
       animationData: window.lottieCardInsertData,
+    });
+
+    cardAnimation.setSpeed(0.5);
+  }
+  // [추가] 2026-11-27 | 카드 제거 로티 애니메이션 추가
+  if (lottieCardReturn && window.lottie && window.lottieCardReturn) {
+    const cardAnimation = window.lottie.loadAnimation({
+      container: lottieCardReturn,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: window.lottieCardReturn,
     });
 
     cardAnimation.setSpeed(0.5);

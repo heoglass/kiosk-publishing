@@ -656,7 +656,7 @@ body:has(.hospital-payment-modal[open]) {
   margin-bottom: 40px;
   background: transparent;
 }
-
+/* [수정] 2026-11-27 | 로티 이미지 변경 */
 .hospital-payment-modal .hospital-card-image,
 .hospital-payment-modal .hospital-payment-remove {
   width: 342px;

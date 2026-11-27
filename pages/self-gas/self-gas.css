@@ -622,7 +622,7 @@ button.self-gas-card-guide-box {
 .self-gas-receipt-link {
   display: block;
 }
-
+/* [수정] 2026-11-27 | 로티 이미지 변경 */
 .self-gas-remove-card-button {
   background: radial-gradient(
     50% 50% at 50% 50%,

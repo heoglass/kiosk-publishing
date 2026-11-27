@@ -12,6 +12,7 @@
       src="../../shared/images/lottie/lottie-card-insert.js"
       defer
     ></script>
+    <script src="../../shared/images/lottie/cardReturn-data.js"></script>
     <script type="text/javascript" src="./parking.js"></script>
     <script type="text/javascript" src="../../shared/js/common.js"></script>
   </head>
@@ -166,15 +167,10 @@
             class="payment-image-button"
             aria-label="카드 삽입"
           >
-            <div id="lottie-card-insert" class="card-payment-image card-insert">
-              <!-- <lottie-player
-                src="../../shared/images/lottie/lottie-card-insert.json"
-                background="transparent"
-                speed="0.5"
-                loop
-                autoplay
-              ></lottie-player> -->
-            </div>
+            <div
+              id="lottie-card-insert"
+              class="card-payment-image card-insert"
+            ></div>
           </button>
 
           <p class="card-payment-guide">카드를 투입구에 넣어주세요.</p>
@@ -226,17 +222,14 @@
     >
       <form method="dialog">
         <div class="modal-body">
+          <!-- [수정] 2026-11-27 | 로티 이미지 수정 -->
           <button
             type="submit"
             value="removed"
             class="payment-image-button"
             aria-label="카드 제거 완료"
           >
-            <img
-              src="../../shared/images/icon/icon-card-complete-blue.png"
-              class="payment-complete-image"
-              alt=""
-            />
+            <div id="lottie-card-return"></div>
           </button>
 
           <h2 id="parking-dialog-complete-title" class="modal-title">
