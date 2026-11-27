@@ -1849,6 +1849,7 @@ body[page-type="kpay-01"] .ktx__section--relative {
   position: relative;
   width: 100%;
   margin: 106px auto 0;
+  padding: 0 60px;
 }
 .ktx-issue__image {
   display: block;
