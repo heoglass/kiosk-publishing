@@ -492,6 +492,16 @@ body[page-type="ktx-02"] .ktx__section--relative {
 }
 
 /* 하단 바: 이전으로 / 원격 상담 */
+#ktxBody .ktx-help--home {
+  justify-content: flex-start;
+  gap: 20px;
+}
+#ktxBody .ktx-help--home > .ktx-help__btn {
+  flex-shrink: 0;
+}
+#ktxBody .ktx-help--home > button {
+  margin-left: auto;
+}
 body[page-type="ktx-02"] .ktx-help,
 body[page-type="ktx-03"] .ktx-help,
 body[page-type="ktx-05"] .ktx-help,
