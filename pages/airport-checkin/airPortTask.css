@@ -415,7 +415,7 @@ background: #555555;
   background: #555555;
 }
 
-#airBody[page-type="air-03"] .air-pager__btn--next {
+#airBody[page-type="air-03"] .air-pager__btn:not(:disabled) {
   border-color: var(--airBody-primary-color);
   color: #fff;
   background-color: var(--airBody-primary-color);
