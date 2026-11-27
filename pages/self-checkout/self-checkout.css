@@ -806,7 +806,33 @@ dialog.self-checkout-payment-dialog {
   border-radius: 20px;
   height: 130px;
 }
-
+/* [수정] 2026-11-27 | 로티 이미지 관련 팝업 수정 */
+.self-checkout-card-insert-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 140px 0 0;
+}
+#self-checkout-card-insert {
+  width: 706px;
+  height: 706px;
+}
+#self-checkout-card-insert svg {
+  width: 706px !important;
+  height: 706px !important;
+}
+#self-checkout-payment-complete .self-checkout-payment-status-body {
+  padding: 60px 0 100px;
+}
+.self-checkout-payment-image-button {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffc240 0%,
+    rgba(255, 194, 64, 0) 100%
+  );
+  width: 342px;
+  height: 342px;
+}
 /* cafe.js와 같은 클릭 위치 기준 리플 */
 .self-checkout-ripple-target {
   position: relative;
