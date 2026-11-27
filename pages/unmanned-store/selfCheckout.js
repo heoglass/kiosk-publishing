@@ -12,7 +12,8 @@ const CHECKOUT_PAYMENT_KEY = "selfCheckoutPayment";
 let pendingRipple = null;
 
 function playRipple(event, target, duration = 700) {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+  if ((target.matches("button, a[href]") && target.querySelector("lottie-player")) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
 
   target.classList.add("selfCheckout-ripple-host");
   if (getComputedStyle(target).position === "static") target.style.position = "relative";

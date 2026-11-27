@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let pendingRipple = null;
 
   const playRipple = (event, target, duration = 700) => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+    if ((target.matches('button, a[href]') && target.querySelector('lottie-player')) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
 
     target.classList.add('food-ripple-host');
     if (getComputedStyle(target).position === 'static') target.style.position = 'relative';

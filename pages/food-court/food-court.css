@@ -12,6 +12,12 @@
 .mb-40 {
   margin-bottom: 40px;
 }
+.mb-60 {
+  margin-bottom: 60px;
+}
+.mb-80 {
+  margin-bottom: 80px;
+}
 .category-start-screen {
   height: 100%;
   background-image: url("../../shared/images/foodcourt/foodcourt-visual.png");
