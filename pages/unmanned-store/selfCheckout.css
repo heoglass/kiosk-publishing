@@ -439,10 +439,13 @@ a.disabled-color,
   background-color: var(--selfCheckout-primary-color);
   color: #fff;
 }
-.selfCheckout__modal-header h3 {
+.selfCheckout__modal-header h3,
+#receipt-title,
+#payModalTitle {
   margin: 0;
   font-weight: 700;
-  font-size: 44px;
+  font-size: 52px;
+  font-family: "Pretendard-Bold";
   line-height: 130%;
 }
 .selfCheckout__section .selfCheckout__modal-close {
