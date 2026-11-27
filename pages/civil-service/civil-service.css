@@ -132,6 +132,7 @@ body {
   width: 38px;
   height: 38px;
 }
+/* [수정] 2026-11-27 | 자료 수신 중입니다 팝업 스타일 수정 */
 
 .civil-service-main dialog.service-loading {
   position: fixed;
@@ -481,7 +482,7 @@ body {
   border-radius: 10px;
   background: #fff;
 }
-
+/* [수정] 2026-11-27 | 영역별 간격 조정  */
 .service-issuance-rows {
   display: grid;
   gap: 28px;

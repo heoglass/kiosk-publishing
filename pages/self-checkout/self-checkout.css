@@ -336,7 +336,7 @@
   color: #000;
   opacity: 1;
 }
-
+/* [수정] 2026-11-27 | 바코드 스캔 border-color 변경, box-shadow 추가 */
 .self-checkout-scan-button {
   display: flex;
   align-items: center;
@@ -636,19 +636,16 @@ dialog.self-checkout-payment-dialog {
 }
 
 .self-checkout-payment-status-body {
-  box-sizing: border-box;
   display: grid;
   place-items: center;
   align-content: center;
-  min-height: 590px;
-  padding: 64px 38px;
+  padding: 100px 0;
   text-align: center;
 }
 
 .self-checkout-payment-status h2 {
-  margin-top: 40px;
-  font-size: 54px;
-  line-height: 1.25;
+  font-size: 60px;
+  line-height: 1.3;
   font-family: "Pretendard-Bold";
 }
 
@@ -692,12 +689,12 @@ dialog.self-checkout-payment-dialog {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 34px 48px;
+  padding: 40px 50px;
   background: #ffc107;
 }
 
 .self-checkout-receipt-header h2 {
-  font-size: 46px;
+  font-size: 52px;
 }
 
 .self-checkout-receipt-close {
@@ -705,17 +702,14 @@ dialog.self-checkout-payment-dialog {
   place-items: center;
   width: 56px;
   height: 56px;
-  padding: 0;
-  border: 0;
   background: transparent;
   color: inherit;
   font-size: 58px;
   line-height: 1;
-  cursor: pointer;
 }
 
 .self-checkout-receipt-body {
-  padding: 66px 58px 58px;
+  padding: 80px 60px 60px;
   text-align: center;
 }
 
@@ -729,13 +723,13 @@ dialog.self-checkout-payment-dialog {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 72px;
+  margin-top: 80px;
 }
 
 .self-checkout-receipt-actions a {
   display: grid;
   place-items: center;
-  min-height: 126px;
+  min-height: 130px;
   border: 2px solid #000;
   border-radius: 20px;
   background: #fff;
