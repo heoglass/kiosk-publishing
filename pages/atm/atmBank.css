@@ -34,6 +34,10 @@ body#bankAtmBody {
   margin-bottom: 16px!important;
 }
 
+.horizontal-padding60 {
+  padding: 0 60px!important;
+}
+
 #category-header-horizontal .header-left {
     display: flex;
     align-items: center;
