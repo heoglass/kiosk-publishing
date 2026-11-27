@@ -7,10 +7,11 @@
 
     <link rel="stylesheet" href="../../shared/css/common.css" />
     <link rel="stylesheet" href="./self-gas.css" />
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../shared/js/common.js" defer></script>
-    <script src="./self-gas.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script src="../../shared/images/lottie/cardReturn-data.js"></script>
+    <script src="./self-gas.js"></script>
+    <script src="../../shared/js/common.js"></script>
   </head>
 
   <body class="self-gas-page">
@@ -92,20 +93,17 @@
               aria-labelledby="self-gas-remove-card-title"
             >
               <h1 id="self-gas-remove-card-title" class="self-gas-finish-title">
-                <button
-                  type="button"
-                  id="self-gas-remove-card-button"
-                  class="self-gas-remove-card-button"
-                >
-                  신용카드를 제거해주세요<br />
-                  카드를 뽑으면 영수증이 나옵니다
-                  <img
-                    class="self-gas-finish-image self-gas-remove-card-image"
-                    src="../../shared/images/self-gas/pull-out-card.png"
-                    alt=""
-                  />
-                </button>
+                신용카드를 제거해주세요<br />
+                카드를 뽑으면 영수증이 나옵니다
               </h1>
+              <!-- [수정] 2026-11-27 | 로티 이미지 변경 -->
+              <button
+                type="button"
+                id="self-gas-remove-card-button"
+                class="self-gas-remove-card-button"
+              >
+                <div id="lottie-card-return"></div>
+              </button>
             </section>
 
             <section
