@@ -5,6 +5,27 @@
     --selfCheckout-box-shadow: 0px 0px 42.1px 0px rgba(35, 92, 149, 1);
 }
 
+#selfCheckout .selfCheckout-ripple-host {
+  overflow: hidden;
+}
+
+#selfCheckout .selfCheckout__modal-close.selfCheckout-ripple-host {
+  overflow: visible;
+}
+
+#selfCheckout .selfCheckout-ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: rgba(36, 91, 147, 0.3);
+  pointer-events: none;
+}
+
+#selfCheckout :is(.selfCheckout__button, .selfCheckout__pay-btn, .selfCheckout__receipt-choice--yes, .selfCheckout__finish-button, .selfCheckout__end-btn--home, .selfCheckout__modal-close) > .selfCheckout-ripple,
+#selfCheckout #category-header .selfCheckout-ripple {
+  mix-blend-mode: screen;
+}
+
 button.disabled-color, 
 a.disabled-color,
 .disabled-color {
@@ -369,12 +390,16 @@ a.disabled-color,
   padding-top: 95px;
 }
 
+.selfCheckout__complete-link,
+.selfCheckout__card-payment .card-payment-image {
+  background: radial-gradient(50% 50% at 50% 50%, #426EFF 0%, rgba(66, 110, 255, 0) 100%);
+}
+
 .selfCheckout__complete-link {
   display: block;
   width: 280px;
   height: 280px;
   margin: 0 auto;
-  background: radial-gradient(50% 50% at 50% 50%, #426EFF 0%, rgba(66, 110, 255, 0) 100%);
 }
 .selfCheckout__complete-link:focus-visible {
   outline: 3px solid var(--selfCheckout-primary-color);

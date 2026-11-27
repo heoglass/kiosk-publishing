@@ -12,7 +12,6 @@
       type="text/javascript"
       src="./fast-food-ui.js?v=20261109-set-side"
     ></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
 
   <body id="index-payment-step2">
@@ -161,7 +160,7 @@
       >
         <div id="lottie-card-insert" class="card-payment-image card-insert">
           <lottie-player
-            src="../../shared/images/lottie/lottie-card-insert.json"
+            data-animation="lottieCardInsert"
             background="transparent"
             speed="0.5"
             style="width: 280px; height: 280px"
@@ -193,6 +192,19 @@
       </div>
     </div>
 
+    <script src="../../shared/js/lottie-player.js"></script>
+    <script src="../../shared/images/lottie/lottie-card-insert.js"></script>
+    <script>
+      const cardInsertPlayer = document.querySelector('lottie-player[data-animation="lottieCardInsert"]');
+      cardInsertPlayer.addEventListener("error", function () {
+        console.error("카드 삽입 애니메이션을 불러오지 못했습니다.");
+      });
+      cardInsertPlayer.updateComplete.then(function () {
+        return cardInsertPlayer.load(window.lottieCardInsertData);
+      }).catch(function (error) {
+        console.error("카드 삽입 애니메이션을 불러오지 못했습니다:", error);
+      });
+    </script>
     <!-- CDN -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </body>

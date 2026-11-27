@@ -9,6 +9,92 @@
 const MAX_QTY = 99;
 const DISCOUNT = 0; // 하드코딩 할인금액
 const CHECKOUT_PAYMENT_KEY = "selfCheckoutPayment";
+let pendingRipple = null;
+
+function playRipple(event, target, duration = 700) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+
+  target.classList.add("selfCheckout-ripple-host");
+  if (getComputedStyle(target).position === "static") target.style.position = "relative";
+  const rect = target.getBoundingClientRect();
+  const size = Math.hypot(target.clientWidth, target.clientHeight) * 2;
+  const ripple = document.createElement("span");
+  ripple.className = "selfCheckout-ripple";
+  ripple.setAttribute("aria-hidden", "true");
+  ripple.style.width = `${size}px`;
+  ripple.style.height = `${size}px`;
+  ripple.style.left = `${event.detail ? ((event.clientX - rect.left) / rect.width) * 100 : 50}%`;
+  ripple.style.top = `${event.detail ? ((event.clientY - rect.top) / rect.height) * 100 : 50}%`;
+  target.append(ripple);
+
+  const animation = ripple.animate([
+    { transform: "translate(-50%, -50%) scale(0)", opacity: 1 },
+    { transform: "translate(-50%, -50%) scale(1)", opacity: 0 }
+  ], { duration, easing: "ease-out" });
+  animation.addEventListener("finish", () => ripple.remove());
+  animation.addEventListener("cancel", () => ripple.remove());
+  return animation;
+}
+
+function runAfterRipple(event, target, action) {
+  if (pendingRipple) return;
+  const animation = playRipple(event, target, 250);
+  if (!animation) {
+    action();
+    return;
+  }
+  pendingRipple = animation;
+  animation.addEventListener("finish", () => {
+    if (pendingRipple !== animation) return;
+    pendingRipple = null;
+    action();
+  });
+}
+
+function initRipples() {
+  const managedButtons = [
+    ".selfCheckout__pay-btn", ".selfCheckout__cart-remove", ".selfCheckout__modal-close",
+    ".selfCheckout__end-btn[data-href]", "[data-card-inserted]",
+    ".selfCheckout__mode-btn[data-mode-next]", "[data-barcode-next]"
+  ].join(", ");
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const target = event.target.closest("button, a[href]");
+    if (!target || target.disabled || target.getAttribute("aria-disabled") === "true") return;
+    if (pendingRipple && event.button === 0 && !event.ctrlKey && !event.metaKey &&
+        !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    if (target instanceof HTMLButtonElement && !target.matches(managedButtons)) {
+      playRipple(event, target);
+    }
+  }, true);
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const link = event.target.closest("a[href]");
+    if (!link || event.defaultPrevented || link.getAttribute("aria-disabled") === "true" ||
+        event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey ||
+        event.altKey || link.hasAttribute("download") ||
+        (link.target && link.target !== "_self")) return;
+    if (link.getAttribute("href").startsWith("#") || link.protocol === "javascript:") {
+      playRipple(event, link);
+      return;
+    }
+    event.preventDefault();
+    runAfterRipple(event, link, () => {
+      location.href = link.href;
+    });
+  });
+
+  window.addEventListener("pagehide", () => {
+    if (pendingRipple) pendingRipple.cancel();
+    pendingRipple = null;
+  });
+}
 
 // 바코드 스캔 시 순서대로 추가되는 상품 (끝나면 처음부터 반복)
 const SCAN_PRODUCTS = [
@@ -167,9 +253,11 @@ function onRemoveClick(e) {
   const btn = e.target.closest(".selfCheckout__cart-remove");
   if (!btn) return;
 
-  btn.closest(".selfCheckout__cart-item").remove();
-  keepLastHighlight();
-  render(); // 합계 / 결제 다시 계산
+  runAfterRipple(e, btn, () => {
+    btn.closest(".selfCheckout__cart-item").remove();
+    keepLastHighlight();
+    render();
+  });
 }
 
 // 강조된 줄이 삭제돼서 없어지면, 목록의 마지막 줄을 강조
@@ -203,7 +291,9 @@ function onModeClick(e) {
   if (!btn) return;
 
   if (btn.dataset.modeNext) {
-    location.href = btn.dataset.modeNext;
+    runAfterRipple(e, btn, () => {
+      location.href = btn.dataset.modeNext;
+    });
     return;
   }
 
@@ -214,8 +304,11 @@ function onModeClick(e) {
 
 // X 버튼: 이전 화면으로 복귀
 function onModalCloseClick(e) {
-  closeModal();
-  location.href = e.currentTarget.dataset.closeNext || "./ice-03.html";
+  const button = e.currentTarget;
+  runAfterRipple(e, button, () => {
+    closeModal();
+    location.href = button.dataset.closeNext || "./ice-03.html";
+  });
 }
 
 /* ---------- 초기화 ---------- */
@@ -224,7 +317,9 @@ function bindCartEvents() {
   const list = getList();
 
   document.querySelector(".selfCheckout__barcode-btn").addEventListener("click", onScan);
-  document.querySelector(".selfCheckout__pay-btn").addEventListener("click", onPayClick);
+  document.querySelector(".selfCheckout__pay-btn").addEventListener("click", (event) => {
+    runAfterRipple(event, event.currentTarget, onPayClick);
+  });
   list.addEventListener("click", onQtyButtonClick);
   list.addEventListener("input", onQtyInput);
   list.addEventListener("change", onQtyCommit);
@@ -243,8 +338,10 @@ function initPayModal() {
   const cardButton = document.querySelector("[data-card-inserted]");
   if (mode) mode.addEventListener("click", onModeClick);
   if (cardButton) {
-    cardButton.addEventListener("click", () => {
-      location.href = cardButton.dataset.next;
+    cardButton.addEventListener("click", (event) => {
+      runAfterRipple(event, cardButton, () => {
+        location.href = cardButton.dataset.next;
+      });
     });
     try {
       const payment = JSON.parse(sessionStorage.getItem(CHECKOUT_PAYMENT_KEY));
@@ -272,6 +369,8 @@ function initPayModal() {
 
 // 페이지에 있는 요소를 기준으로 해당 화면만 초기화 (ice-02는 해당 없음)
 function init() {
+  initRipples();
+
   if (document.querySelector(".selfCheckout__section--end")) {
     try {
       sessionStorage.removeItem(CHECKOUT_PAYMENT_KEY);
@@ -281,10 +380,21 @@ function init() {
   }
 
   document.querySelectorAll(".selfCheckout__end-btn[data-href]").forEach((button) => {
-    button.addEventListener("click", () => {
-      location.href = button.dataset.href;
+    button.addEventListener("click", (event) => {
+      runAfterRipple(event, button, () => {
+        location.href = button.dataset.href;
+      });
     });
   });
+
+  const barcodeNext = document.querySelector("[data-barcode-next]");
+  if (barcodeNext) {
+    barcodeNext.addEventListener("click", (event) => {
+      runAfterRipple(event, barcodeNext, () => {
+        location.href = barcodeNext.dataset.barcodeNext;
+      });
+    });
+  }
 
   if (getModal()) {
     initPayModal();
