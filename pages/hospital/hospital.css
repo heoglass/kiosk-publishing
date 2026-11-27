@@ -657,19 +657,18 @@ body:has(.hospital-payment-modal[open]) {
   background: transparent;
 }
 
-.hospital-payment-modal .hospital-card-image {
+.hospital-payment-modal .hospital-card-image,
+.hospital-payment-modal .hospital-payment-remove {
   width: 342px;
-  max-width: 100%;
   height: 342px;
   border-radius: 171px;
+  /* border: 1px solid red; */
   background: url("../../shared/images/icon/payment-card-bg-blue.png") center /
     contain no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-/* .hospital-card-image lottie-player {
-  width: 100%;
-  height: 100%;
-} */
 
 .hospital-card-fallback {
   display: block;
@@ -714,21 +713,15 @@ body:has(.hospital-payment-modal[open]) {
 }
 
 .hospital-payment-status .hospital-payment-body {
-  padding: 100px 60px;
+  padding: 60px 60px 100px;
 }
 
 .hospital-payment-modal .hospital-payment-remove {
-  width: 200px;
-  height: 160px;
+  margin: 0 0 24px;
 }
-
-.hospital-payment-remove img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
+/* #lottie-card-return svg {
+  width: 280px;
+} */
 .hospital-payment-spinner {
   display: block;
   box-sizing: border-box;
