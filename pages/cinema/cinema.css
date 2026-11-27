@@ -892,6 +892,13 @@ body:has(.cinema-payment-modal[open]) {
   align-content: center;
   padding: 100px 60px 100px;
 }
+/* [수정] 2026-11-27 | 로티 들어간 팝업 상단 padding 조정
+변경 전: padding: 60px 60px 100px  변경 후: padding: 60px 60px 100px
+*/
+#cinema-payment-complete .cinema-payment-body {
+  align-content: center;
+  padding: 60px 60px 100px;
+}
 
 .cinema-payment-modal .cinema-ticket-image {
   margin: 22px auto 0;
@@ -965,11 +972,19 @@ body:has(.cinema-payment-modal[open]) {
 .cinema-complete-actions a:last-child {
   background: #d02828;
 }
-.cinema-payment-body .payment-image-button {
-  background-image: url("../../shared/images/icon/payment-card-bg.png") !important;
+/* [수정] 2026-11-27 | 로티 이미지 변경 */
+.cinema-payment-body .payment-image-button,
+.cinema-payment-image {
+  /* background-image: url("../../shared/images/icon/payment-card-bg.png") !important;
   background-repeat: no-repeat;
   background-position: bottom;
-  object-fit: fill;
+  object-fit: fill; */
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffc240 0%,
+    rgba(255, 194, 64, 0) 100%
+  );
+
   width: 342px;
   height: 342px;
   border-radius: 171px;
