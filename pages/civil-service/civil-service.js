@@ -361,9 +361,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const fingerprintReader = document.querySelector(
     "#service-fingerprint-reader"
   );
-  const fingerprintConfirm = document.querySelector(
-    "#service-fingerprint-confirm"
-  );
 
   if (headerTitle) headerTitle.textContent = "무인민원발급기";
 
@@ -424,9 +421,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (fingerprintReader && fingerprintConfirm && loadingDialog) {
+  // 지문인식기 버튼을 누르면 인식 팝업을 띄운 뒤 다음 화면으로 이동
+  // [수정] 2026-11-27 | 하단 확인 버튼 제거에 맞춰 지문인식기 클릭 시 인식 팝업이 열리도록 수정
+  if (fingerprintReader && loadingDialog) {
     initCivilServiceLoading(
-      [fingerprintReader, fingerprintConfirm],
+      [fingerprintReader],
       loadingDialog,
       "./civil-service_05.html",
       2000
@@ -523,6 +522,6 @@ document.addEventListener("DOMContentLoaded", function () {
       animationData: window.fingerPrintThumbData,
     });
 
-    cardAnimation.setSpeed(1);
+    cardAnimation.setSpeed(0.8);
   }
 });

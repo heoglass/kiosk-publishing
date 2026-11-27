@@ -58,7 +58,10 @@
             지문인식기에<br />
             <span>오른손 엄지 손가락</span>을 올려주세요
           </p>
-
+          ㅋㅋㅋㅋㅋ
+          <p class="service-fingerprint-guide">
+            오른쪽 엄지 손가락을 위로 올려서 인식해주세요
+          </p>
           <button
             type="button"
             class="service-fingerprint-reader"
@@ -67,19 +70,14 @@
             data-loading-next="./civil-service_05.html"
           >
             <div id="fingerprint-thumb"></div>
-            <!-- <img
-              src="../../shared/images/civil-service/fingerprint-reader.png"
-              width="960"
-              alt=""
-            /> -->
           </button>
-
-          <p class="service-fingerprint-guide">
-            오른쪽 엄지 손가락을 위로 올려서 인식해주세요
-          </p>
         </section>
 
-        <div class="service-auth-bottom">
+        <!-- 
+        [삭제] 2026-11-27 | 하단 버튼 영역삭제
+        설계서 참고 
+        -->
+        <!-- <div class="service-auth-bottom">
           <div class="service-auth-actions">
             <a
               href="./civil-service_03.html"
@@ -106,7 +104,7 @@
               <p class="wheelchair-text">휠체어 사용자 보기</p>
             </div>
           </footer>
-        </div>
+        </div> -->
       </div>
 
       <dialog
@@ -115,23 +113,7 @@
         aria-labelledby="service-loading-title"
       >
         <div class="service-loading-content">
-          <!-- <img
-            class="service-fingerprint-loading-image"
-            src="../../shared/images/civil-service/fingerprint-b.png"
-            width="240"
-            height="240"
-            alt=""
-          /> -->
-          <div id="lottie-fingerprint" class="lottie-fingerprint">
-            <!-- <lottie-player
-              src="../../shared/images/lottie/fingerprint.json"
-              background="transparent"
-              speed="0.3"
-              style="width: 800px"
-              loop
-              autoplay
-            ></lottie-player> -->
-          </div>
+          <div id="lottie-fingerprint" class="lottie-fingerprint"></div>
           <p id="service-loading-title">
             지문 인식중입니다.<br />손을 떼지마세요
           </p>
