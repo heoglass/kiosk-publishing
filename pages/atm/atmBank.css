@@ -136,7 +136,7 @@ h2.atmg__title--tight {
   display: grid;
   grid-template-columns: repeat(2, 467px);
   grid-auto-rows: 73px;
-  gap: 20px 26px; /* row-gap column-gap */
+  gap: 22px 30px;
 }
 
 .atm-btn {
@@ -161,8 +161,12 @@ a.atm-btn {
   text-decoration: none;
 }
 
-.atm-btn:active {
+.atm-btn:active,
+.atm-btn.active__shadow {
   box-shadow: 0px 0px 18.3px 0px rgba(33, 105, 202, 1);
+  border: 2px solid rgba(255, 255, 255, 1);
+  background: var(--parcel-primaryBtn-color);
+  color: #fff;
 }
 
 .atm-btn.btn--primary {

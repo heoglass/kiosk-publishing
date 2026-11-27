@@ -314,47 +314,67 @@ background: #555555;
 #airBody[page-type="air-03"] .air-box--hazard {
   display: flex;
   width: 960px;
-  height: 1028px;
-  flex: 0 0 1028px;
+  height: 1118px;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
   background-color: transparent;
 }
 
 #airBody[page-type="air-03"] .air-hazard-page {
-  display: flex;
   width: 100%;
   height: 100%;
-  align-items: flex-start;
-  justify-content: center;
-  border: 2px solid #CCCCCC;
-  background: #FDF8F4;
+  padding: 46px 60px;
+  overflow-y: auto;
+  
+  border: 2px solid #E9DCD7;
   border-radius: 32px;
-  padding-top: 35px;
+  background: #FDF8F5;
+  text-align: left;
 }
 
 #airBody[page-type="air-03"] .air-hazard-page[hidden] {
   display: none !important;
 }
 
-#airBody[page-type="air-03"] .air-hazard-image {
+#airBody[page-type="air-03"] .air-hazard-title {
+  padding-bottom: 24px;
+  border-bottom: 3px solid #a62d06;
+  color: #a62d06;
+  font-family: "Pretendard-Bold", sans-serif;
+  font-size: 40px;
+  line-height: 1.25;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#airBody[page-type="air-03"] .air-hazard-category {
+  padding: 15px 0;
+  border-bottom: 2px solid #eadbd5;
+}
+
+#airBody[page-type="air-03"] .air-hazard-category:last-child {
+  border-bottom: 0;
+}
+
+#airBody[page-type="air-03"] .air-hazard-category h4 {
+  font-family: "Pretendard-Bold", sans-serif;
+  font-size: 34px;
+  line-height: 1.25;
+}
+
+#airBody[page-type="air-03"] .air-hazard-category img {
   display: block;
-  flex: 0 0 auto;
-  object-fit: contain;
-  object-position: top center;
-  border-radius: 32px;
+  width: auto;
+  height: 50px;
+  margin: 4px 0 10px;
 }
 
-#airBody[page-type="air-03"] [data-air-hazard-page]:first-child .air-hazard-image {
-  width: 918px;
-  height: 928px;
-}
-
-#airBody[page-type="air-03"] [data-air-hazard-page]:nth-child(2) .air-hazard-image {
-  width: 918px;
-  height: 763px;
+#airBody[page-type="air-03"] .air-hazard-category p {
+  font-family: "Pretendard-SemiBold", sans-serif;
+  font-size: 25px;
+  line-height: 1.4;
 }
 
 #airBody[page-type="air-03"] .air-pager {
