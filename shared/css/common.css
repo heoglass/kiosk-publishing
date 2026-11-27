@@ -1051,6 +1051,24 @@ body.modal-open {
 }
 
 /* 결제 완료 이미지 버튼 */
+.card-return-gradient {
+  position: relative;
+  isolation: isolate;
+}
+
+.card-return-gradient::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 342px;
+  height: 342px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(50% 50% at 50% 50%, #FFC240 0%, rgba(255, 194, 64, 0) 100%);
+  pointer-events: none;
+}
+
 #modal-payment-complete .payment-image-button[data-card-removed] {
   order: 0;
   display: block;

@@ -1827,11 +1827,24 @@ body[page-type="kpay-01"] .ktx__section--relative {
   font-weight: 500;
 }
 .ktx-payment-status__complete-link {
+  position: relative;
+  isolation: isolate;
   display: block;
   width: 280px;
   height: 280px;
   margin: 0 auto;
+}
+.ktx-payment-status__complete-link::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 342px;
+  height: 342px;
+  transform: translate(-50%, -50%);
   background: radial-gradient(50% 50% at 50% 50%, #426EFF 0%, rgba(66, 110, 255, 0) 100%);
+  pointer-events: none;
 }
 .ktx-payment-status__complete-link:focus-visible {
   outline: 4px solid var(--ktxBtnActiveColor);
