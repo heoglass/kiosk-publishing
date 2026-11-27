@@ -131,11 +131,22 @@
 
   <!-- 결제수단 선택 팝업 -->
 
-  <div id="modal-card-loading" class="modal modal--payment" aria-labelledby="modal-payment-title">
+  <div id="modal-card-loading" class="modal modal--payment modal--payment-status" aria-labelledby="modal-payment-title">
     <!-- <div class="spinner"></div> -->
     <div class="modal-body">
-      <button type="button" class="payment-image-button" data-card-removed aria-label="카드 제거 완료">
-        <img class="payment-complete-image" src="../../shared/images/icon/icon-card-complete-red.png" alt="" />
+      <button type="button" class="payment-image-button" data-card-removed="" aria-label="카드 제거 완료" style="width: 342px">
+        <!-- [수정] 2026-11-27 | 카드 반환 애니메이션 적용 -->
+        <div class="card-payment-image card-insert">
+          <lottie-player
+            data-animation="lottieCardReturn"
+            background="transparent"
+            speed="0.5"
+            style="width: 342px; height: 342px"
+            loop
+            autoplay
+          >
+          </lottie-player>
+        </div> <!-- 카드 반환 lottie -->
       </button>
 
       <h2 id="payment-complete-title" class="modal-title modal__title--complete">
@@ -148,7 +159,19 @@
     </div>
   </div>
 
-
+  <script src="../../shared/js/lottie-player.js"></script>
+  <script src="../../shared/images/lottie/cardReturn-data.js"></script>
+  <script>
+    const cardReturnPlayer = document.querySelector('lottie-player[data-animation="lottieCardReturn"]');
+    cardReturnPlayer.addEventListener('error', function () {
+      console.error('카드 반환 애니메이션을 불러오지 못했습니다.');
+    });
+    cardReturnPlayer.updateComplete.then(function () {
+      return cardReturnPlayer.load(window.lottieCardReturn);
+    }).catch(function (error) {
+      console.error('카드 반환 애니메이션을 불러오지 못했습니다:', error);
+    });
+  </script>
   <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>

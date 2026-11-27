@@ -349,7 +349,7 @@
 .modal-title {
   font-size: 60px;
   font-weight: 700;
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
   color: #000;
 }
 
@@ -667,11 +667,6 @@
   box-shadow: 0 3px 6px rgb(0 0 0 / 25%);
 }
 
-.modal--payment .modal-body {
-  padding: 100px 0;
-  border-radius: 32px;
-}
-
 #modal-points-prompt .modal-header .modal-title {
   margin: 0;
   color: #fff;
@@ -686,10 +681,6 @@
 .payment-image-button {
   margin-bottom: 36px;
   
-}
-
-.modal__title--complete {
-  margin-bottom: 16px;
 }
 
 #modal-points-prompt .court__btn--active,

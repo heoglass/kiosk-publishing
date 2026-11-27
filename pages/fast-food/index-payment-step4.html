@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>패스트푸드 결제 진행</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../../shared/css/common.css" />
   <link rel="stylesheet" href="./fast-food.css?v=20261109-set-side" />
   <script type="text/javascript" src="../../shared/js/common.js"></script>
@@ -18,18 +17,7 @@
     <main class="fast-food category-main fastfood-set-side-page">
       <header id="category-header" class="fastFood__header">
         <div class="header-left">
-          <!-- <button
-            type="button"
-            id="header-back"
-            class="header-back"
-            aria-label="이전 화면으로"
-          >
-            <img
-              src="../../shared/images/icon/arrow-back.png"
-              class="arrow-back"
-              alt="뒤로가기 화살표"
-            />
-          </button> -->
+
           <a href="../../index.html" aria-label="처음으로">
             <img
               src="../../shared/images/icon/icon-home.png"
@@ -113,17 +101,21 @@
     aria-describedby="fastfood-payment-complete-description"
   >
     <div class="modal-body">
-      <button
-        type="button"
-        class="payment-image-button"
-        data-card-removed=""
-        aria-label="카드 제거 완료"
-      >
-        <img
-          class="payment-complete-image"
-          src="../../shared/images/icon/icon-card-complete.png"
-          alt=""
-        />
+      <button type="button" class="payment-image-button" data-card-removed="" aria-label="카드 제거 완료" style="width: 342px">
+        <!-- [수정] 2026-11-27 | 카드 반환 애니메이션 적용 -->
+
+        <div class="card-payment-image card-insert">
+          <lottie-player
+            data-animation="lottieCardReturn"
+            background="transparent"
+            speed="0.5"
+            style="width: 342px; height: 342px"
+            loop
+            autoplay
+          >
+          </lottie-player>
+        </div>
+
       </button>
 
       <h2 id="fastfood-payment-complete-title" class="modal-title">
@@ -136,6 +128,19 @@
     </div>
   </dialog>
 
+  <script src="../../shared/js/lottie-player.js"></script>
+  <script src="../../shared/images/lottie/cardReturn-data.js"></script>
+  <script>
+    const cardReturnPlayer = document.querySelector('lottie-player[data-animation="lottieCardReturn"]');
+    cardReturnPlayer.addEventListener('error', function () {
+      console.error('카드 반환 애니메이션을 불러오지 못했습니다.');
+    });
+    cardReturnPlayer.updateComplete.then(function () {
+      return cardReturnPlayer.load(window.lottieCardReturn);
+    }).catch(function (error) {
+      console.error('카드 반환 애니메이션을 불러오지 못했습니다:', error);
+    });
+  </script>
   <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
