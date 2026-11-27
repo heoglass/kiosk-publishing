@@ -426,6 +426,7 @@ body {
   font-family: "Pretendard-Bold";
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  font-size: 44px;
 }
 
 /* 개별 삭제 */
@@ -1064,8 +1065,8 @@ body.modal-open {
   display: block;
   flex-shrink: 0;
 
-  width: 220px;
-  margin: 0 0 40px;
+  width: 240px;
+  /* margin: 0 0 40px; */
   padding: 0;
 
   border: 0;
