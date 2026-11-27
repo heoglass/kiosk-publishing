@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로티 라이브러리 샘플</title>
+    <!-- <link rel="stylesheet" href="./css/common.css" />
+    <script type="text/javascript" src="./js/common.js"></script> -->
+    <script src="./js/lottie-player.js"></script>
+    <script src="./images/lottie/lottie-card-insert-data.js"></script>
+    <script src="./images/lottie/cardReturn-data.js"></script>
+    <script src="./images/atm/lottie_atm/atmCardInsert-data.js"></script>
+    <script src="./images/atm/lottie_atm/atmOutput-data.js"></script>
+    <script src="./images/atm/lottie_atm/atmPay-data.js"></script>
+    <script src="./images/atm/lottie_atm/cardScan-data.js"></script>
+  </head>
+
+  <body id="index-payment-step2">
+    <!-- 패스트푸드에서 카드삽입 장면 -->
+    <button type="button" class="payment-image-button" data-card-inserted aria-label="카드 삽입">
+        <div id="lottie-card-insert" class="card-payment-image card-insert">
+          <lottie-player
+            id="lottie-card-player"
+            data-animation="lottieCardInsert"
+            background="transparent"
+            speed="0.5"
+            style="width: 342px; height: 342px"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
+    </button>
+    <!-- ATM 에서 카드넣기 -->
+    <div id="lottie-card-insert" class="card-payment-image card-insert">
+      <lottie-player
+      data-animation="lottieAtmCardInsert"
+      background="transparent"
+      speed="0.5"
+      style="width: 342px; height: 342px"
+      loop
+      autoplay
+      ></lottie-player>
+    </div>
+    <!-- ATM 에서 카드 리턴 -->
+    <div id="lottie-card-insert" class="card-payment-image card-insert">
+      <lottie-player
+        data-animation="lottieAtmOutput"
+        background="transparent"
+        speed="0.5"
+        style="width: 342px; height: 342px"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+
+    <!-- 카드 반환 -->
+    <div class="card-payment-image card-insert">
+      <lottie-player
+        data-animation="lottieCardReturn"
+        background="transparent"
+        speed="0.5"
+        style="width: 342px; height: 342px"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+
+    <!-- ATM 에서 지폐 카운팅 -->
+    <div id="lottie-card-insert" class="card-payment-image card-insert">
+      <lottie-player
+        data-animation="lottieAtmPay"
+        background="transparent"
+        speed="0.5"
+        style="width: 342px; height: 342px"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+
+    <!-- ATM 에서 카드 스캔 -->
+    <div id="lottie-card-insert" class="card-payment-image card-insert">
+      <lottie-player
+        data-animation="lottieCardScan"
+        background="transparent"
+        speed="0.5"
+        style="width: 342px; height: 342px"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+    <script>
+      document.querySelectorAll("lottie-player[data-animation]").forEach(function (player) {
+        player.addEventListener("error", function () {
+          console.error("애니메이션을 불러오지 못했습니다:", player.dataset.animation);
+        });
+        player.updateComplete.then(function () {
+          player.load(window[player.dataset.animation]);
+        });
+      });
+    </script>
+  </body>
+</html>
