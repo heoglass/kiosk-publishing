@@ -844,7 +844,8 @@ body:has(.cinema-payment-modal[open]) {
 
 .cinema-payment-modal .cinema-payment-description {
   margin-top: 16px;
-  font-size: 38px;
+  font-size: 44px;
+  font-family: "Pretendard-Medium";
 }
 
 .cinema-payment-image img,
@@ -902,8 +903,9 @@ body:has(.cinema-payment-modal[open]) {
 
 .cinema-payment-modal .cinema-ticket-image {
   margin: 22px auto 0;
+  width: 240px;
+  height: 240px;
 }
-
 .cinema-payment-spinner {
   width: 100px;
   height: 100px;
